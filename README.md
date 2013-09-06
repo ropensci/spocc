@@ -18,7 +18,7 @@ occurrencelist("Puma concolor")
 And then data from BISON like 
 
 ```coffee
-library(rgbif)
+library(rbison)
 occurrencelist("Puma concolor")
 ```
 

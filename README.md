@@ -19,16 +19,16 @@ And then data from BISON like
 
 ```coffee
 library(rbison)
-occurrencelist("Puma concolor")
+bison("Puma concolor")
 ```
 
-and then combine them somehow, we can simply do 
+and then combine them somehow, we can simply do
 
 ```coffee
 occ("Puma concolor", from = c('gbif', 'bison'))
 ```
 
-and get a combined data set from the two data sources. Note that the function `occ` doesn't exist yet. We could even combine some functionality from `taxize` to clean taxonomic names. We'll see what happens...
+and get a combined data set from the two data sources. We could even combine some functionality from `taxize` to clean taxonomic names. We'll see what happens...
 
 The inspiration for this comes from users requesting a more seamless experience across data sources, and from our work on a similar package for taxonomy data ([taxize][taxize]).
 

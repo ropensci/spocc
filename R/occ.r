@@ -1,114 +1,136 @@
 #' Make a map of species occurrence data.
 #' 
-#' @importFrom rgbif occurrencelist
-#' @importFrom rbison bison
-#' @importFrom rinat get_obs_inat
-#' @importFrom rvertnet vertoccurrence
+#' @import rinat
+#' @importFrom rgbif gbif_lookup occ_search
+#' @importFrom rbison bison bison_data
 #' @importFrom plyr compact
+#' @importFrom lubridate now
 #' @param query Query term. Either a scientific name or a common name. Specify
 #'    whether a scientific or common name in the type parameter.
-#' @param from Data source to get data from, any combination of gbif, bison, 
-#'    vertnet, inat
+#' @param from Data source to get data from, any combination of gbif, bison, or
+#'    inat
 #' @param type Type of name, sci (scientific) or com (common name, vernacular)
 #' @param gbifopts List of options to pass on to rgbif
 #' @param bisonopts List of options to pass on to rbison
 #' @param inatopts List of options to pass on to rinat
-#' @param vertnetopts List of options to pass on to rvertnet
 #' @details The \code{occ} function is an opinionated wrapper around the rgbif, 
-#' rbison, rvertnet, and rinat packages to allow data access from a single 
+#' rbison, and rinat packages to allow data access from a single 
 #' access point. We take care of making sure you get useful objects out at the 
 #' cost of flexibility/options - if you need options you can use the functions
 #' inside each of those packages.
 #' @examples \dontrun{
 #' # Single data sources
-#' out <- occ(query='Accipiter striatus', from='gbif')
-#' occ('Ursus americanus', from='inat')
-#' occ('Danaus plexippus', from='bison')
-#' occ('Danaus plexippus', from='vertnet')
+#' occ(query='Accipiter striatus', from='gbif')
+#' occ(query='Danaus plexippus', from='inat')
+#' occ(query='Bison bison', from='bison')
 #' 
 #' # Many data sources
-#' out <- occ(query='Accipiter striatus', from = c('gbif','bison'))
-#' out
-#' occ_todf(out) # coerce to combined data.frame
+#' out <- occ(query='Accipiter striatus', from = c('gbif','bison','inat'))
+#' 
+#' ## Select data from each element
+#' out@data
+#' 
+#' ## Coerce to combined data.frame, selects minimal set of columns (name, lat, long)
+#' occ_todf(out)
 #' }
 #' @export
-occ <- function(query=NULL, from=c("gbif","bison","vertnet","inat"), 
-                type="sci", gbifopts=NULL, bisonopts=NULL,
-                inatopts=NULL, vertnetopts=NULL)
+occ <- function(query=NULL, from=c("gbif","bison","inat"), 
+                type="sci", gbifopts=list(), bisonopts=list(), inatopts=list())
 {
-  out_gbif=out_bison=out_inat=out_vertnet=NULL
-  sources <- match.arg(from, choices=c("gbif","bison","vertnet","inat"), 
-                       several.ok=TRUE)
+  out_gbif=out_bison=out_inat=NULL
+  sources <- match.arg(from, choices=c("gbif","bison","inat"), several.ok=TRUE)
   
+  time <- now()
   if(any(grepl("gbif",sources))){
-    out_gbif <- gbifdata(occurrencelist(scientificname=query, gbifopts))
+    gbifopts$taxonKey <- gbif_lookup(name=query)$usageKey
+    gbifopts$return <- "data"
+    out_gbif <- do.call(occ_search, gbifopts)
     out_gbif$prov <- rep("gbif", nrow(out_gbif))
   }
   if(any(grepl("bison",sources))){
-    out_bison <- bison_data(bison(species=query, bisonopts), datatype="data_df")
+    bisonopts$species <- query
+    out_bison <- do.call(bison, bisonopts)
+    out_bison <- bison_data(out_bison, datatype="data_df")
     out_bison$prov <- rep("bison", nrow(out_bison))
   }
-#   if(any(grepl("inat",sources))){
-#     out_inat <- get_obs_inat(query="Danaus plexippus", inatopts)
-#   }
+  if(any(grepl("inat",sources))){
+    inatopts$query <- query
+    out_inat <- do.call(get_obs_inat, inatopts)
+    out_inat$prov <- rep("inat", nrow(out_inat))
+  }
 #   if(any(grepl("vertnet",sources))){
 #     out_vertnet <- vertoccurrence(t=query, grp="bird", vertnetopts)
 #   }
-  
-#   if(format=="df"){
-#     names(out_gbif) <- c("name","latitude","longitude","prov")
-#     out_bison <- data.frame(name=out_bison$name,latitude=out_bison$latitude,longitude=out_bison$longitude)
-#     rbind.fill(list(out_gbif,out_bison))
-#   } else
-#   {
-  out <- compact(list(gbif=out_gbif,bison=out_bison,inat=out_inat,vertnet=out_vertnet))
-  new("occdat", meta=list(query=query, from=from, 
-                          type=type, format=format, gbifopts=gbifopts, bisonopts=bisonopts,
-                          inatopts=inatopts, vertnetopts=vertnetopts), data=out)
-#   }
+  out <- compact(list(gbif=out_gbif,bison=out_bison,inat=out_inat))
+  new("occdat", meta=list(time=time, query=query, from=from, type=type,
+                          gbifopts=gbifopts, bisonopts=bisonopts,
+                          inatopts=inatopts), data=out)
 }
 
 #' Coerce elements of output from a call to occ to a single data.frame
+#' @importFrom plyr rbind.fill
 #' @param x An object of class occdat
 #' @return A data.frame
 #' @export
-occ_todf <- function(x){
+occ_todf <- function(x)
+{
+  if(!is(x,"occdat"))
+    stop("Input object must be of class occdat")
+  
   parse <- function(y){
     if(y$prov[1]=="gbif"){
-      names(y) <- c("name","latitude","longitude","prov")
+#       names(y) <- c("name","longitude","latitude","prov")
       y
     } else
       if(y$prov[1]=="bison"){
-        data.frame(name=y$name,latitude=y$latitude,longitude=y$longitude,prov=y$prov)
-      }
+        data.frame(name=y$name,longitude=y$longitude,latitude=y$latitude,prov=y$prov)
+      } else
+        if(y$prov[1]=="inat"){
+          data.frame(name=y$Scientific.name,latitude=y$Latitude,longitude=y$Longitude,prov=y$prov)
+        }
   }
-  do.call(rbind.fill, lapply(x, parse))
+  tmp <- do.call(rbind, lapply(x@data, parse))
+  row.names(tmp) <- NULL
+  new("occdf", meta=x@meta, data=tmp)
 }
 
-setClass("occdat", representation(meta="list", data="list"))
+setClass("occdat", slots=list(meta="list", data="list"))
 # dat <- new("occdat", meta=list(a="asdf", b="asfad"), data=mtcars)
 
-# out <- occ(query='Accipiter striatus', from='gbif')[[1]]
+setClass("occdf", slots=list(meta="list", data="data.frame"))
+
+# out <- occ(query='Accipiter striatus', from='gbif')
 # out$var <- rnorm(10)
 # out$var2 <- rnorm(10)
 # out <- out[,-c(1,4)]
 # outdat <- new("occdat", data=out)
 
+#' Coerce to sp object
+#' @importFrom sp coordinates
 setAs("occdat", "SpatialPointsDataFrame", function(from){
-  if(length(from@data)==1){ dat <- from@data[[1]] } else
+  if(length(from@data)==1){ 
+    dat <- from@data[[1]]
+    dat <- na.omit(dat)
+  } else
   { 
-    dat <- occ_todf(from@data)
+    dat <- occ_todf(from)
+    dat <- na.omit(dat@data)
   }
-  sp::coordinates(dat) <- c("latitude","longitude")
+  coordinates(dat) <- c("latitude","longitude")
   dat
 })
-# outdat_sp <- as(outdat, "SpatialPointsDataFrame")
+# (out <- occ(query='Accipiter striatus', from='gbif'))
+#   as(out, "SpatialPointsDataFrame")
+# outdat_sp <- 
 # class(outdat_sp)
 # spplot(outdat_sp)
 # head(meuse)
 
-# out <- occ(query='Accipiter striatus', from = c('gbif','bison'))
-# out <- occ_todf(out)[,-4]
-# outdat <- new("occdat", data=out)
-# outdat_sp <- as(outdat, "SpatialPointsDataFrame")
+# (out <- occ(query='Accipiter striatus', from = c('gbif','bison')))
+# # out <- occ_todf(out)[,-4]
+# # # outdat <- new("occdat", data=out)
+# outdat_sp <- as(out, "SpatialPointsDataFrame")
+# library(sp)
 # spplot(outdat_sp)
+# # 
+# # dd2dms(outdat_sp)

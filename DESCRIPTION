@@ -1,26 +1,35 @@
 Package: occdat
 Description: A programmatic interface to many species occurrence data sources,
-    including GBIF, BISON, iNaturalist.
-Title: Interface to many species occurrence data sources
-Version: 0.0.1
+    including GBIF, BISON, iNaturalist, VertNet, and more as they sources
+    become easily available.
+Title: R interface to many species occurrence data sources
+Version: 0.0.2
 License: CC0
-Date: 2013-09-07
+Date: 2013-10-08
 Authors@R: c(person("Scott", "Chamberlain", role = c("aut", "cre"),
     email = "myrmecocystus@gmail.com"),
     person("Carl", "Boettiger", role = "aut",
     email = "cboettig@gmail.com"),
     person("Karthik", "Ram", role = "aut",
-    email = "karthik.ram@gmail.com"))
+    email = "karthik.ram@gmail.com"),
+    person("Ted", "Hart", role = "aut",
+    email = "edmund.m.hart@gmail.com"))
 URL: https://github.com/ropensci/occdat
 BugReports: https://github.com/ropensci/occdat/issues
 LazyLoad: yes
 LazyData: yes
 # VignetteBuilder: knitr
+Depends:
+    rinat
 Imports:
+    rbison,
+    rgbif,
     plyr,
     ggplot2,
     maps,
-    maptools
+    maptools,
+    sp,
+    lubridate
 Suggests:
     roxygen2,
     testthat

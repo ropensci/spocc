@@ -2,9 +2,10 @@
 \alias{occ}
 \title{Make a map of species occurrence data.}
 \usage{
-  occ(query = NULL, from = c("gbif", "bison", "inat"),
-    type = "sci", gbifopts = list(), bisonopts = list(),
-    inatopts = list())
+  occ(query = NULL, rank = "species",
+    from = c("gbif", "bison", "inat", "npn"), type = "sci",
+    gbifopts = list(), bisonopts = list(),
+    inatopts = list(), npnopts = list())
 }
 \arguments{
   \item{query}{Query term. Either a scientific name or a
@@ -22,6 +23,8 @@
   \item{bisonopts}{List of options to pass on to rbison}
 
   \item{inatopts}{List of options to pass on to rinat}
+
+  \item{npnopts}{List of options to pass on to rnpn}
 }
 \description{
   Make a map of species occurrence data.
@@ -40,6 +43,7 @@
 occ(query='Accipiter striatus', from='gbif')
 occ(query='Danaus plexippus', from='inat')
 occ(query='Bison bison', from='bison')
+occ(query='Pinus contorta', from='npn', npnopts=list(startdate='2008-01-01', enddate='2011-12-31'))
 
 # Many data sources
 out <- occ(query='Accipiter striatus', from = c('gbif','bison','inat'))

@@ -1,6 +1,6 @@
 #' Make a map of species occurrence data.
 #' 
-#' @import rinat
+#' @import rinat rnpn
 #' @importFrom rgbif gbif_lookup occ_search
 #' @importFrom rbison bison bison_data
 #' @importFrom plyr compact
@@ -13,6 +13,7 @@
 #' @param gbifopts List of options to pass on to rgbif
 #' @param bisonopts List of options to pass on to rbison
 #' @param inatopts List of options to pass on to rinat
+#' @param npnopts List of options to pass on to rnpn
 #' @details The \code{occ} function is an opinionated wrapper around the rgbif, 
 #' rbison, and rinat packages to allow data access from a single 
 #' access point. We take care of making sure you get useful objects out at the 
@@ -23,9 +24,11 @@
 #' occ(query='Accipiter striatus', from='gbif')
 #' occ(query='Danaus plexippus', from='inat')
 #' occ(query='Bison bison', from='bison')
+#' occ(query='Pinus contorta', from='npn', npnopts=list(startdate='2008-01-01', enddate='2011-12-31'))
 #' 
 #' # Many data sources
-#' out <- occ(query='Accipiter striatus', from = c('gbif','bison','inat'))
+#' out <- occ(query='Accipiter striatus', from = c('gbif','bison','inat','npn'),
+#'    npnopts=list(startdate='2008-01-01', enddate='2011-12-31'))
 #' 
 #' ## Select data from each element
 #' out@data
@@ -34,11 +37,12 @@
 #' occ_todf(out)
 #' }
 #' @export
-occ <- function(query=NULL, from=c("gbif","bison","inat"), 
-                type="sci", gbifopts=list(), bisonopts=list(), inatopts=list())
+occ <- function(query=NULL, rank="species", from=c("gbif","bison","inat","npn"), 
+                type="sci", gbifopts=list(), bisonopts=list(),
+                inatopts=list(), npnopts=list())
 {
-  out_gbif=out_bison=out_inat=NULL
-  sources <- match.arg(from, choices=c("gbif","bison","inat"), several.ok=TRUE)
+  out_gbif=out_bison=out_inat=out_npn=NULL
+  sources <- match.arg(from, choices=c("gbif","bison","inat","npn"), several.ok=TRUE)
   
   time <- now()
   if(any(grepl("gbif",sources))){
@@ -58,13 +62,23 @@ occ <- function(query=NULL, from=c("gbif","bison","inat"),
     out_inat <- do.call(get_obs_inat, inatopts)
     out_inat$prov <- rep("inat", nrow(out_inat))
   }
+  if(any(grepl("npn",sources))){
+    ids <- lookup_names(name=query, type="genus_epithet")[,"species_id"]
+    npnopts$speciesid <- as.numeric(as.character(ids))
+#     npnopts$startdate <- startdate
+#     npnopts$enddate <- enddate
+    df <- do.call(getallobssp, npnopts)
+    df <- npn_todf(df)
+    out_npn <- df@data
+    out_npn$prov <- rep("npn", nrow(out_npn))
+  }
 #   if(any(grepl("vertnet",sources))){
 #     out_vertnet <- vertoccurrence(t=query, grp="bird", vertnetopts)
 #   }
-  out <- compact(list(gbif=out_gbif,bison=out_bison,inat=out_inat))
+  out <- compact(list(gbif=out_gbif,bison=out_bison,inat=out_inat,npn=out_npn))
   new("occdat", meta=list(time=time, query=query, from=from, type=type,
                           gbifopts=gbifopts, bisonopts=bisonopts,
-                          inatopts=inatopts), data=out)
+                          inatopts=inatopts, npnopts=npnopts), data=out)
 }
 
 #' Coerce elements of output from a call to occ to a single data.frame
@@ -87,7 +101,10 @@ occ_todf <- function(x)
       } else
         if(y$prov[1]=="inat"){
           data.frame(name=y$Scientific.name,latitude=y$Latitude,longitude=y$Longitude,prov=y$prov)
-        }
+        } else
+          if(y$prov[1]=="npn"){
+            data.frame(name=y$sciname,latitude=y$latitude,longitude=y$longitude,prov=y$prov)
+          }
   }
   tmp <- do.call(rbind, lapply(x@data, parse))
   row.names(tmp) <- NULL
@@ -95,15 +112,8 @@ occ_todf <- function(x)
 }
 
 setClass("occdat", slots=list(meta="list", data="list"))
-# dat <- new("occdat", meta=list(a="asdf", b="asfad"), data=mtcars)
 
 setClass("occdf", slots=list(meta="list", data="data.frame"))
-
-# out <- occ(query='Accipiter striatus', from='gbif')
-# out$var <- rnorm(10)
-# out$var2 <- rnorm(10)
-# out <- out[,-c(1,4)]
-# outdat <- new("occdat", data=out)
 
 #' Coerce to sp object
 #' @importFrom sp coordinates

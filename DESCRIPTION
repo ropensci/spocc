@@ -20,8 +20,9 @@ LazyLoad: yes
 LazyData: yes
 # VignetteBuilder: knitr
 Depends:
-    rinat
+    rnpn
 Imports:
+    rinat,
     rbison,
     rgbif,
     plyr,

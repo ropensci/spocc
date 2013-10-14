@@ -27,8 +27,8 @@
 #' occ(query='Pinus contorta', from='npn', npnopts=list(startdate='2008-01-01', enddate='2011-12-31'))
 #' 
 #' # Many data sources
-#' out <- occ(query='Accipiter striatus', from = c('gbif','bison','inat','npn'),
-#'    npnopts=list(startdate='2008-01-01', enddate='2011-12-31'))
+#' npnopts <- list(startdate='2008-01-01', enddate='2011-12-31')
+#' out <- occ(query='Pinus contorta', npnopts=npnopts)
 #' 
 #' ## Select data from each element
 #' out@data
@@ -93,7 +93,6 @@ occ_todf <- function(x)
   
   parse <- function(y){
     if(y$prov[1]=="gbif"){
-#       names(y) <- c("name","longitude","latitude","prov")
       y
     } else
       if(y$prov[1]=="bison"){

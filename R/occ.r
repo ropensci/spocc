@@ -1,5 +1,4 @@
-#' Make a map of species occurrence data.
-#' 
+#' Make a map of species occurrence data
 #' @import rinat rnpn
 #' @importFrom rgbif gbif_lookup occ_search
 #' @importFrom rbison bison bison_data
@@ -115,7 +114,10 @@ setClass("occdat", slots=list(meta="list", data="list"))
 setClass("occdf", slots=list(meta="list", data="data.frame"))
 
 #' Coerce to sp object
-#' @importFrom sp coordinates
+#' 
+#' @name as
+#' @family occdat
+#' @importClassesFrom sp SpatialPointsDataFrame
 setAs("occdat", "SpatialPointsDataFrame", function(from){
   if(length(from@data)==1){ 
     dat <- from@data[[1]]

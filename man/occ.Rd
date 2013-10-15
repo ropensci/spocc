@@ -1,6 +1,6 @@
 \name{occ}
 \alias{occ}
-\title{Make a map of species occurrence data.}
+\title{Make a map of species occurrence data}
 \usage{
   occ(query = NULL, rank = "species",
     from = c("gbif", "bison", "inat", "npn"), type = "sci",
@@ -27,7 +27,7 @@
   \item{npnopts}{List of options to pass on to rnpn}
 }
 \description{
-  Make a map of species occurrence data.
+  Make a map of species occurrence data
 }
 \details{
   The \code{occ} function is an opinionated wrapper around
@@ -46,7 +46,8 @@ occ(query='Bison bison', from='bison')
 occ(query='Pinus contorta', from='npn', npnopts=list(startdate='2008-01-01', enddate='2011-12-31'))
 
 # Many data sources
-out <- occ(query='Accipiter striatus', from = c('gbif','bison','inat'))
+npnopts <- list(startdate='2008-01-01', enddate='2011-12-31')
+out <- occ(query='Pinus contorta', npnopts=npnopts)
 
 ## Select data from each element
 out

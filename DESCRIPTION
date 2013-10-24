@@ -1,4 +1,4 @@
-Package: occdat
+Package: spocc
 Description: A programmatic interface to many species occurrence data sources,
     including GBIF, BISON, iNaturalist, VertNet, and more as they sources
     become easily available.
@@ -14,8 +14,8 @@ Authors@R: c(person("Scott", "Chamberlain", role = c("aut", "cre"),
     email = "karthik.ram@gmail.com"),
     person("Ted", "Hart", role = "aut",
     email = "edmund.m.hart@gmail.com"))
-URL: https://github.com/ropensci/occdat
-BugReports: https://github.com/ropensci/occdat/issues
+URL: https://github.com/ropensci/spocc
+BugReports: https://github.com/ropensci/spocc/issues
 LazyLoad: yes
 LazyData: yes
 # VignetteBuilder: knitr

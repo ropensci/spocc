@@ -1,12 +1,12 @@
-occdat
+spocc
 ========
 
-**`occdat` = species OCCurrence DATa**
+**`spocc` = SPecies OCCurrence data**
 
 
 We (rOpenSci) have been writing R packages to interact with many sources of species occurrence data, including [GBIF][gbif], [Vertnet][vertnet], [BISON][bison], and [iNaturalist][inat] - and we'll continue to write wrappers for other sources. 
 
-`occdat` is an R package to query and collect species occurrence data from many sources. The goal is to wrap functions in other R packages to make a seamless experience across data sources for the user. 
+`spocc` is an R package to query and collect species occurrence data from many sources. The goal is to wrap functions in other R packages to make a seamless experience across data sources for the user. 
 
 The inspiration for this comes from users requesting a more seamless experience across data sources, and from our work on a similar package for taxonomy data ([taxize][taxize]).
 
@@ -17,8 +17,8 @@ The inspiration for this comes from users requesting a more seamless experience 
 ```coffee
 install.packages("devtools")
 library(devtools)
-install_github("occdat", "ropensci")
-library(occdat)
+install_github("spocc", "ropensci")
+library(spocc)
 ```
 
 Get data from GBIF
@@ -28,7 +28,7 @@ occ(query='Accipiter striatus', from='gbif')
 ```
 
 ```
-An object of class "occdat"
+An object of class "spocc"
 Slot "meta":
 $time
 [1] "2013-10-14 17:24:09 PDT"
@@ -93,7 +93,7 @@ occ(query='Pinus contorta', from='npn', npnopts=list(startdate='2008-01-01', end
 
 
 ```
-An object of class "occdat"
+An object of class "spocc"
 Slot "meta":
 $time
 [1] "2013-10-14 17:26:34 PDT"

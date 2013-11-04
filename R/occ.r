@@ -1,7 +1,6 @@
 #' Search for species occurrence data across many data sources.
 #' 
-#' @import rinat rnpn
-#' @importFrom rgbif gbif_lookup occ_search
+#' @import rinat rnpn rgbif
 #' @importFrom rbison bison bison_data
 #' @importFrom plyr compact
 #' @importFrom lubridate now
@@ -46,7 +45,7 @@ occ <- function(query=NULL, rank="species", from=c("gbif","bison","inat","npn"),
   
   time <- now()
   if(any(grepl("gbif",sources))){
-    gbifopts$taxonKey <- gbif_lookup(name=query)$usageKey
+    gbifopts$taxonKey <- name_backbone(name=query)$usageKey
     gbifopts$return <- "data"
     out_gbif <- do.call(occ_search, gbifopts)
     out_gbif$prov <- rep("gbif", nrow(out_gbif))

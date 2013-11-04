@@ -30,11 +30,15 @@ Imports:
     maps,
     maptools,
     sp,
-    lubridate
+    lubridate,
+    RColorBrewer
 Suggests:
     roxygen2,
-    testthat
+    testthat,
+    rCharts
 Collate:
     'occ.r'
     'occmap.r'
     'zzz.r'
+    'rcharts_extra.r'
+    'maprcharts.r'

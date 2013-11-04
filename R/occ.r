@@ -1,4 +1,5 @@
-#' Make a map of species occurrence data
+#' Search for species occurrence data across many data sources.
+#' 
 #' @import rinat rnpn
 #' @importFrom rgbif gbif_lookup occ_search
 #' @importFrom rbison bison bison_data

@@ -1,6 +1,6 @@
 \name{occ}
 \alias{occ}
-\title{Make a map of species occurrence data}
+\title{Search for species occurrence data across many data sources.}
 \usage{
   occ(query = NULL, rank = "species",
     from = c("gbif", "bison", "inat", "npn"), type = "sci",
@@ -27,7 +27,8 @@
   \item{npnopts}{List of options to pass on to rnpn}
 }
 \description{
-  Make a map of species occurrence data
+  Search for species occurrence data across many data
+  sources.
 }
 \details{
   The \code{occ} function is an opinionated wrapper around

@@ -1,8 +1,9 @@
-\name{toGeoJSON}
-\alias{toGeoJSON}
+\name{spocc_toGeoJSON}
+\alias{spocc_toGeoJSON}
 \title{Get palette actual name from longer names}
 \usage{
-  toGeoJSON(list_, lat = "latitude", lon = "longitude")
+  spocc_toGeoJSON(list_, lat = "latitude",
+    lon = "longitude")
 }
 \arguments{
   \item{list_}{A list}

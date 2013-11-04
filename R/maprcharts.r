@@ -1,6 +1,6 @@
 #' Make an interactive map to view in the browser
 #' 
-#' @import rCharts RColorBrewer
+#' @import RColorBrewer
 #' @param data A data.frame, with any number of columns, but with at least the 
 #'    following: name (the taxonomic name), latitude (in dec. deg.), longitude  
 #'    (in dec. deg.)
@@ -15,6 +15,7 @@
 #' @param fullscreen If TRUE, full screen option avail, if not, not avail.
 #' @export
 #' @examples \dontrun{
+#' library(rCharts)
 #' spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta')
 #' dat <- lapply(spp, function(x) occ(query=x, from='gbif'))
 #' dat <- do.call(rbind, lapply(dat, function(x) x@data$gbif))
@@ -52,7 +53,7 @@ maprcharts <- function(data, popup = TRUE, map_provider = 'MapQuestOpen.OSM',
       return(l)
     })
   out_list2 <- Filter(function(x) !is.na(x$latitude), out_list2)
-  geojson <- toGeoJSON(out_list2, lat = 'latitude', lon = 'longitude')
+  geojson <- spocc_toGeoJSON(out_list2, lat = 'latitude', lon = 'longitude')
   
   L1 <- Leaflet$new()
   L1$tileLayer(provider = map_provider, urlTemplate = NULL)

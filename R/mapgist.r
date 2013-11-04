@@ -28,7 +28,7 @@
 #' @examples \dontrun{
 #' spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta')
 #' dat <- lapply(spp, function(x) occ(query=x, from='gbif', gbifopts=list(georeferenced=TRUE)))
-#' dat <- do.call(rbind, lapply(dat, function(x) x@data$gbif))
+#' dat <- occmany_todf(dat)@data
 #' 
 #' # Define colors
 #' mapgist(data=dat, color=c("#976AAE","#6B944D","#BD5945"))

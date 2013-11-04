@@ -1,6 +1,6 @@
 \name{occ_todf}
 \alias{occ_todf}
-\title{Coerce elements of output from a call to occ to a single data.frame}
+\title{Coerce elements of output from a single occ() call to a single data.frame}
 \usage{
   occ_todf(x)
 }
@@ -11,7 +11,7 @@
   A data.frame
 }
 \description{
-  Coerce elements of output from a call to occ to a single
-  data.frame
+  Coerce elements of output from a single occ() call to a
+  single data.frame
 }
 

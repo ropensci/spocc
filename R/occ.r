@@ -80,7 +80,7 @@ occ <- function(query=NULL, rank="species", from=c("gbif","bison","inat","npn"),
                           inatopts=inatopts, npnopts=npnopts), data=out)
 }
 
-#' Coerce elements of output from a call to occ to a single data.frame
+#' Coerce elements of output from a single occ() call to a single data.frame
 #' @importFrom plyr rbind.fill
 #' @param x An object of class occdat
 #' @return A data.frame
@@ -109,9 +109,33 @@ occ_todf <- function(x)
   new("occdf", meta=x@meta, data=tmp)
 }
 
+#' Coerce elements of output from many occ() calls to a single data.frame
+#' @importFrom plyr rbind.fill
+#' @param x A list of objects of class occdat
+#' @return A data.frame
+#' @examples \dontrun{
+#' spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta')
+#' dat <- lapply(spp, function(x) occ(query=x, from='gbif'))
+#' occmany_todf(dat) # data with compiled metadata
+#' occmany_todf(dat)@data # just data
+#' }
+#' @export
+occmany_todf <- function(x)
+{
+  if( !all(sapply(x, function(y) is(y,"occdat"))) )
+    stop("Input objects must all be of class occdat")
+  
+  out <- lapply(x, function(z) occ_todf(z)@data)
+  tmp <- do.call(rbind, out)
+  row.names(tmp) <- NULL
+  new("occdfmany", meta=lapply(x, function(x) x@meta), data=tmp)
+}
+
 setClass("occdat", slots=list(meta="list", data="list"))
 
 setClass("occdf", slots=list(meta="list", data="data.frame"))
+
+setClass("occdfmany", slots=list(meta="list", data="data.frame"))
 
 #' Coerce to sp object
 #' 

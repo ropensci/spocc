@@ -47,7 +47,7 @@
 \dontrun{
 spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta')
 dat <- lapply(spp, function(x) occ(query=x, from='gbif', gbifopts=list(georeferenced=TRUE)))
-dat <- do.call(rbind, lapply(dat, function(x) x
+dat <- occmany_todf(dat)
 }
 \seealso{
   \code{spocc_gist}, \code{spocc_stylegeojson},

@@ -57,7 +57,7 @@ occ <- function(query=NULL, rank="species", from=c("gbif","bison","inat","npn"),
     out_bison$prov <- rep("bison", nrow(out_bison))
   }
   if(any(grepl("inat",sources))){
-    inatopts$query <- query
+    inatopts$taxon <- query
     out_inat <- do.call(get_obs_inat, inatopts)
     out_inat$prov <- rep("inat", nrow(out_inat))
   }

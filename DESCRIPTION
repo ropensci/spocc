@@ -44,3 +44,4 @@ Collate:
     'util_github.r'
     'util_rcharts.r'
     'mapshiny.r'
+    'mapcartodb.r'

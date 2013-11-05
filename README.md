@@ -10,7 +10,7 @@ We (rOpenSci) have been writing R packages to interact with many sources of spec
 
 The inspiration for this comes from users requesting a more seamless experience across data sources, and from our work on a similar package for taxonomy data ([taxize][taxize]).
 
-### Quick start
+## Quick start
 
 ### Install
 
@@ -21,6 +21,8 @@ install_github("spocc", "ropensci")
 library(spocc)
 ```
 
+### Get data
+
 Get data from GBIF
 
 ```coffee
@@ -28,7 +30,7 @@ occ(query='Accipiter striatus', from='gbif')
 ```
 
 ```
-An object of class "spocc"
+An object of class "occdat"
 Slot "meta":
 $time
 [1] "2013-10-14 17:24:09 PDT"
@@ -93,7 +95,7 @@ occ(query='Pinus contorta', from='npn', npnopts=list(startdate='2008-01-01', end
 
 
 ```
-An object of class "spocc"
+An object of class "occdat"
 Slot "meta":
 $time
 [1] "2013-10-14 17:26:34 PDT"
@@ -227,6 +229,64 @@ list(head(df@data), tail(df@data))
 162 Pinus contorta -121.532234 40.557255  npn
 
 ```
+
+### Make maps
+
+**rCharts**
+
+```coffee
+spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta','Puma concolor','Ursus americanus','Gymnogyps californianus')
+dat <- lapply(spp, function(x) occ(query=x, from='gbif', gbifopts=list(georeferenced=TRUE)))
+dat <- occmany_todf(dat)@data
+maprcharts(dat, map_provider="Acetate.terrain", palette_color="OrangeRed")
+```
+
+*map will be here later*
+
+
+**Github gist**
+
+```coffee
+spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta')
+dat <- lapply(spp, function(x) occ(query=x, from='gbif', gbifopts=list(georeferenced=TRUE)))
+dat <- occmany_todf(dat)@data
+mapgist(data=dat, color=c("#976AAE","#6B944D","#BD5945"))
+```
+
+*map will be here later*
+
+
+**CartoDB**
+
+```coffee
+install_github("cartodb-r", "Vizzuality", subdir="CartoDB")
+library(CartoDB)
+tmp <- occ(query='Puma concolor', from='gbif', gbifopts=list(limit=500, 
+   georeferenced=TRUE, country="US"))
+data <- occ_todf(tmp)@data
+mapcartodb(data, "pumamap", c("name","longitude","latitude"), "recology")
+```
+
+*map will be here later*
+
+
+**Shiny**
+
+```coffee
+mapshiny()
+```
+
+*map will be here later*
+
+
+**ggplot2**
+
+```coffee
+mapggplot2()
+...
+```
+
+*map will be here later*
 
 [gbif]: https://github.com/ropensci/rgbif
 [vertnet]: https://github.com/ropensci/rvertnet

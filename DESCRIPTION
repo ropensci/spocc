@@ -43,3 +43,4 @@ Collate:
     'mapgist.r'
     'util_github.r'
     'util_rcharts.r'
+    'mapshiny.r'

@@ -1,6 +1,8 @@
 spocc
 ========
 
+[![Build Status](https://api.travis-ci.org/ropensci/spocc.png)](https://travis-ci.org/ropensci/spocc)
+
 **`spocc` = SPecies OCCurrence data**
 
 

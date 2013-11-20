@@ -34,6 +34,12 @@
 #' 
 #' ## Coerce to combined data.frame, selects minimal set of columns (name, lat, long)
 #' occ_todf(out)
+#' 
+#' ## Using a bounding box
+#' bounds <- c(38.44047,-125,40.86652,-121.837)
+#' aoibbox = '-111.31,38.81,-110.57,39.21'
+#' get_obs_inat(query="Mule Deer", bounds=bounds)
+#' occ(query='Danaus plexippus', )
 #' }
 #' @export
 occ <- function(query=NULL, rank="species", from=c("gbif","bison","inat","npn"), 
@@ -57,7 +63,7 @@ occ <- function(query=NULL, rank="species", from=c("gbif","bison","inat","npn"),
     out_bison$prov <- rep("bison", nrow(out_bison))
   }
   if(any(grepl("inat",sources))){
-    inatopts$taxon <- query
+    inatopts$query <- query
     out_inat <- do.call(get_obs_inat, inatopts)
     out_inat$prov <- rep("inat", nrow(out_inat))
   }
@@ -92,7 +98,7 @@ occ_todf <- function(x)
   
   parse <- function(y){
     if(y$prov[1]=="gbif"){
-      y
+      data.frame(name=y$name,longitude=y$longitude,latitude=y$latitude,prov=y$prov)
     } else
       if(y$prov[1]=="bison"){
         data.frame(name=y$name,longitude=y$longitude,latitude=y$latitude,prov=y$prov)

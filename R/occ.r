@@ -6,6 +6,7 @@
 #' @importFrom lubridate now
 #' @param query Query term. Either a scientific name or a common name. Specify
 #'    whether a scientific or common name in the type parameter.
+#' @param rank Taxonomic rank.
 #' @param from Data source to get data from, any combination of gbif, bison, or
 #'    inat
 #' @param type Type of name, sci (scientific) or com (common name, vernacular)
@@ -55,6 +56,7 @@ occ <- function(query=NULL, rank="species", from=c("gbif","bison","inat","npn"),
     gbifopts$return <- "data"
     out_gbif <- do.call(occ_search, gbifopts)
     out_gbif$prov <- rep("gbif", nrow(out_gbif))
+    out_gbif$name <- as.character(out_gbif$name)
   }
   if(any(grepl("bison",sources))){
     bisonopts$species <- query
@@ -87,9 +89,12 @@ occ <- function(query=NULL, rank="species", from=c("gbif","bison","inat","npn"),
 }
 
 #' Coerce elements of output from a single occ() call to a single data.frame
+#' 
 #' @importFrom plyr rbind.fill
 #' @param x An object of class occdat
-#' @return A data.frame
+#' @return An object of class occdf, including metadata from input occdat object, 
+#' and a combined data.frame from different sources. If a single data sources was 
+#' called in the \code{occ} call, the same data.frame is returned.
 #' @export
 occ_todf <- function(x)
 {
@@ -110,68 +115,43 @@ occ_todf <- function(x)
             data.frame(name=y$sciname,latitude=y$latitude,longitude=y$longitude,prov=y$prov)
           }
   }
-  tmp <- do.call(rbind, lapply(x@data, parse))
+  tmp <- do.call(rbind.fill, lapply(x@data, parse))
   row.names(tmp) <- NULL
   new("occdf", meta=x@meta, data=tmp)
 }
 
 #' Coerce elements of output from many occ() calls to a single data.frame
+#' 
 #' @importFrom plyr rbind.fill
-#' @param x A list of objects of class occdat
-#' @return A data.frame
+#' @param ... A list of objects, or any number of objects separated by commas, all 
+#' of class occdat.
+#' @return An object of class occdfmany, with a metadata (meta) slot and a data slot. 
+#' Includes metadata from all input occdat objects as a list in the meta slot, and 
+#' a combined data.frame from all inputs.
 #' @examples \dontrun{
+#' # Pass in a list of occdat objects
 #' spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta')
 #' dat <- lapply(spp, function(x) occ(query=x, from='gbif'))
 #' occmany_todf(dat) # data with compiled metadata
 #' occmany_todf(dat)@data # just data
+#' 
+#' # Pass in a series of occdat objects separated by commas
+#' dat1 <- occ('Danaus plexippus', from='gbif')
+#' dat2 <- occ('Accipiter striatus', from='gbif')
+#' dat3 <- occ('Pinus contorta', from='gbif')
+#' occmany_todf(dat1, dat2, dat3)
 #' }
 #' @export
-occmany_todf <- function(x)
+occmany_todf <- function(...)
 {
+  x <- list(...)
+  if(is(x, "list"))
+    x <- x[[1]]
   if( !all(sapply(x, function(y) is(y,"occdat"))) )
     stop("Input objects must all be of class occdat")
   
   out <- lapply(x, function(z) occ_todf(z)@data)
-  tmp <- do.call(rbind, out)
+  tmp <- do.call(rbind.fill, out)
   row.names(tmp) <- NULL
   new("occdfmany", meta=lapply(x, function(x) x@meta), data=tmp)
 }
-
-setClass("occdat", slots=list(meta="list", data="list"))
-
-setClass("occdf", slots=list(meta="list", data="data.frame"))
-
-setClass("occdfmany", slots=list(meta="list", data="data.frame"))
-
-#' Coerce to sp object
-#' 
-#' @name as
-#' @family occdat
-#' @importClassesFrom sp SpatialPointsDataFrame
-setAs("occdat", "SpatialPointsDataFrame", function(from){
-  if(length(from@data)==1){ 
-    dat <- from@data[[1]]
-    dat <- na.omit(dat)
-  } else
-  { 
-    dat <- occ_todf(from)
-    dat <- na.omit(dat@data)
-  }
-  coordinates(dat) <- c("latitude","longitude")
-  dat
-})
-# (out <- occ(query='Accipiter striatus', from='gbif'))
-#   as(out, "SpatialPointsDataFrame")
-# outdat_sp <- 
-# class(outdat_sp)
-# spplot(outdat_sp)
-# head(meuse)
-
-# (out <- occ(query='Accipiter striatus', from = c('gbif','bison')))
-# # out <- occ_todf(out)[,-4]
-# # # outdat <- new("occdat", data=out)
-# outdat_sp <- as(out, "SpatialPointsDataFrame")
-# library(sp)
-# spplot(outdat_sp)
-# # 
-# # dd2dms(outdat_sp)

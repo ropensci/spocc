@@ -1,8 +1,8 @@
-\name{capwords}
-\alias{capwords}
+\name{spocc_capwords}
+\alias{spocc_capwords}
 \title{Capitalize the first letter of a character string.}
 \usage{
-  capwords(s, strict = FALSE, onlyfirst = FALSE)
+  spocc_capwords(s, strict = FALSE, onlyfirst = FALSE)
 }
 \arguments{
   \item{s}{A character string}
@@ -17,8 +17,10 @@
   Capitalize the first letter of a character string.
 }
 \examples{
+\dontrun{
 capwords(c("using AIC for model selection"))
 capwords(c("using AIC for model selection"), strict=TRUE)
+}
 }
 \keyword{internal}
 

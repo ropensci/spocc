@@ -1,8 +1,8 @@
-\name{parseresults}
-\alias{parseresults}
+\name{spocc_parseresults}
+\alias{spocc_parseresults}
 \title{Parse results from call to occurrencelist endpoint}
 \usage{
-  parseresults(x, ..., removeZeros = removeZeros)
+  spocc_parseresults(x, ..., removeZeros = removeZeros)
 }
 \arguments{
   \item{x}{A list}

@@ -1,8 +1,8 @@
-\name{blanktheme}
-\alias{blanktheme}
+\name{spocc_blanktheme}
+\alias{spocc_blanktheme}
 \title{Custom ggplot2 theme}
 \usage{
-  blanktheme()
+  spocc_blanktheme()
 }
 \description{
   Custom ggplot2 theme

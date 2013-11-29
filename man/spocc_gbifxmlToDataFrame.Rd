@@ -1,10 +1,10 @@
-\name{gbifxmlToDataFrame}
-\alias{gbifxmlToDataFrame}
+\name{spocc_gbifxmlToDataFrame}
+\alias{spocc_gbifxmlToDataFrame}
 \title{Code based on the `gbifxmlToDataFrame` function from dismo package
 (http://cran.r-project.org/web/packages/dismo/index.html),
 by Robert Hijmans, 2012-05-31, License: GPL v3}
 \usage{
-  gbifxmlToDataFrame(doc, format)
+  spocc_gbifxmlToDataFrame(doc, format)
 }
 \arguments{
   \item{doc}{A parsed XML document.}

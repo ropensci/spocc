@@ -12,6 +12,8 @@
   common name. Specify whether a scientific or common name
   in the type parameter.}
 
+  \item{rank}{Taxonomic rank.}
+
   \item{from}{Data source to get data from, any combination
   of gbif, bison, or inat}
 

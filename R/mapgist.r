@@ -23,7 +23,7 @@
 #' \code{mapgist} has modified code from the rCharts package by Ramnath Vaidyanathan 
 #' @return Creates a gist on your Github account, and prints out where the geojson file was
 #' written on your machinee, the url for the gist, and an embed script in the console.
-#' @seealso \code{spocc_gist}, \code{spocc_stylegeojson}, \code{spocc_togeojson}
+#' 
 #' @export
 #' @examples \dontrun{
 #' spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta')

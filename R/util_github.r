@@ -79,7 +79,7 @@ spocc_create_gist <- function(filenames, description = "", public = TRUE){
 #' Get Github credentials from use in console
 #' @export
 #' @keywords internal
-spocc_get_credentials = function(){
+spocc_get_credentials <- function(){
   if (is.null(getOption('github.username'))){
     username <- readline("Please enter your github username: ")
     options(github.username = username)
@@ -213,7 +213,7 @@ spocc_stylegeojson <- function(input, var = NULL, var_col = NULL, var_sym = NULL
 #' spocc_create_gist("~/my.geojson", description = "Map of three bird species occurrences")
 #' }
 #' @export
-#' @seealso \code{\link{spocc_stylegeojson}}
+#' @seealso \code{spocc_stylegeojson}
 spocc_togeojson <- function(input, method="web", destpath="~/", outfilename="myfile")
 {
   method <- match.arg(method, choices=c("web","local"))

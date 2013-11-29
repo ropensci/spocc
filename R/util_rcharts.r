@@ -4,7 +4,7 @@
 #' @param lon Longitude name
 #' @export
 #' @keywords internal
-spocc_toGeoJSON <- function(list_, lat = 'latitude', lon = 'longitude'){
+spocc_rcharts_togeojson <- function(list_, lat = 'latitude', lon = 'longitude'){
   x = lapply(list_, function(l){
     if (is.null(l[[lat]]) || is.null(l[[lon]])){
       return(NULL)

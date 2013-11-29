@@ -1,8 +1,8 @@
-\name{colClasses}
-\alias{colClasses}
+\name{spocc_colClasses}
+\alias{spocc_colClasses}
 \title{Coerces data.frame columns to the specified classes}
 \usage{
-  colClasses(d, colClasses)
+  spocc_colClasses(d, colClasses)
 }
 \arguments{
   \item{d}{A data.frame.}
@@ -14,9 +14,11 @@
   Coerces data.frame columns to the specified classes
 }
 \examples{
+\dontrun{
 dat <- data.frame(xvar = seq(1:10), yvar = rep(c("a","b"),5)) # make a data.frame
 str(dat)
 str(colClasses(dat, c("factor","factor")))
+}
 }
 \keyword{internal}
 

@@ -53,7 +53,7 @@ maprcharts <- function(data, popup = TRUE, map_provider = 'MapQuestOpen.OSM',
       return(l)
     })
   out_list2 <- Filter(function(x) !is.na(x$latitude), out_list2)
-  geojson <- spocc_toGeoJSON(out_list2, lat = 'latitude', lon = 'longitude')
+  geojson <- spocc_rcharts_togeojson(out_list2, lat = 'latitude', lon = 'longitude')
   
   L1 <- Leaflet$new()
   L1$tileLayer(provider = map_provider, urlTemplate = NULL)

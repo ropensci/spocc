@@ -1,9 +1,9 @@
-\name{occdat-class}
-\alias{occdat}
-\alias{occdat-class}
-\title{"occdat" class}
+\name{occDat-class}
+\alias{occDat}
+\alias{occDat-class}
+\title{"occDat" class}
 \description{
-  "occdat" class
+  "occDat" class
 
   Coerce to sp object
 }
@@ -16,5 +16,16 @@ bbox(spdat)
 plot(spdat)
 bubble(obj=spdat, zcol="name", key.space="bottom")
 spplot(spdat, names.attr=spdat
+}
+\seealso{
+  Other res: \code{\link{occDf-class}},
+  \code{\link{occResult-class}}, \code{\link{occdf-class}},
+  \code{\link{occdfmany-class}},
+  \code{\link{occdfmany-class}}
+
+  Other res: \code{\link{occDf-class}},
+  \code{\link{occResult-class}}, \code{\link{occdf-class}},
+  \code{\link{occdfmany-class}},
+  \code{\link{occdfmany-class}}
 }
 

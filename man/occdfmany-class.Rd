@@ -15,4 +15,13 @@ dfmany <- occmany_todf(dat)
 spdat <- as(dfmany, "SpatialPointsDataFrame")
 spdat
 }
+\seealso{
+  Other res: \code{\link{occDat-class}},
+  \code{\link{occDat-class}}, \code{\link{occDf-class}},
+  \code{\link{occResult-class}}, \code{\link{occdf-class}}
+
+  Other res: \code{\link{occDat-class}},
+  \code{\link{occDat-class}}, \code{\link{occDf-class}},
+  \code{\link{occResult-class}}, \code{\link{occdf-class}}
+}
 

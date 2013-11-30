@@ -3,9 +3,10 @@
 \title{Search for species occurrence data across many data sources.}
 \usage{
   occ(query = NULL, rank = "species",
-    from = c("gbif", "bison", "inat", "npn"), type = "sci",
-    gbifopts = list(), bisonopts = list(),
-    inatopts = list(), npnopts = list())
+    from = c("gbif", "bison", "inat", "npn", "ebird"),
+    type = "sci", gbifopts = list(), bisonopts = list(),
+    inatopts = list(), npnopts = list(),
+    ebirdopts = list())
 }
 \arguments{
   \item{query}{Query term. Either a scientific name or a
@@ -47,6 +48,8 @@ occ(query='Accipiter striatus', from='gbif')
 occ(query='Danaus plexippus', from='inat')
 occ(query='Bison bison', from='bison')
 occ(query='Pinus contorta', from='npn', npnopts=list(startdate='2008-01-01', enddate='2011-12-31'))
+occ(query='Setophaga caerulescens', from='ebird', ebirdopts=list(region='US'))
+occ(query='Spinus tristis', from='ebird', ebirdopts=list(method='ebirdgeo', lat=42, lng=-76, dist=50))
 
 # Many data sources
 npnopts <- list(startdate='2008-01-01', enddate='2011-12-31')

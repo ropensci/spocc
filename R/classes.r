@@ -1,35 +1,107 @@
-#' "occdat" class
+#' "occResult" class
 #' 
-#' @name occdat-class
-#' @aliases occdat
-#' @family occdat
+#' @name occResult-class
+#' @aliases occResult
+#' @family occResult
 #' 
-#' @exportClass occdat
-setClass("occdat", slots=list(meta="list", data="list"))
+#' @exportClass occResult
+# setClass("occDat", slots=list(meta="list", data="list"))
+setClass("occResult", 
+         slots=list(meta="list", data="data.frame"))
 
-#' "occdf" class
+#' "occDat" class
 #' 
-#' @name occdf-class
-#' @aliases occdf
-#' @family occdf
+#' @name occDat-class
+#' @aliases occDat
+#' @family occDat
 #' 
-#' @exportClass occdf
-setClass("occdf", slots=list(meta="list", data="data.frame"))
+#' @exportClass occDat
+setClass("occDat", 
+         slots=list(gbif = "occResult", bison = "occResult", inat = "occResult", npn = "occResult", ebird = "occResult"))
 
-#' "occdfmany" class
+
+setGeneric("occtodf", function(x, what='all')
+  standardGeneric("occtodf"))
+
+#' Generic method for coercing class occDat to occDf
+#' @exportMethod occtodf
+setMethod("occtodf",
+  signature = c("occDat"),
+  definition = function(x, what){
+    what <- match.arg(what, choices=c('all','data'))
+    aa <- x@gbif@data
+    bb <- x@bison@data
+    cc <- x@inat@data
+    dd <- x@npn@data
+    ee <- x@ebird@data
+    tmp <- data.frame(rbindlist(list(
+      data.frame(name=aa$name,longitude=aa$longitude,latitude=aa$latitude,prov=aa$prov),
+      data.frame(name=bb$name,longitude=bb$longitude,latitude=bb$latitude,prov=bb$prov),
+      data.frame(name=cc$Scientific.name,latitude=cc$Latitude,longitude=cc$Longitude,prov=cc$prov),
+      data.frame(name=dd$sciname,latitude=dd$latitude,longitude=dd$longitude,prov=dd$prov),
+      data.frame(name=ee$sciName,latitude=ee$lat,longitude=ee$lng,prov=ee$prov)
+    )))
+    tmpout <- new("occDf", 
+                  meta=list(x@gbif@meta,x@bison@meta,x@inat@meta,x@npn@meta,x@ebird@meta), 
+                  data=tmp)
+    if(what %in% 'data')
+      tmpout@data
+    else 
+      tmpout
+  }
+)
+
+
+setGeneric("occmanytodf", function(x, what='all')
+  standardGeneric("occmanytodf"))
+
+#' Generic method for coercing a list of elements of class occDat to occDf
+#' @exportMethod occmanytodf
+setMethod("occmanytodf",
+          signature = c("list"),
+          definition = function(x, what='all'){
+            if( !all(sapply(x, function(y) is(y,"occDat"))) )
+              stop("Input objects must all be of class occDat")
+            
+            out <- lapply(x, function(z) occtodf(z, 'data'))
+            tmp <- do.call(rbind.fill, out)
+            row.names(tmp) <- NULL
+            allmeta <- lapply(dat, function(x) 
+              list(x@gbif@meta, x@bison@meta, x@inat@meta, x@npn@meta, x@ebird@meta))
+            tmpout <- new("occDfMany", 
+                meta=allmeta, 
+                data=tmp)
+            if(what %in% 'data')
+              tmpout@data
+            else 
+              tmpout
+  }
+)
+
+
+#' "occDf" class
 #' 
-#' @name occdfmany-class
-#' @aliases occdfmany
-#' @family occdfmany
+#' @name occDf-class
+#' @aliases occDf
+#' @family occDf
 #' 
-#' @exportClass occdfmany
-setClass("occdfmany", slots=list(meta="list", data="data.frame"))
+#' @exportClass occDf
+setClass("occDf", slots=list(meta="list", data="data.frame"))
+
+#' "occDfMany" class
+#' 
+#' @name occDfMany-class
+#' @aliases occDfMany
+#' @family occDfMany
+#' 
+#' @exportClass occDfMany
+setClass("occDfMany", slots=list(meta="list", data="data.frame"))
 
 #' Coerce to sp object
 #' 
 #' @import sp
-#' @name occdat-class
-#' @family occdat-class
+#' @name occDat-class
+#' @family occDat-class
 #' @examples \dontrun{
 #' dat <- occ(query='Accipiter striatus', from='gbif')
 #' spdat <- as(dat, "SpatialPointsDataFrame")
@@ -43,7 +115,7 @@ setClass("occdfmany", slots=list(meta="list", data="data.frame"))
 #' palette(brewer.pal(6, "YlOrRd"))
 #' spplot(obj=spdat, zcol="name", key.space="right", )
 #' }
-setAs("occdat", "SpatialPointsDataFrame", function(from){
+setAs("occDat", "SpatialPointsDataFrame", function(from){
   if(length(from@data)==1){ 
     dat <- from@data[[1]]
     dat <- na.omit(dat)
@@ -61,7 +133,7 @@ setAs("occdat", "SpatialPointsDataFrame", function(from){
 #' @import sp
 #' @name occdf-class
 #' @family occdf
-setAs("occdf", "SpatialPointsDataFrame", function(from){
+setAs("occDf", "SpatialPointsDataFrame", function(from){
   dat <- na.omit(from@data)
   coordinates(dat) <- c("latitude","longitude")
   dat
@@ -75,7 +147,7 @@ setAs("occdf", "SpatialPointsDataFrame", function(from){
 #' @examples \dontrun{
 #' spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta')
 #' dat <- lapply(spp, function(x) occ(query=x, from='gbif', gbifopts=list(georeferenced=TRUE)))
-#' dfmany <- occmany_todf(dat)
+#' dfmany <- occmanytodf(dat)
 #' spdat <- as(dfmany, "SpatialPointsDataFrame")
 #' spdat@data$var <- rnorm(nrow(spdat@data)) # add a randomly generated data variable
 #' bbox(spdat) # get bounding box data
@@ -83,7 +155,7 @@ setAs("occdf", "SpatialPointsDataFrame", function(from){
 #' bubble(obj=spdat, zcol="var", key.space="bottom") # plot points w/ points of various sizes
 #' spplot(obj=spdat, zcol="var", key.space="bottom")
 #' }
-setAs("occdfmany", "SpatialPointsDataFrame", function(from){
+setAs("occDfMany", "SpatialPointsDataFrame", function(from){
   dat <- na.omit(from@data)
   coordinates(dat) <- c("latitude","longitude")
   dat

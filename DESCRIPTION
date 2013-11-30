@@ -52,3 +52,5 @@ Collate:
     'mapshiny.r'
     'mapcartodb.r'
     'classes.r'
+    'occlist.r'
+    'oldfxns.r'

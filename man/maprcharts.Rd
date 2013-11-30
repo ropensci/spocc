@@ -38,7 +38,15 @@
 \dontrun{
 library(rCharts)
 spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta')
-dat <- lapply(spp, function(x) occ(query=x, from='gbif'))
-dat <- occmany_todf(dat)
+dat <- occlist(query=spp, from='gbif', gbifopts=list(georeferenced=TRUE))
+data <- occtodfspp(dat, 'data')
+maprcharts(data=data)
+
+# An example with more species, a different base map, and different color palette
+spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta','Puma concolor','Ursus americanus','Gymnogyps californianus')
+dat <- occlist(query=spp, from='gbif', gbifopts=list(georeferenced=TRUE))
+data <- occtodfspp(dat, 'data')
+maprcharts(data, map_provider="Acetate.terrain", palette_color="OrangeRed")
+}
 }
 

@@ -31,7 +31,7 @@
 #' spocc_gist("~/my.geojson", description = "Occurrences of three bird species mapped")
 #' }
 #' @export
-spocc_gist <- function(gist, description = "", public = TRUE)
+spocc_gist <- function(gist, description = "", public = TRUE, browse = TRUE)
 {
   dat <- spocc_create_gist(gist, description = description, public = public)
   credentials = spocc_get_credentials()
@@ -57,7 +57,9 @@ spocc_gist <- function(gist, description = "", public = TRUE)
   message('Embed gist with ', 
           paste('<script src="https://gist.github.com/', getOption('github.username'), 
                 "/", basename(html_url), '.js"></script>', sep=""))
-  invisible(basename(html_url))
+  return(paste("https://gist.github.com/", 
+               getOption('github.username'), 
+               "/", basename(html_url), sep=""))
 }
 
 #' Function that takes a list of files and creates payload for API

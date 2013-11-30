@@ -18,14 +18,16 @@ bubble(obj=spdat, zcol="name", key.space="bottom")
 spplot(spdat, names.attr=spdat
 }
 \seealso{
-  Other res: \code{\link{occDf-class}},
-  \code{\link{occResult-class}}, \code{\link{occdf-class}},
-  \code{\link{occdfmany-class}},
-  \code{\link{occdfmany-class}}
+  Other res: \code{\link{occDatSpp-class}},
+  \code{\link{occDf-class}}, \code{\link{occDfMany-class}},
+  \code{\link{occResult-class}},
+  \code{\link{occResultList-class}},
+  \code{\link{occdf-class}}, \code{\link{occdfmany-class}}
 
-  Other res: \code{\link{occDf-class}},
-  \code{\link{occResult-class}}, \code{\link{occdf-class}},
-  \code{\link{occdfmany-class}},
-  \code{\link{occdfmany-class}}
+  Other res: \code{\link{occDatSpp-class}},
+  \code{\link{occDf-class}}, \code{\link{occDfMany-class}},
+  \code{\link{occResult-class}},
+  \code{\link{occResultList-class}},
+  \code{\link{occdf-class}}, \code{\link{occdfmany-class}}
 }
 

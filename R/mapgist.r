@@ -27,8 +27,8 @@
 #' @export
 #' @examples \dontrun{
 #' spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta')
-#' dat <- lapply(spp, function(x) occ(query=x, from='gbif', gbifopts=list(georeferenced=TRUE)))
-#' dat <- occmany_todf(dat)@data
+#' dat <- occlist(query=spp, from='gbif', gbifopts=list(georeferenced=TRUE))
+#' dat <- occtodfspp(dat, 'data')
 #' 
 #' # Define colors
 #' mapgist(data=dat, color=c("#976AAE","#6B944D","#BD5945"))
@@ -39,7 +39,7 @@
 #' # Define symbols
 #' mapgist(data=dat, symbol=c("park","zoo","garden"))
 #' }
-mapgist <- function(data, description="", file="gistmap", dir=NULL, ...)
+mapgist <- function(data, description="", file="gistmap", dir=NULL, browse=TRUE, ...)
 {
   if(is.null(dir))
     dir <- paste0(getwd(),"/")
@@ -47,5 +47,7 @@ mapgist <- function(data, description="", file="gistmap", dir=NULL, ...)
   datgeojson <- spocc_stylegeojson(input=dat, var="name", ...)
   write.csv(datgeojson, paste(dir, file, ".csv", sep=""))
   spocc_togeojson(input=paste(dir, file, ".csv", sep=""), method="web", destpath=dir, outfilename=file)
-  spocc_gist(paste(dir, file, ".geojson", sep=""), description = description)
+  tt <- spocc_gist(paste(dir, file, ".geojson", sep=""), description = description)
+  if(browse)
+    browseURL(tt)
 }

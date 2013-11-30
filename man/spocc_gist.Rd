@@ -2,7 +2,8 @@
 \alias{spocc_gist}
 \title{Post a file as a Github gist}
 \usage{
-  spocc_gist(gist, description = "", public = TRUE)
+  spocc_gist(gist, description = "", public = TRUE,
+    browse = TRUE)
 }
 \arguments{
   \item{gist}{An object}

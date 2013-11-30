@@ -30,6 +30,16 @@ library(CartoDB)
 ## Get data for Puma concolor, the *hello, world* for biodiversity data
 tmp <- occ(query='Puma concolor', from='gbif', gbifopts=list(limit=500,
    georeferenced=TRUE, country="US"))
-data <- occ_todf(tmp)
+data <- occtodf(tmp, 'data')
+
+## Push data up to CartoDB
+### I frist crated a table in my CartoDB account named `pumamap`. Then, I need to
+### initialize the connection with CartoDB with my account name and API key. Note that
+### I am pulling up my key from my .Rprofile file on my machine for ease and so it's
+### not revealed to you :)
+
+### Now we need to push data to our `pumamap` table using the function \\code{mapcartodb}
+mapcartodb(data, "pumamap", c("name","longitude","latitude"), "recology")
+}
 }
 

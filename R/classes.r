@@ -5,9 +5,18 @@
 #' @family occResult
 #' 
 #' @exportClass occResult
-# setClass("occDat", slots=list(meta="list", data="list"))
 setClass("occResult", 
          slots=list(meta="list", data="data.frame"))
+
+#' "occResultList" class
+#' 
+#' @name occResultList-class
+#' @aliases occResultList
+#' @family occResultList
+#' 
+#' @exportClass occResultList
+setClass("occResultList", 
+         slots=list(meta="list", data="list"))
 
 #' "occDat" class
 #' 
@@ -20,9 +29,22 @@ setClass("occDat",
          slots=list(gbif = "occResult", bison = "occResult", inat = "occResult", npn = "occResult", ebird = "occResult"))
 
 
+#' "occDatSpp" class
+#' 
+#' @name occDatSpp-class
+#' @aliases occDatSpp
+#' @family occDatSpp
+#' 
+#' @exportClass occDatSpp
+setClass("occDatSpp", 
+         slots=list(gbif = "occResultList", bison = "occResultList", inat = "occResultList", npn = "occResultList", ebird = "occResultList"))
+
+
+
+
+
 setGeneric("occtodf", function(x, what='all')
   standardGeneric("occtodf"))
-
 #' Generic method for coercing class occDat to occDf
 #' @exportMethod occtodf
 setMethod("occtodf",
@@ -51,10 +73,39 @@ setMethod("occtodf",
   }
 )
 
+setGeneric("occtodfspp", function(x, what='all')
+  standardGeneric("occtodfspp"))
+#' Generic method for coercing class occDat to occDf
+#' @exportMethod occtodfspp
+setMethod("occtodfspp",
+          signature = c("occDatSpp"),
+          definition = function(x, what){
+            what <- match.arg(what, choices=c('all','data'))
+            aa <- rbindlist(x@gbif@data)
+            bb <- rbindlist(x@bison@data)
+            cc <- rbindlist(x@inat@data)
+            dd <- rbindlist(x@npn@data)
+            ee <- rbindlist(x@ebird@data)
+            tmp <- data.frame(rbindlist(list(
+              data.frame(name=aa$name,longitude=aa$longitude,latitude=aa$latitude,prov=aa$prov),
+              data.frame(name=bb$name,longitude=bb$longitude,latitude=bb$latitude,prov=bb$prov),
+              data.frame(name=cc$Scientific.name,latitude=cc$Latitude,longitude=cc$Longitude,prov=cc$prov),
+              data.frame(name=dd$sciname,latitude=dd$latitude,longitude=dd$longitude,prov=dd$prov),
+              data.frame(name=ee$sciName,latitude=ee$lat,longitude=ee$lng,prov=ee$prov)
+            )))
+            tmpout <- new("occDf",
+                          meta=list(x@gbif@meta,x@bison@meta,x@inat@meta,x@npn@meta,x@ebird@meta),
+                          data=tmp)
+            if(what %in% 'data')
+              tmpout@data
+            else 
+              tmpout
+          }
+)
+
 
 setGeneric("occmanytodf", function(x, what='all')
   standardGeneric("occmanytodf"))
-
 #' Generic method for coercing a list of elements of class occDat to occDf
 #' @exportMethod occmanytodf
 setMethod("occmanytodf",

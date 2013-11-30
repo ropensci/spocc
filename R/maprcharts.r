@@ -17,15 +17,15 @@
 #' @examples \dontrun{
 #' library(rCharts)
 #' spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta')
-#' dat <- lapply(spp, function(x) occ(query=x, from='gbif'))
-#' dat <- occmany_todf(dat)@data
-#' maprcharts(data=dat)
+#' dat <- occlist(query=spp, from='gbif', gbifopts=list(georeferenced=TRUE))
+#' data <- occtodfspp(dat, 'data')
+#' maprcharts(data=data)
 #' 
 #' # An example with more species, a different base map, and different color palette
 #' spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta','Puma concolor','Ursus americanus','Gymnogyps californianus')
-#' dat <- lapply(spp, function(x) occ(query=x, from='gbif', gbifopts=list(georeferenced=TRUE)))
-#' dat <- occmany_todf(dat)@data
-#' maprcharts(dat, map_provider="Acetate.terrain", palette_color="OrangeRed")
+#' dat <- occlist(query=spp, from='gbif', gbifopts=list(georeferenced=TRUE))
+#' data <- occtodfspp(dat, 'data')
+#' maprcharts(data, map_provider="Acetate.terrain", palette_color="OrangeRed")
 #' }
 maprcharts <- function(data, popup = TRUE, map_provider = 'MapQuestOpen.OSM', 
   map_zoom = 2, height = 600, width = 870, palette_color = "Blues", 

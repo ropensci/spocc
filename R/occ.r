@@ -1,24 +1,15 @@
 #' Search for species occurrence data across many data sources.
 #' 
+#' Search on a single species name.
+#' 
 #' @import rinat rnpn rgbif rebird data.table
 #' @importFrom rbison bison bison_data
 #' @importFrom plyr compact
 #' @importFrom lubridate now
-#' @param query Query term. Either a scientific name or a common name. Specify
-#'    whether a scientific or common name in the type parameter.
-#' @param rank Taxonomic rank.
-#' @param from Data source to get data from, any combination of gbif, bison, or
-#'    inat
-#' @param type Type of name, sci (scientific) or com (common name, vernacular)
-#' @param gbifopts List of options to pass on to rgbif
-#' @param bisonopts List of options to pass on to rbison
-#' @param inatopts List of options to pass on to rinat
-#' @param npnopts List of options to pass on to rnpn
-#' @details The \code{occ} function is an opinionated wrapper around the rgbif, 
-#' rbison, and rinat packages to allow data access from a single 
-#' access point. We take care of making sure you get useful objects out at the 
-#' cost of flexibility/options - if you need options you can use the functions
-#' inside each of those packages.
+#' @param query A single name. Either a scientific name 
+#' or a common name. Specify whether a scientific or common name in the type parameter.
+#' Only scientific names supported right now.
+#' @template occtemp
 #' @examples \dontrun{
 #' # Single data sources
 #' occ(query='Accipiter striatus', from='gbif')
@@ -50,6 +41,10 @@
 #' aoibbox = '-111.31,38.81,-110.57,39.21'
 #' get_obs_inat(query="Mule Deer", bounds=bounds)
 #' occ(query='Danaus plexippus', )
+#' 
+#' # Pass in many species names
+#' spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Spinus tristis')
+#' occ(query=spnames, from='gbif', gbifopts=list(georeferenced=TRUE))
 #' }
 #' @export
 occ <- function(query=NULL, rank="species", from=c("gbif","bison","inat","npn","ebird"), 
@@ -99,6 +94,7 @@ occ <- function(query=NULL, rank="species", from=c("gbif","bison","inat","npn","
     }
     out_ebird$prov <- rep("ebird", nrow(out_ebird))
   }
+  
   a <- new("occResult", meta=list(source="gbif", time=time, query=query, type=type, opts=gbifopts), data=out_gbif)
   b <- new("occResult", meta=list(source="bison", time=time, query=query, type=type, opts=bisonopts), data=out_bison)
   c <- new("occResult", meta=list(source="inat", time=time, query=query, type=type, opts=inatopts), data=out_inat)

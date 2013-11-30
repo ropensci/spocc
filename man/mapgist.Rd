@@ -3,7 +3,7 @@
 \title{Make an interactive map to view in the browser as a Github gist}
 \usage{
   mapgist(data, description = "", file = "gistmap",
-    dir = NULL, ...)
+    dir = NULL, browse = TRUE, ...)
 }
 \arguments{
   \item{data}{A data.frame, with any number of columns, but
@@ -46,7 +46,17 @@
 \examples{
 \dontrun{
 spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta')
-dat <- lapply(spp, function(x) occ(query=x, from='gbif', gbifopts=list(georeferenced=TRUE)))
-dat <- occmany_todf(dat)
+dat <- occlist(query=spp, from='gbif', gbifopts=list(georeferenced=TRUE))
+dat <- occtodfspp(dat, 'data')
+
+# Define colors
+mapgist(data=dat, color=c("#976AAE","#6B944D","#BD5945"))
+
+# Define colors and marker size
+mapgist(data=dat, color=c("#976AAE","#6B944D","#BD5945"), size=c("small","medium","large"))
+
+# Define symbols
+mapgist(data=dat, symbol=c("park","zoo","garden"))
+}
 }
 

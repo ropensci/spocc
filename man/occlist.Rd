@@ -1,18 +1,18 @@
-\name{occ}
-\alias{occ}
+\name{occlist}
+\alias{occlist}
 \title{Search for species occurrence data across many data sources.}
 \usage{
-  occ(query = NULL, rank = "species",
+  occlist(query = NULL, rank = "species",
     from = c("gbif", "bison", "inat", "npn", "ebird"),
     type = "sci", gbifopts = list(), bisonopts = list(),
     inatopts = list(), npnopts = list(),
     ebirdopts = list())
 }
 \arguments{
-  \item{query}{A single name. Either a scientific name or a
-  common name. Specify whether a scientific or common name
-  in the type parameter. Only scientific names supported
-  right now.}
+  \item{query}{Either a single name, or a vetor of names.
+  Either a scientific name or a common name. Specify
+  whether a scientific or common name in the type
+  parameter. Only scientific names supported right now.}
 
   \item{rank}{Taxonomic rank.}
 
@@ -33,7 +33,7 @@
   \item{ebirdopts}{List of options to pass on to ebird}
 }
 \description{
-  Search on a single species name.
+  Search on a vector or list of species names.
 }
 \details{
   The \code{occ} and \code{occlist} functions are
@@ -46,19 +46,13 @@
 }
 \examples{
 \dontrun{
-# Single data sources
-occ(query='Accipiter striatus', from='gbif')
-occ(query='Danaus plexippus', from='inat')
-occ(query='Bison bison', from='bison')
-occ(query='Pinus contorta', from='npn', npnopts=list(startdate='2008-01-01', enddate='2011-12-31'))
-occ(query='Setophaga caerulescens', from='ebird', ebirdopts=list(region='US'))
-occ(query='Spinus tristis', from='ebird', ebirdopts=list(method='ebirdgeo', lat=42, lng=-76, dist=50))
+# Data from a single source
+spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Spinus tristis')
+occlist(query=spnames, from='gbif', gbifopts=list(georeferenced=TRUE))
 
-# Many data sources
-npnopts <- list(startdate='2008-01-01', enddate='2011-12-31')
-out <- occ(query='Pinus contorta', npnopts=npnopts)
-
-## Select individual elements
-out
+# Data from many sources
+spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Spinus tristis')
+occlist(query=spnames, from=c('gbif','bison'), gbifopts=list(georeferenced=TRUE))
+}
 }
 

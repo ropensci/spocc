@@ -39,7 +39,7 @@
 #' ## Using a bounding box
 #' bounds <- c(38.44047,-125,40.86652,-121.837)
 #' aoibbox = '-111.31,38.81,-110.57,39.21'
-#' get_obs_inat(query="Mule Deer", bounds=bounds)
+#' get_inat_obs(query="Mule Deer", bounds=bounds)
 #' occ(query='Danaus plexippus', )
 #' 
 #' # Pass in many species names
@@ -70,7 +70,7 @@ occ <- function(query=NULL, rank="species", from=c("gbif","bison","inat","npn","
   }
   if(any(grepl("inat",sources))){
     inatopts$query <- query
-    out_inat <- do.call(get_obs_inat, inatopts)
+    out_inat <- do.call(get_inat_obs, inatopts)
     out_inat$prov <- rep("inat", nrow(out_inat))
   }
   if(any(grepl("npn",sources))){

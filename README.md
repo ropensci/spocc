@@ -294,4 +294,5 @@ mapggplot2()
 [vertnet]: https://github.com/ropensci/rvertnet
 [bison]: https://github.com/ropensci/rbison
 [inat]: https://github.com/ropensci/rinat
-[taxize]: https://github.com/ropensci/taxize_
+[taxize]: https://github.com/ropensci/taxize
+[ecoengine]: https://github.com/ropensci/ecoengine

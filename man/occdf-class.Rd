@@ -4,6 +4,13 @@
 \description{
   Coerce to sp object
 }
+\examples{
+\dontrun{
+dat <- occ(query='Accipiter striatus', from='gbif')
+dat <- occtodf(dat)
+as(dat, "SpatialPointsDataFrame")
+}
+}
 \seealso{
   Other res: \code{\link{occDat-class}},
   \code{\link{occDat-class}},

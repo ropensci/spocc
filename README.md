@@ -6,7 +6,7 @@ spocc
 **`spocc` = SPecies OCCurrence data**
 
 
-We (rOpenSci) have been writing R packages to interact with many sources of species occurrence data, including [GBIF][gbif], [Vertnet][vertnet], [BISON][bison], and [iNaturalist][inat] - and we'll continue to write wrappers for other sources. 
+We (rOpenSci) have been writing R packages to interact with many sources of species occurrence data, including [GBIF][gbif], [Vertnet][vertnet], [BISON][bison], [iNaturalist][inat] and the [Berkeley ecoengine][ecoengine]. - and we'll continue to write wrappers for other sources. 
 
 `spocc` is an R package to query and collect species occurrence data from many sources. The goal is to wrap functions in other R packages to make a seamless experience across data sources for the user. 
 

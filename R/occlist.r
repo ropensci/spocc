@@ -21,8 +21,8 @@
 #' }
 #' @export
 occlist <- function(query=NULL, rank="species", from=c("gbif","bison","inat","npn","ebird"), 
-                type="sci", gbifopts=list(), bisonopts=list(),
-                inatopts=list(), npnopts=list(), ebirdopts=list())
+  type="sci", gbifopts=list(), bisonopts=list(), inatopts=list(), npnopts=list(), 
+  ebirdopts=list())
 {
   out_gbif=out_bison=out_inat=out_npn=out_ebird=data.frame(NULL)
   sources <- match.arg(from, choices=c("gbif","bison","inat","npn","ebird"), several.ok=TRUE)

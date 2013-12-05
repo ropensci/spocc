@@ -167,16 +167,10 @@ setClass("occDfMany", slots=list(meta="list", data="data.frame"))
 #' spplot(obj=spdat, zcol="name", key.space="right", )
 #' }
 setAs("occDat", "SpatialPointsDataFrame", function(from){
-  if(length(from@data)==1){ 
-    dat <- from@data[[1]]
-    dat <- na.omit(dat)
-  } else
-  { 
-    dat <- occ_todf(from)
-    dat <- na.omit(dat@data)
-  }
-  coordinates(dat) <- c("latitude","longitude")
-  dat
+  tmp <- occtodf(from)@data
+  tmp <- na.omit(tmp)
+  coordinates(tmp) <- c("latitude","longitude")
+  tmp
 })
 
 #' Coerce to sp object
@@ -184,6 +178,11 @@ setAs("occDat", "SpatialPointsDataFrame", function(from){
 #' @import sp
 #' @name occdf-class
 #' @family occdf
+#' @examples \dontrun{
+#' dat <- occ(query='Accipiter striatus', from='gbif')
+#' dat <- occtodf(dat)
+#' as(dat, "SpatialPointsDataFrame")
+#' }
 setAs("occDf", "SpatialPointsDataFrame", function(from){
   dat <- na.omit(from@data)
   coordinates(dat) <- c("latitude","longitude")

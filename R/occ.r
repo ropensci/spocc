@@ -53,18 +53,30 @@ occ <- function(query=NULL, rank="species", from=c("gbif","bison","inat","npn","
   out_gbif=out_bison=out_inat=out_npn=out_ebird=data.frame(NULL)
   sources <- match.arg(from, choices=c("gbif","bison","inat","npn","ebird"), several.ok=TRUE)
   
-  gbif_res <- foo_gbif(sources, query, type, gbifopts)
-  bison_res <- foo_bison(sources, query, type, bisonopts)
-  inat_res <- foo_inat(sources, query, type, inatopts)
-  npn_res <- foo_npn(sources, query, type, npnopts)
-  ebird_res <- foo_ebird(sources, query, type, ebirdopts)
+  loopfun <- function(x){
+    gbif_res <- foo_gbif(sources, x, type, gbifopts)
+    bison_res <- foo_bison(sources, x, type, bisonopts)
+    inat_res <- foo_inat(sources, x, type, inatopts)
+    npn_res <- foo_npn(sources, x, type, npnopts)
+    ebird_res <- foo_ebird(sources, x, type, ebirdopts)
+    
+    list(gbif=gbif_res,bison=bison_res,inat=inat_res,npn=npn_res,ebird=ebird_res)
+  }
   
-  a <- new("occResult", meta=gbif_res$meta, data=gbif_res$data)
-  b <- new("occResult", meta=bison_res$meta, data=bison_res$data)
-  c <- new("occResult", meta=inat_res$meta, data=inat_res$data)
-  d <- new("occResult", meta=npn_res$meta, data=npn_res$data)
-  e <- new("occResult", meta=ebird_res$meta, data=ebird_res$data)
-  new("occDat", gbif = a, bison = b, inat = c, npn = d, ebird = e)
+  tmp <- lapply(query, loopfun)
+  getsplist <- function(srce){
+    tt <- lapply(tmp, "[[", srce)
+    names(tt) <- query
+    tt
+  }
+  gbif_sp <- getsplist("gbif")
+  bison_sp <- getsplist("bison")
+  inat_sp <- getsplist("inat")
+  npn_sp <- getsplist("npn")
+  ebird_sp <- getsplist("ebird")
+  p <- list(gbif=gbif_sp, bison=bison_sp, inat=inat_sp, npn=npn_sp, ebird=ebird_sp)
+  class(p) <- "occdat"
+  return ( p )
 }
 
 foo_gbif <- function(sources, query, type, opts)

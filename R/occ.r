@@ -30,7 +30,6 @@
 #' ## Coerce to combined data.frame, selects minimal set of columns (name, lat, long)
 #' occtodf(out, 'data')
 #' 
-#' 
 #' # Many data sources, another example
 #' ebirdopts = list(region='US'); gbifopts = list(country='US')
 #' out <- occ(query='Setophaga caerulescens', from=c('gbif','bison','inat','ebird'), gbifopts=gbifopts, ebirdopts=ebirdopts)
@@ -54,51 +53,110 @@ occ <- function(query=NULL, rank="species", from=c("gbif","bison","inat","npn","
   out_gbif=out_bison=out_inat=out_npn=out_ebird=data.frame(NULL)
   sources <- match.arg(from, choices=c("gbif","bison","inat","npn","ebird"), several.ok=TRUE)
   
-  time <- now()
-  if(any(grepl("gbif",sources))){
-    gbifopts$taxonKey <- name_backbone(name=query)$usageKey
-    gbifopts$return <- "data"
-    out_gbif <- do.call(occ_search, gbifopts)
-    out_gbif$prov <- rep("gbif", nrow(out_gbif))
-    out_gbif$name <- as.character(out_gbif$name)
-  }
-  if(any(grepl("bison",sources))){
-    bisonopts$species <- query
-    out_bison <- do.call(bison, bisonopts)
-    out_bison <- bison_data(out_bison, datatype="data_df")
-    out_bison$prov <- rep("bison", nrow(out_bison))
-  }
-  if(any(grepl("inat",sources))){
-    inatopts$query <- query
-    out_inat <- do.call(get_inat_obs, inatopts)
-    out_inat$prov <- rep("inat", nrow(out_inat))
-  }
-  if(any(grepl("npn",sources))){
-    ids <- lookup_names(name=query, type="genus_epithet")[,"species_id"]
-    npnopts$speciesid <- as.numeric(as.character(ids))
-    df <- do.call(getallobssp, npnopts)
-    df <- npn_todf(df)
-    out_npn <- df@data
-    out_npn$prov <- rep("npn", nrow(out_npn))
-  }
-  if(any(grepl("ebird",sources))){
-    if(is.null(ebirdopts$method))
-      ebirdopts$method <- 'ebirdregion'
-    if(!ebirdopts$method %in% c('ebirdregion', 'ebirdgeo'))
-      stop("ebird method must be one of ebirdregion or ebirdgeo")
-    ebirdopts$species <- query
-    if(ebirdopts$method == 'ebirdregion'){
-      out_ebird <- do.call(ebirdregion, ebirdopts[!names(ebirdopts) %in% 'method'])
-    } else {
-      out_ebird <- do.call(ebirdgeo, ebirdopts[!names(ebirdopts) %in% 'method'])
-    }
-    out_ebird$prov <- rep("ebird", nrow(out_ebird))
-  }
+  gbif_res <- foo_gbif(sources, query, type, gbifopts)
+  bison_res <- foo_bison(sources, query, type, bisonopts)
+  inat_res <- foo_inat(sources, query, type, inatopts)
+  npn_res <- foo_npn(sources, query, type, npnopts)
+  ebird_res <- foo_ebird(sources, query, type, ebirdopts)
   
-  a <- new("occResult", meta=list(source="gbif", time=time, query=query, type=type, opts=gbifopts), data=out_gbif)
-  b <- new("occResult", meta=list(source="bison", time=time, query=query, type=type, opts=bisonopts), data=out_bison)
-  c <- new("occResult", meta=list(source="inat", time=time, query=query, type=type, opts=inatopts), data=out_inat)
-  d <- new("occResult", meta=list(source="npn", time=time, query=query, type=type, opts=npnopts), data=out_npn)
-  e <- new("occResult", meta=list(source="ebird", time=time, query=query, type=type, opts=ebirdopts), data=out_ebird)
+  a <- new("occResult", meta=gbif_res$meta, data=gbif_res$data)
+  b <- new("occResult", meta=bison_res$meta, data=bison_res$data)
+  c <- new("occResult", meta=inat_res$meta, data=inat_res$data)
+  d <- new("occResult", meta=npn_res$meta, data=npn_res$data)
+  e <- new("occResult", meta=ebird_res$meta, data=ebird_res$data)
   new("occDat", gbif = a, bison = b, inat = c, npn = d, ebird = e)
+}
+
+foo_gbif <- function(sources, query, type, opts)
+{  
+  if(any(grepl("gbif", sources))){
+    time <- now()
+    opts$taxonKey <- name_backbone(name=query)$usageKey
+    opts$return <- "data"
+    out <- do.call(occ_search, opts)
+    out$prov <- rep("gbif", nrow(out))
+    out$name <- as.character(out$name)
+    meta <- list(source="gbif", time=time, query=query, type=type, opts=opts)
+  } else
+  {
+    meta <- list(source="gbif", time=NULL, query=NULL, type=NULL, opts=list())
+    out <- data.frame(NULL)
+  }
+  list(meta=meta, data=out)
+}
+
+foo_bison <- function(sources, query, type, opts)
+{  
+  if(any(grepl("bison", sources))){
+    time <- now()
+    opts$species <- query
+    out <- do.call(bison, opts)
+    out <- bison_data(out, datatype="data_df")
+    out$prov <- rep("bison", nrow(out))
+    meta <- list(source="bison", time=time, query=query, type=type, opts=opts)
+  } else
+  {
+    meta <- list(source="bison", time=NULL, query=NULL, type=NULL, opts=list())
+    out <- data.frame(NULL)
+  }
+  list(meta=meta, data=out)
+}
+
+foo_inat <- function(sources, query, type, opts)
+{  
+  if(any(grepl("inat", sources))){
+    time <- now()
+    opts$query <- query
+    out <- do.call(get_inat_obs, opts)
+    out$prov <- rep("inat", nrow(out))
+    meta <- list(source="inat", time=time, query=query, type=type, opts=opts)
+  } else
+  {
+    meta <- list(source="inat", time=NULL, query=NULL, type=NULL, opts=list())
+    out <- data.frame(NULL)
+  }
+  list(meta=meta, data=out)
+}
+
+foo_npn <- function(sources, query, type, opts)
+{  
+  if(any(grepl("npn", sources))){
+    time <- now()
+    ids <- lookup_names(name=query, type="genus_epithet")[,"species_id"]
+    opts$speciesid <- as.numeric(as.character(ids))
+    df <- do.call(getallobssp, opts)
+    df <- npn_todf(df)
+    out <- df@data
+    out$prov <- rep("npn", nrow(out))
+    meta <- list(source="npn", time=time, query=query, type=type, opts=opts)
+  } else
+  {
+    meta <- list(source="npn", time=NULL, query=NULL, type=NULL, opts=list())
+    out <- data.frame(NULL)
+  }
+  list(meta=meta, data=out)
+}
+
+foo_ebird <- function(sources, query, type, opts)
+{  
+  if(any(grepl("ebird", sources))){
+    time <- now()
+    if(is.null(opts$method))
+      opts$method <- 'ebirdregion'
+    if(!opts$method %in% c('ebirdregion', 'ebirdgeo'))
+      stop("ebird method must be one of ebirdregion or ebirdgeo")
+    opts$species <- query
+    if(opts$method == 'ebirdregion'){
+      out <- do.call(ebirdregion, opts[!names(opts) %in% 'method'])
+    } else {
+      out <- do.call(ebirdgeo, opts[!names(opts) %in% 'method'])
+    }
+    out$prov <- rep("ebird", nrow(out))
+    meta <- list(source="ebird", time=time, query=query, type=type, opts=opts)
+  } else
+  {
+    meta <- list(source="ebird", time=NULL, query=NULL, type=NULL, opts=list())
+    out <- data.frame(NULL)
+  }
+  list(meta=meta, data=out)
 }

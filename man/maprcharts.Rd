@@ -2,10 +2,9 @@
 \alias{maprcharts}
 \title{Make an interactive map to view in the browser}
 \usage{
-  maprcharts(data, popup = TRUE,
-    map_provider = "MapQuestOpen.OSM", map_zoom = 2,
-    height = 600, width = 870, palette_color = "Blues",
-    centerview = c(30, -73.9), fullscreen = TRUE)
+maprcharts(data, popup = TRUE, map_provider = "MapQuestOpen.OSM",
+  map_zoom = 2, height = 600, width = 870, palette_color = "Blues",
+  centerview = c(30, -73.9), fullscreen = TRUE)
 }
 \arguments{
   \item{data}{A data.frame, with any number of columns, but
@@ -32,7 +31,7 @@
   not, not avail.}
 }
 \description{
-  Make an interactive map to view in the browser
+Make an interactive map to view in the browser
 }
 \examples{
 \dontrun{

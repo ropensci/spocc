@@ -2,11 +2,9 @@
 \alias{occ}
 \title{Search for species occurrence data across many data sources.}
 \usage{
-  occ(query = NULL, rank = "species",
-    from = c("gbif", "bison", "inat", "npn", "ebird"),
-    type = "sci", gbifopts = list(), bisonopts = list(),
-    inatopts = list(), npnopts = list(),
-    ebirdopts = list())
+occ(query = NULL, rank = "species", from = c("gbif", "bison", "inat",
+  "npn", "ebird"), type = "sci", gbifopts = list(), bisonopts = list(),
+  inatopts = list(), npnopts = list(), ebirdopts = list())
 }
 \arguments{
   \item{query}{A single name. Either a scientific name or a
@@ -33,16 +31,15 @@
   \item{ebirdopts}{List of options to pass on to ebird}
 }
 \description{
-  Search on a single species name.
+Search on a single species name.
 }
 \details{
-  The \code{occ} and \code{occlist} functions are
-  opinionated wrappers around the rgbif, rbison, rinat, and
-  rebird packages to allow data access from a single access
-  point. We take care of making sure you get useful objects
-  out at the cost of flexibility/options - if you need
-  options you can use the functions inside each of those
-  packages.
+The \code{occ} and \code{occlist} functions are opinionated
+wrappers around the rgbif, rbison, rinat, and rebird
+packages to allow data access from a single access point.
+We take care of making sure you get useful objects out at
+the cost of flexibility/options - if you need options you
+can use the functions inside each of those packages.
 }
 \examples{
 \dontrun{

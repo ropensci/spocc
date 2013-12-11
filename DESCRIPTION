@@ -42,12 +42,3 @@ Suggests:
     testthat,
     rCharts,
     CartoDB
-Collate:
-    'occ.r'
-    'zzz.r'
-    'maprcharts.r'
-    'mapgist.r'
-    'util_github.r'
-    'util_rcharts.r'
-    'mapshiny.r'
-    'mapcartodb.r'

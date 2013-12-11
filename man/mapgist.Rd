@@ -2,8 +2,8 @@
 \alias{mapgist}
 \title{Make an interactive map to view in the browser as a Github gist}
 \usage{
-  mapgist(data, description = "", file = "gistmap",
-    dir = NULL, browse = TRUE, ...)
+mapgist(data, description = "", file = "gistmap", dir = NULL,
+  browse = TRUE, ...)
 }
 \arguments{
   \item{data}{A data.frame, with any number of columns, but
@@ -24,24 +24,24 @@
   \code{spocc_stylegeojson}}
 }
 \value{
-  Creates a gist on your Github account, and prints out
-  where the geojson file was written on your machinee, the
-  url for the gist, and an embed script in the console.
+Creates a gist on your Github account, and prints out where
+the geojson file was written on your machinee, the url for
+the gist, and an embed script in the console.
 }
 \description{
-  You will be asked ot enter you Github credentials
-  (username, password) during each session, but only once
-  for each session. Alternatively, you could enter your
-  credentials into your .Rprofile file with the entries
+You will be asked ot enter you Github credentials
+(username, password) during each session, but only once for
+each session. Alternatively, you could enter your
+credentials into your .Rprofile file with the entries
 
-  \itemize{ \item options(github.username =
-  "your_github_username") \item options(github.password =
-  "your_github_password") }
+\itemize{ \item options(github.username =
+"your_github_username") \item options(github.password =
+"your_github_password") }
 
-  then \code{mapgist} will simply read those options.
+then \code{mapgist} will simply read those options.
 
-  \code{mapgist} has modified code from the rCharts package
-  by Ramnath Vaidyanathan
+\code{mapgist} has modified code from the rCharts package
+by Ramnath Vaidyanathan
 }
 \examples{
 \dontrun{

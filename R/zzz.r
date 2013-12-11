@@ -160,3 +160,31 @@ spocc_blanktheme <- function(){
         plot.background=element_blank(),
         plot.margin = rep(unit(0,"null"),4))
 }
+
+#' Combine results from occ calls to a single data.frame
+#' @param x Input from occ
+#' @param what One of data (default) or all (with metadata)
+#' @export
+occ2df <- function(x, what='data')
+{
+  what <- match.arg(what, choices=c('all','data'))
+  foolist <- function(x) data.frame(rbindlist(lapply(x, "[[", "data")), stringsAsFactors=FALSE)
+  aa <- foolist(x$gbif)
+  bb <- foolist(x$bison)
+  cc <- foolist(x$inat)
+  dd <- foolist(x$npn)
+  ee <- foolist(x$ebird)
+  tmp <- data.frame(rbindlist(list(
+    data.frame(name=aa$name,longitude=aa$longitude,latitude=aa$latitude,prov=aa$prov),
+    data.frame(name=bb$name,longitude=bb$longitude,latitude=bb$latitude,prov=bb$prov),
+    data.frame(name=cc$Scientific.name,latitude=cc$Latitude,longitude=cc$Longitude,prov=cc$prov),
+    data.frame(name=dd$sciname,latitude=dd$latitude,longitude=dd$longitude,prov=dd$prov),
+    data.frame(name=ee$sciName,latitude=ee$lat,longitude=ee$lng,prov=ee$prov)
+  )))
+  tmpout <- list(meta = list(x$gbif[[1]]$meta,x$bison[[1]]$meta,x$inat[[1]]$meta,x$npn[[1]]$meta,x$ebird[[1]]$meta), 
+                 data = tmp)
+  if(what %in% 'data')
+    tmpout$data
+  else 
+    tmpout
+}

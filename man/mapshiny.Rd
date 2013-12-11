@@ -2,13 +2,13 @@
 \alias{mapshiny}
 \title{Shiny visualization of species occurrences}
 \usage{
-  mapshiny()
+mapshiny()
 }
 \value{
-  Opens a shiny app in your default browser
+Opens a shiny app in your default browser
 }
 \description{
-  Shiny visualization of species occurrences
+Shiny visualization of species occurrences
 }
 \examples{
 \dontrun{

@@ -27,6 +27,7 @@ spocc_capwords <- function(s, strict = FALSE, onlyfirst = FALSE) {
 #' Code based on the `gbifxmlToDataFrame` function from dismo package 
 #' (http://cran.r-project.org/web/packages/dismo/index.html),
 #' by Robert Hijmans, 2012-05-31, License: GPL v3
+#' @import XML
 #' @param doc A parsed XML document.
 #' @param format Format to use.
 #' @export
@@ -162,18 +163,23 @@ spocc_blanktheme <- function(){
 }
 
 #' Combine results from occ calls to a single data.frame
-#' @param x Input from occ
+#' @param obj Input from occ
 #' @param what One of data (default) or all (with metadata)
 #' @export
-occ2df <- function(x, what='data')
+#' @examples \dontrun{
+#' spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Spinus tristis')
+#' out <- occ(query=spnames, from='gbif', gbifopts=list(georeferenced=TRUE))
+#' occ2df(out)
+#' }
+occ2df <- function(obj, what='data')
 {
   what <- match.arg(what, choices=c('all','data'))
-  foolist <- function(x) data.frame(rbindlist(lapply(x, "[[", "data")), stringsAsFactors=FALSE)
-  aa <- foolist(x$gbif)
-  bb <- foolist(x$bison)
-  cc <- foolist(x$inat)
-  dd <- foolist(x$npn)
-  ee <- foolist(x$ebird)
+  foolist <- function(x) data.frame(rbindlist(x$data), stringsAsFactors=FALSE)
+  aa <- foolist(obj$gbif)
+  bb <- foolist(obj$bison)
+  cc <- foolist(obj$inat)
+  dd <- foolist(obj$npn)
+  ee <- foolist(obj$ebird)
   tmp <- data.frame(rbindlist(list(
     data.frame(name=aa$name,longitude=aa$longitude,latitude=aa$latitude,prov=aa$prov),
     data.frame(name=bb$name,longitude=bb$longitude,latitude=bb$latitude,prov=bb$prov),
@@ -181,10 +187,46 @@ occ2df <- function(x, what='data')
     data.frame(name=dd$sciname,latitude=dd$latitude,longitude=dd$longitude,prov=dd$prov),
     data.frame(name=ee$sciName,latitude=ee$lat,longitude=ee$lng,prov=ee$prov)
   )))
-  tmpout <- list(meta = list(x$gbif[[1]]$meta,x$bison[[1]]$meta,x$inat[[1]]$meta,x$npn[[1]]$meta,x$ebird[[1]]$meta), 
+  tmpout <- list(meta = list(obj$gbif$meta, obj$bison$meta, obj$inat$meta, 
+                             obj$npn$meta, obj$ebird$meta), 
                  data = tmp)
   if(what %in% 'data')
     tmpout$data
   else 
     tmpout
+}
+
+#' Occ output or data.frame to sp SpatialPointsDataFrame class
+#' 
+#' @import sp assertthat
+#' @param input Output from \code{\link{occ}} or a data.frame
+#' @details Note that you must have a column named latitude and a column named
+#' longitude - any additional columns are fine, but those two columns must exist. 
+#' If you are using \code{\link{occ}} this will be done for you as you pass in the 
+#' output of occ as an occdat class, but if you pass in a data.frame you should check
+#' this.
+#' @export
+#' @examples \dontrun{
+#' spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Spinus tristis')
+#' out <- occ(query=spnames, from='gbif', gbifopts=list(georeferenced=TRUE))
+#' 
+#' # pass in output of occ directly to occ2sp
+#' occ2sp(out)
+#' 
+#' # or make a data.frame first, then pass in
+#' mydf <- occ2df(out)
+#' occ2sp(mydf)
+#' }
+occ2sp <- function(input)
+{
+  # check class
+  assert_that(is(input, "occdat") | is(input, "data.frame"))  
+  dat <- switch(class(input), 
+         occdat = occ2df(input),
+         data.frame = input)
+  # check column names
+  assert_that(all(c('latitude','longitude') %in% names(dat)))
+  # convert to SpatialPointsDataFrame object
+  coordinates(dat) <- c("latitude","longitude")
+  return( dat )
 }

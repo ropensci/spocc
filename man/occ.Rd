@@ -56,6 +56,27 @@ npnopts <- list(startdate='2008-01-01', enddate='2011-12-31')
 out <- occ(query='Pinus contorta', npnopts=npnopts)
 
 ## Select individual elements
-out
+out$gbif
+out$gbif$data
+
+## Coerce to combined data.frame, selects minimal set of columns (name, lat, long)
+occ2df(out)
+
+# Many data sources, another example
+ebirdopts = list(region='US'); gbifopts = list(country='US')
+out <- occ(query='Setophaga caerulescens', from=c('gbif','bison','inat','ebird'), gbifopts=gbifopts, ebirdopts=ebirdopts)
+occ2df(out)
+
+## Using a bounding box
+bounds <- c(38.44047,-125,40.86652,-121.837)
+aoibbox = '-111.31,38.81,-110.57,39.21'
+get_inat_obs(query="Mule Deer", bounds=bounds)
+occ(query='Danaus plexippus', )
+
+# Pass in many species names
+spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Spinus tristis')
+out <- occ(query=spnames, from='gbif', gbifopts=list(georeferenced=TRUE))
+occ2df(out)
+}
 }
 

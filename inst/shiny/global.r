@@ -5,18 +5,18 @@ rcharts_prep1 <- function(sppchar, occurrs, datasource){
   
   if(datasource=="GBIF"){
     dat <- occ(query=species2, from='gbif', gbifopts=list(georeferenced=TRUE, limit=occurrs))
-    dat <- ldply(dat$gbif, "[[", "data")
+    dat <- occ2df(dat)
 #     dat <- occtodfspp(dat, 'data')
     apply(dat, 1, as.list)
   } else if(datasource=="BISON"){
     dat <- occ(query=species2, from='bison', bisonopts=list(count=occurrs))
-    dat <- ldply(dat$bison, "[[", "data")
+    dat <- occ2df(dat)
 #     dat <- occtodfspp(dat, 'data')
     apply(dat, 1, as.list)
   } else
   {
     dat <- occ(query=species2, from='inat', inatopts=list(maxresults=occurrs))
-    dat <- ldply(dat$inat, "[[", "data")
+    dat <- occ2df(dat)
 #     dat <- occtodfspp(dat, 'data')
     dat <- dat[as.character(dat$name) %in% species2, ]
     apply(dat, 1, as.list)

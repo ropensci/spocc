@@ -24,16 +24,16 @@
 #' out <- occ(query='Pinus contorta', npnopts=npnopts)
 #' 
 #' ## Select individual elements
-#' out@gbif
-#' out@gbif@data
+#' out$gbif
+#' out$gbif$data
 #' 
 #' ## Coerce to combined data.frame, selects minimal set of columns (name, lat, long)
-#' occtodf(out, 'data')
+#' occ2df(out)
 #' 
 #' # Many data sources, another example
 #' ebirdopts = list(region='US'); gbifopts = list(country='US')
 #' out <- occ(query='Setophaga caerulescens', from=c('gbif','bison','inat','ebird'), gbifopts=gbifopts, ebirdopts=ebirdopts)
-#' occtodf(out)
+#' occ2df(out)
 #' 
 #' ## Using a bounding box
 #' bounds <- c(38.44047,-125,40.86652,-121.837)
@@ -43,7 +43,8 @@
 #' 
 #' # Pass in many species names
 #' spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Spinus tristis')
-#' occ(query=spnames, from='gbif', gbifopts=list(georeferenced=TRUE))
+#' out <- occ(query=spnames, from='gbif', gbifopts=list(georeferenced=TRUE))
+#' occ2df(out)
 #' }
 #' @export
 occ <- function(query=NULL, rank="species", from=c("gbif","bison","inat","npn","ebird"), 
@@ -54,32 +55,40 @@ occ <- function(query=NULL, rank="species", from=c("gbif","bison","inat","npn","
   sources <- match.arg(from, choices=c("gbif","bison","inat","npn","ebird"), several.ok=TRUE)
   
   loopfun <- function(x){
-    gbif_res <- foo_gbif(sources, x, type, gbifopts)
-    bison_res <- foo_bison(sources, x, type, bisonopts)
-    inat_res <- foo_inat(sources, x, type, inatopts)
-    npn_res <- foo_npn(sources, x, type, npnopts)
-    ebird_res <- foo_ebird(sources, x, type, ebirdopts)
+    gbif_res <- foo_gbif(sources, x, gbifopts)
+    bison_res <- foo_bison(sources, x, bisonopts)
+    inat_res <- foo_inat(sources, x, inatopts)
+    npn_res <- foo_npn(sources, x, npnopts)
+    ebird_res <- foo_ebird(sources, x, ebirdopts)
     
     list(gbif=gbif_res,bison=bison_res,inat=inat_res,npn=npn_res,ebird=ebird_res)
   }
   
   tmp <- lapply(query, loopfun)
-  getsplist <- function(srce){
-    tt <- lapply(tmp, "[[", srce)
-    names(tt) <- query
-    tt
+  
+  getsplist <- function(srce, opts){
+    tt <- lapply(tmp, function(x) x[[srce]]$data)
+    names(tt) <- gsub("\\s", "_", query)
+    if(any(grepl(srce, sources))){
+      list(meta = list(source=srce, time=tmp[[1]][[srce]]$time, query=query, type=type, opts=opts), 
+           data = tt)
+    } else {
+      list(meta = list(source=srce, time=NULL, query=NULL, type=NULL, opts=NULL), 
+           data = tt)
+    }
   }
-  gbif_sp <- getsplist("gbif")
-  bison_sp <- getsplist("bison")
-  inat_sp <- getsplist("inat")
-  npn_sp <- getsplist("npn")
-  ebird_sp <- getsplist("ebird")
+  
+  gbif_sp <- getsplist("gbif", gbifopts)
+  bison_sp <- getsplist("bison", bisonopts)
+  inat_sp <- getsplist("inat", inatopts)
+  npn_sp <- getsplist("npn", npnopts)
+  ebird_sp <- getsplist("ebird", ebirdopts)
   p <- list(gbif=gbif_sp, bison=bison_sp, inat=inat_sp, npn=npn_sp, ebird=ebird_sp)
   class(p) <- "occdat"
   return ( p )
 }
 
-foo_gbif <- function(sources, query, type, opts)
+foo_gbif <- function(sources, query, opts)
 {  
   if(any(grepl("gbif", sources))){
     time <- now()
@@ -88,16 +97,17 @@ foo_gbif <- function(sources, query, type, opts)
     out <- do.call(occ_search, opts)
     out$prov <- rep("gbif", nrow(out))
     out$name <- as.character(out$name)
-    meta <- list(source="gbif", time=time, query=query, type=type, opts=opts)
+    list(time=time, data=out)
+#     meta <- list(source="gbif", time=time, query=query, type=type, opts=opts)
   } else
   {
-    meta <- list(source="gbif", time=NULL, query=NULL, type=NULL, opts=list())
-    out <- data.frame(NULL)
+#     meta <- list(source="gbif", time=NULL, query=NULL, type=NULL, opts=list())
+    list(time=NULL, data=data.frame(NULL))
   }
-  list(meta=meta, data=out)
+#   list(meta=meta, data=out)
 }
 
-foo_bison <- function(sources, query, type, opts)
+foo_bison <- function(sources, query, opts)
 {  
   if(any(grepl("bison", sources))){
     time <- now()
@@ -105,32 +115,36 @@ foo_bison <- function(sources, query, type, opts)
     out <- do.call(bison, opts)
     out <- bison_data(out, datatype="data_df")
     out$prov <- rep("bison", nrow(out))
-    meta <- list(source="bison", time=time, query=query, type=type, opts=opts)
+    list(time=time, data=out)
+#     meta <- list(source="bison", time=time, query=query, type=type, opts=opts)
   } else
   {
-    meta <- list(source="bison", time=NULL, query=NULL, type=NULL, opts=list())
-    out <- data.frame(NULL)
+#     meta <- list(source="bison", time=NULL, query=NULL, type=NULL, opts=list())
+#     out <- data.frame(NULL)
+    list(time=NULL, data=data.frame(NULL))
   }
-  list(meta=meta, data=out)
+#   list(meta=meta, data=out)
 }
 
-foo_inat <- function(sources, query, type, opts)
+foo_inat <- function(sources, query, opts)
 {  
   if(any(grepl("inat", sources))){
     time <- now()
     opts$query <- query
     out <- do.call(get_inat_obs, opts)
     out$prov <- rep("inat", nrow(out))
-    meta <- list(source="inat", time=time, query=query, type=type, opts=opts)
+    list(time=time, data=out)
+#     meta <- list(source="inat", time=time, query=query, type=type, opts=opts)
   } else
   {
-    meta <- list(source="inat", time=NULL, query=NULL, type=NULL, opts=list())
-    out <- data.frame(NULL)
+#     meta <- list(source="inat", time=NULL, query=NULL, type=NULL, opts=list())
+#     out <- data.frame(NULL)
+    list(time=NULL, data=data.frame(NULL))
   }
-  list(meta=meta, data=out)
+#   list(meta=meta, data=out)
 }
 
-foo_npn <- function(sources, query, type, opts)
+foo_npn <- function(sources, query, opts)
 {  
   if(any(grepl("npn", sources))){
     time <- now()
@@ -140,16 +154,18 @@ foo_npn <- function(sources, query, type, opts)
     df <- npn_todf(df)
     out <- df@data
     out$prov <- rep("npn", nrow(out))
-    meta <- list(source="npn", time=time, query=query, type=type, opts=opts)
+    list(time=time, data=out)
+#     meta <- list(source="npn", time=time, query=query, type=type, opts=opts)
   } else
   {
-    meta <- list(source="npn", time=NULL, query=NULL, type=NULL, opts=list())
-    out <- data.frame(NULL)
+#     meta <- list(source="npn", time=NULL, query=NULL, type=NULL, opts=list())
+#     out <- data.frame(NULL)
+    list(time=NULL, data=data.frame(NULL))
   }
-  list(meta=meta, data=out)
+#   list(meta=meta, data=out)
 }
 
-foo_ebird <- function(sources, query, type, opts)
+foo_ebird <- function(sources, query, opts)
 {  
   if(any(grepl("ebird", sources))){
     time <- now()
@@ -164,11 +180,13 @@ foo_ebird <- function(sources, query, type, opts)
       out <- do.call(ebirdgeo, opts[!names(opts) %in% 'method'])
     }
     out$prov <- rep("ebird", nrow(out))
-    meta <- list(source="ebird", time=time, query=query, type=type, opts=opts)
+    list(time=time, data=out)
+#     meta <- list(source="ebird", time=time, query=query, type=type, opts=opts)
   } else
   {
-    meta <- list(source="ebird", time=NULL, query=NULL, type=NULL, opts=list())
-    out <- data.frame(NULL)
+#     meta <- list(source="ebird", time=NULL, query=NULL, type=NULL, opts=list())
+#     out <- data.frame(NULL)
+    list(time=NULL, data=data.frame(NULL))
   }
-  list(meta=meta, data=out)
+#   list(meta=meta, data=out)
 }

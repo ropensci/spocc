@@ -20,6 +20,9 @@ mapgist(data, description = "", file = "gistmap", dir = NULL,
   in to create gist.  If none is given, this function gets
   your working directory and uses that.}
 
+  \item{browse}{If TRUE (default) the map opens in your
+  default browser.}
+
   \item{...}{Further arguments passed on to
   \code{spocc_stylegeojson}}
 }

@@ -10,42 +10,40 @@
 #' out$gbif$meta 
 #' out$gbif$data
 #' }
+#' @method print occdat
 #' @export
 #' @rdname occdat
-#' @S3method print occdat
-print.occdat <- function(d)
+print.occdat <- function(x, ...)
 {
-  rows <- lapply(d, function(x) sapply(x$data, nrow))
-  perspp <- lapply(rows, function(x) c(sum(x), length(x)))
+  rows <- lapply(x, function(y) sapply(y$data, nrow))
+  perspp <- lapply(rows, function(z) c(sum(z), length(z)))
   
   cat("Summary of results - occurrences found for:", "\n")
   cat(" gbif  :", perspp$gbif[1], "records across", perspp$gbif[2], "species", "\n")
   cat(" bison : ", perspp$bison[1], "records across", perspp$bison[2], "species", "\n")
   cat(" inat  : ", perspp$inat[1], "records across", perspp$inat[2], "species", "\n")
-  cat(" npn   : ", perspp$npn[1], "records across", perspp$npn[2], "species", "\n")
   cat(" ebird : ", perspp$ebird[1], "records across", perspp$ebird[2], "species", "\n")
-  
 }
 
-#' Summary of occ function output
-#' @import sp maptools rgdal assertthat
-#' @param d Input object from occ function, of class occdat
+#' Plot occ function output on a map (uses base plots)
+#' 
+#' @import sp maps rgdal assertthat
+#' @param x Input object from occ function, of class occdat
 #' @param ... Further args passed on to points fxn
 #' @examples \dontrun{
 #' spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Spinus tristis')
 #' out <- occ(query=spnames, from='gbif', gbifopts=list(georeferenced=TRUE))
 #' plot(out, cex=1, pch=10)
 #' }
+#' @method plot occdat
 #' @export
 #' @rdname occdat
-#' @S3method summary occdat
-plot.occdat <- function(d, ...)
+plot.occdat <- function(x, ...)
 {
-  assert_that(inherits(d, "occdat"))
-  df <- occ2df(d)  
+  df <- occ2df(x)  
   coordinates(df) <- ~longitude+latitude
   proj4string(df) = CRS("+init=epsg:4326")
-  data(wrld_simpl)
-  plot(wrld_simpl)
+  data(wrld_simpl, envir=new.env())
+  map("world")
   points(df, col="red", ...)
 }

@@ -5,7 +5,6 @@
 #' @param gbifopts List of options to pass on to rgbif
 #' @param bisonopts List of options to pass on to rbison
 #' @param inatopts List of options to pass on to rinat
-#' @param npnopts List of options to pass on to rnpn
 #' @param ebirdopts List of options to pass on to ebird
 #' @details The \code{occ} and \code{occlist} functions are opinionated wrappers 
 #' around the rgbif, rbison, rinat, and rebird packages to allow data access from 

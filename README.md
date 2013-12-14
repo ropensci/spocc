@@ -16,14 +16,12 @@ The inspiration for this comes from users requesting a more seamless experience 
 
 ### Install
 
-Depdendencies from CRAN and Github (`rinat` and `rnpn` will be on CRAN soon). When rCharts gets to CRAN is up to @ramnathv
-
 ```coffee
 install.packages(c("rbison", "rgbif", "rebird", "plyr", "ggplot2", "maps", "maptools", "sp", "lubridate", "RColorBrewer", "httr", "rgdal", "RJSONIO", "data".table", "assertthat"))
 
 install.packages("devtools")
 library(devtools)
-install_github(c("ropensci/rinat", "ropensci/rnpn", "ramnathv/rCharts"))
+install_github("ramnathv/rCharts")
 ```
 
 Install `spocc`
@@ -88,7 +86,7 @@ $gbif$data$Accipiter_striatus
 ....(remainder of output cut off)
 ```
 
-Get fine-grained detail over each data source by passing on parameters to the packge rnpn in this example.
+Get fine-grained detail over each data source by passing on parameters to the packge rebird in this example.
 
 ```coffee
 out <- occ(query='Setophaga caerulescens', from='ebird', ebirdopts=list(region='US'))
@@ -228,6 +226,36 @@ mapggplot2()
 ```
 
 *map will be here later*
+
+
+Please report any issues or bugs](https://github.com/ropensci/spocc/issues).
+
+License: CC0
+
+This package is part of the [rOpenSci](http://ropensci.org/packages) project.
+
+To cite package `spocc` in publications use:
+
+```coffee
+To cite package ‘spocc’ in publications use:
+
+  Scott Chamberlain, Carl Boettiger, Karthik Ram and Ted Hart (2013). spocc: R interface to many species
+  occurrence data sources. R package version 0.0.4. https://github.com/ropensci/spocc
+
+A BibTeX entry for LaTeX users is
+
+  @Manual{,
+    title = {spocc: R interface to many species occurrence data sources},
+    author = {Scott Chamberlain and Carl Boettiger and Karthik Ram and Ted Hart},
+    year = {2013},
+    note = {R package version 0.0.4},
+    url = {https://github.com/ropensci/spocc},
+  }
+```
+
+Get citation information for `spocc` in R doing `citation(package = 'spocc')`
+
+[![](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)
 
 [gbif]: https://github.com/ropensci/rgbif
 [vertnet]: https://github.com/ropensci/rvertnet

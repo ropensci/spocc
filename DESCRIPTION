@@ -22,10 +22,10 @@ Imports:
     rinat,
     rbison,
     rgbif,
-    rnpn,
     rebird,
     plyr,
     ggplot2,
+    maps,
     maptools,
     sp,
     lubridate,
@@ -41,5 +41,4 @@ Suggests:
     roxygen2,
     testthat,
     rCharts,
-    CartoDB,
-    maps
+    CartoDB

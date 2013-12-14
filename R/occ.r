@@ -2,7 +2,7 @@
 #' 
 #' Search on a single species name.
 #' 
-#' @import rinat rnpn rgbif rebird data.table
+#' @import rgbif rinat rebird data.table
 #' @importFrom rbison bison bison_data
 #' @importFrom plyr compact
 #' @importFrom lubridate now
@@ -10,18 +10,17 @@
 #' or a common name. Specify whether a scientific or common name in the type parameter.
 #' Only scientific names supported right now.
 #' @template occtemp
+#' @export
 #' @examples \dontrun{
 #' # Single data sources
 #' occ(query='Accipiter striatus', from='gbif')
 #' occ(query='Danaus plexippus', from='inat')
 #' occ(query='Bison bison', from='bison')
-#' occ(query='Pinus contorta', from='npn', npnopts=list(startdate='2008-01-01', enddate='2011-12-31'))
 #' occ(query='Setophaga caerulescens', from='ebird', ebirdopts=list(region='US'))
 #' occ(query='Spinus tristis', from='ebird', ebirdopts=list(method='ebirdgeo', lat=42, lng=-76, dist=50))
 #' 
 #' # Many data sources
-#' npnopts <- list(startdate='2008-01-01', enddate='2011-12-31')
-#' out <- occ(query='Pinus contorta', npnopts=npnopts)
+#' out <- occ(query='Pinus contorta')
 #' 
 #' ## Select individual elements
 #' out$gbif
@@ -46,22 +45,20 @@
 #' out <- occ(query=spnames, from='gbif', gbifopts=list(georeferenced=TRUE))
 #' occ2df(out)
 #' }
-#' @export
-occ <- function(query=NULL, rank="species", from=c("gbif","bison","inat","npn","ebird"), 
-                type="sci", gbifopts=list(), bisonopts=list(),
-                inatopts=list(), npnopts=list(), ebirdopts=list())
+
+occ <- function(query=NULL, from=c("gbif","bison","inat","ebird"), rank="species",
+  type="sci", gbifopts=list(), bisonopts=list(), inatopts=list(), ebirdopts=list())
 {
-  out_gbif=out_bison=out_inat=out_npn=out_ebird=data.frame(NULL)
-  sources <- match.arg(from, choices=c("gbif","bison","inat","npn","ebird"), several.ok=TRUE)
+  out_gbif=out_bison=out_inat=out_ebird=data.frame(NULL)
+  sources <- match.arg(from, choices=c("gbif","bison","inat","ebird"), several.ok=TRUE)
   
   loopfun <- function(x){
     gbif_res <- foo_gbif(sources, x, gbifopts)
     bison_res <- foo_bison(sources, x, bisonopts)
     inat_res <- foo_inat(sources, x, inatopts)
-    npn_res <- foo_npn(sources, x, npnopts)
     ebird_res <- foo_ebird(sources, x, ebirdopts)
     
-    list(gbif=gbif_res,bison=bison_res,inat=inat_res,npn=npn_res,ebird=ebird_res)
+    list(gbif=gbif_res,bison=bison_res,inat=inat_res,ebird=ebird_res)
   }
   
   tmp <- lapply(query, loopfun)
@@ -81,13 +78,14 @@ occ <- function(query=NULL, rank="species", from=c("gbif","bison","inat","npn","
   gbif_sp <- getsplist("gbif", gbifopts)
   bison_sp <- getsplist("bison", bisonopts)
   inat_sp <- getsplist("inat", inatopts)
-  npn_sp <- getsplist("npn", npnopts)
   ebird_sp <- getsplist("ebird", ebirdopts)
-  p <- list(gbif=gbif_sp, bison=bison_sp, inat=inat_sp, npn=npn_sp, ebird=ebird_sp)
+  p <- list(gbif=gbif_sp, bison=bison_sp, inat=inat_sp, ebird=ebird_sp)
   class(p) <- "occdat"
   return ( p )
 }
 
+
+# Plugins for the occ function for each data source
 foo_gbif <- function(sources, query, opts)
 {  
   if(any(grepl("gbif", sources))){
@@ -138,27 +136,6 @@ foo_inat <- function(sources, query, opts)
   } else
   {
 #     meta <- list(source="inat", time=NULL, query=NULL, type=NULL, opts=list())
-#     out <- data.frame(NULL)
-    list(time=NULL, data=data.frame(NULL))
-  }
-#   list(meta=meta, data=out)
-}
-
-foo_npn <- function(sources, query, opts)
-{  
-  if(any(grepl("npn", sources))){
-    time <- now()
-    ids <- lookup_names(name=query, type="genus_epithet")[,"species_id"]
-    opts$speciesid <- as.numeric(as.character(ids))
-    df <- do.call(getallobssp, opts)
-    df <- npn_todf(df)
-    out <- df@data
-    out$prov <- rep("npn", nrow(out))
-    list(time=time, data=out)
-#     meta <- list(source="npn", time=time, query=query, type=type, opts=opts)
-  } else
-  {
-#     meta <- list(source="npn", time=NULL, query=NULL, type=NULL, opts=list())
 #     out <- data.frame(NULL)
     list(time=NULL, data=data.frame(NULL))
   }

@@ -5,7 +5,7 @@ Description: A programmatic interface to many species occurrence data sources,
     become easily available.
 Version: 0.0.4
 License: CC0
-Date: 2013-12-11
+Date: 2013-12-13
 Authors@R: c(person("Scott", "Chamberlain", role = c("aut", "cre"),
     email = "myrmecocystus@gmail.com"),
     person("Carl", "Boettiger", role = "aut",

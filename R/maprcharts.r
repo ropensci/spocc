@@ -6,19 +6,26 @@
 #'    (in dec. deg.)
 #' @param popup If TRUE (default) popup tooltips are created for each point with
 #'    metadta for that point.
-#' @param map_provider Base map to use. See \code{basemaps}
-#' @param map_zoom Map zoom, 1 being most zoomed in
+#' @param map_provider Base map to use. See \code{basemaps}. See details. 
+#' @param map_zoom Map zoom, 1 being most zoomed in. See details.
 #' @param height Height of map
 #' @param width Width of map
 #' @param palette_color Color brewer color palette. See \code{palettes}
 #' @param centerview Lat/long position to center map
 #' @param fullscreen If TRUE, full screen option avail, if not, not avail.
+#' @param path Specify a path to save an html file of your map. You can open this 
+#'    in your browser to view it. If left as NULL (the default) the map opens up in 
+#'    your default browser, or if you have a newer version of RStudio open in RStudio
+#'    Viewer pane. 
+#' @details NOTE that with some map_provider options you will have no map layer 
+#'    show up at first. This may be because there is no map at that particular 
+#'    zoom level. Just zoom in or out to see the map.
 #' @export
 #' @examples \dontrun{
 #' library(rCharts)
 #' spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta')
-#' dat <- occlist(query=spp, from='gbif', gbifopts=list(georeferenced=TRUE))
-#' data <- occtodfspp(dat, 'data')
+#' dat <- occ(query=spp, from='gbif', gbifopts=list(georeferenced=TRUE))
+#' data <- occ2df(dat, 'data')
 #' maprcharts(data=data)
 #' 
 #' # An example with more species, a different base map, and different color palette
@@ -28,8 +35,8 @@
 #' maprcharts(data, map_provider="Acetate.terrain", palette_color="OrangeRed")
 #' }
 maprcharts <- function(data, popup = TRUE, map_provider = 'MapQuestOpen.OSM', 
-  map_zoom = 2, height = 600, width = 870, palette_color = "Blues", 
-  centerview = c(30, -73.90), fullscreen = TRUE)
+  map_zoom = 3, height = 600, width = 870, palette_color = "Blues", 
+  centerview = c(30, -73.90), fullscreen = TRUE, path = NULL)
 {
   spplist <- as.character(unique(data$name))
   datl <- apply(data, 1, as.list)
@@ -80,5 +87,8 @@ maprcharts <- function(data, popup = TRUE, map_provider = 'MapQuestOpen.OSM',
       colors = get_colors(spplist, get_palette(palette_color)),
       labels = spplist
     )
-  L1
+  if(!is.null(path))
+    L1$save(path)
+  else
+    L1
 }

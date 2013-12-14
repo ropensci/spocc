@@ -16,20 +16,20 @@ The inspiration for this comes from users requesting a more seamless experience 
 
 ### Install
 
-Depdendencies from CRAN and Github (`rinat` and `rnpn` will be on CRAN soon)
+Depdendencies from CRAN and Github (`rinat` and `rnpn` will be on CRAN soon). When rCharts gets to CRAN is up to @ramnathv
 
 ```coffee
-install.packages(c("rbison", "rgbif", "rebird", "plyr", "ggplot2", "maps", "maptools", "sp", "lubridate", "RColorBrewer", "httr", "rgdal", "RJSONIO", "data".table"))
+install.packages(c("rbison", "rgbif", "rebird", "plyr", "ggplot2", "maps", "maptools", "sp", "lubridate", "RColorBrewer", "httr", "rgdal", "RJSONIO", "data".table", "assertthat"))
 
 install.packages("devtools")
 library(devtools)
-install_github(c("ropensci/rinat", "ropensci/rnpn"))
+install_github(c("ropensci/rinat", "ropensci/rnpn", "ramnathv/rCharts"))
 ```
 
 Install `spocc`
 
 ```coffee
-install_github("spocc", "ropensci")
+install_github("ropensci/spocc")
 library(spocc)
 ```
 
@@ -210,6 +210,8 @@ mapcartodb(data, "pumamap", c("name","longitude","latitude"), "recology")
 
 
 **Shiny**
+
+This is just a demo, not to pass in your own data. Though a Shiny app is opened in your browser and you can input species names, adjust background map, etc.
 
 ```coffee
 mapshiny()

@@ -97,10 +97,10 @@ foo_gbif <- function(sources, query, opts) {
 foo_ecoengine <- function(sources, query, opts) {
     if (any(grepl("ecoengine", sources))) {
         time <- now()
-        browser()
         opts$scientific_name <- query
         # This could hang things if request is super large
         opts$page <- "all"
+        opts$quiet <- TRUE
         opts$progress <- FALSE
         out_ee <- do.call(ee_observations, opts)
 

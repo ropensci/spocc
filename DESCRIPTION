@@ -24,6 +24,7 @@ Imports:
     rinat,
     rbison,
     rgbif,
+    ecoengine,
     rnpn,
     rebird,
     plyr,

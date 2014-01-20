@@ -15,7 +15,7 @@
 #' ## Get data for Puma concolor, the *hello, world* for biodiversity data
 #' tmp <- occ(query='Puma concolor', from='gbif', gbifopts=list(limit=500, 
 #'    georeferenced=TRUE, country='US'))
-#' data <- occtodf(tmp, 'data')
+#' data <- occ2df(tmp, 'data')
 #' 
 #' ## Push data up to CartoDB 
 #' ### I frist crated a table in my CartoDB account named `pumamap`. Then, I need to 

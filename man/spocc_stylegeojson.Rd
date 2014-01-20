@@ -2,9 +2,8 @@
 \alias{spocc_stylegeojson}
 \title{Style a data.frame prior to converting to geojson.}
 \usage{
-  spocc_stylegeojson(input, var = NULL, var_col = NULL,
-    var_sym = NULL, var_size = NULL, color = NULL,
-    symbol = NULL, size = NULL)
+spocc_stylegeojson(input, var = NULL, var_col = NULL, var_sym = NULL,
+  var_size = NULL, color = NULL, symbol = NULL, size = NULL)
 }
 \arguments{
   \item{input}{A data.frame}
@@ -27,9 +26,9 @@
   \item{size}{One of "small", "medium", or "large"}
 }
 \description{
-  Style a data.frame prior to converting to geojson.
+Style a data.frame prior to converting to geojson.
 }
 \seealso{
-  \code{\link{spocc_togeojson}}
+\code{\link{spocc_togeojson}}
 }
 

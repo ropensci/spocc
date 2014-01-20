@@ -7,6 +7,7 @@
 #' @param file File name (without file extension) for your geojson file. Default is "gistmap".
 #' @param dir Directory for storing file and reading it back in to create gist. 
 #'    If none is given, this function gets your working directory and uses that.
+#' @param browse If TRUE (default) the map opens in your default browser.
 #' @param ... Further arguments passed on to \code{spocc_stylegeojson}
 #' @description 
 #' You will be asked ot enter you Github credentials (username, password) during
@@ -44,7 +45,7 @@ mapgist <- function(data, description="", file="gistmap", dir=NULL, browse=TRUE,
   if(is.null(dir))
     dir <- paste0(getwd(),"/")
   spplist <- as.character(unique(data$name))
-  datgeojson <- spocc_stylegeojson(input=dat, var="name", ...)
+  datgeojson <- spocc_stylegeojson(input=data, var="name", ...)
   write.csv(datgeojson, paste(dir, file, ".csv", sep=""))
   spocc_togeojson(input=paste(dir, file, ".csv", sep=""), method="web", destpath=dir, outfilename=file)
   tt <- spocc_gist(paste(dir, file, ".geojson", sep=""), description = description)

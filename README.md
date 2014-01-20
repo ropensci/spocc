@@ -17,9 +17,17 @@ The inspiration for this comes from users requesting a more seamless experience 
 ### Install
 
 ```coffee
+install.packages(c("rbison", "rgbif", "rebird", "plyr", "ggplot2", "maps", "maptools", "sp", "lubridate", "RColorBrewer", "httr", "rgdal", "RJSONIO", "data".table", "assertthat"))
+
 install.packages("devtools")
 library(devtools)
-install_github("spocc", "ropensci")
+install_github("ramnathv/rCharts")
+```
+
+Install `spocc`
+
+```coffee
+install_github("ropensci/spocc")
 library(spocc)
 ```
 
@@ -28,208 +36,134 @@ library(spocc)
 Get data from GBIF
 
 ```coffee
-occ(query='Accipiter striatus', from='gbif')
+out <- occ(query='Accipiter striatus', from='gbif')
+out$gbif # just gbif data
 ```
 
 ```
-An object of class "occdat"
-Slot "meta":
-$time
-[1] "2013-10-14 17:24:09 PDT"
-
-$query
-[1] "Accipiter striatus"
-
-$from
+$gbif
+$gbif$meta
+$gbif$meta$source
 [1] "gbif"
 
-$type
+$gbif$meta$time
+[1] "2013-12-11 10:02:45 PST"
+
+$gbif$meta$query
+[1] "Accipiter striatus"
+
+$gbif$meta$type
 [1] "sci"
 
-$gbifopts
-$gbifopts$taxonKey
-[1] 2480612
-
-$gbifopts$return
-[1] "data"
-
-
-$bisonopts
-list()
-
-$inatopts
-list()
-
-$npnopts
+$gbif$meta$opts
 list()
 
 
-Slot "data":
-$gbif
-                                name  longitude latitude prov
-1  Accipiter striatus Vieillot, 1808 -122.26848 37.77092 gbif
-2  Accipiter striatus Vieillot, 1808  -76.10433  4.72375 gbif
-3  Accipiter striatus Vieillot, 1808  -97.27682 32.87642 gbif
-4  Accipiter striatus Vieillot, 1808  -98.00115 32.80013 gbif
-5  Accipiter striatus Vieillot, 1808 -122.78289 38.61318 gbif
-6  Accipiter striatus Vieillot, 1808 -117.06342 32.55171 gbif
-7  Accipiter striatus Vieillot, 1808  -76.54262 38.68847 gbif
-8  Accipiter striatus Vieillot, 1808 -105.15587 40.67825 gbif
-9  Accipiter striatus Vieillot, 1808         NA       NA gbif
-10 Accipiter striatus Vieillot, 1808  -80.60072 32.70383 gbif
-11 Accipiter striatus Vieillot, 1808  -76.42259 42.95494 gbif
-12 Accipiter striatus Vieillot, 1808 -121.53113 37.34937 gbif
-13 Accipiter striatus Vieillot, 1808 -118.30559 34.12857 gbif
-14 Accipiter striatus Vieillot, 1808  -75.18940 40.32614 gbif
-15 Accipiter striatus Vieillot, 1808  -82.35111 34.77389 gbif
-16 Accipiter striatus Vieillot, 1808  -71.22694 42.42751 gbif
-17 Accipiter striatus Vieillot, 1808  -75.77489 43.30850 gbif
-18 Accipiter striatus Vieillot, 1808  -84.31470 39.33906 gbif
-19 Accipiter striatus Vieillot, 1808 -103.72499 44.53957 gbif
-20 Accipiter striatus Vieillot, 1808 -119.83272 39.55269 gbif
+$gbif$data
+$gbif$data$Accipiter_striatus
+                                name       key  longitude latitude prov
+1  Accipiter striatus Vieillot, 1808 773408845  -97.27682 32.87642 gbif
+2  Accipiter striatus Vieillot, 1808 768992325  -76.10433  4.72375 gbif
+3  Accipiter striatus Vieillot, 1808 773414146 -122.26848 37.77092 gbif
+4  Accipiter striatus Vieillot, 1808 773440541  -98.00115 32.80013 gbif
+5  Accipiter striatus Vieillot, 1808 773423188  -76.54262 38.68847 gbif
+6  Accipiter striatus Vieillot, 1808 773432602 -122.78289 38.61318 gbif
+7  Accipiter striatus Vieillot, 1808 773430206 -117.06342 32.55171 gbif
+8  Accipiter striatus Vieillot, 1808 833024105 -105.15587 40.67825 gbif
+9  Accipiter striatus Vieillot, 1808        NA         NA       NA gbif
+10 Accipiter striatus Vieillot, 1808 579130954  -74.44419 40.54073 gbif
+11 Accipiter striatus Vieillot, 1808 579131911  -76.69865 39.88886 gbif
+12 Accipiter striatus Vieillot, 1808 579132307  -75.55195 39.60463 gbif
+13 Accipiter striatus Vieillot, 1808 579134716  -96.97675 32.64104 gbif
+14 Accipiter striatus Vieillot, 1808 579138808  -73.57194 41.00291 gbif
+15 Accipiter striatus Vieillot, 1808 579149929 -123.96475 49.23553 gbif
+16 Accipiter striatus Vieillot, 1808 579157816  -70.40314 41.68471 gbif
+17 Accipiter striatus Vieillot, 1808 579125251  -84.13030 33.97565 gbif
+18 Accipiter striatus Vieillot, 1808 579127561  -90.07058 30.01456 gbif
+19 Accipiter striatus Vieillot, 1808 579128452 -105.20556 39.66553 gbif
+20 Accipiter striatus Vieillot, 1808 818461023 -111.73395 33.36145 gbif
+
+....(remainder of output cut off)
 ```
 
-Get fine-grained detail over each data source by passing on parameters to the packge rnpn in this example.
+Get fine-grained detail over each data source by passing on parameters to the packge rebird in this example.
 
 ```coffee
-occ(query='Pinus contorta', from='npn', npnopts=list(startdate='2008-01-01', enddate='2011-12-31'))
+out <- occ(query='Setophaga caerulescens', from='ebird', ebirdopts=list(region='US'))
+out$ebird # just ebird data
 ```
 
 
 ```
-An object of class "occdat"
-Slot "meta":
-$time
-[1] "2013-10-14 17:26:34 PDT"
+$meta
+$meta$source
+[1] "ebird"
 
-$query
-[1] "Pinus contorta"
+$meta$time
+[1] "2013-12-11 10:04:37 PST"
 
-$from
-[1] "npn"
+$meta$query
+[1] "Setophaga caerulescens"
 
-$type
+$meta$type
 [1] "sci"
 
-$gbifopts
-list()
-
-$bisonopts
-list()
-
-$inatopts
-list()
-
-$npnopts
-$npnopts$startdate
-[1] "2008-01-01"
-
-$npnopts$enddate
-[1] "2011-12-31"
-
-$npnopts$speciesid
-[1] 762
+$meta$opts
+$meta$opts$region
+[1] "US"
 
 
 
-Slot "data":
-$npn
-          sciname  latitude   longitude   station_name                date phen_seq genus  epithet  genus_epithet
-1  Pinus contorta 40.557255 -121.532234 CPP-LAVO-HORO1 2011-08-28 00:00:00       20 Pinus contorta Pinus contorta
-2  Pinus contorta 40.557255 -121.532234 CPP-LAVO-HORO1 2011-11-09 00:00:00       20 Pinus contorta Pinus contorta
-3  Pinus contorta 40.557255 -121.532234 CPP-LAVO-HORO1 2011-10-18 00:00:00       20 Pinus contorta Pinus contorta
-4  Pinus contorta 40.557255 -121.532234 CPP-LAVO-HORO1 2011-10-27 00:00:00       20 Pinus contorta Pinus contorta
-5  Pinus contorta 40.535763 -121.567291 CPP-LAVO-MANZ2 2011-07-29 00:00:00       20 Pinus contorta Pinus contorta
-6  Pinus contorta 40.535763 -121.567291 CPP-LAVO-MANZ2 2011-07-18 00:00:00       20 Pinus contorta Pinus contorta
-7  Pinus contorta 40.557255 -121.532234 CPP-LAVO-HORO1 2011-10-12 00:00:00       20 Pinus contorta Pinus contorta
-8  Pinus contorta 40.535763 -121.567291 CPP-LAVO-MANZ2 2011-08-02 00:00:00       20 Pinus contorta Pinus contorta
-9  Pinus contorta 40.535763 -121.567291 CPP-LAVO-MANZ2 2011-09-09 00:00:00      170 Pinus contorta Pinus contorta
-10 Pinus contorta 40.557255 -121.532234 CPP-LAVO-HORO1 2011-09-02 00:00:00      170 Pinus contorta Pinus contorta
-11 Pinus contorta 40.557255 -121.532234 CPP-LAVO-HORO1 2011-09-04 00:00:00      170 Pinus contorta Pinus contorta
-12 Pinus contorta 40.557255 -121.532234 CPP-LAVO-HORO1 2011-09-16 00:00:00      170 Pinus contorta Pinus contorta
-13 Pinus contorta 40.535763 -121.567291 CPP-LAVO-MANZ2 2011-09-11 00:00:00      170 Pinus contorta Pinus contorta
-14 Pinus contorta 40.557255 -121.532234 CPP-LAVO-HORO1 2011-09-23 00:00:00      190 Pinus contorta Pinus contorta
-15 Pinus contorta 40.557255 -121.532234 CPP-LAVO-HORO1 2011-09-18 00:00:00      190 Pinus contorta Pinus contorta
-16 Pinus contorta 40.557255 -121.532234 CPP-LAVO-HORO1 2011-09-25 00:00:00      190 Pinus contorta Pinus contorta
-17 Pinus contorta 40.557255 -121.532234 CPP-LAVO-HORO1 2011-07-13 00:00:00       10 Pinus contorta Pinus contorta
-18 Pinus contorta 40.557255 -121.532234 CPP-LAVO-HORO1 2011-08-01 00:00:00       10 Pinus contorta Pinus contorta
-19 Pinus contorta 40.557255 -121.532234 CPP-LAVO-HORO1 2011-07-25 00:00:00       10 Pinus contorta Pinus contorta
-20 Pinus contorta 40.557255 -121.532234 CPP-LAVO-HORO1 2011-07-19 00:00:00       10 Pinus contorta Pinus contorta
-21 Pinus contorta 40.557255 -121.532234 CPP-LAVO-HORO1 2011-07-21 00:00:00       10 Pinus contorta Pinus contorta
-22 Pinus contorta 40.557255 -121.532234 CPP-LAVO-HORO1 2011-08-11 00:00:00       10 Pinus contorta Pinus contorta
-23 Pinus contorta 40.557255 -121.532234 CPP-LAVO-HORO1 2011-08-15 00:00:00       10 Pinus contorta Pinus contorta
-24 Pinus contorta 40.557255 -121.532234 CPP-LAVO-HORO1 2011-07-28 00:00:00       10 Pinus contorta Pinus contorta
-25 Pinus contorta 40.557255 -121.532234 CPP-LAVO-HORO1 2011-08-08 00:00:00       10 Pinus contorta Pinus contorta
-26 Pinus contorta 40.557255 -121.532234 CPP-LAVO-HORO1 2011-08-25 00:00:00       10 Pinus contorta Pinus contorta
-27 Pinus contorta 40.535763 -121.567291 CPP-LAVO-MANZ2 2011-07-15 00:00:00       10 Pinus contorta Pinus contorta
-28 Pinus contorta 40.557255 -121.532234 CPP-LAVO-HORO1 2011-08-04 00:00:00       10 Pinus contorta Pinus contorta
-29 Pinus contorta 40.557255 -121.532234 CPP-LAVO-HORO1 2011-08-22 00:00:00       10 Pinus contorta Pinus contorta
-30 Pinus contorta 40.535763 -121.567291 CPP-LAVO-MANZ2 2011-07-22 00:00:00       10 Pinus contorta Pinus contorta
-31 Pinus contorta 40.557255 -121.532234 CPP-LAVO-HORO1 2011-08-18 00:00:00       10 Pinus contorta Pinus contorta
-32 Pinus contorta 40.557255 -121.532234 CPP-LAVO-HORO1 2011-08-29 00:00:00       10 Pinus contorta Pinus contorta
-     phenophase_name  color prov
-1      Young needles Green1  npn
-2      Young needles Green1  npn
-3      Young needles Green1  npn
-4      Young needles Green1  npn
-5      Young needles Green1  npn
-6      Young needles Green1  npn
-7      Young needles Green1  npn
-8      Young needles Green1  npn
-9       Pollen cones Green2  npn
-10      Pollen cones Green2  npn
-11      Pollen cones Green2  npn
-12      Pollen cones Green2  npn
-13      Pollen cones Green2  npn
-14 Open pollen cones Green2  npn
-15 Open pollen cones Green2  npn
-16 Open pollen cones Green2  npn
-17  Emerging needles Green1  npn
-18  Emerging needles Green1  npn
-19  Emerging needles Green1  npn
-20  Emerging needles Green1  npn
-21  Emerging needles Green1  npn
-22  Emerging needles Green1  npn
-23  Emerging needles Green1  npn
-24  Emerging needles Green1  npn
-25  Emerging needles Green1  npn
-26  Emerging needles Green1  npn
-27  Emerging needles Green1  npn
-28  Emerging needles Green1  npn
-29  Emerging needles Green1  npn
-30  Emerging needles Green1  npn
-31  Emerging needles Green1  npn
-32  Emerging needles Green1  npn
+$data
+$data$Setophaga_caerulescens
+                       comName howMany      lat        lng    locID                                locName
+1  Black-throated Blue Warbler       1 40.93444  -73.84513 L2374154            NY - Sarah Lawrence College
+2  Black-throated Blue Warbler       1 25.73408  -80.31086  L200830                      A. D. Barnes Park
+3  Black-throated Blue Warbler       1 26.17131  -80.16149  L710596          John D. Easterlin County Park
+4  Black-throated Blue Warbler       1 26.23507  -80.19144  L818386         Coconut Creek-Pompano CBC area
+5  Black-throated Blue Warbler       1 25.91066  -80.33196 L1875938                  Miami Lakes West Park
+6  Black-throated Blue Warbler       1 25.32295  -80.83315  L123123        Everglades NP--Mahogany Hammock
+7  Black-throated Blue Warbler       1 36.19909 -105.88400 L1824677                        Dixon/El Bosque
+8  Black-throated Blue Warbler       1 25.67330  -80.15820  L127423             Bill Baggs Cape Florida SP
+9  Black-throated Blue Warbler       1 28.79362  -82.52210 L2440885                                   Home
+10 Black-throated Blue Warbler       1 25.73918  -80.30943 L1663905 Miami - AD Barnes Park - Nature Center
+   locationPrivate            obsDt obsReviewed obsValid                sciName  prov
+1             TRUE 2013-12-06 13:00        TRUE     TRUE Setophaga caerulescens ebird
+2            FALSE 2013-12-06 12:04       FALSE     TRUE Setophaga caerulescens ebird
+3            FALSE 2013-12-06 09:10       FALSE     TRUE Setophaga caerulescens ebird
+4             TRUE 2013-12-05 08:45       FALSE     TRUE Setophaga caerulescens ebird
+5             TRUE 2013-12-03 09:15       FALSE     TRUE Setophaga caerulescens ebird
+6            FALSE 2013-12-01 11:20       FALSE     TRUE Setophaga caerulescens ebird
+7             TRUE 2013-12-01 08:40        TRUE     TRUE Setophaga caerulescens ebird
+8            FALSE 2013-12-01 06:50       FALSE     TRUE Setophaga caerulescens ebird
+9             TRUE 2013-11-30 16:05        TRUE     TRUE Setophaga caerulescens ebird
+10            TRUE       2013-11-28       FALSE     TRUE Setophaga caerulescens ebird
 ```
 
 Get data from many sources in a single call
 
 ```coffee
-npnopts <- list(startdate='2008-01-01', enddate='2011-12-31')
-out <- occ(query='Pinus contorta', npnopts=npnopts)
-df <- occ_todf(out)
-list(head(df@data), tail(df@data))
+ebirdopts = list(region='US'); gbifopts = list(country='US')
+out <- occ(query='Setophaga caerulescens', from=c('gbif','bison','inat','ebird'), gbifopts=gbifopts, ebirdopts=ebirdopts)
+head(occ2df(out)); tail(occ2df(out))
 ```
 
 ```
-[[1]]
-                              name  longitude latitude prov
-1 Pinus contorta Douglas ex Loudon    -3.6299 55.72854 gbif
-2 Pinus contorta Douglas ex Loudon -120.04017 38.86617 gbif
-3 Pinus contorta Douglas ex Loudon   -3.64374 55.71668 gbif
-4 Pinus contorta Douglas ex Loudon    20.3504  63.7055 gbif
-5 Pinus contorta Douglas ex Loudon    21.6093  66.0225 gbif
-6 Pinus contorta Douglas ex Loudon -124.12111 46.94306 gbif
+                    name  longitude latitude prov
+1 Setophaga caerulescens -122.32551 37.26128 gbif
+2 Setophaga caerulescens -117.04148 32.79913 gbif
+3 Setophaga caerulescens  -87.61893 41.87652 gbif
+4 Setophaga caerulescens  -80.79602 25.39812 gbif
+5 Setophaga caerulescens  -80.31086 25.73408 gbif
+6 Setophaga caerulescens  -69.99167 41.91779 gbif
 
-[[2]]
-              name   longitude  latitude prov
-157 Pinus contorta -121.567291 40.535763  npn
-158 Pinus contorta -121.532234 40.557255  npn
-159 Pinus contorta -121.532234 40.557255  npn
-160 Pinus contorta -121.567291 40.535763  npn
-161 Pinus contorta -121.532234 40.557255  npn
-162 Pinus contorta -121.532234 40.557255  npn
-
+                     name longitude   latitude  prov
+91 Setophaga caerulescens  25.91066  -80.33196 ebird
+92 Setophaga caerulescens  25.32295  -80.83315 ebird
+93 Setophaga caerulescens  36.19909 -105.88400 ebird
+94 Setophaga caerulescens  25.67330  -80.15820 ebird
+95 Setophaga caerulescens  28.79362  -82.52210 ebird
+96 Setophaga caerulescens  25.73918  -80.30943 ebird
 ```
 
 ### Make maps
@@ -237,9 +171,10 @@ list(head(df@data), tail(df@data))
 **rCharts**
 
 ```coffee
+library(rCharts)
 spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta','Puma concolor','Ursus americanus','Gymnogyps californianus')
-dat <- lapply(spp, function(x) occ(query=x, from='gbif', gbifopts=list(georeferenced=TRUE)))
-dat <- occmany_todf(dat)@data
+dat <- occ(query=spp, from='gbif', gbifopts=list(georeferenced=TRUE))
+dat <- occ2df(dat)
 maprcharts(dat, map_provider="Acetate.terrain", palette_color="OrangeRed")
 ```
 
@@ -250,8 +185,8 @@ maprcharts(dat, map_provider="Acetate.terrain", palette_color="OrangeRed")
 
 ```coffee
 spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta')
-dat <- lapply(spp, function(x) occ(query=x, from='gbif', gbifopts=list(georeferenced=TRUE)))
-dat <- occmany_todf(dat)@data
+dat <- occ(query=spp, from='gbif', gbifopts=list(georeferenced=TRUE))
+dat <- occ2df(dat)
 mapgist(data=dat, color=c("#976AAE","#6B944D","#BD5945"))
 ```
 
@@ -265,7 +200,7 @@ install_github("cartodb-r", "Vizzuality", subdir="CartoDB")
 library(CartoDB)
 tmp <- occ(query='Puma concolor', from='gbif', gbifopts=list(limit=500, 
    georeferenced=TRUE, country="US"))
-data <- occ_todf(tmp)@data
+data <- occ2df(tmp)
 mapcartodb(data, "pumamap", c("name","longitude","latitude"), "recology")
 ```
 
@@ -273,6 +208,8 @@ mapcartodb(data, "pumamap", c("name","longitude","latitude"), "recology")
 
 
 **Shiny**
+
+This is just a demo, not to pass in your own data. Though a Shiny app is opened in your browser and you can input species names, adjust background map, etc.
 
 ```coffee
 mapshiny()
@@ -289,6 +226,36 @@ mapggplot2()
 ```
 
 *map will be here later*
+
+
+Please report any issues or bugs](https://github.com/ropensci/spocc/issues).
+
+License: CC0
+
+This package is part of the [rOpenSci](http://ropensci.org/packages) project.
+
+To cite package `spocc` in publications use:
+
+```coffee
+To cite package ‘spocc’ in publications use:
+
+  Scott Chamberlain, Carl Boettiger, Karthik Ram and Ted Hart (2013). spocc: R interface to many species
+  occurrence data sources. R package version 0.0.4. https://github.com/ropensci/spocc
+
+A BibTeX entry for LaTeX users is
+
+  @Manual{,
+    title = {spocc: R interface to many species occurrence data sources},
+    author = {Scott Chamberlain and Carl Boettiger and Karthik Ram and Ted Hart},
+    year = {2013},
+    note = {R package version 0.0.4},
+    url = {https://github.com/ropensci/spocc},
+  }
+```
+
+Get citation information for `spocc` in R doing `citation(package = 'spocc')`
+
+[![](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)
 
 [gbif]: https://github.com/ropensci/rgbif
 [vertnet]: https://github.com/ropensci/rvertnet

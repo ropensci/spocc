@@ -2,9 +2,9 @@
 \alias{palettes}
 \title{Palettes to use with maprcharts function}
 \usage{
-  palettes()
+palettes()
 }
 \description{
-  Palettes to use with maprcharts function
+Palettes to use with maprcharts function
 }
 

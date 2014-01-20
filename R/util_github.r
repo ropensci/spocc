@@ -4,6 +4,7 @@
 #' @param gist An object
 #' @param description brief description of gist (optional)
 #' @param public whether gist is public (default: TRUE)
+#' @param browse If TRUE (default) the map opens in your default browser.
 #' @description 
 #' You will be asked ot enter you Github credentials (username, password) during
 #' each session, but only once for each session. Alternatively, you could enter

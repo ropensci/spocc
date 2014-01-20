@@ -1,19 +1,23 @@
 rcharts_prep1 <- function(sppchar, occurrs, datasource){
   require(RColorBrewer)
+  require(plyr)
   species2 <- strsplit(sppchar, ",")[[1]]
   
   if(datasource=="GBIF"){
-    dat <- occlist(query=species2, from='gbif', gbifopts=list(georeferenced=TRUE, limit=occurrs))
-    dat <- occtodfspp(dat, 'data')
+    dat <- occ(query=species2, from='gbif', gbifopts=list(georeferenced=TRUE, limit=occurrs))
+    dat <- occ2df(dat)
+#     dat <- occtodfspp(dat, 'data')
     apply(dat, 1, as.list)
   } else if(datasource=="BISON"){
-    dat <- occlist(query=species2, from='bison', bisonopts=list(count=occurrs))
-    dat <- occtodfspp(dat, 'data')
+    dat <- occ(query=species2, from='bison', bisonopts=list(count=occurrs))
+    dat <- occ2df(dat)
+#     dat <- occtodfspp(dat, 'data')
     apply(dat, 1, as.list)
   } else
   {
-    dat <- occlist(query=species2, from='inat', inatopts=list(maxresults=occurrs))
-    dat <- occtodfspp(dat, 'data')
+    dat <- occ(query=species2, from='inat', inatopts=list(maxresults=occurrs))
+    dat <- occ2df(dat)
+#     dat <- occtodfspp(dat, 'data')
     dat <- dat[as.character(dat$name) %in% species2, ]
     apply(dat, 1, as.list)
   } 

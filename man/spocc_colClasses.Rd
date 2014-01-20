@@ -2,7 +2,7 @@
 \alias{spocc_colClasses}
 \title{Coerces data.frame columns to the specified classes}
 \usage{
-  spocc_colClasses(d, colClasses)
+spocc_colClasses(d, colClasses)
 }
 \arguments{
   \item{d}{A data.frame.}
@@ -11,7 +11,7 @@
   numeric, factor, character, etc.}
 }
 \description{
-  Coerces data.frame columns to the specified classes
+Coerces data.frame columns to the specified classes
 }
 \examples{
 \dontrun{

@@ -2,7 +2,7 @@
 \alias{spocc_parseresults}
 \title{Parse results from call to occurrencelist endpoint}
 \usage{
-  spocc_parseresults(x, ..., removeZeros = removeZeros)
+spocc_parseresults(x, ..., removeZeros = removeZeros)
 }
 \arguments{
   \item{x}{A list}
@@ -12,7 +12,7 @@
   \item{removeZeros}{remove zeros or not}
 }
 \description{
-  Parse results from call to occurrencelist endpoint
+Parse results from call to occurrencelist endpoint
 }
 \keyword{internal}
 

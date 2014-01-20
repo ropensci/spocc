@@ -2,8 +2,7 @@
 \alias{mapcartodb}
 \title{Make an interactive map to view on CartoDB}
 \usage{
-  mapcartodb(data, tablename, columns, username = NULL,
-    key = NULL)
+mapcartodb(data, tablename, columns, username = NULL, key = NULL)
 }
 \arguments{
   \item{data}{A data.frame with your data}
@@ -18,7 +17,7 @@
   \item{key}{API key for CartoDB}
 }
 \description{
-  Make an interactive map to view on CartoDB
+Make an interactive map to view on CartoDB
 }
 \examples{
 \dontrun{

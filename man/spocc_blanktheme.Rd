@@ -2,10 +2,10 @@
 \alias{spocc_blanktheme}
 \title{Custom ggplot2 theme}
 \usage{
-  spocc_blanktheme()
+spocc_blanktheme()
 }
 \description{
-  Custom ggplot2 theme
+Custom ggplot2 theme
 }
 \keyword{internal}
 

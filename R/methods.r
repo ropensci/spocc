@@ -13,18 +13,19 @@
 #' @method print occdat
 #' @export
 #' @rdname occdat
-print.occdat <- function(x, ...)
-{
-  rows <- lapply(x, function(y) sapply(y$data, nrow))
-  perspp <- lapply(rows, function(z) c(sum(z), length(z)))
-  
-  cat("Summary of results - occurrences found for:", "\n")
-  cat(" gbif  :", perspp$gbif[1], "records across", perspp$gbif[2], "species", "\n")
-  cat(" bison : ", perspp$bison[1], "records across", perspp$bison[2], "species", "\n")
-  cat(" inat  : ", perspp$inat[1], "records across", perspp$inat[2], "species", "\n")
-  cat(" ebird : ", perspp$ebird[1], "records across", perspp$ebird[2], "species", "\n")
+print.occdat <- function(x, ...) {
+    rows <- lapply(x, function(y) sapply(y$data, nrow))
+    perspp <- lapply(rows, function(z) c(sum(z), length(z)))
+    cat("Summary of results - occurrences found for:", "\n")
+    cat(" gbif  :", perspp$gbif[1], "records across", perspp$gbif[2], "species", 
+        "\n")
+    cat(" bison : ", perspp$bison[1], "records across", perspp$bison[2], "species", 
+        "\n")
+    cat(" inat  : ", perspp$inat[1], "records across", perspp$inat[2], "species", 
+        "\n")
+    cat(" ebird : ", perspp$ebird[1], "records across", perspp$ebird[2], "species", 
+        "\n")
 }
-
 #' Plot occ function output on a map (uses base plots)
 #' 
 #' @import sp maps rgdal assertthat
@@ -38,12 +39,11 @@ print.occdat <- function(x, ...)
 #' @method plot occdat
 #' @export
 #' @rdname occdat
-plot.occdat <- function(x, ...)
-{
-  df <- occ2df(x)  
-  coordinates(df) <- ~longitude+latitude
-  proj4string(df) = CRS("+init=epsg:4326")
-  data(wrld_simpl, envir=new.env())
-  map("world")
-  points(df, col="red", ...)
-}
+plot.occdat <- function(x, ...) {
+    df <- occ2df(x)
+    coordinates(df) <- ~longitude + latitude
+    proj4string(df) <- CRS("+init=epsg:4326")
+    data(wrld_simpl, envir = new.env())
+    map("world")
+    points(df, col = "red", ...)
+} 

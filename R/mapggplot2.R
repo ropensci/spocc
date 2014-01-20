@@ -1,6 +1,3 @@
- 
-
-
 #' ggplot2 visualization of species occurences
 #'
 #' @param df Input \code{data.frame}
@@ -9,6 +6,4 @@
 #' mapggplot(df)
 #'}
 mapggplot <- function(df) {
-
-
-}
+} 

@@ -93,9 +93,14 @@ foo_gbif <- function(sources, query, opts)
     opts$taxonKey <- name_backbone(name=query)$usageKey
     opts$return <- "data"
     out <- do.call(occ_search, opts)
-    out$prov <- rep("gbif", nrow(out))
-    out$name <- as.character(out$name)
-    list(time=time, data=out)
+    if(class(out)=="character"){
+      list(time=time, data=data.frame(name=NA, key=NA, longitude=NA, latitude=NA, prov="gbif"))
+    } else
+    {
+      out$prov <- rep("gbif", nrow(out))
+      out$name <- as.character(out$name)
+      list(time=time, data=out)
+    }
 #     meta <- list(source="gbif", time=time, query=query, type=type, opts=opts)
   } else
   {

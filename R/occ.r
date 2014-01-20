@@ -73,7 +73,8 @@ occ <- function(query = NULL, from = c("gbif", "bison", "inat", "ebird"), rank =
     bison_sp <- getsplist("bison", bisonopts)
     inat_sp <- getsplist("inat", inatopts)
     ebird_sp <- getsplist("ebird", ebirdopts)
-    p <- list(gbif = gbif_sp, bison = bison_sp, inat = inat_sp, ebird = ebird_sp)
+    ecoengine_sp <- getsplist("ecoengine", ecoengineopts)
+    p <- list(gbif = gbif_sp, bison = bison_sp, inat = inat_sp, ebird = ebird_sp, ecoengine = ecoengine_sp)
     class(p) <- "occdat"
     return(p)
 }
@@ -103,8 +104,9 @@ foo_ecoengine <- function(sources, query, opts) {
         opts$quiet <- TRUE
         opts$progress <- FALSE
         out_ee <- do.call(ee_observations, opts)
-
         out <- out_ee$data
+        names(out)[which(names(out)=="geojson.coordinates1")] <- "latitude"
+        names(out)[which(names(out)=="geojson.coordinates2")] <- "longitude"
         out$prov <- rep("ecoengine", nrow(out))
         list(time = time, data = out)
         # meta <- list(source='ecoengine', time=time, query=query, type=type, opts=opts)

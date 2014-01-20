@@ -97,11 +97,15 @@ foo_gbif <- function(sources, query, opts) {
 foo_ecoengine <- function(sources, query, opts) {
     if (any(grepl("ecoengine", sources))) {
         time <- now()
-        opts$taxonKey <- name_backbone(name = query)$usageKey
-        opts$return <- "data"
-        out <- do.call(occ_search, opts)
+        browser()
+        opts$scientific_name <- query
+        # This could hang things if request is super large
+        opts$page <- "all"
+        opts$progress <- FALSE
+        out_ee <- do.call(ee_observations, opts)
+
+        out <- out_ee$data
         out$prov <- rep("ecoengine", nrow(out))
-        out$name <- as.character(out$name)
         list(time = time, data = out)
         # meta <- list(source='ecoengine', time=time, query=query, type=type, opts=opts)
     } else {

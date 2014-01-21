@@ -3,7 +3,7 @@
 #' @param s A character string
 #' @param strict Should the algorithm be strict about capitalizing. Defaults to FALSE.
 #' @param onlyfirst Capitalize only first word, lowercase all others. Useful for 
-#' \t\ttaxonomic names.
+#' taxonomic names.
 #' @examples  \dontrun{
 #' capwords(c('using AIC for model selection'))
 #' capwords(c('using AIC for model selection'), strict=TRUE)
@@ -150,12 +150,14 @@ occ2df <- function(obj, what = "data") {
     bb <- foolist(obj$bison)
     cc <- foolist(obj$inat)
     dd <- foolist(obj$ebird)
+    ee <- foolist(obj$ecoengine)
     tmp <- data.frame(rbindlist(list(data.frame(name = aa$name, longitude = aa$longitude, 
         latitude = aa$latitude, prov = aa$prov), data.frame(name = bb$name, longitude = bb$longitude, 
         latitude = bb$latitude, prov = bb$prov), data.frame(name = cc$Scientific.name, 
         latitude = cc$Latitude, longitude = cc$Longitude, prov = cc$prov), data.frame(name = dd$sciName, 
-        latitude = dd$lat, longitude = dd$lng, prov = dd$prov))))
-    tmpout <- list(meta = list(obj$gbif$meta, obj$bison$meta, obj$inat$meta, obj$ebird$meta), 
+        latitude = dd$lat, longitude = dd$lng, prov = dd$prov), data.frame(name = ee$scientific_name, 
+        latitude = ee$latitude, longitude = ee$longitude, prov = ee$prov))))
+    tmpout <- list(meta = list(obj$gbif$meta, obj$bison$meta, obj$inat$meta, obj$ebird$meta, obj$ecoengine$meta), 
         data = tmp)
     if (what %in% "data") 
         tmpout$data else tmpout

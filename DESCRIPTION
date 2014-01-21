@@ -22,6 +22,8 @@ Imports:
     rinat,
     rbison,
     rgbif,
+    ecoengine,
+    rnpn,
     rebird,
     plyr,
     ggplot2,

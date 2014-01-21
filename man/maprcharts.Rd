@@ -59,7 +59,7 @@ maprcharts(data=data)
 spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta','Puma concolor','Ursus americanus','Gymnogyps californianus')
 dat <- occlist(query=spp, from='gbif', gbifopts=list(georeferenced=TRUE))
 data <- occtodfspp(dat, 'data')
-maprcharts(data, map_provider="Acetate.terrain", palette_color="OrangeRed")
+maprcharts(data, map_provider='Acetate.terrain', palette_color='OrangeRed')
 }
 }
 

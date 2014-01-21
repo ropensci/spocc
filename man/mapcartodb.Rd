@@ -23,13 +23,13 @@ Make an interactive map to view on CartoDB
 \dontrun{
 # Create an interactive map on CartoDB
 ## Install CartoDB library
-install_github("cartodb-r", "Vizzuality", subdir="CartoDB")
+install_github('cartodb-r', 'Vizzuality', subdir='CartoDB')
 library(CartoDB)
 
 ## Get data for Puma concolor, the *hello, world* for biodiversity data
 tmp <- occ(query='Puma concolor', from='gbif', gbifopts=list(limit=500,
-   georeferenced=TRUE, country="US"))
-data <- occtodf(tmp, 'data')
+   georeferenced=TRUE, country='US'))
+data <- occ2df(tmp, 'data')
 
 ## Push data up to CartoDB
 ### I frist crated a table in my CartoDB account named `pumamap`. Then, I need to
@@ -38,7 +38,7 @@ data <- occtodf(tmp, 'data')
 ### not revealed to you :)
 
 ### Now we need to push data to our `pumamap` table using the function \\code{mapcartodb}
-mapcartodb(data, "pumamap", c("name","longitude","latitude"), "recology")
+mapcartodb(data, 'pumamap', c('name','longitude','latitude'), 'recology')
 }
 }
 

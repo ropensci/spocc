@@ -15,9 +15,9 @@ Coerces data.frame columns to the specified classes
 }
 \examples{
 \dontrun{
-dat <- data.frame(xvar = seq(1:10), yvar = rep(c("a","b"),5)) # make a data.frame
+dat <- data.frame(xvar = seq(1:10), yvar = rep(c('a','b'),5)) # make a data.frame
 str(dat)
-str(colClasses(dat, c("factor","factor")))
+str(colClasses(dat, c('factor','factor')))
 }
 }
 \keyword{internal}

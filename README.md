@@ -6,9 +6,7 @@ spocc
 **`spocc` = SPecies OCCurrence data**
 
 
-We (rOpenSci) have been writing R packages to interact with many sources of species occurrence data, including [GBIF][gbif], [Vertnet][vertnet], [BISON][bison], [iNaturalist][inat] and the [Berkeley ecoengine][ecoengine]. - and we'll continue to write wrappers for other sources. 
-
-`spocc` is an R package to query and collect species occurrence data from many sources. The goal is to wrap functions in other R packages to make a seamless experience across data sources for the user. 
+At rOpenSci, we have been writing R packages to interact with many sources of species occurrence data, including [GBIF][gbif], [Vertnet][vertnet], [BISON][bison], [iNaturalist][inat] and the [Berkeley ecoengine][ecoengine]. `spocc` is an R package to query and collect species occurrence data from many sources. The goal is to wrap functions in other R packages to make a seamless experience across data sources for the user. 
 
 The inspiration for this comes from users requesting a more seamless experience across data sources, and from our work on a similar package for taxonomy data ([taxize][taxize]).
 
@@ -17,8 +15,14 @@ The inspiration for this comes from users requesting a more seamless experience 
 ### Install
 
 ```coffee
-install.packages(c("rbison", "rgbif", "rebird", "plyr", "ggplot2", "maps", "maptools", "sp", "lubridate", "RColorBrewer", "httr", "rgdal", "RJSONIO", "data".table", "assertthat"))
+# Until the package becomes available on CRAN, 
+# install all dependencies separately
+install.packages(c("rbison", "rgbif", "rebird", "ecoengine", 
+"plyr", "ggplot2", "maps", "maptools", "sp", "lubridate", 
+"RColorBrewer", "httr", "rgdal", "RJSONIO", "data".table", 
+"assertthat"))
 
+# Next install rCharts for interactive maps
 install.packages("devtools")
 library(devtools)
 install_github("ramnathv/rCharts")

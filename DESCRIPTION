@@ -28,6 +28,7 @@ Imports:
     plyr,
     ggplot2,
     maps,
+    ggmap,
     maptools,
     sp,
     lubridate,

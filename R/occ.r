@@ -80,6 +80,8 @@ occ <- function(query = NULL, from = c("gbif", "bison", "inat", "ebird"), rank =
     return(p)
 }
 # Plugins for the occ function for each data source
+
+#' @noRd
 foo_gbif <- function(sources, query, opts) {
     if (any(grepl("gbif", sources))) {
         time <- now()
@@ -99,13 +101,17 @@ foo_gbif <- function(sources, query, opts) {
     }
     # list(meta=meta, data=out)
 }
+
+
+#' @noRd
 foo_ecoengine <- function(sources, query, opts) {
     if (any(grepl("ecoengine", sources))) {
         time <- now()
         opts$scientific_name <- query
-        opts$georeferenced = TRUE
+        opts$georeferenced <- TRUE
         # This could hang things if request is super large.
-        if(is.null(opts$page)) { opts$page <- "all" }
+        # Will deal with this issue when it arises in a usecase
+        if(is.null(opts$page)) { opts$page <- 1 }
         opts$quiet <- TRUE
         opts$progress <- FALSE
         out_ee <- do.call(ee_observations, opts)
@@ -119,6 +125,8 @@ foo_ecoengine <- function(sources, query, opts) {
     }
     # list(meta=meta, data=out)
 }
+
+#' @noRd
 foo_bison <- function(sources, query, opts) {
     if (any(grepl("bison", sources))) {
         time <- now()
@@ -135,6 +143,8 @@ foo_bison <- function(sources, query, opts) {
     }
     # list(meta=meta, data=out)
 }
+
+#' @noRd
 foo_inat <- function(sources, query, opts) {
     if (any(grepl("inat", sources))) {
         time <- now()
@@ -150,6 +160,8 @@ foo_inat <- function(sources, query, opts) {
     }
     # list(meta=meta, data=out)
 }
+
+#' @noRd
 foo_ebird <- function(sources, query, opts) {
     if (any(grepl("ebird", sources))) {
         time <- now()

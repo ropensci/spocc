@@ -11,15 +11,15 @@ spocc_capwords(s, strict = FALSE, onlyfirst = FALSE)
   capitalizing. Defaults to FALSE.}
 
   \item{onlyfirst}{Capitalize only first word, lowercase
-  all others. Useful for taxonomic names.}
+  all others. Useful for \t\ttaxonomic names.}
 }
 \description{
 Capitalize the first letter of a character string.
 }
 \examples{
 \dontrun{
-capwords(c("using AIC for model selection"))
-capwords(c("using AIC for model selection"), strict=TRUE)
+capwords(c('using AIC for model selection'))
+capwords(c('using AIC for model selection'), strict=TRUE)
 }
 }
 \keyword{internal}

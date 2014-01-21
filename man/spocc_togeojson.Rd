@@ -13,7 +13,7 @@ spocc_togeojson(input, method = "web", destpath = "~/",
   strings.}
 
   \item{destpath}{Destination for output geojson file.
-  Defaults to your root directory ("~/").}
+  Defaults to your root directory ('~/').}
 
   \item{outfilename}{The output file name, without file
   extension.}
@@ -44,36 +44,36 @@ locally using the rgdal package.
 file <- '/Users/scottmac2/Downloads/taxon-placemarks-2441176.kml'
 
 # KML type file - using the web method
-spocc_togeojson(file, method='web', outfilename="kml_web")
+spocc_togeojson(file, method='web', outfilename='kml_web')
 
 # KML type file - using the local method
-spocc_togeojson(file, method='local', outfilename="kml_local")
+spocc_togeojson(file, method='local', outfilename='kml_local')
 
 # Shp type file - using the web method - input is a zipped shp bundle
 file <- '~/github/sac/bison.zip'
-spocc_togeojson(file, method='web', outfilename="shp_web")
+spocc_togeojson(file, method='web', outfilename='shp_web')
 
 # Shp type file - using the local method - input is the actual .shp file
 file <- '~/github/sac/bison/bison-Bison_bison-20130704-120856.shp'
-spocc_togeojson(file, method='local', outfilename="shp_local")
+spocc_togeojson(file, method='local', outfilename='shp_local')
 
 # Get data and save map data
 splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
 keys <- sapply(splist, function(x) gbif_lookup(name=x, kingdom='plants')$speciesKey, USE.NAMES=FALSE)
-out <- occ_search(keys, georeferenced=TRUE, limit=50, return="data")
+out <- occ_search(keys, georeferenced=TRUE, limit=50, return='data')
 dat <- ldply(out)
-datgeojson <- spocc_stylegeojson(input=dat, var="name", color=c("#976AAE","#6B944D","#BD5945"), size=c("small","medium","large"))
+datgeojson <- spocc_stylegeojson(input=dat, var='name', color=c('#976AAE','#6B944D','#BD5945'), size=c('small','medium','large'))
 
 # Put into a github repo to view on the web
-write.csv(datgeojson, "~/github/sac/mygeojson/rgbif_data.csv")
-file <- "~/github/sac/mygeojson/rgbif_data.csv"
-spocc_togeojson(file, method="web", destpath="~/github/sac/mygeojson/", outfilename="rgbif_data")
+write.csv(datgeojson, '~/github/sac/mygeojson/rgbif_data.csv')
+file <- '~/github/sac/mygeojson/rgbif_data.csv'
+spocc_togeojson(file, method='web', destpath='~/github/sac/mygeojson/', outfilename='rgbif_data')
 
 # Using rCharts' function spocc_create_gist
-write.csv(datgeojson, "~/my.csv")
-file <- "~/my.csv"
-spocc_togeojson(input=file, method="web", outfilename="my")
-spocc_create_gist("~/my.geojson", description = "Map of three bird species occurrences")
+write.csv(datgeojson, '~/my.csv')
+file <- '~/my.csv'
+spocc_togeojson(input=file, method='web', outfilename='my')
+spocc_create_gist('~/my.geojson', description = 'Map of three bird species occurrences')
 }
 }
 \seealso{

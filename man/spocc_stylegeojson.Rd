@@ -23,7 +23,7 @@ spocc_stylegeojson(input, var = NULL, var_col = NULL, var_sym = NULL,
   \url{http://www.mapbox.com/maki/} or a single
   alphanumeric character (a-z or 0-9).}
 
-  \item{size}{One of "small", "medium", or "large"}
+  \item{size}{One of 'small', 'medium', or 'large'}
 }
 \description{
 Style a data.frame prior to converting to geojson.

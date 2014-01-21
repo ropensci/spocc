@@ -6,8 +6,7 @@
 #' @examples \dontrun{
 #' mapshiny()
 #' }
-mapshiny <- function()
-{
-  message('Hit <escape> to stop')
-  runApp(system.file('shiny', package='spocc'))
-}
+mapshiny <- function() {
+    message("Hit <escape> to stop")
+    runApp(system.file("shiny", package = "spocc"))
+} 

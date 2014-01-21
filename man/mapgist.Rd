@@ -14,7 +14,7 @@ mapgist(data, description = "", file = "gistmap", dir = NULL,
   leave to default (=no description)}
 
   \item{file}{File name (without file extension) for your
-  geojson file. Default is "gistmap".}
+  geojson file. Default is 'gistmap'.}
 
   \item{dir}{Directory for storing file and reading it back
   in to create gist.  If none is given, this function gets
@@ -38,8 +38,8 @@ each session. Alternatively, you could enter your
 credentials into your .Rprofile file with the entries
 
 \itemize{ \item options(github.username =
-"your_github_username") \item options(github.password =
-"your_github_password") }
+'your_github_username') \item options(github.password =
+'your_github_password') }
 
 then \code{mapgist} will simply read those options.
 
@@ -53,13 +53,13 @@ dat <- occlist(query=spp, from='gbif', gbifopts=list(georeferenced=TRUE))
 dat <- occtodfspp(dat, 'data')
 
 # Define colors
-mapgist(data=dat, color=c("#976AAE","#6B944D","#BD5945"))
+mapgist(data=dat, color=c('#976AAE','#6B944D','#BD5945'))
 
 # Define colors and marker size
-mapgist(data=dat, color=c("#976AAE","#6B944D","#BD5945"), size=c("small","medium","large"))
+mapgist(data=dat, color=c('#976AAE','#6B944D','#BD5945'), size=c('small','medium','large'))
 
 # Define symbols
-mapgist(data=dat, symbol=c("park","zoo","garden"))
+mapgist(data=dat, symbol=c('park','zoo','garden'))
 }
 }
 

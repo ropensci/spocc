@@ -25,8 +25,8 @@ each session. Alternatively, you could enter your
 credentials into your .Rprofile file with the entries
 
 \enumerate{ \item options(github.username =
-"your_github_username") \item options(github.password =
-"your_github_password") }
+'your_github_username') \item options(github.password =
+'your_github_password') }
 
 then \code{gist} will simply read those options.
 
@@ -38,12 +38,12 @@ by Ramnath Vaidyanathan
 library(plyr)
 splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
 keys <- sapply(splist, function(x) gbif_lookup(name=x, kingdom='plants')$speciesKey, USE.NAMES=FALSE)
-out <- occ_search(keys, georeferenced=TRUE, limit=50, return="data")
+out <- occ_search(keys, georeferenced=TRUE, limit=50, return='data')
 dat <- ldply(out)
-datgeojson <- spocc_stylegeojson(input=dat, var="name", color=c("#976AAE","#6B944D","#BD5945"), size=c("small","medium","large"))
-write.csv(datgeojson, "~/my.csv")
-spocc_togeojson(input="~/my.csv", method="web", outfilename="my")
-spocc_gist("~/my.geojson", description = "Occurrences of three bird species mapped")
+datgeojson <- spocc_stylegeojson(input=dat, var='name', color=c('#976AAE','#6B944D','#BD5945'), size=c('small','medium','large'))
+write.csv(datgeojson, '~/my.csv')
+spocc_togeojson(input='~/my.csv', method='web', outfilename='my')
+spocc_gist('~/my.geojson', description = 'Occurrences of three bird species mapped')
 }
 }
 

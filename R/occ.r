@@ -14,6 +14,7 @@
 #' @examples \dontrun{
 #' # Single data sources
 #' occ(query = 'Accipiter striatus', from = 'gbif')
+#' occ(query = 'Accipiter striatus', from = 'ecoengine')
 #' occ(query = 'Danaus plexippus', from = 'inat')
 #' occ(query = 'Bison bison', from = 'bison')
 #' occ(query = 'Setophaga caerulescens', from = 'ebird', ebirdopts = list(region='US'))
@@ -99,14 +100,13 @@ foo_ecoengine <- function(sources, query, opts) {
     if (any(grepl("ecoengine", sources))) {
         time <- now()
         opts$scientific_name <- query
-        # This could hang things if request is super large
-        opts$page <- "all"
+        opts$georeferenced = TRUE
+        # This could hang things if request is super large.
+        if(is.null(opts$page)) { opts$page <- "all" }
         opts$quiet <- TRUE
         opts$progress <- FALSE
         out_ee <- do.call(ee_observations, opts)
         out <- out_ee$data
-        names(out)[which(names(out)=="geojson.coordinates1")] <- "latitude"
-        names(out)[which(names(out)=="geojson.coordinates2")] <- "longitude"
         out$prov <- rep("ecoengine", nrow(out))
         list(time = time, data = out)
         # meta <- list(source='ecoengine', time=time, query=query, type=type, opts=opts)

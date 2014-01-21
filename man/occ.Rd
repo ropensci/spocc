@@ -46,6 +46,7 @@ can use the functions inside each of those packages.
 \dontrun{
 # Single data sources
 occ(query = 'Accipiter striatus', from = 'gbif')
+occ(query = 'Accipiter striatus', from = 'ecoengine')
 occ(query = 'Danaus plexippus', from = 'inat')
 occ(query = 'Bison bison', from = 'bison')
 occ(query = 'Setophaga caerulescens', from = 'ebird', ebirdopts = list(region='US'))

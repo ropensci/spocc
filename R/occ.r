@@ -86,6 +86,7 @@ occ <- function(query=NULL, from=c("gbif","bison","inat","ebird"), rank="species
 
 
 # Plugins for the occ function for each data source
+#' @noRd
 foo_gbif <- function(sources, query, opts)
 {  
   if(any(grepl("gbif", sources))){
@@ -105,6 +106,7 @@ foo_gbif <- function(sources, query, opts)
 #   list(meta=meta, data=out)
 }
 
+#' @noRd
 foo_bison <- function(sources, query, opts)
 {  
   if(any(grepl("bison", sources))){
@@ -124,6 +126,7 @@ foo_bison <- function(sources, query, opts)
 #   list(meta=meta, data=out)
 }
 
+#' @noRd
 foo_inat <- function(sources, query, opts)
 {  
   if(any(grepl("inat", sources))){
@@ -142,6 +145,7 @@ foo_inat <- function(sources, query, opts)
 #   list(meta=meta, data=out)
 }
 
+#' @noRd
 foo_ebird <- function(sources, query, opts)
 {  
   if(any(grepl("ebird", sources))){

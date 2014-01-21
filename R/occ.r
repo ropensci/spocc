@@ -108,9 +108,10 @@ foo_ecoengine <- function(sources, query, opts) {
     if (any(grepl("ecoengine", sources))) {
         time <- now()
         opts$scientific_name <- query
-        opts$georeferenced = TRUE
+        opts$georeferenced <- TRUE
         # This could hang things if request is super large.
-        if(is.null(opts$page)) { opts$page <- "all" }
+        # Will deal with this issue when it arises in a usecase
+        if(is.null(opts$page)) { opts$page <- 1 }
         opts$quiet <- TRUE
         opts$progress <- FALSE
         out_ee <- do.call(ee_observations, opts)

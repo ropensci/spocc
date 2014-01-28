@@ -19,6 +19,9 @@
 #'    in your browser to view it. If left as NULL (the default) the map opens up in 
 #'    your default browser, or if you have a newer version of RStudio open in RStudio
 #'    Viewer pane. 
+#' @param overwrite Default is \code{TRUE}. Set to \code{FALSE} to prevent overwriting local files
+#' @param  incl.data Default is \code{TRUE}. Writes geoJSON data into the html file to get around security restrictions in browsers like Google Chrome. Set to \code{FALSE} to read from a separate local geoJSON file.
+#' @param title Map title
 #' @details NOTE that with some map_provider options you will have no map layer 
 #'    show up at first. This may be because there is no map at that particular 
 #'    zoom level. Just zoom in or out to see the map.
@@ -37,9 +40,10 @@
 #' mapleaflet(data, map_provider='cm')
 #' }
 mapleaflet <- function(data, popup = TRUE, map_provider = "osm", zoom = 3, title="map",
-                       size, centerview = c(30, -73.9)) {
-  dat <- toGeoJSON(data=data, dest=tempdir(), lat.lon=c("latitude","longitude"))
-  map <- leaflet(dat, title=title, size=size, base.map=map_provider, 
-                 center=centerview, zoom=zoom, popup=popup)
+                       size, centerview = c(30, -73.9), dest = dest, overwrite = TRUE, incl.data = TRUE) {
+	dest <- ifelse(is.null(dest), tempdir(), dest)
+  dat <- toGeoJSON(data = data, dest = dest, lat.lon = c("latitude","longitude"))
+  map <- leaflet(dat, title = title, size = size, base.map = map_provider, 
+                 center = centerview, zoom = zoom, popup = popup, overwrite  =  overwrite,  incl.data = incl.data)
   browseURL(map)
 } 

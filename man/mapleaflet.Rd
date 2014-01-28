@@ -3,7 +3,8 @@
 \title{Make an interactive map to view in the browser}
 \usage{
 mapleaflet(data, popup = TRUE, map_provider = "osm", zoom = 3,
-  title = "map", size, centerview = c(30, -73.9))
+  title = "map", size, centerview = c(30, -73.9), dest = dest,
+  overwrite = TRUE, incl.data = TRUE)
 }
 \arguments{
   \item{data}{A data.frame, with any number of columns, but
@@ -34,6 +35,16 @@ mapleaflet(data, popup = TRUE, map_provider = "osm", zoom = 3,
   left as NULL (the default) the map opens up in your
   default browser, or if you have a newer version of
   RStudio open in RStudio Viewer pane.}
+
+  \item{overwrite}{Default is \code{TRUE}. Set to
+  \code{FALSE} to prevent overwriting local files}
+
+  \item{incl.data}{Default is \code{TRUE}. Writes geoJSON
+  data into the html file to get around security
+  restrictions in browsers like Google Chrome. Set to
+  \code{FALSE} to read from a separate local geoJSON file.}
+
+  \item{title}{Map title}
 }
 \description{
 Make an interactive map to view in the browser

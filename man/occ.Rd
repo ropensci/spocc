@@ -2,9 +2,9 @@
 \alias{occ}
 \title{Search for species occurrence data across many data sources.}
 \usage{
-occ(query = NULL, from = c("gbif", "bison", "inat", "ebird"),
-  rank = "species", type = "sci", gbifopts = list(), bisonopts = list(),
-  inatopts = list(), ebirdopts = list(), ecoengineopts = list())
+occ(query = NULL, from = "gbif", rank = "species", type = "sci",
+  gbifopts = list(), bisonopts = list(), inatopts = list(),
+  ebirdopts = list(), ecoengineopts = list())
 }
 \arguments{
   \item{query}{A single name. Either a scientific name or a
@@ -53,7 +53,7 @@ occ(query = 'Setophaga caerulescens', from = 'ebird', ebirdopts = list(region='U
 occ(query = 'Spinus tristis', from = 'ebird', ebirdopts = list(method = 'ebirdgeo', lat = 42, lng = -76, dist = 50))
 
 # Many data sources
-out <- occ(query = 'Pinus contorta')
+out <- occ(query = 'Pinus contorta', from=c('gbif','inat'))
 
 ## Select individual elements
 out$gbif

@@ -2,3 +2,5 @@
 Makefile
 inst
 man-roxygen/
+^.*\.Rproj$
+^\.Rproj\.user$

@@ -20,7 +20,7 @@ The inspiration for this comes from users requesting a more seamless experience 
 install.packages(c("rbison", "rgbif", "rebird", "ecoengine", 
 "plyr", "ggplot2", "maps", "maptools", "sp", "lubridate", 
 "RColorBrewer", "httr", "rgdal", "RJSONIO", "data.table", 
-"assertthat"))
+"assertthat","leafletR"))
 
 # Next install rCharts for interactive maps
 install.packages("devtools")

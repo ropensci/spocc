@@ -17,6 +17,7 @@ spocc_rcharts_togeojson <- function(list_, lat = "latitude", lon = "longitude") 
 #' Get colors from a vector of input taxonomic names, and palette
 #' @param vec Vector of strings
 #' @param palette_name Palette name
+#' @importFrom RColorBrewer brewer.pal
 #' @export
 #' @keywords internal
 get_colors <- function(vec, palette_name) {

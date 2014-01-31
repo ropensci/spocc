@@ -13,6 +13,8 @@
 #'}
 mapggplot <- function(df, zoom = 5, point_color = "#86161f") {
     dt <- occ2df(df)
+    latitude <- NA
+    longitude <- NA
     # Remove rows with missing data
     dt <- dt[complete.cases(dt), ]
     min_lat <- min(dt$latitude, na.rm = TRUE)

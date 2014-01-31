@@ -65,9 +65,9 @@ mapleaflet(data = data)
 # An example with more species, a different base map, and different color palette
 spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta','Puma concolor',
 'Ursus americanus','Gymnogyps californianus')
-dat <- occ(query=spp, from='gbif', gbifopts=list(georeferenced=TRUE))
+dat <- occ(query = spp, from = 'gbif', gbifopts = list(georeferenced = TRUE))
 data <- occ2df(dat, 'data')
-mapleaflet(data, map_provider='cm')
+mapleaflet(data, map_provider = 'cm')
 }
 }
 

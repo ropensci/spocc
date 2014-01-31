@@ -15,9 +15,9 @@ mapleaflet(data, popup = TRUE, map_provider = "osm", zoom = 3,
   for each point with metadta for that point.}
 
   \item{map_provider}{Base map to use. One or a list of
-  "osm" (OpenStreetMap standard map), "tls" (Thunderforest
-  Landscape), "cm" (CloudMade), "mqosm" (MapQuest OSM) or
-  "mqsat" (MapQuest Open Aerial). Default is "osm". See
+  'osm' (OpenStreetMap standard map), 'tls' (Thunderforest
+  Landscape), 'cm' (CloudMade), 'mqosm' (MapQuest OSM) or
+  'mqsat' (MapQuest Open Aerial). Default is 'osm'. See
   \code{\link[leafletR]{leaflet}} for more information.}
 
   \item{zoom}{Map zoom, 0 being most zoomed out, and 18
@@ -58,9 +58,9 @@ see the map.
 \examples{
 \dontrun{
 spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta')
-dat <- occ(query=spp, from='gbif', gbifopts=list(georeferenced=TRUE))
+dat <- occ(query = spp, from = 'gbif', gbifopts = list(georeferenced=TRUE))
 data <- occ2df(dat, 'data')
-mapleaflet(data=data)
+mapleaflet(data = data)
 
 # An example with more species, a different base map, and different color palette
 spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta','Puma concolor',

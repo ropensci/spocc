@@ -6,9 +6,9 @@
 #'    (in dec. deg.)
 #' @param popup If TRUE (default) popup tooltips are created for each point with
 #'    metadta for that point.
-#' @param map_provider Base map to use. One or a list of "osm" (OpenStreetMap 
-#'    standard map), "tls" (Thunderforest Landscape), "cm" (CloudMade), "mqosm" 
-#'    (MapQuest OSM) or "mqsat" (MapQuest Open Aerial). Default is "osm". See 
+#' @param map_provider Base map to use. One or a list of 'osm' (OpenStreetMap 
+#'    standard map), 'tls' (Thunderforest Landscape), 'cm' (CloudMade), 'mqosm' 
+#'    (MapQuest OSM) or 'mqsat' (MapQuest Open Aerial). Default is 'osm'. See 
 #'    \code{\link[leafletR]{leaflet}} for more information.
 #' @param zoom Map zoom, 0 being most zoomed out, and 18 most zoomed out. See 
 #'    \code{\link[leafletR]{leaflet}} for more information.
@@ -28,9 +28,9 @@
 #' @export
 #' @examples \dontrun{
 #' spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta')
-#' dat <- occ(query=spp, from='gbif', gbifopts=list(georeferenced=TRUE))
+#' dat <- occ(query = spp, from = 'gbif', gbifopts = list(georeferenced=TRUE))
 #' data <- occ2df(dat, 'data')
-#' mapleaflet(data=data)
+#' mapleaflet(data = data)
 #' 
 #' # An example with more species, a different base map, and different color palette
 #' spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta','Puma concolor',
@@ -39,11 +39,11 @@
 #' data <- occ2df(dat, 'data')
 #' mapleaflet(data, map_provider='cm')
 #' }
-mapleaflet <- function(data, popup = TRUE, map_provider = "osm", zoom = 3, title="map",
-                       size, centerview = c(30, -73.9), dest = dest, overwrite = TRUE, incl.data = TRUE) {
-	dest <- ifelse(is.null(dest), tempdir(), dest)
-  dat <- toGeoJSON(data = data, dest = dest, lat.lon = c("latitude","longitude"))
-  map <- leaflet(dat, title = title, size = size, base.map = map_provider, 
-                 center = centerview, zoom = zoom, popup = popup, overwrite  =  overwrite,  incl.data = incl.data)
-  browseURL(map)
+mapleaflet <- function(data, popup = TRUE, map_provider = "osm", zoom = 3, title = "map", 
+    size, centerview = c(30, -73.9), dest = dest, overwrite = TRUE, incl.data = TRUE) {
+    dest <- ifelse(is.null(dest), tempdir(), dest)
+    dat <- toGeoJSON(data = data, dest = dest, lat.lon = c("latitude", "longitude"))
+    map <- leaflet(dat, title = title, size = size, base.map = map_provider, center = centerview, 
+        zoom = zoom, popup = popup, overwrite = overwrite, incl.data = incl.data)
+    browseURL(map)
 } 

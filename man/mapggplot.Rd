@@ -17,7 +17,7 @@ ggplot2 visualization of species occurences
 }
 \examples{
 \dontrun{
-ecoengine_data <- occ(query = "Lynx rufus californicus", from = "ecoengine")
+ecoengine_data <- occ(query = 'Lynx rufus californicus', from = 'ecoengine')
 mapggplot(ecoengine_data)
 gbif_data <- occ(query = 'Accipiter striatus', from = 'gbif')
 mapggplot(gbif_data)

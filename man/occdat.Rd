@@ -20,7 +20,7 @@ Plot occ function output on a map (uses base plots)
 \examples{
 \dontrun{
 spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Spinus tristis')
-out <- occ(query=spnames, from='gbif', gbifopts=list(georeferenced=TRUE))
+out <- occ(query = spnames, from = 'gbif', gbifopts = list(georeferenced=TRUE))
 print(out)
 out # gives the same thing
 

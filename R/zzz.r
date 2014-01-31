@@ -157,8 +157,8 @@ occ2df <- function(obj, what = "data") {
         latitude = cc$Latitude, longitude = cc$Longitude, prov = cc$prov), data.frame(name = dd$sciName, 
         latitude = dd$lat, longitude = dd$lng, prov = dd$prov), data.frame(name = ee$scientific_name, 
         latitude = ee$latitude, longitude = ee$longitude, prov = ee$prov))))
-    tmpout <- list(meta = list(obj$gbif$meta, obj$bison$meta, obj$inat$meta, obj$ebird$meta, obj$ecoengine$meta), 
-        data = tmp)
+    tmpout <- list(meta = list(obj$gbif$meta, obj$bison$meta, obj$inat$meta, obj$ebird$meta, 
+        obj$ecoengine$meta), data = tmp)
     if (what %in% "data") 
         tmpout$data else tmpout
 }

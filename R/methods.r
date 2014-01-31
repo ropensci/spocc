@@ -2,7 +2,7 @@
 #' 
 #' @examples \dontrun{
 #' spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Spinus tristis')
-#' out <- occ(query=spnames, from='gbif', gbifopts=list(georeferenced=TRUE))
+#' out <- occ(query = spnames, from = 'gbif', gbifopts = list(georeferenced=TRUE))
 #' print(out)
 #' out # gives the same thing
 #' 
@@ -25,8 +25,8 @@ print.occdat <- function(x, ...) {
         "\n")
     cat(" ebird : ", perspp$ebird[1], "records across", perspp$ebird[2], "species", 
         "\n")
-    cat(" ecoengine : ", perspp$ecoengine[1], "records across", perspp$ecoengine[2], "species", 
-        "\n")
+    cat(" ecoengine : ", perspp$ecoengine[1], "records across", perspp$ecoengine[2], 
+        "species", "\n")
 }
 #' Plot occ function output on a map (uses base plots)
 #' 

@@ -32,7 +32,7 @@
 #' 
 #' # Many data sources, another example
 #' ebirdopts = list(region = 'US'); gbifopts  =  list(country = 'US')
-#' out <- occ(query = 'Setophaga caerulescens', from = c('gbif','bison','inat','ebird'), gbifopts = gbifopts, ebirdopts = ebirdopts)
+#' out <- occ(query = 'Setophaga caerulescens', from = c('gbif','inat','ebird'), gbifopts = gbifopts, ebirdopts = ebirdopts)
 #' occ2df(out)
 #' 
 #' ## Using a bounding box

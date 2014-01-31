@@ -2,9 +2,9 @@
 \alias{occ}
 \title{Search for species occurrence data across many data sources.}
 \usage{
-occ(query = NULL, from = "gbif", rank = "species", type = "sci",
-  gbifopts = list(), bisonopts = list(), inatopts = list(),
-  ebirdopts = list(), ecoengineopts = list())
+occ(query = NULL, from = c("gbif", "bison", "inat", "ebird"),
+  rank = "species", type = "sci", gbifopts = list(), bisonopts = list(),
+  inatopts = list(), ebirdopts = list(), ecoengineopts = list())
 }
 \arguments{
   \item{query}{A single name. Either a scientific name or a

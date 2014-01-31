@@ -1,0 +1,46 @@
+Package: spocc
+Title: R interface to many species occurrence data sources
+Description: A programmatic interface to many species occurrence data sources,
+    including GBIF, BISON, iNaturalist, VertNet, and more as they sources
+    become easily available.
+Version: 0.0.4
+License: CC0
+Date: 2013-12-13
+Authors@R: c(person("Scott", "Chamberlain", role = c("aut", "cre"),
+    email = "myrmecocystus@gmail.com"),
+    person("Carl", "Boettiger", role = "aut",
+    email = "cboettig@gmail.com"),
+    person("Karthik", "Ram", role = "aut",
+    email = "karthik.ram@gmail.com"),
+    person("Ted", "Hart", role = "aut",
+    email = "edmund.m.hart@gmail.com"))
+URL: https://github.com/ropensci/spocc
+BugReports: https://github.com/ropensci/spocc/issues
+LazyLoad: yes
+LazyData: yes
+Imports:
+    rinat,
+    rbison,
+    rgbif,
+    ecoengine,
+    rebird,
+    plyr,
+    ggplot2,
+    maps,
+    ggmap,
+    maptools,
+    sp,
+    lubridate,
+    RColorBrewer,
+    httr,
+    XML,
+    rgdal,
+    RJSONIO,
+    leafletR (>= 0.1-1),
+    data.table,
+    shiny,
+    assertthat,
+    leafletR
+Suggests:
+    roxygen2,
+    testthat

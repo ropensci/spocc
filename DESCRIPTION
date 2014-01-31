@@ -43,6 +43,4 @@ Imports:
     assertthat
 Suggests:
     roxygen2,
-    testthat,
-    rCharts,
-    CartoDB
+    testthat

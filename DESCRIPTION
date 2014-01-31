@@ -39,8 +39,7 @@ Imports:
     leafletR (>= 0.1-1),
     data.table,
     shiny,
-    assertthat,
-    leafletR
+    assertthat
 Suggests:
     roxygen2,
     testthat

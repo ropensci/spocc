@@ -2,9 +2,9 @@
 \alias{occ}
 \title{Search for species occurrence data across many data sources.}
 \usage{
-occ(query = NULL, from = c("gbif", "bison", "inat", "ebird"),
-  rank = "species", type = "sci", gbifopts = list(), bisonopts = list(),
-  inatopts = list(), ebirdopts = list(), ecoengineopts = list())
+occ(query = NULL, from = "gbif", rank = "species", type = "sci",
+  gbifopts = list(), bisonopts = list(), inatopts = list(),
+  ebirdopts = list(), ecoengineopts = list())
 }
 \arguments{
   \item{query}{A single name. Either a scientific name or a
@@ -15,7 +15,7 @@ occ(query = NULL, from = c("gbif", "bison", "inat", "ebird"),
   \item{rank}{Taxonomic rank.}
 
   \item{from}{Data source to get data from, any combination
-  of gbif, bison, or inat}
+  of gbif, bison, inat, ebird, and/or ecoengine}
 
   \item{type}{Type of name, sci (scientific) or com (common
   name, vernacular)}
@@ -35,12 +35,13 @@ occ(query = NULL, from = c("gbif", "bison", "inat", "ebird"),
 Search on a single species name.
 }
 \details{
-The \code{occ} and \code{occlist} functions are opinionated
-wrappers around the rgbif, rbison, rinat, and rebird
-packages to allow data access from a single access point.
-We take care of making sure you get useful objects out at
-the cost of flexibility/options - if you need options you
-can use the functions inside each of those packages.
+The \code{occ} function is an opinionated wrapper around
+the rgbif, rbison, rinat, rebird, and ecoengine packages to
+allow data access from a single access point. We take care
+of making sure you get useful objects out at the cost of
+flexibility/options - although you can still set options
+for each of the packages via the gbifopts, bisonopts,
+inatopts, ebirdopts, and ecoengineopts parameters.
 }
 \examples{
 \dontrun{

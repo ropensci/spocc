@@ -23,7 +23,6 @@ Imports:
     rbison,
     rgbif,
     ecoengine,
-    rnpn,
     rebird,
     plyr,
     ggplot2,

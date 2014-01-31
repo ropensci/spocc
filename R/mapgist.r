@@ -28,28 +28,30 @@
 #' @export
 #' @examples \dontrun{
 #' spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta')
-#' dat <- occlist(query=spp, from='gbif', gbifopts=list(georeferenced=TRUE))
-#' dat <- occtodfspp(dat, 'data')
+#' dat <- occ(spp, from='gbif', gbifopts=list(georeferenced=TRUE))
+#' dat <- fixnames(dat)
+#' df <- occ2df(dat)
 #' 
 #' # Define colors
-#' mapgist(data=dat, color=c('#976AAE','#6B944D','#BD5945'))
+#' mapgist(data=df, color=c('#976AAE','#6B944D','#BD5945'))
 #' 
 #' # Define colors and marker size
-#' mapgist(data=dat, color=c('#976AAE','#6B944D','#BD5945'), size=c('small','medium','large'))
+#' mapgist(data=df, color=c('#976AAE','#6B944D','#BD5945'), size=c('small','medium','large'))
 #' 
 #' # Define symbols
-#' mapgist(data=dat, symbol=c('park','zoo','garden'))
+#' mapgist(data=df, symbol=c('park','zoo','garden'))
 #' }
+
 mapgist <- function(data, description = "", file = "gistmap", dir = NULL, browse = TRUE, 
-    ...) {
-    if (is.null(dir)) 
-        dir <- paste0(getwd(), "/")
-    spplist <- as.character(unique(data$name))
-    datgeojson <- spocc_stylegeojson(input = data, var = "name", ...)
-    write.csv(datgeojson, paste(dir, file, ".csv", sep = ""))
-    spocc_togeojson(input = paste(dir, file, ".csv", sep = ""), method = "web", destpath = dir, 
-        outfilename = file)
-    tt <- spocc_gist(paste(dir, file, ".geojson", sep = ""), description = description)
-    if (browse) 
-        browseURL(tt)
+                    ...) {
+  if (is.null(dir)) 
+    dir <- paste0(getwd(), "/")
+  spplist <- as.character(unique(data$name))
+  datgeojson <- spocc_stylegeojson(input = data, var = "name", ...)
+  write.csv(datgeojson, paste(dir, file, ".csv", sep = ""))
+  spocc_togeojson(input = paste(dir, file, ".csv", sep = ""), method = "web", destpath = dir, 
+                  outfilename = file)
+  tt <- spocc_gist(paste(dir, file, ".geojson", sep = ""), description = description)
+  if (browse) 
+    browseURL(tt)
 } 

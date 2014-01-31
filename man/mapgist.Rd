@@ -49,17 +49,18 @@ by Ramnath Vaidyanathan
 \examples{
 \dontrun{
 spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta')
-dat <- occlist(query=spp, from='gbif', gbifopts=list(georeferenced=TRUE))
-dat <- occtodfspp(dat, 'data')
+dat <- occ(spp, from='gbif', gbifopts=list(georeferenced=TRUE))
+dat <- fixnames(dat)
+df <- occ2df(dat)
 
 # Define colors
-mapgist(data=dat, color=c('#976AAE','#6B944D','#BD5945'))
+mapgist(data=df, color=c('#976AAE','#6B944D','#BD5945'))
 
 # Define colors and marker size
-mapgist(data=dat, color=c('#976AAE','#6B944D','#BD5945'), size=c('small','medium','large'))
+mapgist(data=df, color=c('#976AAE','#6B944D','#BD5945'), size=c('small','medium','large'))
 
 # Define symbols
-mapgist(data=dat, symbol=c('park','zoo','garden'))
+mapgist(data=df, symbol=c('park','zoo','garden'))
 }
 }
 

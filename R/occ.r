@@ -2,8 +2,7 @@
 #' 
 #' Search on a single species name.
 #' 
-#' @import rgbif rinat rebird data.table ecoengine
-#' @importFrom rbison bison bison_data
+#' @import rgbif rinat rebird data.table ecoengine rbison
 #' @importFrom plyr compact
 #' @importFrom lubridate now
 #' @param query A single name. Either a scientific name 
@@ -32,7 +31,7 @@
 #' 
 #' # Many data sources, another example
 #' ebirdopts = list(region = 'US'); gbifopts  =  list(country = 'US')
-#' out <- occ(query = 'Setophaga caerulescens', from = c('gbif','inat','ebird'), gbifopts = gbifopts, ebirdopts = ebirdopts)
+#' out <- occ(query = 'Setophaga caerulescens', from = c('gbif','inat','bison','ebird'), gbifopts = gbifopts, ebirdopts = ebirdopts)
 #' occ2df(out)
 #' 
 #' ## Using a bounding box
@@ -138,7 +137,7 @@ foo_bison <- function(sources, query, opts) {
     time <- now()
     opts$species <- query
     out <- do.call(bison, opts)
-    out <- bison_data(out, datatype = "data_df")
+    out <- out$points
     out$prov <- rep("bison", nrow(out))
     list(time = time, data = out)
     # meta <- list(source='bison', time=time, query=query, type=type, opts=opts)

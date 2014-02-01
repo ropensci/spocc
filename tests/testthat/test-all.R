@@ -5,21 +5,20 @@ x2 <- occ(query = 'Accipiter striatus', from = 'gbif')
 x2 <- occ(query = 'Accipiter striatus', from = 'ecoengine')
 x3 <- occ(query = 'Danaus plexippus', from = 'inat')
 # Make sure they are all occdats
+x4 <- occ(query = 'Bison bison', from = 'bison')
+x5 <- occ(query = 'Setophaga caerulescens', from = 'ebird', ebirdopts = list(region='US'))
+x6 <- occ(query = 'Spinus tristis', from = 'ebird', ebirdopts = list(method = 'ebirdgeo', lat = 42, lng = -76, dist = 50))	
+
 expect_is(x3, "occdat")
 # expect_is(x4, "occdat")
 expect_is(x5, "occdat")
 expect_is(x6, "occdat")
-
-# Scott, is BISON having issues lately?
-# x4 <- occ(query = 'Bison bison', from = 'bison')
-x5 <- occ(query = 'Setophaga caerulescens', from = 'ebird', ebirdopts = list(region='US'))
-x6 <- occ(query = 'Spinus tristis', from = 'ebird', ebirdopts = list(method = 'ebirdgeo', lat = 42, lng = -76, dist = 50))	
 # Testing x1
-expect_is(x1, "occdat")
-expect_is(x1$gbif, "list")
-expect_is(x1$gbif$data[[1]], "data.frame")
-temp_df <- x1$gbif$data[[1]]
-expect_equal(unique(temp_df$prov), "gbif")
+# expect_is(x1, "occdat")
+# expect_is(x1$gbif, "list")
+# expect_is(x1$gbif$data[[1]], "data.frame")
+# temp_df <- x1$gbif$data[[1]]
+# expect_equal(unique(temp_df$prov), "gbif")
 # Testing x2
 expect_is(x2, "occdat")
 expect_is(x2$ecoengine, "list")
@@ -48,6 +47,8 @@ expect_equal(unique(temp_df6$prov), "ebird")
 
 
 context("ggmap works correctly")
+
+library(ggplot2)
 
 test_that("ggmaps work as expected", {
 	ecoengine_data <- occ(query = "Lynx rufus californicus", from = "ecoengine")

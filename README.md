@@ -18,7 +18,7 @@ The inspiration for this comes from users requesting a more seamless experience 
 # Until the package becomes available on CRAN, 
 # install all dependencies separately
 install.packages(c("rbison", "rgbif", "rebird", "ecoengine", 
-"plyr", "ggplot2", "maps", "maptools", "sp", "lubridate", 
+"rinat","plyr", "ggplot2", "maps", "maptools", "sp", "lubridate", 
 "RColorBrewer", "httr", "rgdal", "RJSONIO", "data.table", 
 "assertthat","leafletR"))
 
@@ -131,7 +131,7 @@ $data$Setophaga_caerulescens
 8  Black-throated Blue Warbler       1 25.67330  -80.15820  L127423             Bill Baggs Cape Florida SP
 9  Black-throated Blue Warbler       1 28.79362  -82.52210 L2440885                                   Home
 10 Black-throated Blue Warbler       1 25.73918  -80.30943 L1663905 Miami - AD Barnes Park - Nature Center
-   locationPrivate            obsDt obsReviewed obsValid                sciName  prov
+   locationPrivate            obsDt obsReviewed obsValid                name  prov
 1             TRUE 2013-12-06 13:00        TRUE     TRUE Setophaga caerulescens ebird
 2            FALSE 2013-12-06 12:04       FALSE     TRUE Setophaga caerulescens ebird
 3            FALSE 2013-12-06 09:10       FALSE     TRUE Setophaga caerulescens ebird

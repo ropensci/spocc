@@ -123,6 +123,7 @@ foo_ecoengine <- function(sources, query, opts) {
     out_ee <- do.call(ee_observations, opts)
     out <- out_ee$data
     out$prov <- rep("ecoengine", nrow(out))
+    names(out)[names(out) == 'scientific_name'] <- "name"
     list(time = time, data = out)
     # meta <- list(source='ecoengine', time=time, query=query, type=type, opts=opts)
   } else {
@@ -155,6 +156,7 @@ foo_inat <- function(sources, query, opts) {
     opts$query <- query
     out <- do.call(get_inat_obs, opts)
     out$prov <- rep("inat", nrow(out))
+    names(out)[names(out) == 'Scientific.name'] <- "name"
     list(time = time, data = out)
     # meta <- list(source='inat', time=time, query=query, type=type, opts=opts)
   } else {
@@ -179,6 +181,7 @@ foo_ebird <- function(sources, query, opts) {
       out <- do.call(ebirdgeo, opts[!names(opts) %in% "method"])
     }
     out$prov <- rep("ebird", nrow(out))
+    names(out)[names(out) == 'sciName'] <- "name"
     list(time = time, data = out)
     # meta <- list(source='ebird', time=time, query=query, type=type, opts=opts)
   } else {

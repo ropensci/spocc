@@ -153,9 +153,9 @@ occ2df <- function(obj, what = "data") {
     ee <- foolist(obj$ecoengine)
     tmp <- data.frame(rbindlist(list(data.frame(name = aa$name, longitude = aa$longitude, 
         latitude = aa$latitude, prov = aa$prov), data.frame(name = bb$name, longitude = bb$decimalLongitude, 
-        latitude = bb$decimalLatitude, prov = bb$prov), data.frame(name = cc$Scientific.name, 
-        latitude = cc$Latitude, longitude = cc$Longitude, prov = cc$prov), data.frame(name = dd$sciName, 
-        latitude = dd$lat, longitude = dd$lng, prov = dd$prov), data.frame(name = ee$scientific_name, 
+        latitude = bb$decimalLatitude, prov = bb$prov), data.frame(name = cc$name, 
+        latitude = cc$Latitude, longitude = cc$Longitude, prov = cc$prov), data.frame(name = dd$name,
+        latitude = dd$lat, longitude = dd$lng, prov = dd$prov), data.frame(name = ee$name, 
         latitude = ee$latitude, longitude = ee$longitude, prov = ee$prov))))
     tmpout <- list(meta = list(obj$gbif$meta, obj$bison$meta, obj$inat$meta, obj$ebird$meta, 
         obj$ecoengine$meta), data = tmp)

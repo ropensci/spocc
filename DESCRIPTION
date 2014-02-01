@@ -18,6 +18,8 @@ URL: https://github.com/ropensci/spocc
 BugReports: https://github.com/ropensci/spocc/issues
 LazyLoad: yes
 LazyData: yes
+Depends:
+    ggplot2
 Imports:
     rinat,
     rbison,
@@ -25,7 +27,6 @@ Imports:
     ecoengine,
     rebird,
     plyr,
-    ggplot2,
     maps,
     ggmap,
     maptools,

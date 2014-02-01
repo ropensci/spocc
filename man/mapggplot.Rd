@@ -21,6 +21,8 @@ ecoengine_data <- occ(query = 'Lynx rufus californicus', from = 'ecoengine')
 mapggplot(ecoengine_data)
 gbif_data <- occ(query = 'Accipiter striatus', from = 'gbif')
 mapggplot(gbif_data)
+bison_data <- occ(query = 'Accipiter striatus', from = 'bison', bisonopts=list(count=100))
+mapggplot(bison_data)
 }
 }
 

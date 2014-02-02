@@ -32,7 +32,11 @@ occ(query = NULL, from = "gbif", rank = "species", type = "sci",
   ecoengine}
 }
 \description{
-Search on a single species name.
+Search on a single species name. When searching ecoengine,
+you can leave the page argument blank to get a single page.
+Otherwise use page ranges or simply "all" to request all
+available pages. Note however that this may hang your call
+if the request is simply too large.
 }
 \details{
 The \code{occ} function is an opinionated wrapper around

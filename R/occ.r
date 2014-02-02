@@ -1,6 +1,8 @@
 #' Search for species occurrence data across many data sources.
 #' 
 #' Search on a single species name.
+#' When searching ecoengine, you can leave the page argument blank to get a single page. Otherwise use page ranges or simply "all" to request all available pages.
+#' Note however that this may hang your call if the request is simply too large.
 #' 
 #' @import rgbif rinat rebird data.table ecoengine rbison
 #' @importFrom plyr compact
@@ -115,6 +117,8 @@ foo_ecoengine <- function(sources, query, opts) {
     opts$georeferenced <- TRUE
     # This could hang things if request is super large.  Will deal with this issue
     # when it arises in a usecase
+    # For now default behavior is to retrive one page.
+    # page = "all" will retrieve all pages.
     if (is.null(opts$page)) {
       opts$page <- 1
     }

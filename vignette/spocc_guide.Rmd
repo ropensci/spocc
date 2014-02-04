@@ -1,0 +1,59 @@
+<!--
+%\VignetteEngine{knitr::knitr}
+%\VignetteIndexEntry{An Introduction to the EML package}
+-->
+
+# Species occurrence data (SPOCC), version 0.08
+
+### Introduction
+
+The rOpenSci projects aims to provide programmatic access to scientific data repositories on the web. A vast majority of the packages in our current suite retrieve some form of biodiversity or taxonomic data. Since several of these datasets have been georeferenced, it provides numerous opportunities for visualizing species distributions, building species distribution maps, and for using it analyses such as species distribution models. In an effort to streamline access to these data, we have developed a package called Spocc, which provides a unified API to all the biodiversity sources that we provide. The obvious advantage is that a user can interact with a common API and not worry about the nuances in syntax that differ between packages. As more data sources come online, users can access even more data without significant changes to their code. However, it is important to note that spocc will never replicate the full functionality that exists within specific packages. Therefore users with a strong interest in one of the specific data sources listed below would benefit from familiarising themselves with the inner working of the appropriate packages.
+
+### Data Sources
+
+`SPOCC` currently interfaces with five major biodiversity repositories. Many of these packages have been part of the rOpenSci su
+
+1. Global Biodiversity Information Facility (`rgbif`)
+
+2. Berkeley Ecoengine (`ecoengine`)
+
+3. iNaturalist (`inat`)
+
+4. Vertnet (`vertnet`)
+
+5. Biodiversity Information Serving Our Nation (`rbison`)
+
+
+
+
+### Data retrival
+
+Describe how to query each data source. What the available options are for each one. How to deal with the `occdat` clas.
+
+### Visualization routines
+
+__Interactive maps__  
+
+_Leaflet JS_  
+Leaflet JS is an open source mapping library that can leverage various layers from multiple sources. Using the `leafletR` library, it's possible to generate a local `geoJSON` file and a html file of species distribution maps. The folder can easily be moved to a web server and served widely without any additional coding.
+
+It's also possible to render similar maps iwth Mapbox by committing just the geoJSON file to GitHub or posting it as a gist. All the remaining fields will become part of a table inside a tooltip, providing a extremely quick and easy way to serve up interactive maps. This is especially useful when a user does not have access to web hosting.
+
+_Shiny map_
+
+
+
+_Static maps_
+
+Describe the static ggmap.
+
+* Should we still describe the other (rCharts) stuff even though those functions wont be in the intial release?
+
+### Use-cases
+
+
+### Upcoming features
+
+
+
+### References

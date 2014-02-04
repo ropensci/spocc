@@ -13,22 +13,39 @@ The rOpenSci projects aims to provide programmatic access to scientific data rep
 
 `SPOCC` currently interfaces with five major biodiversity repositories. Many of these packages have been part of the rOpenSci su
 
-1. Global Biodiversity Information Facility (`rgbif`)
+1. Global Biodiversity Information Facility (`rgbif`)  
+[Gbif](http://www.gbif.org/) is a government funded open data repository with several partner organizations with the express goal of providing access to data on Earth's biodiversity. The data are made available by a network of member nodes, coordinating information from various participant organizations and government agencies.
 
-2. Berkeley Ecoengine (`ecoengine`)
+2. [Berkeley Ecoengine](http://ecoengine.berkeley.edu/) (`ecoengine`)  
+The ecoengine is an open API built by the [Berkeley Initiative for Global Change Biology](http://globalchange.berkeley.edu/). The repository provides access to over 3 million specimens from various Berkeley natural history museums. These data span more than a century and provide access to georeferenced specimens, species checklists, photographs, vegetation surveys and resurveys and a variety of measurements from environmental sensors located at reserves across University of California's natural reserve system.
 
-3. iNaturalist (`inat`)
+3. __iNaturalist__ (`inat`)  
+iNaturalist provides access to crowd sourced citizen science data on species observations. 
 
-4. Vertnet (`vertnet`)
+4. [Vertnet](http://vertnet.org/index.php) (`vertnet`)
+Similar to gbif, ecoengine, and bison (see below), Vernet provides access to more than 80 million vertebrate records spanning a large number of institutions and museums primarly covering four major disciplines (mammology, herpetology, ornithology, and icthyology).
 
-5. Biodiversity Information Serving Our Nation (`rbison`)
+5. [Biodiversity Information Serving Our Nation](http://bison.usgs.ornl.gov/) (`rbison`)  
+Built by the US Geological Survey's core science analytic team, BISON is a portal that provides access to species occurrence data from several participating institutions. 
+
+6. [ebird](http://ebird.org/content/ebird/) (`rebird`)  
+ebird is a database developed and maintained by the Cornell Lab of Ornithology and the National Audubon Society. It provides real-time access to checklist data, data on bird abundance and distribution, and communtiy reports from birders.
 
 
-
+__Notes:__ It's important to keep in mind that several data providers interface with many of the above mentioned repositoires. This means that occurence data obtained from BISON may be duplicates of data that are also available through GBIF. We do not have a way to resolve these duplicates or overlaps at this time but it is an issue we are hoping to resolve in future versions of the package.
 
 ### Data retrival
 
-Describe how to query each data source. What the available options are for each one. How to deal with the `occdat` clas.
+The most significant function in spocc is the `occ` (short for occurrence) function. `occ` takes a query, often a species name, and searches across all data sources specified in the `from` argument. For example, one can search for all occurrences of [Sharp-shinned Hawks](http://www.allaboutbirds.org/guide/sharp-shinned_hawk/id) (_Accipiter striatus_) from the gbif database with the following R call.
+
+```{r, gbif_simple_eg}
+library(gbif)
+df <- occ(query = 'Accipiter striatus', from = 'gbif')
+df
+```
+
+The data returned are part of a `S3` class called `occdat`. This class has slots for the various data sources described above. One can easily switch the source by changing the `from` in the function call above.
+
 
 ### Visualization routines
 

@@ -1,7 +1,8 @@
 #' Search for species occurrence data across many data sources.
 #' 
 #' Search on a single species name.
-#' When searching ecoengine, you can leave the page argument blank to get a single page. Otherwise use page ranges or simply "all" to request all available pages.
+#' When searching ecoengine, you can leave the page argument blank to get a single page. 
+#' Otherwise use page ranges or simply "all" to request all available pages.
 #' Note however that this may hang your call if the request is simply too large.
 #' 
 #' @import rgbif rinat rebird data.table ecoengine rbison
@@ -19,7 +20,8 @@
 #' occ(query = 'Danaus plexippus', from = 'inat')
 #' occ(query = 'Bison bison', from = 'bison')
 #' occ(query = 'Setophaga caerulescens', from = 'ebird', ebirdopts = list(region='US'))
-#' occ(query = 'Spinus tristis', from = 'ebird', ebirdopts = list(method = 'ebirdgeo', lat = 42, lng = -76, dist = 50))
+#' occ(query = 'Spinus tristis', from = 'ebird', ebirdopts = 
+#'    list(method = 'ebirdgeo', lat = 42, lng = -76, dist = 50))
 #' 
 #' # Many data sources
 #' out <- occ(query = 'Pinus contorta', from=c('gbif','inat'))
@@ -33,19 +35,18 @@
 #' 
 #' # Many data sources, another example
 #' ebirdopts = list(region = 'US'); gbifopts  =  list(country = 'US')
-#' out <- occ(query = 'Setophaga caerulescens', from = c('gbif','inat','bison','ebird'), gbifopts = gbifopts, ebirdopts = ebirdopts)
+#' out <- occ(query = 'Setophaga caerulescens', from = c('gbif','inat','bison','ebird'), 
+#' gbifopts = gbifopts, ebirdopts = ebirdopts)
 #' occ2df(out)
 #' 
 #' ## Using a bounding box
 #' bounds <- c(38.44047,-125,40.86652,-121.837)
-#' aoibbox <- '-111.31,38.81,-110.57,39.21'
-#' get_inat_obs(query ='Mule Deer', bounds = bounds)
-#' occ(query = 'Danaus plexippus', )
+#' head(occ(query = 'Danaus plexippus', from="inat", inatopts=list(bounds=bounds))$inat$data)
 #' 
 #' # Pass in many species names
 #' spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Spinus tristis')
 #' out <- occ(query = spnames, from = 'gbif', gbifopts = list(georeferenced = TRUE))
-#' occ2df(out)
+#' head(occ2df(out))
 #' }
 occ <- function(query  =  NULL, from = "gbif", rank = "species", 
                 type = "sci", gbifopts = list(), bisonopts = list(), inatopts = list(), ebirdopts = list(), 

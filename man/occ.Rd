@@ -55,7 +55,8 @@ occ(query = 'Accipiter striatus', from = 'ecoengine')
 occ(query = 'Danaus plexippus', from = 'inat')
 occ(query = 'Bison bison', from = 'bison')
 occ(query = 'Setophaga caerulescens', from = 'ebird', ebirdopts = list(region='US'))
-occ(query = 'Spinus tristis', from = 'ebird', ebirdopts = list(method = 'ebirdgeo', lat = 42, lng = -76, dist = 50))
+occ(query = 'Spinus tristis', from = 'ebird', ebirdopts =
+   list(method = 'ebirdgeo', lat = 42, lng = -76, dist = 50))
 
 # Many data sources
 out <- occ(query = 'Pinus contorta', from=c('gbif','inat'))
@@ -69,19 +70,18 @@ occ2df(out)
 
 # Many data sources, another example
 ebirdopts = list(region = 'US'); gbifopts  =  list(country = 'US')
-out <- occ(query = 'Setophaga caerulescens', from = c('gbif','inat','bison','ebird'), gbifopts = gbifopts, ebirdopts = ebirdopts)
+out <- occ(query = 'Setophaga caerulescens', from = c('gbif','inat','bison','ebird'),
+gbifopts = gbifopts, ebirdopts = ebirdopts)
 occ2df(out)
 
 ## Using a bounding box
 bounds <- c(38.44047,-125,40.86652,-121.837)
-aoibbox <- '-111.31,38.81,-110.57,39.21'
-get_inat_obs(query ='Mule Deer', bounds = bounds)
-occ(query = 'Danaus plexippus', )
+head(occ(query = 'Danaus plexippus', from="inat", inatopts=list(bounds=bounds))$inat$data)
 
 # Pass in many species names
 spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Spinus tristis')
 out <- occ(query = spnames, from = 'gbif', gbifopts = list(georeferenced = TRUE))
-occ2df(out)
+head(occ2df(out))
 }
 }
 

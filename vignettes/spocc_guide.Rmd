@@ -1,6 +1,6 @@
 <!--
 %\VignetteEngine{knitr::knitr}
-%\VignetteIndexEntry{An Introduction to the EML package}
+%\VignetteIndexEntry{An introduction to the spocc package}
 -->
 
 # Species occurrence data (SPOCC), version 0.08
@@ -38,8 +38,8 @@ __Notes:__ It's important to keep in mind that several data providers interface 
 
 The most significant function in spocc is the `occ` (short for occurrence) function. `occ` takes a query, often a species name, and searches across all data sources specified in the `from` argument. For example, one can search for all occurrences of [Sharp-shinned Hawks](http://www.allaboutbirds.org/guide/sharp-shinned_hawk/id) (_Accipiter striatus_) from the gbif database with the following R call.
 
-```{r, gbif_simple_eg}
-library(gbif)
+```{r, gbif_simple_eg, eval=FALSE}
+library(spocc)
 df <- occ(query = 'Accipiter striatus', from = 'gbif')
 df
 ```

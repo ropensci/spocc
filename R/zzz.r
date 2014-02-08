@@ -193,3 +193,36 @@ occ2sp <- function(input) {
     coordinates(dat) <- c("latitude", "longitude")
     return(dat)
 } 
+
+#' Converts a bounding box to a Well Known Text polygon
+#' 
+#' @param minx Minimum x value, or the most western longitude
+#' @param miny Minimum y value, or the most southern latitude
+#' @param maxx Maximum x value, or the most eastern longitude 
+#' @param maxy Maximum y value, or the most northern latitude
+#' @param bbox A vector of length 4, with the elements: minx, miny, maxx, maxy
+#' @return An object of class charactere, a Well Known Text string of the form
+#' 'POLYGON((minx miny, maxx miny, maxx maxy, minx maxy, minx miny))'
+#' @examples
+#' library(rgeos)
+#' 
+#' # Pass in a vector of length 4 with all values
+#' mm <- bbox2wkt(bbox=c(38.4,-125.0,40.9,-121.8))
+#' plot(readWKT(mm))
+#' 
+#' # Or pass in each value separately
+#' mm <- bbox2wkt(minx=38.4, miny=-125.0, maxx=40.9, maxy=-121.8)
+#' plot(readWKT(mm))
+
+bbox2wkt <- function(minx=NA, miny=NA, maxx=NA, maxy=NA, bbox=NULL){
+  if(is.null(bbox)) bbox <- c(minx, miny, maxx, maxy)
+  
+  assert_that(length(bbox)==4) #check for 4 digits
+  assert_that(noNA(bbox)) #check for NAs
+  assert_that(is.numeric(as.numeric(bbox))) #check for numeric-ness
+  paste('POLYGON((', 
+        sprintf('%s %s',bbox[1],bbox[2]), ',', sprintf('%s %s',bbox[3],bbox[2]), ',', 
+        sprintf('%s %s',bbox[3],bbox[4]), ',', sprintf('%s %s',bbox[1],bbox[4]), ',', 
+        sprintf('%s %s',bbox[1],bbox[2]), 
+        '))', sep="")
+}

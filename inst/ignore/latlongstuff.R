@@ -50,17 +50,17 @@ plot(buf)
 #' mm <- bbox2wkt(minx=38.4, miny=-125.0, maxx=40.9, maxy=-121.8)
 #' plot(readWKT(mm))
 
-bbox2wkt <- function(minx=NA, miny=NA, maxx=NA, maxy=NA, all=NULL){
-  if(is.null(all))
-    all <- c(minx, miny, maxx, maxy)
+bbox2wkt <- function(minx=NA, miny=NA, maxx=NA, maxy=NA, bbox=NULL){
+  if(is.null(bbox))
+    bbox <- c(minx, miny, maxx, maxy)
   
-  assert_that(length(all)==4) #check for 4 digits
-  assert_that(noNA(all)) #check for NAs
-  assert_that(is.numeric(as.numeric(all))) #check for numeric-ness
+  assert_that(length(bbox)==4) #check for 4 digits
+  assert_that(noNA(bbox)) #check for NAs
+  assert_that(is.numeric(as.numeric(bbox))) #check for numeric-ness
   paste('POLYGON((', 
-        sprintf('%s %s',all[1],all[2]), ',', sprintf('%s %s',all[3],all[2]), ',', 
-        sprintf('%s %s',all[3],all[4]), ',', sprintf('%s %s',all[1],all[4]), ',', 
-        sprintf('%s %s',all[1],all[2]), 
+        sprintf('%s %s',bbox[1],bbox[2]), ',', sprintf('%s %s',bbox[3],bbox[2]), ',', 
+        sprintf('%s %s',bbox[3],bbox[4]), ',', sprintf('%s %s',bbox[1],bbox[4]), ',', 
+        sprintf('%s %s',bbox[1],bbox[2]), 
         '))', sep="")
 }
 

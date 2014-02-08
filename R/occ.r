@@ -48,23 +48,24 @@
 #' out <- occ(query = spnames, from = 'gbif', gbifopts = list(georeferenced = TRUE))
 #' head(occ2df(out))
 #' }
-occ <- function(query  =  NULL, from = "gbif", rank = "species", 
-                type = "sci", gbifopts = list(), bisonopts = list(), inatopts = list(), ebirdopts = list(), 
-                ecoengineopts = list()) {
+occ <- function(query  =  NULL, from = "gbif", geometry = NULL, limit = 25, rank = "species",
+                type = "sci", gbifopts = list(), bisonopts = list(), inatopts = list(), 
+                ebirdopts = list(), ecoengineopts = list()) {
   out_gbif <- out_bison <- out_inat <- out_ebird <- data.frame(NULL)
   out_gbif <- out_bison <- out_inat <- out_ebird <- data.frame(NULL)
   sources <- match.arg(from, choices = c("gbif", "bison", "inat", "ebird", "ecoengine"), 
                        several.ok = TRUE)
-  loopfun <- function(x) {
-    gbif_res <- foo_gbif(sources, x, gbifopts)
-    bison_res <- foo_bison(sources, x, bisonopts)
-    inat_res <- foo_inat(sources, x, inatopts)
-    ebird_res <- foo_ebird(sources, x, ebirdopts)
+  loopfun <- function(x, y) {
+#     x=query; y=limit
+    gbif_res <- foo_gbif(sources, x, y, gbifopts)
+    bison_res <- foo_bison(sources, x, y, bisonopts)
+    inat_res <- foo_inat(sources, x, y, inatopts)
+    ebird_res <- foo_ebird(sources, x, y, ebirdopts)
     ecoengine_res <- foo_ecoengine(sources, x, ecoengineopts)
     list(gbif = gbif_res, bison = bison_res, inat = inat_res, ebird = ebird_res, 
          ecoengine = ecoengine_res)
   }
-  tmp <- lapply(query, loopfun)
+  tmp <- lapply(query, loopfun, y=limit)
   getsplist <- function(srce, opts) {
     tt <- lapply(tmp, function(x) x[[srce]]$data)
     names(tt) <- gsub("\\s", "_", query)
@@ -89,10 +90,11 @@ occ <- function(query  =  NULL, from = "gbif", rank = "species",
 
 # Plugins for the occ function for each data source
 #' @noRd
-foo_gbif <- function(sources, query, opts) {
+foo_gbif <- function(sources, query, limit, opts) {
   if (any(grepl("gbif", sources))) {
     time <- now()
     opts$taxonKey <- name_backbone(name = query)$usageKey
+    opts$limit <- limit
     opts$return <- "data"
     out <- do.call(occ_search, opts)
     if (class(out) == "character") {
@@ -107,7 +109,6 @@ foo_gbif <- function(sources, query, opts) {
   } else {
     list(time = NULL, data = data.frame(NULL))
   }
-  # list(meta=meta, data=out)
 }
 
 #' @noRd
@@ -138,10 +139,11 @@ foo_ecoengine <- function(sources, query, opts) {
   # list(meta=meta, data=out)
 }
 #' @noRd
-foo_bison <- function(sources, query, opts) {
+foo_bison <- function(sources, query, limit, opts) {
   if (any(grepl("bison", sources))) {
     time <- now()
     opts$species <- query
+    opts$count <- limit
     out <- do.call(bison, opts)
     out <- out$points
     out$prov <- rep("bison", nrow(out))
@@ -155,10 +157,11 @@ foo_bison <- function(sources, query, opts) {
   # list(meta=meta, data=out)
 }
 #' @noRd
-foo_inat <- function(sources, query, opts) {
+foo_inat <- function(sources, query, limit, opts) {
   if (any(grepl("inat", sources))) {
     time <- now()
     opts$query <- query
+    opts$maxresults <- limit
     out <- do.call(get_inat_obs, opts)
     out$prov <- rep("inat", nrow(out))
     names(out)[names(out) == 'Scientific.name'] <- "name"
@@ -172,7 +175,7 @@ foo_inat <- function(sources, query, opts) {
   # list(meta=meta, data=out)
 }
 #' @noRd
-foo_ebird <- function(sources, query, opts) {
+foo_ebird <- function(sources, query, limit, opts) {
   if (any(grepl("ebird", sources))) {
     time <- now()
     if (is.null(opts$method)) 
@@ -180,6 +183,7 @@ foo_ebird <- function(sources, query, opts) {
     if (!opts$method %in% c("ebirdregion", "ebirdgeo")) 
       stop("ebird method must be one of ebirdregion or ebirdgeo")
     opts$species <- query
+    opts$max <- limit
     if (opts$method == "ebirdregion") {
       out <- do.call(ebirdregion, opts[!names(opts) %in% "method"])
     } else {

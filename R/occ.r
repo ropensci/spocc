@@ -8,9 +8,6 @@
 #' @import rgbif rinat rebird data.table ecoengine rbison
 #' @importFrom plyr compact
 #' @importFrom lubridate now
-#' @param query A single name. Either a scientific name 
-#' or a common name. Specify whether a scientific or common name in the type parameter.
-#' Only scientific names supported right now.
 #' @template occtemp
 #' @export
 #' @examples \dontrun{
@@ -22,6 +19,8 @@
 #' occ(query = 'Setophaga caerulescens', from = 'ebird', ebirdopts = list(region='US'))
 #' occ(query = 'Spinus tristis', from = 'ebird', ebirdopts = 
 #'    list(method = 'ebirdgeo', lat = 42, lng = -76, dist = 50))
+#'    
+#' # 
 #' 
 #' # Many data sources
 #' out <- occ(query = 'Pinus contorta', from=c('gbif','inat'))
@@ -48,24 +47,24 @@
 #' out <- occ(query = spnames, from = 'gbif', gbifopts = list(georeferenced = TRUE))
 #' head(occ2df(out))
 #' }
-occ <- function(query  =  NULL, from = "gbif", geometry = NULL, limit = 25, rank = "species",
+occ <- function(query  =  NULL, from = "gbif", limit = 25, geometry = NULL, rank = "species",
                 type = "sci", gbifopts = list(), bisonopts = list(), inatopts = list(), 
                 ebirdopts = list(), ecoengineopts = list()) {
   out_gbif <- out_bison <- out_inat <- out_ebird <- data.frame(NULL)
   out_gbif <- out_bison <- out_inat <- out_ebird <- data.frame(NULL)
   sources <- match.arg(from, choices = c("gbif", "bison", "inat", "ebird", "ecoengine"), 
                        several.ok = TRUE)
-  loopfun <- function(x, y) {
+  loopfun <- function(x, y, z) {
 #     x=query; y=limit
-    gbif_res <- foo_gbif(sources, x, y, gbifopts)
-    bison_res <- foo_bison(sources, x, y, bisonopts)
-    inat_res <- foo_inat(sources, x, y, inatopts)
+    gbif_res <- foo_gbif(sources, x, y, z, gbifopts)
+    bison_res <- foo_bison(sources, x, y, z, bisonopts)
+    inat_res <- foo_inat(sources, x, y, z, inatopts)
     ebird_res <- foo_ebird(sources, x, y, ebirdopts)
-    ecoengine_res <- foo_ecoengine(sources, x, ecoengineopts)
+    ecoengine_res <- foo_ecoengine(sources, x, y, z, ecoengineopts)
     list(gbif = gbif_res, bison = bison_res, inat = inat_res, ebird = ebird_res, 
          ecoengine = ecoengine_res)
   }
-  tmp <- lapply(query, loopfun, y=limit)
+  tmp <- lapply(query, loopfun, y=limit, z=geometry)
   getsplist <- function(srce, opts) {
     tt <- lapply(tmp, function(x) x[[srce]]$data)
     names(tt) <- gsub("\\s", "_", query)
@@ -90,11 +89,12 @@ occ <- function(query  =  NULL, from = "gbif", geometry = NULL, limit = 25, rank
 
 # Plugins for the occ function for each data source
 #' @noRd
-foo_gbif <- function(sources, query, limit, opts) {
+foo_gbif <- function(sources, query, limit, geometry, opts) {
   if (any(grepl("gbif", sources))) {
     time <- now()
     opts$taxonKey <- name_backbone(name = query)$usageKey
     opts$limit <- limit
+    opts$geometry <- geometry
     opts$return <- "data"
     out <- do.call(occ_search, opts)
     if (class(out) == "character") {
@@ -112,11 +112,13 @@ foo_gbif <- function(sources, query, limit, opts) {
 }
 
 #' @noRd
-foo_ecoengine <- function(sources, query, opts) {
+foo_ecoengine <- function(sources, query, limit, geometry, opts) {
   if (any(grepl("ecoengine", sources))) {
     time <- now()
     opts$scientific_name <- query
     opts$georeferenced <- TRUE
+    opts$page_size <- limit
+    opts$bbox <- geometry
     # This could hang things if request is super large.  Will deal with this issue
     # when it arises in a usecase
     # For now default behavior is to retrive one page.
@@ -139,11 +141,12 @@ foo_ecoengine <- function(sources, query, opts) {
   # list(meta=meta, data=out)
 }
 #' @noRd
-foo_bison <- function(sources, query, limit, opts) {
+foo_bison <- function(sources, query, limit, geometry, opts) {
   if (any(grepl("bison", sources))) {
     time <- now()
     opts$species <- query
     opts$count <- limit
+    opts$aoi <- geometry
     out <- do.call(bison, opts)
     out <- out$points
     out$prov <- rep("bison", nrow(out))
@@ -157,11 +160,12 @@ foo_bison <- function(sources, query, limit, opts) {
   # list(meta=meta, data=out)
 }
 #' @noRd
-foo_inat <- function(sources, query, limit, opts) {
+foo_inat <- function(sources, query, limit, geometry, opts) {
   if (any(grepl("inat", sources))) {
     time <- now()
     opts$query <- query
     opts$maxresults <- limit
+    opts$bounds <- geometry
     out <- do.call(get_inat_obs, opts)
     out$prov <- rep("inat", nrow(out))
     names(out)[names(out) == 'Scientific.name'] <- "name"

@@ -19,9 +19,7 @@
 #' occ(query = 'Setophaga caerulescens', from = 'ebird', ebirdopts = list(region='US'))
 #' occ(query = 'Spinus tristis', from = 'ebird', ebirdopts = 
 #'    list(method = 'ebirdgeo', lat = 42, lng = -76, dist = 50))
-#'    
-#' # 
-#' 
+#'
 #' # Many data sources
 #' out <- occ(query = 'Pinus contorta', from=c('gbif','inat'))
 #' 
@@ -31,6 +29,17 @@
 #' 
 #' ## Coerce to combined data.frame, selects minimal set of columns (name, lat, long)
 #' occ2df(out)
+#' 
+#' # Pass in limit parameter to all sources. This limits the number of occurrences
+#' # returned to 10, in this example, for all sources, in this case gbif and inat.
+#' occ(query='Pinus contorta', from=c('gbif','inat'), limit=10)
+#' 
+#' # Pass in geometry parameter to all sources. This constraints the search to the 
+#' # specified polygon for all sources, gbif and bison in this example.
+#' occ(query='Accipiter striatus', from='gbif', 
+#'    geometry='POLYGON((30.1 10.1, 10 20, 20 60, 60 60, 30.1 10.1))')
+#' occ(query='Helianthus annuus', from='bison', 
+#'    geometry='POLYGON((-111.06 38.84, -110.80 39.37, -110.20 39.17, -110.20 38.90, -110.63 38.67, -111.06 38.84))')
 #' 
 #' # Many data sources, another example
 #' ebirdopts = list(region = 'US'); gbifopts  =  list(country = 'US')
@@ -55,7 +64,7 @@ occ <- function(query  =  NULL, from = "gbif", limit = 25, geometry = NULL, rank
   sources <- match.arg(from, choices = c("gbif", "bison", "inat", "ebird", "ecoengine"), 
                        several.ok = TRUE)
   loopfun <- function(x, y, z) {
-#     x=query; y=limit
+    # x=query; y=limit; z=geometry
     gbif_res <- foo_gbif(sources, x, y, z, gbifopts)
     bison_res <- foo_bison(sources, x, y, z, bisonopts)
     inat_res <- foo_inat(sources, x, y, z, inatopts)

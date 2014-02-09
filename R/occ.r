@@ -41,18 +41,24 @@
 #'    geometry='POLYGON((-111.06 38.84, -110.80 39.37, -110.20 39.17, -110.20 38.90, -110.63 38.67, -111.06 38.84))')
 #'    
 #' ## Or pass in a bounding box, which is automatically converted to WKT (required by GBIF)
-#' occ(query='Accipiter striatus', from='gbif', geometry=c(38.4,-125.0,40.9,-121.8))
+#' ## via the bbox2wkt function
+#' occ(query='Accipiter striatus', from='gbif', geometry=c(-125.0,38.4,-121.8,40.9))
 #' 
-#' ## WKT's are more flexible than bounding box's. You can pass in a WKT with multiple 
-#' ## polygons like so (you can use POLYGON or MULTIPOLYGON) when specifying more than one
-#' ## polygon. Note how each polygon is in it's own set of parentheses.
-#' occ(query='Accipiter striatus', from='gbif', 
-#'    geometry='MULTIPOLYGON((30 10, 10 20, 20 60, 60 60, 30 10), (30 10, 10 20, 20 60, 60 60, 30 10))')
+#' ## Bounding box constraint with ecoengine 
+#' occ(query='Accipiter striatus', from='ecoengine', limit=10, geometry=c(-125.0,38.4,-121.8,40.9))
 #' 
 #' ## You can pass in geometry to each source separately via their opts parameter, at 
-#' ## least those that support it
-#' bounds <- c(38.44047,-125,40.86652,-121.837)
-#' head(occ(query = 'Danaus plexippus', from="inat", inatopts=list(bounds=bounds))$inat$data)
+#' ## least those that support it. Note that if you use rinat, you reverse the order, with
+#' ## latitude first, and longitude second, but here it's the reverse for consistency across
+#' ## the spocc package
+#' bounds <- c(-125.0,38.4,-121.8,40.9)
+#' occ(query = 'Danaus plexippus', from="inat", inatopts=list(bounds=bounds))
+#' 
+#' ## Same, but passing in via the global geometry parameter
+#' occ(query = 'Danaus plexippus', from="inat", geometry=bounds)
+#' 
+#' ## Passing geometry with multiple sources
+#' occ(query = 'Danaus plexippus', from=c("inat","gbif","ecoengine"), geometry=bounds)
 #' 
 #' # Specify many data sources, another example
 #' ebirdopts = list(region = 'US'); gbifopts  =  list(country = 'US')
@@ -66,6 +72,15 @@
 #' out <- occ(query = spnames, from = 'gbif', gbifopts = list(georeferenced = TRUE))
 #' df <- occ2df(out)
 #' head(df)
+#' }
+#' 
+#' @examples \donttest{
+#' #### NOTE: no support for multipolygons yet
+#' ## WKT's are more flexible than bounding box's. You can pass in a WKT with multiple 
+#' ## polygons like so (you can use POLYGON or MULTIPOLYGON) when specifying more than one
+#' ## polygon. Note how each polygon is in it's own set of parentheses.
+#' occ(query='Accipiter striatus', from='gbif', 
+#'    geometry='MULTIPOLYGON((30 10, 10 20, 20 60, 60 60, 30 10), (30 10, 10 20, 20 60, 60 60, 30 10))')
 #' }
 occ <- function(query  =  NULL, from = "gbif", limit = 25, geometry = NULL, rank = "species",
                 type = "sci", gbifopts = list(), bisonopts = list(), inatopts = list(), 
@@ -181,8 +196,12 @@ foo_inat <- function(sources, query, limit, geometry, opts) {
     time <- now()
     opts$query <- query
     opts$maxresults <- limit
-    opts$bounds <- if(grepl('POLYGON', paste(as.character(geometry), collapse=" "))){ 
-      wkt2bbox(geometry) } else { geometry }
+    opts$bounds <- if(grepl('POLYGON', paste(as.character(geometry), collapse=" ")))
+    { 
+      # flip lat and long spots in the bounds vector for inat
+      temp <- wkt2bbox(geometry)
+      c(tmp[2], tmp[1], tmp[4], tmp[3])
+    } else { c(geometry[2], geometry[1], geometry[4], geometry[3]) }
     out <- do.call(get_inat_obs, opts)
     out$prov <- rep("inat", nrow(out))
     names(out)[names(out) == 'Scientific.name'] <- "name"

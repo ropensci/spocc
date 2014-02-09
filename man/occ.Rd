@@ -119,17 +119,15 @@ occ(query='Helianthus annuus', from='bison',
    geometry='POLYGON((-111.06 38.84, -110.80 39.37, -110.20 39.17, -110.20 38.90, -110.63 38.67, -111.06 38.84))')
 
 ## Or pass in a bounding box, which is automatically converted to WKT (required by GBIF)
-occ(query='Accipiter striatus', from='gbif', geometry=c(38.4,-125.0,40.9,-121.8))
+## via the bbox2wkt function
+occ(query='Accipiter striatus', from='gbif', geometry=c(-125.0,38.4,-121.8,40.9))
 
-## WKT's are more flexible than bounding box's. You can pass in a WKT with multiple
-## polygons like so (you can use POLYGON or MULTIPOLYGON) when specifying more than one
-## polygon. Note how each polygon is in it's own set of parentheses.
-occ(query='Accipiter striatus', from='gbif',
-   geometry='MULTIPOLYGON((30 10, 10 20, 20 60, 60 60, 30 10), (30 10, 10 20, 20 60, 60 60, 30 10))')
+## Bounding box constaint with ecoengine
+occ(query='Accipiter striatus', from='ecoengine', limit=10, geometry=c(-125.0,38.4,-121.8,40.9))
 
 ## You can pass in geometry to each source separately via their opts parameter, at
 ## least those that support it
-bounds <- c(38.44047,-125,40.86652,-121.837)
+bounds <- c(-125.0,38.4,-121.8,40.9)
 head(occ(query = 'Danaus plexippus', from="inat", inatopts=list(bounds=bounds))$inat$data)
 
 # Specify many data sources, another example

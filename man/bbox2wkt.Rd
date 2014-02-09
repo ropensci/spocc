@@ -56,5 +56,4 @@ plot(readWKT(mm))
 wkt <- "POLYGON((38.4 -125,40.9 -125,40.9 -121.8,38.4 -121.8,38.4 -125))"
 wkt2bbox(wkt)
 }
-\keyword{internal}
 

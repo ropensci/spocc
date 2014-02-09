@@ -201,11 +201,11 @@ occ2sp <- function(input) {
 #' @param maxx Maximum x value, or the most eastern longitude 
 #' @param maxy Maximum y value, or the most northern latitude
 #' @param bbox A vector of length 4, with the elements: minx, miny, maxx, maxy
-#' @keywords internal
 #' @return bbox2wkt returns an object of class charactere, a Well Known Text string
 #' of the form 'POLYGON((minx miny, maxx miny, maxx maxy, minx maxy, minx miny))'. 
 #' 
 #' wkt2bbox returns a numeric vector of length 4, like c(minx, miny, maxx, maxy).
+#' @export
 #' @examples
 #' library(rgeos)
 #' 
@@ -232,14 +232,14 @@ bbox2wkt <- function(minx=NA, miny=NA, maxx=NA, maxy=NA, bbox=NULL){
   assert_that(noNA(bbox)) #check for NAs
   assert_that(is.numeric(as.numeric(bbox))) #check for numeric-ness
   paste('POLYGON((', 
-        sprintf('%s %s',bbox[1],bbox[2]), ',', sprintf('%s %s',bbox[3],bbox[2]), ',', 
-        sprintf('%s %s',bbox[3],bbox[4]), ',', sprintf('%s %s',bbox[1],bbox[4]), ',', 
-        sprintf('%s %s',bbox[1],bbox[2]), 
+        sprintf('%s %s',bbox[1],bbox[2]), ',', sprintf(' %s %s',bbox[3],bbox[2]), ',', 
+        sprintf(' %s %s',bbox[3],bbox[4]), ',', sprintf(' %s %s',bbox[1],bbox[4]), ',', 
+        sprintf(' %s %s',bbox[1],bbox[2]), 
         '))', sep="")
 }
 
 #' @param wkt A Well Known Text object.
-#' @keywords internal
+#' @export
 #' @rdname bbox2wkt
  
 wkt2bbox <- function(wkt=NULL){

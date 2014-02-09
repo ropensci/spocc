@@ -20,12 +20,14 @@ occ(query = NULL, from = "gbif", limit = 25, geometry = NULL,
   is passed across all sources. To specify different limits
   for each source, use the options for each source.}
 
-  \item{geometry}{(character) Searches for occurrences
-  inside a polygon described in Well Known Text (WKT)
-  format. A WKT shape written as 'POLYGON((30.1 10.1, 20,
-  20 40, 40 40, 30.1 10.1))' would be queried as is, i.e.
-  http://bit.ly/HwUSif. See Details for more examples of
-  WKT objects.}
+  \item{geometry}{(character or nmeric) One of a Well Known
+  Text (WKT) object or a vector of length 4 specifying a
+  bounding box. This parameter searches for occurrences
+  inside a box given as a bounding box or polygon described
+  in WKT format. A WKT shape written as 'POLYGON((30.1
+  10.1, 20, 20 40, 40 40, 30.1 10.1))' would be queried as
+  is, i.e. http://bit.ly/HwUSif. See Details for more
+  examples of WKT objects.}
 
   \item{rank}{(character) Taxonomic rank. Not used right
   now.}
@@ -66,10 +68,10 @@ inatopts, ebirdopts, and ecoengineopts parameters.
 
 WKT objects are strings of pairs of lat/long coordinates
 that define a shape. Many classes of shapes are supported,
-including POLYGON, POINT, and XXXX. Within each defined
-shape define all vertices of the shape with a coordinate
-like 30.1 10.1, the first of which is the latitude, the
-second the longitude.
+including POLYGON, POINT, and MULTIPOLYGON. Within each
+defined shape define all vertices of the shape with a
+coordinate like 30.1 10.1, the first of which is the
+latitude, the second the longitude.
 
 Examples of valid WKT objects: \itemize{ \item
 'POLYGON((30.1 10.1, 10 20, 20 60, 60 60, 30.1 10.1))'
@@ -105,12 +107,16 @@ occ2df(out)
 # returned to 10, in this example, for all sources, in this case gbif and inat.
 occ(query='Pinus contorta', from=c('gbif','inat'), limit=10)
 
-# Pass in geometry parameter to all sources. This constraints the search to the
-# specified polygon for all sources, gbif and bison in this example.
+# Geometry
+## Pass in geometry parameter to all sources. This constraints the search to the
+## specified polygon for all sources, gbif and bison in this example.
 occ(query='Accipiter striatus', from='gbif',
    geometry='POLYGON((30.1 10.1, 10 20, 20 60, 60 60, 30.1 10.1))')
 occ(query='Helianthus annuus', from='bison',
    geometry='POLYGON((-111.06 38.84, -110.80 39.37, -110.20 39.17, -110.20 38.90, -110.63 38.67, -111.06 38.84))')
+
+## Or pass in a bounding box, which is automatically converted to WKT if needed
+occ(query='Accipiter striatus', from='gbif', geometry=c(38.4,-125.0,40.9,-121.8))
 
 # Many data sources, another example
 ebirdopts = list(region = 'US'); gbifopts  =  list(country = 'US')

@@ -34,27 +34,40 @@
 #' # returned to 10, in this example, for all sources, in this case gbif and inat.
 #' occ(query='Pinus contorta', from=c('gbif','inat'), limit=10)
 #' 
-#' # Pass in geometry parameter to all sources. This constraints the search to the 
-#' # specified polygon for all sources, gbif and bison in this example.
+#' # Geometry
+#' ## Pass in geometry parameter to all sources. This constraints the search to the 
+#' ## specified polygon for all sources, gbif and bison in this example.
 #' occ(query='Accipiter striatus', from='gbif', 
 #'    geometry='POLYGON((30.1 10.1, 10 20, 20 60, 60 60, 30.1 10.1))')
 #' occ(query='Helianthus annuus', from='bison', 
 #'    geometry='POLYGON((-111.06 38.84, -110.80 39.37, -110.20 39.17, -110.20 38.90, -110.63 38.67, -111.06 38.84))')
+#'    
+#' ## Or pass in a bounding box, which is automatically converted to WKT (required by GBIF)
+#' occ(query='Accipiter striatus', from='gbif', geometry=c(38.4,-125.0,40.9,-121.8))
 #' 
-#' # Many data sources, another example
+#' ## WKT's are more flexible than bounding box's. You can pass in a WKT with multiple 
+#' ## polygons like so (you can use POLYGON or MULTIPOLYGON) when specifying more than one
+#' ## polygon. Note how each polygon is in it's own set of parentheses.
+#' occ(query='Accipiter striatus', from='gbif', 
+#'    geometry='MULTIPOLYGON((30 10, 10 20, 20 60, 60 60, 30 10), (30 10, 10 20, 20 60, 60 60, 30 10))')
+#' 
+#' ## You can pass in geometry to each source separately via their opts parameter, at 
+#' ## least those that support it
+#' bounds <- c(38.44047,-125,40.86652,-121.837)
+#' head(occ(query = 'Danaus plexippus', from="inat", inatopts=list(bounds=bounds))$inat$data)
+#' 
+#' # Specify many data sources, another example
 #' ebirdopts = list(region = 'US'); gbifopts  =  list(country = 'US')
 #' out <- occ(query = 'Setophaga caerulescens', from = c('gbif','inat','bison','ebird'), 
 #' gbifopts = gbifopts, ebirdopts = ebirdopts)
 #' occ2df(out)
 #' 
-#' ## Using a bounding box
-#' bounds <- c(38.44047,-125,40.86652,-121.837)
-#' head(occ(query = 'Danaus plexippus', from="inat", inatopts=list(bounds=bounds))$inat$data)
-#' 
-#' # Pass in many species names
+#' # Pass in many species names, combine just data to a single data.frame, and
+#' # first six rows
 #' spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Spinus tristis')
 #' out <- occ(query = spnames, from = 'gbif', gbifopts = list(georeferenced = TRUE))
-#' head(occ2df(out))
+#' df <- occ2df(out)
+#' head(df)
 #' }
 occ <- function(query  =  NULL, from = "gbif", limit = 25, geometry = NULL, rank = "species",
                 type = "sci", gbifopts = list(), bisonopts = list(), inatopts = list(), 
@@ -103,7 +116,8 @@ foo_gbif <- function(sources, query, limit, geometry, opts) {
     time <- now()
     opts$taxonKey <- name_backbone(name = query)$usageKey
     opts$limit <- limit
-    opts$geometry <- geometry
+    opts$geometry <- if(grepl('POLYGON', paste(as.character(geometry), collapse=" "))){ 
+      geometry } else { bbox2wkt(bbox=geometry) }
     opts$return <- "data"
     out <- do.call(occ_search, opts)
     if (class(out) == "character") {
@@ -127,7 +141,8 @@ foo_ecoengine <- function(sources, query, limit, geometry, opts) {
     opts$scientific_name <- query
     opts$georeferenced <- TRUE
     opts$page_size <- limit
-    opts$bbox <- geometry
+    opts$bbox <- if(grepl('POLYGON', paste(as.character(geometry), collapse=" "))){ 
+      wkt2bbox(geometry) } else { geometry }
     # This could hang things if request is super large.  Will deal with this issue
     # when it arises in a usecase
     # For now default behavior is to retrive one page.
@@ -149,13 +164,15 @@ foo_ecoengine <- function(sources, query, limit, geometry, opts) {
   }
   # list(meta=meta, data=out)
 }
+
 #' @noRd
 foo_bison <- function(sources, query, limit, geometry, opts) {
   if (any(grepl("bison", sources))) {
     time <- now()
     opts$species <- query
     opts$count <- limit
-    opts$aoi <- geometry
+    opts$aoi <- if(grepl('POLYGON', paste(as.character(geometry), collapse=" "))){ 
+      geometry } else { bbox2wkt(bbox=geometry) }
     out <- do.call(bison, opts)
     out <- out$points
     out$prov <- rep("bison", nrow(out))
@@ -168,13 +185,15 @@ foo_bison <- function(sources, query, limit, geometry, opts) {
   }
   # list(meta=meta, data=out)
 }
+
 #' @noRd
 foo_inat <- function(sources, query, limit, geometry, opts) {
   if (any(grepl("inat", sources))) {
     time <- now()
     opts$query <- query
     opts$maxresults <- limit
-    opts$bounds <- geometry
+    opts$bounds <- if(grepl('POLYGON', paste(as.character(geometry), collapse=" "))){ 
+      wkt2bbox(geometry) } else { geometry }
     out <- do.call(get_inat_obs, opts)
     out$prov <- rep("inat", nrow(out))
     names(out)[names(out) == 'Scientific.name'] <- "name"
@@ -187,6 +206,7 @@ foo_inat <- function(sources, query, limit, geometry, opts) {
   }
   # list(meta=meta, data=out)
 }
+
 #' @noRd
 foo_ebird <- function(sources, query, limit, opts) {
   if (any(grepl("ebird", sources))) {

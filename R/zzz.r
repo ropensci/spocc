@@ -201,6 +201,7 @@ occ2sp <- function(input) {
 #' @param maxx Maximum x value, or the most eastern longitude 
 #' @param maxy Maximum y value, or the most northern latitude
 #' @param bbox A vector of length 4, with the elements: minx, miny, maxx, maxy
+#' @keywords internal
 #' @return An object of class charactere, a Well Known Text string of the form
 #' 'POLYGON((minx miny, maxx miny, maxx maxy, minx maxy, minx miny))'
 #' @examples
@@ -208,7 +209,7 @@ occ2sp <- function(input) {
 #' 
 #' # Pass in a vector of length 4 with all values
 #' mm <- bbox2wkt(bbox=c(38.4,-125.0,40.9,-121.8))
-#' plot(readWKT(mm))
+#' plot(e)
 #' 
 #' # Or pass in each value separately
 #' mm <- bbox2wkt(minx=38.4, miny=-125.0, maxx=40.9, maxy=-121.8)
@@ -225,4 +226,20 @@ bbox2wkt <- function(minx=NA, miny=NA, maxx=NA, maxy=NA, bbox=NULL){
         sprintf('%s %s',bbox[3],bbox[4]), ',', sprintf('%s %s',bbox[1],bbox[4]), ',', 
         sprintf('%s %s',bbox[1],bbox[2]), 
         '))', sep="")
+}
+
+#' Converts a Well Known Text polygon to a bounding box
+#' 
+#' @param wkt A Well Known Text object.
+#' @keywords internal
+#' @return A vector of length 4, like c(minx, miny, maxx, maxy).
+#' @examples
+#' library(rgeos)
+#' wkt <- "POLYGON((38.4 -125,40.9 -125,40.9 -121.8,38.4 -121.8,38.4 -125))"
+#' wkt2bbox(wkt)
+ 
+wkt2bbox <- function(wkt=NULL){
+  assert_that(!is.null(wkt))
+  tmp <- bbox(readWKT(wkt))
+  as.vector(tmp)
 }

@@ -43,10 +43,10 @@ plot(buf)
 #' 'POLYGON((minx miny, maxx miny, maxx maxy, minx maxy, minx miny))'
 #' @examples
 #' # Pass in a vector of length 4 with all values
-#' mm <- bbox2wkt(all=c(38.4,-125.0,40.9,-121.8))
+#' mm <- bbox2wkt(bbox=c(38.4,-125.0,40.9,-121.8))
 #' plot(readWKT(mm))
 #' 
-#' # Or pass in each value separately
+#' # Or pass in each vdalue separately
 #' mm <- bbox2wkt(minx=38.4, miny=-125.0, maxx=40.9, maxy=-121.8)
 #' plot(readWKT(mm))
 
@@ -72,6 +72,14 @@ bbox2wkt <- function(minx=NA, miny=NA, maxx=NA, maxy=NA, bbox=NULL){
 #       sprintf('%s %s',maxx,maxy), ',', sprintf('%s %s',minx,maxy), ',', 
 #       sprintf('%s %s',minx,miny), 
 #       '))', sep="")
+
+
+wkt="POLYGON((38.4 -125,40.9 -125,40.9 -121.8,38.4 -121.8,38.4 -125))"
+wkt2bbox <- function(wkt=NULL){
+  assert_that(!is.null(wkt))
+  tmp <- bbox(readWKT(wkt))
+  as.vector(tmp)
+}
 
 
 #####

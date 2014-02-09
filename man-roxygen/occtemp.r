@@ -5,8 +5,9 @@
 #' inat, ebird, and/or ecoengine
 #' @param limit (numeric) Number of records to return. This is passed across all sources.
 #' To specify different limits for each source, use the options for each source.
-#' @param geometry (character) Searches for occurrences inside a polygon described in 
-#' Well Known Text (WKT) format. A WKT shape written as 
+#' @param geometry (character or nmeric) One of a Well Known Text (WKT) object or a vector of 
+#' length 4 specifying a bounding box. This parameter searches for occurrences inside a 
+#' box given as a bounding box or polygon described in WKT format. A WKT shape written as 
 #' 'POLYGON((30.1 10.1, 20, 20 40, 40 40, 30.1 10.1))' would be queried as is, 
 #' i.e. http://bit.ly/HwUSif. See Details for more examples of WKT objects.
 #' @param rank (character) Taxonomic rank. Not used right now.
@@ -25,7 +26,7 @@
 #' ebirdopts, and ecoengineopts parameters.
 #' 
 #' WKT objects are strings of pairs of lat/long coordinates that define a shape. Many classes
-#' of shapes are supported, including POLYGON, POINT, and XXXX. Within each defined shape
+#' of shapes are supported, including POLYGON, POINT, and MULTIPOLYGON. Within each defined shape
 #' define all vertices of the shape with a coordinate like 30.1 10.1, the first of which is the 
 #' latitude, the second the longitude.
 #' 

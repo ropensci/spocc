@@ -30,6 +30,7 @@ Imports:
     ggmap,
     maptools,
     sp,
+    rgeos,
     lubridate,
     RColorBrewer,
     httr,

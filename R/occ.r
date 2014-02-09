@@ -72,8 +72,6 @@
 occ <- function(query  =  NULL, from = "gbif", limit = 25, geometry = NULL, rank = "species",
                 type = "sci", gbifopts = list(), bisonopts = list(), inatopts = list(), 
                 ebirdopts = list(), ecoengineopts = list()) {
-  out_gbif <- out_bison <- out_inat <- out_ebird <- data.frame(NULL)
-  out_gbif <- out_bison <- out_inat <- out_ebird <- data.frame(NULL)
   sources <- match.arg(from, choices = c("gbif", "bison", "inat", "ebird", "ecoengine"), 
                        several.ok = TRUE)
   loopfun <- function(x, y, z) {

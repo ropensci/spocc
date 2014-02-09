@@ -115,23 +115,32 @@ occ(query='Accipiter striatus', from='gbif',
 occ(query='Helianthus annuus', from='bison',
    geometry='POLYGON((-111.06 38.84, -110.80 39.37, -110.20 39.17, -110.20 38.90, -110.63 38.67, -111.06 38.84))')
 
-## Or pass in a bounding box, which is automatically converted to WKT if needed
+## Or pass in a bounding box, which is automatically converted to WKT (required by GBIF)
 occ(query='Accipiter striatus', from='gbif', geometry=c(38.4,-125.0,40.9,-121.8))
 
-# Many data sources, another example
+## WKT's are more flexible than bounding box's. You can pass in a WKT with multiple
+## polygons like so (you can use POLYGON or MULTIPOLYGON) when specifying more than one
+## polygon. Note how each polygon is in it's own set of parentheses.
+occ(query='Accipiter striatus', from='gbif',
+   geometry='MULTIPOLYGON((30 10, 10 20, 20 60, 60 60, 30 10), (30 10, 10 20, 20 60, 60 60, 30 10))')
+
+## You can pass in geometry to each source separately via their opts parameter, at
+## least those that support it
+bounds <- c(38.44047,-125,40.86652,-121.837)
+head(occ(query = 'Danaus plexippus', from="inat", inatopts=list(bounds=bounds))$inat$data)
+
+# Specify many data sources, another example
 ebirdopts = list(region = 'US'); gbifopts  =  list(country = 'US')
 out <- occ(query = 'Setophaga caerulescens', from = c('gbif','inat','bison','ebird'),
 gbifopts = gbifopts, ebirdopts = ebirdopts)
 occ2df(out)
 
-## Using a bounding box
-bounds <- c(38.44047,-125,40.86652,-121.837)
-head(occ(query = 'Danaus plexippus', from="inat", inatopts=list(bounds=bounds))$inat$data)
-
-# Pass in many species names
+# Pass in many species names, combine just data to a single data.frame, and
+# first six rows
 spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Spinus tristis')
 out <- occ(query = spnames, from = 'gbif', gbifopts = list(georeferenced = TRUE))
-head(occ2df(out))
+df <- occ2df(out)
+head(df)
 }
 }
 

@@ -1,8 +1,11 @@
 \name{bbox2wkt}
 \alias{bbox2wkt}
-\title{Converts a bounding box to a Well Known Text polygon}
+\alias{wkt2bbox}
+\title{Convert a bounding box to a Well Known Text polygon, and a WKT to a bounding box}
 \usage{
 bbox2wkt(minx = NA, miny = NA, maxx = NA, maxy = NA, bbox = NULL)
+
+wkt2bbox(wkt = NULL)
 }
 \arguments{
   \item{minx}{Minimum x value, or the most western
@@ -19,25 +22,39 @@ bbox2wkt(minx = NA, miny = NA, maxx = NA, maxy = NA, bbox = NULL)
 
   \item{bbox}{A vector of length 4, with the elements:
   minx, miny, maxx, maxy}
+
+  \item{wkt}{A Well Known Text object.}
 }
 \value{
-An object of class charactere, a Well Known Text string of
-the form 'POLYGON((minx miny, maxx miny, maxx maxy, minx
-maxy, minx miny))'
+bbox2wkt returns an object of class charactere, a Well
+Known Text string of the form 'POLYGON((minx miny, maxx
+miny, maxx maxy, minx maxy, minx miny))'.
+
+wkt2bbox returns a numeric vector of length 4, like c(minx,
+miny, maxx, maxy).
 }
 \description{
-Converts a bounding box to a Well Known Text polygon
+Convert a bounding box to a Well Known Text polygon, and a
+WKT to a bounding box
 }
 \examples{
 library(rgeos)
 
-# Pass in a vector of length 4 with all values
+# Convert a bounding box to a WKT
+
+## Pass in a vector of length 4 with all values
 mm <- bbox2wkt(bbox=c(38.4,-125.0,40.9,-121.8))
 plot(e)
 
-# Or pass in each value separately
+## Or pass in each value separately
 mm <- bbox2wkt(minx=38.4, miny=-125.0, maxx=40.9, maxy=-121.8)
 plot(readWKT(mm))
+
+========================================
+
+# Convert a WKT object to a bounding box
+wkt <- "POLYGON((38.4 -125,40.9 -125,40.9 -121.8,38.4 -121.8,38.4 -125))"
+wkt2bbox(wkt)
 }
 \keyword{internal}
 

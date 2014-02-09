@@ -51,11 +51,8 @@ occ(query = NULL, from = "gbif", limit = 25, geometry = NULL,
   ecoengine}
 }
 \description{
-Search on a single species name. When searching ecoengine,
-you can leave the page argument blank to get a single page.
-Otherwise use page ranges or simply "all" to request all
-available pages. Note however that this may hang your call
-if the request is simply too large.
+Search on a single species name, or many. And search across
+a single or many data sources.
 }
 \details{
 The \code{occ} function is an opinionated wrapper around
@@ -65,6 +62,12 @@ of making sure you get useful objects out at the cost of
 flexibility/options - although you can still set options
 for each of the packages via the gbifopts, bisonopts,
 inatopts, ebirdopts, and ecoengineopts parameters.
+
+When searching ecoengine, you can leave the page argument
+blank to get a single page. Otherwise use page ranges or
+simply "all" to request all available pages. Note however
+that this may hang your call if the request is simply too
+large.
 
 WKT objects are strings of pairs of lat/long coordinates
 that define a shape. Many classes of shapes are supported,

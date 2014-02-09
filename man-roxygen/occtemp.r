@@ -25,6 +25,10 @@
 #' options for each of the packages via the gbifopts, bisonopts, inatopts, 
 #' ebirdopts, and ecoengineopts parameters.
 #' 
+#' When searching ecoengine, you can leave the page argument blank to get a single page. 
+#' Otherwise use page ranges or simply "all" to request all available pages.
+#' Note however that this may hang your call if the request is simply too large.
+#' 
 #' WKT objects are strings of pairs of lat/long coordinates that define a shape. Many classes
 #' of shapes are supported, including POLYGON, POINT, and MULTIPOLYGON. Within each defined shape
 #' define all vertices of the shape with a coordinate like 30.1 10.1, the first of which is the 

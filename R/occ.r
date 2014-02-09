@@ -1,9 +1,7 @@
 #' Search for species occurrence data across many data sources.
 #' 
-#' Search on a single species name.
-#' When searching ecoengine, you can leave the page argument blank to get a single page. 
-#' Otherwise use page ranges or simply "all" to request all available pages.
-#' Note however that this may hang your call if the request is simply too large.
+#' Search on a single species name, or many. And search across a single 
+#' or many data sources.
 #' 
 #' @import rgbif rinat rebird data.table ecoengine rbison
 #' @importFrom plyr compact
@@ -155,12 +153,9 @@ foo_ecoengine <- function(sources, query, limit, geometry, opts) {
     out$prov <- rep("ecoengine", nrow(out))
     names(out)[names(out) == 'scientific_name'] <- "name"
     list(time = time, data = out)
-    # meta <- list(source='ecoengine', time=time, query=query, type=type, opts=opts)
   } else {
-    # meta <- list(source='ecoengine', time=NULL, query=NULL, type=NULL, opts=list())
     list(time = NULL, data = data.frame(NULL))
   }
-  # list(meta=meta, data=out)
 }
 
 #' @noRd
@@ -175,13 +170,9 @@ foo_bison <- function(sources, query, limit, geometry, opts) {
     out <- out$points
     out$prov <- rep("bison", nrow(out))
     list(time = time, data = out)
-    # meta <- list(source='bison', time=time, query=query, type=type, opts=opts)
   } else {
-    # meta <- list(source='bison', time=NULL, query=NULL, type=NULL, opts=list()) out
-    # <- data.frame(NULL)
     list(time = NULL, data = data.frame(NULL))
   }
-  # list(meta=meta, data=out)
 }
 
 #' @noRd
@@ -196,13 +187,9 @@ foo_inat <- function(sources, query, limit, geometry, opts) {
     out$prov <- rep("inat", nrow(out))
     names(out)[names(out) == 'Scientific.name'] <- "name"
     list(time = time, data = out)
-    # meta <- list(source='inat', time=time, query=query, type=type, opts=opts)
   } else {
-    # meta <- list(source='inat', time=NULL, query=NULL, type=NULL, opts=list()) out
-    # <- data.frame(NULL)
     list(time = NULL, data = data.frame(NULL))
   }
-  # list(meta=meta, data=out)
 }
 
 #' @noRd
@@ -223,11 +210,7 @@ foo_ebird <- function(sources, query, limit, opts) {
     out$prov <- rep("ebird", nrow(out))
     names(out)[names(out) == 'sciName'] <- "name"
     list(time = time, data = out)
-    # meta <- list(source='ebird', time=time, query=query, type=type, opts=opts)
   } else {
-    # meta <- list(source='ebird', time=NULL, query=NULL, type=NULL, opts=list()) out
-    # <- data.frame(NULL)
     list(time = NULL, data = data.frame(NULL))
   }
-  # list(meta=meta, data=out)
 }

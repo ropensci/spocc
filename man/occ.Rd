@@ -122,13 +122,21 @@ occ(query='Helianthus annuus', from='bison',
 ## via the bbox2wkt function
 occ(query='Accipiter striatus', from='gbif', geometry=c(-125.0,38.4,-121.8,40.9))
 
-## Bounding box constaint with ecoengine
+## Bounding box constraint with ecoengine
 occ(query='Accipiter striatus', from='ecoengine', limit=10, geometry=c(-125.0,38.4,-121.8,40.9))
 
 ## You can pass in geometry to each source separately via their opts parameter, at
-## least those that support it
+## least those that support it. Note that if you use rinat, you reverse the order, with
+## latitude first, and longitude second, but here it's the reverse for consistency across
+## the spocc package
 bounds <- c(-125.0,38.4,-121.8,40.9)
-head(occ(query = 'Danaus plexippus', from="inat", inatopts=list(bounds=bounds))$inat$data)
+occ(query = 'Danaus plexippus', from="inat", inatopts=list(bounds=bounds))
+
+## Same, but passing in via the global geometry parameter
+occ(query = 'Danaus plexippus', from="inat", geometry=bounds)
+
+## Passing geometry with multiple sources
+occ(query = 'Danaus plexippus', from=c("inat","gbif","ecoengine"), geometry=bounds)
 
 # Specify many data sources, another example
 ebirdopts = list(region = 'US'); gbifopts  =  list(country = 'US')

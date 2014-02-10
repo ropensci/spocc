@@ -3,8 +3,9 @@
 \title{Search for species occurrence data across many data sources.}
 \usage{
 occ(query = NULL, from = "gbif", limit = 25, geometry = NULL,
-  rank = "species", type = "sci", gbifopts = list(), bisonopts = list(),
-  inatopts = list(), ebirdopts = list(), ecoengineopts = list())
+  rank = "species", type = "sci", ids = NULL, gbifopts = list(),
+  bisonopts = list(), inatopts = list(), ebirdopts = list(),
+  ecoengineopts = list())
 }
 \arguments{
   \item{query}{(character) One to many names. Either a
@@ -34,6 +35,13 @@ occ(query = NULL, from = "gbif", limit = 25, geometry = NULL,
 
   \item{type}{(character) Type of name, sci (scientific) or
   com (common name, vernacular). Not used right now.}
+
+  \item{ids}{Taxonomic identifiers. This can be a list of
+  length 1 to many. See examples for usage. Currently,
+  identifiers for only 'gbif' and 'bison' for parameter
+  'from' supported. If this parameter is used, query
+  parameter can not be used - if it is, a warning is
+  thrown.}
 
   \item{gbifopts}{(list) List of options to pass on to
   rgbif}
@@ -84,6 +92,8 @@ Examples of valid WKT objects: \itemize{ \item
 \item 'MULTIPOLYGON(((1 1,5 1,5 5,1 5,1 1),(2 2,2 3,3 3,3
 2,2 2)),((6 3,9 2,9 4,6 3)))' \item
 'GEOMETRYCOLLECTION(POINT(4 6),LINESTRING(4 6,7 10))' }
+
+Only POLYGON objects are currently supported.
 }
 \examples{
 \dontrun{
@@ -150,6 +160,22 @@ spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Spinus tristis')
 out <- occ(query = spnames, from = 'gbif', gbifopts = list(georeferenced = TRUE))
 df <- occ2df(out)
 head(df)
+
+
+# taxize integration: Pass in taxonomic identifiers
+library(taxize)
+ids <- get_ids(names=c("Chironomus riparius","Pinus contorta"), db = c('itis','gbif'))
+occ(ids = ids[[1]], from='bison')
+occ(ids = ids, from=c('bison','gbif'))
+
+ids <- get_ids(names="Chironomus riparius", db = 'gbif')
+occ(ids = ids, from='gbif')
+
+ids <- get_gbifid("Chironomus riparius")
+occ(ids = ids, from='gbif')
+
+ids <- get_tsn('Accipiter striatus')
+occ(ids = ids, from='bison')
 }
 }
 

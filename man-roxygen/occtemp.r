@@ -13,6 +13,9 @@
 #' @param rank (character) Taxonomic rank. Not used right now.
 #' @param type (character) Type of name, sci (scientific) or com (common name, vernacular).
 #' Not used right now.		
+#' @param ids Taxonomic identifiers. This can be a list of length 1 to many. See examples for
+#' usage. Currently, identifiers for only 'gbif' and 'bison' for parameter 'from' supported. If
+#' this parameter is used, query parameter can not be used - if it is, a warning is thrown.
 #' @param gbifopts (list) List of options to pass on to rgbif
 #' @param bisonopts (list) List of options to pass on to rbison
 #' @param inatopts (list) List of options to pass on to rinat
@@ -44,3 +47,5 @@
 #'  \item 'MULTIPOLYGON(((1 1,5 1,5 5,1 5,1 1),(2 2,2 3,3 3,3 2,2 2)),((6 3,9 2,9 4,6 3)))'
 #'  \item 'GEOMETRYCOLLECTION(POINT(4 6),LINESTRING(4 6,7 10))'
 #' }
+#' 
+#' Only POLYGON objects are currently supported.

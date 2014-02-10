@@ -72,6 +72,22 @@
 #' out <- occ(query = spnames, from = 'gbif', gbifopts = list(georeferenced = TRUE))
 #' df <- occ2df(out)
 #' head(df)
+#' 
+#' 
+#' # taxize integration: Pass in taxonomic identifiers
+#' library(taxize)
+#' ids <- get_ids(names=c("Chironomus riparius","Pinus contorta"), db = c('itis','gbif'))
+#' occ(ids = ids[[1]], from='bison')
+#' occ(ids = ids, from=c('bison','gbif'))
+#' 
+#' ids <- get_ids(names="Chironomus riparius", db = 'gbif')
+#' occ(ids = ids, from='gbif')
+#' 
+#' ids <- get_gbifid("Chironomus riparius")
+#' occ(ids = ids, from='gbif')
+#' 
+#' ids <- get_tsn('Accipiter striatus')
+#' occ(ids = ids, from='bison')
 #' }
 #' 
 #' @examples \donttest{
@@ -82,8 +98,8 @@
 #' occ(query='Accipiter striatus', from='gbif', 
 #'    geometry='MULTIPOLYGON((30 10, 10 20, 20 60, 60 60, 30 10), (30 10, 10 20, 20 60, 60 60, 30 10))')
 #' }
-occ <- function(query  =  NULL, from = "gbif", limit = 25, geometry = NULL, rank = "species",
-                type = "sci", gbifopts = list(), bisonopts = list(), inatopts = list(), 
+occ <- function(query = NULL, from = "gbif", limit = 25, geometry = NULL, rank = "species",
+                type = "sci", ids = NULL, gbifopts = list(), bisonopts = list(), inatopts = list(), 
                 ebirdopts = list(), ecoengineopts = list()) {
   sources <- match.arg(from, choices = c("gbif", "bison", "inat", "ebird", "ecoengine"), 
                        several.ok = TRUE)
@@ -97,7 +113,59 @@ occ <- function(query  =  NULL, from = "gbif", limit = 25, geometry = NULL, rank
     list(gbif = gbif_res, bison = bison_res, inat = inat_res, ebird = ebird_res, 
          ecoengine = ecoengine_res)
   }
-  tmp <- lapply(query, loopfun, y=limit, z=geometry)
+  
+  loopids <- function(x, y, z) {
+    # x=query; y=limit; z=geometry
+    classes <- ifelse(length(x)>1, sapply(x, class), class(x))
+    if(!all(classes %in% c("gbifid","tsn")))
+      stop("Currently, taxon identifiers have to be of class gbifid or tsn")
+    if(class(x) == 'gbifid'){
+      gbif_res <- foo_gbif(sources, x, y, z, gbifopts)
+      bison_res <- list(time = NULL, data = data.frame(NULL))
+    } else if(class(x) == 'tsn') {
+      bison_res <- foo_bison(sources, x, y, z, bisonopts)
+      gbif_res <- list(time = NULL, data = data.frame(NULL))
+    }
+    list(gbif = gbif_res, bison = bison_res, 
+         inat = list(time = NULL, data = data.frame(NULL)), 
+         ebird = list(time = NULL, data = data.frame(NULL)), 
+         ecoengine = list(time = NULL, data = data.frame(NULL)))
+  }
+  
+  # check that one of query or ids is non-NULL
+  assert_that(xor(!is.null(query), !is.null(ids)))
+  
+  if(is.null(ids)){
+    # If query not null (taxonomic names passed in)
+    tmp <- lapply(query, loopfun, y=limit, z=geometry)
+  } else
+  {
+    unlistids <- function(x){
+      if(length(x) == 1){
+        if(is.null(names(x))){ list(x) } else {
+          if(!names(x) %in% c("gbif","itis"))
+            list(x)
+          else
+            list(x[[1]]) 
+        }
+      } else {
+        gg <- as.list(unlist(x, use.names = FALSE))
+        hh <- as.vector(rep(sapply(x, class), sapply(x, length)))
+        if(all(hh == "character"))
+          hh <- rep(class(x), length(x))
+        for(i in seq_along(gg)){  
+          class(gg[[i]]) <- hh[[i]]
+        }
+        return( gg )
+      }
+    }
+    ids <- unlistids(ids)
+    # if ids is not null (taxon identifiers passed in)
+    # ids can only be passed to gbif and bison for now
+    # so don't pass anything on to ecoengine, inat, or ebird
+    tmp <- lapply(ids, loopids, y=limit, z=geometry)
+  }
+  
   getsplist <- function(srce, opts) {
     tt <- lapply(tmp, function(x) x[[srce]]$data)
     names(tt) <- gsub("\\s", "_", query)
@@ -124,8 +192,15 @@ occ <- function(query  =  NULL, from = "gbif", limit = 25, geometry = NULL, rank
 #' @noRd
 foo_gbif <- function(sources, query, limit, geometry, opts) {
   if (any(grepl("gbif", sources))) {
+    if(class(query) %in% c("ids","gbifid")){
+      if(class(query) %in% "ids")
+        opts$taxonKey <- query$gbif
+      else
+        opts$taxonKey <- query
+    } else
+    { opts$taxonKey <- name_backbone(name = query)$usageKey }
+    
     time <- now()
-    opts$taxonKey <- name_backbone(name = query)$usageKey
     opts$limit <- limit
     if(!is.null(geometry)){
       opts$geometry <- if(grepl('POLYGON', paste(as.character(geometry), collapse=" "))){ 
@@ -180,9 +255,20 @@ foo_ecoengine <- function(sources, query, limit, geometry, opts) {
 #' @noRd
 foo_bison <- function(sources, query, limit, geometry, opts) {
   if (any(grepl("bison", sources))) {
+    if(class(query) %in% c("ids","tsn")){
+      if(class(query) %in% "ids"){
+        opts$tsn <- query$itis
+      } else
+      {
+        opts$tsn <- query
+      }
+      opts$itis <- 'true'
+    } else
+    { opts$species <- query }
+    
     time <- now()
-    opts$species <- query
     opts$count <- limit
+    opts$what <- 'points'
     if(!is.null(geometry)){
       opts$aoi <- if(grepl('POLYGON', paste(as.character(geometry), collapse=" "))){ 
         geometry } else { bbox2wkt(bbox=geometry) }

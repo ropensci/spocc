@@ -172,17 +172,16 @@ head(occ2df(out)); tail(occ2df(out))
 
 ### Make maps
 
-**rCharts**
+**Leaflet**
 
 ```coffee
-library(rCharts)
-spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta','Puma concolor','Ursus americanus','Gymnogyps californianus')
-dat <- occ(query=spp, from='gbif', gbifopts=list(georeferenced=TRUE))
-dat <- occ2df(dat)
-maprcharts(dat, map_provider="Acetate.terrain", palette_color="OrangeRed")
+spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta')
+dat <- occ(query = spp, from = 'gbif', gbifopts = list(georeferenced=TRUE))
+data <- occ2df(dat)
+mapleaflet(data = data, dest = ".")
 ```
 
-*map will be here later*
+![](http://f.cl.ly/items/3w2Y1E3Z0T2T2z40310K/Screen%20Shot%202014-02-09%20at%2010.38.10%20PM.png)
 
 
 **Github gist**
@@ -190,25 +189,12 @@ maprcharts(dat, map_provider="Acetate.terrain", palette_color="OrangeRed")
 ```coffee
 spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta')
 dat <- occ(query=spp, from='gbif', gbifopts=list(georeferenced=TRUE))
+dat <- fixnames(dat)
 dat <- occ2df(dat)
 mapgist(data=dat, color=c("#976AAE","#6B944D","#BD5945"))
 ```
 
-*map will be here later*
-
-
-**CartoDB**
-
-```coffee
-install_github("cartodb-r", "Vizzuality", subdir="CartoDB")
-library(CartoDB)
-tmp <- occ(query='Puma concolor', from='gbif', gbifopts=list(limit=500, 
-   georeferenced=TRUE, country="US"))
-data <- occ2df(tmp)
-mapcartodb(data, "pumamap", c("name","longitude","latitude"), "recology")
-```
-
-*map will be here later*
+![](http://f.cl.ly/items/343l2G0A2J3T0n2t433W/Screen%20Shot%202014-02-09%20at%2010.40.57%20PM.png)
 
 
 **Shiny**
@@ -219,17 +205,28 @@ This is just a demo, not to pass in your own data. Though a Shiny app is opened 
 mapshiny()
 ```
 
-*map will be here later*
+![](http://cl.ly/TojP/Screen%20Shot%202014-02-09%20at%2010.42.59%20PM.png)
 
 
 **ggplot2**
 
 ```coffee
-mapggplot2()
-...
+ecoengine_data <- occ(query = 'Lynx rufus californicus', from = 'ecoengine')
+mapggplot(ecoengine_data)
 ```
 
-*map will be here later*
+![](http://f.cl.ly/items/1U1R0E0G392l2q362V33/Screen%20Shot%202014-02-09%20at%2010.44.59%20PM.png)
+
+
+**Base R plots**
+
+```coffee
+spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Spinus tristis')
+out <- occ(query=spnames, from='gbif', gbifopts=list(georeferenced=TRUE))
+plot(out, cex=1, pch=10)
+```
+
+![](http://f.cl.ly/items/3O13330W3w3Z0H3u1X0s/Screen%20Shot%202014-02-09%20at%2010.46.25%20PM.png)
 
 
 Please report any issues or bugs](https://github.com/ropensci/spocc/issues).

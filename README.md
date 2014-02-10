@@ -22,7 +22,7 @@ install.packages(c("rbison", "rgbif", "rebird", "ecoengine",
 "RColorBrewer", "httr", "rgdal", "RJSONIO", "data.table", 
 "assertthat","leafletR"))
 
-# Next install rCharts for interactive maps
+# Next install rCharts for interactive maps used in the mapshiny() function
 install.packages("devtools")
 library(devtools)
 install_github("ramnathv/rCharts")

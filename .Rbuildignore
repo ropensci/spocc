@@ -5,3 +5,7 @@ inst
 man-roxygen
 man-roxygen/^.*\.Rproj$
 ^\.Rproj\.user$
+vignettes/margins.sty
+inst/ignore
+inst/shinydumb
+inst/vign

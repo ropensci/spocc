@@ -38,43 +38,12 @@ __Notes:__ It's important to keep in mind that several data providers interface 
 
 The most significant function in spocc is the `occ` (short for occurrence) function. `occ` takes a query, often a species name, and searches across all data sources specified in the `from` argument. For example, one can search for all occurrences of [Sharp-shinned Hawks](http://www.allaboutbirds.org/guide/sharp-shinned_hawk/id) (_Accipiter striatus_) from the gbif database with the following R call.
 
-
-```r
+```{r, gbif_simple_eg}
 library(spocc)
-df <- occ(query = "Accipiter striatus", from = "gbif")
-```
-
-```
-## Loading required package: rjson
-```
-
-```r
+df <- occ(query = 'Accipiter striatus', from = 'gbif')
 df
-```
-
-```
-## Summary of results - occurrences found for: 
-##  gbif  : 25 records across 1 species 
-##  bison :  0 records across 1 species 
-##  inat  :  0 records across 1 species 
-##  ebird :  0 records across 1 species 
-##  ecoengine :  0 records across 1 species
-```
-
-```r
 head(df$gbif$data[[1]])
 ```
-
-```
-##                 name       key longitude latitude prov
-## 1 Accipiter striatus 768992325    -76.10    4.724 gbif
-## 2 Accipiter striatus 773408845    -97.32   32.821 gbif
-## 3 Accipiter striatus 773414146   -122.27   37.771 gbif
-## 4 Accipiter striatus 859267562   -108.34   36.732 gbif
-## 5 Accipiter striatus 859267548   -108.34   36.732 gbif
-## 6 Accipiter striatus 859267717   -108.34   36.732 gbif
-```
-
 
 The data returned are part of a `S3` class called `occdat`. This class has slots for the various data sources described above. One can easily switch the source by changing the `from` in the function call above.
 

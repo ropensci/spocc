@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
+  \usepackage[vmargin=1in,hmargin=1in]{geometry}
+</head>
+<body>
+<!--
+%\VignetteEngine{knitr::knitr}
+%\VignetteIndexEntry{An introduction to the spocc package}
+-->
+
+<h1 id="species-occurrence-data-spocc-version-0.08">Species occurrence data (SPOCC), version 0.08</h1>
+<h3 id="introduction">Introduction</h3>
+<p>The rOpenSci projects aims to provide programmatic access to scientific data repositories on the web. A vast majority of the packages in our current suite retrieve some form of biodiversity or taxonomic data. Since several of these datasets have been georeferenced, it provides numerous opportunities for visualizing species distributions, building species distribution maps, and for using it analyses such as species distribution models. In an effort to streamline access to these data, we have developed a package called Spocc, which provides a unified API to all the biodiversity sources that we provide. The obvious advantage is that a user can interact with a common API and not worry about the nuances in syntax that differ between packages. As more data sources come online, users can access even more data without significant changes to their code. However, it is important to note that spocc will never replicate the full functionality that exists within specific packages. Therefore users with a strong interest in one of the specific data sources listed below would benefit from familiarising themselves with the inner working of the appropriate packages.</p>
+<h3 id="data-sources">Data Sources</h3>
+<p><code>SPOCC</code> currently interfaces with five major biodiversity repositories. Many of these packages have been part of the rOpenSci su</p>
+<ol style="list-style-type: decimal">
+<li><p>Global Biodiversity Information Facility (<code>rgbif</code>)<br /><a href="http://www.gbif.org/">Gbif</a> is a government funded open data repository with several partner organizations with the express goal of providing access to data on Earth's biodiversity. The data are made available by a network of member nodes, coordinating information from various participant organizations and government agencies.</p></li>
+<li><p><a href="http://ecoengine.berkeley.edu/">Berkeley Ecoengine</a> (<code>ecoengine</code>)<br />The ecoengine is an open API built by the <a href="http://globalchange.berkeley.edu/">Berkeley Initiative for Global Change Biology</a>. The repository provides access to over 3 million specimens from various Berkeley natural history museums. These data span more than a century and provide access to georeferenced specimens, species checklists, photographs, vegetation surveys and resurveys and a variety of measurements from environmental sensors located at reserves across University of California's natural reserve system.</p></li>
+<li><p><strong>iNaturalist</strong> (<code>inat</code>)<br />iNaturalist provides access to crowd sourced citizen science data on species observations.</p></li>
+<li><p><a href="http://vertnet.org/index.php">Vertnet</a> (<code>vertnet</code>) Similar to gbif, ecoengine, and bison (see below), Vernet provides access to more than 80 million vertebrate records spanning a large number of institutions and museums primarly covering four major disciplines (mammology, herpetology, ornithology, and icthyology).</p></li>
+<li><p><a href="http://bison.usgs.ornl.gov/">Biodiversity Information Serving Our Nation</a> (<code>rbison</code>)<br />Built by the US Geological Survey's core science analytic team, BISON is a portal that provides access to species occurrence data from several participating institutions.</p></li>
+<li><p><a href="http://ebird.org/content/ebird/">ebird</a> (<code>rebird</code>)<br />ebird is a database developed and maintained by the Cornell Lab of Ornithology and the National Audubon Society. It provides real-time access to checklist data, data on bird abundance and distribution, and communtiy reports from birders.</p></li>
+</ol>
+<p><strong>Notes:</strong> It's important to keep in mind that several data providers interface with many of the above mentioned repositoires. This means that occurence data obtained from BISON may be duplicates of data that are also available through GBIF. We do not have a way to resolve these duplicates or overlaps at this time but it is an issue we are hoping to resolve in future versions of the package.</p>
+<h3 id="data-retrival">Data retrival</h3>
+<p>The most significant function in spocc is the <code>occ</code> (short for occurrence) function. <code>occ</code> takes a query, often a species name, and searches across all data sources specified in the <code>from</code> argument. For example, one can search for all occurrences of <a href="http://www.allaboutbirds.org/guide/sharp-shinned_hawk/id">Sharp-shinned Hawks</a> (<em>Accipiter striatus</em>) from the gbif database with the following R call.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(spocc)
+df &lt;-<span class="st"> </span><span class="kw">occ</span>(<span class="dt">query =</span> <span class="st">&quot;Accipiter striatus&quot;</span>, <span class="dt">from =</span> <span class="st">&quot;gbif&quot;</span>)</code></pre>
+<pre><code>## Loading required package: rjson</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">df</code></pre>
+<pre><code>## Summary of results - occurrences found for: 
+##  gbif  : 25 records across 1 species 
+##  bison :  0 records across 1 species 
+##  inat  :  0 records across 1 species 
+##  ebird :  0 records across 1 species 
+##  ecoengine :  0 records across 1 species</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(df$gbif$data[[<span class="dv">1</span>]])</code></pre>
+<pre><code>##                 name       key longitude latitude prov
+## 1 Accipiter striatus 768992325    -76.10    4.724 gbif
+## 2 Accipiter striatus 773408845    -97.32   32.821 gbif
+## 3 Accipiter striatus 773414146   -122.27   37.771 gbif
+## 4 Accipiter striatus 859267562   -108.34   36.732 gbif
+## 5 Accipiter striatus 859267548   -108.34   36.732 gbif
+## 6 Accipiter striatus 859267717   -108.34   36.732 gbif</code></pre>
+<p>The data returned are part of a <code>S3</code> class called <code>occdat</code>. This class has slots for the various data sources described above. One can easily switch the source by changing the <code>from</code> in the function call above.</p>
+<h3 id="visualization-routines">Visualization routines</h3>
+<p><strong>Interactive maps</strong></p>
+<p><em>Leaflet JS</em><br />Leaflet JS is an open source mapping library that can leverage various layers from multiple sources. Using the <code>leafletR</code> library, it's possible to generate a local <code>geoJSON</code> file and a html file of species distribution maps. The folder can easily be moved to a web server and served widely without any additional coding.</p>
+<p>It's also possible to render similar maps iwth Mapbox by committing just the geoJSON file to GitHub or posting it as a gist. All the remaining fields will become part of a table inside a tooltip, providing a extremely quick and easy way to serve up interactive maps. This is especially useful when a user does not have access to web hosting.</p>
+<p><em>Shiny map</em></p>
+<p>Some text...</p>
+<p><em>Static maps</em></p>
+<p>Describe the static ggmap.</p>
+<ul>
+<li>Should we still describe the other (rCharts) stuff even though those functions wont be in the intial release?</li>
+</ul>
+<h3 id="use-cases">Use-cases</h3>
+<p>Some text...</p>
+<h3 id="upcoming-features">Upcoming features</h3>
+<p>Some text...</p>
+<h3 id="references">References</h3>
+<p>Some text...</p>
+</body>
+</html>

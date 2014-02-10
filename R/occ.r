@@ -127,8 +127,10 @@ foo_gbif <- function(sources, query, limit, geometry, opts) {
     time <- now()
     opts$taxonKey <- name_backbone(name = query)$usageKey
     opts$limit <- limit
-    opts$geometry <- if(grepl('POLYGON', paste(as.character(geometry), collapse=" "))){ 
-      geometry } else { bbox2wkt(bbox=geometry) }
+    if(!is.null(geometry)){
+      opts$geometry <- if(grepl('POLYGON', paste(as.character(geometry), collapse=" "))){ 
+        geometry } else { bbox2wkt(bbox=geometry) }
+    }
     opts$return <- "data"
     out <- do.call(occ_search, opts)
     if (class(out) == "character") {
@@ -152,8 +154,10 @@ foo_ecoengine <- function(sources, query, limit, geometry, opts) {
     opts$scientific_name <- query
     opts$georeferenced <- TRUE
     opts$page_size <- limit
-    opts$bbox <- if(grepl('POLYGON', paste(as.character(geometry), collapse=" "))){ 
-      wkt2bbox(geometry) } else { geometry }
+    if(!is.null(geometry)){
+      opts$bbox <- if(grepl('POLYGON', paste(as.character(geometry), collapse=" "))){ 
+        wkt2bbox(geometry) } else { geometry }
+    }
     # This could hang things if request is super large.  Will deal with this issue
     # when it arises in a usecase
     # For now default behavior is to retrive one page.
@@ -179,8 +183,10 @@ foo_bison <- function(sources, query, limit, geometry, opts) {
     time <- now()
     opts$species <- query
     opts$count <- limit
-    opts$aoi <- if(grepl('POLYGON', paste(as.character(geometry), collapse=" "))){ 
-      geometry } else { bbox2wkt(bbox=geometry) }
+    if(!is.null(geometry)){
+      opts$aoi <- if(grepl('POLYGON', paste(as.character(geometry), collapse=" "))){ 
+        geometry } else { bbox2wkt(bbox=geometry) }
+    }
     out <- do.call(bison, opts)
     out <- out$points
     out$prov <- rep("bison", nrow(out))
@@ -196,12 +202,14 @@ foo_inat <- function(sources, query, limit, geometry, opts) {
     time <- now()
     opts$query <- query
     opts$maxresults <- limit
-    opts$bounds <- if(grepl('POLYGON', paste(as.character(geometry), collapse=" ")))
-    { 
-      # flip lat and long spots in the bounds vector for inat
-      temp <- wkt2bbox(geometry)
-      c(tmp[2], tmp[1], tmp[4], tmp[3])
-    } else { c(geometry[2], geometry[1], geometry[4], geometry[3]) }
+    if(!is.null(geometry)){
+      opts$bounds <- if(grepl('POLYGON', paste(as.character(geometry), collapse=" ")))
+      { 
+        # flip lat and long spots in the bounds vector for inat
+        temp <- wkt2bbox(geometry)
+        c(tmp[2], tmp[1], tmp[4], tmp[3])
+      } else { c(geometry[2], geometry[1], geometry[4], geometry[3]) }
+    }
     out <- do.call(get_inat_obs, opts)
     out$prov <- rep("inat", nrow(out))
     names(out)[names(out) == 'Scientific.name'] <- "name"

@@ -98,3 +98,30 @@ expect_match(names(geo2$gbif$data), 'Accipiter_striatus')
 expect_equal(nrow(geo4$gbif$data[[1]]), 0)
 expect_equal(ncol(occ2df(geo5)), 4)
 })
+
+
+context("Testing by taxon identifier searches")
+library(taxize)
+
+test_that("Taxon identifier searches work", {
+  ids <- get_ids(names=c("Chironomus riparius","Pinus contorta"), db = c('itis','gbif'))
+  byid1 <- occ(ids = ids[[1]], from='bison')
+  byid2 <- occ(ids = ids, from=c('bison','gbif'))
+  
+  ids <- get_ids(names="Chironomus riparius", db = 'gbif')
+  byid3 <- occ(ids = ids, from='gbif')
+  
+  ids <- get_gbifid("Chironomus riparius")
+  byid4 <- occ(ids = ids, from='gbif', limit=5)
+  
+  ids <- get_tsn('Accipiter striatus')
+  byid5 <- occ(ids = ids, from='bison')
+  
+  expect_is(byid1, "occdat")
+  expect_is(byid2, "occdat")
+  expect_is(byid3, "occdat")
+  expect_is(byid4, "occdat")
+  expect_is(byid5, "occdat")
+  expect_equal(byid1$bison$meta$source, "bison")
+  expect_equal(nrow(byid4$gbif$data[[1]]), 5)
+})

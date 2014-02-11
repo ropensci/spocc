@@ -38,8 +38,7 @@ Convert a bounding box to a Well Known Text polygon, and a
 WKT to a bounding box
 }
 \examples{
-library(rgeos)
-
+\dontrun{
 # Convert a bounding box to a WKT
 
 ## Pass in a vector of length 4 with all values
@@ -55,5 +54,6 @@ plot(readWKT(mm))
 # Convert a WKT object to a bounding box
 wkt <- "POLYGON((38.4 -125,40.9 -125,40.9 -121.8,38.4 -121.8,38.4 -125))"
 wkt2bbox(wkt)
+}
 }
 

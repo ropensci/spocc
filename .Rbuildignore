@@ -1,7 +1,6 @@
 .travis.yml
 kr_local.R
 Makefile
-inst
 man-roxygen
 man-roxygen/^.*\.Rproj$
 ^\.Rproj\.user$

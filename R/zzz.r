@@ -196,6 +196,7 @@ occ2sp <- function(input) {
 
 #' Convert a bounding box to a Well Known Text polygon, and a WKT to a bounding box
 #' 
+#' @import rgeos
 #' @param minx Minimum x value, or the most western longitude
 #' @param miny Minimum y value, or the most southern latitude
 #' @param maxx Maximum x value, or the most eastern longitude 
@@ -206,9 +207,7 @@ occ2sp <- function(input) {
 #' 
 #' wkt2bbox returns a numeric vector of length 4, like c(minx, miny, maxx, maxy).
 #' @export
-#' @examples
-#' library(rgeos)
-#' 
+#' @examples \dontrun{
 #' # Convert a bounding box to a WKT
 #' 
 #' ## Pass in a vector of length 4 with all values
@@ -224,6 +223,7 @@ occ2sp <- function(input) {
 #' # Convert a WKT object to a bounding box
 #' wkt <- "POLYGON((38.4 -125,40.9 -125,40.9 -121.8,38.4 -121.8,38.4 -125))"
 #' wkt2bbox(wkt)
+#' }
 
 bbox2wkt <- function(minx=NA, miny=NA, maxx=NA, maxy=NA, bbox=NULL){
   if(is.null(bbox)) bbox <- c(minx, miny, maxx, maxy)

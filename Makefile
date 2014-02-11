@@ -6,16 +6,17 @@ vignettes:
 
 move:
 		cp inst/vign/spocc_guide.md vignettes
+		mkdir vignettes/img
+		cp -rf inst/vign/img/* vignettes/img/
 
 pandoc:
 		cd vignettes;\
-		pandoc -H margins.sty spocc_guide.md -o spocc_guide.pdf;\
-		pandoc -H margins.sty spocc_guide.md -o spocc_guide.html
+		pandoc -H margins.sty spocc_guide.md -o spocc_guide.pdf --highlight-style=tango;\
+		pandoc -H margins.sty spocc_guide.md -o spocc_guide.html --highlight-style=tango
 
 rmd2md:
 		cd vignettes;\
 		cp spocc_guide.md spocc_guide.Rmd;\
 
 cleanup:
-		cd inst/vign;\
-		rm spocc_guide.md
+		rm inst/vign/spocc_guide.md

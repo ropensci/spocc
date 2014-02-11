@@ -293,7 +293,7 @@ foo_inat <- function(sources, query, limit, geometry, opts) {
       { 
         # flip lat and long spots in the bounds vector for inat
         temp <- wkt2bbox(geometry)
-        c(tmp[2], tmp[1], tmp[4], tmp[3])
+        c(temp[2], temp[1], temp[4], temp[3])
       } else { c(geometry[2], geometry[1], geometry[4], geometry[3]) }
     }
     out <- do.call(get_inat_obs, opts)

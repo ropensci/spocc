@@ -116,7 +116,7 @@ occ <- function(query = NULL, from = "gbif", limit = 25, geometry = NULL, rank =
   
   loopids <- function(x, y, z) {
     # x=query; y=limit; z=geometry
-    classes <- ifelse(length(x)>1, sapply(x, class), class(x))
+    classes <- ifelse(length(x)>1, vapply(x, class, ""), class(x))
     if(!all(classes %in% c("gbifid","tsn")))
       stop("Currently, taxon identifiers have to be of class gbifid or tsn")
     if(class(x) == 'gbifid'){
@@ -150,7 +150,7 @@ occ <- function(query = NULL, from = "gbif", limit = 25, geometry = NULL, rank =
         }
       } else {
         gg <- as.list(unlist(x, use.names = FALSE))
-        hh <- as.vector(rep(sapply(x, class), sapply(x, length)))
+        hh <- as.vector(rep(vapply(x, class, ""), vapply(x, length, numeric(1))))
         if(all(hh == "character"))
           hh <- rep(class(x), length(x))
         for(i in seq_along(gg)){  

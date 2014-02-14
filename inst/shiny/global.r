@@ -32,7 +32,7 @@ rcharts_prep2 <- function(out, palette_name, popup = FALSE){
   require(rgbif)
   
   # colors
-  uniq_name_vec <- unique(sapply(out, function(x) x[["name"]]))
+  uniq_name_vec <- unique(vapply(out, function(x) x[["name"]], ""))
   
   # colors
   mycolors <- get_colors(uniq_name_vec, palette_name)

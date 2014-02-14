@@ -17,10 +17,10 @@ spocc_capwords <- function(s, strict = FALSE, onlyfirst = FALSE) {
             tolower(s) else s
     }, sep = "", collapse = " ")
     if (!onlyfirst) {
-        sapply(strsplit(s, split = " "), cap, USE.NAMES = !is.null(names(s)))
+        vapply(strsplit(s, split = " "), cap, "", USE.NAMES = !is.null(names(s)))
     } else {
-        sapply(s, function(x) paste(toupper(substring(x, 1, 1)), tolower(substring(x, 
-            2)), sep = "", collapse = " "), USE.NAMES = F)
+        vapply(s, function(x) paste(toupper(substring(x, 1, 1)), tolower(substring(x, 
+            2)), sep = "", collapse = " "), "", USE.NAMES = F)
     }
 }
 #' Code based on the `gbifxmlToDataFrame` function from dismo package 

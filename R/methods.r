@@ -14,7 +14,7 @@
 #' @export
 #' @rdname occdat
 print.occdat <- function(x, ...) {
-    rows <- lapply(x, function(y) sapply(y$data, nrow))
+    rows <- lapply(x, function(y) vapply(y$data, nrow, numeric(1)))
     perspp <- lapply(rows, function(z) c(sum(z), length(z)))
     cat("Summary of results - occurrences found for:", "\n")
     cat(" gbif  :", perspp$gbif[1], "records across", perspp$gbif[2], "species", 

@@ -31,7 +31,7 @@ fixnames <- function(obj, how="shortest", namevec = NULL){
     if(how=="shortest"){ # shortest
       z$data <- lapply(z$data, function(x, how){
         uniqnames <- unique(x$name)
-        lengths <- sapply(uniqnames, function(y) length(strsplit(y, " ")[[1]]))
+        lengths <- vapply(uniqnames, function(y) length(strsplit(y, " ")[[1]]), numeric(1))
         shortest <- names(which.min(lengths))
         if(length(uniqnames) > 1){
           x$name <- rep(shortest, nrow(x))

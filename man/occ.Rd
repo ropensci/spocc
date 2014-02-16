@@ -64,12 +64,13 @@ a single or many data sources.
 }
 \details{
 The \code{occ} function is an opinionated wrapper around
-the rgbif, rbison, rinat, rebird, and ecoengine packages to
-allow data access from a single access point. We take care
-of making sure you get useful objects out at the cost of
-flexibility/options - although you can still set options
-for each of the packages via the gbifopts, bisonopts,
-inatopts, ebirdopts, and ecoengineopts parameters.
+the rgbif, rbison, rinat, rebird, AntWeb, and ecoengine
+packages to allow data access from a single access point.
+We take care of making sure you get useful objects out at
+the cost of flexibility/options - although you can still
+set options for each of the packages via the gbifopts,
+bisonopts, inatopts, ebirdopts, and ecoengineopts
+parameters.
 
 When searching ecoengine, you can leave the page argument
 blank to get a single page. Otherwise use page ranges or
@@ -102,6 +103,8 @@ occ(query = 'Accipiter striatus', from = 'gbif')
 occ(query = 'Accipiter striatus', from = 'ecoengine')
 occ(query = 'Danaus plexippus', from = 'inat')
 occ(query = 'Bison bison', from = 'bison')
+# Data from AntWeb
+occ(query = "acanthognathus brevicornis", from = "AntWeb")
 occ(query = 'Setophaga caerulescens', from = 'ebird', ebirdopts = list(region='US'))
 occ(query = 'Spinus tristis', from = 'ebird', ebirdopts =
    list(method = 'ebirdgeo', lat = 42, lng = -76, dist = 50))

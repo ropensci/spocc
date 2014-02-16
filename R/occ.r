@@ -3,7 +3,7 @@
 #' Search on a single species name, or many. And search across a single 
 #' or many data sources.
 #' 
-#' @import rgbif rinat rebird data.table ecoengine rbison
+#' @import rgbif rinat rebird data.table ecoengine rbison AntWeb
 #' @importFrom plyr compact
 #' @importFrom lubridate now
 #' @template occtemp
@@ -14,6 +14,8 @@
 #' occ(query = 'Accipiter striatus', from = 'ecoengine')
 #' occ(query = 'Danaus plexippus', from = 'inat')
 #' occ(query = 'Bison bison', from = 'bison')
+#' # Data from AntWeb
+#' occ(query = "acanthognathus brevicornis", from = "AntWeb")
 #' occ(query = 'Setophaga caerulescens', from = 'ebird', ebirdopts = list(region='US'))
 #' occ(query = 'Spinus tristis', from = 'ebird', ebirdopts = 
 #'    list(method = 'ebirdgeo', lat = 42, lng = -76, dist = 50))
@@ -251,6 +253,29 @@ foo_ecoengine <- function(sources, query, limit, geometry, opts) {
     list(time = NULL, data = data.frame(NULL))
   }
 }
+
+
+#' @noRd
+foo_antweb <- function(sources, query, limit,  opts) {
+  if (any(grepl("antweb", sources))) {
+    time <- now()
+    opts$scientific_name <- query
+    opts$georeferenced <- TRUE
+    if (is.null(opts$page)) {
+      opts$page <- 1
+    }
+    out_ee <- do.call(aw_data, opts)
+    out <- out_ee
+    out$prov <- rep("antweb", nrow(out))
+    names(out)[names(out) == 'scientific_name'] <- "name"
+    list(time = time, data = out)
+  } else {
+    list(time = NULL, data = data.frame(NULL))
+  }
+}
+
+
+
 
 #' @noRd
 foo_bison <- function(sources, query, limit, geometry, opts) {

@@ -6,7 +6,7 @@ occ_options(from = "gbif")
 }
 \arguments{
   \item{from}{(character) Data source to get data from, any
-  combination of gbif, bison, inat, ebird, and/or
+  combination of gbif, bison, inat, ebird, AntWeb, and/or
   ecoengine}
 }
 \value{

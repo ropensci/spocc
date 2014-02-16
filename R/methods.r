@@ -27,6 +27,8 @@ print.occdat <- function(x, ...) {
         "\n")
     cat(" ecoengine : ", perspp$ecoengine[1], "records across", perspp$ecoengine[2], 
         "species", "\n")
+    cat(" antweb : ", perspp$antweb[1], "records across", perspp$antweb[2], 
+        "species", "\n")
 }
 #' Plot occ function output on a map (uses base plots)
 #' 

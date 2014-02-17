@@ -103,7 +103,7 @@
 occ <- function(query = NULL, from = "gbif", limit = 25, geometry = NULL, rank = "species",
                 type = "sci", ids = NULL, gbifopts = list(), bisonopts = list(), inatopts = list(), 
                 ebirdopts = list(), ecoengineopts = list()) {
-  sources <- match.arg(from, choices = c("gbif", "bison", "inat", "ebird", "ecoengine"), 
+  sources <- match.arg(from, choices = c("gbif", "bison", "inat", "ebird", "ecoengine", "AntWeb"), 
                        several.ok = TRUE)
   loopfun <- function(x, y, z) {
     # x=query; y=limit; z=geometry

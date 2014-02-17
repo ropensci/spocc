@@ -15,7 +15,11 @@
 #' occ(query = 'Danaus plexippus', from = 'inat')
 #' occ(query = 'Bison bison', from = 'bison')
 #' # Data from AntWeb
-#' occ(query = "acanthognathus brevicornis", from = "AntWeb")
+#' # By species
+#' by_species <- occ(query = "acanthognathus brevicornis", from = "antweb")
+#' # or by genus
+#' by_genus <- occ(query = "acanthognathus", from = "antweb")
+#'
 #' occ(query = 'Setophaga caerulescens', from = 'ebird', ebirdopts = list(region='US'))
 #' occ(query = 'Spinus tristis', from = 'ebird', ebirdopts = 
 #'    list(method = 'ebirdgeo', lat = 42, lng = -76, dist = 50))
@@ -102,22 +106,23 @@
 #' }
 occ <- function(query = NULL, from = "gbif", limit = 25, geometry = NULL, rank = "species",
                 type = "sci", ids = NULL, gbifopts = list(), bisonopts = list(), inatopts = list(), 
-                ebirdopts = list(), ecoengineopts = list()) {
-  sources <- match.arg(from, choices = c("gbif", "bison", "inat", "ebird", "ecoengine", "AntWeb"), 
+                ebirdopts = list(), ecoengineopts = list(), antwebopts = list()) {
+  sources <- match.arg(from, choices = c("gbif", "bison", "inat", "ebird", "ecoengine", "antweb"), 
                        several.ok = TRUE)
   loopfun <- function(x, y, z) {
-    # x=query; y=limit; z=geometry
+    # x = query; y = limit; z = geometry
     gbif_res <- foo_gbif(sources, x, y, z, gbifopts)
     bison_res <- foo_bison(sources, x, y, z, bisonopts)
     inat_res <- foo_inat(sources, x, y, z, inatopts)
     ebird_res <- foo_ebird(sources, x, y, ebirdopts)
     ecoengine_res <- foo_ecoengine(sources, x, y, z, ecoengineopts)
-    list(gbif = gbif_res, bison = bison_res, inat = inat_res, ebird = ebird_res, 
-         ecoengine = ecoengine_res)
+    antweb_res <- foo_antweb(sources, x, y, z, antwebopts)
+  list(gbif = gbif_res, bison = bison_res, inat = inat_res, ebird = ebird_res, 
+         ecoengine = ecoengine_res, antweb = antweb_res)
   }
   
   loopids <- function(x, y, z) {
-    # x=query; y=limit; z=geometry
+    # x = query; y=limit; z=geometry
     classes <- ifelse(length(x)>1, vapply(x, class, ""), class(x))
     if(!all(classes %in% c("gbifid","tsn")))
       stop("Currently, taxon identifiers have to be of class gbifid or tsn")
@@ -131,7 +136,8 @@ occ <- function(query = NULL, from = "gbif", limit = 25, geometry = NULL, rank =
     list(gbif = gbif_res, bison = bison_res, 
          inat = list(time = NULL, data = data.frame(NULL)), 
          ebird = list(time = NULL, data = data.frame(NULL)), 
-         ecoengine = list(time = NULL, data = data.frame(NULL)))
+         ecoengine = list(time = NULL, data = data.frame(NULL)),
+         antweb = list(time = NULL, data = data.frame(NULL)))
   }
   
   # check that one of query or ids is non-NULL
@@ -184,8 +190,9 @@ occ <- function(query = NULL, from = "gbif", limit = 25, geometry = NULL, rank =
   inat_sp <- getsplist("inat", inatopts)
   ebird_sp <- getsplist("ebird", ebirdopts)
   ecoengine_sp <- getsplist("ecoengine", ecoengineopts)
+  antweb_sp <- getsplist("antweb", ecoengineopts)
   p <- list(gbif = gbif_sp, bison = bison_sp, inat = inat_sp, ebird = ebird_sp, 
-            ecoengine = ecoengine_sp)
+            ecoengine = ecoengine_sp, antweb = antweb_sp)
   class(p) <- "occdat"
   return(p)
 }
@@ -256,18 +263,26 @@ foo_ecoengine <- function(sources, query, limit, geometry, opts) {
 
 
 #' @noRd
-foo_antweb <- function(sources, query, limit,  opts) {
+foo_antweb <- function(sources, query, limit, geometry,  opts) {
   if (any(grepl("antweb", sources))) {
     time <- now()
-    opts$scientific_name <- query
-    opts$georeferenced <- TRUE
-    if (is.null(opts$page)) {
-      opts$page <- 1
+    limit <- NULL
+    geometry <- NULL
+
+    query <- sub("^ +", "", query)
+    query <- sub(" +$", "", query)
+    
+    if(len(strsplit(query, " ")[[1]]) == 2) {
+      opts$scientific_name <- query
+    } else {
+      opts$genus <- query
+      opts$scientific_name <- NULL
     }
-    out_ee <- do.call(aw_data, opts)
-    out <- out_ee
+
+    opts$georeferenced <- TRUE
+    out <- do.call(aw_data, opts)
     out$prov <- rep("antweb", nrow(out))
-    names(out)[names(out) == 'scientific_name'] <- "name"
+    out$scientific_name <- opts$scientific_name
     list(time = time, data = out)
   } else {
     list(time = NULL, data = data.frame(NULL))

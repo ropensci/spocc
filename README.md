@@ -17,7 +17,7 @@ The inspiration for this comes from users requesting a more seamless experience 
 ```coffee
 # Until the package becomes available on CRAN, 
 # install all dependencies separately
-install.packages(c("rbison", "rgbif", "rebird", "ecoengine", 
+install.packages(c("rbison", "rgbif", "rebird", "AntWeb", "ecoengine", 
 "rinat","plyr", "ggplot2", "maps", "maptools", "sp", "lubridate", 
 "RColorBrewer", "httr", "rgdal", "RJSONIO", "data.table", 
 "assertthat","leafletR"))

@@ -1,7 +1,7 @@
 #' Look up options for parameters passed to each source
 #' 
 #' @param from (character) Data source to get data from, any combination of gbif, bison,
-#' inat, ebird, and/or ecoengine
+#' inat, ebird, AntWeb, and/or ecoengine
 #' @return Opens up the documentation for the function that is used internally within 
 #' the occ function for each source. Any of the parameters passed to e.g. occ_search()
 #' from the rgbif package can be passed in the associated gbifopts list in occ()
@@ -17,6 +17,7 @@ occ_options <- function(from = 'gbif'){
          inat = help('get_inat_obs', package = "rinat"),
          ebird = help('ebirdregion', package = "rebird"),
          ecoengine = help('ee_observations', package = "ecoengine"))
+         antweb = help('aw_data', package = "AntWeb")
 }
 
 # getauthors <- function(package){

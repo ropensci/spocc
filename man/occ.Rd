@@ -5,7 +5,7 @@
 occ(query = NULL, from = "gbif", limit = 25, geometry = NULL,
   rank = "species", type = "sci", ids = NULL, gbifopts = list(),
   bisonopts = list(), inatopts = list(), ebirdopts = list(),
-  ecoengineopts = list())
+  ecoengineopts = list(), antwebopts = list())
 }
 \arguments{
   \item{query}{(character) One to many names. Either a
@@ -57,6 +57,9 @@ occ(query = NULL, from = "gbif", limit = 25, geometry = NULL,
 
   \item{ecoengineopts}{(list) List of options to pass on to
   ecoengine}
+
+  \item{antwebopts}{(list) List of options to pass on to
+  AntWeb}
 }
 \description{
 Search on a single species name, or many. And search across
@@ -64,12 +67,13 @@ a single or many data sources.
 }
 \details{
 The \code{occ} function is an opinionated wrapper around
-the rgbif, rbison, rinat, rebird, and ecoengine packages to
-allow data access from a single access point. We take care
-of making sure you get useful objects out at the cost of
-flexibility/options - although you can still set options
-for each of the packages via the gbifopts, bisonopts,
-inatopts, ebirdopts, and ecoengineopts parameters.
+the rgbif, rbison, rinat, rebird, AntWeb, and ecoengine
+packages to allow data access from a single access point.
+We take care of making sure you get useful objects out at
+the cost of flexibility/options - although you can still
+set options for each of the packages via the gbifopts,
+bisonopts, inatopts, ebirdopts, and ecoengineopts
+parameters.
 
 When searching ecoengine, you can leave the page argument
 blank to get a single page. Otherwise use page ranges or
@@ -102,6 +106,8 @@ occ(query = 'Accipiter striatus', from = 'gbif')
 occ(query = 'Accipiter striatus', from = 'ecoengine')
 occ(query = 'Danaus plexippus', from = 'inat')
 occ(query = 'Bison bison', from = 'bison')
+# Data from AntWeb
+occ(query = "acanthognathus brevicornis", from = "antweb")
 occ(query = 'Setophaga caerulescens', from = 'ebird', ebirdopts = list(region='US'))
 occ(query = 'Spinus tristis', from = 'ebird', ebirdopts =
    list(method = 'ebirdgeo', lat = 42, lng = -76, dist = 50))

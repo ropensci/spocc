@@ -107,7 +107,11 @@ occ(query = 'Accipiter striatus', from = 'ecoengine')
 occ(query = 'Danaus plexippus', from = 'inat')
 occ(query = 'Bison bison', from = 'bison')
 # Data from AntWeb
-occ(query = "acanthognathus brevicornis", from = "antweb")
+# By species
+by_species <- occ(query = "acanthognathus brevicornis", from = "antweb")
+# or by genus
+by_genus <- occ(query = "acanthognathus", from = "antweb")
+
 occ(query = 'Setophaga caerulescens', from = 'ebird', ebirdopts = list(region='US'))
 occ(query = 'Spinus tristis', from = 'ebird', ebirdopts =
    list(method = 'ebirdgeo', lat = 42, lng = -76, dist = 50))

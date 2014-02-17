@@ -272,7 +272,7 @@ foo_antweb <- function(sources, query, limit, geometry,  opts) {
     query <- sub("^ +", "", query)
     query <- sub(" +$", "", query)
     
-    if(len(strsplit(query, " ")[[1]]) == 2) {
+    if(length(strsplit(query, " ")[[1]]) == 2) {
       opts$scientific_name <- query
     } else {
       opts$genus <- query

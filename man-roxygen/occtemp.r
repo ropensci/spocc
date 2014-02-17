@@ -21,6 +21,7 @@
 #' @param inatopts (list) List of options to pass on to rinat
 #' @param ebirdopts (list) List of options to pass on to ebird
 #' @param ecoengineopts (list) List of options to pass on to ecoengine
+#' @param antwebopts (list) List of options to pass on to AntWeb
 #' @details The \code{occ} function is an opinionated wrapper
 #' around the rgbif, rbison, rinat, rebird, AntWeb, and ecoengine packages to allow data 
 #' access from a single access point. We take care of making sure you get useful 

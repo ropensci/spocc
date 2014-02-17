@@ -151,14 +151,16 @@ occ2df <- function(obj, what = "data") {
     cc <- foolist(obj$inat)
     dd <- foolist(obj$ebird)
     ee <- foolist(obj$ecoengine)
+    aw <- foolist(obj$antweb)
     tmp <- data.frame(rbindlist(list(data.frame(name = aa$name, longitude = aa$longitude, 
         latitude = aa$latitude, prov = aa$prov), data.frame(name = bb$name, longitude = bb$decimalLongitude, 
         latitude = bb$decimalLatitude, prov = bb$prov), data.frame(name = cc$name, 
         latitude = cc$Latitude, longitude = cc$Longitude, prov = cc$prov), data.frame(name = dd$name,
         latitude = dd$lat, longitude = dd$lng, prov = dd$prov), data.frame(name = ee$name, 
-        latitude = ee$latitude, longitude = ee$longitude, prov = ee$prov))))
+        latitude = ee$latitude, longitude = ee$longitude, prov = ee$prov), data.frame(name = aw$name, 
+        latitude = aw$decimal_latitude, longitude = aw$decimal_longitude, prov = aw$prov))))
     tmpout <- list(meta = list(obj$gbif$meta, obj$bison$meta, obj$inat$meta, obj$ebird$meta, 
-        obj$ecoengine$meta), data = tmp)
+        obj$ecoengine$meta, obj$aw$meta), data = tmp)
     if (what %in% "data") 
         tmpout$data else tmpout
 }

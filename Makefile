@@ -6,7 +6,6 @@ vignettes:
 
 move:
 		cp inst/vign/spocc_guide.md vignettes
-		mkdir vignettes/img
 		cp -rf inst/vign/img/* vignettes/img/
 
 pandoc:

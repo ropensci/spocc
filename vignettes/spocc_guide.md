@@ -31,8 +31,11 @@ Built by the US Geological Survey's core science analytic team, BISON is a porta
 6. [eBird](http://ebird.org/content/ebird/) (`rebird`)  
 ebird is a database developed and maintained by the Cornell Lab of Ornithology and the National Audubon Society. It provides real-time access to checklist data, data on bird abundance and distribution, and communtiy reports from birders.
 
+7. [AntWeb](http://antweb.org) (`AntWeb`)  
+AntWeb is the world's largest online database of images, specimen records, and natural history information on ants. It is community driven and open to contribution from anyone with specimen records, natural history comments, or images.
 
-__Notes:__ It's important to keep in mind that several data providers interface with many of the above mentioned repositories. This means that occurence data obtained from BISON may be duplicates of data that are also available through GBIF. We do not have a way to resolve these duplicates or overlaps at this time but it is an issue we are hoping to resolve in future versions of the package.
+__Note:__ It's important to keep in mind that several data providers interface with many of the above mentioned repositories. This means that occurence data obtained from BISON may be duplicates of data that are also available through GBIF. We do not have a way to resolve these duplicates or overlaps at this time but it is an issue we are hoping to resolve in future versions of the package.
+
 
 ### Data retrieval
 
@@ -41,7 +44,22 @@ The most significant function in spocc is the `occ` (short for occurrence) funct
 
 ```r
 library(spocc)
+```
+
+```
+## Warning: replacing previous import by 'rgbif::blanktheme' when loading
+## 'spocc'
+```
+
+```r
 df <- occ(query = "Accipiter striatus", from = "gbif")
+```
+
+```
+## Loading required package: rjson
+```
+
+```r
 df
 ```
 
@@ -51,7 +69,8 @@ df
 ##  bison :  0 records across 1 species 
 ##  inat  :  0 records across 1 species 
 ##  ebird :  0 records across 1 species 
-##  ecoengine :  0 records across 1 species
+##  ecoengine :  0 records across 1 species 
+##  antweb :  0 records across 1 species
 ```
 
 ```r
@@ -94,9 +113,14 @@ response -- |
             | -- ebird ------ |
                               | -- Accipiter_striatus
                               | -- Pinus_contorta
+
+            | -- antweb ----- |
+                              | -- Accipiter_striatus
+                              | -- Pinus_contorta
+
 ```
 
-If you only request data from gbif, like `from='gbif'`, then the other four source slots are prsent in the response object, but have no data.
+If you only request data from gbif, like `from = 'gbif'`, then the other four source slots are prsent in the response object, but have no data.
 
 You can quickly get just the data by indexing to the data element, like 
 
@@ -216,11 +240,11 @@ head(df$inat$data$Pinus_contorta[, 1:2])
 ```
 ##                       name                  Datetime
 ## 1  Pinus contorta contorta 2014-01-17 00:00:00 +0000
-## 2           Pinus contorta 2013-12-23 18:55:03 +0000
-## 3           Pinus contorta 2013-12-23 19:02:55 +0000
-## 4 Elaphocordyceps capitata 2013-12-11 22:05:22 +0000
+## 2           Pinus contorta 2013-12-23 12:55:03 +0000
+## 3           Pinus contorta 2013-12-23 13:02:55 +0000
+## 4 Elaphocordyceps capitata 2013-12-11 16:05:22 +0000
 ## 5 Pinus contorta murrayana 2013-10-01 00:00:00 +0000
-## 6           Pinus contorta 2013-11-30 20:17:00 +0000
+## 6           Pinus contorta 2013-11-30 14:17:00 +0000
 ```
 
 
@@ -249,11 +273,11 @@ head(df$inat$data$Pinus_contorta[, 1:2])
 ```
 ##             name                  Datetime
 ## 1 Pinus contorta 2014-01-17 00:00:00 +0000
-## 2 Pinus contorta 2013-12-23 18:55:03 +0000
-## 3 Pinus contorta 2013-12-23 19:02:55 +0000
-## 4 Pinus contorta 2013-12-11 22:05:22 +0000
+## 2 Pinus contorta 2013-12-23 12:55:03 +0000
+## 3 Pinus contorta 2013-12-23 13:02:55 +0000
+## 4 Pinus contorta 2013-12-11 16:05:22 +0000
 ## 5 Pinus contorta 2013-10-01 00:00:00 +0000
-## 6 Pinus contorta 2013-11-30 20:17:00 +0000
+## 6 Pinus contorta 2013-11-30 14:17:00 +0000
 ```
 
 ```r
@@ -292,9 +316,9 @@ __Interactive maps__
 
 _Leaflet.js_  
 
-Leaflet JS is an open source mapping library that can leverage various layers from multiple sources. Using the `leafletR` library, it's possible to generate a local `geoJSON` file and a html file of species distribution maps. The folder can easily be moved to a web server and served widely without any additional coding.
+[Leaflet JS](http://leafletjs.com/) is an open source mapping library that can leverage various layers from multiple sources. Using the [`leafletR`](http://cran.r-project.org/web/packages/leafletR/index.html) library, it's possible to generate a local `geoJSON` file and a html file of species distribution maps. The folder can easily be moved to a web server and served widely without any additional coding.
 
-It's also possible to render similar maps iwth Mapbox by committing just the geoJSON file to GitHub or posting it as a gist. All the remaining fields will become part of a table inside a tooltip, providing a extremely quick and easy way to serve up interactive maps. This is especially useful when a user does not have access to web hosting.
+It's also possible to render similar maps with Mapbox by committing just the geoJSON file to GitHub or posting it as a gist on GitHub. All the remaining fields will become part of a table inside a tooltip, providing a extremely quick and easy way to serve up interactive maps. This is especially useful when users do not have their own web hosting options.
 
 Here is an example of making a leaflet map:
 
@@ -311,7 +335,9 @@ mapleaflet(data = data, dest = ".")
 
 _Shiny map_
 
-We've created an interactive map using RStudio's Shiny, via the `mapshiny` function. This function uses the package `rCharts`, which you'll need to install if you want to use the `mapshiny` function. Instead of passing in occurrence data to the function, the function creates an interactive app in your browser (or the pop up RStudio window), in which you can enter speciess names to search for, choose data source, set limit on number of occurrences, choose the background map, and the color palette for the map symbols. You can make this map yourself if you like by looking at two files: `system.file("shiny/ui.r", package = "spocc")` and `system.file("shiny/server.r", package = "spocc")`. 
+We've also created an interactive map using [RStudio's](http://www.rstudio.com/) [Shiny](http://www.rstudio.com/shiny/), via the `mapshiny` function. This function uses the package `rCharts`, which you'll need to install if you want to use the `mapshiny` function. Instead of passing in occurrence data to the function, this function creates an interactive app in your browser (or the pop up inside RStudio's IDE window), in which you can enter speciess names to search for, pick a data source, set limit on number of occurrences, choose the background map, and also the color palette for the map symbols. You can make this map yourself if you like by looking at two files: 
+- `system.file("shiny/ui.r", package = "spocc")` and 
+- `system.file("shiny/server.r", package = "spocc")`. 
 
 
 ```r
@@ -323,7 +349,7 @@ mapshiny()
 
 _Geojson map as a Github gist_
 
-We've created an interactive map using RStudio's Shiny, via the `mapgist` function. This function uses the package `rCharts`, which you'll need to install if you want to use the `mapgist` function. You have to have a Github account to use this function. Github accounts are free though, and great for versioning and collaborating on code or papers. When you run the `mapgist` function it will ask for your Github username and password. You can alternatively store those in your `.Rprofile` file by adding entries for username (`options(github.username = 'username')`) and password (`options(github.password = 'password')`). 
+You can also create interactive maps using RStudio's Shiny via the `mapgist` function. This function uses the package `rCharts`, which you'll need to install (from GitHub since it's not yet available on CRAN) if you want to use the `mapgist` function. You have to have a Github account to use this function. Github accounts are free though, and great for versioning and collaborating on code or papers. When you run the `mapgist` function it will ask for your Github username and password. You can alternatively store those in your `.Rprofile` file by adding entries for username (`options(github.username = 'username')`) and password (`options(github.password = 'password')`). 
 
 
 ```r
@@ -341,7 +367,7 @@ __Static maps__
 
 _base plots_
 
-Base plots, or the built in plotting facility in R accessed via `plot()`, is quite fast, but not super easy to use, but are good for a quick glance at some data. 
+Base plots, or the built in plotting facility in R accessed via `plot()`, is quite fast, but not easy or efficient to use, but are good for a quick glance at some data. 
 
 
 ```r
@@ -369,4 +395,5 @@ mapggplot(ecoengine_data)
 ### Upcoming features
 
 * As soon as we have an updated `rvertnet` package, we'll add the ability to query VertNet data from `spocc`.
+* We will add `rCharts` as an official import once the package is on CRAN (Eta end of March)
 * We're helping on a new package `rMaps` to make interactive maps using various Javascript mapping libraries, which will give access to a variety of awesome interactive maps. We will integrate `rMaps` once it's on CRAN.

@@ -1,4 +1,4 @@
-all: move pandoc rmd2md
+all: move pandoc rmd2md reducepdf
 
 vignettes: 
 		cd inst/vign;\
@@ -16,3 +16,6 @@ pandoc:
 rmd2md:
 		cd vignettes;\
 		cp spocc_guide.md spocc_guide.Rmd;\
+
+reducepdf:
+		Rscript -e 'tools::compactPDF("vignettes/spocc_guide.pdf", gs_quality = "ebook")'

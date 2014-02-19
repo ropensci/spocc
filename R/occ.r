@@ -44,14 +44,16 @@
 #' occ(query='Accipiter striatus', from='gbif', 
 #'    geometry='POLYGON((30.1 10.1, 10 20, 20 60, 60 60, 30.1 10.1))')
 #' occ(query='Helianthus annuus', from='bison', 
-#'    geometry='POLYGON((-111.06 38.84, -110.80 39.37, -110.20 39.17, -110.20 38.90, -110.63 38.67, -111.06 38.84))')
+#'    geometry='POLYGON((-111.06 38.84, -110.80 39.37, -110.20 39.17, -110.20 38.90, 
+#'                       -110.63 38.67, -111.06 38.84))')
 #'    
 #' ## Or pass in a bounding box, which is automatically converted to WKT (required by GBIF)
 #' ## via the bbox2wkt function
 #' occ(query='Accipiter striatus', from='gbif', geometry=c(-125.0,38.4,-121.8,40.9))
 #' 
 #' ## Bounding box constraint with ecoengine 
-#' occ(query='Accipiter striatus', from='ecoengine', limit=10, geometry=c(-125.0,38.4,-121.8,40.9))
+#' occ(query='Accipiter striatus', from='ecoengine', limit=10, 
+#'    geometry=c(-125.0,38.4,-121.8,40.9))
 #' 
 #' ## You can pass in geometry to each source separately via their opts parameter, at 
 #' ## least those that support it. Note that if you use rinat, you reverse the order, with
@@ -99,7 +101,8 @@
 #' ## polygons like so (you can use POLYGON or MULTIPOLYGON) when specifying more than one
 #' ## polygon. Note how each polygon is in it's own set of parentheses.
 #' occ(query='Accipiter striatus', from='gbif', 
-#'    geometry='MULTIPOLYGON((30 10, 10 20, 20 60, 60 60, 30 10), (30 10, 10 20, 20 60, 60 60, 30 10))')
+#'    geometry='MULTIPOLYGON((30 10, 10 20, 20 60, 60 60, 30 10), 
+#'                           (30 10, 10 20, 20 60, 60 60, 30 10))')
 #' }
 occ <- function(query = NULL, from = "gbif", limit = 25, geometry = NULL, rank = "species",
                 type = "sci", ids = NULL, gbifopts = list(), bisonopts = list(), inatopts = list(), 

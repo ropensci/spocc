@@ -23,10 +23,12 @@
 #' @examples \dontrun{
 #' library(plyr)
 #' splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
-#' keys <- sapply(splist, function(x) gbif_lookup(name=x, kingdom='plants')$speciesKey, USE.NAMES=FALSE)
+#' keys <- sapply(splist, function(x) gbif_lookup(name=x, kingdom='plants')$speciesKey, 
+#'    USE.NAMES=FALSE)
 #' out <- occ_search(keys, georeferenced=TRUE, limit=50, return='data')
 #' dat <- ldply(out)
-#' datgeojson <- spocc_stylegeojson(input=dat, var='name', color=c('#976AAE','#6B944D','#BD5945'), size=c('small','medium','large'))
+#' datgeojson <- spocc_stylegeojson(input=dat, var='name', 
+#'    color=c('#976AAE','#6B944D','#BD5945'), size=c('small','medium','large'))
 #' write.csv(datgeojson, '~/my.csv')
 #' spocc_togeojson(input='~/my.csv', method='web', outfilename='my')
 #' spocc_gist('~/my.geojson', description = 'Occurrences of three bird species mapped')
@@ -176,15 +178,18 @@ spocc_stylegeojson <- function(input, var = NULL, var_col = NULL, var_sym = NULL
 #' 
 #' # Get data and save map data
 #' splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
-#' keys <- sapply(splist, function(x) gbif_lookup(name=x, kingdom='plants')$speciesKey, USE.NAMES=FALSE)
+#' keys <- sapply(splist, function(x) gbif_lookup(name=x, kingdom='plants')$speciesKey, 
+#'    USE.NAMES=FALSE)
 #' out <- occ_search(keys, georeferenced=TRUE, limit=50, return='data')
 #' dat <- ldply(out)
-#' datgeojson <- spocc_stylegeojson(input=dat, var='name', color=c('#976AAE','#6B944D','#BD5945'), size=c('small','medium','large'))
+#' datgeojson <- spocc_stylegeojson(input=dat, var='name', 
+#'    color=c('#976AAE','#6B944D','#BD5945'), size=c('small','medium','large'))
 #' 
 #' # Put into a github repo to view on the web
 #' write.csv(datgeojson, '~/github/sac/mygeojson/rgbif_data.csv')
 #' file <- '~/github/sac/mygeojson/rgbif_data.csv'
-#' spocc_togeojson(file, method='web', destpath='~/github/sac/mygeojson/', outfilename='rgbif_data')
+#' spocc_togeojson(file, method='web', destpath='~/github/sac/mygeojson/', 
+#'    outfilename='rgbif_data')
 #' 
 #' # Using rCharts' function spocc_create_gist
 #' write.csv(datgeojson, '~/my.csv')

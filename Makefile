@@ -1,4 +1,4 @@
-all: move pandoc rmd2md cleanup
+all: move pandoc rmd2md
 
 vignettes: 
 		cd inst/vign;\
@@ -16,6 +16,3 @@ pandoc:
 rmd2md:
 		cd vignettes;\
 		cp spocc_guide.md spocc_guide.Rmd;\
-
-cleanup:
-		rm inst/vign/spocc_guide.md

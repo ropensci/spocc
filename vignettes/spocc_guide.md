@@ -3,7 +3,7 @@
 %\VignetteIndexEntry{An introduction to the spocc package}
 -->
 
-# Species occurrence data (spocc), version 0.08
+# Species occurrence data (spocc), version 0.1
 
 ### Introduction
 
@@ -44,14 +44,6 @@ The most significant function in spocc is the `occ` (short for occurrence) funct
 
 ```r
 library(spocc)
-```
-
-```
-## Warning: replacing previous import by 'rgbif::blanktheme' when loading
-## 'spocc'
-```
-
-```r
 df <- occ(query = "Accipiter striatus", from = "gbif")
 ```
 
@@ -240,11 +232,11 @@ head(df$inat$data$Pinus_contorta[, 1:2])
 ```
 ##                       name                  Datetime
 ## 1  Pinus contorta contorta 2014-01-17 00:00:00 +0000
-## 2           Pinus contorta 2013-12-23 12:55:03 +0000
-## 3           Pinus contorta 2013-12-23 13:02:55 +0000
-## 4 Elaphocordyceps capitata 2013-12-11 16:05:22 +0000
+## 2           Pinus contorta 2013-12-23 10:55:03 +0000
+## 3           Pinus contorta 2013-12-23 11:02:55 +0000
+## 4 Elaphocordyceps capitata 2013-12-11 14:05:22 +0000
 ## 5 Pinus contorta murrayana 2013-10-01 00:00:00 +0000
-## 6           Pinus contorta 2013-11-30 14:17:00 +0000
+## 6           Pinus contorta 2013-11-30 12:17:00 +0000
 ```
 
 
@@ -273,11 +265,11 @@ head(df$inat$data$Pinus_contorta[, 1:2])
 ```
 ##             name                  Datetime
 ## 1 Pinus contorta 2014-01-17 00:00:00 +0000
-## 2 Pinus contorta 2013-12-23 12:55:03 +0000
-## 3 Pinus contorta 2013-12-23 13:02:55 +0000
-## 4 Pinus contorta 2013-12-11 16:05:22 +0000
+## 2 Pinus contorta 2013-12-23 10:55:03 +0000
+## 3 Pinus contorta 2013-12-23 11:02:55 +0000
+## 4 Pinus contorta 2013-12-11 14:05:22 +0000
 ## 5 Pinus contorta 2013-10-01 00:00:00 +0000
-## 6 Pinus contorta 2013-11-30 14:17:00 +0000
+## 6 Pinus contorta 2013-11-30 12:17:00 +0000
 ```
 
 ```r
@@ -396,4 +388,4 @@ mapggplot(ecoengine_data)
 
 * As soon as we have an updated `rvertnet` package, we'll add the ability to query VertNet data from `spocc`.
 * We will add `rCharts` as an official import once the package is on CRAN (Eta end of March)
-* We're helping on a new package `rMaps` to make interactive maps using various Javascript mapping libraries, which will give access to a variety of awesome interactive maps. We will integrate `rMaps` once it's on CRAN.
+* We're helping on a new package `rMaps` to make interactive maps using various Javascript mapping libraries, which will give access to a variety of awesome interactive maps. We will integrate `rMaps` once it's on CRAN.

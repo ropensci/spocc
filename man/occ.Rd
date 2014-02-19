@@ -108,9 +108,9 @@ occ(query = 'Danaus plexippus', from = 'inat')
 occ(query = 'Bison bison', from = 'bison')
 # Data from AntWeb
 # By species
-by_species <- occ(query = "acanthognathus brevicornis", from = "antweb")
+(by_species <- occ(query = "acanthognathus brevicornis", from = "antweb"))
 # or by genus
-by_genus <- occ(query = "acanthognathus", from = "antweb")
+(by_genus <- occ(query = "acanthognathus", from = "antweb"))
 
 occ(query = 'Setophaga caerulescens', from = 'ebird', ebirdopts = list(region='US'))
 occ(query = 'Spinus tristis', from = 'ebird', ebirdopts =
@@ -150,9 +150,6 @@ occ(query='Accipiter striatus', from='ecoengine', limit=10, geometry=c(-125.0,38
 ## latitude first, and longitude second, but here it's the reverse for consistency across
 ## the spocc package
 bounds <- c(-125.0,38.4,-121.8,40.9)
-occ(query = 'Danaus plexippus', from="inat", inatopts=list(bounds=bounds))
-
-## Same, but passing in via the global geometry parameter
 occ(query = 'Danaus plexippus', from="inat", geometry=bounds)
 
 ## Passing geometry with multiple sources

@@ -3,7 +3,7 @@
 %\VignetteIndexEntry{An introduction to the spocc package}
 -->
 
-# Species occurrence data (spocc), version 0.08
+# Species occurrence data (spocc), version 0.1
 
 ### Introduction
 
@@ -199,4 +199,4 @@ mapggplot(ecoengine_data)
 
 * As soon as we have an updated `rvertnet` package, we'll add the ability to query VertNet data from `spocc`.
 * We will add `rCharts` as an official import once the package is on CRAN (Eta end of March)
-* We're helping on a new package `rMaps` to make interactive maps using various Javascript mapping libraries, which will give access to a variety of awesome interactive maps. We will integrate `rMaps` once it's on CRAN.
+* We're helping on a new package `rMaps` to make interactive maps using various Javascript mapping libraries, which will give access to a variety of awesome interactive maps. We will integrate `rMaps` once it's on CRAN.

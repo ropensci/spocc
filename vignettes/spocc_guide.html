@@ -34,7 +34,7 @@ code > span.er { font-weight: bold; }
 %\VignetteIndexEntry{An introduction to the spocc package}
 -->
 
-<h1 id="species-occurrence-data-spocc-version-0.08">Species occurrence data (spocc), version 0.08</h1>
+<h1 id="species-occurrence-data-spocc-version-0.1">Species occurrence data (spocc), version 0.1</h1>
 <h3 id="introduction">Introduction</h3>
 <p>The rOpenSci projects aims to provide programmatic access to scientific data repositories on the web. A vast majority of the packages in our current suite retrieve some form of biodiversity or taxonomic data. Since several of these datasets have been georeferenced, it provides numerous opportunities for visualizing species distributions, building species distribution maps, and for using it analyses such as species distribution models. In an effort to streamline access to these data, we have developed a package called Spocc, which provides a unified API to all the biodiversity sources that we provide. The obvious advantage is that a user can interact with a common API and not worry about the nuances in syntax that differ between packages. As more data sources come online, users can access even more data without significant changes to their code. However, it is important to note that spocc will never replicate the full functionality that exists within specific packages. Therefore users with a strong interest in one of the specific data sources listed below would benefit from familiarising themselves with the inner working of the appropriate packages.</p>
 <h3 id="data-sources">Data Sources</h3>
@@ -51,10 +51,8 @@ code > span.er { font-weight: bold; }
 <p><strong>Note:</strong> It's important to keep in mind that several data providers interface with many of the above mentioned repositories. This means that occurence data obtained from BISON may be duplicates of data that are also available through GBIF. We do not have a way to resolve these duplicates or overlaps at this time but it is an issue we are hoping to resolve in future versions of the package.</p>
 <h3 id="data-retrieval">Data retrieval</h3>
 <p>The most significant function in spocc is the <code>occ</code> (short for occurrence) function. <code>occ</code> takes a query, often a species name, and searches across all data sources specified in the <code>from</code> argument. For example, one can search for all occurrences of <a href="http://www.allaboutbirds.org/guide/sharp-shinned_hawk/id">Sharp-shinned Hawks</a> (<em>Accipiter striatus</em>) from the GBIF database with the following R call.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(spocc)</code></pre>
-<pre><code>## Warning: replacing previous import by &#39;rgbif::blanktheme&#39; when loading
-## &#39;spocc&#39;</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">occ</span>(<span class="dt">query =</span> <span class="st">&quot;Accipiter striatus&quot;</span>, <span class="dt">from =</span> <span class="st">&quot;gbif&quot;</span>)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(spocc)
+df &lt;-<span class="st"> </span><span class="kw">occ</span>(<span class="dt">query =</span> <span class="st">&quot;Accipiter striatus&quot;</span>, <span class="dt">from =</span> <span class="st">&quot;gbif&quot;</span>)</code></pre>
 <pre><code>## Loading required package: rjson</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r">df</code></pre>
 <pre><code>## Summary of results - occurrences found for: 
@@ -171,11 +169,11 @@ code > span.er { font-weight: bold; }
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(df$inat$data$Pinus_contorta[, <span class="dv">1</span>:<span class="dv">2</span>])</code></pre>
 <pre><code>##                       name                  Datetime
 ## 1  Pinus contorta contorta 2014-01-17 00:00:00 +0000
-## 2           Pinus contorta 2013-12-23 12:55:03 +0000
-## 3           Pinus contorta 2013-12-23 13:02:55 +0000
-## 4 Elaphocordyceps capitata 2013-12-11 16:05:22 +0000
+## 2           Pinus contorta 2013-12-23 10:55:03 +0000
+## 3           Pinus contorta 2013-12-23 11:02:55 +0000
+## 4 Elaphocordyceps capitata 2013-12-11 14:05:22 +0000
 ## 5 Pinus contorta murrayana 2013-10-01 00:00:00 +0000
-## 6           Pinus contorta 2013-11-30 14:17:00 +0000</code></pre>
+## 6           Pinus contorta 2013-11-30 12:17:00 +0000</code></pre>
 <p>This is fine, but when trying to make a map in which points are colored for each taxon, you can have many colors for a single taxon, where instead one color per taxon is more appropriate. There is a function in <code>spocc</code> called <code>fixnames</code>, which has a few options in which you can take the shortest names (usually just the plain binomials like <em>Homo sapiens</em>), or the original name queried, or a vector of names supplied by the user.</p>
 <pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">fixnames</span>(df, <span class="dt">how =</span> <span class="st">&quot;shortest&quot;</span>)
 <span class="kw">head</span>(df$gbif$data$Pinus_contorta[, <span class="dv">1</span>:<span class="dv">2</span>])</code></pre>
@@ -189,11 +187,11 @@ code > span.er { font-weight: bold; }
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(df$inat$data$Pinus_contorta[, <span class="dv">1</span>:<span class="dv">2</span>])</code></pre>
 <pre><code>##             name                  Datetime
 ## 1 Pinus contorta 2014-01-17 00:00:00 +0000
-## 2 Pinus contorta 2013-12-23 12:55:03 +0000
-## 3 Pinus contorta 2013-12-23 13:02:55 +0000
-## 4 Pinus contorta 2013-12-11 16:05:22 +0000
+## 2 Pinus contorta 2013-12-23 10:55:03 +0000
+## 3 Pinus contorta 2013-12-23 11:02:55 +0000
+## 4 Pinus contorta 2013-12-11 14:05:22 +0000
 ## 5 Pinus contorta 2013-10-01 00:00:00 +0000
-## 6 Pinus contorta 2013-11-30 14:17:00 +0000</code></pre>
+## 6 Pinus contorta 2013-11-30 12:17:00 +0000</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r">df_comb &lt;-<span class="st"> </span><span class="kw">occ2df</span>(df)
 <span class="kw">head</span>(df_comb)</code></pre>
 <pre><code>##             name longitude latitude prov
@@ -260,7 +258,7 @@ out &lt;-<span class="st"> </span><span class="kw">occ</span>(<span class="dt">q
 <ul>
 <li>As soon as we have an updated <code>rvertnet</code> package, we'll add the ability to query VertNet data from <code>spocc</code>.</li>
 <li>We will add <code>rCharts</code> as an official import once the package is on CRAN (Eta end of March)</li>
-<li>We're helping on a new package <code>rMaps</code> to make interactive maps using various Javascript mapping libraries, which will give access to a variety of awesome interactive maps. We will integrate <code>rMaps</code> once it's on CRAN.</li>
+<li>We're helping on a new package <code>rMaps</code> to make interactive maps using various Javascript mapping libraries, which will give access to a variety of awesome interactive maps. We will integrate <code>rMaps</code> once it's on CRAN.</li>
 </ul>
 </body>
 </html>

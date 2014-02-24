@@ -356,6 +356,7 @@ foo_ebird <- function(sources, query, limit, opts) {
     opts$species <- query
     opts$max <- limit
     if (opts$method == "ebirdregion") {
+      if (is.null(opts$region)) opts$region <- "US"
       out <- do.call(ebirdregion, opts[!names(opts) %in% "method"])
     } else {
       out <- do.call(ebirdgeo, opts[!names(opts) %in% "method"])

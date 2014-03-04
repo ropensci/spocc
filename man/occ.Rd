@@ -173,17 +173,17 @@ head(df)
 
 # taxize integration: Pass in taxonomic identifiers
 library(taxize)
-ids <- get_ids(names=c("Chironomus riparius","Pinus contorta"), db = c('itis','gbif'))
+(ids <- get_ids(names=c("Chironomus riparius","Pinus contorta"), db = c('itis','gbif')))
 occ(ids = ids[[1]], from='bison')
 occ(ids = ids, from=c('bison','gbif'))
 
-ids <- get_ids(names="Chironomus riparius", db = 'gbif')
+(ids <- get_ids(names="Chironomus riparius", db = 'gbif'))
 occ(ids = ids, from='gbif')
 
-ids <- get_gbifid("Chironomus riparius")
+(ids <- get_gbifid("Chironomus riparius"))
 occ(ids = ids, from='gbif')
 
-ids <- get_tsn('Accipiter striatus')
+(ids <- get_tsn('Accipiter striatus'))
 occ(ids = ids, from='bison')
 }
 }

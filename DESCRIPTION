@@ -40,7 +40,6 @@ Imports:
     RJSONIO,
     leafletR (>= 0.1-1),
     data.table,
-    shiny,
     assertthat
 Suggests:
     roxygen2,

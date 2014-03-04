@@ -32,7 +32,7 @@ library(sp) # for the spplot function below
 out <- occ(query = "Populus tremuloides", from = c("inat","gbif"))
 out <- fixnames(out, "query")
 sp_points <- occ_to_sp(out)
-spplot(sp_points)
+spplot(sp_points, "prov")
 
 ### Or see how they line up on a map
 library(maptools)

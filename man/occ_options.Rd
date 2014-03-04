@@ -11,16 +11,24 @@ occ_options(from = "gbif")
 }
 \value{
 Opens up the documentation for the function that is used
-internally within the occ function for each source. Any of
-the parameters passed to e.g. occ_search() from the rgbif
-package can be passed in the associated gbifopts list in
-occ()
+internally within the occ function for each source.
 }
 \description{
 Look up options for parameters passed to each source
 }
+\details{
+Any of the parameters passed to e.g. occ_search() from the
+rgbif package can be passed in the associated gbifopts list
+in occ().
+
+Note that the from parameter is lowercased within the
+function and is called through match.arg first, so you can
+match on unique partial strings too (e.g., 'e' for
+'ecoengine').
+}
 \examples{
 occ_options()
 occ_options('ecoengine')
+occ_options('AntWeb')
 }
 

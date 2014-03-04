@@ -14,7 +14,7 @@
 #' out <- occ(query = "Populus tremuloides", from = c("inat","gbif"))
 #' out <- fixnames(out, "query")
 #' sp_points <- occ_to_sp(out)
-#' spplot(sp_points)
+#' spplot(sp_points, "prov")
 #' 
 #' ### Or see how they line up on a map
 #' library(maptools)
@@ -25,8 +25,7 @@
 #' points(sp_points,col=2)
 #' }
 
-
-occ_to_sp <- function(occObj,coord_string = "+proj=longlat +datum=WGS84",just_coords = FALSE){
+occ_to_sp <- function(occObj, coord_string = "+proj=longlat +datum=WGS84", just_coords = FALSE){
   
   points <- occ2df(occObj)
   

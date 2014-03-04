@@ -1,8 +1,8 @@
 #' ggplot2 visualization of species occurences
 #'
-#' @param df Input \code{data.frame}
 #' @import ggmap
 #' @export
+#' @param df Input \code{data.frame}
 #' @param zoom zoom level for map. Adjust depending on how your data look.
 #' @param point_color Default color of your points
 #' @examples \dontrun{

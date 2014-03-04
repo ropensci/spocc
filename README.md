@@ -231,7 +231,7 @@ plot(out, cex=1, pch=10)
 
 Please report any issues or bugs](https://github.com/ropensci/spocc/issues).
 
-License: CC0
+License: MIT
 
 This package is part of the [rOpenSci](http://ropensci.org/packages) project.
 
@@ -240,16 +240,16 @@ To cite package `spocc` in publications use:
 ```coffee
 To cite package ‘spocc’ in publications use:
 
-  Scott Chamberlain, Carl Boettiger, Karthik Ram and Ted Hart (2013). spocc: R interface to many species
-  occurrence data sources. R package version 0.0.4. https://github.com/ropensci/spocc
+  Scott Chamberlain, Karthik Ram and Ted Hart (2014). spocc: R interface to many species occurrence data sources. R package version 0.1.0.
+  https://github.com/ropensci/spocc
 
 A BibTeX entry for LaTeX users is
 
   @Manual{,
     title = {spocc: R interface to many species occurrence data sources},
-    author = {Scott Chamberlain and Carl Boettiger and Karthik Ram and Ted Hart},
-    year = {2013},
-    note = {R package version 0.0.4},
+    author = {Scott Chamberlain and Karthik Ram and Ted Hart},
+    year = {2014},
+    note = {R package version 0.1.0},
     url = {https://github.com/ropensci/spocc},
   }
 ```

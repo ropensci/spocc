@@ -45,13 +45,6 @@ The most significant function in spocc is the `occ` (short for occurrence) funct
 ```r
 library(spocc)
 df <- occ(query = "Accipiter striatus", from = "gbif")
-```
-
-```
-## Loading required package: rjson
-```
-
-```r
 df
 ```
 
@@ -231,12 +224,12 @@ head(df$inat$data$Pinus_contorta[, 1:2])
 
 ```
 ##                       name                  Datetime
-## 1  Pinus contorta contorta 2014-01-17 00:00:00 +0000
-## 2           Pinus contorta 2013-12-23 10:55:03 +0000
-## 3           Pinus contorta 2013-12-23 11:02:55 +0000
-## 4 Elaphocordyceps capitata 2013-12-11 14:05:22 +0000
-## 5 Pinus contorta murrayana 2013-10-01 00:00:00 +0000
-## 6           Pinus contorta 2013-11-30 12:17:00 +0000
+## 1           Pinus contorta 2014-02-22 00:00:00 +0000
+## 2  Pinus contorta contorta 2014-01-17 00:00:00 +0000
+## 3           Pinus contorta 2013-12-23 07:55:03 +0000
+## 4           Pinus contorta 2013-12-23 08:02:55 +0000
+## 5 Elaphocordyceps capitata 2013-12-11 11:05:22 +0000
+## 6 Pinus contorta murrayana 2013-10-01 00:00:00 +0000
 ```
 
 
@@ -264,12 +257,12 @@ head(df$inat$data$Pinus_contorta[, 1:2])
 
 ```
 ##             name                  Datetime
-## 1 Pinus contorta 2014-01-17 00:00:00 +0000
-## 2 Pinus contorta 2013-12-23 10:55:03 +0000
-## 3 Pinus contorta 2013-12-23 11:02:55 +0000
-## 4 Pinus contorta 2013-12-11 14:05:22 +0000
-## 5 Pinus contorta 2013-10-01 00:00:00 +0000
-## 6 Pinus contorta 2013-11-30 12:17:00 +0000
+## 1 Pinus contorta 2014-02-22 00:00:00 +0000
+## 2 Pinus contorta 2014-01-17 00:00:00 +0000
+## 3 Pinus contorta 2013-12-23 07:55:03 +0000
+## 4 Pinus contorta 2013-12-23 08:02:55 +0000
+## 5 Pinus contorta 2013-12-11 11:05:22 +0000
+## 6 Pinus contorta 2013-10-01 00:00:00 +0000
 ```
 
 ```r
@@ -293,12 +286,12 @@ tail(df_comb)
 
 ```
 ##               name longitude latitude prov
-## 95  Pinus contorta     47.03   -124.2 inat
-## 96  Pinus contorta     47.03   -124.2 inat
-## 97  Pinus contorta        NA       NA inat
-## 98  Pinus contorta     44.77   -116.3 inat
-## 99  Pinus contorta     47.03   -124.2 inat
-## 100 Pinus contorta     47.03   -124.2 inat
+## 95  Pinus contorta    -120.2    39.43 inat
+## 96  Pinus contorta    -124.2    47.03 inat
+## 97  Pinus contorta    -124.2    47.03 inat
+## 98  Pinus contorta        NA       NA inat
+## 99  Pinus contorta    -116.3    44.77 inat
+## 100 Pinus contorta    -124.2    47.03 inat
 ```
 
 

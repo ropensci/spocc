@@ -7,4 +7,5 @@ man-roxygen/^.*\.Rproj$
 vignettes/margins.sty
 inst/ignore
 inst/shinydumb
+inst/shiny
 inst/vign

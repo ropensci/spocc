@@ -43,7 +43,7 @@ code > span.er { font-weight: bold; }
 <li><p>Global Biodiversity Information Facility (<code>rgbif</code>)<br /><a href="http://www.gbif.org/">GBIF</a> is a government funded open data repository with several partner organizations with the express goal of providing access to data on Earth's biodiversity. The data are made available by a network of member nodes, coordinating information from various participant organizations and government agencies.</p></li>
 <li><p><a href="http://ecoengine.berkeley.edu/">Berkeley Ecoengine</a> (<code>ecoengine</code>)<br />The ecoengine is an open API built by the <a href="http://globalchange.berkeley.edu/">Berkeley Initiative for Global Change Biology</a>. The repository provides access to over 3 million specimens from various Berkeley natural history museums. These data span more than a century and provide access to georeferenced specimens, species checklists, photographs, vegetation surveys and resurveys and a variety of measurements from environmental sensors located at reserves across University of California's natural reserve system.</p></li>
 <li><p><strong>iNaturalist</strong> (<code>rinat</code>) iNaturalist provides access to crowd sourced citizen science data on species observations.</p></li>
-<li><p><a href="http://vertnet.org/index.php">VertNet</a> (<code>rvertnet</code>) Similar to <code>rgbif</code>, ecoengine, and <code>rbison</code> (see below), VertNet provides access to more than 80 million vertebrate records spanning a large number of institutions and museums primarly covering four major disciplines (mammology, herpetology, ornithology, and icthyology). <strong>Note that we don't currenlty support vertnet data in this package, but we should soon</strong></p></li>
+<li><p><a href="http://vertnet.org/index.php">VertNet</a> (<code>rvertnet</code>) Similar to <code>rgbif</code>, ecoengine, and <code>rbison</code> (see below), VertNet provides access to more than 80 million vertebrate records spanning a large number of institutions and museums primarly covering four major disciplines (mammology, herpetology, ornithology, and icthyology). <strong>Note that we don't currenlty support VertNet data in this package, but we should soon</strong></p></li>
 <li><p><a href="http://bison.usgs.ornl.gov/">Biodiversity Information Serving Our Nation</a> (<code>rbison</code>)<br />Built by the US Geological Survey's core science analytic team, BISON is a portal that provides access to species occurrence data from several participating institutions.</p></li>
 <li><p><a href="http://ebird.org/content/ebird/">eBird</a> (<code>rebird</code>)<br />ebird is a database developed and maintained by the Cornell Lab of Ornithology and the National Audubon Society. It provides real-time access to checklist data, data on bird abundance and distribution, and communtiy reports from birders.</p></li>
 <li><p><a href="http://antweb.org">AntWeb</a> (<code>AntWeb</code>)<br />AntWeb is the world's largest online database of images, specimen records, and natural history information on ants. It is community driven and open to contribution from anyone with specimen records, natural history comments, or images.</p></li>
@@ -52,9 +52,8 @@ code > span.er { font-weight: bold; }
 <h3 id="data-retrieval">Data retrieval</h3>
 <p>The most significant function in spocc is the <code>occ</code> (short for occurrence) function. <code>occ</code> takes a query, often a species name, and searches across all data sources specified in the <code>from</code> argument. For example, one can search for all occurrences of <a href="http://www.allaboutbirds.org/guide/sharp-shinned_hawk/id">Sharp-shinned Hawks</a> (<em>Accipiter striatus</em>) from the GBIF database with the following R call.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(spocc)
-df &lt;-<span class="st"> </span><span class="kw">occ</span>(<span class="dt">query =</span> <span class="st">&quot;Accipiter striatus&quot;</span>, <span class="dt">from =</span> <span class="st">&quot;gbif&quot;</span>)</code></pre>
-<pre><code>## Loading required package: rjson</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">df</code></pre>
+df &lt;-<span class="st"> </span><span class="kw">occ</span>(<span class="dt">query =</span> <span class="st">&quot;Accipiter striatus&quot;</span>, <span class="dt">from =</span> <span class="st">&quot;gbif&quot;</span>)
+df</code></pre>
 <pre><code>## Summary of results - occurrences found for: 
 ##  gbif  : 25 records across 1 species 
 ##  bison :  0 records across 1 species 
@@ -168,12 +167,12 @@ df &lt;-<span class="st"> </span><span class="kw">occ</span>(<span class="dt">qu
 ## 6                   Pinus contorta 856022134</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(df$inat$data$Pinus_contorta[, <span class="dv">1</span>:<span class="dv">2</span>])</code></pre>
 <pre><code>##                       name                  Datetime
-## 1  Pinus contorta contorta 2014-01-17 00:00:00 +0000
-## 2           Pinus contorta 2013-12-23 10:55:03 +0000
-## 3           Pinus contorta 2013-12-23 11:02:55 +0000
-## 4 Elaphocordyceps capitata 2013-12-11 14:05:22 +0000
-## 5 Pinus contorta murrayana 2013-10-01 00:00:00 +0000
-## 6           Pinus contorta 2013-11-30 12:17:00 +0000</code></pre>
+## 1           Pinus contorta 2014-02-22 00:00:00 +0000
+## 2  Pinus contorta contorta 2014-01-17 00:00:00 +0000
+## 3           Pinus contorta 2013-12-23 13:55:03 +0000
+## 4           Pinus contorta 2013-12-23 14:02:55 +0000
+## 5 Elaphocordyceps capitata 2013-12-11 17:05:22 +0000
+## 6 Pinus contorta murrayana 2013-10-01 00:00:00 +0000</code></pre>
 <p>This is fine, but when trying to make a map in which points are colored for each taxon, you can have many colors for a single taxon, where instead one color per taxon is more appropriate. There is a function in <code>spocc</code> called <code>fixnames</code>, which has a few options in which you can take the shortest names (usually just the plain binomials like <em>Homo sapiens</em>), or the original name queried, or a vector of names supplied by the user.</p>
 <pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">fixnames</span>(df, <span class="dt">how =</span> <span class="st">&quot;shortest&quot;</span>)
 <span class="kw">head</span>(df$gbif$data$Pinus_contorta[, <span class="dv">1</span>:<span class="dv">2</span>])</code></pre>
@@ -186,12 +185,12 @@ df &lt;-<span class="st"> </span><span class="kw">occ</span>(<span class="dt">qu
 ## 6 Pinus contorta 856022134</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(df$inat$data$Pinus_contorta[, <span class="dv">1</span>:<span class="dv">2</span>])</code></pre>
 <pre><code>##             name                  Datetime
-## 1 Pinus contorta 2014-01-17 00:00:00 +0000
-## 2 Pinus contorta 2013-12-23 10:55:03 +0000
-## 3 Pinus contorta 2013-12-23 11:02:55 +0000
-## 4 Pinus contorta 2013-12-11 14:05:22 +0000
-## 5 Pinus contorta 2013-10-01 00:00:00 +0000
-## 6 Pinus contorta 2013-11-30 12:17:00 +0000</code></pre>
+## 1 Pinus contorta 2014-02-22 00:00:00 +0000
+## 2 Pinus contorta 2014-01-17 00:00:00 +0000
+## 3 Pinus contorta 2013-12-23 13:55:03 +0000
+## 4 Pinus contorta 2013-12-23 14:02:55 +0000
+## 5 Pinus contorta 2013-12-11 17:05:22 +0000
+## 6 Pinus contorta 2013-10-01 00:00:00 +0000</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r">df_comb &lt;-<span class="st"> </span><span class="kw">occ2df</span>(df)
 <span class="kw">head</span>(df_comb)</code></pre>
 <pre><code>##             name longitude latitude prov
@@ -203,12 +202,12 @@ df &lt;-<span class="st"> </span><span class="kw">occ</span>(<span class="dt">qu
 ## 6 Pinus contorta    20.350    63.71 gbif</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tail</span>(df_comb)</code></pre>
 <pre><code>##               name longitude latitude prov
-## 95  Pinus contorta     47.03   -124.2 inat
-## 96  Pinus contorta     47.03   -124.2 inat
-## 97  Pinus contorta        NA       NA inat
-## 98  Pinus contorta     44.77   -116.3 inat
-## 99  Pinus contorta     47.03   -124.2 inat
-## 100 Pinus contorta     47.03   -124.2 inat</code></pre>
+## 95  Pinus contorta    -120.2    39.43 inat
+## 96  Pinus contorta    -124.2    47.03 inat
+## 97  Pinus contorta    -124.2    47.03 inat
+## 98  Pinus contorta        NA       NA inat
+## 99  Pinus contorta    -116.3    44.77 inat
+## 100 Pinus contorta    -124.2    47.03 inat</code></pre>
 <h3 id="visualization-routines">Visualization routines</h3>
 <p><strong>Interactive maps</strong></p>
 <p><em>Leaflet.js</em></p>
@@ -222,14 +221,8 @@ data &lt;-<span class="st"> </span><span class="kw">occ2df</span>(dat)
 <div class="figure">
 <img src="img/leaflet.png" />
 </div>
-<p><em>Shiny map</em></p>
-<p>We've also created an interactive map using <a href="http://www.rstudio.com/">RStudio's</a> <a href="http://www.rstudio.com/shiny/">Shiny</a>, via the <code>mapshiny</code> function. This function uses the package <code>rCharts</code>, which you'll need to install if you want to use the <code>mapshiny</code> function. Instead of passing in occurrence data to the function, this function creates an interactive app in your browser (or the pop up inside RStudio's IDE window), in which you can enter speciess names to search for, pick a data source, set limit on number of occurrences, choose the background map, and also the color palette for the map symbols. You can make this map yourself if you like by looking at two files: - <code>system.file(&quot;shiny/ui.r&quot;, package = &quot;spocc&quot;)</code> and - <code>system.file(&quot;shiny/server.r&quot;, package = &quot;spocc&quot;)</code>.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mapshiny</span>()</code></pre>
-<div class="figure">
-<img src="img/shiny.png" />
-</div>
 <p><em>Geojson map as a Github gist</em></p>
-<p>You can also create interactive maps using RStudio's Shiny via the <code>mapgist</code> function. This function uses the package <code>rCharts</code>, which you'll need to install (from GitHub since it's not yet available on CRAN) if you want to use the <code>mapgist</code> function. You have to have a Github account to use this function. Github accounts are free though, and great for versioning and collaborating on code or papers. When you run the <code>mapgist</code> function it will ask for your Github username and password. You can alternatively store those in your <code>.Rprofile</code> file by adding entries for username (<code>options(github.username = 'username')</code>) and password (<code>options(github.password = 'password')</code>).</p>
+<p>You can also create interactive maps via the <code>mapgist</code> function. You have to have a Github account to use this function. Github accounts are free though, and great for versioning and collaborating on code or papers. When you run the <code>mapgist</code> function it will ask for your Github username and password. You can alternatively store those in your <code>.Rprofile</code> file by adding entries for username (<code>options(github.username = 'username')</code>) and password (<code>options(github.password = 'password')</code>).</p>
 <pre class="sourceCode r"><code class="sourceCode r">spp &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Danaus plexippus&quot;</span>, <span class="st">&quot;Accipiter striatus&quot;</span>, <span class="st">&quot;Pinus contorta&quot;</span>)
 dat &lt;-<span class="st"> </span><span class="kw">occ</span>(<span class="dt">query =</span> spp, <span class="dt">from =</span> <span class="st">&quot;gbif&quot;</span>, <span class="dt">gbifopts =</span> <span class="kw">list</span>(<span class="dt">georeferenced =</span> <span class="ot">TRUE</span>))
 dat &lt;-<span class="st"> </span><span class="kw">fixnames</span>(dat)
@@ -259,6 +252,7 @@ out &lt;-<span class="st"> </span><span class="kw">occ</span>(<span class="dt">q
 <li>As soon as we have an updated <code>rvertnet</code> package, we'll add the ability to query VertNet data from <code>spocc</code>.</li>
 <li>We will add <code>rCharts</code> as an official import once the package is on CRAN (Eta end of March)</li>
 <li>We're helping on a new package <code>rMaps</code> to make interactive maps using various Javascript mapping libraries, which will give access to a variety of awesome interactive maps. We will integrate <code>rMaps</code> once it's on CRAN.</li>
+<li>We'll add a function to make interactive maps using RStudio's Shiny in a future version.</li>
 </ul>
 </body>
 </html>

@@ -45,6 +45,13 @@ The most significant function in spocc is the `occ` (short for occurrence) funct
 ```r
 library(spocc)
 df <- occ(query = "Accipiter striatus", from = "gbif")
+```
+
+```
+## Loading required package: rjson
+```
+
+```r
 df
 ```
 
@@ -149,33 +156,40 @@ head(df$ecoengine$data$Accipiter_striatus)
 
 ```
 ##                                                                   url
-## 1 http://ecoengine.berkeley.edu/api/observations/LACM%3ABirds%3A5893/
-## 2 http://ecoengine.berkeley.edu/api/observations/LACM%3ABirds%3A5883/
-## 3 http://ecoengine.berkeley.edu/api/observations/LACM%3ABirds%3A5884/
-## 4 http://ecoengine.berkeley.edu/api/observations/LACM%3ABirds%3A5885/
-## 5 http://ecoengine.berkeley.edu/api/observations/LACM%3ABirds%3A5886/
-## 6 http://ecoengine.berkeley.edu/api/observations/LACM%3ABirds%3A5887/
-##   observation_type                     name       country state_province
-## 1         specimen Accipiter striatus velox United States      Minnesota
-## 2         specimen Accipiter striatus velox United States     California
-## 3         specimen Accipiter striatus velox United States     California
-## 4         specimen Accipiter striatus velox United States      Minnesota
-## 5         specimen Accipiter striatus velox United States     California
-## 6         specimen Accipiter striatus velox United States       Illinois
+## 1 http://ecoengine.berkeley.edu/api/observations/MVZ%3ABird%3A179318/
+## 2  http://ecoengine.berkeley.edu/api/observations/MVZ%3ABird%3A41449/
+## 3  http://ecoengine.berkeley.edu/api/observations/MVZ%3ABird%3A64564/
+## 4  http://ecoengine.berkeley.edu/api/observations/MVZ%3ABird%3A12218/
+## 5  http://ecoengine.berkeley.edu/api/observations/MVZ%3ABird%3A56349/
+## 6  http://ecoengine.berkeley.edu/api/observations/MVZ%3ABird%3A26439/
+##   observation_type                       name       country state_province
+## 1         specimen   Accipiter striatus velox United States     California
+## 2         specimen Accipiter striatus suttoni United States        Arizona
+## 3         specimen   Accipiter striatus velox United States     California
+## 4         specimen   Accipiter striatus velox United States     California
+## 5         specimen   Accipiter striatus velox United States     California
+## 6         specimen   Accipiter striatus velox United States     California
 ##   begin_date   end_date                                       source
-## 1 1894-09-15 1894-09-15 http://ecoengine.berkeley.edu/api/sources/2/
-## 2 1899-04-11 1899-04-11 http://ecoengine.berkeley.edu/api/sources/2/
-## 3 1914-11-11 1914-11-11 http://ecoengine.berkeley.edu/api/sources/2/
-## 4 1893-09-23 1893-09-23 http://ecoengine.berkeley.edu/api/sources/2/
-## 5 1899-04-17 1899-04-17 http://ecoengine.berkeley.edu/api/sources/2/
-## 6 1908-04-07 1908-04-07 http://ecoengine.berkeley.edu/api/sources/2/
-##   remote_resource geojson.type longitude latitude      prov
-## 1                        Point    -92.11    46.78 ecoengine
-## 2                        Point   -118.13    34.14 ecoengine
-## 3                        Point   -116.15    33.63 ecoengine
-## 4                        Point    -92.11    46.78 ecoengine
-## 5                        Point   -118.13    34.14 ecoengine
-## 6                        Point    -87.79    41.85 ecoengine
+## 1 1996-12-05 1996-12-05 http://ecoengine.berkeley.edu/api/sources/1/
+## 2 1919-08-26 1919-08-26 http://ecoengine.berkeley.edu/api/sources/1/
+## 3 1934-02-10 1934-02-10 http://ecoengine.berkeley.edu/api/sources/1/
+## 4 1907-08-23 1907-08-23 http://ecoengine.berkeley.edu/api/sources/1/
+## 5 1906-12-16 1906-12-16 http://ecoengine.berkeley.edu/api/sources/1/
+## 6 1915-12-31 1915-12-31 http://ecoengine.berkeley.edu/api/sources/1/
+##                                      remote_resource geojson.type
+## 1 http://arctos.database.museum/guid/MVZ:Bird:179318        Point
+## 2  http://arctos.database.museum/guid/MVZ:Bird:41449        Point
+## 3  http://arctos.database.museum/guid/MVZ:Bird:64564        Point
+## 4  http://arctos.database.museum/guid/MVZ:Bird:12218        Point
+## 5  http://arctos.database.museum/guid/MVZ:Bird:56349        Point
+## 6  http://arctos.database.museum/guid/MVZ:Bird:26439        Point
+##   longitude latitude      prov
+## 1    -122.1    37.87 ecoengine
+## 2    -109.4    31.93 ecoengine
+## 3    -122.3    37.90 ecoengine
+## 4    -116.9    34.18 ecoengine
+## 5    -122.2    37.37 ecoengine
+## 6    -114.7    33.43 ecoengine
 ```
 
 
@@ -226,9 +240,9 @@ head(df$inat$data$Pinus_contorta[, 1:2])
 ##                       name                  Datetime
 ## 1           Pinus contorta 2014-02-22 00:00:00 +0000
 ## 2  Pinus contorta contorta 2014-01-17 00:00:00 +0000
-## 3           Pinus contorta 2013-12-23 13:55:03 +0000
-## 4           Pinus contorta 2013-12-23 14:02:55 +0000
-## 5 Elaphocordyceps capitata 2013-12-11 17:05:22 +0000
+## 3           Pinus contorta 2013-12-23 10:55:03 +0000
+## 4           Pinus contorta 2013-12-23 11:02:55 +0000
+## 5 Elaphocordyceps capitata 2013-12-11 14:05:22 +0000
 ## 6 Pinus contorta murrayana 2013-10-01 00:00:00 +0000
 ```
 
@@ -259,9 +273,9 @@ head(df$inat$data$Pinus_contorta[, 1:2])
 ##             name                  Datetime
 ## 1 Pinus contorta 2014-02-22 00:00:00 +0000
 ## 2 Pinus contorta 2014-01-17 00:00:00 +0000
-## 3 Pinus contorta 2013-12-23 13:55:03 +0000
-## 4 Pinus contorta 2013-12-23 14:02:55 +0000
-## 5 Pinus contorta 2013-12-11 17:05:22 +0000
+## 3 Pinus contorta 2013-12-23 10:55:03 +0000
+## 4 Pinus contorta 2013-12-23 11:02:55 +0000
+## 5 Pinus contorta 2013-12-11 14:05:22 +0000
 ## 6 Pinus contorta 2013-10-01 00:00:00 +0000
 ```
 

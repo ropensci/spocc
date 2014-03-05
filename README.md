@@ -21,11 +21,6 @@ install.packages(c("rbison", "rgbif", "rebird", "AntWeb", "ecoengine",
 "rinat","plyr", "ggplot2", "maps", "maptools", "sp", "lubridate", 
 "RColorBrewer", "httr", "rgdal", "RJSONIO", "data.table", 
 "assertthat","leafletR"))
-
-# Next install rCharts for interactive maps used in the mapshiny() function
-install.packages("devtools")
-library(devtools)
-install_github("ramnathv/rCharts")
 ```
 
 Install `spocc`
@@ -195,17 +190,6 @@ mapgist(data=dat, color=c("#976AAE","#6B944D","#BD5945"))
 ```
 
 ![](http://f.cl.ly/items/343l2G0A2J3T0n2t433W/Screen%20Shot%202014-02-09%20at%2010.40.57%20PM.png)
-
-
-**Shiny**
-
-This is just a demo, not to pass in your own data. Though a Shiny app is opened in your browser and you can input species names, adjust background map, etc.
-
-```coffee
-mapshiny()
-```
-
-![](http://cl.ly/TojP/Screen%20Shot%202014-02-09%20at%2010.42.59%20PM.png)
 
 
 **ggplot2**

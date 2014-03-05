@@ -26,6 +26,14 @@ install.packages(c("rbison", "rgbif", "rebird", "AntWeb", "ecoengine",
 Install `spocc`
 
 ```coffee
+install.packages("spocc")
+```
+
+Or the development version
+
+```coffee
+install.packages("devtools")
+library(devtools)
 install_github("ropensci/spocc")
 library(spocc)
 ```

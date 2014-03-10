@@ -1,0 +1,27 @@
+\name{wkt_vis}
+\alias{wkt_vis}
+\title{Visualize well-known text area's on a map.}
+\usage{
+wkt_vis(x, zoom = 6, maptype = "terrain")
+}
+\arguments{
+  \item{x}{Input well-known text area (character)}
+
+  \item{zoom}{Zoom level, defaults to 6 (numeric)}
+
+  \item{maptype}{Map type, default is terrain (character)}
+}
+\description{
+This can be helpful in visualizing the area in which you
+are searching for occurrences with the \code{occ} function.
+}
+\examples{
+\dontrun{
+poly <- 'POLYGON((-111.06 38.84, -110.80 39.37, -110.20 39.17, -110.20 38.90, -110.63 38.67, -111.06 38.84))'
+wkt_vis(poly)
+
+poly2 <- 'POLYGON((-125 38.4,-125 40.9,-121.8 40.9,-121.8 38.4,-125 38.4))'
+wkt_vis(poly2)
+}
+}
+

@@ -27,7 +27,7 @@ Imports:
     rebird,
     plyr,
     maps,
-    AntWeb,
+    AntWeb (>= 0.6),
     ggmap,
     maptools,
     sp,

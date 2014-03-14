@@ -9,6 +9,4 @@ before_script:
 - ./travis-tool.sh install_deps
 - ./travis-tool.sh install_r rjson leafletR ecoengine ggmap
 notifications:
-  hipchat:
-    rooms:
-      secure: EDP65fOlcttK52hBg/DMdUyrQG/qL/VL9ehe5SROTQPKajMe+20WEi2vAhArSXcdqWRHoP7sp3M7s8Ponq60ac11QbS5ytRP6EdIPW02M1sz0fwuUtFARBrS+9Yt1SSIghrT3zOeKlPWyhh7nmGD47B1E5xz2R+JLNAGePZyU7k=
+ slack: ropensci:wh30e1MP9Am3wXb2wJx1ZRFi

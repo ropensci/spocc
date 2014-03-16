@@ -3,7 +3,7 @@ Title: R interface to many species occurrence data sources
 Description: A programmatic interface to many species occurrence data sources,
     including GBIF, USGS's BISON, iNaturalist, Berkeley Ecoinformatics Engine
     eBird, AntWeb, and more as they sources become easily available.
-Version: 0.1.1
+Version: 0.1.2
 License: MIT + file LICENSE
 Date: 2014-03-05
 Authors@R: c(person("Scott", "Chamberlain", role = c("aut", "cre"),
@@ -27,7 +27,7 @@ Imports:
     rebird,
     plyr,
     maps,
-    AntWeb,
+    AntWeb (>= 0.6),
     ggmap,
     maptools,
     sp,

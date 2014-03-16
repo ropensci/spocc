@@ -281,6 +281,7 @@ foo_antweb <- function(sources, query, limit, geometry,  opts) {
 
     opts$georeferenced <- TRUE
     out <- do.call(aw_data, opts)
+    out <- out$data
     out$prov <- rep("antweb", nrow(out))
     out$scientific_name <- opts$scientific_name
     list(time = time, data = out)

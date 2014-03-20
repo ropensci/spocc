@@ -62,38 +62,6 @@ expect_equal(unique(temp_df8$prov), "antweb")
 
 })
 
-
-context("ggmap works correctly")
-
-library(ggplot2)
-
-test_that("ggmaps work as expected", {
-	ecoengine_data <- occ(query = "Lynx rufus californicus", from = "ecoengine")
-    map1 <- mapggplot(ecoengine_data)
- 	gbif_data <- occ(query = 'Accipiter striatus', from = 'gbif')
-	map2 <- mapggplot(gbif_data)
-	expect_is(ecoengine_data, "occdat")
-	expect_is(gbif_data, "occdat")
-	expect_is(map1, "ggplot")
-	expect_is(map2, "ggplot")
-	unlink("ggmapTemp.png")
-})
-
-
-context("Testing the Leaflet maps")
-
-test_that("Leaflet maps and geoJSON work", {
-spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta','Puma concolor', 'Ursus americanus','Gymnogyps californianus')
-dat <- occ(query = spp, from = 'gbif', gbifopts = list(georeferenced = TRUE))
-data <- occ2df(dat, 'data')
-mapleaflet(data, map_provider = 'cm', dest = ".")
-expect_true(file.exists("map"))
-expect_true(file.exists("data.geojson"))
-unlink("data.geojson")
-unlink("map/", recursive = TRUE)
-})
-
-
 context("Testing geometry searches")
 
 test_that("geometry searches work", {

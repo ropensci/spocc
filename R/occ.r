@@ -117,7 +117,7 @@ occ <- function(query = NULL, from = "gbif", limit = 25, geometry = NULL, rank =
     ebird_res <- foo_ebird(sources, x, y, ebirdopts)
     ecoengine_res <- foo_ecoengine(sources, x, y, z, ecoengineopts)
     antweb_res <- foo_antweb(sources, x, y, z, antwebopts)
-  list(gbif = gbif_res, bison = bison_res, inat = inat_res, ebird = ebird_res, 
+    list(gbif = gbif_res, bison = bison_res, inat = inat_res, ebird = ebird_res, 
          ecoengine = ecoengine_res, antweb = antweb_res)
   }
   

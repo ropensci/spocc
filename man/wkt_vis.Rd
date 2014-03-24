@@ -6,11 +6,11 @@
 wkt_vis(x, zoom = 6, maptype = "terrain")
 }
 \arguments{
-  \item{x}{Input well-known text area (character)}
+\item{x}{Input well-known text area (character)}
 
-  \item{zoom}{Zoom level, defaults to 6 (numeric)}
+\item{zoom}{Zoom level, defaults to 6 (numeric)}
 
-  \item{maptype}{Map type, default is terrain (character)}
+\item{maptype}{Map type, default is terrain (character)}
 }
 \description{
 This can be helpful in visualizing the area in which you are searching for

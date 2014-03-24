@@ -7,15 +7,11 @@ occ_to_sp(occObj, coord_string = "+proj=longlat +datum=WGS84",
   just_coords = FALSE)
 }
 \arguments{
-  \item{occObj}{The resuslts of a spocc search called by
-  occ()}
+\item{occObj}{The resuslts of a spocc search called by occ()}
 
-  \item{coord_string}{A valid EPGS cooridate string from
-  the sp package, the default is WSGS 84}
+\item{coord_string}{A valid EPGS cooridate string from the sp package, the default is WSGS 84}
 
-  \item{just_coords}{Return data frame with specios names
-  and provenance or just a spatial points object, which is
-  the default.}
+\item{just_coords}{Return data frame with specios names and provenance or just a spatial points object, which is the default.}
 }
 \description{
 Create a spatial points dataframe from a spocc search.

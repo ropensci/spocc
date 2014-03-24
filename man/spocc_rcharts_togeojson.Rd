@@ -6,11 +6,11 @@
 spocc_rcharts_togeojson(list_, lat = "latitude", lon = "longitude")
 }
 \arguments{
-  \item{list_}{A list}
+\item{list_}{A list}
 
-  \item{lat}{Latitude name}
+\item{lat}{Latitude name}
 
-  \item{lon}{Longitude name}
+\item{lon}{Longitude name}
 }
 \description{
 Get palette actual name from longer names

@@ -6,8 +6,7 @@
 occ2sp(input)
 }
 \arguments{
-  \item{input}{Output from \code{\link{occ}} or a
-  data.frame}
+\item{input}{Output from \code{\link{occ}} or a data.frame}
 }
 \description{
 Occ output or data.frame to sp SpatialPointsDataFrame class

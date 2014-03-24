@@ -9,22 +9,17 @@ bbox2wkt(minx = NA, miny = NA, maxx = NA, maxy = NA, bbox = NULL)
 wkt2bbox(wkt = NULL)
 }
 \arguments{
-  \item{minx}{Minimum x value, or the most western
-  longitude}
+\item{minx}{Minimum x value, or the most western longitude}
 
-  \item{miny}{Minimum y value, or the most southern
-  latitude}
+\item{miny}{Minimum y value, or the most southern latitude}
 
-  \item{maxx}{Maximum x value, or the most eastern
-  longitude}
+\item{maxx}{Maximum x value, or the most eastern longitude}
 
-  \item{maxy}{Maximum y value, or the most northern
-  latitude}
+\item{maxy}{Maximum y value, or the most northern latitude}
 
-  \item{bbox}{A vector of length 4, with the elements:
-  minx, miny, maxx, maxy}
+\item{bbox}{A vector of length 4, with the elements: minx, miny, maxx, maxy}
 
-  \item{wkt}{A Well Known Text object.}
+\item{wkt}{A Well Known Text object.}
 }
 \value{
 bbox2wkt returns an object of class charactere, a Well Known Text string

@@ -6,9 +6,9 @@
 occ2df(obj, what = "data")
 }
 \arguments{
-  \item{obj}{Input from occ}
+\item{obj}{Input from occ}
 
-  \item{what}{One of data (default) or all (with metadata)}
+\item{what}{One of data (default) or all (with metadata)}
 }
 \description{
 Combine results from occ calls to a single data.frame

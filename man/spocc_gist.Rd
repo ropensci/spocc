@@ -6,14 +6,13 @@
 spocc_gist(gist, description = "", public = TRUE, browse = TRUE)
 }
 \arguments{
-  \item{gist}{An object}
+\item{gist}{An object}
 
-  \item{description}{brief description of gist (optional)}
+\item{description}{brief description of gist (optional)}
 
-  \item{public}{whether gist is public (default: TRUE)}
+\item{public}{whether gist is public (default: TRUE)}
 
-  \item{browse}{If TRUE (default) the map opens in your
-  default browser.}
+\item{browse}{If TRUE (default) the map opens in your default browser.}
 }
 \value{
 Posts your file as a gist on your account, and prints out the url for the

@@ -52,6 +52,8 @@
 #' occ(query='Accipiter striatus', from='gbif', geometry=c(-125.0,38.4,-121.8,40.9))
 #' 
 #' ## Bounding box constraint with ecoengine 
+#' # Use this website: http://boundingbox.klokantech.com/ to quickly grab a bbox.
+#' Just set the format on the bottom left to CSV.
 #' occ(query='Accipiter striatus', from='ecoengine', limit=10, 
 #'    geometry=c(-125.0,38.4,-121.8,40.9))
 #' 

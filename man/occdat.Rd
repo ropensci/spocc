@@ -9,9 +9,9 @@
 \method{plot}{occdat}(x, ...)
 }
 \arguments{
-  \item{x}{Input object from occ function, of class occdat}
+\item{x}{Input object from occ function, of class occdat}
 
-  \item{...}{Further args passed on to points fxn}
+\item{...}{Further args passed on to points fxn}
 }
 \description{
 Print brief summary of occ function output

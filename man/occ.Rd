@@ -9,58 +9,42 @@ occ(query = NULL, from = "gbif", limit = 25, geometry = NULL,
   ecoengineopts = list(), antwebopts = list())
 }
 \arguments{
-  \item{query}{(character) One to many names. Either a
-  scientific name or a common name. Specify whether a
-  scientific or common name in the type parameter. Only
-  scientific names supported right now.}
+\item{query}{(character) One to many names. Either a scientific name or a common name.
+Specify whether a scientific or common name in the type parameter.
+Only scientific names supported right now.}
 
-  \item{from}{(character) Data source to get data from, any
-  combination of gbif, bison, inat, ebird, and/or
-  ecoengine}
+\item{from}{(character) Data source to get data from, any combination of gbif, bison,
+inat, ebird, and/or ecoengine}
 
-  \item{limit}{(numeric) Number of records to return. This
-  is passed across all sources. To specify different limits
-  for each source, use the options for each source.}
+\item{limit}{(numeric) Number of records to return. This is passed across all sources.
+To specify different limits for each source, use the options for each source.}
 
-  \item{geometry}{(character or nmeric) One of a Well Known
-  Text (WKT) object or a vector of length 4 specifying a
-  bounding box. This parameter searches for occurrences
-  inside a box given as a bounding box or polygon described
-  in WKT format. A WKT shape written as 'POLYGON((30.1
-  10.1, 20, 20 40, 40 40, 30.1 10.1))' would be queried as
-  is, i.e. http://bit.ly/HwUSif. See Details for more
-  examples of WKT objects.}
+\item{geometry}{(character or nmeric) One of a Well Known Text (WKT) object or a vector of
+length 4 specifying a bounding box. This parameter searches for occurrences inside a
+box given as a bounding box or polygon described in WKT format. A WKT shape written as
+'POLYGON((30.1 10.1, 20, 20 40, 40 40, 30.1 10.1))' would be queried as is,
+i.e. http://bit.ly/HwUSif. See Details for more examples of WKT objects.}
 
-  \item{rank}{(character) Taxonomic rank. Not used right
-  now.}
+\item{rank}{(character) Taxonomic rank. Not used right now.}
 
-  \item{type}{(character) Type of name, sci (scientific) or
-  com (common name, vernacular). Not used right now.}
+\item{type}{(character) Type of name, sci (scientific) or com (common name, vernacular).
+Not used right now.}
 
-  \item{ids}{Taxonomic identifiers. This can be a list of
-  length 1 to many. See examples for usage. Currently,
-  identifiers for only 'gbif' and 'bison' for parameter
-  'from' supported. If this parameter is used, query
-  parameter can not be used - if it is, a warning is
-  thrown.}
+\item{ids}{Taxonomic identifiers. This can be a list of length 1 to many. See examples for
+usage. Currently, identifiers for only 'gbif' and 'bison' for parameter 'from' supported. If
+this parameter is used, query parameter can not be used - if it is, a warning is thrown.}
 
-  \item{gbifopts}{(list) List of options to pass on to
-  rgbif}
+\item{gbifopts}{(list) List of options to pass on to rgbif}
 
-  \item{bisonopts}{(list) List of options to pass on to
-  rbison}
+\item{bisonopts}{(list) List of options to pass on to rbison}
 
-  \item{inatopts}{(list) List of options to pass on to
-  rinat}
+\item{inatopts}{(list) List of options to pass on to rinat}
 
-  \item{ebirdopts}{(list) List of options to pass on to
-  ebird}
+\item{ebirdopts}{(list) List of options to pass on to ebird}
 
-  \item{ecoengineopts}{(list) List of options to pass on to
-  ecoengine}
+\item{ecoengineopts}{(list) List of options to pass on to ecoengine}
 
-  \item{antwebopts}{(list) List of options to pass on to
-  AntWeb}
+\item{antwebopts}{(list) List of options to pass on to AntWeb}
 }
 \description{
 Search on a single species name, or many. And search across a single
@@ -141,6 +125,8 @@ occ(query='Helianthus annuus', from='bison',
 occ(query='Accipiter striatus', from='gbif', geometry=c(-125.0,38.4,-121.8,40.9))
 
 ## Bounding box constraint with ecoengine
+# Use this website: http://boundingbox.klokantech.com/ to quickly grab a bbox.
+Just set the format on the bottom left to CSV.
 occ(query='Accipiter striatus', from='ecoengine', limit=10,
    geometry=c(-125.0,38.4,-121.8,40.9))
 

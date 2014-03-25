@@ -6,10 +6,10 @@
 spocc_colClasses(d, colClasses)
 }
 \arguments{
-  \item{d}{A data.frame.}
+\item{d}{A data.frame.}
 
-  \item{colClasses}{A vector of column attributes, one of:
-  numeric, factor, character, etc.}
+\item{colClasses}{A vector of column attributes, one of:
+numeric, factor, character, etc.}
 }
 \description{
 Coerces data.frame columns to the specified classes

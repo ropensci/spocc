@@ -6,12 +6,11 @@
 mapggplot(df, zoom = 5, point_color = "#86161f")
 }
 \arguments{
-  \item{df}{Input \code{data.frame}}
+\item{df}{Input \code{data.frame}}
 
-  \item{zoom}{zoom level for map. Adjust depending on how
-  your data look.}
+\item{zoom}{zoom level for map. Adjust depending on how your data look.}
 
-  \item{point_color}{Default color of your points}
+\item{point_color}{Default color of your points}
 }
 \description{
 ggplot2 visualization of species occurences

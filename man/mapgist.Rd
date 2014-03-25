@@ -7,25 +7,20 @@ mapgist(data, description = "", file = "gistmap", dir = NULL,
   browse = TRUE, ...)
 }
 \arguments{
-  \item{data}{A data.frame, with any number of columns, but
-  with at least the following: name (the taxonomic name),
-  latitude (in dec. deg.), longitude (in dec. deg.)}
+\item{data}{A data.frame, with any number of columns, but with at least the
+following: name (the taxonomic name), latitude (in dec. deg.), longitude
+(in dec. deg.)}
 
-  \item{description}{Description for the Github gist, or
-  leave to default (=no description)}
+\item{description}{Description for the Github gist, or leave to default (=no description)}
 
-  \item{file}{File name (without file extension) for your
-  geojson file. Default is 'gistmap'.}
+\item{file}{File name (without file extension) for your geojson file. Default is 'gistmap'.}
 
-  \item{dir}{Directory for storing file and reading it back
-  in to create gist.  If none is given, this function gets
-  your working directory and uses that.}
+\item{dir}{Directory for storing file and reading it back in to create gist.
+If none is given, this function gets your working directory and uses that.}
 
-  \item{browse}{If TRUE (default) the map opens in your
-  default browser.}
+\item{browse}{If TRUE (default) the map opens in your default browser.}
 
-  \item{...}{Further arguments passed on to
-  \code{spocc_stylegeojson}}
+\item{...}{Further arguments passed on to \code{spocc_stylegeojson}}
 }
 \value{
 Creates a gist on your Github account, and prints out where the geojson file was

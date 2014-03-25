@@ -6,9 +6,9 @@
 get_colors(vec, palette_name)
 }
 \arguments{
-  \item{vec}{Vector of strings}
+\item{vec}{Vector of strings}
 
-  \item{palette_name}{Palette name}
+\item{palette_name}{Palette name}
 }
 \description{
 Get colors from a vector of input taxonomic names, and palette

@@ -1,49 +1,89 @@
 #' Clean spocc data
 #' 
+#' @import assertthat
+#' @param input An object of class occdat
+#' @param country (logical) Attempt to clean based on country
+#' @param habitat (logical) Attempt to clean based on habitat
 #' @examples 
 #' library(spocc)
-#' res <- occ(query = 'Ursus', from = 'bison', limit=120)
+#' res <- occ(query = c('Ursus','Accipiter','Rubus'), from = 'bison', limit=120)
 #' x <- occ2df(res)
 #' clean_spocc(x=res$bison$data[[1]])
 
-clean_spocc <- function(x, country=NULL, habitat=NULL){  
-  assert_that(is(x, "occdat") | is(x, "data.frame"))
+clean_spocc <- function(input, country=NULL, habitat=NULL){
+  assert_that(is(input, "occdat") | is(input, "data.frame"))
   
-  x <- x$gbif$data[[1]]
-  
-  # Make lat/long data numeric
-  x$latitude <- as.numeric(as.character(x$latitude))
-  x$longitude <- as.numeric(as.character(x$longitude))
-  
-  # Remove points that are not physically possible
-  notcomplete <- x[!complete.cases(x$latitude, x$longitude), ]
-  x <- x[complete.cases(x$latitude, x$longitude), ]
-  notpossible <- x[!abs(x$latitude) <=90 | !abs(x$longitude) <=180, ]
-  x <- x[abs(x$latitude) <=90, ]
-  x <- x[abs(x$longitude) <=180, ]
-  
-  if(!is.null(habitat)){
-#     clean_habitat()
-    # get polygons for terrestrial vs. marine vs. freshwater
-    # calculate whether polygon encompasses points
-    # remove points not in polygon
+  clean <- function(x){
+    if(all(sapply(x$data, nrow) < 1)){
+      x
+    } else {   
+      clean_eachsp <- function(x, what){
+        dat <- replacelatlongcols(x, what)
+        
+        # Make lat/long data numeric
+        dat$latitude <- as.numeric(as.character(dat$latitude))
+        dat$longitude <- as.numeric(as.character(dat$longitude))
+        
+        # Remove points that are not physically possible
+        notcomplete <- dat[!complete.cases(dat$latitude, dat$longitude), ]
+        dat <- dat[complete.cases(dat$latitude, dat$longitude), ]
+        notpossible <- dat[!abs(dat$latitude) <=90 | !abs(dat$longitude) <=180, ]
+        dat <- dat[abs(dat$latitude) <=90, ]
+        dat <- dat[abs(dat$longitude) <=180, ]
+        
+        if(!is.null(habitat)){
+          #     clean_habitat()
+          # get polygons for terrestrial vs. marine vs. freshwater
+          # calculate whether polygon encompasses points
+          # remove points not in polygon
+        }
+        
+        if(!is.null(country)){
+          #     isocodes
+          # get country polygon
+          # calculate whether polygon encompasses points
+          # remove points not in polygon
+        }
+        
+        dat <- replacelatlongcols(dat, what, reverse = TRUE)
+        
+        list(nc = notcomplete, np = notpossible, d = dat)
+      }
+      
+      dat_eachsp <- lapply(x$data, clean_eachsp, what=x$meta$source)
+      
+      nc <- lapply(dat_eachsp, function(x) ifnone(x$nc))
+      np <- lapply(dat_eachsp, function(x) ifnone(x$np))
+      datdat <- lapply(dat_eachsp, "[[", "d")
+      
+      # assign to a class and assign attributes
+      x$meta <- c(x$meta, removed_incomplete_cases = list(nc), removed_impossible = list(np))
+      x$data <- datdat
+      x
+    }
   }
   
-  if(!is.null(country)){
-#     isocodes
-    # get country polygon
-    # calculate whether polygon encompasses points
-    # remove points not in polygon
-  }
-  
-  # assign to a class and assign attributes
-  res <- list(meta=list(removed_incomplete_cases=ifnone(notcomplete),
-                        removed_impossible = ifnone(notpossible)), data=x)
-  class(res) <- c("occ_clean")
-  return( res )
+  output <- lapply(input, clean)
+  class(output) <- c("occdat","occclean")
+  return( output )
 }
 
 ifnone <- function(x) if(nrow(x)==0){ NA } else { x }
+
+replacelatlongcols <- function(w, y, reverse=FALSE){
+  cols <- switch(y,
+                 gbif = c('longitude','latitude'),
+                 bison = c('decimalLongitude','decimalLatitude'), 
+                 inat = c('Longitude','Latitude'), 
+                 ebird = c('lng','lat'), 
+                 ecoengine = c('longitude','latitude'), 
+                 antweb = c('decimal_longitude','decimal_latitude'))
+  if(reverse)
+    names(w)[ names(w) %in% c('longitude','latitude') ] <- cols
+  else  
+    names(w)[ names(w) %in% cols ] <- c('longitude','latitude')
+  w
+}
 
 clean_country <- function(x){
 #   library(rgdal); library(ggplot2)

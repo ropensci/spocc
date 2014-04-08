@@ -3,14 +3,22 @@
 \alias{clean_spocc}
 \title{Clean spocc data}
 \usage{
-clean_spocc(x, country = NULL, habitat = NULL)
+clean_spocc(input, country = NULL, habitat = NULL)
+}
+\arguments{
+\item{input}{An object of class occdat}
+
+\item{country}{(logical) Attempt to clean based on country}
+
+\item{habitat}{(logical) Attempt to clean based on habitat}
 }
 \description{
 Clean spocc data
 }
 \examples{
 library(spocc)
-res <- occ(query = 'Accipiter striatus', from = 'gbif', limit=60)
-clean_spocc(x=res$gbif$data[[1]])
+res <- occ(query = c('Ursus','Accipiter','Rubus'), from = 'bison', limit=120)
+x <- occ2df(res)
+clean_spocc(x=res$bison$data[[1]])
 }
 

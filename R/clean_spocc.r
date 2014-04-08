@@ -1,14 +1,16 @@
 #' Clean spocc data
 #' 
 #' @import assertthat
+#' @export
 #' @param input An object of class occdat
 #' @param country (logical) Attempt to clean based on country
 #' @param habitat (logical) Attempt to clean based on habitat
-#' @examples 
+#' @examples \dontrun{
 #' library(spocc)
 #' res <- occ(query = c('Ursus','Accipiter','Rubus'), from = 'bison', limit=120)
 #' x <- occ2df(res)
 #' clean_spocc(x=res$bison$data[[1]])
+#' }
 
 clean_spocc <- function(input, country=NULL, habitat=NULL){
   assert_that(is(input, "occdat") | is(input, "data.frame"))

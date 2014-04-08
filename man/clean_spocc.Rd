@@ -16,9 +16,11 @@ clean_spocc(input, country = NULL, habitat = NULL)
 Clean spocc data
 }
 \examples{
+\dontrun{
 library(spocc)
 res <- occ(query = c('Ursus','Accipiter','Rubus'), from = 'bison', limit=120)
 x <- occ2df(res)
 clean_spocc(x=res$bison$data[[1]])
+}
 }
 

@@ -8,5 +8,6 @@ before_script:
 - ./travis-tool.sh bootstrap
 - ./travis-tool.sh install_deps
 - ./travis-tool.sh install_r rjson leafletR ecoengine ggmap
+- ./travis-tool.sh github_package ropensci/rgbif
 notifications:
  slack: ropensci:wh30e1MP9Am3wXb2wJx1ZRFi

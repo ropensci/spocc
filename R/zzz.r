@@ -153,7 +153,7 @@ occ2df <- function(obj, what = "data") {
     ee <- foolist(obj$ecoengine)
     aw <- foolist(obj$antweb)
     tmp <- data.frame(rbindlist(list(
-      data.frame(name = aa$name, longitude = aa$longitude, latitude = aa$latitude, prov = aa$prov), 
+      data.frame(name = aa$name, longitude = aa$decimalLongitude, latitude = aa$decimalLatitude, prov = aa$prov), 
       data.frame(name = bb$name, longitude = bb$decimalLongitude, latitude = bb$decimalLatitude, prov = bb$prov), 
       data.frame(name = cc$name, longitude = cc$Longitude, latitude = cc$Latitude, prov = cc$prov), 
       data.frame(name = dd$name, longitude = dd$lng, latitude = dd$lat, prov = dd$prov), 

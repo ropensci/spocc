@@ -149,13 +149,13 @@ occ2df(out)
 # Pass in many species names, combine just data to a single data.frame, and
 # first six rows
 spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Spinus tristis')
-out <- occ(query = spnames, from = 'gbif', gbifopts = list(georeferenced = TRUE))
+out <- occ(query = spnames, from = 'gbif', gbifopts = list(hasCoordinate = TRUE))
 df <- occ2df(out)
 head(df)
 
 
 # taxize integration: Pass in taxonomic identifiers
-library(taxize)
+library("taxize")
 (ids <- get_ids(names=c("Chironomus riparius","Pinus contorta"), db = c('itis','gbif')))
 occ(ids = ids[[1]], from='bison')
 occ(ids = ids, from=c('bison','gbif'))

@@ -44,4 +44,5 @@ Imports:
 Suggests:
     roxygen2,
     testthat,
-    knitr
+    knitr,
+    taxize

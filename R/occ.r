@@ -255,6 +255,8 @@ foo_ecoengine <- function(sources, query, limit, geometry, opts) {
     opts$progress <- FALSE
     out_ee <- do.call(ee_observations, opts)
     out <- out_ee$data
+    fac_tors <- sapply(out, is.factor)
+    out[fac_tors] <- lapply(out[fac_tors], as.character)
     out$prov <- rep("ecoengine", nrow(out))
     names(out)[names(out) == 'scientific_name'] <- "name"
     list(time = time, data = out)

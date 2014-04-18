@@ -31,7 +31,7 @@ string - making data easier to deal with for making maps, etc.
 \examples{
 \dontrun{
 spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta')
-dat <- occ(spp, from='gbif', gbifopts=list(georeferenced=TRUE))
+dat <- occ(spp, from='gbif', gbifopts=list(hasCoordinate=TRUE))
 fixnames(dat, how="shortest")$gbif
 fixnames(dat, how="query")$gbif
 fixnames(dat, how="supplied", namevec = c('abc', 'def', 'ghi'))$gbif

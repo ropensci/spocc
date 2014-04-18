@@ -137,7 +137,7 @@ Here is an example of making a leaflet map:
 
 ```{r eval = FALSE}
 spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta')
-dat <- occ(query = spp, from = 'gbif', gbifopts = list(georeferenced = TRUE))
+dat <- occ(query = spp, from = 'gbif', gbifopts = list(hasCoordinate = TRUE))
 data <- occ2df(dat)
 mapleaflet(data = data, dest = ".")
 ```
@@ -150,7 +150,7 @@ You can also create interactive maps via the `mapgist` function. You have to hav
 
 ```{r eval = FALSE}
 spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta')
-dat <- occ(query = spp, from = 'gbif', gbifopts = list(georeferenced = TRUE))
+dat <- occ(query = spp, from = 'gbif', gbifopts = list(hasCoordinate = TRUE))
 dat <- fixnames(dat)
 dat <- occ2df(dat)
 mapgist(data = dat, color = c("#976AAE", "#6B944D", "#BD5945"))
@@ -166,7 +166,7 @@ Base plots, or the built in plotting facility in R accessed via `plot()`, is qui
 
 ```{r eval=FALSE}
 spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Spinus tristis')
-out <- occ(query = spnames, from = 'gbif', gbifopts = list(georeferenced = TRUE))
+out <- occ(query = spnames, from = 'gbif', gbifopts = list(hasCoordinate = TRUE))
 plot(out, cex = 1, pch = 10)
 ```
 

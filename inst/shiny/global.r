@@ -4,7 +4,7 @@ rcharts_prep1 <- function(sppchar, occurrs, datasource){
   species2 <- strsplit(sppchar, ",")[[1]]
   
   if(datasource=="GBIF"){
-    dat <- occ(query=species2, from='gbif', gbifopts=list(georeferenced=TRUE, limit=occurrs))
+    dat <- occ(query=species2, from='gbif', gbifopts=list(hasCoordinate=TRUE, limit=occurrs))
     dat <- occ2df(dat)
 #     dat <- occtodfspp(dat, 'data')
     apply(dat, 1, as.list)

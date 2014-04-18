@@ -21,7 +21,7 @@ Plot occ function output on a map (uses base plots via the rworldmap package)
 \examples{
 \dontrun{
 spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Spinus tristis')
-out <- occ(query = spnames, from = 'gbif', gbifopts = list(georeferenced=TRUE))
+out <- occ(query = spnames, from = 'gbif', gbifopts = list(hasCoordinate=TRUE))
 print(out)
 out # gives the same thing
 

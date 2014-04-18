@@ -50,14 +50,14 @@ NOTE that with some map_provider options you will have no map layer
 \examples{
 \dontrun{
 spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta')
-dat <- occ(query = spp, from = 'gbif', gbifopts = list(georeferenced=TRUE))
+dat <- occ(query = spp, from = 'gbif', gbifopts = list(hasCoordinate = TRUE))
 data <- occ2df(dat)
 mapleaflet(data = data, dest = ".")
 
 # An example with more species, a different base map, and different color palette
 spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta','Puma concolor',
 'Ursus americanus','Gymnogyps californianus')
-dat <- occ(query = spp, from = 'gbif', gbifopts = list(georeferenced = TRUE))
+dat <- occ(query = spp, from = 'gbif', gbifopts = list(hasCoordinate = TRUE))
 data <- occ2df(dat)
 mapleaflet(data, map_provider = 'cm')
 }

@@ -170,7 +170,7 @@ head(occ2df(out)); tail(occ2df(out))
 
 ```coffee
 spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta')
-dat <- occ(query = spp, from = 'gbif', gbifopts = list(georeferenced=TRUE))
+dat <- occ(query = spp, from = 'gbif', gbifopts = list(hasCoordinate=TRUE))
 data <- occ2df(dat)
 mapleaflet(data = data, dest = ".")
 ```
@@ -182,7 +182,7 @@ mapleaflet(data = data, dest = ".")
 
 ```coffee
 spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta')
-dat <- occ(query=spp, from='gbif', gbifopts=list(georeferenced=TRUE))
+dat <- occ(query=spp, from='gbif', gbifopts=list(hasCoordinate=TRUE))
 dat <- fixnames(dat)
 dat <- occ2df(dat)
 mapgist(data=dat, color=c("#976AAE","#6B944D","#BD5945"))
@@ -205,7 +205,7 @@ mapggplot(ecoengine_data)
 
 ```coffee
 spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Spinus tristis')
-out <- occ(query=spnames, from='gbif', gbifopts=list(georeferenced=TRUE))
+out <- occ(query=spnames, from='gbif', gbifopts=list(hasCoordinate=TRUE))
 plot(out, cex=1, pch=10)
 ```
 

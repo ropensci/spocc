@@ -28,7 +28,7 @@
 #' @export
 #' @examples \dontrun{
 #' spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta')
-#' dat <- occ(spp, from='gbif', gbifopts=list(georeferenced=TRUE))
+#' dat <- occ(spp, from='gbif', gbifopts=list(hasCoordinate=TRUE))
 #' dat <- fixnames(dat)
 #' df <- occ2df(dat)
 #' 

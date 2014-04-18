@@ -21,7 +21,7 @@ this.
 \examples{
 \dontrun{
 spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Spinus tristis')
-out <- occ(query=spnames, from='gbif', gbifopts=list(georeferenced=TRUE))
+out <- occ(query=spnames, from='gbif', gbifopts=list(hasCoordinate=TRUE))
 
 # pass in output of occ directly to occ2sp
 occ2sp(out)

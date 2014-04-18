@@ -27,9 +27,11 @@
 
 fixnames <- function(obj, how="shortest", namevec = NULL){
   how <- match.arg(how, choices = c("shortest", "query", "supplied"))
+  if(getOption("stringsAsFactors")){warning("Strings are coming back as factors, this may interfere with fixing sames,consider setting 'options(stringsAsFactors = FALSE)'")}
   foo <- function(z){
     if(how=="shortest"){ # shortest
       z$data <- lapply(z$data, function(x, how){
+        if(is.factor(x$name)){x$name <- as.character(x$name)}
         uniqnames <- unique(x$name)
         lengths <- vapply(uniqnames, function(y) length(strsplit(y, " ")[[1]]), numeric(1))
         shortest <- names(which.min(lengths))

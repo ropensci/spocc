@@ -31,6 +31,7 @@ Imports:
     AntWeb (>= 0.6),
     ggmap,
     maptools,
+    rworldmap,
     sp,
     rgeos,
     lubridate,

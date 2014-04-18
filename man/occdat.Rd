@@ -16,7 +16,7 @@
 \description{
 Print brief summary of occ function output
 
-Plot occ function output on a map (uses base plots)
+Plot occ function output on a map (uses base plots via the rworldmap package)
 }
 \examples{
 \dontrun{
@@ -31,7 +31,7 @@ out$gbif$data
 }
 \dontrun{
 spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Spinus tristis')
-out <- occ(query=spnames, from='gbif', gbifopts=list(georeferenced=TRUE))
+out <- occ(query=spnames, from='gbif', gbifopts=list(hasCoordinate=TRUE))
 plot(out, cex=1, pch=10)
 }
 }

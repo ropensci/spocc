@@ -30,24 +30,28 @@ print.occdat <- function(x, ...) {
     cat(" antweb : ", perspp$antweb[1], "records across", perspp$antweb[2], 
         "species", "\n")
 }
-#' Plot occ function output on a map (uses base plots)
+#' Plot occ function output on a map (uses base plots via the rworldmap package)
 #' 
-#' @import sp maps rgdal assertthat
+#' @import sp rworldmap
 #' @param x Input object from occ function, of class occdat
 #' @param ... Further args passed on to points fxn
 #' @examples \dontrun{
 #' spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Spinus tristis')
-#' out <- occ(query=spnames, from='gbif', gbifopts=list(georeferenced=TRUE))
+#' out <- occ(query=spnames, from='gbif', gbifopts=list(hasCoordinate=TRUE))
 #' plot(out, cex=1, pch=10)
 #' }
 #' @method plot occdat
 #' @export
 #' @rdname occdat
 plot.occdat <- function(x, ...) {
-    df <- occ2df(x)
-    coordinates(df) <- ~longitude + latitude
-    proj4string(df) <- CRS("+init=epsg:4326")
-    data(wrld_simpl, envir = new.env())
-    map("world")
-    points(df, col = "red", ...)
-} 
+  df <- occ2df(x)
+  coordinates(df) <- ~longitude + latitude
+  proj4string(df) <- CRS("+init=epsg:4326")
+  #     data(wrld_simpl, envir = new.env())
+  #     data(wrld_simpl)
+  #     world_simpl_obj <- wrld_simpl
+  #     map(wrld_simpl)
+  #     map("world")
+  plot(getMap())
+  points(df, col = "red", ...)
+}

@@ -1,3 +1,9 @@
+spocc 0.1.2
+===============
+
+* There were quite a few changes in one of the key packages that `spocc` depends on: `rgbif`. A number of input and output parameter names changed. A new version of `rgbif` was pushed to CRAN. (#56)
+* 
+
 spocc 0.1.0
 ===============
 

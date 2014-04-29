@@ -220,8 +220,8 @@ foo_gbif <- function(sources, query, limit, geometry, opts) {
     opts$return <- "data"
     out <- do.call(occ_search, opts)
     if (class(out) == "character") {
-      list(time = time, data = data.frame(name = NA, key = NA, longitude = NA, 
-                                          latitude = NA, prov = "gbif"))
+      list(time = time, data = data.frame(name = "", key = NaN, decimalLatitude = NaN, 
+                                          decimalLongitude = NaN, prov = "gbif", stringsAsFactors = FALSE)) 
     } else {
       out$prov <- rep("gbif", nrow(out))
       out$prov <- rep("gbif", nrow(out))

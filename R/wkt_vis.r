@@ -3,6 +3,7 @@
 #' This can be helpful in visualizing the area in which you are searching for 
 #' occurrences with the \code{occ} function. 
 #'
+#' 
 #' @import ggmap ggplot2 assertthat rgeos
 #' @param x Input well-known text area (character)
 #' @param zoom Zoom level, defaults to 6 (numeric)

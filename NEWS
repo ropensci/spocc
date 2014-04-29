@@ -1,8 +1,11 @@
 spocc 0.1.2
 ===============
 
+NEW FEATURES
+
 * There were quite a few changes in one of the key packages that `spocc` depends on: `rgbif`. A number of input and output parameter names changed. A new version of `rgbif` was pushed to CRAN. (#56)
-* 
+* New function `clean_spocc()` to trim species names with optional input parameters to make data easier to use for mapping. 
+* New function `wkt_vis()` to visualize a WKT (well-known text) area on a map. Uses ggmap to pull down a Google map so that the visualization has some geographic context and natural earth context. We'll soon introduce an interactive version of this function that will bring up a small Shiny app to draw a WKT area, then return that to your R session. (#34)
 
 spocc 0.1.0
 ===============

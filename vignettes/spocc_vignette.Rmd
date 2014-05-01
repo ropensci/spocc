@@ -112,7 +112,7 @@ response -- |
 
 ```
 
-If you only request data from gbif, like `from = 'gbif'`, then the other four source slots are prsent in the response object, but have no data.
+If you only request data from gbif, like `from = 'gbif'`, then the other four source slots are present in the response object, but have no data.
 
 You can quickly get just the data by indexing to the data element, like 
 

@@ -59,7 +59,7 @@ spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta','Puma concolor
 'Ursus americanus','Gymnogyps californianus')
 dat <- occ(query = spp, from = 'gbif', gbifopts = list(hasCoordinate = TRUE))
 data <- occ2df(dat)
-mapleaflet(data, map_provider = 'cm')
+mapleaflet(data, map_provider = 'toner')
 }
 }
 

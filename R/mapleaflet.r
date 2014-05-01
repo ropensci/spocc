@@ -37,7 +37,7 @@
 #' 'Ursus americanus','Gymnogyps californianus')
 #' dat <- occ(query = spp, from = 'gbif', gbifopts = list(hasCoordinate = TRUE))
 #' data <- occ2df(dat)
-#' mapleaflet(data, map_provider = 'cm')
+#' mapleaflet(data, map_provider = 'toner')
 #' }
 mapleaflet <- function(data, popup = TRUE, map_provider = "osm", zoom = 3, title = "map", 
     size, centerview = c(30, -73.9), dest = ".", overwrite = TRUE, incl.data = TRUE) {

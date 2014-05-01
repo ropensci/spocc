@@ -3,7 +3,7 @@
 %\VignetteIndexEntry{An introduction to the spocc package}
 -->
 
-# Species occurrence data (spocc), version 0.1
+# Species occurrence data (spocc), version 0.1.2
 
 ### Introduction
 
@@ -11,7 +11,7 @@ The rOpenSci projects aims to provide programmatic access to scientific data rep
 
 ### Data Sources
 
-`spocc` currently interfaces with five major biodiversity repositories. Many of these packages have been part of the rOpenSci su
+`spocc` currently interfaces with six major biodiversity repositories
 
 1. Global Biodiversity Information Facility (`rgbif`)
 [GBIF](http://www.gbif.org/) is a government funded open data repository with several partner organizations with the express goal of providing access to data on Earth's biodiversity. The data are made available by a network of member nodes, coordinating information from various participant organizations and government agencies.
@@ -22,7 +22,7 @@ The ecoengine is an open API built by the [Berkeley Initiative for Global Change
 3. __iNaturalist__ (`rinat`)
 iNaturalist provides access to crowd sourced citizen science data on species observations.
 
-4. [VertNet](http://vertnet.org/index.php) (`rvertnet`)
+4. [VertNet](http://vertnet.org/) (`rvertnet`)
 Similar to `rgbif`, ecoengine, and `rbison` (see below), VertNet provides access to more than 80 million vertebrate records spanning a large number of institutions and museums primarly covering four major disciplines (mammology, herpetology, ornithology, and icthyology). __Note that we don't currenlty support VertNet data in this package, but we should soon__
 
 5. [Biodiversity Information Serving Our Nation](http://bison.usgs.ornl.gov/) (`rbison`)

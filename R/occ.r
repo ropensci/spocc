@@ -41,6 +41,7 @@
 #' # Geometry
 #' ## Pass in geometry parameter to all sources. This constraints the search to the 
 #' ## specified polygon for all sources, gbif and bison in this example.
+#' ## Check out \url{http://arthur-e.github.io/Wicket/sandbox-gmaps3.html} to get a WKT string
 #' occ(query='Accipiter striatus', from='gbif', 
 #'    geometry='POLYGON((30.1 10.1, 10 20, 20 60, 60 60, 30.1 10.1))')
 #' occ(query='Helianthus annuus', from='bison', 
@@ -52,7 +53,7 @@
 #' occ(query='Accipiter striatus', from='gbif', geometry=c(-125.0,38.4,-121.8,40.9))
 #' 
 #' ## Bounding box constraint with ecoengine 
-#' # Use this website: http://boundingbox.klokantech.com/ to quickly grab a bbox.
+#' # Use this website: \url{http://boundingbox.klokantech.com/} to quickly grab a bbox.
 #' Just set the format on the bottom left to CSV.
 #' occ(query='Accipiter striatus', from='ecoengine', limit=10, 
 #'    geometry=c(-125.0,38.4,-121.8,40.9))
@@ -80,8 +81,8 @@
 #' df <- occ2df(out)
 #' head(df)
 #' 
-#' 
-#' # taxize integration: Pass in taxonomic identifiers
+#' # taxize integration
+#' ## You can pass in taxonomic identifiers
 #' library("taxize")
 #' (ids <- get_ids(names=c("Chironomus riparius","Pinus contorta"), db = c('itis','gbif')))
 #' occ(ids = ids[[1]], from='bison')

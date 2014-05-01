@@ -4,9 +4,9 @@ spocc 0.1.2
 NEW FEATURES
 
 * There were quite a few changes in one of the key packages that `spocc` depends on: `rgbif`. A number of input and output parameter names changed. A new version of `rgbif` was pushed to CRAN. (#56)
-* New function `clean_spocc()` started (not finished yet) to attempt to clean data. For example, one use case is removing impossible lat/long values (i.e., longitue values greater than absolute 180)
-* New function `fixnames  ()` to trim species names with optional input parameters to make data easier to use for mapping.
-* New function `wkt_vis()` to visualize a WKT (well-known text) area on a map. Uses ggmap to pull down a Google map so that the visualization has some geographic context and natural earth context. We'll soon introduce an interactive version of this function that will bring up a small Shiny app to draw a WKT area, then return that to your R session. (#34)
+* New function `clean_spocc()` started (not finished yet) to attempt to clean data. For example, one use case is removing impossible lat/long values (i.e., longitue values greater than absolute 180). Another, not implemented yet, is to remove points that are not in the country or habitat your points are supposed to be in. (#44)
+* New function `fixnames()` to trim species names with optional input parameters to make data easier to use for mapping.
+* New function `wkt_vis()` to visualize a WKT (well-known text) area on a map. Uses `ggmap` to pull down a Google map so that the visualization has some geographic and natural earth context. We'll soon introduce an interactive version of this function that will bring up a small Shiny app to draw a WKT area, then return those coordinates to your R session. (#34)
 
 spocc 0.1.0
 ===============

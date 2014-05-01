@@ -17,10 +17,9 @@ Clean spocc data
 }
 \examples{
 \dontrun{
-library(spocc)
 res <- occ(query = c('Ursus','Accipiter','Rubus'), from = 'bison', limit=120)
-x <- occ2df(res)
-clean_spocc(x=res$bison$data[[1]])
+res_cleaned <- clean_spocc(res)
+class(res_cleaned) # now with classes occdat and occclean
 }
 }
 

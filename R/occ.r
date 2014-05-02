@@ -68,6 +68,12 @@
 #' ## Passing geometry with multiple sources
 #' occ(query = 'Danaus plexippus', from=c("inat","gbif","ecoengine"), geometry=bounds)
 #' 
+#' ## Using geometry only for the query
+#' ### A single bounding box
+#' occ(geometry = bounds, from = "gbif")
+#' ### Many bounding boxes
+#' occ(geometry = list(c(-125.0,38.4,-121.8,40.9), c(-115.0,22.4,-111.8,30.9)), from = "gbif")
+#' 
 #' # Specify many data sources, another example
 #' ebirdopts = list(region = 'US'); gbifopts  =  list(country = 'US')
 #' out <- occ(query = 'Setophaga caerulescens', from = c('gbif','inat','bison','ebird'), 
@@ -144,13 +150,14 @@ occ <- function(query = NULL, from = "gbif", limit = 25, geometry = NULL, rank =
   }
   
   # check that one of query or ids is non-NULL
-  assert_that(xor(!is.null(query), !is.null(ids)))
+#   assert_that(xor(!is.null(query), !is.null(ids), !is.null(geometry)))
+   if(!any(!is.null(query), !is.null(ids), !is.null(geometry)))
+     stop("One of query, ids, or geometry parameters must be non-NULL")
   
-  if(is.null(ids)){
+  if(is.null(ids) && is.null(geometry)){
     # If query not null (taxonomic names passed in)
     tmp <- lapply(query, loopfun, y=limit, z=geometry)
-  } else
-  {
+  } else if(is.null(query) && is.null(geometry)) {
     unlistids <- function(x){
       if(length(x) == 1){
         if(is.null(names(x))){ list(x) } else {
@@ -175,11 +182,25 @@ occ <- function(query = NULL, from = "gbif", limit = 25, geometry = NULL, rank =
     # ids can only be passed to gbif and bison for now
     # so don't pass anything on to ecoengine, inat, or ebird
     tmp <- lapply(ids, loopids, y=limit, z=geometry)
+  } else {
+    type <- 'geometry'
+    if(is.numeric(geometry)){
+      tmp <- list(loopfun(z=geometry, y=limit, x=query))
+    } else if(is.list(geometry)){
+      tmp <- lapply(geometry, function(b) loopfun(z=b, y=limit, x=query))
+    }
   }
   
   getsplist <- function(srce, opts) {
     tt <- lapply(tmp, function(x) x[[srce]]$data)
-    names(tt) <- gsub("\\s", "_", query)
+    if(!is.null(query) && is.null(geometry)){
+      names(tt) <- gsub("\\s", "_", query)
+    } else if(is.null(query) && !is.null(geometry)){
+      if(is.numeric(geometry)){ gg <- paste(geometry,collapse=",") } else {
+        gg <- lapply(geometry, paste, collapse=",")        
+      }
+      names(tt) <- gsub("\\s", "_", gg)
+    } else { NULL }
     if (any(grepl(srce, sources))) {
       list(meta = list(source = srce, time = tmp[[1]][[srce]]$time, query = query, 
                        type = type, opts = opts), data = tt)
@@ -204,13 +225,16 @@ occ <- function(query = NULL, from = "gbif", limit = 25, geometry = NULL, rank =
 #' @noRd
 foo_gbif <- function(sources, query, limit, geometry, opts) {
   if (any(grepl("gbif", sources))) {
-    if(class(query) %in% c("ids","gbifid")){
-      if(class(query) %in% "ids")
-        opts$taxonKey <- query$gbif
-      else
-        opts$taxonKey <- query
-    } else
-    { opts$taxonKey <- name_backbone(name = query)$usageKey }
+    
+    if(!is.null(query)){
+      if(class(query) %in% c("ids","gbifid")){
+        if(class(query) %in% "ids")
+          opts$taxonKey <- query$gbif
+        else
+          opts$taxonKey <- query
+      } else
+      { opts$taxonKey <- name_backbone(name = query)$usageKey }
+    }
     
     time <- now()
     opts$limit <- limit

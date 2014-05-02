@@ -149,6 +149,12 @@ occ(query = 'Danaus plexippus', from="inat", geometry=bounds)
 ## Passing geometry with multiple sources
 occ(query = 'Danaus plexippus', from=c("inat","gbif","ecoengine"), geometry=bounds)
 
+## Using geometry only for the query
+### A single bounding box
+occ(geometry = bounds, from = "gbif")
+### Many bounding boxes
+occ(geometry = list(c(-125.0,38.4,-121.8,40.9), c(-115.0,22.4,-111.8,30.9)), from = "gbif")
+
 # Specify many data sources, another example
 ebirdopts = list(region = 'US'); gbifopts  =  list(country = 'US')
 out <- occ(query = 'Setophaga caerulescens', from = c('gbif','inat','bison','ebird'),

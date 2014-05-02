@@ -86,7 +86,7 @@ expect_equal(ncol(occ2df(geo5)), 4)
 
 
 context("Testing by taxon identifier searches")
-library(taxize)
+library("taxize")
 
 test_that("Taxon identifier searches work", {
   ids <- get_ids(names=c("Chironomus riparius","Pinus contorta"), db = c('itis','gbif'))

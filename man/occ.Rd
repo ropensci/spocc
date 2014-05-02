@@ -139,6 +139,11 @@ Just set the format on the bottom left to CSV.
 occ(query='Accipiter striatus', from='ecoengine', limit=10,
    geometry=c(-125.0,38.4,-121.8,40.9))
 
+## lots of results, can see how many by indexing to meta
+res <- occ(query='Accipiter striatus', from='gbif',
+   geometry='POLYGON((-69.9 49.2,-69.9 29.0,-123.3 29.0,-123.3 49.2,-69.9 49.2))')
+res$gbif
+
 ## You can pass in geometry to each source separately via their opts parameter, at
 ## least those that support it. Note that if you use rinat, you reverse the order, with
 ## latitude first, and longitude second, but here it's the reverse for consistency across

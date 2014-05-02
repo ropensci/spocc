@@ -58,6 +58,11 @@
 #' occ(query='Accipiter striatus', from='ecoengine', limit=10, 
 #'    geometry=c(-125.0,38.4,-121.8,40.9))
 #' 
+#' ## lots of results, can see how many by indexing to meta   
+#' res <- occ(query='Accipiter striatus', from='gbif', 
+#'    geometry='POLYGON((-69.9 49.2,-69.9 29.0,-123.3 29.0,-123.3 49.2,-69.9 49.2))')
+#' res$gbif
+#' 
 #' ## You can pass in geometry to each source separately via their opts parameter, at 
 #' ## least those that support it. Note that if you use rinat, you reverse the order, with
 #' ## latitude first, and longitude second, but here it's the reverse for consistency across
@@ -154,7 +159,7 @@ occ <- function(query = NULL, from = "gbif", limit = 25, geometry = NULL, rank =
    if(!any(!is.null(query), !is.null(ids), !is.null(geometry)))
      stop("One of query, ids, or geometry parameters must be non-NULL")
   
-  if(is.null(ids) && is.null(geometry)){
+  if(is.null(ids) && !is.null(query)){
     # If query not null (taxonomic names passed in)
     tmp <- lapply(query, loopfun, y=limit, z=geometry)
   } else if(is.null(query) && is.null(geometry)) {
@@ -199,8 +204,10 @@ occ <- function(query = NULL, from = "gbif", limit = 25, geometry = NULL, rank =
       if(is.numeric(geometry)){ gg <- paste(geometry,collapse=",") } else {
         gg <- lapply(geometry, paste, collapse=",")        
       }
-      names(tt) <- gsub("\\s", "_", gg)
-    } else { NULL }
+      names(tt) <- gg
+    } else if(!is.null(query) && !is.null(geometry)) { 
+      names(tt) <- gsub("\\s", "_", query)
+    }
     if (any(grepl(srce, sources))) {
       list(meta = list(source = srce, time = tmp[[1]][[srce]]$time, query = query, 
                        type = type, opts = opts), data = tt)

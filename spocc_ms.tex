@@ -1,0 +1,146 @@
+\documentclass[10pt,a4paper,twocolumn]{article}\usepackage[]{graphicx}\usepackage[]{color}
+%% maxwidth is the original width if it is less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+\usepackage{f1000_styles}
+\usepackage{hyperref}
+
+\newcolumntype{L}{>{\raggedright\arraybackslash}m{5cm}} % creates now column type to wrap text
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+
+
+\begin{document}
+
+
+
+
+\title{spocc: taxonomic search and retrieval in R}
+\author[1]{Edmund Hart}
+\author[2]{Scott Chamberlain}
+\affil[1]{NEON}
+\affil[2]{Portland}
+
+\maketitle
+\thispagestyle{fancy}
+
+\begin{abstract}
+XXXXXX.
+\end{abstract}
+\clearpage
+
+\section*{Introduction}
+write stuff....
+
+\section*{spocc is cool}
+XXXXXX
+
+\section*{Data sources and package details}
+XXXXXX
+
+\section*{Use cases}
+
+\subsection*{First, install spocc}
+
+First, one must install and load spocc into the R session.
+
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{install.packages}\hlstd{(}\hlstr{"spocc"}\hlstd{)}
+\hlkwd{library}\hlstd{(spocc)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+
+
+
+
+
+Advanced users can also download and install the latest development copy from GitHub \url{https://github.com/ropensci/spocc}.
+
+\subsection*{XXXXX}
+
+XX
+
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{print}\hlstd{(}\hlstr{"hello world"}\hlstd{)}
+\end{alltt}
+\begin{verbatim}
+# [1] "hello world"
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+
+\subsection*{XXXX}
+
+XXXX
+
+\section*{Conclusions}
+XXXXX
+
+\subsection*{Author contributions}
+XXXXX
+
+\subsection*{Competing interests}
+No competing interests were disclosed.
+
+\subsection*{Grant information}
+The author(s) declared that no grants were involved in supporting this work.
+
+\subsection*{Acknowledgements}
+The spocc package is part of the rOpenSci project \url{http://ropensci.org/}. We thank all API maintainers for their work making their databases open to the public.
+
+\nocite{*}
+{\small\bibliographystyle{unsrt}
+\bibliography{refs_nourls}}
+
+\end{document}

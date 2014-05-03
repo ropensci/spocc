@@ -1,0 +1,87 @@
+\documentclass[10pt,a4paper,twocolumn]{article}
+\usepackage{f1000_styles}
+\usepackage{hyperref}
+
+\newcolumntype{L}{>{\raggedright\arraybackslash}m{5cm}} % creates now column type to wrap text
+
+
+\begin{document}
+
+<<setup, include=FALSE, cache=FALSE, size='scriptsize'>>=
+## set global chunk options
+options(width=58)
+opts_chunk$set(fig.align='center', fig.show='hold', par=TRUE, warning=FALSE, message=FALSE, error=FALSE, comment='#')
+@
+
+\title{spocc: taxonomic search and retrieval in R}
+\author[1]{Edmund Hart}
+\author[2]{Scott Chamberlain}
+\affil[1]{NEON}
+\affil[2]{Portland}
+
+\maketitle
+\thispagestyle{fancy}
+
+\begin{abstract}
+XXXXXX.
+\end{abstract}
+\clearpage
+
+\section*{Introduction}
+write stuff....
+
+\section*{spocc is cool}
+XXXXXX
+
+\section*{Data sources and package details}
+XXXXXX
+
+\section*{Use cases}
+
+\subsection*{First, install spocc}
+
+First, one must install and load spocc into the R session.
+
+<<installtaxizecran, eval=FALSE, size='scriptsize'>>=
+install.packages("spocc")
+library(spocc)
+@
+
+<<loadtaxize, eval=TRUE, echo=FALSE, size='scriptsize'>>=
+library(spocc)
+@
+
+Advanced users can also download and install the latest development copy from GitHub \url{https://github.com/ropensci/spocc}.
+
+\subsection*{XXXXX}
+
+XX
+
+<<resolvenames, cache=TRUE, size='scriptsize', tidy=FALSE>>=
+print("hello world")
+@
+
+\subsection*{XXXX}
+
+XXXX
+
+\section*{Conclusions}
+XXXXX
+
+\subsection*{Author contributions}
+XXXXX
+
+\subsection*{Competing interests}
+No competing interests were disclosed.
+
+\subsection*{Grant information}
+The author(s) declared that no grants were involved in supporting this work.
+
+\subsection*{Acknowledgements}
+The spocc package is part of the rOpenSci project \url{http://ropensci.org/}. We thank all API maintainers for their work making their databases open to the public.
+
+\nocite{*}
+{\small\bibliographystyle{unsrt}
+\bibliography{refs_nourls}}
+
+\end{document}

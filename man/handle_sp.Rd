@@ -13,6 +13,7 @@ Input various sp objects (e.g., x, y, z) and output WKT objects. If multiple pol
 sp object, separate calls are made to the web API since they don't support MULTIPOLYGON.
 }
 \examples{
+\dontrun{
 library("sp")
 
 # A single polygons in a SpatialPolygons class
@@ -44,6 +45,7 @@ handle_sp(spobj=sppoly)
 # From SpatialPolygonsDataFrame class
 sppoly_df <- SpatialPolygonsDataFrame(sppoly, data.frame(a=c(1,2), b=c("a","b"), c=c(TRUE,FALSE), row.names=row.names(sppoly)))
 handle_sp(sppoly_df)
+}
 }
 \keyword{internal}
 

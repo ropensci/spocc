@@ -240,11 +240,11 @@ occ <- function(query = NULL, from = "gbif", limit = 25, geometry = NULL, rank =
       names(tt) <- gsub("\\s", "_", query)
     }
     if (any(grepl(srce, sources))) {
-      list(meta = list(source = srce, time = tmp[[1]][[srce]]$time, query = query, 
-                       type = type, opts = opts), data = tt)
+      list(meta = list(source = srce, time = tmp[[1]][[srce]]$time, query = query,
+          found = NA, returned = nrow(tmp[[1]][[srce]]$data), type = type, opts = opts), data = tt)
     } else {
-      list(meta = list(source = srce, time = NULL, query = NULL, type = NULL, 
-                       opts = NULL), data = tt)
+      list(meta = list(source = srce, time = NULL, query = NULL, 
+          found = NA, returned = nrow(tmp[[1]][[srce]]$data), type = NULL, opts = NULL), data = tt)
     }
   }
   gbif_sp <- getsplist("gbif", gbifopts)
@@ -271,25 +271,33 @@ foo_gbif <- function(sources, query, limit, geometry, opts) {
         else
           opts$taxonKey <- query
       } else
-      { opts$taxonKey <- name_backbone(name = query)$usageKey }
+      { 
+        UsageKey <- name_backbone(name = query)$usageKey 
+        if(is.null(UsageKey)){
+          warning(sprintf("No GBIF key found for %s", query))
+        } else {
+          opts$taxonKey <- UsageKey
+        }
+      }
     }
-    
-    time <- now()
-    opts$limit <- limit
-    if(!is.null(geometry)){
-      opts$geometry <- if(grepl('POLYGON', paste(as.character(geometry), collapse=" "))){ 
-        geometry } else { bbox2wkt(bbox=geometry) }
-    }
-    opts$return <- "data"
-    out <- do.call(occ_search, opts)
-    if (class(out) == "character") {
-      list(time = time, data = data.frame(name = "", key = NaN, decimalLatitude = NaN, 
-                                          decimalLongitude = NaN, prov = "gbif", stringsAsFactors = FALSE)) 
-    } else {
-      out$prov <- rep("gbif", nrow(out))
-      out$prov <- rep("gbif", nrow(out))
-      out$name <- as.character(out$name)
-      list(time = time, data = out)
+    if(is.null(UsageKey)){ list(time = NULL, data = data.frame(NULL)) } else{
+      time <- now()
+      opts$limit <- limit
+      if(!is.null(geometry)){
+        opts$geometry <- if(grepl('POLYGON', paste(as.character(geometry), collapse=" "))){ 
+          geometry } else { bbox2wkt(bbox=geometry) }
+      }
+      opts$return <- "data"
+      out <- do.call(occ_search, opts)
+      if (class(out) == "character") {
+        list(time = time, data = data.frame(name = "", key = NaN, decimalLatitude = NaN, 
+                decimalLongitude = NaN, prov = "gbif", stringsAsFactors = FALSE)) 
+      } else {
+        out$prov <- rep("gbif", nrow(out))
+        out$prov <- rep("gbif", nrow(out))
+        out$name <- as.character(out$name)
+        list(time = time, data = out)
+      }
     }
   } else {
     list(time = NULL, data = data.frame(NULL))
@@ -381,9 +389,13 @@ foo_bison <- function(sources, query, limit, geometry, opts) {
         geometry } else { bbox2wkt(bbox=geometry) }
     }
     out <- do.call(bison, opts)
-    out <- out$points
-    out$prov <- rep("bison", nrow(out))
-    list(time = time, data = out)
+    if(is.null(out$points)){
+      list(time = NULL, data = data.frame(NULL))
+    } else{
+      out <- out$points
+      out$prov <- rep("bison", nrow(out))
+      list(time = time, data = out)
+    }
   } else {
     list(time = NULL, data = data.frame(NULL))
   }

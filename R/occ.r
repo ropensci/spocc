@@ -143,8 +143,8 @@
 #'                           (30 10, 10 20, 20 60, 60 60, 30 10))')
 #' }
 occ <- function(query = NULL, from = "gbif", limit = 25, geometry = NULL, rank = "species",
-                type = "sci", ids = NULL, gbifopts = list(), bisonopts = list(), inatopts = list(), 
-                ebirdopts = list(), ecoengineopts = list(), antwebopts = list()) {
+    type = "sci", ids = NULL, gbifopts = list(), bisonopts = list(), inatopts = list(), 
+    ebirdopts = list(), ecoengineopts = list(), antwebopts = list()) {
   
   if(!is.null(geometry)){
     if(class(geometry) %in% c('SpatialPolygons','SpatialPolygonsDataFrame')){
@@ -362,7 +362,7 @@ foo_antweb <- function(sources, query, limit, geometry,  opts) {
 
 #' @noRd
 foo_bison <- function(sources, query, limit, geometry, opts) {
-  if (any(grepl("bison", sources))) {
+  if(any(grepl("bison", sources))) {
     if(class(query) %in% c("ids","tsn")){
       if(class(query) %in% "ids"){
         opts$tsn <- query$itis
@@ -370,7 +370,6 @@ foo_bison <- function(sources, query, limit, geometry, opts) {
       {
         opts$tsn <- query
       }
-      opts$itis <- 'true'
     } else
     { opts$species <- query }
     

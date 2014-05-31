@@ -130,7 +130,8 @@
 #' out$gbif$data
 #' 
 #' ## Two polygons in SpatialPolygonsDataFrame class
-#' sppoly_df <- SpatialPolygonsDataFrame(sppoly, data.frame(a=c(1,2), b=c("a","b"), c=c(TRUE,FALSE), row.names=row.names(sppoly)))
+#' sppoly_df <- SpatialPolygonsDataFrame(sppoly, data.frame(a=c(1,2), b=c("a","b"), c=c(TRUE,FALSE),
+#'    row.names=row.names(sppoly)))
 #' out <- occ(geometry = sppoly_df)
 #' out$gbif$data
 #' 

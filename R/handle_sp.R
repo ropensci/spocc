@@ -36,7 +36,8 @@
 #' handle_sp(spobj=sppoly)
 #'
 #' # From SpatialPolygonsDataFrame class
-#' sppoly_df <- SpatialPolygonsDataFrame(sppoly, data.frame(a=c(1,2), b=c("a","b"), c=c(TRUE,FALSE), row.names=row.names(sppoly)))
+#' sppoly_df <- SpatialPolygonsDataFrame(sppoly, data.frame(a=c(1,2), b=c("a","b"), c=c(TRUE,FALSE),
+#' row.names=row.names(sppoly)))
 #' handle_sp(sppoly_df)
 #' }
 

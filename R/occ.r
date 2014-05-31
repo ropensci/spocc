@@ -344,7 +344,7 @@ foo_ecoengine <- function(sources, query, limit, geometry, opts) {
 foo_antweb <- function(sources, query, limit, geometry,  opts) {
   if (any(grepl("antweb", sources))) {
     time <- now()
-    limit <- NULL
+#     limit <- NULL
     geometry <- NULL
 
     query <- sub("^ +", "", query)
@@ -357,12 +357,13 @@ foo_antweb <- function(sources, query, limit, geometry,  opts) {
       opts$scientific_name <- NULL
     }
 
+    opts$limit <- limit
     opts$georeferenced <- TRUE
     out <- do.call(aw_data, opts)
-    out <- out$data
-    out$prov <- rep("antweb", nrow(out))
-    out$scientific_name <- opts$scientific_name
-    list(time = time, found = NULL, data = out, opts = opts)
+    res <- out$data
+    res$prov <- rep("antweb", nrow(res))
+    res$scientific_name <- opts$scientific_name
+    list(time = time, found = out$count, data = res, opts = opts)
   } else {
     list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
   }

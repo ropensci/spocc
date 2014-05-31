@@ -328,12 +328,17 @@ foo_ecoengine <- function(sources, query, limit, geometry, opts) {
     opts$quiet <- TRUE
     opts$progress <- FALSE
     out_ee <- do.call(ee_observations, opts)
-    out <- out_ee$data
-    fac_tors <- sapply(out, is.factor)
-    out[fac_tors] <- lapply(out[fac_tors], as.character)
-    out$prov <- rep("ecoengine", nrow(out))
-    names(out)[names(out) == 'scientific_name'] <- "name"
-    list(time = time, found = out_ee$results, data = out, opts = opts)
+    if(out_ee$results == 0){
+      warning(sprintf("No records found in Ecoengine for %s", query))
+      list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
+    } else{
+      out <- out_ee$data
+      fac_tors <- sapply(out, is.factor)
+      out[fac_tors] <- lapply(out[fac_tors], as.character)
+      out$prov <- rep("ecoengine", nrow(out))
+      names(out)[names(out) == 'scientific_name'] <- "name"
+      list(time = time, found = out_ee$results, data = out, opts = opts)
+    }
   } else {
     list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
   }
@@ -360,10 +365,16 @@ foo_antweb <- function(sources, query, limit, geometry,  opts) {
     opts$limit <- limit
     opts$georeferenced <- TRUE
     out <- do.call(aw_data, opts)
-    res <- out$data
-    res$prov <- rep("antweb", nrow(res))
-    res$scientific_name <- opts$scientific_name
-    list(time = time, found = out$count, data = res, opts = opts)
+
+    if(is.null(out)){
+      warning(sprintf("No records found in AntWeb for %s", query))
+      list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
+    } else{
+      res <- out$data
+      res$prov <- rep("antweb", nrow(res))
+      res$scientific_name <- opts$scientific_name
+      list(time = time, found = out$count, data = res, opts = opts)
+    }
   } else {
     list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
   }
@@ -452,9 +463,13 @@ foo_ebird <- function(sources, query, limit, opts) {
     } else {
       out <- do.call(ebirdgeo, opts[!names(opts) %in% "method"])
     }
-    out$prov <- rep("ebird", nrow(out))
-    names(out)[names(out) == 'sciName'] <- "name"
-    list(time = time, found = NULL, data = out, opts = opts)
+    if(!is.data.frame(out)){
+      list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
+    } else{
+      out$prov <- rep("ebird", nrow(out))
+      names(out)[names(out) == 'sciName'] <- "name"
+      list(time = time, found = NULL, data = out, opts = opts)
+    }
   } else {
     list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
   }

@@ -10,10 +10,11 @@
 #' @export
 #' @examples \dontrun{
 #' # Single data sources
-#' occ(query = 'Accipiter striatus', from = 'gbif')
-#' occ(query = 'Accipiter striatus', from = 'ecoengine')
-#' occ(query = 'Danaus plexippus', from = 'inat')
-#' occ(query = 'Bison bison', from = 'bison')
+#' occ(query = 'Accipiter striatus', from = 'gbif')$gbif
+#' occ(query = 'Accipiter striatus', from = 'ecoengine')$ecoengine
+#' occ(query = 'Accipiter striatus', from = 'ebird')$ebird
+#' occ(query = 'Danaus plexippus', from = 'inat')$inat
+#' occ(query = 'Bison bison', from = 'bison')$bison
 #' # Data from AntWeb
 #' # By species
 #' (by_species <- occ(query = "acanthognathus brevicornis", from = "antweb"))
@@ -240,11 +241,12 @@ occ <- function(query = NULL, from = "gbif", limit = 25, geometry = NULL, rank =
       names(tt) <- gsub("\\s", "_", query)
     }
     if (any(grepl(srce, sources))) {
-      list(meta = list(source = srce, time = tmp[[1]][[srce]]$time, query = query,
-          found = NA, returned = nrow(tmp[[1]][[srce]]$data), type = type, opts = opts), data = tt)
+      list(meta = list(source = srce, time = tmp[[1]][[srce]]$time,
+          found = tmp[[1]][[srce]]$found, returned = nrow(tmp[[1]][[srce]]$data), 
+          type = type, opts = tmp[[1]][[srce]]$opts), data = tt)
     } else {
-      list(meta = list(source = srce, time = NULL, query = NULL, 
-          found = NA, returned = nrow(tmp[[1]][[srce]]$data), type = NULL, opts = NULL), data = tt)
+      list(meta = list(source = srce, time = NULL, found = NULL, returned = NULL, 
+          type = NULL, opts = NULL), data = tt)
     }
   }
   gbif_sp <- getsplist("gbif", gbifopts)
@@ -279,28 +281,29 @@ foo_gbif <- function(sources, query, limit, geometry, opts) {
           opts$taxonKey <- UsageKey
         }
       }
-    }
-    if(is.null(UsageKey)){ list(time = NULL, data = data.frame(NULL)) } else{
+    } else { UsageKey <- NULL }
+    if(is.null(UsageKey) && is.null(geometry)){ list(time = NULL, found = NULL, data = data.frame(NULL)) } else{
       time <- now()
       opts$limit <- limit
       if(!is.null(geometry)){
         opts$geometry <- if(grepl('POLYGON', paste(as.character(geometry), collapse=" "))){ 
           geometry } else { bbox2wkt(bbox=geometry) }
       }
-      opts$return <- "data"
+#       opts$return <- "data"
       out <- do.call(occ_search, opts)
-      if (class(out) == "character") {
+      if(class(out) == "character") {
         list(time = time, data = data.frame(name = "", key = NaN, decimalLatitude = NaN, 
-                decimalLongitude = NaN, prov = "gbif", stringsAsFactors = FALSE)) 
+                decimalLongitude = NaN, prov = "gbif", stringsAsFactors = FALSE), opts = opts)
       } else {
-        out$prov <- rep("gbif", nrow(out))
-        out$prov <- rep("gbif", nrow(out))
-        out$name <- as.character(out$name)
-        list(time = time, data = out)
+        dat <- out$data
+        dat$prov <- rep("gbif", nrow(dat))
+        dat$prov <- rep("gbif", nrow(dat))
+        dat$name <- as.character(dat$name)
+        list(time = time, found = out$meta$count, data = dat, opts = opts)
       }
     }
   } else {
-    list(time = NULL, data = data.frame(NULL))
+    list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
   }
 }
 
@@ -330,9 +333,9 @@ foo_ecoengine <- function(sources, query, limit, geometry, opts) {
     out[fac_tors] <- lapply(out[fac_tors], as.character)
     out$prov <- rep("ecoengine", nrow(out))
     names(out)[names(out) == 'scientific_name'] <- "name"
-    list(time = time, data = out)
+    list(time = time, found = NULL, data = out, opts = opts)
   } else {
-    list(time = NULL, data = data.frame(NULL))
+    list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
   }
 }
 
@@ -359,9 +362,9 @@ foo_antweb <- function(sources, query, limit, geometry,  opts) {
     out <- out$data
     out$prov <- rep("antweb", nrow(out))
     out$scientific_name <- opts$scientific_name
-    list(time = time, data = out)
+    list(time = time, found = NULL, data = out, opts = opts)
   } else {
-    list(time = NULL, data = data.frame(NULL))
+    list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
   }
 }
 
@@ -383,23 +386,25 @@ foo_bison <- function(sources, query, limit, geometry, opts) {
     
     time <- now()
     opts$count <- limit
-    opts$what <- 'points'
+#     opts$what <- 'points'
     if(!is.null(geometry)){
       opts$aoi <- if(grepl('POLYGON', paste(as.character(geometry), collapse=" "))){ 
         geometry } else { bbox2wkt(bbox=geometry) }
     }
     out <- do.call(bison, opts)
     if(is.null(out$points)){
-      list(time = NULL, data = data.frame(NULL))
+      list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
     } else{
-      out <- out$points
-      out$prov <- rep("bison", nrow(out))
-      list(time = time, data = out)
+      dat <- out$points
+      dat$prov <- rep("bison", nrow(dat))
+      list(time = time, found = out$summary$total, data = dat, opts = opts)
     }
   } else {
-    list(time = NULL, data = data.frame(NULL))
+    list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
   }
 }
+
+
 
 #' @noRd
 foo_inat <- function(sources, query, limit, geometry, opts) {
@@ -407,6 +412,7 @@ foo_inat <- function(sources, query, limit, geometry, opts) {
     time <- now()
     opts$query <- query
     opts$maxresults <- limit
+    opts$meta <- TRUE
     if(!is.null(geometry)){
       opts$bounds <- if(grepl('POLYGON', paste(as.character(geometry), collapse=" ")))
       { 
@@ -416,11 +422,16 @@ foo_inat <- function(sources, query, limit, geometry, opts) {
       } else { c(geometry[2], geometry[1], geometry[4], geometry[3]) }
     }
     out <- do.call(get_inat_obs, opts)
-    out$prov <- rep("inat", nrow(out))
-    names(out)[names(out) == 'Scientific.name'] <- "name"
-    list(time = time, data = out)
+    if(!is.data.frame(out$data)){
+      list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
+    } else{
+      res <- out$data
+      res$prov <- rep("inat", nrow(res))
+      names(res)[names(res) == 'Scientific.name'] <- "name"
+      list(time = time, found = out$meta$found, data = res, opts = opts)
+    }
   } else {
-    list(time = NULL, data = data.frame(NULL))
+    list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
   }
 }
 
@@ -442,8 +453,8 @@ foo_ebird <- function(sources, query, limit, opts) {
     }
     out$prov <- rep("ebird", nrow(out))
     names(out)[names(out) == 'sciName'] <- "name"
-    list(time = time, data = out)
+    list(time = time, found = NULL, data = out, opts = opts)
   } else {
-    list(time = NULL, data = data.frame(NULL))
+    list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
   }
 }

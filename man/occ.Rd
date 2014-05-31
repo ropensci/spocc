@@ -91,10 +91,11 @@ a bounding box but for now, you can use a few sites on the web.
 \examples{
 \dontrun{
 # Single data sources
-occ(query = 'Accipiter striatus', from = 'gbif')
-occ(query = 'Accipiter striatus', from = 'ecoengine')
-occ(query = 'Danaus plexippus', from = 'inat')
-occ(query = 'Bison bison', from = 'bison')
+occ(query = 'Accipiter striatus', from = 'gbif')$gbif
+occ(query = 'Accipiter striatus', from = 'ecoengine')$ecoengine
+occ(query = 'Accipiter striatus', from = 'ebird')$ebird
+occ(query = 'Danaus plexippus', from = 'inat')$inat
+occ(query = 'Bison bison', from = 'bison')$bison
 # Data from AntWeb
 # By species
 (by_species <- occ(query = "acanthognathus brevicornis", from = "antweb"))

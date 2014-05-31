@@ -333,7 +333,7 @@ foo_ecoengine <- function(sources, query, limit, geometry, opts) {
     out[fac_tors] <- lapply(out[fac_tors], as.character)
     out$prov <- rep("ecoengine", nrow(out))
     names(out)[names(out) == 'scientific_name'] <- "name"
-    list(time = time, found = NULL, data = out, opts = opts)
+    list(time = time, found = out_ee$results, data = out, opts = opts)
   } else {
     list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
   }

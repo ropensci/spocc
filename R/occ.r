@@ -179,7 +179,8 @@ occ <- function(query = NULL, from = "gbif", limit = 25, geometry = NULL, rank =
       bison_res <- foo_bison(sources, x, y, z, bisonopts)
       gbif_res <- list(time = NULL, data = data.frame(NULL))
     }
-    list(gbif = gbif_res, bison = bison_res, 
+    list(gbif = gbif_res, 
+         bison = bison_res, 
          inat = list(time = NULL, data = data.frame(NULL)), 
          ebird = list(time = NULL, data = data.frame(NULL)), 
          ecoengine = list(time = NULL, data = data.frame(NULL)),
@@ -269,10 +270,12 @@ foo_gbif <- function(sources, query, limit, geometry, opts) {
     
     if(!is.null(query)){
       if(class(query) %in% c("ids","gbifid")){
-        if(class(query) %in% "ids")
+        if(class(query) %in% "ids"){
           opts$taxonKey <- query$gbif
-        else
+        } else {
           opts$taxonKey <- query
+        }
+        UsageKey <- opts$taxonKey
       } else
       { 
         UsageKey <- name_backbone(name = query)$usageKey 
@@ -283,6 +286,7 @@ foo_gbif <- function(sources, query, limit, geometry, opts) {
         }
       }
     } else { UsageKey <- NULL }
+    
     if(is.null(UsageKey) && is.null(geometry)){ list(time = NULL, found = NULL, data = data.frame(NULL)) } else{
       time <- now()
       opts$limit <- limit

@@ -45,20 +45,24 @@ temp_df6 <- x6$ebird$data[[1]]
 expect_equal(unique(temp_df6$prov), "ebird")
 
 # Adding tests for Antweb
-by_species <- occ(query = "acanthognathus brevicornis", from = "antweb")
-by_genus <- occ(query = "acanthognathus", from = "antweb")
-expect_is(by_species, "occdat")
-expect_is(by_species$antweb, "list")
-expect_is(by_species$antweb$data[[1]], "data.frame")
-temp_df7 <- by_species$antweb$data[[1]]
-expect_equal(unique(temp_df7$prov), "antweb")
+by_species <- suppressWarnings(tryCatch(occ(query = "acanthognathus brevicornis", from = "antweb"), error=function(e) e))
+by_genus <- suppressWarnings(tryCatch(occ(query = "acanthognathus", from = "antweb"), error=function(e) e))
 
-expect_is(by_genus, "occdat")
-expect_is(by_genus$antweb, "list")
-expect_is(by_genus$antweb$data[[1]], "data.frame")
-temp_df8 <- by_genus$antweb$data[[1]]
-expect_equal(unique(temp_df8$prov), "antweb")
+if(!"error" %in% class(by_species)){
+  expect_is(by_species, "occdat")
+  expect_is(by_species$antweb, "list")
+  expect_is(by_species$antweb$data[[1]], "data.frame")
+  temp_df7 <- by_species$antweb$data[[1]]
+  expect_equal(unique(temp_df7$prov), "antweb")
+}
 
+if(!"error" %in% class(by_genus)){
+  expect_is(by_genus, "occdat")
+  expect_is(by_genus$antweb, "list")
+  expect_is(by_genus$antweb$data[[1]], "data.frame")
+  temp_df8 <- by_genus$antweb$data[[1]]
+  expect_equal(unique(temp_df8$prov), "antweb")
+}
 
 })
 
@@ -66,7 +70,7 @@ context("Testing geometry searches")
 
 test_that("geometry searches work", {
   # no results
-  geo1 <- occ(query='Accipiter striatus', from='gbif', 
+  geo1 <- occ(query='Accipiter', from='gbif', 
               geometry='POLYGON((30.1 10.1, 10 20, 20 60, 60 60, 30.1 10.1))')
   geo11 <- occ(query='Accipiter striatus', from='gbif', 
               geometry=  
@@ -83,10 +87,11 @@ test_that("geometry searches work", {
   expect_is(geo3, "occdat")
   expect_is(geo4, "occdat")
   expect_is(geo5, "occdat")
-  expect_equal(nrow(geo1$gbif$data[[1]]), 1)
+  expect_equal(NCOL(geo1$gbif$data[[1]]), 5)
   expect_match(names(geo2$gbif$data), 'Accipiter_striatus')
-  expect_equal(nrow(geo4$gbif$data[[1]]), 0)
-  expect_equal(ncol(occ2df(geo5)), 4)
+  expect_equal(NCOL(geo4$inat$data[[1]]), 33)
+  expect_equal(NCOL(geo4$gbif$data[[1]]), 0)
+  expect_equal(NCOL(occ2df(geo5)), 4)
 })
 
 

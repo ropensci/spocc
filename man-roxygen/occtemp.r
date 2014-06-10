@@ -11,7 +11,7 @@
 #' 'POLYGON((30.1 10.1, 20, 20 40, 40 40, 30.1 10.1))' would be queried as is,
 #' i.e. http://bit.ly/HwUSif. See Details for more examples of WKT objects.
 #' @param rank (character) Taxonomic rank. Not used right now.
-#' @param type (character) Type of name, sci (scientific) or com (common name, vernacular).
+#' @param type (character) Type of search: sci (scientific) or com (common name, vernacular).
 #' Not used right now.
 #' @param ids Taxonomic identifiers. This can be a list of length 1 to many. See examples for
 #' usage. Currently, identifiers for only 'gbif' and 'bison' for parameter 'from' supported. If

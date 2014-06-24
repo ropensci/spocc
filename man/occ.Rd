@@ -27,7 +27,7 @@ i.e. http://bit.ly/HwUSif. See Details for more examples of WKT objects.}
 
 \item{rank}{(character) Taxonomic rank. Not used right now.}
 
-\item{type}{(character) Type of name, sci (scientific) or com (common name, vernacular).
+\item{type}{(character) Type of search: sci (scientific) or com (common name, vernacular).
 Not used right now.}
 
 \item{ids}{Taxonomic identifiers. This can be a list of length 1 to many. See examples for

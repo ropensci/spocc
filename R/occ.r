@@ -146,8 +146,8 @@
 #' }
 occ <- function(query = NULL, from = "gbif", limit = 25, geometry = NULL, rank = "species",
     type = "sci", ids = NULL, gbifopts = list(), bisonopts = list(), inatopts = list(), 
-    ebirdopts = list(), ecoengineopts = list(), antwebopts = list()) {
-  
+    ebirdopts = list(), ecoengineopts = list(), antwebopts = list()) 
+{  
   if(!is.null(geometry)){
     if(class(geometry) %in% c('SpatialPolygons','SpatialPolygonsDataFrame')){
       geometry <- as.list(handle_sp(geometry))
@@ -169,7 +169,8 @@ occ <- function(query = NULL, from = "gbif", limit = 25, geometry = NULL, rank =
   
   loopids <- function(x, y, z) {
     # x = query; y=limit; z=geometry
-    classes <- ifelse(length(x)>1, vapply(x, class, ""), class(x))
+#     classes <- ifelse(length(x)>1, vapply(x, class, ""), class(x))
+    classes <- class(x)
     if(!all(classes %in% c("gbifid","tsn")))
       stop("Currently, taxon identifiers have to be of class gbifid or tsn")
     if(class(x) == 'gbifid'){
@@ -231,21 +232,44 @@ occ <- function(query = NULL, from = "gbif", limit = 25, geometry = NULL, rank =
   
   getsplist <- function(srce, opts) {
     tt <- lapply(tmp, function(x) x[[srce]]$data)
-    if(!is.null(query) && is.null(geometry)){
+    if(!is.null(query) && is.null(geometry)){ # query
       names(tt) <- gsub("\\s", "_", query)
-    } else if(is.null(query) && !is.null(geometry)){
+      optstmp <- tmp[[1]][[srce]]$opts
+    } else if(is.null(query) && !is.null(geometry)){ # geometry
 #       if(is.numeric(geometry)){ gg <- paste(geometry,collapse=",") } else {
 #         gg <- lapply(geometry, paste, collapse=",")        
 #       }
 #       names(tt) <- gg
       tt <- tt
-    } else if(!is.null(query) && !is.null(geometry)) { 
+      optstmp <- tmp[[1]][[srce]]$opts
+    } else if(!is.null(query) && !is.null(geometry)) { # query & geometry
       names(tt) <- gsub("\\s", "_", query)
+      optstmp <- tmp[[1]][[srce]]$opts
+    } else if(is.null(query) && is.null(geometry)) {
+      names(tt) <- sapply(tmp, function(x) unclass(x[[srce]]$opts[[1]]))
+      tt <- tt[!vapply(tt, nrow, 1) == 0]
+      opts <- compact(lapply(tmp, function(x) x[[srce]]$opts))
+      optstmp <- unlist(opts)
+#       optstmp <- as.list(c(optstmp[!names(optstmp) %in% 'limit'], optstmp[names(optstmp) %in% 'limit'][1]))
+#       optstmp <- as.list(c(optstmp[!names(optstmp) %in% 'count'], optstmp[names(optstmp) %in% 'count'][1]))
+      simplist <- function(b){
+        splitup <- unique(names(b))
+        sapply(splitup, function(d){
+          tmp <- b[names(b) %in% d]
+          if(length(unique(unname(unlist(tmp)))) == 1){ as.list(tmp[1]) } else { 
+            outout <- list(unname(unlist(tmp)))
+            names(outout) <- names(tmp)[1]
+            outout
+          }
+        }, USE.NAMES=FALSE)
+      }
+      optstmp <- simplist(optstmp)
     }
+
     if (any(grepl(srce, sources))) {
       list(meta = list(source = srce, time = tmp[[1]][[srce]]$time,
           found = tmp[[1]][[srce]]$found, returned = nrow(tmp[[1]][[srce]]$data), 
-          type = type, opts = tmp[[1]][[srce]]$opts), data = tt)
+          type = type, opts = optstmp), data = tt)
     } else {
       list(meta = list(source = srce, time = NULL, found = NULL, returned = NULL, 
           type = NULL, opts = NULL), data = tt)
@@ -287,7 +311,9 @@ foo_gbif <- function(sources, query, limit, geometry, opts) {
       }
     } else { UsageKey <- NULL }
     
-    if(is.null(UsageKey) && is.null(geometry)){ list(time = NULL, found = NULL, data = data.frame(NULL)) } else{
+    if(is.null(UsageKey) && is.null(geometry)){ 
+      list(time = NULL, found = NULL, data = data.frame(NULL), opts=opts) 
+    } else{
       time <- now()
       opts$limit <- limit
       if(!is.null(geometry)){
@@ -297,14 +323,17 @@ foo_gbif <- function(sources, query, limit, geometry, opts) {
 #       opts$return <- "data"
       out <- do.call(occ_search, opts)
       if(class(out) == "character") {
-        list(time = time, data = data.frame(name = "", key = NaN, decimalLatitude = NaN, 
-                decimalLongitude = NaN, prov = "gbif", stringsAsFactors = FALSE), opts = opts)
+        list(time = time, found = NULL, data = data.frame(NULL), opts = opts)
       } else {
-        dat <- out$data
-        dat$prov <- rep("gbif", nrow(dat))
-        dat$prov <- rep("gbif", nrow(dat))
-        dat$name <- as.character(dat$name)
-        list(time = time, found = out$meta$count, data = dat, opts = opts)
+        if(class(out$data) == "character"){
+          list(time = time, found = NULL, data = data.frame(NULL), opts = opts)
+        } else {
+          dat <- out$data
+          dat$prov <- rep("gbif", nrow(dat))
+          dat$prov <- rep("gbif", nrow(dat))
+          dat$name <- as.character(dat$name)
+          list(time = time, found = out$meta$count, data = dat, opts = opts)
+        }
       }
     }
   } else {

@@ -45,24 +45,24 @@ temp_df6 <- x6$ebird$data[[1]]
 expect_equal(unique(temp_df6$prov), "ebird")
 
 # Adding tests for Antweb
-by_species <- suppressWarnings(tryCatch(occ(query = "acanthognathus brevicornis", from = "antweb"), error=function(e) e))
-by_genus <- suppressWarnings(tryCatch(occ(query = "acanthognathus", from = "antweb"), error=function(e) e))
-
-if(!"error" %in% class(by_species)){
-  expect_is(by_species, "occdat")
-  expect_is(by_species$antweb, "list")
-  expect_is(by_species$antweb$data[[1]], "data.frame")
-  temp_df7 <- by_species$antweb$data[[1]]
-  expect_equal(unique(temp_df7$prov), "antweb")
-}
-
-if(!"error" %in% class(by_genus)){
-  expect_is(by_genus, "occdat")
-  expect_is(by_genus$antweb, "list")
-  expect_is(by_genus$antweb$data[[1]], "data.frame")
-  temp_df8 <- by_genus$antweb$data[[1]]
-  expect_equal(unique(temp_df8$prov), "antweb")
-}
+# by_species <- suppressWarnings(tryCatch(occ(query = "acanthognathus brevicornis", from = "antweb"), error=function(e) e))
+# by_genus <- suppressWarnings(tryCatch(occ(query = "acanthognathus", from = "antweb"), error=function(e) e))
+# 
+# if(!"error" %in% class(by_species)){
+#   expect_is(by_species, "occdat")
+#   expect_is(by_species$antweb, "list")
+#   expect_is(by_species$antweb$data[[1]], "data.frame")
+#   temp_df7 <- by_species$antweb$data[[1]]
+#   expect_equal(unique(temp_df7$prov), "antweb")
+# }
+# 
+# if(!"error" %in% class(by_genus)){
+#   expect_is(by_genus, "occdat")
+#   expect_is(by_genus$antweb, "list")
+#   expect_is(by_genus$antweb$data[[1]], "data.frame")
+#   temp_df8 <- by_genus$antweb$data[[1]]
+#   expect_equal(unique(temp_df8$prov), "antweb")
+# }
 
 })
 

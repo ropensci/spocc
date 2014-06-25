@@ -1,3 +1,11 @@
+spocc 0.1.4
+===============
+
+NEW FEATURES
+
+* Can now do geometry only queries. See examples in `occ()`.
+* In addition, you can pass in sp objects of SpatialPolygons or SpatialPolygonsDataFrame classes.
+
 spocc 0.1.2
 ===============
 
@@ -12,7 +20,7 @@ IMPROVEMENTS
 
 * Added a CONTRIBUTING.md file to the github repo to help guide contributions (#61)
 * Packages that require a certain version are forced to be X version or greater. Thes are rinat (>= 0.1.1), rbison (>= 0.3.2), rgbif (>= 0.6.2), ecoengine (>= 1.3), rebird (>= 0.1.1), AntWeb (>= 0.6.1), and leafletR (>= 0.2-0). This should help avoid problems.
-* General improvement to function documentation. 
+* General improvement to function documentation.
 
 spocc 0.1.0
 ===============

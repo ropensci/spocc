@@ -155,6 +155,10 @@ occ <- function(query = NULL, from = "gbif", limit = 25, geometry = NULL, rank =
   }
   sources <- match.arg(from, choices = c("gbif", "bison", "inat", "ebird", "ecoengine", "antweb"), 
                        several.ok = TRUE)
+  if(!all(from %in% sources)){
+    stop(sprintf("Woops, the following are not supported or spelled incorrectly: %s", from[!from %in% sources]))
+  }
+  
   loopfun <- function(x, y, z) {
     # x = query; y = limit; z = geometry
     gbif_res <- foo_gbif(sources, x, y, z, gbifopts)

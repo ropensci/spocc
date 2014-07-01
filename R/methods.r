@@ -40,21 +40,28 @@ print.occdatind <- function(x, ..., n = 10){
 #   namesprint <- paste(na.omit(names(x)[1:10]), collapse = " ")
   cat( spocc_wrap(sprintf("Species [%s]", pastemax(x$data))), '\n')
   cat(sprintf("First 10 rows of [%s]\n\n", names(x$data)[1] ))
-  trunc_mat(x$data[[1]], n = n)
-#   lengths <- vapply(x, nchar, 1, USE.NAMES = FALSE)
-#   cat(sprintf("%s full-text articles retrieved", length(x)), "\n")
-#   cat(sprintf("Min. Length: %s - Max. Length: %s", min(lengths), max(lengths)), "\n")
-#   cat(spocc_wrap(sprintf("DOIs:\n %s ...", namesprint)), "\n\n")
-#   cat("NOTE: extract xml strings like output['<doi>']")
+#   trunc_mat(x$data[[1]], n = n)
+  trunc_mat(occinddf(x), n = n)
 }
 
 pastemax <- function(z, n=10){
-#   znames <- names(z)
-#   znames <- gsub("_", " ", znames)
-#   nn <- na.omit(znames[1:n])
   rrows <- vapply(z, nrow, integer(1))
   tt <- list(); for(i in seq_along(rrows)){ tt[[i]] <- sprintf("%s (%s)", gsub("_", " ", names(rrows[i])), rrows[[i]]) }
   paste0(tt, collapse = ", ")
+}
+
+occinddf <- function(obj) {
+  z <- obj$data[[1]]
+  df <- switch(obj$meta$source,
+         gbif = data.frame(name = z$name, longitude = z$decimalLongitude, latitude = z$decimalLatitude, prov = z$prov),
+         bison = data.frame(name = z$name, longitude = z$decimalLongitude, latitude = z$decimalLatitude, prov = z$prov),
+         inat = data.frame(name = z$name, longitude = z$Longitude, latitude = z$Latitude, prov = z$prov),
+         ebird = data.frame(name = z$name, longitude = z$lng, latitude = z$lat, prov = z$prov),
+         ecoengine = data.frame(name = z$name, longitude = z$longitude, latitude = z$latitude, prov = z$prov),
+         antweb = data.frame(name = z$name, longitude = z$decimal_longitude, latitude = z$decimal_latitude, prov = z$prov))
+  z <- z[!names(z) %in% c('name','decimalLongitude','Longitude','lng','longitude','decimal_longitude',
+                       'decimalLatitude','Latitude','lat','latitude','decimal_latitude','prov')]
+  do.call(cbind, list(df, z))
 }
 
 #' Plot occ function output on a map (uses base plots via the rworldmap package)

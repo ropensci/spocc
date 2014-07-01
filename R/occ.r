@@ -267,12 +267,16 @@ occ <- function(query = NULL, from = "gbif", limit = 25, geometry = NULL, rank =
     }
 
     if (any(grepl(srce, sources))) {
-      list(meta = list(source = srce, time = tmp[[1]][[srce]]$time,
+      ggg <- list(meta = list(source = srce, time = tmp[[1]][[srce]]$time,
           found = tmp[[1]][[srce]]$found, returned = nrow(tmp[[1]][[srce]]$data), 
           type = type, opts = optstmp), data = tt)
+      class(ggg) <- "occdatind"
+      ggg
     } else {
-      list(meta = list(source = srce, time = NULL, found = NULL, returned = NULL, 
+      ggg <- list(meta = list(source = srce, time = NULL, found = NULL, returned = NULL, 
           type = NULL, opts = NULL), data = tt)
+      class(ggg) <- "occdatind"
+      ggg
     }
   }
   gbif_sp <- getsplist("gbif", gbifopts)

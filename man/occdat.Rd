@@ -2,13 +2,20 @@
 \name{print.occdat}
 \alias{plot.occdat}
 \alias{print.occdat}
+\alias{print.occdatind}
 \title{Print brief summary of occ function output}
 \usage{
 \method{print}{occdat}(x, ...)
 
+\method{print}{occdatind}(x, ..., n = 10)
+
 \method{plot}{occdat}(x, ...)
 }
 \arguments{
+\item{x}{Input, of class occdatind}
+
+\item{...}{Further args, ignored}
+
 \item{x}{Input object from occ function, of class occdat}
 
 \item{...}{Further args passed on to points fxn}

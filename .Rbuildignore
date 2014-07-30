@@ -10,4 +10,3 @@ inst/shiny
 inst/vign
 inst/ignore
 CONTRIBUTING.md
-tests/testthat.R

@@ -21,25 +21,25 @@ expect_is(x6, "occdat")
 # expect_equal(unique(temp_df$prov), "gbif")
 # Testing x2
 expect_is(x2, "occdat")
-expect_is(x2$ecoengine, "list")
+expect_is(x2$ecoengine, "occdatind")
 expect_is(x2$ecoengine$data[[1]], "data.frame")
 temp_df2 <- x2$ecoengine$data[[1]]
 expect_equal(unique(temp_df2$prov), "ecoengine")
 # Testing x3
 expect_is(x3, "occdat")
-expect_is(x3$inat, "list")
+expect_is(x3$inat, "occdatind")
 expect_is(x3$inat$data[[1]], "data.frame")
 temp_df3 <- x3$inat$data[[1]]
 expect_equal(unique(temp_df3$prov), "inat")
 # Testing x5
 expect_is(x5, "occdat")
-expect_is(x5$ebird, "list")
+expect_is(x5$ebird, "occdatind")
 expect_is(x5$ebird$data[[1]], "data.frame")
 temp_df4 <- x5$ebird$data[[1]]
 expect_equal(unique(temp_df4$prov), "ebird")
 # Testing x6
 expect_is(x6, "occdat")
-expect_is(x6$ebird, "list")
+expect_is(x6$ebird, "occdatind")
 expect_is(x6$ebird$data[[1]], "data.frame")
 temp_df6 <- x6$ebird$data[[1]]
 expect_equal(unique(temp_df6$prov), "ebird")

@@ -17,7 +17,7 @@
 #' occ(query = 'Bison bison', from = 'bison')$bison
 #' # Data from AntWeb
 #' # By species
-#' (by_species <- occ(query = "acanthognathus brevicornis", from = "antweb"))
+#' (by_species <- occ(query = "linepithema humile", from = "antweb"))
 #' # or by genus
 #' (by_genus <- occ(query = "acanthognathus", from = "antweb"))
 #'

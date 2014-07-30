@@ -2,7 +2,7 @@
 #' @noRd
 foo_gbif <- function(sources, query, limit, geometry, opts) {
   if (any(grepl("gbif", sources))) {
-    
+
     if(!is.null(query)){
       if(class(query) %in% c("ids","gbifid")){
         if(class(query) %in% "ids"){
@@ -12,8 +12,8 @@ foo_gbif <- function(sources, query, limit, geometry, opts) {
         }
         UsageKey <- opts$taxonKey
       } else
-      { 
-        UsageKey <- name_backbone(name = query)$usageKey 
+      {
+        UsageKey <- name_backbone(name = query)$usageKey
         if(is.null(UsageKey)){
           warning(sprintf("No GBIF key found for %s", query))
         } else {
@@ -21,14 +21,14 @@ foo_gbif <- function(sources, query, limit, geometry, opts) {
         }
       }
     } else { UsageKey <- NULL }
-    
-    if(is.null(UsageKey) && is.null(geometry)){ 
-      list(time = NULL, found = NULL, data = data.frame(NULL), opts=opts) 
+
+    if(is.null(UsageKey) && is.null(geometry)){
+      list(time = NULL, found = NULL, data = data.frame(NULL), opts=opts)
     } else{
       time <- now()
       opts$limit <- limit
       if(!is.null(geometry)){
-        opts$geometry <- if(grepl('POLYGON', paste(as.character(geometry), collapse=" "))){ 
+        opts$geometry <- if(grepl('POLYGON', paste(as.character(geometry), collapse=" "))){
           geometry } else { bbox2wkt(bbox=geometry) }
       }
       #       opts$return <- "data"
@@ -60,7 +60,7 @@ foo_ecoengine <- function(sources, query, limit, geometry, opts) {
     opts$georeferenced <- TRUE
     opts$page_size <- limit
     if(!is.null(geometry)){
-      opts$bbox <- if(grepl('POLYGON', paste(as.character(geometry), collapse=" "))){ 
+      opts$bbox <- if(grepl('POLYGON', paste(as.character(geometry), collapse=" "))){
         wkt2bbox(geometry) } else { geometry }
     }
     # This could hang things if request is super large.  Will deal with this issue
@@ -96,28 +96,28 @@ foo_antweb <- function(sources, query, limit, geometry,  opts) {
     time <- now()
     #     limit <- NULL
     geometry <- NULL
-    
+
     query <- sub("^ +", "", query)
     query <- sub(" +$", "", query)
-    
+
     if(length(strsplit(query, " ")[[1]]) == 2) {
       opts$scientific_name <- query
     } else {
       opts$genus <- query
       opts$scientific_name <- NULL
     }
-    
+
     opts$limit <- limit
     opts$georeferenced <- TRUE
     out <- do.call(aw_data, opts)
-    
+
     if(is.null(out)){
       warning(sprintf("No records found in AntWeb for %s", query))
       list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
     } else{
       res <- out$data
       res$prov <- rep("antweb", nrow(res))
-      res$scientific_name <- opts$scientific_name
+      res$name <- query
       list(time = time, found = out$count, data = res, opts = opts)
     }
   } else {
@@ -140,12 +140,12 @@ foo_bison <- function(sources, query, limit, geometry, opts) {
       }
     } else
     { opts$species <- query }
-    
+
     time <- now()
     opts$count <- limit
     #     opts$what <- 'points'
     if(!is.null(geometry)){
-      opts$aoi <- if(grepl('POLYGON', paste(as.character(geometry), collapse=" "))){ 
+      opts$aoi <- if(grepl('POLYGON', paste(as.character(geometry), collapse=" "))){
         geometry } else { bbox2wkt(bbox=geometry) }
     }
     out <- do.call(bison, opts)
@@ -172,7 +172,7 @@ foo_inat <- function(sources, query, limit, geometry, opts) {
     opts$meta <- TRUE
     if(!is.null(geometry)){
       opts$bounds <- if(grepl('POLYGON', paste(as.character(geometry), collapse=" ")))
-      { 
+      {
         # flip lat and long spots in the bounds vector for inat
         temp <- wkt2bbox(geometry)
         c(temp[2], temp[1], temp[4], temp[3])
@@ -196,9 +196,9 @@ foo_inat <- function(sources, query, limit, geometry, opts) {
 foo_ebird <- function(sources, query, limit, opts) {
   if (any(grepl("ebird", sources))) {
     time <- now()
-    if (is.null(opts$method)) 
+    if (is.null(opts$method))
       opts$method <- "ebirdregion"
-    if (!opts$method %in% c("ebirdregion", "ebirdgeo")) 
+    if (!opts$method %in% c("ebirdregion", "ebirdgeo"))
       stop("ebird method must be one of ebirdregion or ebirdgeo")
     opts$species <- query
     opts$max <- limit

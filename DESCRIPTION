@@ -41,7 +41,8 @@ Imports:
     RJSONIO,
     leafletR (>= 0.2-0),
     data.table,
-    assertthat
+    assertthat,
+    whisker
 Suggests:
     roxygen2,
     testthat,

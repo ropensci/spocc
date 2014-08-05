@@ -39,53 +39,42 @@ Get data from GBIF
 
 ```coffee
 out <- occ(query='Accipiter striatus', from='gbif')
+```
+
+```coffee
+out
+```
+
+```coffee
+Summary of results - occurrences found for:
+ gbif  : 25 records across 1 species
+ bison :  0 records across 1 species
+ inat  :  0 records across 1 species
+ ebird :  0 records across 1 species
+ ecoengine :  0 records across 1 species
+ antweb :  0 records across 1 species 
+```
+
+```coffee
 out$gbif # just gbif data
 ```
 
-```
-$gbif
-$gbif$meta
-$gbif$meta$source
-[1] "gbif"
+```coffee
+Species [Accipiter striatus (25)]
+First 10 rows of [Accipiter_striatus]
 
-$gbif$meta$time
-[1] "2013-12-11 10:02:45 PST"
-
-$gbif$meta$query
-[1] "Accipiter striatus"
-
-$gbif$meta$type
-[1] "sci"
-
-$gbif$meta$opts
-list()
-
-
-$gbif$data
-$gbif$data$Accipiter_striatus
-                                name       key  longitude latitude prov
-1  Accipiter striatus Vieillot, 1808 773408845  -97.27682 32.87642 gbif
-2  Accipiter striatus Vieillot, 1808 768992325  -76.10433  4.72375 gbif
-3  Accipiter striatus Vieillot, 1808 773414146 -122.26848 37.77092 gbif
-4  Accipiter striatus Vieillot, 1808 773440541  -98.00115 32.80013 gbif
-5  Accipiter striatus Vieillot, 1808 773423188  -76.54262 38.68847 gbif
-6  Accipiter striatus Vieillot, 1808 773432602 -122.78289 38.61318 gbif
-7  Accipiter striatus Vieillot, 1808 773430206 -117.06342 32.55171 gbif
-8  Accipiter striatus Vieillot, 1808 833024105 -105.15587 40.67825 gbif
-9  Accipiter striatus Vieillot, 1808        NA         NA       NA gbif
-10 Accipiter striatus Vieillot, 1808 579130954  -74.44419 40.54073 gbif
-11 Accipiter striatus Vieillot, 1808 579131911  -76.69865 39.88886 gbif
-12 Accipiter striatus Vieillot, 1808 579132307  -75.55195 39.60463 gbif
-13 Accipiter striatus Vieillot, 1808 579134716  -96.97675 32.64104 gbif
-14 Accipiter striatus Vieillot, 1808 579138808  -73.57194 41.00291 gbif
-15 Accipiter striatus Vieillot, 1808 579149929 -123.96475 49.23553 gbif
-16 Accipiter striatus Vieillot, 1808 579157816  -70.40314 41.68471 gbif
-17 Accipiter striatus Vieillot, 1808 579125251  -84.13030 33.97565 gbif
-18 Accipiter striatus Vieillot, 1808 579127561  -90.07058 30.01456 gbif
-19 Accipiter striatus Vieillot, 1808 579128452 -105.20556 39.66553 gbif
-20 Accipiter striatus Vieillot, 1808 818461023 -111.73395 33.36145 gbif
-
-....(remainder of output cut off)
+                 name  longitude latitude prov       key
+1  Accipiter striatus  -72.52547 43.13234 gbif 891035349
+2  Accipiter striatus  -97.19930 32.86027 gbif 891038901
+3  Accipiter striatus  -97.65347 30.15791 gbif 891040018
+4  Accipiter striatus  -71.72514 18.26982 gbif 891035119
+5  Accipiter striatus -122.43980 37.48967 gbif 891040169
+6  Accipiter striatus  -76.64497 41.85597 gbif 891043765
+7  Accipiter striatus  -73.06720 43.63152 gbif 891048899
+8  Accipiter striatus  -99.09873 26.49104 gbif 891049443
+9  Accipiter striatus -117.14734 32.70358 gbif 891056214
+10 Accipiter striatus  -97.88279 26.10227 gbif 891050439
+..                ...        ...      ...  ...       ...
 ```
 
 Get fine-grained detail over each data source by passing on parameters to the packge rebird in this example.
@@ -97,49 +86,23 @@ out$ebird # just ebird data
 
 
 ```
-$meta
-$meta$source
-[1] "ebird"
+Species [Setophaga caerulescens (25)]
+First 10 rows of [Setophaga_caerulescens]
 
-$meta$time
-[1] "2013-12-11 10:04:37 PST"
-
-$meta$query
-[1] "Setophaga caerulescens"
-
-$meta$type
-[1] "sci"
-
-$meta$opts
-$meta$opts$region
-[1] "US"
-
-
-
-$data
-$data$Setophaga_caerulescens
-                       comName howMany      lat        lng    locID                                locName
-1  Black-throated Blue Warbler       1 40.93444  -73.84513 L2374154            NY - Sarah Lawrence College
-2  Black-throated Blue Warbler       1 25.73408  -80.31086  L200830                      A. D. Barnes Park
-3  Black-throated Blue Warbler       1 26.17131  -80.16149  L710596          John D. Easterlin County Park
-4  Black-throated Blue Warbler       1 26.23507  -80.19144  L818386         Coconut Creek-Pompano CBC area
-5  Black-throated Blue Warbler       1 25.91066  -80.33196 L1875938                  Miami Lakes West Park
-6  Black-throated Blue Warbler       1 25.32295  -80.83315  L123123        Everglades NP--Mahogany Hammock
-7  Black-throated Blue Warbler       1 36.19909 -105.88400 L1824677                        Dixon/El Bosque
-8  Black-throated Blue Warbler       1 25.67330  -80.15820  L127423             Bill Baggs Cape Florida SP
-9  Black-throated Blue Warbler       1 28.79362  -82.52210 L2440885                                   Home
-10 Black-throated Blue Warbler       1 25.73918  -80.30943 L1663905 Miami - AD Barnes Park - Nature Center
-   locationPrivate            obsDt obsReviewed obsValid                name  prov
-1             TRUE 2013-12-06 13:00        TRUE     TRUE Setophaga caerulescens ebird
-2            FALSE 2013-12-06 12:04       FALSE     TRUE Setophaga caerulescens ebird
-3            FALSE 2013-12-06 09:10       FALSE     TRUE Setophaga caerulescens ebird
-4             TRUE 2013-12-05 08:45       FALSE     TRUE Setophaga caerulescens ebird
-5             TRUE 2013-12-03 09:15       FALSE     TRUE Setophaga caerulescens ebird
-6            FALSE 2013-12-01 11:20       FALSE     TRUE Setophaga caerulescens ebird
-7             TRUE 2013-12-01 08:40        TRUE     TRUE Setophaga caerulescens ebird
-8            FALSE 2013-12-01 06:50       FALSE     TRUE Setophaga caerulescens ebird
-9             TRUE 2013-11-30 16:05        TRUE     TRUE Setophaga caerulescens ebird
-10            TRUE       2013-11-28       FALSE     TRUE Setophaga caerulescens ebird
+                     name longitude latitude  prov                     comName howMany    locID
+1  Setophaga caerulescens -82.27411 35.71525 ebird Black-throated Blue Warbler       3  L808055
+2  Setophaga caerulescens -81.68619 36.16935 ebird Black-throated Blue Warbler       1 L2377362
+3  Setophaga caerulescens -73.05840 44.76782 ebird Black-throated Blue Warbler       1 L1042249
+4  Setophaga caerulescens -83.91559 35.23377 ebird Black-throated Blue Warbler       3 L1117355
+5  Setophaga caerulescens -71.33629 44.07229 ebird Black-throated Blue Warbler       1 L3019553
+6  Setophaga caerulescens -69.88103 44.53983 ebird Black-throated Blue Warbler       1  L668744
+7  Setophaga caerulescens -83.03123 35.15585 ebird Black-throated Blue Warbler       4 L3018347
+8  Setophaga caerulescens -72.36832 44.42826 ebird Black-throated Blue Warbler       1 L3016946
+9  Setophaga caerulescens -76.28847 42.43226 ebird Black-throated Blue Warbler       1  L453322
+10 Setophaga caerulescens -72.19843 42.93351 ebird Black-throated Blue Warbler       2  L160223
+..                    ...       ...      ...   ...                         ...     ...      ...
+Variables not shown: locName (chr), locationPrivate (lgl), obsDt (chr), obsReviewed (lgl), obsValid
+     (lgl)
 ```
 
 Get data from many sources in a single call

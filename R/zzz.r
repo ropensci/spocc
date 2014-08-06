@@ -250,7 +250,7 @@ wkt2bbox <- function(wkt=NULL){
   as.vector(tmp)
 }
 
-trunc_mat <- function(x, n = NULL){
+spocc_trunc_mat <- function(x, n = NULL){
   rows <- nrow(x)
   if (!is.na(rows) && rows == 0)
     return()
@@ -262,7 +262,7 @@ trunc_mat <- function(x, n = NULL){
   if (nrow(df) == 0)
     return()
 #   is_list <- vapply(df, is.list, logical(1))
-#   df[is_list] <- lapply(df[is_list], function(x) vapply(x, obj_type, character(1)))
+#   df[is_list] <- lapply(df[is_list], function(x) vapply(x, spocc_obj_type, character(1)))
   mat <- format(df, justify = "left")
   width <- getOption("width")
   values <- c(format(rownames(mat))[[1]], unlist(mat[1, ]))
@@ -284,7 +284,7 @@ trunc_mat <- function(x, n = NULL){
   print(shrunk)
   if (any(too_wide)) {
     vars <- colnames(mat)[too_wide]
-    types <- vapply(df[too_wide], type_sum, character(1))
+    types <- vapply(df[too_wide], spocc_type_sum, character(1))
     var_types <- paste0(vars, " (", types, ")", collapse = ", ")
     cat(spocc_wrap("Variables not shown: ", var_types), "\n", sep = "")
   }
@@ -299,68 +299,68 @@ spocc_wrap <- function (..., indent = 0, width = getOption("width")){
 #' Type summary
 #' @export
 #' @keywords internal
-type_sum <- function (x) UseMethod("type_sum")
+spocc_type_sum <- function (x) UseMethod("spocc_type_sum")
 
-#' @method type_sum default
+#' @method spocc_type_sum default
 #' @export
-#' @rdname type_sum
-type_sum.default <- function (x) unname(abbreviate(class(x)[1], 4))
+#' @rdname spocc_type_sum
+spocc_type_sum.default <- function (x) unname(abbreviate(class(x)[1], 4))
 
-#' @method type_sum character
+#' @method spocc_type_sum character
 #' @export
-#' @rdname type_sum
-type_sum.character <- function (x) "chr"
+#' @rdname spocc_type_sum
+spocc_type_sum.character <- function (x) "chr"
 
-#' @method type_sum Date
+#' @method spocc_type_sum Date
 #' @export
-#' @rdname type_sum
-type_sum.Date <- function (x) "date"
+#' @rdname spocc_type_sum
+spocc_type_sum.Date <- function (x) "date"
 
-#' @method type_sum factor
+#' @method spocc_type_sum factor
 #' @export
-#' @rdname type_sum
-type_sum.factor <- function (x) "fctr"  
+#' @rdname spocc_type_sum
+spocc_type_sum.factor <- function (x) "fctr"
 
-#' @method type_sum integer
+#' @method spocc_type_sum integer
 #' @export
-#' @rdname type_sum
-type_sum.integer <- function (x) "int"
+#' @rdname spocc_type_sum
+spocc_type_sum.integer <- function (x) "int"
 
-#' @method type_sum logical
+#' @method spocc_type_sum logical
 #' @export
-#' @rdname type_sum
-type_sum.logical <- function (x) "lgl"
+#' @rdname spocc_type_sum
+spocc_type_sum.logical <- function (x) "lgl"
 
-#' @method type_sum array
+#' @method spocc_type_sum array
 #' @export
-#' @rdname type_sum
-type_sum.array <- function (x){
-  paste0(NextMethod(), "[", paste0(dim(x), collapse = ","), 
-         "]")
-}
-
-#' @method type_sum matrix
-#' @export
-#' @rdname type_sum
-type_sum.matrix <- function (x){
+#' @rdname spocc_type_sum
+spocc_type_sum.array <- function (x){
   paste0(NextMethod(), "[", paste0(dim(x), collapse = ","),
          "]")
 }
 
-#' @method type_sum numeric
+#' @method spocc_type_sum matrix
 #' @export
-#' @rdname type_sum
-type_sum.numeric <- function (x) "dbl"
+#' @rdname spocc_type_sum
+spocc_type_sum.matrix <- function (x){
+  paste0(NextMethod(), "[", paste0(dim(x), collapse = ","),
+         "]")
+}
 
-#' @method type_sum POSIXt
+#' @method spocc_type_sum numeric
 #' @export
-#' @rdname type_sum
-type_sum.POSIXt <- function (x) "time"
+#' @rdname spocc_type_sum
+spocc_type_sum.numeric <- function (x) "dbl"
 
-obj_type <- function (x)
+#' @method spocc_type_sum POSIXt
+#' @export
+#' @rdname spocc_type_sum
+spocc_type_sum.POSIXt <- function (x) "time"
+
+spocc_obj_type <- function (x)
 {
   if (!is.object(x)) {
-    paste0("<", type_sum(x), if (!is.array(x))
+    paste0("<", spocc_type_sum(x), if (!is.array(x))
       paste0("[", length(x), "]"), ">")
   }
   else if (!isS4(x)) {

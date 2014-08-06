@@ -12,6 +12,10 @@
 \method{plot}{occdat}(x, ...)
 }
 \arguments{
+\item{x}{Input...}
+
+\item{...}{Ignored.}
+
 \item{x}{Input, of class occdatind}
 
 \item{...}{Further args, ignored}

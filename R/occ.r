@@ -108,7 +108,6 @@
 #' 
 #' (ids <- get_tsn('Accipiter striatus'))
 #' occ(ids = ids, from='bison')
-#' }
 #' 
 #' # SpatialPolygons/SpatialPolygonsDataFrame integration
 #' library("sp")
@@ -146,6 +145,7 @@
 #' ## notice that callopts is ignored when from=inat or from=antweb
 #' occ(query = 'Accipiter striatus', from = 'inat', callopts=verbose())
 #' occ(query = 'linepithema humile', from = 'antweb', callopts=verbose())
+#' }
 #' 
 #' @examples \donttest{
 #' #### NOTE: no support for multipolygons yet
@@ -183,17 +183,17 @@ occ <- function(query = NULL, from = "gbif", limit = 25, geometry = NULL, rank =
          ecoengine = ecoengine_res, antweb = antweb_res)
   }
   
-  loopids <- function(x, y, z) {
+  loopids <- function(x, y, z, w) {
     # x = query; y=limit; z=geometry
 #     classes <- ifelse(length(x)>1, vapply(x, class, ""), class(x))
     classes <- class(x)
     if(!all(classes %in% c("gbifid","tsn")))
       stop("Currently, taxon identifiers have to be of class gbifid or tsn")
     if(class(x) == 'gbifid'){
-      gbif_res <- foo_gbif(sources, x, y, z, gbifopts)
+      gbif_res <- foo_gbif(sources, x, y, z, w, gbifopts)
       bison_res <- list(time = NULL, data = data.frame(NULL))
     } else if(class(x) == 'tsn') {
-      bison_res <- foo_bison(sources, x, y, z, bisonopts)
+      bison_res <- foo_bison(sources, x, y, z, w, bisonopts)
       gbif_res <- list(time = NULL, data = data.frame(NULL))
     }
     list(gbif = gbif_res, 
@@ -236,7 +236,7 @@ occ <- function(query = NULL, from = "gbif", limit = 25, geometry = NULL, rank =
     # if ids is not null (taxon identifiers passed in)
     # ids can only be passed to gbif and bison for now
     # so don't pass anything on to ecoengine, inat, or ebird
-    tmp <- lapply(ids, loopids, y=limit, z=geometry)
+    tmp <- lapply(ids, loopids, y=limit, z=geometry, w=callopts)
   } else {
     type <- 'geometry'
     if(is.numeric(geometry)){

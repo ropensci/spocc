@@ -192,7 +192,6 @@ occ(ids = ids, from='gbif')
 
 (ids <- get_tsn('Accipiter striatus'))
 occ(ids = ids, from='bison')
-}
 
 # SpatialPolygons/SpatialPolygonsDataFrame integration
 library("sp")
@@ -230,5 +229,6 @@ occ(query = 'Accipiter striatus', from = 'ebird', callopts=timeout(seconds = 0.1
 ## notice that callopts is ignored when from=inat or from=antweb
 occ(query = 'Accipiter striatus', from = 'inat', callopts=verbose())
 occ(query = 'linepithema humile', from = 'antweb', callopts=verbose())
+}
 }
 

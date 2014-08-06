@@ -1,6 +1,6 @@
 # Plugins for the occ function for each data source
 #' @noRd
-foo_gbif <- function(sources, query, limit, geometry, opts) {
+foo_gbif <- function(sources, query, limit, geometry, callopts, opts) {
   if (any(grepl("gbif", sources))) {
 
     if(!is.null(query)){
@@ -31,6 +31,7 @@ foo_gbif <- function(sources, query, limit, geometry, opts) {
         opts$geometry <- if(grepl('POLYGON', paste(as.character(geometry), collapse=" "))){
           geometry } else { bbox2wkt(bbox=geometry) }
       }
+      opts$callopts <- callopts
       #       opts$return <- "data"
       out <- do.call(occ_search, opts)
       if(class(out) == "character") {
@@ -53,7 +54,7 @@ foo_gbif <- function(sources, query, limit, geometry, opts) {
 }
 
 #' @noRd
-foo_ecoengine <- function(sources, query, limit, geometry, opts) {
+foo_ecoengine <- function(sources, query, limit, geometry, callopts, opts) {
   if (any(grepl("ecoengine", sources))) {
     time <- now()
     opts$scientific_name <- query
@@ -72,6 +73,7 @@ foo_ecoengine <- function(sources, query, limit, geometry, opts) {
     }
     opts$quiet <- TRUE
     opts$progress <- FALSE
+    opts$foptions <- callopts
     out_ee <- do.call(ee_observations, opts)
     if(out_ee$results == 0){
       warning(sprintf("No records found in Ecoengine for %s", query))
@@ -91,7 +93,7 @@ foo_ecoengine <- function(sources, query, limit, geometry, opts) {
 
 
 #' @noRd
-foo_antweb <- function(sources, query, limit, geometry,  opts) {
+foo_antweb <- function(sources, query, limit, geometry, callopts, opts) {
   if (any(grepl("antweb", sources))) {
     time <- now()
     #     limit <- NULL
@@ -126,10 +128,8 @@ foo_antweb <- function(sources, query, limit, geometry,  opts) {
 }
 
 
-
-
 #' @noRd
-foo_bison <- function(sources, query, limit, geometry, opts) {
+foo_bison <- function(sources, query, limit, geometry, callopts, opts) {
   if(any(grepl("bison", sources))) {
     if(class(query) %in% c("ids","tsn")){
       if(class(query) %in% "ids"){
@@ -143,6 +143,7 @@ foo_bison <- function(sources, query, limit, geometry, opts) {
 
     time <- now()
     opts$count <- limit
+    opts$config <- callopts
     #     opts$what <- 'points'
     if(!is.null(geometry)){
       opts$aoi <- if(grepl('POLYGON', paste(as.character(geometry), collapse=" "))){
@@ -162,9 +163,8 @@ foo_bison <- function(sources, query, limit, geometry, opts) {
 }
 
 
-
 #' @noRd
-foo_inat <- function(sources, query, limit, geometry, opts) {
+foo_inat <- function(sources, query, limit, geometry, callopts, opts) {
   if (any(grepl("inat", sources))) {
     time <- now()
     opts$query <- query
@@ -193,7 +193,7 @@ foo_inat <- function(sources, query, limit, geometry, opts) {
 }
 
 #' @noRd
-foo_ebird <- function(sources, query, limit, opts) {
+foo_ebird <- function(sources, query, limit, callopts, opts) {
   if (any(grepl("ebird", sources))) {
     time <- now()
     if (is.null(opts$method))
@@ -202,6 +202,7 @@ foo_ebird <- function(sources, query, limit, opts) {
       stop("ebird method must be one of ebirdregion or ebirdgeo")
     opts$species <- query
     opts$max <- limit
+    opts$config <- callopts
     if (opts$method == "ebirdregion") {
       if (is.null(opts$region)) opts$region <- "US"
       out <- do.call(ebirdregion, opts[!names(opts) %in% "method"])

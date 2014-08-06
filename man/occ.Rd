@@ -4,9 +4,9 @@
 \title{Search for species occurrence data across many data sources.}
 \usage{
 occ(query = NULL, from = "gbif", limit = 25, geometry = NULL,
-  rank = "species", type = "sci", ids = NULL, gbifopts = list(),
-  bisonopts = list(), inatopts = list(), ebirdopts = list(),
-  ecoengineopts = list(), antwebopts = list())
+  rank = "species", type = "sci", ids = NULL, callopts = list(),
+  gbifopts = list(), bisonopts = list(), inatopts = list(),
+  ebirdopts = list(), ecoengineopts = list(), antwebopts = list())
 }
 \arguments{
 \item{query}{(character) One to many names. Either a scientific name or a common name.
@@ -33,6 +33,9 @@ Not used right now.}
 \item{ids}{Taxonomic identifiers. This can be a list of length 1 to many. See examples for
 usage. Currently, identifiers for only 'gbif' and 'bison' for parameter 'from' supported. If
 this parameter is used, query parameter can not be used - if it is, a warning is thrown.}
+
+\item{callopts}{Options passed on to httr::GET, e.g., for debugging curl calls, setting
+timeouts, etc. This parameter is ignored for sources: antweb, inat.}
 
 \item{gbifopts}{(list) List of options to pass on to rgbif}
 
@@ -215,5 +218,17 @@ sppoly_df <- SpatialPolygonsDataFrame(sppoly, data.frame(a=c(1,2), b=c("a","b"),
    row.names=row.names(sppoly)))
 out <- occ(geometry = sppoly_df)
 out$gbif$data
+
+# curl debugging
+library('httr')
+occ(query = 'Accipiter striatus', from = 'gbif', callopts=verbose())
+occ(query = 'Accipiter striatus', from = 'ebird', callopts=verbose())
+occ(query = 'Accipiter striatus', from = 'bison', callopts=verbose())
+occ(query = 'Accipiter striatus', from = 'ecoengine', callopts=verbose())
+occ(query = 'Accipiter striatus', from = c('ebird','bison'), callopts=verbose())
+occ(query = 'Accipiter striatus', from = 'ebird', callopts=timeout(seconds = 0.1))
+## notice that callopts is ignored when from=inat or from=antweb
+occ(query = 'Accipiter striatus', from = 'inat', callopts=verbose())
+occ(query = 'linepithema humile', from = 'antweb', callopts=verbose())
 }
 

@@ -16,6 +16,8 @@
 #' @param ids Taxonomic identifiers. This can be a list of length 1 to many. See examples for
 #' usage. Currently, identifiers for only 'gbif' and 'bison' for parameter 'from' supported. If
 #' this parameter is used, query parameter can not be used - if it is, a warning is thrown.
+#' @param callopts Options passed on to httr::GET, e.g., for debugging curl calls, setting
+#' timeouts, etc. This parameter is ignored for sources: antweb, inat.
 #' @param gbifopts (list) List of options to pass on to rgbif
 #' @param bisonopts (list) List of options to pass on to rbison
 #' @param inatopts (list) List of options to pass on to rinat

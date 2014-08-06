@@ -135,6 +135,18 @@
 #' out <- occ(geometry = sppoly_df)
 #' out$gbif$data
 #' 
+#' # curl debugging
+#' library('httr')
+#' occ(query = 'Accipiter striatus', from = 'gbif', callopts=verbose())
+#' occ(query = 'Accipiter striatus', from = 'ebird', callopts=verbose())
+#' occ(query = 'Accipiter striatus', from = 'bison', callopts=verbose())
+#' occ(query = 'Accipiter striatus', from = 'ecoengine', callopts=verbose())
+#' occ(query = 'Accipiter striatus', from = c('ebird','bison'), callopts=verbose())
+#' occ(query = 'Accipiter striatus', from = 'ebird', callopts=timeout(seconds = 0.1))
+#' ## notice that callopts is ignored when from=inat or from=antweb
+#' occ(query = 'Accipiter striatus', from = 'inat', callopts=verbose())
+#' occ(query = 'linepithema humile', from = 'antweb', callopts=verbose())
+#' 
 #' @examples \donttest{
 #' #### NOTE: no support for multipolygons yet
 #' ## WKT's are more flexible than bounding box's. You can pass in a WKT with multiple 
@@ -145,8 +157,8 @@
 #'                           (30 10, 10 20, 20 60, 60 60, 30 10))')
 #' }
 occ <- function(query = NULL, from = "gbif", limit = 25, geometry = NULL, rank = "species",
-    type = "sci", ids = NULL, gbifopts = list(), bisonopts = list(), inatopts = list(), 
-    ebirdopts = list(), ecoengineopts = list(), antwebopts = list()) 
+    type = "sci", ids = NULL, callopts=list(), gbifopts = list(), bisonopts = list(), inatopts = list(), 
+    ebirdopts = list(), ecoengineopts = list(), antwebopts = list())
 {  
   if(!is.null(geometry)){
     if(class(geometry) %in% c('SpatialPolygons','SpatialPolygonsDataFrame')){
@@ -159,14 +171,14 @@ occ <- function(query = NULL, from = "gbif", limit = 25, geometry = NULL, rank =
     stop(sprintf("Woops, the following are not supported or spelled incorrectly: %s", from[!from %in% sources]))
   }
   
-  loopfun <- function(x, y, z) {
-    # x = query; y = limit; z = geometry
-    gbif_res <- foo_gbif(sources, x, y, z, gbifopts)
-    bison_res <- foo_bison(sources, x, y, z, bisonopts)
-    inat_res <- foo_inat(sources, x, y, z, inatopts)
-    ebird_res <- foo_ebird(sources, x, y, ebirdopts)
-    ecoengine_res <- foo_ecoengine(sources, x, y, z, ecoengineopts)
-    antweb_res <- foo_antweb(sources, x, y, z, antwebopts)
+  loopfun <- function(x, y, z, w) {
+    # x = query; y = limit; z = geometry; w = callopts
+    gbif_res <- foo_gbif(sources, x, y, z, w, gbifopts)
+    bison_res <- foo_bison(sources, x, y, z, w, bisonopts)
+    inat_res <- foo_inat(sources, x, y, z, w, inatopts)
+    ebird_res <- foo_ebird(sources, x, y, w, ebirdopts)
+    ecoengine_res <- foo_ecoengine(sources, x, y, z, w, ecoengineopts)
+    antweb_res <- foo_antweb(sources, x, y, z, w, antwebopts)
     list(gbif = gbif_res, bison = bison_res, inat = inat_res, ebird = ebird_res, 
          ecoengine = ecoengine_res, antweb = antweb_res)
   }
@@ -199,7 +211,7 @@ occ <- function(query = NULL, from = "gbif", limit = 25, geometry = NULL, rank =
   
   if(is.null(ids) && !is.null(query)){
     # If query not null (taxonomic names passed in)
-    tmp <- lapply(query, loopfun, y=limit, z=geometry)
+    tmp <- lapply(query, loopfun, y=limit, z=geometry, w=callopts)
   } else if(is.null(query) && is.null(geometry)) {
     unlistids <- function(x){
       if(length(x) == 1){
@@ -228,9 +240,9 @@ occ <- function(query = NULL, from = "gbif", limit = 25, geometry = NULL, rank =
   } else {
     type <- 'geometry'
     if(is.numeric(geometry)){
-      tmp <- list(loopfun(z=geometry, y=limit, x=query))
+      tmp <- list(loopfun(z=geometry, y=limit, x=query, w=callopts))
     } else if(is.list(geometry)){
-      tmp <- lapply(geometry, function(b) loopfun(z=b, y=limit, x=query))
+      tmp <- lapply(geometry, function(b) loopfun(z=b, y=limit, x=query, w=callopts))
     }
   }
   

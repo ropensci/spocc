@@ -11,3 +11,4 @@ inst/vign
 inst/ignore
 CONTRIBUTING.md
 cran-comments.md
+tests/testthat.R

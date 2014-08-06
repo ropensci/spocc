@@ -10,3 +10,4 @@ inst/shiny
 inst/vign
 inst/ignore
 CONTRIBUTING.md
+cran-comments.md

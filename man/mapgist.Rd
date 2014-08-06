@@ -43,12 +43,13 @@ then \code{mapgist} will simply read those options.
 \examples{
 \dontrun{
 spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta')
-dat <- occ(spp, from='gbif', gbifopts=list(hasCoordinate=TRUE))
-dat <- fixnames(dat)
-df <- occ2df(dat)
+dat <- occ(spp, from=c('gbif','ecoengine'), gbifopts=list(hasCoordinate=TRUE))
+dat <- fixnames(dat, "query")
 
 # Define colors
-mapgist(data=df, color=c('#976AAE','#6B944D','#BD5945'))
+mapgist(data=dat, color=c('#976AAE','#6B944D','#BD5945'))
+mapgist(data=dat$gbif, color=c('#976AAE','#6B944D','#BD5945'))
+mapgist(data=dat$ecoengine, color=c('#976AAE','#6B944D','#BD5945'))
 
 # Define colors and marker size
 mapgist(data=df, color=c('#976AAE','#6B944D','#BD5945'), size=c('small','medium','large'))

@@ -29,18 +29,18 @@
 #' @examples \dontrun{
 #' spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta')
 #' dat <- occ(query = spp, from = 'gbif', gbifopts = list(hasCoordinate = TRUE))
-#' data <- occ2df(dat)
-#' mapleaflet(data = data, dest = ".")
+#' mapleaflet(data = dat, dest = ".")
 #' 
 #' # An example with more species, a different base map, and different color palette
 #' spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta','Puma concolor',
 #' 'Ursus americanus','Gymnogyps californianus')
 #' dat <- occ(query = spp, from = 'gbif', gbifopts = list(hasCoordinate = TRUE))
-#' data <- occ2df(dat)
 #' mapleaflet(data, map_provider = 'toner')
 #' }
 mapleaflet <- function(data, popup = TRUE, map_provider = "osm", zoom = 3, title = "map", 
-    size, centerview = c(30, -73.9), dest = ".", overwrite = TRUE, incl.data = TRUE) {
+    size, centerview = c(30, -73.9), dest = ".", overwrite = TRUE, incl.data = TRUE) 
+{
+    data <- occ2df(data)
     dest <- ifelse(is.null(dest), tempdir(), dest)
     dat <- toGeoJSON(data = data, dest = dest, lat.lon = c("latitude", "longitude"))
     map <- leaflet(dat, title = title, size = size, base.map = map_provider, center = centerview, 

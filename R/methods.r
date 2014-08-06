@@ -15,7 +15,7 @@
 #' @param ... Ignored.
 #' @method print occdat
 #' @export
-#' @rdname occdat
+
 print.occdat <- function(x, ...) {
     rows <- lapply(x, function(y) vapply(y$data, nrow, numeric(1)))
     perspp <- lapply(rows, function(z) c(sum(z), length(z)))
@@ -34,11 +34,14 @@ print.occdat <- function(x, ...) {
         "species", "\n")
 }
 
+#' Print method for individual data sources
+#'
 #' @method print occdatind
 #' @export
 #' @param x Input, of class occdatind
 #' @param ... Further args, ignored
-#' @rdname occdat
+#' @param n Number of data frame rows to print
+
 print.occdatind <- function(x, ..., n = 10){
   cat( spocc_wrap(sprintf("Species [%s]", pastemax(x$data))), '\n')
   cat(sprintf("First 10 rows of [%s]\n\n", names(x$data)[1] ))
@@ -77,16 +80,11 @@ occinddf <- function(obj) {
 #' }
 #' @method plot occdat
 #' @export
-#' @rdname occdat
+
 plot.occdat <- function(x, ...) {
   df <- occ2df(x)
   coordinates(df) <- ~longitude + latitude
   proj4string(df) <- CRS("+init=epsg:4326")
-  #     data(wrld_simpl, envir = new.env())
-  #     data(wrld_simpl)
-  #     world_simpl_obj <- wrld_simpl
-  #     map(wrld_simpl)
-  #     map("world")
   plot(getMap())
   points(df, col = "red", ...)
 }

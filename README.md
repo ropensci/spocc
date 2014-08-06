@@ -52,7 +52,7 @@ Summary of results - occurrences found for:
  inat  :  0 records across 1 species
  ebird :  0 records across 1 species
  ecoengine :  0 records across 1 species
- antweb :  0 records across 1 species 
+ antweb :  0 records across 1 species
 ```
 
 ```coffee
@@ -142,7 +142,7 @@ data <- occ2df(dat)
 mapleaflet(data = data, dest = ".")
 ```
 
-![](http://f.cl.ly/items/3w2Y1E3Z0T2T2z40310K/Screen%20Shot%202014-02-09%20at%2010.38.10%20PM.png)
+![leafletmap](http://f.cl.ly/items/3w2Y1E3Z0T2T2z40310K/Screen%20Shot%202014-02-09%20at%2010.38.10%20PM.png)
 
 
 **Github gist**
@@ -155,7 +155,7 @@ dat <- occ2df(dat)
 mapgist(data=dat, color=c("#976AAE","#6B944D","#BD5945"))
 ```
 
-![](http://f.cl.ly/items/343l2G0A2J3T0n2t433W/Screen%20Shot%202014-02-09%20at%2010.40.57%20PM.png)
+![gistmap](http://f.cl.ly/items/343l2G0A2J3T0n2t433W/Screen%20Shot%202014-02-09%20at%2010.40.57%20PM.png)
 
 
 **ggplot2**
@@ -165,7 +165,7 @@ ecoengine_data <- occ(query = 'Lynx rufus californicus', from = 'ecoengine')
 mapggplot(ecoengine_data)
 ```
 
-![](http://f.cl.ly/items/1U1R0E0G392l2q362V33/Screen%20Shot%202014-02-09%20at%2010.44.59%20PM.png)
+![ggplot2map](http://f.cl.ly/items/1U1R0E0G392l2q362V33/Screen%20Shot%202014-02-09%20at%2010.44.59%20PM.png)
 
 
 **Base R plots**
@@ -176,7 +176,7 @@ out <- occ(query=spnames, from='gbif', gbifopts=list(hasCoordinate=TRUE))
 plot(out, cex=1, pch=10)
 ```
 
-![](http://f.cl.ly/items/3O13330W3w3Z0H3u1X0s/Screen%20Shot%202014-02-09%20at%2010.46.25%20PM.png)
+![basremap](http://f.cl.ly/items/3O13330W3w3Z0H3u1X0s/Screen%20Shot%202014-02-09%20at%2010.46.25%20PM.png)
 
 
 Please report any issues or bugs](https://github.com/ropensci/spocc/issues).
@@ -206,7 +206,7 @@ A BibTeX entry for LaTeX users is
 
 Get citation information for `spocc` in R doing `citation(package = 'spocc')`
 
-[![](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)
+[![ropensci footer](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)
 
 [gbif]: https://github.com/ropensci/rgbif
 [vertnet]: https://github.com/ropensci/rvertnet

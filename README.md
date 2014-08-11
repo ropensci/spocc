@@ -1,7 +1,8 @@
 spocc
 ========
 
-[![Build Status](https://api.travis-ci.org/ropensci/spocc.png)](https://travis-ci.org/ropensci/spocc)
+Linux: [![Build Status](https://api.travis-ci.org/ropensci/spocc.png)](https://travis-ci.org/ropensci/spocc)  
+Windows: [![Build status](https://ci.appveyor.com/api/projects/status/3d43armi2oanva2s)](https://ci.appveyor.com/project/karthik/spocc)  
 
 **`spocc` = SPecies OCCurrence data**
 

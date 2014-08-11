@@ -3,7 +3,7 @@
 %\VignetteIndexEntry{An introduction to the spocc package}
 -->
 
-# Species occurrence data (spocc), version 0.1
+# Species occurrence data (spocc), version 0.1.2
 
 ### Introduction
 
@@ -11,27 +11,27 @@ The rOpenSci projects aims to provide programmatic access to scientific data rep
 
 ### Data Sources
 
-`spocc` currently interfaces with five major biodiversity repositories. Many of these packages have been part of the rOpenSci su
+`spocc` currently interfaces with six major biodiversity repositories
 
-1. Global Biodiversity Information Facility (`rgbif`)  
+1. Global Biodiversity Information Facility (`rgbif`)
 [GBIF](http://www.gbif.org/) is a government funded open data repository with several partner organizations with the express goal of providing access to data on Earth's biodiversity. The data are made available by a network of member nodes, coordinating information from various participant organizations and government agencies.
 
-2. [Berkeley Ecoengine](http://ecoengine.berkeley.edu/) (`ecoengine`)  
+2. [Berkeley Ecoengine](http://ecoengine.berkeley.edu/) (`ecoengine`)
 The ecoengine is an open API built by the [Berkeley Initiative for Global Change Biology](http://globalchange.berkeley.edu/). The repository provides access to over 3 million specimens from various Berkeley natural history museums. These data span more than a century and provide access to georeferenced specimens, species checklists, photographs, vegetation surveys and resurveys and a variety of measurements from environmental sensors located at reserves across University of California's natural reserve system.
 
 3. __iNaturalist__ (`rinat`)
-iNaturalist provides access to crowd sourced citizen science data on species observations. 
+iNaturalist provides access to crowd sourced citizen science data on species observations.
 
-4. [VertNet](http://vertnet.org/index.php) (`rvertnet`)
+4. [VertNet](http://vertnet.org/) (`rvertnet`)
 Similar to `rgbif`, ecoengine, and `rbison` (see below), VertNet provides access to more than 80 million vertebrate records spanning a large number of institutions and museums primarly covering four major disciplines (mammology, herpetology, ornithology, and icthyology). __Note that we don't currenlty support VertNet data in this package, but we should soon__
 
-5. [Biodiversity Information Serving Our Nation](http://bison.usgs.ornl.gov/) (`rbison`)  
-Built by the US Geological Survey's core science analytic team, BISON is a portal that provides access to species occurrence data from several participating institutions. 
+5. [Biodiversity Information Serving Our Nation](http://bison.usgs.ornl.gov/) (`rbison`)
+Built by the US Geological Survey's core science analytic team, BISON is a portal that provides access to species occurrence data from several participating institutions.
 
-6. [eBird](http://ebird.org/content/ebird/) (`rebird`)  
+6. [eBird](http://ebird.org/content/ebird/) (`rebird`)
 ebird is a database developed and maintained by the Cornell Lab of Ornithology and the National Audubon Society. It provides real-time access to checklist data, data on bird abundance and distribution, and communtiy reports from birders.
 
-7. [AntWeb](http://antweb.org) (`AntWeb`)  
+7. [AntWeb](http://antweb.org) (`AntWeb`)
 AntWeb is the world's largest online database of images, specimen records, and natural history information on ants. It is community driven and open to contribution from anyone with specimen records, natural history comments, or images.
 
 __Note:__ It's important to keep in mind that several data providers interface with many of the above mentioned repositories. This means that occurence data obtained from BISON may be duplicates of data that are also available through GBIF. We do not have a way to resolve these duplicates or overlaps at this time but it is an issue we are hoping to resolve in future versions of the package.
@@ -50,14 +50,14 @@ head(df$gbif$data[[1]])
 
 The data returned are part of a `S3` class called `occdat`. This class has slots for the five data sources described above. One can easily switch the source by changing the `from` parameter in the function call above.
 
-Within each data source is the set of species queried. In the above example, we only asked for occurrence data for one species, but we could have asked for any number. Let's say we asked for data for two species: _Accipiter striatus_, and _Pinus contorta_. Then the structure of the response would be 
+Within each data source is the set of species queried. In the above example, we only asked for occurrence data for one species, but we could have asked for any number. Let's say we asked for data for two species: _Accipiter striatus_, and _Pinus contorta_. Then the structure of the response would be
 
 ```
 response -- |
             | -- gbif ------- |
                               | -- Accipiter_striatus
                               | -- Pinus_contorta
-                              
+
             | -- ecoengine -- |
                               | -- Accipiter_striatus
                               | -- Pinus_contorta
@@ -80,15 +80,15 @@ response -- |
 
 ```
 
-If you only request data from gbif, like `from = 'gbif'`, then the other four source slots are prsent in the response object, but have no data.
+If you only request data from gbif, like `from = 'gbif'`, then the other four source slots are present in the response object, but have no data.
 
-You can quickly get just the data by indexing to the data element, like 
+You can quickly get just the data by indexing to the data element, like
 
 ```{r getdataslot}
 head(df$gbif$data$Accipiter_striatus)
 ```
 
-When you get data from multiple providers, the fields returned are slightly different, e.g.: 
+When you get data from multiple providers, the fields returned are slightly different, e.g.:
 
 ```{r difffields}
 df <- occ(query = 'Accipiter striatus', from = c('gbif', 'ecoengine'))
@@ -105,7 +105,7 @@ head(occ2df(df))
 
 ### Fix names
 
-One problem you often run in to is that there can be various names for the same taxon in any one source. For example: 
+One problem you often run in to is that there can be various names for the same taxon in any one source. For example:
 
 ```{r fixnames1}
 df <- occ(query='Pinus contorta', from=c('gbif','inat'), limit = 50)
@@ -113,7 +113,7 @@ head(df$gbif$data$Pinus_contorta[,1:2])
 head(df$inat$data$Pinus_contorta[,1:2])
 ```
 
-This is fine, but when trying to make a map in which points are colored for each taxon, you can have many colors for a single taxon, where instead one color per taxon is more appropriate. There is a function in `spocc` called `fixnames`, which has a few options in which you can take the shortest names (usually just the plain binomials like _Homo sapiens_), or the original name queried, or a vector of names supplied by the user. 
+This is fine, but when trying to make a map in which points are colored for each taxon, you can have many colors for a single taxon, where instead one color per taxon is more appropriate. There is a function in `spocc` called `fixnames`, which has a few options in which you can take the shortest names (usually just the plain binomials like _Homo sapiens_), or the original name queried, or a vector of names supplied by the user.
 
 ```{r fixnames2}
 df <- fixnames(df, how = 'shortest')
@@ -125,9 +125,9 @@ head(df_comb); tail(df_comb)
 
 ### Visualization routines
 
-__Interactive maps__  
+__Interactive maps__
 
-_Leaflet.js_  
+_Leaflet.js_
 
 [Leaflet JS](http://leafletjs.com/) is an open source mapping library that can leverage various layers from multiple sources. Using the [`leafletR`](http://cran.r-project.org/web/packages/leafletR/index.html) library, it's possible to generate a local `geoJSON` file and a html file of species distribution maps. The folder can easily be moved to a web server and served widely without any additional coding.
 
@@ -146,7 +146,7 @@ mapleaflet(data = data, dest = ".")
 
 _Geojson map as a Github gist_
 
-You can also create interactive maps via the `mapgist` function. You have to have a Github account to use this function. Github accounts are free though, and great for versioning and collaborating on code or papers. When you run the `mapgist` function it will ask for your Github username and password. You can alternatively store those in your `.Rprofile` file by adding entries for username (`options(github.username = 'username')`) and password (`options(github.password = 'password')`). 
+You can also create interactive maps via the `mapgist` function. You have to have a Github account to use this function. Github accounts are free though, and great for versioning and collaborating on code or papers. When you run the `mapgist` function it will ask for your Github username and password. You can alternatively store those in your `.Rprofile` file by adding entries for username (`options(github.username = 'username')`) and password (`options(github.password = 'password')`).
 
 ```{r eval = FALSE}
 spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta')
@@ -162,7 +162,7 @@ __Static maps__
 
 _base plots_
 
-Base plots, or the built in plotting facility in R accessed via `plot()`, is quite fast, but not easy or efficient to use, but are good for a quick glance at some data. 
+Base plots, or the built in plotting facility in R accessed via `plot()`, is quite fast, but not easy or efficient to use, but are good for a quick glance at some data.
 
 ```{r eval=FALSE}
 spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Spinus tristis')

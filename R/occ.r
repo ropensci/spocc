@@ -43,7 +43,7 @@
 #' ## Pass in geometry parameter to all sources. This constraints the search to the 
 #' ## specified polygon for all sources, gbif and bison in this example.
 #' ## Check out \url{http://arthur-e.github.io/Wicket/sandbox-gmaps3.html} to get a WKT string
-#' occ(query='Accipiter striatus', from='gbif', 
+#' occ(query='Accipiter', from='gbif', 
 #'    geometry='POLYGON((30.1 10.1, 10 20, 20 60, 60 60, 30.1 10.1))')
 #' occ(query='Helianthus annuus', from='bison', 
 #'    geometry='POLYGON((-111.06 38.84, -110.80 39.37, -110.20 39.17, -110.20 38.90, 

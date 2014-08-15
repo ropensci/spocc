@@ -4,7 +4,7 @@
 \title{Clean spocc data}
 \usage{
 clean_spocc(input, country = NULL, country_which = "include",
-  habitat = NULL)
+  shppath = NULL, s, provider_duplicates = FALSE)
 }
 \arguments{
 \item{input}{An object of class occdat}
@@ -23,6 +23,19 @@ res_cleaned <- clean_spocc(input=res)
 class(res_cleaned) # now with classes occdat and occclean
 
 # Country cleaning
+res <- occ(query = 'Ursus americanus', from = 'gbif', limit=500, gbifopts = list(hasCoordinate=TRUE, fields='all'))
+res$gbif
+plot(res)
+
+res <- occ(query = 'Ursus americanus', from = 'gbif', limit=1200, gbifopts = list(hasCoordinate=TRUE))
+plot(res)
+res2 <- clean_spocc(res, country = "Mexico")
+plot(res2)
+
+# Clean provider duplicates
+res <- occ(query = 'Ursus americanus', from = c('gbif','inat'), limit=300)
+plot(res)
+res2 <- clean_spocc(input=res, provider_duplicates = TRUE)
 }
 }
 

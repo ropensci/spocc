@@ -11,17 +11,23 @@
 #' class(res_cleaned) # now with classes occdat and occclean
 #' 
 #' # Country cleaning
-# res <- occ(query = 'Ursus americanus', from = 'gbif', limit=500, gbifopts = list(hasCoordinate=TRUE, fields='all'))
-# res$gbif
-# plot(res)
-# 
-# res <- occ(query = 'Ursus americanus', from = 'gbif', limit=1200, gbifopts = list(hasCoordinate=TRUE))
-# plot(res)
-# res2 <- clean_spocc(res, country = "Mexico")
-# plot(res2)
+#' res <- occ(query = 'Ursus americanus', from = 'gbif', limit=500, gbifopts = list(hasCoordinate=TRUE, fields='all'))
+#' res$gbif
+#' plot(res)
+#' 
+#' res <- occ(query = 'Ursus americanus', from = 'gbif', limit=1200, gbifopts = list(hasCoordinate=TRUE))
+#' plot(res)
+#' res2 <- clean_spocc(res, country = "Mexico")
+#' plot(res2)
+#' 
+#' # Clean provider duplicates
+#' res <- occ(query = 'Ursus americanus', from = c('gbif','inat'), limit=300)
+#' plot(res)
+#' res2 <- clean_spocc(input=res, provider_duplicates = TRUE)
 #' }
 
-clean_spocc <- function(input, country=NULL, country_which='include', habitat=NULL)
+clean_spocc <- function(input, country=NULL, country_which='include', shppath=NULL, s,
+  provider_duplicates=FALSE)
 {
   assert_that(is(input, "occdat") | is(input, "data.frame"))
   
@@ -54,7 +60,7 @@ clean_spocc <- function(input, country=NULL, country_which='include', habitat=NU
         }
         
         if(!is.null(country)){
-          dat <- clean_country(data=dat, country=country, which=country_which)
+          dat <- clean_country(data=dat, country=country, which=country_which, shppath=shppath)
         }
         
         dat <- replacelatlongcols(dat, what, reverse = TRUE)
@@ -76,6 +82,12 @@ clean_spocc <- function(input, country=NULL, country_which='include', habitat=NU
   }
   
   output <- lapply(input, clean)
+  
+  # clean provider duplicates, takes in occdat object
+  if(provider_duplicates){
+    output <- clean_provider_duplicates(data=output)
+  }
+  
   class(output) <- c("occdat","occclean")
   return( output )
 }
@@ -86,21 +98,22 @@ replacelatlongcols <- function(w, z, reverse=FALSE){
   cols <- switch(z,
                  gbif = c('decimalLatitude','decimalLongitude'),
                  bison = c('decimalLongitude','decimalLatitude'), 
-                 inat = c('Longitude','Latitude'), 
+                 inat = c('Latitude','Longitude'), 
                  ebird = c('lng','lat'), 
                  ecoengine = c('longitude','latitude'), 
                  antweb = c('decimal_longitude','decimal_latitude'))
-  if(reverse)
+  if(reverse){
     names(w)[ names(w) %in% c('latitude','longitude') ] <- cols
-  else  
+  } else {
     names(w)[ names(w) %in% cols ] <- c('latitude','longitude')
+  }
   
   return( w )
 }
 
-clean_country <- function(data, country=NULL, which='include', 
-  shppath="~/github/ropensci/shapefiles/ne_10m_admin_0_countries/")
+clean_country <- function(data, country=NULL, which='include', shppath=NULL)
 {
+  shppath <- if(is.null(shppath)) "~/github/ropensci/shapefiles/ne_10m_admin_0_countries/" else shppath
   shppath <- path.expand(shppath)
   layer <- ogrListLayers(shppath)
   shp <- readOGR(shppath, layer = layer)
@@ -118,20 +131,36 @@ clean_country <- function(data, country=NULL, which='include',
   return( tmp )
 }
 
-clean_habitat <- function(x){
+clean_provider_duplicates <- function(data){
+  # if only 1 provider, pass
+  # if no GBIF, pass
+  # if GBIF and another provider, keep going...
+  # 1) look for fields that have provider info in GBIF data, e.g., inaturalist in GBIF data could be 
+  #    a problem if inat also used
+  # 2) Match lat/long pairs against one another iteratively? Would take a while with large datasets
+  records <- vapply(data, function(x) NROW(x$data[[1]]), numeric(1))
+  provs <- names(records[records > 0])
+  if(!length(provs) > 1){ ret <- NULL } else {
+    if(!'gbif' %in% provs){ ret <- NULL } else {
+      d1 <- data[[provs[1]]]$data[[1]]
+      d2 <- data[[provs[2]]]$data[[1]]
+      coordinates(d1) <- ~decimalLongitude+decimalLatitude
+      coordinates(d2) <- ~Longitude+Latitude
+      zerodist2(d1, d2)
+    }
+  }
+}
+
+clean_habitat <- function(data){
   library(maptools)
   res <- map_data("world")
   #     ogrListLayers("/Users/sacmac/Downloads/ne_110m_land")
   #     land <- readOGR("/Users/sacmac/Downloads/ne_110m_land/", layer = 'ne_110m_land')
   land <- readOGR("/Users/sacmac/Downloads/ne_10m_land/", layer = 'ne_10m_land')
   
-  df <- fortify(land)
-  ggplot(df, aes(long, lat, group=group)) + 
-    geom_polygon()
+  data <- na.omit(data)
+  coordinates(data) <- ~longitude+latitude
+  proj4string(data) <- CRS('+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0')
   
-  x <- na.omit(x)
-  coordinates(x) <- ~longitude+latitude
-  proj4string(x) <- CRS('+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0')
-  
-  over(x, land)
+  over(data, land)
 }

@@ -83,6 +83,7 @@ occinddf <- function(obj) {
 
 plot.occdat <- function(x, ...) {
   df <- occ2df(x)
+  df <- df[complete.cases(df),]
   coordinates(df) <- ~longitude + latitude
   proj4string(df) <- CRS("+init=epsg:4326")
   plot(getMap())

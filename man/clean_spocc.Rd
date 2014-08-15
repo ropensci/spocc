@@ -3,7 +3,8 @@
 \alias{clean_spocc}
 \title{Clean spocc data}
 \usage{
-clean_spocc(input, country = NULL, habitat = NULL)
+clean_spocc(input, country = NULL, country_which = "include",
+  habitat = NULL)
 }
 \arguments{
 \item{input}{An object of class occdat}
@@ -18,8 +19,10 @@ Clean spocc data
 \examples{
 \dontrun{
 res <- occ(query = c('Ursus','Accipiter','Rubus'), from = 'bison', limit=120)
-res_cleaned <- clean_spocc(res)
+res_cleaned <- clean_spocc(input=res)
 class(res_cleaned) # now with classes occdat and occclean
+
+# Country cleaning
 }
 }
 

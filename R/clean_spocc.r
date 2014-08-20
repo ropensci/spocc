@@ -4,7 +4,11 @@
 #' @export
 #' @param input An object of class occdat
 #' @param country (logical) Attempt to clean based on country
-#' @param habitat (logical) Attempt to clean based on habitat
+#' @param country_which (character) One of include, xxx
+#' @param shppath (character) Path to shape file to check against. 
+#' @param habitat (character) Attempt to clean based on habitat
+#' @param provider_duplicates (logical) Whether to remove duplicates from the same provider in 
+#' separate sources.
 #' @examples \dontrun{
 #' res <- occ(query = c('Ursus','Accipiter','Rubus'), from = 'bison', limit=120)
 #' res_cleaned <- clean_spocc(input=res)

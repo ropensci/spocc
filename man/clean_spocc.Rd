@@ -11,7 +11,14 @@ clean_spocc(input, country = NULL, country_which = "include",
 
 \item{country}{(logical) Attempt to clean based on country}
 
-\item{habitat}{(logical) Attempt to clean based on habitat}
+\item{country_which}{(character) One of include, xxx}
+
+\item{shppath}{(character) Path to shape file to check against.}
+
+\item{habitat}{(character) Attempt to clean based on habitat}
+
+\item{provider_duplicates}{(logical) Whether to remove duplicates from the same provider in
+separate sources.}
 }
 \description{
 Clean spocc data

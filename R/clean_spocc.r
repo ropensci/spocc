@@ -11,11 +11,13 @@
 #' class(res_cleaned) # now with classes occdat and occclean
 #' 
 #' # Country cleaning
-#' res <- occ(query = 'Ursus americanus', from = 'gbif', limit=500, gbifopts = list(hasCoordinate=TRUE, fields='all'))
+#' res <- occ(query = 'Ursus americanus', from = 'gbif', limit=500, 
+#'    gbifopts = list(hasCoordinate=TRUE, fields='all'))
 #' res$gbif
 #' plot(res)
 #' 
-#' res <- occ(query = 'Ursus americanus', from = 'gbif', limit=1200, gbifopts = list(hasCoordinate=TRUE))
+#' res <- occ(query = 'Ursus americanus', from = 'gbif', limit=1200, 
+#'    gbifopts = list(hasCoordinate=TRUE))
 #' plot(res)
 #' res2 <- clean_spocc(res, country = "Mexico")
 #' plot(res2)

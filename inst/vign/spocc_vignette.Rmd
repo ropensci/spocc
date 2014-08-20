@@ -3,7 +3,7 @@
 %\VignetteIndexEntry{An introduction to the spocc package}
 -->
 
-# Species occurrence data (spocc), version 0.1.2
+# Species occurrence data (spocc), version 0.2.0
 
 ### Introduction
 

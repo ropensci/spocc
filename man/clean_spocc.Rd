@@ -4,7 +4,7 @@
 \title{Clean spocc data}
 \usage{
 clean_spocc(input, country = NULL, country_which = "include",
-  shppath = NULL, s, provider_duplicates = FALSE)
+  shppath = NULL, habitat = NULL, provider_duplicates = FALSE)
 }
 \arguments{
 \item{input}{An object of class occdat}

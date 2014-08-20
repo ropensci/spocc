@@ -28,7 +28,7 @@
 #' res2 <- clean_spocc(input=res, provider_duplicates = TRUE)
 #' }
 
-clean_spocc <- function(input, country=NULL, country_which='include', shppath=NULL, s,
+clean_spocc <- function(input, country=NULL, country_which='include', shppath=NULL, habitat=NULL,
   provider_duplicates=FALSE)
 {
   assert_that(is(input, "occdat") | is(input, "data.frame"))
@@ -154,7 +154,7 @@ clean_provider_duplicates <- function(data){
 }
 
 clean_habitat <- function(data){
-  library(maptools)
+#   library(maptools)
   res <- map_data("world")
   #     ogrListLayers("/Users/sacmac/Downloads/ne_110m_land")
   #     land <- readOGR("/Users/sacmac/Downloads/ne_110m_land/", layer = 'ne_110m_land')

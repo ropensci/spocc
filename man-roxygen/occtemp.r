@@ -4,7 +4,8 @@
 #' @param from (character) Data source to get data from, any combination of gbif, bison,
 #' inat, ebird, and/or ecoengine
 #' @param limit (numeric) Number of records to return. This is passed across all sources.
-#' To specify different limits for each source, use the options for each source.
+#' To specify different limits for each source, use the options for each source (gbifopts, 
+#' bisonopts, inatopts, ebirdopts, ecoengineopts, and antwebopts). See Details for more.
 #' @param geometry (character or nmeric) One of a Well Known Text (WKT) object or a vector of
 #' length 4 specifying a bounding box. This parameter searches for occurrences inside a
 #' box given as a bounding box or polygon described in WKT format. A WKT shape written as
@@ -30,11 +31,19 @@
 #' access from a single access point. We take care of making sure you get useful
 #' objects out at the cost of flexibility/options - although you can still set
 #' options for each of the packages via the gbifopts, bisonopts, inatopts,
-#' ebirdopts, and ecoengineopts parameters.
+#' ebirdopts, ecoengineopts, and antwebopts parameters.
 #'
 #' When searching ecoengine, you can leave the page argument blank to get a single page.
 #' Otherwise use page ranges or simply "all" to request all available pages.
 #' Note however that this may hang your call if the request is simply too large.
+#' 
+#' The \code{limit} parameter is set to a default of 25. This means that you will get \bold{up to} 
+#' 25 results back for each data source you ask for data from. If there are no results for a 
+#' particular source, you'll get zero back; if there are 8 results for a particular source, you'll 
+#' get 8 back. If there are 26 results for a particular source, you'll get 25 back. You can always
+#' ask for more or less back by setting the limit parameter to any number. If you want to request
+#' a different number for each source, pass the appropriate parameter to each data source via the 
+#' respective options parameter for each data source. 
 #'
 #' WKT objects are strings of pairs of lat/long coordinates that define a shape. Many classes
 #' of shapes are supported, including POLYGON, POINT, and MULTIPOLYGON. Within each defined shape

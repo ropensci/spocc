@@ -1,6 +1,6 @@
 all: move pandoc rmd2md reducepdf
 
-vignettes: 
+vignettes:
 		cd inst/vign;\
 		Rscript -e 'library(knitr); knit("spocc_vignette.Rmd")'
 

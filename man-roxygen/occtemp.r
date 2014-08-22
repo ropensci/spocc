@@ -62,3 +62,6 @@
 #'  \item Well known text - \url{http://arthur-e.github.io/Wicket/sandbox-gmaps3.html}
 #' }
 #'
+#' \bold{BEWARE:} In cases where you request data from multiple providers, especially when including GBIF, 
+#' there could be duplicate records since many providers' data eventually ends up with GBIF. See 
+#' \code{\link[spocc]{spocc_duplicates}} for more.

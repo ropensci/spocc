@@ -8,7 +8,7 @@ mapggplot(df, zoom = 5, point_color = "#86161f")
 \arguments{
 \item{df}{Input \code{data.frame}}
 
-\item{zoom}{zoom level for map. Adjust depending on how your data look.}
+\item{zoom}{The zoom level of the map that is passed on to \code{get_map}. The spocc default is 5 but values can range from 3 (for a continent level zoom) to 21 (zoomed to the closest bulding). Adjust the values within this range till the map looks to your satisfaction.}
 
 \item{point_color}{Default color of your points}
 }

@@ -6,23 +6,22 @@ foo_gbif <- function(sources, query, limit, geometry, callopts, opts) {
     if(!is.null(query)){
       if(class(query) %in% c("ids","gbifid")){
         if(class(query) %in% "ids"){
-          opts$taxonKey <- query$gbif
+          query_use <- opts$taxonKey <- query$gbif
         } else {
-          opts$taxonKey <- query
+          query_use <- opts$taxonKey <- query
         }
-        UsageKey <- opts$taxonKey
       } else
       {
-        UsageKey <- name_backbone(name = query)$usageKey
-        if(is.null(UsageKey)){
-          warning(sprintf("No GBIF key found for %s", query))
+        query_use <- query
+        if(is.null(query_use)){
+          warning(sprintf("No GBIF result found for %s", query))
         } else {
-          opts$taxonKey <- UsageKey
+          opts$scientificName <- query_use
         }
       }
-    } else { UsageKey <- NULL }
+    } else { query_use <- NULL }
 
-    if(is.null(UsageKey) && is.null(geometry)){
+    if(is.null(query_use) && is.null(geometry)){
       list(time = NULL, found = NULL, data = data.frame(NULL), opts=opts)
     } else{
       time <- now()
@@ -32,7 +31,6 @@ foo_gbif <- function(sources, query, limit, geometry, callopts, opts) {
           geometry } else { bbox2wkt(bbox=geometry) }
       }
       opts$callopts <- callopts
-      #       opts$return <- "data"
       out <- do.call(occ_search, opts)
       if(class(out) == "character") {
         list(time = time, found = NULL, data = data.frame(NULL), opts = opts)

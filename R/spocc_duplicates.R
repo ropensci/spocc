@@ -25,5 +25,4 @@
 #' \url{https://github.com/ropensci/spocc/issues/new}
 #'
 #' @name spocc_duplicates
-#' @docType note
 NULL

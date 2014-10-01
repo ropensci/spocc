@@ -87,7 +87,7 @@ test_that("geometry searches work", {
   expect_is(geo3, "occdat")
   expect_is(geo4, "occdat")
   expect_is(geo5, "occdat")
-  expect_equal(NCOL(geo1$gbif$data[[1]]), 5)
+  expect_equal(NCOL(geo1$gbif$data[[1]]), 6)
   expect_match(names(geo2$gbif$data), 'Accipiter_striatus')
   expect_equal(NCOL(geo4$inat$data[[1]]), 33)
   expect_equal(NCOL(geo4$gbif$data[[1]]), 0)

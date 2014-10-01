@@ -21,7 +21,7 @@ Roxygen: list(wrap = FALSE)
 Depends:
     ggplot2
 Imports:
-    rinat (>= 0.1.4.99),
+    rinat (>= 0.1.4),
     rbison (>= 0.3.2),
     rgbif (>= 0.7.0),
     ecoengine (>= 1.4),

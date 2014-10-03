@@ -36,7 +36,7 @@ occ_options <- function(from = 'gbif', where="console"){
   if(where == "console"){
     res <- tools::Rd_db(pkgname)
     fxnrd <- res[[sprintf('%s.Rd', fxn)]]
-    params <- fxnrd[ which(tools:::RdTags(fxnrd) == "\\arguments") ]
+    params <- fxnrd[ which(rd_tags(fxnrd) == "\\arguments") ]
     pars <- unlist(spocc_compact(sapply(params[[1]], function(x){
       if(!x[[1]] == "\n") paste(x[[1]], gsub("\n", "", paste(unlist(x[[2]]), collapse = " ") ), sep = " - ")
     })))
@@ -51,4 +51,11 @@ occ_options <- function(from = 'gbif', where="console"){
                      antweb = "?AntWeb::aw_data")
     eval(parse(text = showit))
   }
+}
+
+rd_tags <- function(Rd){
+  res <- sapply(Rd, attr, "Rd_tag")
+  if (!length(res)) 
+    res <- character()
+  res
 }

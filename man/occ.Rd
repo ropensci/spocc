@@ -36,20 +36,26 @@ Not used right now.}
 usage. Currently, identifiers for only 'gbif' and 'bison' for parameter 'from' supported. If
 this parameter is used, query parameter can not be used - if it is, a warning is thrown.}
 
-\item{callopts}{Options passed on to httr::GET, e.g., for debugging curl calls, setting
-timeouts, etc. This parameter is ignored for sources: antweb, inat.}
+\item{callopts}{Options passed on to \code{\link[httr]{GET}}, e.g., for debugging curl calls,
+setting timeouts, etc. This parameter is ignored for sources: antweb, inat.}
 
-\item{gbifopts}{(list) List of options to pass on to rgbif}
+\item{gbifopts}{(list) List of named options to pass on to \code{\link[rgbif]{occ_search}}. See
+also \code{\link[spocc]{occ_options}}.}
 
-\item{bisonopts}{(list) List of options to pass on to rbison}
+\item{bisonopts}{(list) List of named options to pass on to \code{\link[rbison]{bison}}. See
+also \code{\link[spocc]{occ_options}}.}
 
-\item{inatopts}{(list) List of options to pass on to rinat}
+\item{inatopts}{(list) List of named options to pass on to \code{\link[rinat]{get_inat_obs}}.
+See also \code{\link[spocc]{occ_options}}.}
 
-\item{ebirdopts}{(list) List of options to pass on to ebird}
+\item{ebirdopts}{(list) List of named options to pass on to \code{\link[rebird]{ebirdregion}} or
+\code{\link[rebird]{ebirdgeo}}. See also \code{\link[spocc]{occ_options}}.}
 
-\item{ecoengineopts}{(list) List of options to pass on to ecoengine}
+\item{ecoengineopts}{(list) List of named options to pass on to
+\code{\link[ecoengine]{ee_observations}}. See also \code{\link[spocc]{occ_options}}.}
 
-\item{antwebopts}{(list) List of options to pass on to AntWeb}
+\item{antwebopts}{(list) List of named options to pass on to \code{\link[AntWeb]{aw_data}}. See
+also \code{\link[spocc]{occ_options}}.}
 }
 \description{
 Search on a single species name, or many. And search across a single

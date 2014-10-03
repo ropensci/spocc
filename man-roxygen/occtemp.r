@@ -18,14 +18,20 @@
 #' @param ids Taxonomic identifiers. This can be a list of length 1 to many. See examples for
 #' usage. Currently, identifiers for only 'gbif' and 'bison' for parameter 'from' supported. If
 #' this parameter is used, query parameter can not be used - if it is, a warning is thrown.
-#' @param callopts Options passed on to httr::GET, e.g., for debugging curl calls, setting
-#' timeouts, etc. This parameter is ignored for sources: antweb, inat.
-#' @param gbifopts (list) List of options to pass on to rgbif
-#' @param bisonopts (list) List of options to pass on to rbison
-#' @param inatopts (list) List of options to pass on to rinat
-#' @param ebirdopts (list) List of options to pass on to ebird
-#' @param ecoengineopts (list) List of options to pass on to ecoengine
-#' @param antwebopts (list) List of options to pass on to AntWeb
+#' @param callopts Options passed on to \code{\link[httr]{GET}}, e.g., for debugging curl calls, 
+#' setting timeouts, etc. This parameter is ignored for sources: antweb, inat.
+#' @param gbifopts (list) List of named options to pass on to \code{\link[rgbif]{occ_search}}. See
+#' also \code{\link[spocc]{occ_options}}. 
+#' @param bisonopts (list) List of named options to pass on to \code{\link[rbison]{bison}}. See 
+#' also \code{\link[spocc]{occ_options}}.
+#' @param inatopts (list) List of named options to pass on to \code{\link[rinat]{get_inat_obs}}. 
+#' See also \code{\link[spocc]{occ_options}}.
+#' @param ebirdopts (list) List of named options to pass on to \code{\link[rebird]{ebirdregion}} or 
+#' \code{\link[rebird]{ebirdgeo}}. See also \code{\link[spocc]{occ_options}}.
+#' @param ecoengineopts (list) List of named options to pass on to 
+#' \code{\link[ecoengine]{ee_observations}}. See also \code{\link[spocc]{occ_options}}.
+#' @param antwebopts (list) List of named options to pass on to \code{\link[AntWeb]{aw_data}}. See
+#' also \code{\link[spocc]{occ_options}}.
 #'
 #' @details The \code{occ} function is an opinionated wrapper
 #' around the rgbif, rbison, rinat, rebird, AntWeb, and ecoengine packages to allow data

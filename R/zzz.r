@@ -370,3 +370,6 @@ spocc_obj_type <- function (x)
     paste0("<S4:", paste0(is(x), collapse = ", "), ">")
   }
 }
+
+
+spocc_compact <- function (l) Filter(Negate(is.null), l)

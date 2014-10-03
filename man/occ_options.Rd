@@ -3,11 +3,14 @@
 \alias{occ_options}
 \title{Look up options for parameters passed to each source}
 \usage{
-occ_options(from = "gbif")
+occ_options(from = "gbif", where = "console")
 }
 \arguments{
 \item{from}{(character) Data source to get data from, any combination of gbif, bison,
-inat, ebird, AntWeb, and/or ecoengine}
+inat, ebird, AntWeb, and/or ecoengine. Case doesn't matter.}
+
+\item{where}{(character) One of console (print to console) or html (opens help page, if in
+non-interactive R session, prints help to console).}
 }
 \value{
 Opens up the documentation for the function that is used internally within
@@ -17,15 +20,26 @@ the occ function for each source.
 Look up options for parameters passed to each source
 }
 \details{
-Any of the parameters passed to e.g. occ_search() from the rgbif package
-can be passed in the associated gbifopts list in occ().
+Any of the parameters passed to e.g. \code{\link[rgbif]{occ_search}} from the
+\code{rgbif} package can be passed in the associated gbifopts list in \code{\link[spocc]{occ}}.
 
 Note that the from parameter is lowercased within the function and is called through
 match.arg first, so you can match on unique partial strings too (e.g., 'e' for 'ecoengine').
 }
 \examples{
+# opens up documentation for this function
 occ_options()
+
+# Open up documentation for the appropriate search function for each source
+occ_options('gbif')
 occ_options('ecoengine')
 occ_options('AntWeb')
+occ_options('antweb')
+occ_options('ebird')
+occ_options('inat')
+occ_options('bison')
+
+# Or open in html version
+occ_options('bison', 'html')
 }
 

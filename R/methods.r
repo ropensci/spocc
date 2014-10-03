@@ -4,7 +4,8 @@
 #' @keywords internal
 #' 
 #' @param x Input, of class occdatind
-#' @param ... Further args, ignored
+#' @param object Input to summary methods
+#' @param ... Further args to print, plot or summary methods
 #' @param n Number of rows to show. If \code{NULL}, the default, will print
 #'   all rows if less than option \code{dplyr.print_max}. Otherwise, will
 #'   print \code{dplyr.print_min}
@@ -64,6 +65,7 @@ print.occdatind <- function(x, ..., n = 10){
 }
 
 #' @export
+#' @method summary occdat
 #' @rdname spocc_objects
 summary.occdat <- function(object, ...){
   lapply(object, summary.occdatind)
@@ -71,6 +73,7 @@ summary.occdat <- function(object, ...){
 }
 
 #' @export
+#' @method summary occdatind
 #' @rdname spocc_objects
 summary.occdatind <- function(object, ...){
   mdat <- object$meta
@@ -106,6 +109,7 @@ occinddf <- function(obj) {
 }
 
 #' @export
+#' @method plot occdat
 #' @rdname spocc_objects
 plot.occdat <- function(x, ...) {
   df <- occ2df(x)

@@ -12,20 +12,22 @@
 
 \method{print}{occdatind}(x, ..., n = 10)
 
-summary.occdat(object, ...)
+\method{summary}{occdat}(object, ...)
 
-summary.occdatind(object, ...)
+\method{summary}{occdatind}(object, ...)
 
-plot.occdat(x, ...)
+\method{plot}{occdat}(x, ...)
 }
 \arguments{
 \item{x}{Input, of class occdatind}
 
-\item{...}{Further args, ignored}
+\item{...}{Further args to print, plot or summary methods}
 
 \item{n}{Number of rows to show. If \code{NULL}, the default, will print
   all rows if less than option \code{dplyr.print_max}. Otherwise, will
   print \code{dplyr.print_min}}
+
+\item{object}{Input to summary methods}
 }
 \description{
 spocc objects and their print, plot, and summary methods

@@ -25,7 +25,7 @@ foo_gbif <- function(sources, query, limit, geometry, callopts, opts) {
       list(time = NULL, found = NULL, data = data.frame(NULL), opts=opts)
     } else{
       time <- now()
-      opts$limit <- limit
+      if(!'limit' %in% names(opts)) opts$limit <- limit
       opts$fields <- 'all'
       if(!is.null(geometry)){
         opts$geometry <- if(grepl('POLYGON', paste(as.character(geometry), collapse=" "))){
@@ -57,10 +57,11 @@ move_cols <- function(x, y) x[ c(y, names(x)[-sapply(y, function(z) grep(z, name
 #' @noRd
 foo_ecoengine <- function(sources, query, limit, geometry, callopts, opts) {
   if (any(grepl("ecoengine", sources))) {
+    opts <- limit_alias(opts, "ecoengine")
     time <- now()
     opts$scientific_name <- query
     opts$georeferenced <- TRUE
-    opts$page_size <- limit
+    if(!'page_size' %in% names(opts)) opts$page_size <- limit
     if(!is.null(geometry)){
       opts$bbox <- if(grepl('POLYGON', paste(as.character(geometry), collapse=" "))){
         wkt2bbox(geometry) } else { geometry }
@@ -110,7 +111,7 @@ foo_antweb <- function(sources, query, limit, geometry, callopts, opts) {
       opts$scientific_name <- NULL
     }
 
-    opts$limit <- limit
+    if(!'limit' %in% names(opts)) opts$limit <- limit
     opts$georeferenced <- TRUE
     out <- do.call(aw_data, opts)
 
@@ -132,6 +133,7 @@ foo_antweb <- function(sources, query, limit, geometry, callopts, opts) {
 #' @noRd
 foo_bison <- function(sources, query, limit, geometry, callopts, opts) {
   if(any(grepl("bison", sources))) {
+    opts <- limit_alias(opts, "bison")
     if(class(query) %in% c("ids","tsn")){
       if(class(query) %in% "ids"){
         opts$tsn <- query$itis
@@ -143,7 +145,7 @@ foo_bison <- function(sources, query, limit, geometry, callopts, opts) {
     { opts$species <- query }
 
     time <- now()
-    opts$count <- limit
+    if(!'count' %in% names(opts)) opts$count <- limit
     opts$config <- callopts
     #     opts$what <- 'points'
     if(!is.null(geometry)){
@@ -167,9 +169,10 @@ foo_bison <- function(sources, query, limit, geometry, callopts, opts) {
 #' @noRd
 foo_inat <- function(sources, query, limit, geometry, callopts, opts) {
   if (any(grepl("inat", sources))) {
+    opts <- limit_alias(opts, "inat")
     time <- now()
     opts$query <- query
-    opts$maxresults <- limit
+    if(!'maxresults' %in% names(opts)) opts$maxresults <- limit
     opts$meta <- TRUE
     if(!is.null(geometry)){
       opts$bounds <- if(grepl('POLYGON', paste(as.character(geometry), collapse=" ")))
@@ -196,13 +199,14 @@ foo_inat <- function(sources, query, limit, geometry, callopts, opts) {
 #' @noRd
 foo_ebird <- function(sources, query, limit, callopts, opts) {
   if (any(grepl("ebird", sources))) {
+    opts <- limit_alias(opts, "ebird")
     time <- now()
     if (is.null(opts$method))
       opts$method <- "ebirdregion"
     if (!opts$method %in% c("ebirdregion", "ebirdgeo"))
       stop("ebird method must be one of ebirdregion or ebirdgeo")
     opts$species <- query
-    opts$max <- limit
+    if(!'max' %in% names(opts)) opts$max <- limit
     opts$config <- callopts
     if (opts$method == "ebirdregion") {
       if (is.null(opts$region)) opts$region <- "US"
@@ -220,4 +224,14 @@ foo_ebird <- function(sources, query, limit, callopts, opts) {
   } else {
     list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
   }
+}
+
+limit_alias <- function(x, sources){
+  if(length(x) != 0){ 
+    lim_name <- switch(sources, ecoengine="page_size", bison="count", inat="maxresults", ebird="max")
+    if("limit" %in% names(x)){
+      names(x)[ which(names(x) == "limit") ] <- lim_name
+      x
+    } else { x }
+  } else { x }
 }

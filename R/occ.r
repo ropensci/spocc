@@ -29,6 +29,15 @@
 #' occ(query = 'Setophaga caerulescens', from = 'ebird', ebirdopts = list(region='US'))
 #' occ(query = 'Spinus tristis', from = 'ebird', ebirdopts = 
 #'    list(method = 'ebirdgeo', lat = 42, lng = -76, dist = 50))
+#'    
+#' # You can pass on limit param to all sources even though its a different param in that source
+#' ## ecoengine example
+#' res <- occ(query = 'Accipiter striatus', from = 'ecoengine', ecoengineopts=list(limit = 5))
+#' res$ecoengine
+#' ## This is particularly useful when you want to set different limit for each source
+#' res <- occ(query = 'Accipiter striatus', from = c('gbif','ecoengine'), 
+#'    gbifopts=list(limit = 10), ecoengineopts=list(limit = 5))
+#' res
 #'
 #' # Many data sources
 #' (out <- occ(query = 'Pinus contorta', from=c('gbif','inat')))

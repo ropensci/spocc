@@ -19,7 +19,10 @@ inat, ebird, and/or ecoengine}
 \item{limit}{(numeric) Number of records to return. This is passed across all sources.
 To specify different limits for each source, use the options for each source (gbifopts,
 bisonopts, inatopts, ebirdopts, ecoengineopts, and antwebopts). See Details for more.
-Default: 1000 for each source.}
+Default: 500 for each source. BEWARE: if you have a lot of species to query for (e.g.,
+n = 10), that's 10 * 500 = 5000, which can take a while to collect. So, when you first query,
+set the limit to something smallish so that you can get a result quickly, then do more as
+needed.}
 
 \item{geometry}{(character or nmeric) One of a Well Known Text (WKT) object or a vector of
 length 4 specifying a bounding box. This parameter searches for occurrences inside a
@@ -133,6 +136,15 @@ res$bison
 occ(query = 'Setophaga caerulescens', from = 'ebird', ebirdopts = list(region='US'))
 occ(query = 'Spinus tristis', from = 'ebird', ebirdopts =
    list(method = 'ebirdgeo', lat = 42, lng = -76, dist = 50))
+
+# You can pass on limit param to all sources even though its a different param in that source
+## ecoengine example
+res <- occ(query = 'Accipiter striatus', from = 'ecoengine', ecoengineopts=list(limit = 5))
+res$ecoengine
+## This is particularly useful when you want to set different limit for each source
+res <- occ(query = 'Accipiter striatus', from = c('gbif','ecoengine'),
+   gbifopts=list(limit = 10), ecoengineopts=list(limit = 5))
+res
 
 # Many data sources
 (out <- occ(query = 'Pinus contorta', from=c('gbif','inat')))

@@ -26,6 +26,7 @@ foo_gbif <- function(sources, query, limit, geometry, callopts, opts) {
     } else{
       time <- now()
       opts$limit <- limit
+      opts$fields <- 'all'
       if(!is.null(geometry)){
         opts$geometry <- if(grepl('POLYGON', paste(as.character(geometry), collapse=" "))){
           geometry } else { bbox2wkt(bbox=geometry) }
@@ -40,8 +41,8 @@ foo_gbif <- function(sources, query, limit, geometry, callopts, opts) {
         } else {
           dat <- out$data
           dat$prov <- rep("gbif", nrow(dat))
-          dat$prov <- rep("gbif", nrow(dat))
           dat$name <- as.character(dat$name)
+          dat <- move_cols(dat, c('name','decimalLongitude','decimalLatitude','issues','prov'))
           list(time = time, found = out$meta$count, data = dat, opts = opts)
         }
       }
@@ -50,6 +51,8 @@ foo_gbif <- function(sources, query, limit, geometry, callopts, opts) {
     list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
   }
 }
+
+move_cols <- function(x, y) x[ c(y, names(x)[-sapply(y, function(z) grep(z, names(x)))]) ]
 
 #' @noRd
 foo_ecoengine <- function(sources, query, limit, geometry, callopts, opts) {

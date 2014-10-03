@@ -3,7 +3,7 @@
 \alias{occ}
 \title{Search for species occurrence data across many data sources.}
 \usage{
-occ(query = NULL, from = "gbif", limit = 25, geometry = NULL,
+occ(query = NULL, from = "gbif", limit = 500, geometry = NULL,
   rank = "species", type = "sci", ids = NULL, callopts = list(),
   gbifopts = list(), bisonopts = list(), inatopts = list(),
   ebirdopts = list(), ecoengineopts = list(), antwebopts = list())
@@ -18,7 +18,8 @@ inat, ebird, and/or ecoengine}
 
 \item{limit}{(numeric) Number of records to return. This is passed across all sources.
 To specify different limits for each source, use the options for each source (gbifopts,
-bisonopts, inatopts, ebirdopts, ecoengineopts, and antwebopts). See Details for more.}
+bisonopts, inatopts, ebirdopts, ecoengineopts, and antwebopts). See Details for more.
+Default: 1000 for each source.}
 
 \item{geometry}{(character or nmeric) One of a Well Known Text (WKT) object or a vector of
 length 4 specifying a bounding box. This parameter searches for occurrences inside a
@@ -107,11 +108,16 @@ there could be duplicate records since many providers' data eventually ends up w
 \examples{
 \dontrun{
 # Single data sources
-occ(query = 'Accipiter striatus', from = 'gbif')$gbif
-occ(query = 'Accipiter striatus', from = 'ecoengine')$ecoengine
-occ(query = 'Accipiter striatus', from = 'ebird')$ebird
-occ(query = 'Danaus plexippus', from = 'inat')$inat
-occ(query = 'Bison bison', from = 'bison')$bison
+res <- occ(query = 'Accipiter striatus', from = 'gbif')
+res$gbif
+res <- occ(query = 'Accipiter striatus', from = 'ecoengine')
+res$ecoengine
+res <- occ(query = 'Accipiter striatus', from = 'ebird')
+res$ebird
+res <- occ(query = 'Danaus plexippus', from = 'inat')
+res$inat
+res <- occ(query = 'Bison bison', from = 'bison')
+res$bison
 # Data from AntWeb
 # By species
 (by_species <- occ(query = "linepithema humile", from = "antweb"))
@@ -123,7 +129,7 @@ occ(query = 'Spinus tristis', from = 'ebird', ebirdopts =
    list(method = 'ebirdgeo', lat = 42, lng = -76, dist = 50))
 
 # Many data sources
-out <- occ(query = 'Pinus contorta', from=c('gbif','inat'))
+(out <- occ(query = 'Pinus contorta', from=c('gbif','inat')))
 
 ## Select individual elements
 out$gbif

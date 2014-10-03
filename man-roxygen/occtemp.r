@@ -5,7 +5,8 @@
 #' inat, ebird, and/or ecoengine
 #' @param limit (numeric) Number of records to return. This is passed across all sources.
 #' To specify different limits for each source, use the options for each source (gbifopts, 
-#' bisonopts, inatopts, ebirdopts, ecoengineopts, and antwebopts). See Details for more.
+#' bisonopts, inatopts, ebirdopts, ecoengineopts, and antwebopts). See Details for more. 
+#' Default: 1000 for each source.
 #' @param geometry (character or nmeric) One of a Well Known Text (WKT) object or a vector of
 #' length 4 specifying a bounding box. This parameter searches for occurrences inside a
 #' box given as a bounding box or polygon described in WKT format. A WKT shape written as

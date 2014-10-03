@@ -10,11 +10,16 @@
 #' @export
 #' @examples \dontrun{
 #' # Single data sources
-#' occ(query = 'Accipiter striatus', from = 'gbif')$gbif
-#' occ(query = 'Accipiter striatus', from = 'ecoengine')$ecoengine
-#' occ(query = 'Accipiter striatus', from = 'ebird')$ebird
-#' occ(query = 'Danaus plexippus', from = 'inat')$inat
-#' occ(query = 'Bison bison', from = 'bison')$bison
+#' res <- occ(query = 'Accipiter striatus', from = 'gbif')
+#' res$gbif
+#' res <- occ(query = 'Accipiter striatus', from = 'ecoengine')
+#' res$ecoengine
+#' res <- occ(query = 'Accipiter striatus', from = 'ebird')
+#' res$ebird
+#' res <- occ(query = 'Danaus plexippus', from = 'inat')
+#' res$inat
+#' res <- occ(query = 'Bison bison', from = 'bison')
+#' res$bison
 #' # Data from AntWeb
 #' # By species
 #' (by_species <- occ(query = "linepithema humile", from = "antweb"))
@@ -26,7 +31,7 @@
 #'    list(method = 'ebirdgeo', lat = 42, lng = -76, dist = 50))
 #'
 #' # Many data sources
-#' out <- occ(query = 'Pinus contorta', from=c('gbif','inat'))
+#' (out <- occ(query = 'Pinus contorta', from=c('gbif','inat')))
 #' 
 #' ## Select individual elements
 #' out$gbif
@@ -156,7 +161,7 @@
 #'    geometry='MULTIPOLYGON((30 10, 10 20, 20 60, 60 60, 30 10), 
 #'                           (30 10, 10 20, 20 60, 60 60, 30 10))')
 #' }
-occ <- function(query = NULL, from = "gbif", limit = 25, geometry = NULL, rank = "species",
+occ <- function(query = NULL, from = "gbif", limit = 500, geometry = NULL, rank = "species",
     type = "sci", ids = NULL, callopts=list(), gbifopts = list(), bisonopts = list(), inatopts = list(), 
     ebirdopts = list(), ecoengineopts = list(), antwebopts = list())
 {  

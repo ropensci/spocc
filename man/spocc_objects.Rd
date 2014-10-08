@@ -3,6 +3,7 @@
 \alias{plot.occdat}
 \alias{print.occdat}
 \alias{print.occdatind}
+\alias{print.occnames}
 \alias{spocc_objects}
 \alias{summary.occdat}
 \alias{summary.occdatind}
@@ -17,6 +18,8 @@
 \method{summary}{occdatind}(object, ...)
 
 \method{plot}{occdat}(x, ...)
+
+\method{print}{occnames}(x, ...)
 }
 \arguments{
 \item{x}{Input, of class occdatind}

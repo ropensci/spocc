@@ -134,7 +134,9 @@ spocc_blanktheme <- function() {
         panel.grid.minor = element_blank(), plot.background = element_blank(), plot.margin = rep(unit(0,
             "null"), 4))
 }
+
 #' Combine results from occ calls to a single data.frame
+#' @importFrom plyr rbind.fill
 #' @param obj Input from occ
 #' @param what One of data (default) or all (with metadata)
 #' @export
@@ -145,7 +147,8 @@ spocc_blanktheme <- function() {
 #' }
 occ2df <- function(obj, what = "data") {
     what <- match.arg(what, choices = c("all", "data"))
-    foolist <- function(x) data.frame(rbindlist(x$data), stringsAsFactors = FALSE)
+#     foolist <- function(x) data.frame(rbindlist(x$data), stringsAsFactors = FALSE)
+    foolist <- function(x) do.call(rbind.fill, x$data)
     aa <- foolist(obj$gbif)
     bb <- foolist(obj$bison)
     cc <- foolist(obj$inat)
@@ -161,8 +164,7 @@ occ2df <- function(obj, what = "data") {
       data.frame(name = aw$name, longitude = aw$decimal_longitude, latitude = aw$decimal_latitude, prov = aw$prov))))
     tmpout <- list(meta = list(obj$gbif$meta, obj$bison$meta, obj$inat$meta, obj$ebird$meta,
         obj$ecoengine$meta, obj$aw$meta), data = tmp)
-    if (what %in% "data")
-        tmpout$data else tmpout
+    if(what %in% "data") tmpout$data else tmpout
 }
 #' Occ output or data.frame to sp SpatialPointsDataFrame class
 #'

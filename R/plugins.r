@@ -21,9 +21,7 @@ foo_gbif <- function(sources, query, limit, geometry, callopts, opts) {
       }
     } else { query_use <- NULL }
 
-    if(is.null(query_use) && is.null(geometry)){
-      list(time = NULL, found = NULL, data = data.frame(NULL), opts=opts)
-    } else{
+    if(is.null(query_use) && is.null(geometry)){ emptylist(opts) } else{
       time <- now()
       if(!'limit' %in% names(opts)) opts$limit <- limit
       opts$fields <- 'all'
@@ -33,26 +31,29 @@ foo_gbif <- function(sources, query, limit, geometry, callopts, opts) {
       }
       opts$callopts <- callopts
       out <- do.call(occ_search, opts)
-      if(class(out) == "character") {
-        list(time = time, found = NULL, data = data.frame(NULL), opts = opts)
-      } else {
-        if(class(out$data) == "character"){
-          list(time = time, found = NULL, data = data.frame(NULL), opts = opts)
-        } else {
+      if(class(out) == "character") { emptylist(opts) } else {
+        if(class(out$data) == "character"){ emptylist(opts) } else {
           dat <- out$data
           dat$prov <- rep("gbif", nrow(dat))
           dat$name <- as.character(dat$name)
           dat <- move_cols(dat, c('name','decimalLongitude','decimalLatitude','issues','prov'))
+          dat <- stand_latlon(dat)
           list(time = time, found = out$meta$count, data = dat, opts = opts)
         }
       }
     }
-  } else {
-    list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
-  }
+  } else { emptylist(opts) }
 }
 
 move_cols <- function(x, y) x[ c(y, names(x)[-sapply(y, function(z) grep(z, names(x)))]) ]
+emptylist <- function(opts) list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
+stand_latlon <- function(x){
+  lngs <- c('decimalLongitude','Longitude','lng','longitude','decimal_longitude')
+  lats <- c('decimalLatitude','Latitude','lat','latitude','decimal_latitude')
+  names(x)[ names(x) %in% lngs ] <- 'longitude'
+  names(x)[ names(x) %in% lats ] <- 'latitude'
+  x
+}
 
 #' @noRd
 foo_ecoengine <- function(sources, query, limit, geometry, callopts, opts) {
@@ -122,6 +123,7 @@ foo_antweb <- function(sources, query, limit, geometry, callopts, opts) {
       res <- out$data
       res$prov <- rep("antweb", nrow(res))
       res$name <- query
+      res <- stand_latlon(res)
       list(time = time, found = out$count, data = res, opts = opts)
     }
   } else {
@@ -158,6 +160,7 @@ foo_bison <- function(sources, query, limit, geometry, callopts, opts) {
     } else{
       dat <- out$points
       dat$prov <- rep("bison", nrow(dat))
+      dat <- stand_latlon(dat)
       list(time = time, found = out$summary$total, data = dat, opts = opts)
     }
   } else {
@@ -189,6 +192,7 @@ foo_inat <- function(sources, query, limit, geometry, callopts, opts) {
       res <- out$data
       res$prov <- rep("inat", nrow(res))
       names(res)[names(res) == 'Scientific.name'] <- "name"
+      res <- stand_latlon(res)
       list(time = time, found = out$meta$found, data = res, opts = opts)
     }
   } else {
@@ -219,6 +223,7 @@ foo_ebird <- function(sources, query, limit, callopts, opts) {
     } else{
       out$prov <- rep("ebird", nrow(out))
       names(out)[names(out) == 'sciName'] <- "name"
+      out <- stand_latlon(out)
       list(time = time, found = NULL, data = out, opts = opts)
     }
   } else {

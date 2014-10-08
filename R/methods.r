@@ -97,16 +97,30 @@ pastemax <- function(z, n=10){
 occinddf <- function(obj) {
   z <- obj$data[[1]]
   df <- switch(obj$meta$source,
-         gbif = data.frame(name = z$name, longitude = z$decimalLongitude, latitude = z$decimalLatitude, prov = z$prov),
-         bison = data.frame(name = z$name, longitude = z$decimalLongitude, latitude = z$decimalLatitude, prov = z$prov),
-         inat = data.frame(name = z$name, longitude = z$Longitude, latitude = z$Latitude, prov = z$prov),
-         ebird = data.frame(name = z$name, longitude = z$lng, latitude = z$lat, prov = z$prov),
+         gbif = data.frame(name = z$name, longitude = z$longitude, latitude = z$latitude, prov = z$prov),
+         bison = data.frame(name = z$name, longitude = z$longitude, latitude = z$latitude, prov = z$prov),
+         inat = data.frame(name = z$name, longitude = z$longitude, latitude = z$latitude, prov = z$prov),
+         ebird = data.frame(name = z$name, longitude = z$longitude, latitude = z$latitude, prov = z$prov),
          ecoengine = data.frame(name = z$name, longitude = z$longitude, latitude = z$latitude, prov = z$prov),
-         antweb = data.frame(name = z$name, longitude = z$decimal_longitude, latitude = z$decimal_latitude, prov = z$prov))
+         antweb = data.frame(name = z$name, longitude = z$longitude, latitude = z$latitude, prov = z$prov))
   z <- z[!names(z) %in% c('name','decimalLongitude','Longitude','lng','longitude','decimal_longitude',
                        'decimalLatitude','Latitude','lat','latitude','decimal_latitude','prov')]
   do.call(cbind, list(df, z))
 }
+
+# occinddf <- function(obj) {
+#   z <- obj$data[[1]]
+#   df <- switch(obj$meta$source,
+#                gbif = data.frame(name = z$name, longitude = z$decimalLongitude, latitude = z$decimalLatitude, prov = z$prov),
+#                bison = data.frame(name = z$name, longitude = z$decimalLongitude, latitude = z$decimalLatitude, prov = z$prov),
+#                inat = data.frame(name = z$name, longitude = z$Longitude, latitude = z$Latitude, prov = z$prov),
+#                ebird = data.frame(name = z$name, longitude = z$lng, latitude = z$lat, prov = z$prov),
+#                ecoengine = data.frame(name = z$name, longitude = z$longitude, latitude = z$latitude, prov = z$prov),
+#                antweb = data.frame(name = z$name, longitude = z$decimal_longitude, latitude = z$decimal_latitude, prov = z$prov))
+#   z <- z[!names(z) %in% c('name','decimalLongitude','Longitude','lng','longitude','decimal_longitude',
+#                           'decimalLatitude','Latitude','lat','latitude','decimal_latitude','prov')]
+#   do.call(cbind, list(df, z))
+# }
 
 #' @export
 #' @method plot occdat

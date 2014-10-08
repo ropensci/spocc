@@ -10,15 +10,15 @@
 #' @export
 #' @examples \dontrun{
 #' # Single data sources
-#' res <- occ(query = 'Accipiter striatus', from = 'gbif')
+#' (res <- occ(query = 'Accipiter striatus', from = 'gbif'))
 #' res$gbif
-#' res <- occ(query = 'Accipiter striatus', from = 'ecoengine')
+#' (res <- occ(query = 'Accipiter striatus', from = 'ecoengine'))
 #' res$ecoengine
-#' res <- occ(query = 'Accipiter striatus', from = 'ebird')
+#' (res <- occ(query = 'Accipiter striatus', from = 'ebird'))
 #' res$ebird
-#' res <- occ(query = 'Danaus plexippus', from = 'inat')
+#' (res <- occ(query = 'Danaus plexippus', from = 'inat'))
 #' res$inat
-#' res <- occ(query = 'Bison bison', from = 'bison')
+#' (res <- occ(query = 'Bison bison', from = 'bison'))
 #' res$bison
 #' # Data from AntWeb
 #' # By species

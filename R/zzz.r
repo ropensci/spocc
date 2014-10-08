@@ -23,6 +23,7 @@ spocc_capwords <- function(s, strict = FALSE, onlyfirst = FALSE) {
             2)), sep = "", collapse = " "), "", USE.NAMES = F)
     }
 }
+
 #' Code based on the `gbifxmlToDataFrame` function from dismo package
 #' (http://cran.r-project.org/web/packages/dismo/index.html),
 #' by Robert Hijmans, 2012-05-31, License: GPL v3
@@ -65,6 +66,7 @@ spocc_gbifxmlToDataFrame <- function(doc, format) {
     }
     cbind(tax, ans)
 }
+
 #' Coerces data.frame columns to the specified classes
 #'
 #' @param d A data.frame.
@@ -85,44 +87,7 @@ spocc_colClasses <- function(d, colClasses) {
         as(d[[i]], colClasses[i])))
     d
 }
-#' Convert commas to periods in lat/long data
-#'
-#' @param dataframe A data.frame
-#' @export
-#' @keywords internal
-spocc_commas_to_periods <- function(dataframe) {
-    dataframe$decimalLatitude <- gsub("\\,", ".", dataframe$decimalLatitude)
-    dataframe$decimalLongitude <- gsub("\\,", ".", dataframe$decimalLongitude)
-    return(dataframe)
-}
-#' Parse results from call to occurrencelist endpoint
-#'
-#' @param x A list
-#' @param ... Further args passed on to gbifxmlToDataFrame
-#' @param removeZeros remove zeros or not
-#' @export
-#' @keywords internal
-spocc_parseresults <- function(x, ..., removeZeros = removeZeros) {
-    df <- gbifxmlToDataFrame(x, ...)
-    if (nrow(df[!is.na(df$decimalLatitude), ]) == 0) {
-        return(df)
-    } else {
-        df <- commas_to_periods(df)
-        df_num <- df[!is.na(df$decimalLatitude), ]
-        df_nas <- df[is.na(df$decimalLatitude), ]
-        df_num$decimalLongitude <- as.numeric(df_num$decimalLongitude)
-        df_num$decimalLatitude <- as.numeric(df_num$decimalLatitude)
-        i <- df_num$decimalLongitude == 0 & df_num$decimalLatitude == 0
-        if (removeZeros) {
-            df_num <- df_num[!i, ]
-        } else {
-            df_num[i, "decimalLatitude"] <- NA
-            df_num[i, "decimalLongitude"] <- NA
-        }
-        temp <- rbind(df_num, df_nas)
-        return(temp)
-    }
-}
+
 #' Custom ggplot2 theme
 #' @import ggplot2 grid
 #' @export

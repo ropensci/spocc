@@ -183,7 +183,7 @@ occ2df <- function(obj, what = "data") {
 #' @export
 #' @examples \dontrun{
 #' spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Spinus tristis')
-#' out <- occ(query=spnames, from='gbif', gbifopts=list(hasCoordinate=TRUE))
+#' out <- occ(query=spnames, from='gbif', limit=25, gbifopts=list(hasCoordinate=TRUE))
 #'
 #' # pass in output of occ directly to occ2sp
 #' occ2sp(out)
@@ -198,6 +198,8 @@ occ2sp <- function(input) {
     dat <- switch(class(input), occdat = occ2df(input), data.frame = input)
     # check column names
     assert_that(all(c("latitude", "longitude") %in% names(dat)))
+    # remove NA rows
+    dat <- dat[complete.cases(dat),]
     # convert to SpatialPointsDataFrame object
     coordinates(dat) <- c("latitude", "longitude")
     return(dat)

@@ -3,20 +3,31 @@
 #' @import assertthat rgdal sp
 #' @export
 #' @param input An object of class occdat
-#' @param country (logical) Attempt to clean based on country
-#' @param country_which (character) One of include, xxx
-#' @param shppath (character) Path to shape file to check against. 
-#' @param habitat (character) Attempt to clean based on habitat
+#' @param country (logical) Attempt to clean based on country. Ignored for now.
+#' @param country_which (character) One of include, xxx. Ignored for now.
+#' @param shppath (character) Path to shape file to check against. Ignored for now.
+#' @param habitat (character) Attempt to clean based on habitat. Ignored for now.
 #' @param provider_duplicates (logical) Whether to remove duplicates from the same provider in 
-#' separate sources.
-#' @examples \dontrun{
-#' res <- occ(query = c('Ursus','Accipiter','Rubus'), from = 'bison', limit=120)
+#' separate sources. Ignored for now.
+#' @details We'll continue to add options for cleaning data, but for now, this function:
+#' 
+#' \itemize{
+#'  \item Removes impossible values of latitude and longitude
+#'  \item Removes any NA values of latitude and longitude
+#'  \item Removes points at 0,0 - these points are likely wrong
+#' }
+#' @return Returns an object of class occdat+occlean. See attributes of the return object for 
+#' details on cleaning results.
+#' @examples \donttest{
+#' res <- occ(query = c('Ursus','Accipiter','Rubus'), from = 'bison', limit=10)
+#' class(res)
 #' res_cleaned <- clean_spocc(input=res)
 #' class(res_cleaned) # now with classes occdat and occclean
 #' 
+#' #### THESE AREN'T WORKING...
 #' # Country cleaning
 #' res <- occ(query = 'Ursus americanus', from = 'gbif', limit=500, 
-#'    gbifopts = list(hasCoordinate=TRUE, fields='all'))
+#'    gbifopts = list(hasCoordinate=TRUE))
 #' res$gbif
 #' plot(res)
 #' 
@@ -41,8 +52,8 @@ clean_spocc <- function(input, country=NULL, country_which='include', shppath=NU
     if(all(sapply(x$data, nrow) < 1)){
       x
     } else {   
-      clean_eachsp <- function(y, what){
-        dat <- replacelatlongcols(y, what)
+      clean_eachsp <- function(dat, what){
+#         dat <- replacelatlongcols(y, what)
         
         # Make lat/long data numeric
         dat$latitude <- as.numeric(as.character(dat$latitude))
@@ -66,10 +77,10 @@ clean_spocc <- function(input, country=NULL, country_which='include', shppath=NU
         }
         
         if(!is.null(country)){
-          dat <- clean_country(data=dat, country=country, which=country_which, shppath=shppath)
+          # dat <- clean_country(data=dat, country=country, which=country_which, shppath=shppath)
         }
         
-        dat <- replacelatlongcols(dat, what, reverse = TRUE)
+#         dat <- replacelatlongcols(dat, what, reverse = TRUE)
         
         list(nc = notcomplete, np = notpossible, d = dat)
       }
@@ -91,7 +102,7 @@ clean_spocc <- function(input, country=NULL, country_which='include', shppath=NU
   
   # clean provider duplicates, takes in occdat object
   if(provider_duplicates){
-    output <- clean_provider_duplicates(data=output)
+    # output <- clean_provider_duplicates(data=output)
   }
   
   class(output) <- c("occdat","occclean")
@@ -100,22 +111,22 @@ clean_spocc <- function(input, country=NULL, country_which='include', shppath=NU
 
 ifnone <- function(x) if(nrow(x)==0){ NA } else { x }
 
-replacelatlongcols <- function(w, z, reverse=FALSE){
-  cols <- switch(z,
-                 gbif = c('decimalLatitude','decimalLongitude'),
-                 bison = c('decimalLongitude','decimalLatitude'), 
-                 inat = c('Latitude','Longitude'), 
-                 ebird = c('lng','lat'), 
-                 ecoengine = c('longitude','latitude'), 
-                 antweb = c('decimal_longitude','decimal_latitude'))
-  if(reverse){
-    names(w)[ names(w) %in% c('latitude','longitude') ] <- cols
-  } else {
-    names(w)[ names(w) %in% cols ] <- c('latitude','longitude')
-  }
-  
-  return( w )
-}
+# replacelatlongcols <- function(w, z, reverse=FALSE){
+#   cols <- switch(z,
+#                  gbif = c('decimalLatitude','decimalLongitude'),
+#                  bison = c('decimalLongitude','decimalLatitude'), 
+#                  inat = c('Latitude','Longitude'), 
+#                  ebird = c('lng','lat'), 
+#                  ecoengine = c('longitude','latitude'), 
+#                  antweb = c('decimal_longitude','decimal_latitude'))
+#   if(reverse){
+#     names(w)[ names(w) %in% c('latitude','longitude') ] <- cols
+#   } else {
+#     names(w)[ names(w) %in% cols ] <- c('latitude','longitude')
+#   }
+#   
+#   return( w )
+# }
 
 clean_country <- function(data, country=NULL, which='include', shppath=NULL)
 {

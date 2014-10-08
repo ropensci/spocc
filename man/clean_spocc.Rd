@@ -9,29 +9,44 @@ clean_spocc(input, country = NULL, country_which = "include",
 \arguments{
 \item{input}{An object of class occdat}
 
-\item{country}{(logical) Attempt to clean based on country}
+\item{country}{(logical) Attempt to clean based on country. Ignored for now.}
 
-\item{country_which}{(character) One of include, xxx}
+\item{country_which}{(character) One of include, xxx. Ignored for now.}
 
-\item{shppath}{(character) Path to shape file to check against.}
+\item{shppath}{(character) Path to shape file to check against. Ignored for now.}
 
-\item{habitat}{(character) Attempt to clean based on habitat}
+\item{habitat}{(character) Attempt to clean based on habitat. Ignored for now.}
 
 \item{provider_duplicates}{(logical) Whether to remove duplicates from the same provider in
-separate sources.}
+separate sources. Ignored for now.}
+}
+\value{
+Returns an object of class occdat+occlean. See attributes of the return object for
+details on cleaning results.
 }
 \description{
 Clean spocc data
 }
+\details{
+We'll continue to add options for cleaning data, but for now, this function:
+
+\itemize{
+ \item Removes impossible values of latitude and longitude
+ \item Removes any NA values of latitude and longitude
+ \item Removes points at 0,0 - these points are likely wrong
+}
+}
 \examples{
-\dontrun{
-res <- occ(query = c('Ursus','Accipiter','Rubus'), from = 'bison', limit=120)
+\donttest{
+res <- occ(query = c('Ursus','Accipiter','Rubus'), from = 'bison', limit=10)
+class(res)
 res_cleaned <- clean_spocc(input=res)
 class(res_cleaned) # now with classes occdat and occclean
 
+#### THESE AREN'T WORKING...
 # Country cleaning
 res <- occ(query = 'Ursus americanus', from = 'gbif', limit=500,
-   gbifopts = list(hasCoordinate=TRUE, fields='all'))
+   gbifopts = list(hasCoordinate=TRUE))
 res$gbif
 plot(res)
 

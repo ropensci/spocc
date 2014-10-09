@@ -5,52 +5,55 @@
 \usage{
 occ_names(query = NULL, from = "gbif", limit = 100, rank = "species",
   callopts = list(), gbifopts = list(), bisonopts = list(),
-  inatopts = list(), ecoengineopts = list(), antwebopts = list())
+  ecoengineopts = list())
 }
 \arguments{
 \item{query}{(character) One to many names. Either a scientific name or a common name.
 Specify whether a scientific or common name in the type parameter.
 Only scientific names supported right now.}
 
-\item{from}{(character) Data source to get data from, any combination of gbif, bison,
-inat, ebird, and/or ecoengine}
+\item{from}{(character) Data source to get data from, any combination of gbif, bison, or
+ecoengine.}
 
 \item{limit}{(numeric) Number of records to return. This is passed across all sources.
 To specify different limits for each source, use the options for each source (gbifopts,
-bisonopts, inatopts, ebirdopts, ecoengineopts, and antwebopts). See Details for more.
-Default: 500 for each source. BEWARE: if you have a lot of species to query for (e.g.,
-n = 10), that's 10 * 500 = 5000, which can take a while to collect. So, when you first query,
-set the limit to something smallish so that you can get a result quickly, then do more as
-needed.}
+bisonopts, ecoengineopts). See Details for more. This parameter is ignored for ecoengine.}
 
 \item{rank}{(character) Taxonomic rank. Not used right now.}
 
 \item{callopts}{Options passed on to \code{\link[httr]{GET}}, e.g., for debugging curl calls,
-setting timeouts, etc. This parameter is ignored for sources: antweb, inat.}
+setting timeouts, etc.}
 
-\item{gbifopts}{(list) List of named options to pass on to \code{\link[rgbif]{occ_search}}. See
-also \code{\link[spocc]{occ_options}}.}
+\item{gbifopts}{(list) List of named options to pass on to \code{\link[rgbif]{name_lookup}}. See
+also \code{\link[spocc]{occ_names_options}}.}
 
-\item{bisonopts}{(list) List of named options to pass on to \code{\link[rbison]{bison}}. See
-also \code{\link[spocc]{occ_options}}.}
-
-\item{inatopts}{(list) List of named options to pass on to \code{\link[rinat]{get_inat_obs}}.
-See also \code{\link[spocc]{occ_options}}.}
+\item{bisonopts}{(list) List of named options to pass on to \code{\link[rbison]{bison_tax}}. See
+also \code{\link[spocc]{occ_names_options}}.}
 
 \item{ecoengineopts}{(list) List of named options to pass on to
-\code{\link[ecoengine]{ee_observations}}. See also \code{\link[spocc]{occ_options}}.}
-
-\item{antwebopts}{(list) List of named options to pass on to \code{\link[AntWeb]{aw_data}}. See
-also \code{\link[spocc]{occ_options}}.}
+\code{\link[ecoengine]{ee_search}}. See also \code{\link[spocc]{occ_names_options}}.}
 }
 \description{
 Search for species names across many data sources.
 }
+\details{
+Not all 6 data sources available from the \code{\link{occ}} function are available here,
+as not all of those sources have functionality to search for names.
+}
 \examples{
 \dontrun{
 # Single data sources
-res <- occ_names(query = 'Accipiter striatus', from = 'gbif')
-head(res$gbif$data)
+## gbif
+(res <- occ_names(query = 'Accipiter striatus', from = 'gbif'))
+head(res$gbif$data[[1]])
+
+## bison
+(res <- occ_names(query = '*bear', from = 'bison'))
+res$bison$data
+
+## ecoengine
+(res <- occ_names(query = 'genus:Lynx', from = 'ecoengine'))
+head(res$ecoengine$data[[1]])
 }
 }
 

@@ -36,7 +36,7 @@ foo_gbif <- function(sources, query, limit, geometry, callopts, opts) {
           dat <- out$data
           dat$prov <- rep("gbif", nrow(dat))
           dat$name <- as.character(dat$name)
-          dat <- move_cols(dat, c('name','decimalLongitude','decimalLatitude','issues','prov'))
+          dat <- move_cols(x=dat, y=c('name','decimalLongitude','decimalLatitude','issues','prov'))
           dat <- stand_latlon(dat)
           list(time = time, found = out$meta$count, data = dat, opts = opts)
         }
@@ -45,7 +45,8 @@ foo_gbif <- function(sources, query, limit, geometry, callopts, opts) {
   } else { emptylist(opts) }
 }
 
-move_cols <- function(x, y) x[ c(y, names(x)[-sapply(y, function(z) grep(z, names(x)))]) ]
+move_cols <- function(x, y) 
+  x[ c(y, names(x)[-sapply(y, function(z) grep(paste0('\\b', z, '\\b'), names(x)))]) ]
 emptylist <- function(opts) list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
 stand_latlon <- function(x){
   lngs <- c('decimalLongitude','Longitude','lng','longitude','decimal_longitude')

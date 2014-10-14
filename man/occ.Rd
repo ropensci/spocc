@@ -147,7 +147,7 @@ res <- occ(query = 'Accipiter striatus', from = c('gbif','ecoengine'),
 res
 
 # Many data sources
-(out <- occ(query = 'Pinus contorta', from=c('gbif','inat')))
+(out <- occ(query = 'Pinus contorta', from=c('gbif','bison')))
 
 ## Select individual elements
 out$gbif

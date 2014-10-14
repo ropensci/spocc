@@ -40,7 +40,7 @@
 #' res
 #'
 #' # Many data sources
-#' (out <- occ(query = 'Pinus contorta', from=c('gbif','inat')))
+#' (out <- occ(query = 'Pinus contorta', from=c('gbif','bison')))
 #' 
 #' ## Select individual elements
 #' out$gbif
@@ -171,8 +171,8 @@
 #'                           (30 10, 10 20, 20 60, 60 60, 30 10))')
 #' }
 occ <- function(query = NULL, from = "gbif", limit = 500, geometry = NULL, rank = "species",
-    type = "sci", ids = NULL, callopts=list(), gbifopts = list(), bisonopts = list(), inatopts = list(), 
-    ebirdopts = list(), ecoengineopts = list(), antwebopts = list())
+    type = "sci", ids = NULL, callopts=list(), gbifopts = list(), bisonopts = list(), 
+    inatopts = list(), ebirdopts = list(), ecoengineopts = list(), antwebopts = list())
 {  
   if(!is.null(geometry)){
     if(class(geometry) %in% c('SpatialPolygons','SpatialPolygonsDataFrame')){

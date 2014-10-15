@@ -1,7 +1,7 @@
 context("Occurrence data is correctly retrieved")
 
 test_that("occ works", {
-  x2 <- occ(query = 'Accipiter striatus', from = 'gbif')
+  x1 <- occ(query = 'Accipiter striatus', from = 'gbif')
   x2 <- occ(query = 'Accipiter striatus', from = 'ecoengine')
   x3 <- occ(query = 'Danaus plexippus', from = 'inat')
   # Make sure they are all occdats
@@ -10,15 +10,15 @@ test_that("occ works", {
   x6 <- occ(query = 'Spinus tristis', from = 'ebird', ebirdopts = list(method = 'ebirdgeo', lat = 42, lng = -76, dist = 50))	
   
   expect_is(x3, "occdat")
-  # expect_is(x4, "occdat")
+  expect_is(x4, "occdat")
   expect_is(x5, "occdat")
   expect_is(x6, "occdat")
   # Testing x1
-  # expect_is(x1, "occdat")
-  # expect_is(x1$gbif, "list")
-  # expect_is(x1$gbif$data[[1]], "data.frame")
-  # temp_df <- x1$gbif$data[[1]]
-  # expect_equal(unique(temp_df$prov), "gbif")
+  expect_is(x1, "occdat")
+  expect_is(x1$gbif, "occdatind")
+  expect_is(x1$gbif$data[[1]], "data.frame")
+  temp_df <- x1$gbif$data[[1]]
+  expect_equal(unique(temp_df$prov), "gbif")
   # Testing x2
   expect_is(x2, "occdat")
   expect_is(x2$ecoengine, "occdatind")
@@ -98,19 +98,19 @@ test_that("geometry searches work", {
 context("Testing by taxon identifier searches")
 
 test_that("Taxon identifier searches work", {
-  library("taxize")
-  ids <- get_ids(names=c("Chironomus riparius","Pinus contorta"), db = c('itis','gbif'))
-  byid1 <- occ(ids = ids[[1]], from='bison')
-  byid2 <- occ(ids = ids, from=c('bison','gbif'))
+  suppressPackageStartupMessages(require("taxize"))
+  ids <- suppressMessages(get_ids(names=c("Chironomus riparius","Pinus contorta"), db = c('itis','gbif')))
+  byid1 <- occ(ids = ids[[1]], from='bison', limit = 5)
+  byid2 <- occ(ids = ids, from=c('bison','gbif'), limit = 5)
   
-  ids <- get_ids(names="Chironomus riparius", db = 'gbif')
-  byid3 <- occ(ids = ids, from='gbif')
+  ids <- suppressMessages(get_ids(names="Chironomus riparius", db = 'gbif'))
+  byid3 <- occ(ids = ids, from='gbif', limit = 5)
   
-  ids <- get_gbifid("Chironomus riparius")
+  ids <- get_gbifid("Chironomus riparius", verbose = FALSE)
   byid4 <- occ(ids = ids, from='gbif', limit=5)
   
-  ids <- get_tsn('Accipiter striatus')
-  byid5 <- occ(ids = ids, from='bison')
+  ids <- get_tsn('Accipiter striatus', verbose = FALSE)
+  byid5 <- occ(ids = ids, from='bison', limit = 5)
   
   expect_is(byid1, "occdat")
   expect_is(byid2, "occdat")
@@ -118,5 +118,5 @@ test_that("Taxon identifier searches work", {
   expect_is(byid4, "occdat")
   expect_is(byid5, "occdat")
   expect_equal(byid1$bison$meta$source, "bison")
-  expect_equal(nrow(byid4$gbif$data[[1]]), 5)
+  expect_equal(NROW(byid4$gbif$data[[1]]), 20)
 })

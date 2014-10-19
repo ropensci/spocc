@@ -1,9 +1,19 @@
 <!--
 %\VignetteEngine{knitr::knitr}
-%\VignetteIndexEntry{An introduction to the spocc package}
+%\VignetteIndexEntry{Introduction to the spocc package}
 -->
 
-# Species occurrence data (spocc), version 0.2.0
+```{r echo=FALSE, eval=FALSE}
+knitr::opts_chunk$set(
+  comment = "#>", 
+  warning = FALSE, 
+  message = FALSE,
+  cache = TRUE
+)
+```
+
+Species occurrence data (spocc), version 0.2.2
+==========
 
 ### Introduction
 
@@ -42,10 +52,10 @@ __Note:__ It's important to keep in mind that several data providers interface w
 The most significant function in spocc is the `occ` (short for occurrence) function. `occ` takes a query, often a species name, and searches across all data sources specified in the `from` argument. For example, one can search for all occurrences of [Sharp-shinned Hawks](http://www.allaboutbirds.org/guide/sharp-shinned_hawk/id) (_Accipiter striatus_) from the GBIF database with the following R call.
 
 ```{r, gbif_simple_eg}
-library(spocc)
+library('spocc')
 df <- occ(query = 'Accipiter striatus', from = 'gbif')
 df
-head(df$gbif$data[[1]])
+df$gbif$data[[1]][1:6,1:10]
 ```
 
 The data returned are part of a `S3` class called `occdat`. This class has slots for the five data sources described above. One can easily switch the source by changing the `from` parameter in the function call above.
@@ -85,14 +95,14 @@ If you only request data from gbif, like `from = 'gbif'`, then the other four so
 You can quickly get just the data by indexing to the data element, like
 
 ```{r getdataslot}
-head(df$gbif$data$Accipiter_striatus)
+df$gbif$data$Accipiter_striatus[1:6,1:10]
 ```
 
 When you get data from multiple providers, the fields returned are slightly different, e.g.:
 
 ```{r difffields}
-df <- occ(query = 'Accipiter striatus', from = c('gbif', 'ecoengine'))
-head(df$gbif$data$Accipiter_striatus)
+df <- occ(query = 'Accipiter striatus', from = c('gbif', 'ecoengine'), limit = 25)
+head(df$gbif$data$Accipiter_striatus)[1:6,1:10]
 head(df$ecoengine$data$Accipiter_striatus)
 ```
 
@@ -109,8 +119,8 @@ One problem you often run in to is that there can be various names for the same 
 
 ```{r fixnames1}
 df <- occ(query='Pinus contorta', from=c('gbif','inat'), limit = 50)
-head(df$gbif$data$Pinus_contorta[,1:2])
-head(df$inat$data$Pinus_contorta[,1:2])
+head(df$gbif$data$Pinus_contorta)[1:6,1:10]
+head(df$inat$data$Pinus_contorta)[1:6,1:10]
 ```
 
 This is fine, but when trying to make a map in which points are colored for each taxon, you can have many colors for a single taxon, where instead one color per taxon is more appropriate. There is a function in `spocc` called `fixnames`, which has a few options in which you can take the shortest names (usually just the plain binomials like _Homo sapiens_), or the original name queried, or a vector of names supplied by the user.
@@ -152,8 +162,7 @@ You can also create interactive maps via the `mapgist` function. You have to hav
 spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta')
 dat <- occ(query = spp, from = 'gbif', gbifopts = list(hasCoordinate = TRUE))
 dat <- fixnames(dat)
-dat <- occ2df(dat)
-mapgist(data = dat, color = c("#976AAE", "#6B944D", "#BD5945"))
+mapgist(dat, color = c("#976AAE", "#6B944D", "#BD5945"))
 ```
 
 ![](img/gist.png)
@@ -186,6 +195,5 @@ mapggplot(ecoengine_data)
 ### Upcoming features
 
 * As soon as we have an updated `rvertnet` package, we'll add the ability to query VertNet data from `spocc`.
-* We will add `rCharts` as an official import once the package is on CRAN (Eta end of March)
 * We're helping on a new package `rMaps` to make interactive maps using various Javascript mapping libraries, which will give access to a variety of awesome interactive maps. We will integrate `rMaps` once it's on CRAN.
 * We'll add a function to make interactive maps using RStudio's Shiny in a future version.

@@ -1,13 +1,15 @@
 context("Occurrence data is correctly retrieved")
 
+suppressPackageStartupMessages(library('spocc'))
+
 test_that("occ works", {
-  x1 <- occ(query = 'Accipiter striatus', from = 'gbif')
-  x2 <- occ(query = 'Accipiter striatus', from = 'ecoengine')
-  x3 <- occ(query = 'Danaus plexippus', from = 'inat')
+  x1 <- occ(query = 'Accipiter striatus', from = 'gbif', limit=30)
+  x2 <- occ(query = 'Accipiter striatus', from = 'ecoengine', limit=30)
+  x3 <- occ(query = 'Danaus plexippus', from = 'inat', limit=30)
   # Make sure they are all occdats
-  x4 <- occ(query = 'Bison bison', from = 'bison')
-  x5 <- occ(query = 'Setophaga caerulescens', from = 'ebird', ebirdopts = list(region='US'))
-  x6 <- occ(query = 'Spinus tristis', from = 'ebird', ebirdopts = list(method = 'ebirdgeo', lat = 42, lng = -76, dist = 50))	
+  x4 <- occ(query = 'Bison bison', from = 'bison', limit=30)
+  x5 <- occ(query = 'Setophaga caerulescens', from = 'ebird', ebirdopts = list(region='US'), limit=30)
+  x6 <- occ(query = 'Spinus tristis', from = 'ebird', ebirdopts = list(method = 'ebirdgeo', lat = 42, lng = -76, dist = 50), limit=30)	
   
   expect_is(x3, "occdat")
   expect_is(x4, "occdat")
@@ -70,27 +72,25 @@ context("Testing geometry searches")
 
 test_that("geometry searches work", {
   # no results
-  geo1 <- occ(query='Accipiter', from='gbif', 
+  geo1 <- occ(query='Accipiter', from='gbif', limit=30,
               geometry='POLYGON((30.1 10.1, 10 20, 20 60, 60 60, 30.1 10.1))')
-  geo11 <- occ(query='Accipiter striatus', from='gbif', 
+  geo11 <- occ(query='Accipiter striatus', from='gbif', limit=30,
               geometry=  
   'POLYGON((-120.7 46.8,-103.1 46.4,-88.0 36.9,-109.5 32.6,-123.9 42.3,-120.7 46.8))')
   
-  geo2 <- occ(query='Accipiter striatus', from='gbif', geometry=c(-125.0,38.4,-121.8,40.9))
+  geo2 <- occ(query='Accipiter striatus', from='gbif', geometry=c(-125.0,38.4,-121.8,40.9), limit=30)
   geo3 <- occ(query='Accipiter striatus', from='ecoengine', limit=10, geometry=c(-125.0,38.4,-121.8,40.9))
   bounds <- c(-125.0,38.4,-121.8,40.9)
-  geo4 <- occ(query = 'Danaus plexippus', from="inat", geometry=bounds)
-  geo5 <- occ(query = 'Danaus plexippus', from=c("inat","gbif","ecoengine"), geometry=bounds)
+  geo4 <- occ(query = 'Danaus plexippus', from="inat", geometry=bounds, limit=30)
+  geo5 <- occ(query = 'Danaus plexippus', from=c("inat","gbif","ecoengine"), geometry=bounds, limit=30)
   
   expect_is(geo1, "occdat")
   expect_is(geo2, "occdat")
   expect_is(geo3, "occdat")
   expect_is(geo4, "occdat")
   expect_is(geo5, "occdat")
-  expect_equal(NCOL(geo1$gbif$data[[1]]), 68)
   expect_match(names(geo2$gbif$data), 'Accipiter_striatus')
   expect_equal(NCOL(geo4$inat$data[[1]]), 33)
-  expect_equal(NCOL(geo4$gbif$data[[1]]), 0)
   expect_equal(NCOL(occ2df(geo5)), 4)
 })
 
@@ -118,5 +118,4 @@ test_that("Taxon identifier searches work", {
   expect_is(byid4, "occdat")
   expect_is(byid5, "occdat")
   expect_equal(byid1$bison$meta$source, "bison")
-  expect_equal(NROW(byid4$gbif$data[[1]]), 20)
 })

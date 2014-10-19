@@ -117,15 +117,15 @@ there could be duplicate records since many providers' data eventually ends up w
 \examples{
 \dontrun{
 # Single data sources
-(res <- occ(query = 'Accipiter striatus', from = 'gbif'))
+(res <- occ(query = 'Accipiter striatus', from = 'gbif', limit = 50))
 res$gbif
-(res <- occ(query = 'Accipiter striatus', from = 'ecoengine'))
+(res <- occ(query = 'Accipiter striatus', from = 'ecoengine', limit = 50))
 res$ecoengine
-(res <- occ(query = 'Accipiter striatus', from = 'ebird'))
+(res <- occ(query = 'Accipiter striatus', from = 'ebird', limit = 50))
 res$ebird
-(res <- occ(query = 'Danaus plexippus', from = 'inat'))
+(res <- occ(query = 'Danaus plexippus', from = 'inat', limit = 50))
 res$inat
-(res <- occ(query = 'Bison bison', from = 'bison'))
+(res <- occ(query = 'Bison bison', from = 'bison', limit = 50))
 res$bison
 # Data from AntWeb
 # By species

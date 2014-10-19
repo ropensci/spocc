@@ -45,7 +45,7 @@ foo_gbif <- function(sources, query, limit, geometry, callopts, opts) {
   } else { emptylist(opts) }
 }
 
-move_cols <- function(x, y) 
+move_cols <- function(x, y)
   x[ c(y, names(x)[-sapply(y, function(z) grep(paste0('\\b', z, '\\b'), names(x)))]) ]
 emptylist <- function(opts) list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
 stand_latlon <- function(x){
@@ -186,7 +186,7 @@ foo_inat <- function(sources, query, limit, geometry, callopts, opts) {
         c(temp[2], temp[1], temp[4], temp[3])
       } else { c(geometry[2], geometry[1], geometry[4], geometry[3]) }
     }
-    out <- do.call(get_inat_obs, opts)
+    out <- do.call(spocc_inat_obs, opts)
     if(!is.data.frame(out$data)){
       list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
     } else{
@@ -233,7 +233,7 @@ foo_ebird <- function(sources, query, limit, callopts, opts) {
 }
 
 limit_alias <- function(x, sources){
-  if(length(x) != 0){ 
+  if(length(x) != 0){
     lim_name <- switch(sources, ecoengine="page_size", bison="count", inat="maxresults", ebird="max")
     if("limit" %in% names(x)){
       names(x)[ which(names(x) == "limit") ] <- lim_name

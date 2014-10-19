@@ -12,7 +12,7 @@
 #' Note that the from parameter is lowercased within the function and is called through
 #' match.arg first, so you can match on unique partial strings too (e.g., 'e' for 'ecoengine').
 #' @export
-#' @examples
+#' @examples \donttest{
 #' # opens up documentation for this function
 #' occ_options() 
 #' 
@@ -27,6 +27,7 @@
 #' 
 #' # Or open in html version
 #' occ_options('bison', 'html')
+#' }
 
 occ_options <- function(from = 'gbif', where="console"){
   from <- tolower(from)

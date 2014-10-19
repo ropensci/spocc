@@ -28,6 +28,7 @@ Note that the from parameter is lowercased within the function and is called thr
 'ecoengine').
 }
 \examples{
+\donttest{
 # opens up documentation for this function
 occ_names_options()
 
@@ -38,5 +39,6 @@ occ_names_options('bison')
 
 # Or open in html version
 occ_names_options('bison', 'html')
+}
 }
 

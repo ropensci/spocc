@@ -1,8 +1,9 @@
-#' automatically generate coverages for a spocc search
+#' Automatically generate coverages for a spocc search
+#' 
 #' @description This function will automatically generate metadata for spocc queries that can then be converted to other standards.
 #' @param occObj an search object returned by occ
 #' @param coverage a vector of coverage types to generate.  These include 'temporal','spatial','taxa', or just 'all'.
-#' @export
+#' @keywords internal
 
 occ_coverage <- function(occObj,coverage = 'all'){
   coverage <- match.arg(coverage,choices = c("temporal","spatial","taxa","all"))

@@ -4,10 +4,9 @@ spocc 0.2.2
 NEW FEATURES
 
 * Added new function `occ_names()` to search only for taxonomic names. The goal here is to use ths function if there is some question about what names you want to use to search for occurrences with. (#84). Suggested by @jarioksa
+* New function `occ_names_options()` to quickly get parameter options to pass to `occ_names()`.
 * New `summary()` method for the `occdat` `S3` object that is output from `occ()` (#83)
 * In many places in `spocc` (README, vignette, `occ()` documentation file, at package startup), we make it clear that there could be duplicate records returned in certain scenarios. And a new documentation page detailing what to watch out for: `?spocc_duplicates`. (#77)
-* 
-* 
 
 MINOR IMPROVEMENTS
 
@@ -15,12 +14,7 @@ MINOR IMPROVEMENTS
 * Default is 500 now for the `limit` parameter in `occ()` (#78)
 * You can now pass in `limit` to each functions options parameter, and it will work. Each data source can have a different parameter internally from `limit`, but now internally within `spocc`, we allow you to use `limit` so you don't have to know what the data source specific parameter is. (#81)
 * There is a now a startup message to give information on the package (#79)
-
-BUG FIXES
-
-*
-*
-* 
+* `occ_options()` gains new parameter `where` to print either in the console or to open man file in the IDE, or prints to console in command line R. 
 
 spocc 0.2.0
 ===============

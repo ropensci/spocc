@@ -1,3 +1,10 @@
+spocc 0.2.2.99
+===============
+
+BUG FIXES
+
+* Duplicate, but not working correctly, function `occ2sp()` removed. The function `occ_to_sp()` function is the working version. (#97)
+
 spocc 0.2.2
 ===============
 

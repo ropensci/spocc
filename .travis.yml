@@ -11,6 +11,7 @@ before_script:
 - "./travis-tool.sh install_r rjson leafletR ecoengine ggmap"
 - "./travis-tool.sh github_package sckott/XMLSchema sckott/SSOAP ropensci/rgbif ropensci/rinat
   ropensci/bold ropensci/taxize"
+- "./travis-tool.sh install_bioc sangerseqR"
 notifications:
   slack:
     secure: JgCatgv7Eeh6qHmi3TwWLdKHkCjnr5KHcBzVwy2F4IPafqPMEEhnSFxqP2Td8f7YcPqvdiv/blTGdgIOAi3V64O4fp3NZLLpzINNiL0i9iBZqkT71uw8ovcfrAeIHA9D9gapLtx3D4hdUF9jIyLIW2kMzIvaIA5PiDJ+oZitHow=

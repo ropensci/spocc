@@ -136,40 +136,6 @@ occ2df <- function(obj, what = "data") {
 #       data.frame(name = aw$name, longitude = aw$decimal_longitude, latitude = aw$decimal_latitude, prov = aw$prov))))
 }
 
-#' Occ output or data.frame to sp SpatialPointsDataFrame class
-#'
-#' @import sp assertthat
-#' @param input Output from \code{\link{occ}} or a data.frame
-#' @details Note that you must have a column named latitude and a column named
-#' longitude - any additional columns are fine, but those two columns must exist.
-#' If you are using \code{\link{occ}} this will be done for you as you pass in the
-#' output of occ as an occdat class, but if you pass in a data.frame you should check
-#' this.
-#' @export
-#' @examples \dontrun{
-#' spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Spinus tristis')
-#' out <- occ(query=spnames, from='gbif', limit=25, gbifopts=list(hasCoordinate=TRUE))
-#'
-#' # pass in output of occ directly to occ2sp
-#' occ2sp(out)
-#'
-#' # or make a data.frame first, then pass in
-#' mydf <- occ2df(out)
-#' occ2sp(mydf)
-#' }
-occ2sp <- function(input) {
-    # check class
-    assert_that(is(input, "occdat") | is(input, "data.frame"))
-    dat <- switch(class(input), occdat = occ2df(input), data.frame = input)
-    # check column names
-    assert_that(all(c("latitude", "longitude") %in% names(dat)))
-    # remove NA rows
-    dat <- dat[complete.cases(dat),]
-    # convert to SpatialPointsDataFrame object
-    coordinates(dat) <- c("latitude", "longitude")
-    return(dat)
-}
-
 #' Convert a bounding box to a Well Known Text polygon, and a WKT to a bounding box
 #'
 #' @import rgeos

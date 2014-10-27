@@ -28,7 +28,8 @@ needed.}
 length 4 specifying a bounding box. This parameter searches for occurrences inside a
 box given as a bounding box or polygon described in WKT format. A WKT shape written as
 'POLYGON((30.1 10.1, 20, 20 40, 40 40, 30.1 10.1))' would be queried as is,
-i.e. http://bit.ly/HwUSif. See Details for more examples of WKT objects.}
+i.e. http://bit.ly/HwUSif. See Details for more examples of WKT objects. The format of a
+bounding box is [min-longitude, min-latitude, max-longitude, max-latitude].}
 
 \item{rank}{(character) Taxonomic rank. Not used right now.}
 
@@ -163,7 +164,7 @@ occ(query='Pinus contorta', from=c('gbif','inat'), limit=10)
 # Geometry
 ## Pass in geometry parameter to all sources. This constraints the search to the
 ## specified polygon for all sources, gbif and bison in this example.
-## Check out \\url{http://arthur-e.github.io/Wicket/sandbox-gmaps3.html} to get a WKT string
+## Check out http://arthur-e.github.io/Wicket/sandbox-gmaps3.html to get a WKT string
 occ(query='Accipiter', from='gbif',
    geometry='POLYGON((30.1 10.1, 10 20, 20 60, 60 60, 30.1 10.1))')
 occ(query='Helianthus annuus', from='bison',
@@ -171,12 +172,13 @@ occ(query='Helianthus annuus', from='bison',
                       -110.63 38.67, -111.06 38.84))')
 
 ## Or pass in a bounding box, which is automatically converted to WKT (required by GBIF)
-## via the bbox2wkt function
+## via the bbox2wkt function. The format of a bounding box is
+## [min-longitude, min-latitude, max-longitude, max-latitude].
 occ(query='Accipiter striatus', from='gbif', geometry=c(-125.0,38.4,-121.8,40.9))
 
 ## Bounding box constraint with ecoengine
-# Use this website: \\url{http://boundingbox.klokantech.com/} to quickly grab a bbox.
-Just set the format on the bottom left to CSV.
+## Use this website: http://boundingbox.klokantech.com/ to quickly grab a bbox.
+## Just set the format on the bottom left to CSV.
 occ(query='Accipiter striatus', from='ecoengine', limit=10,
    geometry=c(-125.0,38.4,-121.8,40.9))
 

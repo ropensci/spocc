@@ -12,8 +12,8 @@ install:
 
 build_script:
   - travis-tool.sh install_deps
-  - travis-tool.sh github_package sckott/XMLSchema sckott/SSOAP ropensci/rgbif ropensci/rinat ropensci/bold ropensci/taxize
   - travis-tool.sh install_bioc sangerseqR
+  - travis-tool.sh github_package sckott/XMLSchema sckott/SSOAP ropensci/rgbif ropensci/rinat ropensci/bold ropensci/taxize
 
 test_script:
   - travis-tool.sh run_tests

@@ -10,8 +10,7 @@ foo_gbif <- function(sources, query, limit, geometry, callopts, opts) {
         } else {
           query_use <- opts$taxonKey <- query
         }
-      } else
-      {
+      } else {
         query_use <- query
         if(is.null(query_use)){
           warning(sprintf("No GBIF result found for %s", query))
@@ -19,9 +18,11 @@ foo_gbif <- function(sources, query, limit, geometry, callopts, opts) {
           opts$scientificName <- query_use
         }
       }
-    } else { query_use <- NULL }
+    } else { 
+      query_use <- NULL 
+    }
 
-    if(is.null(query_use) && is.null(geometry)){ emptylist(opts) } else{
+    if(is.null(query_use) && is.null(geometry)){ emptylist(opts) } else {
       time <- now()
       if(!'limit' %in% names(opts)) opts$limit <- limit
       opts$fields <- 'all'
@@ -36,7 +37,9 @@ foo_gbif <- function(sources, query, limit, geometry, callopts, opts) {
           dat <- out$data
           dat$prov <- rep("gbif", nrow(dat))
           dat$name <- as.character(dat$name)
-          dat <- move_cols(x=dat, y=c('name','decimalLongitude','decimalLatitude','issues','prov'))
+          cols <- c('name','decimalLongitude','decimalLatitude','issues','prov')
+          cols <- cols[ cols %in% sort(names(dat)) ]
+          dat <- move_cols(x=dat, y=cols)
           dat <- stand_latlon(dat)
           list(time = time, found = out$meta$count, data = dat, opts = opts)
         }

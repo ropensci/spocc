@@ -12,7 +12,7 @@
 #' Note that the from parameter is lowercased within the function and is called through
 #' match.arg first, so you can match on unique partial strings too (e.g., 'e' for 'ecoengine').
 #' @export
-#' @examples \donttest{
+#' @examples \dontrun{
 #' # opens up documentation for this function
 #' occ_options()
 #'

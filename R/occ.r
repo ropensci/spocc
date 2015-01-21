@@ -161,7 +161,7 @@
 #' occ(query = 'linepithema humile', from = 'antweb', callopts=verbose())
 #' }
 #'
-#' @examples \donttest{
+#' @examples \dontrun{
 #' #### NOTE: no support for multipolygons yet
 #' ## WKT's are more flexible than bounding box's. You can pass in a WKT with multiple
 #' ## polygons like so (you can use POLYGON or MULTIPOLYGON) when specifying more than one

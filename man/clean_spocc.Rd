@@ -38,7 +38,7 @@ We'll continue to add options for cleaning data, but for now, this function:
 }
 }
 \examples{
-\donttest{
+\dontrun{
 res <- occ(query = c('Ursus','Accipiter','Rubus'), from = 'bison', limit=10)
 class(res)
 res_cleaned <- clean_spocc(input=res)

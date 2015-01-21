@@ -37,7 +37,7 @@
 spocc objects and their print, plot, and summary methods
 }
 \examples{
-\donttest{
+\dontrun{
 # occdat object
 res <- occ(query = 'Accipiter striatus', from = 'gbif')
 res

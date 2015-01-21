@@ -29,7 +29,7 @@ Note that the from parameter is lowercased within the function and is called thr
 'ecoengine').
 }
 \examples{
-\donttest{
+\dontrun{
 # opens up documentation for this function
 occ_names_options()
 

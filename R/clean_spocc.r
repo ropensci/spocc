@@ -18,7 +18,7 @@
 #' }
 #' @return Returns an object of class occdat+occlean. See attributes of the return object for
 #' details on cleaning results.
-#' @examples \donttest{
+#' @examples \dontrun{
 #' res <- occ(query = c('Ursus','Accipiter','Rubus'), from = 'bison', limit=10)
 #' class(res)
 #' res_cleaned <- clean_spocc(input=res)

@@ -15,7 +15,7 @@
 #' Note that the from parameter is lowercased within the function and is called through
 #' \code{match.arg} first, so you can match on unique partial strings too (e.g., 'e' for
 #' 'ecoengine').
-#' @examples \donttest{
+#' @examples \dontrun{
 #' # opens up documentation for this function
 #' occ_names_options()
 #'

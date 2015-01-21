@@ -2,15 +2,15 @@
 #'
 #' @import sp rworldmap
 #' @keywords internal
-#' 
+#'
 #' @param x Input, of class occdatind
 #' @param object Input to summary methods
 #' @param ... Further args to print, plot or summary methods
 #' @param n Number of rows to show. If \code{NULL}, the default, will print
 #'   all rows if less than option \code{dplyr.print_max}. Otherwise, will
 #'   print \code{dplyr.print_min}
-#'   
-#' @examples \donttest{
+#'
+#' @examples \dontrun{
 #' # occdat object
 #' res <- occ(query = 'Accipiter striatus', from = 'gbif')
 #' res
@@ -21,13 +21,13 @@
 #' res$gbif
 #' print(res$gbif)
 #' is(res$gbif)
-#' 
+#'
 #' # print summary of occdat object
 #' summary(res)
-#' 
+#'
 #' # print summary of occdatind object
 #' summary(res$gbif)
-#' 
+#'
 #' # plot an occdat object
 #' spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Spinus tristis')
 #' out <- occ(query=spnames, from='gbif', gbifopts=list(hasCoordinate=TRUE))

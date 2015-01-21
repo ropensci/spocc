@@ -20,7 +20,7 @@ Roxygen: list(wrap = FALSE)
 Depends:
     ggplot2
 Imports:
-    rgbif,
+    rgbif (>= 0.7.7),
     rinat (>= 0.1.4),
     rbison (>= 0.3.2),
     ecoengine (>= 1.4),

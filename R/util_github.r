@@ -1,31 +1,3 @@
-#' Function that takes a list of files and creates payload for API
-#' @importFrom RJSONIO toJSON
-#' @param filenames names of files to post
-#' @param description brief description of gist (optional)
-#' @param public whether gist is public (defaults to TRUE)
-#' @export
-#' @keywords internal
-spocc_create_gist <- function(filenames, description = "", public = TRUE) {
-    files <- lapply(filenames, function(file) {
-        x <- list(content = paste(readLines(file, warn = F), collapse = "\n"))
-    })
-    names(files) <- basename(filenames)
-    body <- list(description = description, public = public, files = files)
-    RJSONIO::toJSON(body)
-}
-#' Get Github credentials from use in console
-#' @export
-#' @keywords internal
-spocc_get_credentials <- function() {
-    if (is.null(getOption("github.username"))) {
-        username <- readline("Please enter your github username: ")
-        options(github.username = username)
-    }
-    if (is.null(getOption("github.password"))) {
-        password <- readline("Please enter your github password: ")
-        options(github.password = password)
-    }
-}
 #' Style a data.frame prior to converting to geojson.
 #'
 #' @param input A data.frame

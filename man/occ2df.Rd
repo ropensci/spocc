@@ -16,8 +16,8 @@ Combine results from occ calls to a single data.frame
 }
 \examples{
 \dontrun{
-spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Spinus tristis')
-out <- occ(query=spnames, from='gbif', gbifopts=list(hasCoordinate=TRUE))
+spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Carduelis tristis')
+out <- occ(query=spnames, from='gbif', gbifopts=list(hasCoordinate=TRUE), limit=10)
 occ2df(out)
 }
 }

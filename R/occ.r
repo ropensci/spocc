@@ -3,7 +3,7 @@
 #' Search on a single species name, or many. And search across a single
 #' or many data sources.
 #'
-#' @import rgbif rinat rebird data.table ecoengine rbison AntWeb
+#' @import rgbif rinat rebird ecoengine rbison AntWeb
 #' @importFrom lubridate now
 #' @template occtemp
 #' @export

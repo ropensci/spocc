@@ -28,7 +28,7 @@
 #' @export
 #' @examples \dontrun{
 #' spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta')
-#' dat <- occ(query = spp, from = 'gbif', gbifopts = list(hasCoordinate = TRUE))
+#' dat <- occ(query = spp, from = 'gbif', gbifopts = list(hasCoordinate = TRUE), limit=50)
 #' mapleaflet(data = dat, dest = ".")
 #' 
 #' # An example with more species, a different base map, and different color palette

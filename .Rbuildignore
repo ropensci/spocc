@@ -13,3 +13,4 @@ inst/ignore
 CONTRIBUTING.md
 cran-comments.md
 appveyor.yml
+tests/testthat.R

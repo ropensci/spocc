@@ -1,8 +1,10 @@
 Package: spocc
-Title: R Interface to Many Species Occurrence Data Sources.
+Title: R Interface to Many Species Occurrence Data Sources
 Description: A programmatic interface to many species occurrence data sources,
     including GBIF, USGS's BISON, iNaturalist, Berkeley Ecoinformatics Engine
-    eBird, AntWeb, and more as they sources become easily available.
+    eBird, AntWeb, and more as sources become easily available. This package 
+    includes functionality for retrieving species occurrence data, combining 
+    that data, and creating various kinds of static and interactive maps. 
 Version: 0.2.3.99
 License: MIT + file LICENSE
 Date: 2015-01-20

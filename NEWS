@@ -1,13 +1,17 @@
-spocc 0.2.2.99
+spocc 0.2.4
 ===============
 
 MINOR IMPROVEMENTS
 
 * Improved documentation for bounding boxes, their expected format, etc. (#96)
+* Remove dependency on the following packages: `assertthat`, `plyr`, `data.table`, and `XML` (#102)
+* Using package `gistr` now to post interactive geojson maps on GitHub gists (#100)
+* `rgbif` now must be `v0.7.7` or greater (the latest version on CRAN).
 
 BUG FIXES
 
 * Duplicate, but not working correctly, function `occ2sp()` removed. The function `occ_to_sp()` function is the working version. (#97)
+* Fixed bug where some records returned form GBIF did not have lat/long column headers, and we internally rearranged columns, which caused complete stop when that happened. Fixed now. (#101)
 
 spocc 0.2.2
 ===============

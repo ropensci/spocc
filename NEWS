@@ -12,6 +12,7 @@ BUG FIXES
 
 * Duplicate, but not working correctly, function `occ2sp()` removed. The function `occ_to_sp()` function is the working version. (#97)
 * Fixed bug where some records returned form GBIF did not have lat/long column headers, and we internally rearranged columns, which caused complete stop when that happened. Fixed now. (#101)
+* Changed all `\donttest` to `\dontrun` in examples as requested by CRAN maintainers (#99)
 
 spocc 0.2.2
 ===============

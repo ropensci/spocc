@@ -16,6 +16,8 @@
 #'  \item Removes any NA values of latitude and longitude
 #'  \item Removes points at 0,0 - these points are likely wrong
 #' }
+#' 
+#' Some examples below don't actually work yet, but will soon.
 #' @return Returns an object of class occdat+occlean. See attributes of the return object for
 #' details on cleaning results.
 #' @examples \dontrun{

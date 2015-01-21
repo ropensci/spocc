@@ -36,6 +36,8 @@ We'll continue to add options for cleaning data, but for now, this function:
  \item Removes any NA values of latitude and longitude
  \item Removes points at 0,0 - these points are likely wrong
 }
+
+Some examples below don't actually work yet, but will soon.
 }
 \examples{
 \dontrun{

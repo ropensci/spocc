@@ -97,7 +97,7 @@
 #' # Specify many data sources, another example
 #' ebirdopts = list(region = 'US'); gbifopts  =  list(country = 'US')
 #' out <- occ(query = 'Setophaga caerulescens', from = c('gbif','inat','bison','ebird'),
-#' gbifopts = gbifopts, ebirdopts = ebirdopts)
+#'     gbifopts = gbifopts, ebirdopts = ebirdopts)
 #' occ2df(out)
 #'
 #' # Pass in many species names, combine just data to a single data.frame, and
@@ -112,16 +112,16 @@
 #' library("taxize")
 #' (ids <- get_ids(names=c("Chironomus riparius","Pinus contorta"), db = c('itis','gbif')))
 #' occ(ids = ids[[1]], from='bison')
-#' occ(ids = ids, from=c('bison','gbif'))
+#' occ(ids = ids, from=c('bison','gbif'), limit=20)
 #'
 #' (ids <- get_ids(names="Chironomus riparius", db = 'gbif'))
-#' occ(ids = ids, from='gbif')
+#' occ(ids = ids, from='gbif', limit=20)
 #'
 #' (ids <- get_gbifid("Chironomus riparius"))
-#' occ(ids = ids, from='gbif')
+#' occ(ids = ids, from='gbif', limit=20)
 #'
 #' (ids <- get_tsn('Accipiter striatus'))
-#' occ(ids = ids, from='bison')
+#' occ(ids = ids, from='bison', limit=20)
 #'
 #' # SpatialPolygons/SpatialPolygonsDataFrame integration
 #' library("sp")
@@ -129,7 +129,7 @@
 #' one <- Polygon(cbind(c(91,90,90,91), c(30,30,32,30)))
 #' spone = Polygons(list(one), "s1")
 #' sppoly = SpatialPolygons(list(spone), as.integer(1))
-#' out <- occ(geometry = sppoly)
+#' out <- occ(geometry = sppoly, limit=50)
 #' out$gbif$data
 #'
 #' ## Two polygons in SpatialPolygons class
@@ -139,13 +139,13 @@
 #' spone = Polygons(list(one), "s1")
 #' sptwo = Polygons(list(two), "s2")
 #' sppoly = SpatialPolygons(list(spone, sptwo), 1:2)
-#' out <- occ(geometry = sppoly)
+#' out <- occ(geometry = sppoly, limit=50)
 #' out$gbif$data
 #'
 #' ## Two polygons in SpatialPolygonsDataFrame class
 #' sppoly_df <- SpatialPolygonsDataFrame(sppoly, data.frame(a=c(1,2), b=c("a","b"), c=c(TRUE,FALSE),
 #'    row.names=row.names(sppoly)))
-#' out <- occ(geometry = sppoly_df)
+#' out <- occ(geometry = sppoly_df, limit=50)
 #' out$gbif$data
 #'
 #' # curl debugging

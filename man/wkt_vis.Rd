@@ -18,7 +18,7 @@ browser, and static uses ggplot based ggmap package.}
 }
 \description{
 This can be helpful in visualizing the area in which you are searching for
-occurrences with the \code{occ} function.
+occurrences with the \code{\link{occ}} function.
 }
 \examples{
 \dontrun{

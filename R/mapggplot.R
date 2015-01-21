@@ -6,11 +6,11 @@
 #' @param zoom zoom level for map. Adjust depending on how your data look.
 #' @param point_color Default color of your points
 #' @examples \dontrun{
-#' ecoengine_data <- occ(query = 'Lynx rufus californicus', from = 'ecoengine')
+#' ecoengine_data <- occ(query = 'Lynx rufus californicus', from = 'ecoengine', limit=100)
 #' mapggplot(ecoengine_data)
-#' gbif_data <- occ(query = 'Accipiter striatus', from = 'gbif')
+#' gbif_data <- occ(query = 'Accipiter striatus', from = 'gbif', limit=100)
 #' mapggplot(gbif_data)
-#' bison_data <- occ(query = 'Accipiter striatus', from = 'bison', bisonopts=list(count=100))
+#' bison_data <- occ(query = 'Accipiter striatus', from = 'bison', limit=100)
 #' mapggplot(bison_data)
 #'}
 mapggplot <- function(df, zoom = 5, point_color = "#86161f") {

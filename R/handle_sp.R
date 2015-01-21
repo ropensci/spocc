@@ -4,6 +4,7 @@
 #' sp object, separate calls are made to the web API since they don't support MULTIPOLYGON.
 #'
 #' @import rgeos
+#' @param spobj A spatial object
 #' @return One or more WKT strings
 #' @keywords internal
 #' @examples \dontrun{

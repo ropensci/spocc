@@ -32,12 +32,12 @@ string - making data easier to deal with for making maps, etc.
 \examples{
 \dontrun{
 spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta')
-dat <- occ(spp, from='gbif', gbifopts=list(hasCoordinate=TRUE))
+dat <- occ(spp, from='gbif', gbifopts=list(hasCoordinate=TRUE), limit=50)
 fixnames(dat, how="shortest")$gbif
 fixnames(dat, how="query")$gbif
 fixnames(dat, how="supplied", namevec = c('abc', 'def', 'ghi'))$gbif
 
-dat <- occ(spp, from='ecoengine')
+dat <- occ(spp, from='ecoengine', limit=50)
 ## doesn't changes things
 fixnames(dat, how="shortest")$ecoengine$data$Danaus_plexippus
 ## this is better

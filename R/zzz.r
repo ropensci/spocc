@@ -68,14 +68,14 @@ spocc_blanktheme <- function() {
 #' }
 occ2df <- function(obj, what = "data") {
     what <- match.arg(what, choices = c("all", "data"))
-    foolist <- function(x) do.call(rbind.fill, x$data)
+    foolist <- function(x) do.call(rbind_fill, x$data)
     aa <- foolist(obj$gbif)
     bb <- foolist(obj$bison)
     cc <- foolist(obj$inat)
     dd <- foolist(obj$ebird)
     ee <- foolist(obj$ecoengine)
     aw <- foolist(obj$antweb)
-    tmp <- data.frame(rbind.fill(
+    tmp <- data.frame(rbind_fill(
       lapply(list(aa, bb, cc, dd, ee, aw), function(x){
         if(NROW(x) == 0) data.frame(NULL) else x[ , c('name','longitude','latitude','prov') ]
       })

@@ -27,10 +27,10 @@
 #' mapgist(data=dat$ecoengine, color=c('#976AAE','#6B944D','#BD5945'))
 #' 
 #' # Define colors and marker size
-#' mapgist(data=df, color=c('#976AAE','#6B944D','#BD5945'), size=c('small','medium','large'))
+#' mapgist(data=dat, color=c('#976AAE','#6B944D','#BD5945'), size=c('small','medium','large'))
 #' 
 #' # Define symbols
-#' mapgist(data=df, symbol=c('park','zoo','garden'))
+#' mapgist(data=dat, symbol=c('park','zoo','garden'))
 #' }
 
 mapgist <- function(data, description = "", file = "gistmap", dir = NULL, 

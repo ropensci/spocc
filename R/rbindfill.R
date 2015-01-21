@@ -1,4 +1,4 @@
-rbind.fill <- function (...) {
+rbind_fill <- function (...) {
   dfs <- list(...)
   if (length(dfs) == 0)
     return()
@@ -12,7 +12,7 @@ rbind.fill <- function (...) {
     return(dfs[[1]])
   is_df <- vapply(dfs, is.data.frame, logical(1))
   if (any(!is_df)) {
-    stop("All inputs to rbind.fill must be data.frames",
+    stop("All inputs to rbind_fill must be data.frames",
          call. = FALSE)
   }
   rows <- unlist(lapply(dfs, .row_names_info, 2L))
@@ -61,7 +61,7 @@ allocate_column <- function (example, nrows, dfs, var) {
   a$names <- NULL
   a$class <- NULL
   if (is.data.frame(example)) {
-    stop("Data frame column '", var, "' not supported by rbind.fill")
+    stop("Data frame column '", var, "' not supported by rbind_fill")
   }
   if (is.array(example)) {
     if (length(dim(example)) > 1) {

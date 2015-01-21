@@ -4,15 +4,11 @@
 \alias{mapleaflet}
 \title{Make an interactive map to view in the browser}
 \usage{
-mapleaflet(data, popup = TRUE, map_provider = "osm", zoom = 3,
+mapleaflet(dat, popup = TRUE, map_provider = "osm", zoom = 3,
   title = "map", size, centerview = c(30, -73.9), dest = ".",
   overwrite = TRUE, incl.data = TRUE)
 }
 \arguments{
-\item{data}{A data.frame, with any number of columns, but with at least the
-following: name (the taxonomic name), latitude (in dec. deg.), longitude
-(in dec. deg.)}
-
 \item{popup}{If TRUE (default) popup tooltips are created for each point with
 metadta for that point.}
 
@@ -36,9 +32,15 @@ in your browser to view it. If left as NULL (the default) the map opens up in
 your default browser, or if you have a newer version of RStudio open in RStudio
 Viewer pane.}
 
-\item{overwrite}{Default is \code{TRUE}. Set to \code{FALSE} to prevent overwriting local files}
+\item{overwrite}{Default: \code{TRUE}. Set to \code{FALSE} to prevent overwriting local files}
 
-\item{incl.data}{Default is \code{TRUE}. Writes geoJSON data into the html file to get around security restrictions in browsers like Google Chrome. Set to \code{FALSE} to read from a separate local geoJSON file.}
+\item{incl.data}{Default: \code{TRUE}. Writes geoJSON data into the html file to get around
+security restrictions in browsers like Google Chrome. Set to \code{FALSE} to read from a
+separate local geoJSON file.}
+
+\item{data}{A data.frame, with any number of columns, but with at least the
+following: name (the taxonomic name), latitude (in dec. deg.), longitude
+(in dec. deg.)}
 }
 \description{
 Make an interactive map to view in the browser
@@ -52,13 +54,13 @@ NOTE that with some map_provider options you will have no map layer
 \dontrun{
 spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta')
 dat <- occ(query = spp, from = 'gbif', gbifopts = list(hasCoordinate = TRUE), limit=50)
-mapleaflet(data = dat, dest = ".")
+mapleaflet(dat, dest = ".")
 
 # An example with more species, a different base map, and different color palette
 spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta','Puma concolor',
 'Ursus americanus','Gymnogyps californianus')
-dat <- occ(query = spp, from = 'gbif', gbifopts = list(hasCoordinate = TRUE))
-mapleaflet(data, map_provider = 'toner')
+dat <- occ(query = spp, from = 'gbif', gbifopts = list(hasCoordinate = TRUE), limit=50)
+mapleaflet(dat, map_provider = 'toner')
 }
 }
 

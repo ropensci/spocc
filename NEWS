@@ -7,6 +7,7 @@ MINOR IMPROVEMENTS
 * Remove dependency on the following packages: `assertthat`, `plyr`, `data.table`, and `XML` (#102)
 * Using package `gistr` now to post interactive geojson maps on GitHub gists (#100)
 * `rgbif` now must be `v0.7.7` or greater (the latest version on CRAN).
+* Removed the startup message.
 
 BUG FIXES
 

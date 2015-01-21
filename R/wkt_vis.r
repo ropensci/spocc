@@ -1,8 +1,7 @@
 #' Visualize well-known text area's on a map.
 #'
 #' This can be helpful in visualizing the area in which you are searching for
-#' occurrences with the \code{occ} function.
-#'
+#' occurrences with the \code{\link{occ}} function.
 #'
 #' @import ggmap ggplot2 rgeos whisker
 #' @export

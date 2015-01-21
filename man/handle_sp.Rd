@@ -6,6 +6,9 @@
 \usage{
 handle_sp(spobj)
 }
+\arguments{
+\item{spobj}{A spatial object}
+}
 \value{
 One or more WKT strings
 }

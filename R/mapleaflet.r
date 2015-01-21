@@ -3,7 +3,7 @@
 #' @import leafletR
 #' @export
 #' 
-#' @param data A data.frame, with any number of columns, but with at least the 
+#' @param dat A data.frame, with any number of columns, but with at least the 
 #'    following: name (the taxonomic name), latitude (in dec. deg.), longitude  
 #'    (in dec. deg.)
 #' @param popup If TRUE (default) popup tooltips are created for each point with

@@ -9,6 +9,10 @@ mapleaflet(dat, popup = TRUE, map_provider = "osm", zoom = 3,
   overwrite = TRUE, incl.data = TRUE)
 }
 \arguments{
+\item{dat}{A data.frame, with any number of columns, but with at least the
+following: name (the taxonomic name), latitude (in dec. deg.), longitude
+(in dec. deg.)}
+
 \item{popup}{If TRUE (default) popup tooltips are created for each point with
 metadta for that point.}
 
@@ -37,10 +41,6 @@ Viewer pane.}
 \item{incl.data}{Default: \code{TRUE}. Writes geoJSON data into the html file to get around
 security restrictions in browsers like Google Chrome. Set to \code{FALSE} to read from a
 separate local geoJSON file.}
-
-\item{data}{A data.frame, with any number of columns, but with at least the
-following: name (the taxonomic name), latitude (in dec. deg.), longitude
-(in dec. deg.)}
 }
 \description{
 Make an interactive map to view in the browser

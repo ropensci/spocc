@@ -41,7 +41,8 @@ Imports:
     leafletR (>= 0.2-0),
     data.table,
     assertthat,
-    whisker
+    whisker,
+    gistr
 Suggests:
     roxygen2,
     testthat,

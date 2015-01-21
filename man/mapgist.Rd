@@ -5,7 +5,7 @@
 \title{Make an interactive map to view in the browser as a Github gist}
 \usage{
 mapgist(data, description = "", file = "gistmap", dir = NULL,
-  browse = TRUE, ...)
+  public = TRUE, browse = TRUE, ...)
 }
 \arguments{
 \item{data}{A data.frame, with any number of columns, but with at least the
@@ -19,32 +19,22 @@ following: name (the taxonomic name), latitude (in dec. deg.), longitude
 \item{dir}{Directory for storing file and reading it back in to create gist.
 If none is given, this function gets your working directory and uses that.}
 
+\item{public}{(logical) Whether gist is public (default: TRUE)}
+
 \item{browse}{If TRUE (default) the map opens in your default browser.}
 
 \item{...}{Further arguments passed on to \code{spocc_stylegeojson}}
 }
-\value{
-Creates a gist on your Github account, and prints out where the geojson file was
-written on your machinee, the url for the gist, and an embed script in the console.
-}
 \description{
-You will be asked ot enter you Github credentials (username, password) during
-each session, but only once for each session. Alternatively, you could enter
-your credentials into your .Rprofile file with the entries
-
-\itemize{
- \item options(github.username = 'your_github_username')
- \item options(github.password = 'your_github_password')
+Make an interactive map to view in the browser as a Github gist
 }
-
-then \code{mapgist} will simply read those options.
-
-\code{mapgist} has modified code from the rCharts package by Ramnath Vaidyanathan
+\details{
+See \code{\link[gistr]{gist_auth}} for help on authentication
 }
 \examples{
 \dontrun{
 spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta')
-dat <- occ(spp, from=c('gbif','ecoengine'), gbifopts=list(hasCoordinate=TRUE))
+dat <- occ(spp, from=c('gbif','ecoengine'), limit=30, gbifopts=list(hasCoordinate=TRUE))
 dat <- fixnames(dat, "query")
 
 # Define colors

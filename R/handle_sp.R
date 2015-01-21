@@ -3,7 +3,7 @@
 #' Input various sp objects (e.g., x, y, z) and output WKT objects. If multiple polygons in the
 #' sp object, separate calls are made to the web API since they don't support MULTIPOLYGON.
 #'
-#' @import assertthat rgeos
+#' @import rgeos
 #' @return One or more WKT strings
 #' @keywords internal
 #' @examples \dontrun{
@@ -43,7 +43,7 @@
 
 handle_sp <- function(spobj){
   wkt <- writeWKT(spgeom = spobj, byid = TRUE)
-  assert_that(is.numeric(length(wkt)))
-  assert_that(length(wkt) > 0)
+  stopifnot(is.numeric(length(wkt)))
+  stopifnot(length(wkt) > 0)
   return( wkt )
 }

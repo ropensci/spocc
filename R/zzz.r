@@ -170,9 +170,9 @@ occ2df <- function(obj, what = "data") {
 bbox2wkt <- function(minx=NA, miny=NA, maxx=NA, maxy=NA, bbox=NULL){
   if(is.null(bbox)) bbox <- c(minx, miny, maxx, maxy)
 
-  assert_that(length(bbox)==4) #check for 4 digits
-  assert_that(noNA(bbox)) #check for NAs
-  assert_that(is.numeric(as.numeric(bbox))) #check for numeric-ness
+  stopifnot(length(bbox)==4) #check for 4 digits
+  stopifnot(noNA(bbox)) #check for NAs
+  stopifnot(is.numeric(as.numeric(bbox))) #check for numeric-ness
   paste('POLYGON((',
         sprintf('%s %s',bbox[1],bbox[2]), ',', sprintf(' %s %s',bbox[3],bbox[2]), ',',
         sprintf(' %s %s',bbox[3],bbox[4]), ',', sprintf(' %s %s',bbox[1],bbox[4]), ',',
@@ -185,7 +185,7 @@ bbox2wkt <- function(minx=NA, miny=NA, maxx=NA, maxy=NA, bbox=NULL){
 #' @rdname bbox2wkt
 
 wkt2bbox <- function(wkt=NULL){
-  assert_that(!is.null(wkt))
+  stopifnot(!is.null(wkt))
   tmp <- bbox(readWKT(wkt))
   as.vector(tmp)
 }
@@ -315,37 +315,37 @@ spocc_obj_type <- function (x)
 spocc_compact <- function (l) Filter(Negate(is.null), l)
 
 spocc_inat_obs <- function(query=NULL,taxon = NULL,quality=NULL,geo=NULL,year=NULL,month=NULL,day=NULL,bounds=NULL,maxresults=100,meta=FALSE)
-{  
-  
+{
+
   ## Parsing and error-handling of input strings
   search <- ""
   if(!is.null(query)){
     search <- paste(search,"&q=",gsub(" ","+",query),sep="")
   }
-  
+
   if(!is.null(quality)){
     if(!sum(grepl(quality,c("casual","research")))){
       stop("Please enter a valid quality flag,'casual' or 'research'.")
     }
-    
+
     search <- paste(search,"&quality_grade=",quality,sep="")
   }
-  
+
   if(!is.null(taxon)){
     search <-  paste(search,"&taxon_name=",gsub(" ","+",taxon),sep="")
   }
-  
+
   if(!is.null(geo) && geo){
     search <- paste(search,"&has[]=geo",sep="")
   }
-  
+
   if(!is.null(year)){
     if(length(year) > 1){
       stop("you can only filter results by one year, please enter only one value for year")
     }
     search <- paste(search,"&year=",year,sep="")
   }
-  
+
   if(!is.null(month)){
     month <- as.numeric(month)
     if(is.na(month)){
@@ -357,7 +357,7 @@ spocc_inat_obs <- function(query=NULL,taxon = NULL,quality=NULL,geo=NULL,year=NU
     if(month < 1 || month > 12){ stop("Please enter a valid month between 1 and 12")}
     search <- paste(search,"&month=",month,sep="")
   }
-  
+
   if(!is.null(day)){
     day <- as.numeric(day)
     if(is.na(day)){
@@ -367,16 +367,16 @@ spocc_inat_obs <- function(query=NULL,taxon = NULL,quality=NULL,geo=NULL,year=NU
       stop("you can only filter results by one day, please enter only one value for day")
     }
     if(day < 1 || day > 31){ stop("Please enter a valid day between 1 and 31")}
-    
+
     search <- paste(search,"&day=",day,sep="")
   }
-  
+
   if(!is.null(bounds)){
     if(length(bounds) != 4){stop("bounding box specifications must have 4 coordinates")}
     search <- paste(search,"&swlat=",bounds[1],"&swlng=",bounds[2],"&nelat=",bounds[3],"&nelng=",bounds[4],sep="")
-    
+
   }
-  
+
   base_url <- "http://www.inaturalist.org/"
   q_path <- "observations.csv"
   ping_path <- "observations.json"
@@ -386,16 +386,16 @@ spocc_inat_obs <- function(query=NULL,taxon = NULL,quality=NULL,geo=NULL,year=NU
   ### that come down in CSV format
   ping <-  GET(base_url, path = ping_path, query = ping_query)
   total_res <- as.numeric(ping$headers$`x-total-entries`)
-  
+
   if(total_res == 0){
     stop("Your search returned zero results.  Either your species of interest has no records or you entered an invalid search")
   }
-  
+
   page_query <- paste(search,"&per_page=200&page=1",sep="")
   data <-  GET(base_url, path = q_path, query = page_query)
   data <- spocc_inat_handle(data)
   data_out <- if(is.na(data)) NA else read.csv(textConnection(data), stringsAsFactors = FALSE)
-  
+
   if(total_res < maxresults) maxresults <- total_res
   if(maxresults > 200){
     for(i in 2:ceiling(maxresults/200)){
@@ -405,15 +405,15 @@ spocc_inat_obs <- function(query=NULL,taxon = NULL,quality=NULL,geo=NULL,year=NU
       data_out <- rbind(data_out, read.csv(textConnection(data), stringsAsFactors = FALSE))
     }
   }
-  
+
   if(is.data.frame(data_out)){
     if(maxresults < dim(data_out)[1]){
       data_out <- data_out[1:maxresults,]
     }
   }
-  
-  if(meta){ 
-    return(list(meta=list(found=total_res, returned=nrow(data_out)), data=data_out)) 
+
+  if(meta){
+    return(list(meta=list(found=total_res, returned=nrow(data_out)), data=data_out))
   } else { return(data_out) }
 }
 

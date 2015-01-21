@@ -101,7 +101,6 @@ spocc_blanktheme <- function() {
 }
 
 #' Combine results from occ calls to a single data.frame
-#' @importFrom plyr rbind.fill
 #' @param obj Input from occ
 #' @param what One of data (default) or all (with metadata)
 #' @export
@@ -171,7 +170,7 @@ bbox2wkt <- function(minx=NA, miny=NA, maxx=NA, maxy=NA, bbox=NULL){
   if(is.null(bbox)) bbox <- c(minx, miny, maxx, maxy)
 
   stopifnot(length(bbox)==4) #check for 4 digits
-  stopifnot(noNA(bbox)) #check for NAs
+  stopifnot(!any(is.na(bbox))) #check for NAs
   stopifnot(is.numeric(as.numeric(bbox))) #check for numeric-ness
   paste('POLYGON((',
         sprintf('%s %s',bbox[1],bbox[2]), ',', sprintf(' %s %s',bbox[3],bbox[2]), ',',
@@ -312,7 +311,7 @@ spocc_obj_type <- function (x)
 }
 
 
-spocc_compact <- function (l) Filter(Negate(is.null), l)
+sc <- function (l) Filter(Negate(is.null), l)
 
 spocc_inat_obs <- function(query=NULL,taxon = NULL,quality=NULL,geo=NULL,year=NULL,month=NULL,day=NULL,bounds=NULL,maxresults=100,meta=FALSE)
 {

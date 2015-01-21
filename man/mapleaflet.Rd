@@ -13,7 +13,7 @@ mapleaflet(dat, popup = TRUE, map_provider = "osm", zoom = 3,
 following: name (the taxonomic name), latitude (in dec. deg.), longitude
 (in dec. deg.)}
 
-\item{popup}{If TRUE (default) popup tooltips are created for each point with
+\item{popup}{If \code{TRUE} (default) popup tooltips are created for each point with
 metadta for that point.}
 
 \item{map_provider}{Base map to use. One or a list of 'osm' (OpenStreetMap

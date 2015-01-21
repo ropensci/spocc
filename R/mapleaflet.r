@@ -6,7 +6,7 @@
 #' @param dat A data.frame, with any number of columns, but with at least the 
 #'    following: name (the taxonomic name), latitude (in dec. deg.), longitude  
 #'    (in dec. deg.)
-#' @param popup If TRUE (default) popup tooltips are created for each point with
+#' @param popup If \code{TRUE} (default) popup tooltips are created for each point with
 #'    metadta for that point.
 #' @param map_provider Base map to use. One or a list of 'osm' (OpenStreetMap 
 #'    standard map), 'tls' (Thunderforest Landscape), 'cm' (CloudMade), 'mqosm' 

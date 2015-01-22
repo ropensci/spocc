@@ -14,4 +14,3 @@ CONTRIBUTING.md
 cran-comments.md
 appveyor.yml
 README.Rmd
-tests/testthat.R

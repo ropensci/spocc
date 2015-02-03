@@ -83,12 +83,6 @@ occ2df <- function(obj, what = "data") {
     tmpout <- list(meta = list(obj$gbif$meta, obj$bison$meta, obj$inat$meta, obj$ebird$meta,
         obj$ecoengine$meta, obj$aw$meta), data = tmp)
     if(what %in% "data") tmpout$data else tmpout
-#       data.frame(name = aa$name, longitude = aa$decimalLongitude, latitude = aa$decimalLatitude, prov = aa$prov),
-#       data.frame(name = bb$name, longitude = bb$decimalLongitude, latitude = bb$decimalLatitude, prov = bb$prov),
-#       data.frame(name = cc$name, longitude = cc$Longitude, latitude = cc$Latitude, prov = cc$prov),
-#       data.frame(name = dd$name, longitude = dd$lng, latitude = dd$lat, prov = dd$prov),
-#       data.frame(name = ee$name, longitude = ee$longitude, latitude = ee$latitude, prov = ee$prov),
-#       data.frame(name = aw$name, longitude = aw$decimal_longitude, latitude = aw$decimal_latitude, prov = aw$prov))))
 }
 
 #' Convert a bounding box to a Well Known Text polygon, and a WKT to a bounding box

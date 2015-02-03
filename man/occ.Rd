@@ -119,7 +119,7 @@ there could be duplicate records since many providers' data eventually ends up w
 \examples{
 \dontrun{
 # Single data sources
-(res <- occ(query = 'Accipiter striatus', from = 'gbif', limit = 50))
+(res <- occ(query = 'Accipiter striatus', from = 'gbif', limit = 5))
 res$gbif
 (res <- occ(query = 'Accipiter striatus', from = 'ecoengine', limit = 50))
 res$ecoengine
@@ -149,7 +149,7 @@ res <- occ(query = 'Accipiter striatus', from = c('gbif','ecoengine'),
 res
 
 # Many data sources
-(out <- occ(query = 'Pinus contorta', from=c('gbif','bison')))
+(out <- occ(query = 'Pinus contorta', from=c('gbif','bison'), limit=10))
 
 ## Select individual elements
 out$gbif
@@ -213,7 +213,7 @@ occ2df(out)
 # Pass in many species names, combine just data to a single data.frame, and
 # first six rows
 spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Spinus tristis')
-out <- occ(query = spnames, from = 'gbif', gbifopts = list(hasCoordinate = TRUE))
+out <- occ(query = spnames, from = 'gbif', gbifopts = list(hasCoordinate = TRUE), limit=25)
 df <- occ2df(out)
 head(df)
 
@@ -221,7 +221,7 @@ head(df)
 ## You can pass in taxonomic identifiers
 library("taxize")
 (ids <- get_ids(names=c("Chironomus riparius","Pinus contorta"), db = c('itis','gbif')))
-occ(ids = ids[[1]], from='bison')
+occ(ids = ids[[1]], from='bison', limit=20)
 occ(ids = ids, from=c('bison','gbif'), limit=20)
 
 (ids <- get_ids(names="Chironomus riparius", db = 'gbif'))

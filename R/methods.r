@@ -39,21 +39,37 @@ NULL
 #' @export
 #' @rdname spocc_objects
 print.occdat <- function(x, ...) {
-    rows <- lapply(x, function(y) vapply(y$data, nrow, numeric(1)))
-    perspp <- lapply(rows, function(z) c(sum(z), length(z)))
-    cat("Summary of results - occurrences found for:", "\n")
-    cat(" gbif  :", perspp$gbif[1], "records across", perspp$gbif[2], "species",
-        "\n")
-    cat(" bison : ", perspp$bison[1], "records across", perspp$bison[2], "species",
-        "\n")
-    cat(" inat  : ", perspp$inat[1], "records across", perspp$inat[2], "species",
-        "\n")
-    cat(" ebird : ", perspp$ebird[1], "records across", perspp$ebird[2], "species",
-        "\n")
-    cat(" ecoengine : ", perspp$ecoengine[1], "records across", perspp$ecoengine[2],
-        "species", "\n")
-    cat(" antweb : ", perspp$antweb[1], "records across", perspp$antweb[2],
-        "species", "\n")
+  rows <- lapply(x, function(y) vapply(y$data, nrow, numeric(1)))
+  perspp <- lapply(rows, function(z) c(sum(z), length(z)))
+  searched <- attr(x, "searched")
+  found <- pluck(pluck(x[searched], "meta"), "found")
+  cat(sprintf("Searched: %s", paste0(searched, collapse = ", ")), sep = "\n")
+  cat(sprintf("Occurrences - Found: %s, Returned: %s", founded(found), fdec(rows)), sep = "\n")
+  cat(sprintf("Search type: %s", gettype(x)), sep = "\n")
+  if(gettype(x) == "Scientific"){
+    invisible(lapply(x, catif))
+  }
+}
+
+gettype <- function(x){
+  y <- unique(unlist(unname(sc(pluck(pluck(x, "meta"), "type")))))
+  switch(y, 
+         sci = "Scientific",
+         vern = "Vernacular",
+         geometry = "Geometry")
+}
+fdec <- function(x) format(sum(unlist(x, recursive = TRUE)), big.mark = ",")
+founded <- function(b){
+  tmp <- format(sum(unlist(b, recursive = TRUE)), big.mark = ",")
+  nofound <- names(b[vapply(b, is.null, logical(1))])
+  if(length(nofound) != 0) 
+    paste0(tmp, sprintf(" (no found data for %s)", paste0(nofound, collapse = ", ")), collapse = " ")
+  else
+    tmp
+}
+catif <- function(z){
+  if(!is.null(z$meta$time))
+    cat(sprintf("  %s: %s", z$meta$source, spocc_wrap(pastemax(z$data, n = 3))), sep = "\n")
 }
 
 #' @export
@@ -88,10 +104,14 @@ summary.occdatind <- function(object, ...){
 
 nn <- function(x) if(is.null(x)) "" else x
 
-pastemax <- function(z, n=10){
-  rrows <- vapply(z, nrow, integer(1))
-  tt <- list(); for(i in seq_along(rrows)){ tt[[i]] <- sprintf("%s (%s)", gsub("_", " ", names(rrows[i])), rrows[[i]]) }
-  paste0(tt, collapse = ", ")
+pastemax <- function(w, n=10){
+  rrows <- vapply(w, nrow, integer(1))
+  tt <- list()
+  for(i in seq_along(rrows)){
+    tt[[i]] <- sprintf("%s (%s)", gsub("_", " ", names(rrows[i])), rrows[[i]]) 
+  }
+  n <- min(n, length(tt))
+  paste0(tt[1:n], collapse = ", ")
 }
 
 occinddf <- function(obj) {

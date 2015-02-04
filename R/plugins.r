@@ -143,27 +143,38 @@ foo_bison <- function(sources, query, limit, geometry, callopts, opts) {
     if(class(query) %in% c("ids","tsn")){
       if(class(query) %in% "ids"){
         opts$tsn <- query$itis
-      } else
-      {
+      } else {
         opts$tsn <- query
       }
-    } else
-    { opts$species <- query }
+      bisonfxn <- bison
+    } else {
+      if(is.null(geometry)){
+        opts$scientificName <- query 
+        bisonfxn <- bison_solr
+      } else {
+        opts$species <- query 
+        bisonfxn <- bison
+      }
+    }
 
     time <- now()
     if(!'count' %in% names(opts)) opts$count <- limit
     opts$config <- callopts
-    #     opts$what <- 'points'
+    
     if(!is.null(geometry)){
       opts$aoi <- if(grepl('POLYGON', paste(as.character(geometry), collapse=" "))){
-        geometry } else { bbox2wkt(bbox=geometry) }
+        geometry 
+      } else { 
+        bbox2wkt(bbox=geometry) 
+      }
     }
-    out <- do.call(bison, opts)
+    out <- do.call(bisonfxn, opts)
     if(is.null(out$points)){
       list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
     } else{
       dat <- out$points
       dat$prov <- rep("bison", nrow(dat))
+      if(is.null(geometry)) dat <- rename(dat, c('scientificName' = 'name'))
       dat <- stand_latlon(dat)
       list(time = time, found = out$summary$total, data = dat, opts = opts)
     }

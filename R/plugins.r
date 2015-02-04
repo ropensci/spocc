@@ -139,26 +139,30 @@ foo_antweb <- function(sources, query, limit, geometry, callopts, opts) {
 #' @noRd
 foo_bison <- function(sources, query, limit, geometry, callopts, opts) {
   if(any(grepl("bison", sources))) {
-    opts <- limit_alias(opts, "bison")
+    opts <- limit_alias(opts, "bison", geometry)
     if(class(query) %in% c("ids","tsn")){
       if(class(query) %in% "ids"){
-        opts$tsn <- query$itis
+        opts$TSNs <- query$itis
       } else {
-        opts$tsn <- query
+        opts$TSNs <- query
       }
-      bisonfxn <- bison
+      bisonfxn <- "bison_solr"
     } else {
       if(is.null(geometry)){
         opts$scientificName <- query 
-        bisonfxn <- bison_solr
+        bisonfxn <- "bison_solr"
       } else {
         opts$species <- query 
-        bisonfxn <- bison
+        bisonfxn <- "bison"
       }
     }
 
     time <- now()
-    if(!'count' %in% names(opts)) opts$count <- limit
+    if(bisonfxn == "bison"){
+      if(!'count' %in% names(opts)) opts$count <- limit
+    } else {
+      if(!'rows' %in% names(opts)) opts$rows <- limit
+    }
     opts$config <- callopts
     
     if(!is.null(geometry)){
@@ -168,15 +172,16 @@ foo_bison <- function(sources, query, limit, geometry, callopts, opts) {
         bbox2wkt(bbox=geometry) 
       }
     }
-    out <- do.call(bisonfxn, opts)
+    out <- do.call(eval(parse(text = bisonfxn)), opts)
     if(is.null(out$points)){
       list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
     } else{
       dat <- out$points
       dat$prov <- rep("bison", nrow(dat))
-      if(is.null(geometry) && !class(query) %in% c("ids","tsn")) dat <- rename(dat, c('scientificName' = 'name'))
+      if(bisonfxn == "bison_solr") dat <- rename(dat, c('scientificName' = 'name'))
       dat <- stand_latlon(dat)
-      list(time = time, found = out$summary$total, data = dat, opts = opts)
+      found <- if(bisonfxn == "bison_solr") out$num_found else out$summary$total
+      list(time = time, found = found, data = dat, opts = opts)
     }
   } else {
     list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
@@ -246,9 +251,10 @@ foo_ebird <- function(sources, query, limit, callopts, opts) {
   }
 }
 
-limit_alias <- function(x, sources){
+limit_alias <- function(x, sources, geometry=NULL){
+  bisonvar <- if(is.null(geometry)) 'rows' else 'count'
   if(length(x) != 0){
-    lim_name <- switch(sources, ecoengine="page_size", bison="count", inat="maxresults", ebird="max")
+    lim_name <- switch(sources, ecoengine="page_size", bison=bisonvar, inat="maxresults", ebird="max")
     if("limit" %in% names(x)){
       names(x)[ which(names(x) == "limit") ] <- lim_name
       x

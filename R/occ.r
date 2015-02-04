@@ -96,7 +96,7 @@
 #' # Specify many data sources, another example
 #' ebirdopts = list(region = 'US'); gbifopts  =  list(country = 'US')
 #' out <- occ(query = 'Setophaga caerulescens', from = c('gbif','inat','bison','ebird'),
-#'     gbifopts = gbifopts, ebirdopts = ebirdopts)
+#'     gbifopts = gbifopts, ebirdopts = ebirdopts, limit=20)
 #' occ2df(out)
 #'
 #' # Pass in many species names, combine just data to a single data.frame, and
@@ -218,10 +218,9 @@ occ <- function(query = NULL, from = "gbif", limit = 500, geometry = NULL, rank 
   }
 
   # check that one of query or ids is non-NULL
-#   assert_that(xor(!is.null(query), !is.null(ids), !is.null(geometry)))
-   if(!any(!is.null(query), !is.null(ids), !is.null(geometry)))
-     stop("One of query, ids, or geometry parameters must be non-NULL")
-
+  if(!any(!is.null(query), !is.null(ids), !is.null(geometry)))
+    stop("One of query, ids, or geometry parameters must be non-NULL")
+  
   if(is.null(ids) && !is.null(query)){
     # If query not null (taxonomic names passed in)
     tmp <- lapply(query, loopfun, y=limit, z=geometry, w=callopts)

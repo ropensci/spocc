@@ -76,14 +76,23 @@ occ2df <- function(obj, what = "data") {
     ee <- foolist(obj$ecoengine)
     aw <- foolist(obj$antweb)
     tmp <- data.frame(rbind_fill(
-      lapply(list(aa, bb, cc, dd, ee, aw), function(x){
-        if(NROW(x) == 0) data.frame(NULL) else x[ , c('name','longitude','latitude','prov') ]
-      })
+      Map(
+        function(x, y){
+          if(NROW(x) == 0){
+            data.frame(NULL)
+          } else {
+            rename(x[ , c('name','longitude','latitude','prov',datemap[[y]]) ], setNames("date", datemap[[y]]))
+          }
+        }, 
+        list(aa, bb, cc, dd, ee, aw), c('gbif','bison','inat','ebird','ecoengine','antweb')
+      )
     ))
     tmpout <- list(meta = list(obj$gbif$meta, obj$bison$meta, obj$inat$meta, obj$ebird$meta,
         obj$ecoengine$meta, obj$aw$meta), data = tmp)
     if(what %in% "data") tmpout$data else tmpout
 }
+
+datemap <- list(gbif='eventDate',bison='eventDate',inat='Datetime',ebird='obsDt',ecoengine='begin_date',antweb=NULL)
 
 #' Convert a bounding box to a Well Known Text polygon, and a WKT to a bounding box
 #'

@@ -167,7 +167,7 @@ occ(query='Pinus contorta', from=c('gbif','inat'), limit=10)
 ## Check out http://arthur-e.github.io/Wicket/sandbox-gmaps3.html to get a WKT string
 occ(query='Accipiter', from='gbif',
    geometry='POLYGON((30.1 10.1, 10 20, 20 60, 60 60, 30.1 10.1))')
-occ(query='Helianthus annuus', from='bison',
+occ(query='Helianthus annuus', from='bison', limit=50,
    geometry='POLYGON((-111.06 38.84, -110.80 39.37, -110.20 39.17, -110.20 38.90,
                       -110.63 38.67, -111.06 38.84))')
 
@@ -206,7 +206,7 @@ occ(geometry = list(c(-125.0,38.4,-121.8,40.9), c(-115.0,22.4,-111.8,30.9)), fro
 # Specify many data sources, another example
 ebirdopts = list(region = 'US'); gbifopts  =  list(country = 'US')
 out <- occ(query = 'Setophaga caerulescens', from = c('gbif','inat','bison','ebird'),
-    gbifopts = gbifopts, ebirdopts = ebirdopts)
+    gbifopts = gbifopts, ebirdopts = ebirdopts, limit=20)
 occ2df(out)
 
 # Pass in many species names, combine just data to a single data.frame, and
@@ -259,13 +259,13 @@ out$gbif$data
 
 # curl debugging
 library('httr')
-occ(query = 'Accipiter striatus', from = 'gbif', callopts=verbose())
-occ(query = 'Accipiter striatus', from = 'ebird', callopts=verbose())
-occ(query = 'Accipiter striatus', from = 'bison', callopts=verbose())
-occ(query = 'Accipiter striatus', from = 'ecoengine', callopts=verbose())
-occ(query = 'Accipiter striatus', from = c('ebird','bison'), callopts=verbose())
-occ(query = 'Accipiter striatus', from = 'ebird', callopts=timeout(seconds = 0.1))
-## notice that callopts is ignored when from=inat or from=antweb
+occ(query = 'Accipiter striatus', from = 'gbif', limit=10, callopts=verbose())
+occ(query = 'Accipiter striatus', from = 'ebird', limit=10, callopts=verbose())
+occ(query = 'Accipiter striatus', from = 'bison', limit=10, callopts=verbose())
+occ(query = 'Accipiter striatus', from = 'ecoengine', limit=10, callopts=verbose())
+occ(query = 'Accipiter striatus', from = c('ebird','bison'), limit=10, callopts=verbose())
+occ(query = 'Accipiter striatus', from = 'ebird', limit=10, callopts=timeout(seconds = 0.1))
+## notice that callopts is ignored when from='inat' or from='antweb'
 occ(query = 'Accipiter striatus', from = 'inat', callopts=verbose())
 occ(query = 'linepithema humile', from = 'antweb', callopts=verbose())
 }

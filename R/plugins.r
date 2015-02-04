@@ -30,8 +30,8 @@ foo_gbif <- function(sources, query, limit, geometry, callopts, opts) {
         opts$geometry <- if(grepl('POLYGON', paste(as.character(geometry), collapse=" "))){
           geometry } else { bbox2wkt(bbox=geometry) }
       }
-      opts$callopts <- callopts
-      out <- do.call(occ_search, opts)
+      opts$config <- callopts
+      out <- do.call("occ_search", opts)
       if(class(out) == "character") { emptylist(opts) } else {
         if(class(out$data) == "character"){ emptylist(opts) } else {
           dat <- out$data
@@ -158,12 +158,14 @@ foo_bison <- function(sources, query, limit, geometry, callopts, opts) {
     }
 
     time <- now()
+    
     if(bisonfxn == "bison"){
       if(!'count' %in% names(opts)) opts$count <- limit
+      opts$config <- callopts
     } else {
       if(!'rows' %in% names(opts)) opts$rows <- limit
+      opts$callopts <- callopts
     }
-    opts$config <- callopts
     
     if(!is.null(geometry)){
       opts$aoi <- if(grepl('POLYGON', paste(as.character(geometry), collapse=" "))){

@@ -144,9 +144,8 @@ occ(query = 'Spinus tristis', from = 'ebird', ebirdopts =
 res <- occ(query = 'Accipiter striatus', from = 'ecoengine', ecoengineopts=list(limit = 5))
 res$ecoengine
 ## This is particularly useful when you want to set different limit for each source
-res <- occ(query = 'Accipiter striatus', from = c('gbif','ecoengine'),
-   gbifopts=list(limit = 10), ecoengineopts=list(limit = 5))
-res
+(res <- occ(query = 'Accipiter striatus', from = c('gbif','ecoengine'),
+   gbifopts=list(limit = 10), ecoengineopts=list(limit = 5)))
 
 # Many data sources
 (out <- occ(query = 'Pinus contorta', from=c('gbif','bison'), limit=10))
@@ -200,7 +199,7 @@ occ(query = 'Danaus plexippus', from=c("inat","gbif","ecoengine"), geometry=boun
 
 ## Using geometry only for the query
 ### A single bounding box
-occ(geometry = bounds, from = "gbif")
+occ(geometry = bounds, from = "gbif", limit=50)
 ### Many bounding boxes
 occ(geometry = list(c(-125.0,38.4,-121.8,40.9), c(-115.0,22.4,-111.8,30.9)), from = "gbif")
 
@@ -213,7 +212,7 @@ occ2df(out)
 # Pass in many species names, combine just data to a single data.frame, and
 # first six rows
 spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Spinus tristis')
-out <- occ(query = spnames, from = 'gbif', gbifopts = list(hasCoordinate = TRUE), limit=25)
+(out <- occ(query = spnames, from = 'gbif', gbifopts = list(hasCoordinate = TRUE), limit=25))
 df <- occ2df(out)
 head(df)
 

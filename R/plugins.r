@@ -174,7 +174,7 @@ foo_bison <- function(sources, query, limit, geometry, callopts, opts) {
     } else{
       dat <- out$points
       dat$prov <- rep("bison", nrow(dat))
-      if(is.null(geometry)) dat <- rename(dat, c('scientificName' = 'name'))
+      if(is.null(geometry) && !class(query) %in% c("ids","tsn")) dat <- rename(dat, c('scientificName' = 'name'))
       dat <- stand_latlon(dat)
       list(time = time, found = out$summary$total, data = dat, opts = opts)
     }

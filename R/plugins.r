@@ -41,6 +41,7 @@ foo_gbif <- function(sources, query, limit, geometry, callopts, opts) {
           cols <- cols[ cols %in% sort(names(dat)) ]
           dat <- move_cols(x=dat, y=cols)
           dat <- stand_latlon(dat)
+          dat <- stand_dates(dat, "gbif")
           list(time = time, found = out$meta$count, data = dat, opts = opts)
         }
       }
@@ -50,13 +51,31 @@ foo_gbif <- function(sources, query, limit, geometry, callopts, opts) {
 
 move_cols <- function(x, y)
   x[ c(y, names(x)[-sapply(y, function(z) grep(paste0('\\b', z, '\\b'), names(x)))]) ]
+
 emptylist <- function(opts) list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
+
 stand_latlon <- function(x){
   lngs <- c('decimalLongitude','Longitude','lng','longitude','decimal_longitude')
   lats <- c('decimalLatitude','Latitude','lat','latitude','decimal_latitude')
   names(x)[ names(x) %in% lngs ] <- 'longitude'
   names(x)[ names(x) %in% lats ] <- 'latitude'
   x
+}
+
+stand_dates <- function(dat, from){
+  datevars <- list(gbif='eventDate',bison=c('eventDate','year'),inat='Datetime',ebird='obsDt',ecoengine='begin_date')
+  var <- datevars[[from]]
+  if(from == "bison"){
+    var <- if( is.null(dat$eventDate) ) "year" else "eventDate"
+  }
+  dat[[var]] <- switch(from, 
+                       gbif = ymd_hms(dat[[var]], truncated = 3, quiet = TRUE),
+                       bison = ydm_hm(dat[[var]], truncated = 6, quiet = TRUE),
+                       inat = ymd_hms(dat[[var]], truncated = 3, quiet = TRUE),
+                       ebird = ymd_hm(dat[[var]], truncated = 3, quiet = TRUE),
+                       ecoengine = ymd(dat[[var]], truncated = 3, quiet = TRUE)
+  )
+  if(from == "bison") rename(dat, setNames('date', var)) else dat
 }
 
 #' @noRd
@@ -91,6 +110,7 @@ foo_ecoengine <- function(sources, query, limit, geometry, callopts, opts) {
       out[fac_tors] <- lapply(out[fac_tors], as.character)
       out$prov <- rep("ecoengine", nrow(out))
       names(out)[names(out) == 'scientific_name'] <- "name"
+      out <- stand_dates(out, "ecoengine")
       list(time = time, found = out_ee$results, data = out, opts = opts)
     }
   } else {
@@ -182,6 +202,7 @@ foo_bison <- function(sources, query, limit, geometry, callopts, opts) {
       dat$prov <- rep("bison", nrow(dat))
       if(bisonfxn == "bison_solr") dat <- rename(dat, c('scientificName' = 'name'))
       dat <- stand_latlon(dat)
+      dat <- stand_dates(dat, "bison")
       found <- if(bisonfxn == "bison_solr") out$num_found else out$summary$total
       list(time = time, found = found, data = dat, opts = opts)
     }
@@ -215,6 +236,7 @@ foo_inat <- function(sources, query, limit, geometry, callopts, opts) {
       res$prov <- rep("inat", nrow(res))
       names(res)[names(res) == 'Scientific.name'] <- "name"
       res <- stand_latlon(res)
+      res <- stand_dates(res, "inat")
       list(time = time, found = out$meta$found, data = res, opts = opts)
     }
   } else {
@@ -246,6 +268,7 @@ foo_ebird <- function(sources, query, limit, callopts, opts) {
       out$prov <- rep("ebird", nrow(out))
       names(out)[names(out) == 'sciName'] <- "name"
       out <- stand_latlon(out)
+      out <- stand_dates(out, "ebird")
       list(time = time, found = NULL, data = out, opts = opts)
     }
   } else {

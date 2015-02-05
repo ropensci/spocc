@@ -4,7 +4,7 @@
 #' or many data sources.
 #'
 #' @import rgbif rinat rebird ecoengine rbison AntWeb
-#' @importFrom lubridate now
+#' @importFrom lubridate now ymd_hms ymd_hm ydm_hm ymd
 #' @template occtemp
 #' @export
 #' @examples \dontrun{
@@ -220,7 +220,7 @@ occ <- function(query = NULL, from = "gbif", limit = 500, geometry = NULL, rank 
   # check that one of query or ids is non-NULL
   if(!any(!is.null(query), !is.null(ids), !is.null(geometry)))
     stop("One of query, ids, or geometry parameters must be non-NULL")
-  
+
   if(is.null(ids) && !is.null(query)){
     # If query not null (taxonomic names passed in)
     tmp <- lapply(query, loopfun, y=limit, z=geometry, w=callopts)

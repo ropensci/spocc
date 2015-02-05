@@ -92,7 +92,7 @@ occ2df <- function(obj, what = "data") {
     if(what %in% "data") tmpout$data else tmpout
 }
 
-datemap <- list(gbif='eventDate',bison='eventDate',inat='Datetime',ebird='obsDt',ecoengine='begin_date',antweb=NULL)
+datemap <- list(gbif='eventDate',bison='date',inat='Datetime',ebird='obsDt',ecoengine='begin_date',antweb=NULL)
 
 #' Convert a bounding box to a Well Known Text polygon, and a WKT to a bounding box
 #'

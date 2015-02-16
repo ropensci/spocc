@@ -2,30 +2,44 @@
 % Please edit documentation in R/inspect.R
 \name{inspect}
 \alias{inspect}
+\alias{inspect.data.frame}
+\alias{inspect.occdat}
+\alias{inspect.occkey}
 \title{Get more data on individual occurrences.}
 \usage{
-inspect(obj = NULL, keys = NULL, from = "gbif")
+inspect(x, from = "gbif")
+
+\method{inspect}{data.frame}(x, from = "gbif")
+
+\method{inspect}{occdat}(x, from = "gbif")
+
+\method{inspect}{occkey}(x)
 }
 \arguments{
+\item{from}{The data provider}
+
 \item{obj}{The output from \code{\link{occ}} call.}
 
 \item{keys}{You can alternatively pass in keys, in which case you have to pass a named vector
 or the from param will be used to pick which source to query.}
-
-\item{from}{The data provider}
 }
 \description{
 Get more data on individual occurrences.
 }
-\details{
-This function xxxx
-}
 \examples{
 \dontrun{
 spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Carduelis tristis')
-out <- occ(query=spnames, from=c('gbif','ebird'), gbifopts=list(hasCoordinate=TRUE), limit=4)
+out <- occ(query=spnames, from=c('gbif','bison'), gbifopts=list(hasCoordinate=TRUE), limit=2)
 res <- occ2df(out)
-inspect(res, from="gbif")
+inspect(res)
+
+out <- occ(query=spnames, from='gbif', gbifopts=list(hasCoordinate=TRUE), limit=4)
+res <- occ2df(out)
+inspect(res)
+
+# from occkeys
+key <- as.gbif(res$key[1])
+inspect(key)
 }
 }
 

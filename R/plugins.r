@@ -68,14 +68,18 @@ stand_dates <- function(dat, from){
   if(from == "bison"){
     var <- if( is.null(dat$eventDate) ) "year" else "eventDate"
   }
-  dat[[var]] <- switch(from, 
-                       gbif = ymd_hms(dat[[var]], truncated = 3, quiet = TRUE),
-                       bison = ydm_hm(dat[[var]], truncated = 6, quiet = TRUE),
-                       inat = ymd_hms(dat[[var]], truncated = 3, quiet = TRUE),
-                       ebird = ymd_hm(dat[[var]], truncated = 3, quiet = TRUE),
-                       ecoengine = ymd(dat[[var]], truncated = 3, quiet = TRUE)
-  )
-  if(from == "bison") rename(dat, setNames('date', var)) else dat
+  if( is.null(dat[[var]]) ){
+    dat
+  } else {
+    dat[[var]] <- switch(from,
+                         gbif = ymd_hms(dat[[var]], truncated = 3, quiet = TRUE),
+                         bison = ydm_hm(dat[[var]], truncated = 6, quiet = TRUE),
+                         inat = ymd_hms(dat[[var]], truncated = 3, quiet = TRUE),
+                         ebird = ymd_hm(dat[[var]], truncated = 3, quiet = TRUE),
+                         ecoengine = ymd(dat[[var]], truncated = 3, quiet = TRUE)
+    )
+    if(from == "bison") rename(dat, setNames('date', var)) else dat
+  }
 }
 
 #' @noRd
@@ -155,7 +159,6 @@ foo_antweb <- function(sources, query, limit, geometry, callopts, opts) {
     list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
   }
 }
-
 
 #' @noRd
 foo_bison <- function(sources, query, limit, geometry, callopts, opts) {

@@ -8,13 +8,14 @@
 \alias{as.bison.list}
 \alias{as.bison.numeric}
 \alias{as.bison.occdat}
+\alias{as.bison.occkey}
 \title{Coerce occurrence keys to bisonkey/occkey objects}
 \usage{
 as.bison(x)
 
 \method{as.bison}{bisonkey}(x)
 
-\method{as.bison}{bisonkey}(x)
+\method{as.bison}{occkey}(x)
 
 \method{as.bison}{occdat}(x)
 
@@ -28,18 +29,18 @@ as.bison(x)
 }
 \arguments{
 \item{x}{Various inputs, including the output from a call to \code{\link{occ}} (class occdat),
-\code{\link{occ2df}} (class data.frame), or a list, numeric, character, or gbifkey, or occkey.}
+\code{\link{occ2df}} (class data.frame), or a list, numeric, character, or bisonkey, or occkey.}
 }
 \value{
-One or more in a list of both class gbifkey and occkey
+One or more in a list of both class bisonkey and occkey
 }
 \description{
 Coerce occurrence keys to bisonkey/occkey objects
 }
 \details{
-Internally, we use \code{\link[rgbif]{occ_get}}, whereas \code{\link{occ}}
-uses \code{\link[rgbif]{occ_search}}. We can use \code{\link[rgbif]{occ_get}} here
-because we have the occurrence key to go directly to the occurrence record.
+Internally, we use \code{\link[rbison]{bison_solr}}, same function we use
+internally within the \code{\link{occ}} function. Although, we query here with the
+\code{occurrenceID} parameter to get the occurrence directly instead of searching for it.
 }
 \examples{
 \dontrun{

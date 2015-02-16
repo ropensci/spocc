@@ -8,13 +8,14 @@
 \alias{as.gbif.list}
 \alias{as.gbif.numeric}
 \alias{as.gbif.occdat}
+\alias{as.gbif.occkey}
 \title{Coerce occurrence keys to gbifkey/occkey objects}
 \usage{
 as.gbif(x)
 
 \method{as.gbif}{gbifkey}(x)
 
-\method{as.gbif}{gbifkey}(x)
+\method{as.gbif}{occkey}(x)
 
 \method{as.gbif}{occdat}(x)
 

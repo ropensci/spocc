@@ -29,7 +29,7 @@ as.gbif.gbifkey <- function(x) x
 
 #' @export
 #' @rdname as.gbif
-as.gbif.gbifkey <- function(x) x
+as.gbif.occkey <- function(x) x
 
 #' @export
 #' @rdname as.gbif

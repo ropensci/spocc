@@ -57,43 +57,6 @@ spocc_blanktheme <- function() {
             "null"), 4))
 }
 
-#' Combine results from occ calls to a single data.frame
-#' @param obj Input from occ
-#' @param what One of data (default) or all (with metadata)
-#' @export
-#' @examples \dontrun{
-#' spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Carduelis tristis')
-#' out <- occ(query=spnames, from='gbif', gbifopts=list(hasCoordinate=TRUE), limit=10)
-#' occ2df(out)
-#' }
-occ2df <- function(obj, what = "data") {
-    what <- match.arg(what, choices = c("all", "data"))
-    foolist <- function(x) do.call(rbind_fill, x$data)
-    aa <- foolist(obj$gbif)
-    bb <- foolist(obj$bison)
-    cc <- foolist(obj$inat)
-    dd <- foolist(obj$ebird)
-    ee <- foolist(obj$ecoengine)
-    aw <- foolist(obj$antweb)
-    tmp <- data.frame(rbind_fill(
-      Map(
-        function(x, y){
-          if(NROW(x) == 0){
-            data.frame(NULL)
-          } else {
-            rename(x[ , c('name','longitude','latitude','prov',datemap[[y]]) ], setNames("date", datemap[[y]]))
-          }
-        }, 
-        list(aa, bb, cc, dd, ee, aw), c('gbif','bison','inat','ebird','ecoengine','antweb')
-      )
-    ))
-    tmpout <- list(meta = list(obj$gbif$meta, obj$bison$meta, obj$inat$meta, obj$ebird$meta,
-        obj$ecoengine$meta, obj$aw$meta), data = tmp)
-    if(what %in% "data") tmpout$data else tmpout
-}
-
-datemap <- list(gbif='eventDate',bison='date',inat='Datetime',ebird='obsDt',ecoengine='begin_date',antweb=NULL)
-
 #' Convert a bounding box to a Well Known Text polygon, and a WKT to a bounding box
 #'
 #' @import rgeos

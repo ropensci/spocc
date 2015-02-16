@@ -108,6 +108,7 @@ foo_ecoengine <- function(sources, query, limit, geometry, callopts, opts) {
       out <- out_ee$data
       fac_tors <- sapply(out, is.factor)
       out[fac_tors] <- lapply(out[fac_tors], as.character)
+      out$key <- replicate(NROW(out), uuid::UUIDgenerate())
       out$prov <- rep("ecoengine", nrow(out))
       names(out)[names(out) == 'scientific_name'] <- "name"
       out <- stand_dates(out, "ecoengine")

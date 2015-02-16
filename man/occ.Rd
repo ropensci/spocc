@@ -154,7 +154,8 @@ res$ecoengine
 out$gbif
 out$gbif$data
 
-## Coerce to combined data.frame, selects minimal set of columns (name, lat, long)
+## Coerce to combined data.frame, selects minimal set of
+## columns (name, lat, long, provider, date, occurrence key)
 occ2df(out)
 
 # Pass in limit parameter to all sources. This limits the number of occurrences

@@ -39,7 +39,8 @@ Imports:
     rgdal,
     leafletR (>= 0.2-0),
     whisker,
-    gistr
+    gistr,
+    uuid
 Suggests:
     roxygen2,
     testthat,

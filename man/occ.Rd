@@ -131,7 +131,7 @@ res$inat
 res$bison
 # Data from AntWeb
 # By species
-(by_species <- occ(query = "linepithema humile", from = "antweb"))
+(by_species <- occ(query = "linepithema humile", from = "antweb", limit = 10))
 # or by genus
 (by_genus <- occ(query = "acanthognathus", from = "antweb"))
 

@@ -21,7 +21,7 @@
 #' res$bison
 #' # Data from AntWeb
 #' # By species
-#' (by_species <- occ(query = "linepithema humile", from = "antweb"))
+#' (by_species <- occ(query = "linepithema humile", from = "antweb", limit = 10))
 #' # or by genus
 #' (by_genus <- occ(query = "acanthognathus", from = "antweb"))
 #'
@@ -174,14 +174,14 @@ occ <- function(query = NULL, from = "gbif", limit = 500, geometry = NULL, rank 
     type = "sci", ids = NULL, callopts=list(), gbifopts = list(), bisonopts = list(),
     inatopts = list(), ebirdopts = list(), ecoengineopts = list(), antwebopts = list())
 {
-  if(!is.null(geometry)){
-    if(class(geometry) %in% c('SpatialPolygons','SpatialPolygonsDataFrame')){
+  if (!is.null(geometry)) {
+    if (class(geometry) %in% c('SpatialPolygons', 'SpatialPolygonsDataFrame')) {
       geometry <- as.list(handle_sp(geometry))
     }
   }
   sources <- match.arg(from, choices = c("gbif", "bison", "inat", "ebird", "ecoengine", "antweb"),
                        several.ok = TRUE)
-  if(!all(from %in% sources)){
+  if (!all(from %in% sources)) {
     stop(sprintf("Woops, the following are not supported or spelled incorrectly: %s", from[!from %in% sources]))
   }
 
@@ -201,12 +201,12 @@ occ <- function(query = NULL, from = "gbif", limit = 500, geometry = NULL, rank 
     # x = query; y=limit; z=geometry
 #     classes <- ifelse(length(x)>1, vapply(x, class, ""), class(x))
     classes <- class(x)
-    if(!all(classes %in% c("gbifid","tsn")))
+    if (!all(classes %in% c("gbifid", "tsn")))
       stop("Currently, taxon identifiers have to be of class gbifid or tsn")
-    if(class(x) == 'gbifid'){
+    if (class(x) == 'gbifid') {
       gbif_res <- foo_gbif(sources, x, y, z, w, gbifopts)
       bison_res <- list(time = NULL, data = data.frame(NULL))
-    } else if(class(x) == 'tsn') {
+    } else if (class(x) == 'tsn') {
       bison_res <- foo_bison(sources, x, y, z, w, bisonopts)
       gbif_res <- list(time = NULL, data = data.frame(NULL))
     }
@@ -219,17 +219,19 @@ occ <- function(query = NULL, from = "gbif", limit = 500, geometry = NULL, rank 
   }
 
   # check that one of query or ids is non-NULL
-  if(!any(!is.null(query), !is.null(ids), !is.null(geometry)))
+  if (!any(!is.null(query), !is.null(ids), !is.null(geometry)))
     stop("One of query, ids, or geometry parameters must be non-NULL")
 
-  if(is.null(ids) && !is.null(query)){
+  if (is.null(ids) && !is.null(query)) {
     # If query not null (taxonomic names passed in)
-    tmp <- lapply(query, loopfun, y=limit, z=geometry, w=callopts)
-  } else if(is.null(query) && is.null(geometry)) {
-    unlistids <- function(x){
-      if(length(x) == 1){
-        if(is.null(names(x))){ list(x) } else {
-          if(!names(x) %in% c("gbif","itis"))
+    tmp <- lapply(query, loopfun, y = limit, z = geometry, w = callopts)
+  } else if (is.null(query) && is.null(geometry)) {
+    unlistids <- function(x) {
+      if (length(x) == 1) {
+        if (is.null(names(x))) { 
+          list(x) 
+        } else {
+          if (!names(x) %in% c("gbif", "itis"))
             list(x)
           else
             list(x[[1]])
@@ -237,9 +239,9 @@ occ <- function(query = NULL, from = "gbif", limit = 500, geometry = NULL, rank 
       } else {
         gg <- as.list(unlist(x, use.names = FALSE))
         hh <- as.vector(rep(vapply(x, class, ""), vapply(x, length, numeric(1))))
-        if(all(hh == "character"))
+        if (all(hh == "character"))
           hh <- rep(class(x), length(x))
-        for(i in seq_along(gg)){
+        for (i in seq_along(gg)) {
           class(gg[[i]]) <- hh[[i]]
         }
         return( gg )
@@ -249,32 +251,32 @@ occ <- function(query = NULL, from = "gbif", limit = 500, geometry = NULL, rank 
     # if ids is not null (taxon identifiers passed in)
     # ids can only be passed to gbif and bison for now
     # so don't pass anything on to ecoengine, inat, or ebird
-    tmp <- lapply(ids, loopids, y=limit, z=geometry, w=callopts)
+    tmp <- lapply(ids, loopids, y = limit, z = geometry, w = callopts)
   } else {
     type <- 'geometry'
-    if(is.numeric(geometry)){
-      tmp <- list(loopfun(z=geometry, y=limit, x=query, w=callopts))
-    } else if(is.list(geometry)){
-      tmp <- lapply(geometry, function(b) loopfun(z=b, y=limit, x=query, w=callopts))
+    if (is.numeric(geometry)) {
+      tmp <- list(loopfun(z = geometry, y = limit, x = query, w = callopts))
+    } else if (is.list(geometry)) {
+      tmp <- lapply(geometry, function(b) loopfun(z = b, y = limit, x = query, w = callopts))
     }
   }
 
   getsplist <- function(srce, opts) {
     tt <- lapply(tmp, function(x) x[[srce]]$data)
-    if(!is.null(query) && is.null(geometry)){ # query
+    if (!is.null(query) && is.null(geometry)) { # query
       names(tt) <- gsub("\\s", "_", query)
       optstmp <- tmp[[1]][[srce]]$opts
-    } else if(is.null(query) && !is.null(geometry)){ # geometry
+    } else if (is.null(query) && !is.null(geometry)) { # geometry
 #       if(is.numeric(geometry)){ gg <- paste(geometry,collapse=",") } else {
 #         gg <- lapply(geometry, paste, collapse=",")
 #       }
 #       names(tt) <- gg
       tt <- tt
       optstmp <- tmp[[1]][[srce]]$opts
-    } else if(!is.null(query) && !is.null(geometry)) { # query & geometry
+    } else if (!is.null(query) && !is.null(geometry)) { # query & geometry
       names(tt) <- gsub("\\s", "_", query)
       optstmp <- tmp[[1]][[srce]]$opts
-    } else if(is.null(query) && is.null(geometry)) {
+    } else if (is.null(query) && is.null(geometry)) {
       names(tt) <- sapply(tmp, function(x) unclass(x[[srce]]$opts[[1]]))
       tt <- tt[!vapply(tt, nrow, 1) == 0]
       opts <- sc(lapply(tmp, function(x) x[[srce]]$opts))
@@ -285,12 +287,14 @@ occ <- function(query = NULL, from = "gbif", limit = 500, geometry = NULL, rank 
         splitup <- unique(names(b))
         sapply(splitup, function(d){
           tmp <- b[names(b) %in% d]
-          if(length(unique(unname(unlist(tmp)))) == 1){ as.list(tmp[1]) } else {
+          if (length(unique(unname(unlist(tmp)))) == 1) { 
+            as.list(tmp[1]) 
+          } else {
             outout <- list(unname(unlist(tmp)))
             names(outout) <- names(tmp)[1]
             outout
           }
-        }, USE.NAMES=FALSE)
+        }, USE.NAMES = FALSE)
       }
       optstmp <- simplist(optstmp)
     }
@@ -316,5 +320,5 @@ occ <- function(query = NULL, from = "gbif", limit = 500, geometry = NULL, rank 
   antweb_sp <- getsplist("antweb", ecoengineopts)
   p <- list(gbif = gbif_sp, bison = bison_sp, inat = inat_sp, ebird = ebird_sp,
             ecoengine = ecoengine_sp, antweb = antweb_sp)
-  structure(p, class="occdat", searched=from)
+  structure(p, class = "occdat", searched = from)
 }

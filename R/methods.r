@@ -46,9 +46,10 @@ print.occdat <- function(x, ...) {
   cat(sprintf("Searched: %s", paste0(searched, collapse = ", ")), sep = "\n")
   cat(sprintf("Occurrences - Found: %s, Returned: %s", founded(found), fdec(rows)), sep = "\n")
   cat(sprintf("Search type: %s", gettype(x)), sep = "\n")
-  if(gettype(x) == "Scientific"){
+  if (gettype(x) == "Scientific") {
     invisible(lapply(x, catif))
   }
+  cat(founded_mssg(found))
 }
 
 gettype <- function(x){
@@ -58,17 +59,30 @@ gettype <- function(x){
          vern = "Vernacular",
          geometry = "Geometry")
 }
+
 fdec <- function(x) format(sum(unlist(x, recursive = TRUE)), big.mark = ",")
+
 founded <- function(b){
   tmp <- format(sum(unlist(b, recursive = TRUE)), big.mark = ",")
-  nofound <- names(b[vapply(b, is.null, logical(1))])
-  if(length(nofound) != 0) 
-    paste0(tmp, sprintf(" (no found data for %s)", paste0(nofound, collapse = ", ")), collapse = " ")
-  else
-    tmp
+  tmp
+#   nofound <- names(b[vapply(b, is.null, logical(1))])
+#   if (length(nofound) != 0)
+#     "spocc cannot estimate complete additional records found as none available for ebird"
+#   else
+#     tmp
 }
+
+founded_mssg <- function(b){
+  tmp <- format(sum(unlist(b, recursive = TRUE)), big.mark = ",")
+  nofound <- names(b[vapply(b, is.null, logical(1))])
+  if (length(nofound) != 0)
+    "\nNote: spocc cannot estimate complete additional records found as none available for ebird"
+  else
+    NULL
+}
+
 catif <- function(z){
-  if(!is.null(z$meta$time))
+  if (!is.null(z$meta$time))
     cat(sprintf("  %s: %s", z$meta$source, spocc_wrap(pastemax(z$data, n = 3))), sep = "\n")
 }
 

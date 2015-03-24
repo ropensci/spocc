@@ -31,6 +31,10 @@
 #' spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Carduelis tristis')
 #' out <- occ(query=spnames, from='gbif', gbifopts=list(hasCoordinate=TRUE), limit=10)
 #' occ2df(out)
+#' 
+#' out <- occ(query='Accipiter striatus', from=c('gbif','bison','ecoengine','ebird','inat','vertnet'), 
+#'    gbifopts=list(hasCoordinate=TRUE), limit=2)
+#' occ2df(out)
 #' }
 occ2df <- function(obj, what = "data") {
   what <- match.arg(what, choices = c("all", "data"))
@@ -65,7 +69,7 @@ occ2df <- function(obj, what = "data") {
   if(what %in% "data") tmpout$data else tmpout
 }
 
-datemap <- list(gbif='eventDate',bison='date',inat='Datetime',ebird='obsDt',
+datemap <- list(gbif='eventDate',bison='date',inat='datetime',ebird='obsDt',
                 ecoengine='begin_date',antweb=NULL,vertnet="eventdate")
-keymap <- list(gbif="key",bison="occurrenceID",inat="Id",ebird="locID",
+keymap <- list(gbif="key",bison="occurrenceID",inat="id",ebird="locID",
                ecoengine="key",antweb="catalogNumber",vertnet="occurrenceid")

@@ -241,7 +241,7 @@ foo_inat <- function(sources, query, limit, geometry, callopts, opts) {
     } else{
       res <- out$data
       res$prov <- rep("inat", nrow(res))
-      names(res)[names(res) == 'Scientific.name'] <- "name"
+      res <- rename(res, c('scientific_name' = 'name'))
       res <- stand_latlon(res)
       res <- stand_dates(res, "inat")
       list(time = time, found = out$meta$found, data = res, opts = opts)

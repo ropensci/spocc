@@ -41,6 +41,10 @@ provide unique keys already, so we can query the database online again for more 
 spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Carduelis tristis')
 out <- occ(query=spnames, from='gbif', gbifopts=list(hasCoordinate=TRUE), limit=10)
 occ2df(out)
+
+out <- occ(query='Accipiter striatus', from=c('gbif','bison','ecoengine','ebird','inat','vertnet'),
+   gbifopts=list(hasCoordinate=TRUE), limit=2)
+occ2df(out)
 }
 }
 

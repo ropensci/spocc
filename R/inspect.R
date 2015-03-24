@@ -2,10 +2,8 @@
 #' 
 #' @export
 #' 
-#' @param obj The output from \code{\link{occ}} call.
-#' @param keys You can alternatively pass in keys, in which case you have to pass a named vector
-#' or the from param will be used to pick which source to query.
-#' @param from The data provider
+#' @param x The output from \code{\link{occ}} call.
+#' @param from The data provider. One of gbif, bison, inat, ebird, or ecoengine
 #' 
 #' @examples \dontrun{
 #' spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Carduelis tristis')
@@ -36,7 +34,7 @@ inspect.occdat <- function(x, from="gbif") {
 
 #' @export
 #' @rdname inspect
-inspect.occkey <- function(x){
+inspect.occkey <- function(x, from="gbif"){
   switch(class(x)[1], 
          gbifkey = as.gbif(x),
          bisonkey = as.bison(x))

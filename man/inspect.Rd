@@ -13,15 +13,12 @@ inspect(x, from = "gbif")
 
 \method{inspect}{occdat}(x, from = "gbif")
 
-\method{inspect}{occkey}(x)
+\method{inspect}{occkey}(x, from = "gbif")
 }
 \arguments{
-\item{from}{The data provider}
+\item{x}{The output from \code{\link{occ}} call.}
 
-\item{obj}{The output from \code{\link{occ}} call.}
-
-\item{keys}{You can alternatively pass in keys, in which case you have to pass a named vector
-or the from param will be used to pick which source to query.}
+\item{from}{The data provider. One of gbif, bison, inat, ebird, or ecoengine}
 }
 \description{
 Get more data on individual occurrences.

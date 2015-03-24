@@ -7,8 +7,9 @@
 as.bison(x)
 }
 \arguments{
-\item{x}{Various inputs, including the output from a call to \code{\link{occ}} (class occdat),
-\code{\link{occ2df}} (class data.frame), or a list, numeric, character, or bisonkey, or occkey.}
+\item{x}{Various inputs, including the output from a call to \code{\link{occ}}
+(class occdat), \code{\link{occ2df}} (class data.frame), or a list, numeric,
+character, or bisonkey, or occkey.}
 }
 \value{
 One or more in a list of both class bisonkey and occkey

@@ -2,8 +2,9 @@
 #' 
 #' @export
 #' 
-#' @param x Various inputs, including the output from a call to \code{\link{occ}} (class occdat), 
-#' \code{\link{occ2df}} (class data.frame), or a list, numeric, character, or gbifkey, or occkey.
+#' @param x Various inputs, including the output from a call to \code{\link{occ}} 
+#' (class occdat), \code{\link{occ2df}} (class data.frame), or a list, numeric, 
+#' character, gbifkey, or occkey.
 #' @return One or more in a list of both class gbifkey and occkey
 #' @details Internally, we use \code{\link[rgbif]{occ_get}}, whereas \code{\link{occ}} 
 #' uses \code{\link[rgbif]{occ_search}}. We can use \code{\link[rgbif]{occ_get}} here 

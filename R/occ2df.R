@@ -41,6 +41,7 @@ occ2df <- function(obj, what = "data") {
   dd <- foolist(obj$ebird)
   ee <- foolist(obj$ecoengine)
   aw <- foolist(obj$antweb)
+  vn <- foolist(obj$vertnet)
   tmp <- data.frame(rbind_fill(
     Map(
       function(x, y){
@@ -56,15 +57,15 @@ occ2df <- function(obj, what = "data") {
           rename(dat, setNames("key", keymap[[y]]))
         }
       }, 
-      list(aa, bb, cc, dd, ee, aw), c('gbif','bison','inat','ebird','ecoengine','antweb')
+      list(aa, bb, cc, dd, ee, aw, vn), c('gbif','bison','inat','ebird','ecoengine','antweb','vertnet')
     )
   ))
   tmpout <- list(meta = list(obj$gbif$meta, obj$bison$meta, obj$inat$meta, obj$ebird$meta,
-                             obj$ecoengine$meta, obj$aw$meta), data = tmp)
+                             obj$ecoengine$meta, obj$aw$meta, obj$vn$meta), data = tmp)
   if(what %in% "data") tmpout$data else tmpout
 }
 
 datemap <- list(gbif='eventDate',bison='date',inat='Datetime',ebird='obsDt',
-                ecoengine='begin_date',antweb=NULL)
+                ecoengine='begin_date',antweb=NULL,vertnet="eventdate")
 keymap <- list(gbif="key",bison="occurrenceID",inat="Id",ebird="locID",
-               ecoengine="key",antweb="catalogNumber")
+               ecoengine="key",antweb="catalogNumber",vertnet="occurrenceid")

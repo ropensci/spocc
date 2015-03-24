@@ -55,15 +55,16 @@ move_cols <- function(x, y)
 emptylist <- function(opts) list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
 
 stand_latlon <- function(x){
-  lngs <- c('decimalLongitude','Longitude','lng','longitude','decimal_longitude')
-  lats <- c('decimalLatitude','Latitude','lat','latitude','decimal_latitude')
+  lngs <- c('decimalLongitude', 'decimallongitude', 'Longitude', 'lng', 'longitude', 'decimal_longitude')
+  lats <- c('decimalLatitude', 'decimallatitude', 'Latitude', 'lat', 'latitude', 'decimal_latitude')
   names(x)[ names(x) %in% lngs ] <- 'longitude'
   names(x)[ names(x) %in% lats ] <- 'latitude'
   x
 }
 
 stand_dates <- function(dat, from){
-  datevars <- list(gbif='eventDate',bison=c('eventDate','year'),inat='Datetime',ebird='obsDt',ecoengine='begin_date')
+  datevars <- list(gbif = 'eventDate', bison = c('eventDate', 'year'), inat = 'Datetime',
+                   ebird = 'obsDt', ecoengine = 'begin_date', vertnet = 'eventdate')
   var <- datevars[[from]]
   if(from == "bison"){
     var <- if( is.null(dat$eventDate) ) "year" else "eventDate"
@@ -76,7 +77,8 @@ stand_dates <- function(dat, from){
                          bison = ydm_hm(dat[[var]], truncated = 6, quiet = TRUE),
                          inat = ymd_hms(dat[[var]], truncated = 3, quiet = TRUE),
                          ebird = ymd_hm(dat[[var]], truncated = 3, quiet = TRUE),
-                         ecoengine = ymd(dat[[var]], truncated = 3, quiet = TRUE)
+                         ecoengine = ymd(dat[[var]], truncated = 3, quiet = TRUE),
+                         vertnet = ymd(dat[[var]], truncated = 3, quiet = TRUE)
     )
     if(from == "bison") rename(dat, setNames('date', var)) else dat
   }
@@ -182,6 +184,7 @@ foo_bison <- function(sources, query, limit, geometry, callopts, opts) {
     }
 
     time <- now()
+    opts$verbose <- FALSE
     
     if(bisonfxn == "bison"){
       if(!'count' %in% names(opts)) opts$count <- limit
@@ -227,7 +230,7 @@ foo_inat <- function(sources, query, limit, geometry, callopts, opts) {
     if(!is.null(geometry)){
       opts$bounds <- if(grepl('POLYGON', paste(as.character(geometry), collapse=" ")))
       {
-        # flip lat and long spots in the bounds vector for inat
+        # flip lat  and long spots in the bounds vector for inat
         temp <- wkt2bbox(geometry)
         c(temp[2], temp[1], temp[4], temp[3])
       } else { c(geometry[2], geometry[1], geometry[4], geometry[3]) }
@@ -274,6 +277,33 @@ foo_ebird <- function(sources, query, limit, callopts, opts) {
       out <- stand_latlon(out)
       out <- stand_dates(out, "ebird")
       list(time = time, found = NULL, data = out, opts = opts)
+    }
+  } else {
+    list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
+  }
+}
+
+#' @noRd
+foo_vertnet <- function(sources, query, limit, callopts, opts) {
+  if (any(grepl("vertnet", sources))) {
+    time <- now()
+    opts$taxon <- query
+    opts$verbose <- FALSE
+    if(!'limit' %in% names(opts)) opts$limit <- limit
+    opts$config <- callopts
+    out <- do.call(vertsearch, opts)
+    if(!is.data.frame(out$data)){
+      list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
+    } else{
+      df <- out$data
+      df$prov <- rep("vertnet", NROW(df))
+      df <- rename(df, c('scientificname' = 'name'))
+      cols <- c('name', 'decimallongitude', 'decimallatitude', 'prov')
+      cols <- cols[ cols %in% sort(names(df)) ]
+      df <- move_cols(x=df, y=cols)
+      df <- stand_latlon(df)
+      df <- stand_dates(df, "vertnet")
+      list(time = time, found = as.numeric(gsub(">|<", "", out$meta$matching_records)), data = df, opts = opts)
     }
   } else {
     list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)

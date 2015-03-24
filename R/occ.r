@@ -3,7 +3,7 @@
 #' Search on a single species name, or many. And search across a single
 #' or many data sources.
 #'
-#' @import rgbif rinat rebird ecoengine rbison AntWeb
+#' @import rgbif rinat rebird ecoengine rbison AntWeb rvertnet
 #' @importFrom lubridate now ymd_hms ymd_hm ydm_hm ymd
 #' @template occtemp
 #' @export
@@ -19,6 +19,11 @@
 #' res$inat
 #' (res <- occ(query = 'Bison bison', from = 'bison', limit = 50))
 #' res$bison
+#' (res <- occ(query = 'Bison bison', from = 'vertnet', limit = 5))
+#' res$vertnet
+#' res$vertnet$data$Bison_bison
+#' occ2df(res)
+#' 
 #' # Data from AntWeb
 #' # By species
 #' (by_species <- occ(query = "linepithema humile", from = "antweb", limit = 10))
@@ -38,11 +43,12 @@
 #'    gbifopts=list(limit = 10), ecoengineopts=list(limit = 5)))
 #'
 #' # Many data sources
-#' (out <- occ(query = 'Pinus contorta', from=c('gbif','bison'), limit=10))
+#' (out <- occ(query = 'Pinus contorta', from=c('gbif','bison','vertnet'), limit=10))
 #'
 #' ## Select individual elements
 #' out$gbif
 #' out$gbif$data
+#' out$vertnet
 #'
 #' ## Coerce to combined data.frame, selects minimal set of 
 #' ## columns (name, lat, long, provider, date, occurrence key)
@@ -172,17 +178,20 @@
 #' }
 occ <- function(query = NULL, from = "gbif", limit = 500, geometry = NULL, rank = "species",
     type = "sci", ids = NULL, callopts=list(), gbifopts = list(), bisonopts = list(),
-    inatopts = list(), ebirdopts = list(), ecoengineopts = list(), antwebopts = list())
-{
+    inatopts = list(), ebirdopts = list(), ecoengineopts = list(), antwebopts = list(),
+    vertnetopts = list()) {
+  
   if (!is.null(geometry)) {
     if (class(geometry) %in% c('SpatialPolygons', 'SpatialPolygonsDataFrame')) {
       geometry <- as.list(handle_sp(geometry))
     }
   }
-  sources <- match.arg(from, choices = c("gbif", "bison", "inat", "ebird", "ecoengine", "antweb"),
+  sources <- match.arg(from, choices = c("gbif", "bison", "inat", "ebird", 
+                                         "ecoengine", "antweb", "vertnet"),
                        several.ok = TRUE)
   if (!all(from %in% sources)) {
-    stop(sprintf("Woops, the following are not supported or spelled incorrectly: %s", from[!from %in% sources]))
+    stop(sprintf("Woops, the following are not supported or spelled incorrectly: %s", 
+                 from[!from %in% sources]))
   }
 
   loopfun <- function(x, y, z, w) {
@@ -193,8 +202,9 @@ occ <- function(query = NULL, from = "gbif", limit = 500, geometry = NULL, rank 
     ebird_res <- foo_ebird(sources, x, y, w, ebirdopts)
     ecoengine_res <- foo_ecoengine(sources, x, y, z, w, ecoengineopts)
     antweb_res <- foo_antweb(sources, x, y, z, w, antwebopts)
+    vertnet_res <- foo_vertnet(sources, x, y, w, vertnetopts)
     list(gbif = gbif_res, bison = bison_res, inat = inat_res, ebird = ebird_res,
-         ecoengine = ecoengine_res, antweb = antweb_res)
+         ecoengine = ecoengine_res, antweb = antweb_res, vertnet = vertnet_res)
   }
 
   loopids <- function(x, y, z, w) {
@@ -215,7 +225,9 @@ occ <- function(query = NULL, from = "gbif", limit = 500, geometry = NULL, rank 
          inat = list(time = NULL, data = data.frame(NULL)),
          ebird = list(time = NULL, data = data.frame(NULL)),
          ecoengine = list(time = NULL, data = data.frame(NULL)),
-         antweb = list(time = NULL, data = data.frame(NULL)))
+         antweb = list(time = NULL, data = data.frame(NULL)),
+         vertnet = list(time = NULL, data = data.frame(NULL))
+    )
   }
 
   # check that one of query or ids is non-NULL
@@ -317,8 +329,9 @@ occ <- function(query = NULL, from = "gbif", limit = 500, geometry = NULL, rank 
   inat_sp <- getsplist("inat", inatopts)
   ebird_sp <- getsplist("ebird", ebirdopts)
   ecoengine_sp <- getsplist("ecoengine", ecoengineopts)
-  antweb_sp <- getsplist("antweb", ecoengineopts)
+  antweb_sp <- getsplist("antweb", antwebopts)
+  vertnet_sp <- getsplist("vertnet", vertnetopts)
   p <- list(gbif = gbif_sp, bison = bison_sp, inat = inat_sp, ebird = ebird_sp,
-            ecoengine = ecoengine_sp, antweb = antweb_sp)
+            ecoengine = ecoengine_sp, antweb = antweb_sp, vertnet = vertnet_sp)
   structure(p, class = "occdat", searched = from)
 }

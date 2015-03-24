@@ -2,7 +2,7 @@
 #' Specify whether a scientific or common name in the type parameter.
 #' Only scientific names supported right now.
 #' @param from (character) Data source to get data from, any combination of gbif, bison,
-#' inat, ebird, and/or ecoengine
+#' inat, ebird, ecoengine and/or vertnet
 #' @param limit (numeric) Number of records to return. This is passed across all sources.
 #' To specify different limits for each source, use the options for each source (gbifopts, 
 #' bisonopts, inatopts, ebirdopts, ecoengineopts, and antwebopts). See Details for more. 
@@ -25,24 +25,26 @@
 #' @param callopts Options passed on to \code{\link[httr]{GET}}, e.g., for debugging curl calls, 
 #' setting timeouts, etc. This parameter is ignored for sources: antweb, inat.
 #' @param gbifopts (list) List of named options to pass on to \code{\link[rgbif]{occ_search}}. See
-#' also \code{\link[spocc]{occ_options}}. 
+#' also \code{\link{occ_options}}. 
 #' @param bisonopts (list) List of named options to pass on to \code{\link[rbison]{bison}}. See 
-#' also \code{\link[spocc]{occ_options}}.
+#' also \code{\link{occ_options}}.
 #' @param inatopts (list) List of named options to pass on to \code{\link[rinat]{get_inat_obs}}. 
-#' See also \code{\link[spocc]{occ_options}}.
-#' @param ebirdopts (list) List of named options to pass on to \code{\link[rebird]{ebirdregion}} or 
-#' \code{\link[rebird]{ebirdgeo}}. See also \code{\link[spocc]{occ_options}}.
+#' See also \code{\link{occ_options}}.
+#' @param ebirdopts (list) List of named options to pass on to \code{\link[rebird]{ebirdregion}} 
+#' or \code{\link[rebird]{ebirdgeo}}. See also \code{\link{occ_options}}.
 #' @param ecoengineopts (list) List of named options to pass on to 
-#' \code{\link[ecoengine]{ee_observations}}. See also \code{\link[spocc]{occ_options}}.
-#' @param antwebopts (list) List of named options to pass on to \code{\link[AntWeb]{aw_data}}. See
-#' also \code{\link[spocc]{occ_options}}.
+#' \code{\link[ecoengine]{ee_observations}}. See also \code{\link{occ_options}}.
+#' @param antwebopts (list) List of named options to pass on to \code{\link[AntWeb]{aw_data}}. 
+#' See also \code{\link{occ_options}}.
+#' @param vertnetopts (list) List of named options to pass on to 
+#' \code{\link[rvertnet]{searchbyterm}}. See also \code{\link{occ_options}}.
 #'
 #' @details The \code{occ} function is an opinionated wrapper
-#' around the rgbif, rbison, rinat, rebird, AntWeb, and ecoengine packages to allow data
-#' access from a single access point. We take care of making sure you get useful
+#' around the rgbif, rbison, rinat, rebird, AntWeb, ecoengine, and rvertnet packages to 
+#' allow data access from a single access point. We take care of making sure you get useful
 #' objects out at the cost of flexibility/options - although you can still set
 #' options for each of the packages via the gbifopts, bisonopts, inatopts,
-#' ebirdopts, ecoengineopts, and antwebopts parameters.
+#' ebirdopts, ecoengineopts, vertnetopts, and antwebopts parameters.
 #'
 #' When searching ecoengine, you can leave the page argument blank to get a single page.
 #' Otherwise use page ranges or simply "all" to request all available pages.

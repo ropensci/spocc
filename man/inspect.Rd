@@ -16,17 +16,24 @@ inspect(x, from = "gbif")
 \method{inspect}{occkey}(x, from = "gbif")
 }
 \arguments{
-\item{x}{The output from \code{\link{occ}} call.}
+\item{x}{The output from \code{\link{occ}} call, output from call to
+\code{\link{occ2df}}, or an occurrence ID as a occkey class.}
 
-\item{from}{The data provider. One of gbif, bison, inat, ebird, or ecoengine}
+\item{from}{(character) The data provider. One of gbif, bison, inat, antweb, ecoengine,
+or vertnet}
+}
+\value{
+A list, with each slot named for the data source, and then within data
+sources is a slot for each taxon, named by it's occurrence ID.
 }
 \description{
 Get more data on individual occurrences.
 }
 \examples{
 \dontrun{
-spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Carduelis tristis')
-out <- occ(query=spnames, from=c('gbif','bison'), gbifopts=list(hasCoordinate=TRUE), limit=2)
+spnames <- c('Accipiter striatus', 'Carduelis tristis')
+out <- occ(query=spnames, from=c('gbif','bison','ecoengine'),
+   gbifopts=list(hasCoordinate=TRUE), limit=2)
 res <- occ2df(out)
 inspect(res)
 
@@ -36,6 +43,8 @@ inspect(res)
 
 # from occkeys
 key <- as.gbif(res$key[1])
+inspect(key)
+key <- as.antweb("amsat-94817")
 inspect(key)
 }
 }

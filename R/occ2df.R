@@ -1,7 +1,6 @@
 #' Combine results from occ calls to a single data.frame
 #' 
 #' @export
-#' @importFrom uuid UUIDgenerate
 #' 
 #' @param obj Input from occ
 #' @param what (character) One of data (default) or all (with metadata)

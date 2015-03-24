@@ -24,37 +24,30 @@
 as.gbif <- function(x) UseMethod("as.gbif")
 
 #' @export
-#' @rdname as.gbif
 as.gbif.gbifkey <- function(x) x
 
 #' @export
-#' @rdname as.gbif
 as.gbif.occkey <- function(x) x
 
 #' @export
-#' @rdname as.gbif
 as.gbif.occdat <- function(x) {
   x <- occ2df(x)
   make_gbif_df(x)
 }
 
 #' @export
-#' @rdname as.gbif
 as.gbif.data.frame <- function(x) make_gbif_df(x)
 
 #' @export
-#' @rdname as.gbif
 as.gbif.numeric <- function(x) make_gbif(x)
 
 #' @export
-#' @rdname as.gbif
 as.gbif.character <- function(x) make_gbif(as.numeric(x))
 
 #' @export
-#' @rdname as.gbif
 as.gbif.list <- function(x){
-  lapply(x, function(z){
-    if(is(z, "gbifkey")){
+  lapply(x, function(z) {
+    if (is(z, "gbifkey")) {
       as.gbif(z)
     } else {
       make_gbif(as.numeric(z))
@@ -64,7 +57,7 @@ as.gbif.list <- function(x){
 
 make_gbif_df <- function(x){
   tmp <- x[ x$prov %in% "gbif" ,  ]
-  if(NROW(tmp) == 0){
+  if (NROW(tmp) == 0) {
     stop("no data from gbif found", call. = FALSE)
   } else {
     setNames(lapply(as.numeric(tmp$key), make_gbif), as.numeric(tmp$key))
@@ -72,5 +65,5 @@ make_gbif_df <- function(x){
 }
 
 make_gbif <- function(y, ...){
-  structure(occ_get(key = y, fields="all", ...), class=c("gbifkey","occkey"))
+  structure(occ_get(key = y, fields = "all", ...), class = c("gbifkey", "occkey"))
 }

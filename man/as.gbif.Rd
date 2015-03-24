@@ -2,30 +2,9 @@
 % Please edit documentation in R/as.gbif.R
 \name{as.gbif}
 \alias{as.gbif}
-\alias{as.gbif.character}
-\alias{as.gbif.data.frame}
-\alias{as.gbif.gbifkey}
-\alias{as.gbif.list}
-\alias{as.gbif.numeric}
-\alias{as.gbif.occdat}
-\alias{as.gbif.occkey}
 \title{Coerce occurrence keys to gbifkey/occkey objects}
 \usage{
 as.gbif(x)
-
-\method{as.gbif}{gbifkey}(x)
-
-\method{as.gbif}{occkey}(x)
-
-\method{as.gbif}{occdat}(x)
-
-\method{as.gbif}{data.frame}(x)
-
-\method{as.gbif}{numeric}(x)
-
-\method{as.gbif}{character}(x)
-
-\method{as.gbif}{list}(x)
 }
 \arguments{
 \item{x}{Various inputs, including the output from a call to \code{\link{occ}} (class occdat),

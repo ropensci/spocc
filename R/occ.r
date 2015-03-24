@@ -155,7 +155,7 @@
 #' occ(query = 'Accipiter striatus', from = 'bison', limit=10, callopts=verbose())
 #' occ(query = 'Accipiter striatus', from = 'ecoengine', limit=10, callopts=verbose())
 #' occ(query = 'Accipiter striatus', from = c('ebird','bison'), limit=10, callopts=verbose())
-#' occ(query = 'Accipiter striatus', from = 'ebird', limit=10, callopts=timeout(seconds = 0.1))
+#' # occ(query = 'Accipiter striatus', from = 'ebird', limit=10, callopts=timeout(seconds = 0.1))
 #' ## notice that callopts is ignored when from='inat' or from='antweb'
 #' occ(query = 'Accipiter striatus', from = 'inat', callopts=verbose())
 #' occ(query = 'linepithema humile', from = 'antweb', callopts=verbose())

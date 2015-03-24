@@ -28,6 +28,7 @@ Imports:
     ecoengine (>= 1.4),
     rebird (>= 0.1.1),
     AntWeb (>= 0.6.1),
+    rvertnet (>= 0.2.2),
     ggmap,
     maptools,
     rworldmap,

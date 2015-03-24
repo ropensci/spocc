@@ -15,7 +15,8 @@
 #' box given as a bounding box or polygon described in WKT format. A WKT shape written as
 #' 'POLYGON((30.1 10.1, 20, 20 40, 40 40, 30.1 10.1))' would be queried as is,
 #' i.e. http://bit.ly/HwUSif. See Details for more examples of WKT objects. The format of a
-#' bounding box is [min-longitude, min-latitude, max-longitude, max-latitude].
+#' bounding box is [min-longitude, min-latitude, max-longitude, max-latitude]. Geometry
+#' is not possible with vertnet right now, but should be soon.
 #' @param rank (character) Taxonomic rank. Not used right now.
 #' @param type (character) Type of search: sci (scientific) or com (common name, vernacular).
 #' Not used right now.

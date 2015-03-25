@@ -7,7 +7,9 @@
 occ2df(obj, what = "data")
 }
 \arguments{
-\item{obj}{Input from occ}
+\item{obj}{Input from occ, an object of class \code{occdat}, or an object of class
+\code{occdatind}, the individual objects from each source within the
+\code{occdat} class.}
 
 \item{what}{(character) One of data (default) or all (with metadata)}
 }
@@ -29,15 +31,10 @@ following columns:
 }
 
 AntWeb doesn't provide dates, so occurrence rows from that provider are blank.
-
-Ecoengine doesn't provide unique keys for each occurrence record, so we generate one
-for each record. We cache records returned from the \code{\link{occ}} function on your
-machine, and you can use the keys from the output of this function to request
-further output in \code{inspect}, which uses that cached data. Other data sources
-provide unique keys already, so we can query the database online again for more data.
 }
 \examples{
 \dontrun{
+# combine results from output of an occ() call
 spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Carduelis tristis')
 out <- occ(query=spnames, from='gbif', gbifopts=list(hasCoordinate=TRUE), limit=10)
 occ2df(out)
@@ -45,6 +42,19 @@ occ2df(out)
 out <- occ(query='Accipiter striatus', from=c('gbif','bison','ecoengine','ebird','inat','vertnet'),
    gbifopts=list(hasCoordinate=TRUE), limit=2)
 occ2df(out)
+
+# or combine many results from a single data source
+spnames <- c('Accipiter striatus', 'Carduelis tristis')
+out <- occ(query=spnames, from='ecoengine', limit=2)
+occ2df(out$ecoengine)
+
+spnames <- c('Accipiter striatus', 'Carduelis tristis')
+out <- occ(query=spnames, from='gbif', limit=2)
+occ2df(out$gbif)
+
+spp <- c("Linepithema humile", "Crematogaster brasiliensis")
+out <- occ(query=spp, from='antweb', limit=2)
+occ2df(out$antweb)
 }
 }
 

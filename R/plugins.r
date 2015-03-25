@@ -22,7 +22,10 @@ foo_gbif <- function(sources, query, limit, geometry, callopts, opts) {
       query_use <- NULL 
     }
 
-    if(is.null(query_use) && is.null(geometry)){ emptylist(opts) } else {
+    if (is.null(query_use) && is.null(geometry)) {
+      warning(sprintf("No records found in GBIF for %s", query), call. = FALSE)
+      emptylist(opts) 
+    } else {
       time <- now()
       if(!'limit' %in% names(opts)) opts$limit <- limit
       opts$fields <- 'all'
@@ -31,18 +34,23 @@ foo_gbif <- function(sources, query, limit, geometry, callopts, opts) {
           geometry } else { bbox2wkt(bbox=geometry) }
       }
       opts$config <- callopts
-      out <- do.call("occ_search", opts)
-      if(class(out) == "character") { emptylist(opts) } else {
-        if(class(out$data) == "character"){ emptylist(opts) } else {
-          dat <- out$data
-          dat$prov <- rep("gbif", nrow(dat))
-          dat$name <- as.character(dat$name)
-          cols <- c('name','decimalLongitude','decimalLatitude','issues','prov')
-          cols <- cols[ cols %in% sort(names(dat)) ]
-          dat <- move_cols(x=dat, y=cols)
-          dat <- stand_latlon(dat)
-          dat <- stand_dates(dat, "gbif")
-          list(time = time, found = out$meta$count, data = dat, opts = opts)
+      out <- tryCatch(do.call("occ_search", opts), error = function(e) e)
+      if (is(out, "simpleError")) {
+        warning(sprintf("No records found in GBIF for %s", query), call. = FALSE)
+        list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
+      } else {
+        if (class(out) == "character") { emptylist(opts) } else {
+          if(class(out$data) == "character"){ emptylist(opts) } else {
+            dat <- out$data
+            dat$prov <- rep("gbif", nrow(dat))
+            dat$name <- as.character(dat$name)
+            cols <- c('name','decimalLongitude','decimalLatitude','issues','prov')
+            cols <- cols[ cols %in% sort(names(dat)) ]
+            dat <- move_cols(x=dat, y=cols)
+            dat <- stand_latlon(dat)
+            dat <- stand_dates(dat, "gbif")
+            list(time = time, found = out$meta$count, data = dat, opts = opts)
+          }
         }
       }
     }
@@ -106,9 +114,9 @@ foo_ecoengine <- function(sources, query, limit, geometry, callopts, opts) {
     opts$quiet <- TRUE
     opts$progress <- FALSE
     opts$foptions <- callopts
-    out_ee <- do.call(ee_observations, opts)
-    if(out_ee$results == 0){
-      warning(sprintf("No records found in Ecoengine for %s", query))
+    out_ee <- tryCatch(do.call(ee_observations, opts), error = function(e) e)
+    if(out_ee$results == 0 || is(out_ee, "simpleError")){
+      warning(sprintf("No records found in Ecoengine for %s", query), call. = FALSE)
       list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
     } else{
       out <- out_ee$data
@@ -145,10 +153,10 @@ foo_antweb <- function(sources, query, limit, geometry, callopts, opts) {
 
     if(!'limit' %in% names(opts)) opts$limit <- limit
     opts$georeferenced <- TRUE
-    out <- do.call(aw_data, opts)
-
-    if(is.null(out)){
-      warning(sprintf("No records found in AntWeb for %s", query))
+    out <- tryCatch(do.call(aw_data, opts), error = function(e) e)
+    
+    if(is.null(out) || is(out, "simpleError")){
+      warning(sprintf("No records found in AntWeb for %s", query), call. = FALSE)
       list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
     } else{
       res <- out$data
@@ -201,8 +209,9 @@ foo_bison <- function(sources, query, limit, geometry, callopts, opts) {
         bbox2wkt(bbox=geometry) 
       }
     }
-    out <- do.call(eval(parse(text = bisonfxn)), opts)
-    if(is.null(out$points)){
+    out <- tryCatch(do.call(eval(parse(text = bisonfxn)), opts), error = function(e) e)
+    if (is.null(out$points) || is(out, "simpleError")){
+      warning(sprintf("No records found in Bison for %s", query), call. = FALSE)
       list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
     } else{
       dat <- out$points
@@ -235,8 +244,9 @@ foo_inat <- function(sources, query, limit, geometry, callopts, opts) {
         c(temp[2], temp[1], temp[4], temp[3])
       } else { c(geometry[2], geometry[1], geometry[4], geometry[3]) }
     }
-    out <- do.call(spocc_inat_obs, opts)
-    if(!is.data.frame(out$data)){
+    out <- tryCatch(do.call(spocc_inat_obs, opts), error = function(e) e)
+    if(!is.data.frame(out$data) || is(out, "simpleError")){
+      warning(sprintf("No records found in INAT for %s", query), call. = FALSE)
       list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
     } else{
       res <- out$data
@@ -265,11 +275,12 @@ foo_ebird <- function(sources, query, limit, callopts, opts) {
     opts$config <- callopts
     if (opts$method == "ebirdregion") {
       if (is.null(opts$region)) opts$region <- "US"
-      out <- do.call(ebirdregion, opts[!names(opts) %in% "method"])
+      out <- tryCatch(do.call(ebirdregion, opts[!names(opts) %in% "method"]), error = function(e) e)
     } else {
-      out <- do.call(ebirdgeo, opts[!names(opts) %in% "method"])
+      out <- tryCatch(do.call(ebirdgeo, opts[!names(opts) %in% "method"]), error = function(e) e)
     }
-    if(!is.data.frame(out)){
+    if(!is.data.frame(out) || is(out, "simpleError")){
+      warning(sprintf("No records found in eBird for %s", query), call. = FALSE)
       list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
     } else{
       out$prov <- rep("ebird", nrow(out))
@@ -291,8 +302,9 @@ foo_vertnet <- function(sources, query, limit, callopts, opts) {
     opts$verbose <- FALSE
     if(!'limit' %in% names(opts)) opts$limit <- limit
     opts$config <- callopts
-    out <- do.call(vertsearch, opts)
-    if(!is.data.frame(out$data)){
+    out <- tryCatch(do.call(vertsearch, opts), error = function(e) e)
+    if (!is.data.frame(out$data) || is(out, "simpleError")) {
+      warning(sprintf("No records found in VertNet for %s", query), call. = FALSE)
       list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
     } else{
       df <- out$data

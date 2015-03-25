@@ -10,8 +10,9 @@ knitr::opts_chunk$set(
 )
 ```
 
-Linux: [![Build Status](https://api.travis-ci.org/ropensci/spocc.png)](https://travis-ci.org/ropensci/spocc)  
-Windows: [![Build status](https://ci.appveyor.com/api/projects/status/3d43armi2oanva2s)](https://ci.appveyor.com/project/karthik/spocc)  
+[![Build Status](https://api.travis-ci.org/ropensci/spocc.png)](https://travis-ci.org/ropensci/spocc)
+[![Build status](https://ci.appveyor.com/api/projects/status/3d43armi2oanva2s)](https://ci.appveyor.com/project/karthik/spocc)
+[![Coverage Status](https://coveralls.io/repos/ropensci/spocc/badge.svg)](https://coveralls.io/r/ropensci/spocc)
 
 **`spocc` = SPecies OCCurrence data**
 
@@ -138,11 +139,11 @@ plot(out, cex=1, pch=10)
 
 ## Meta
 
-* Please report any issues or bugs](https://github.com/ropensci/spocc/issues).
+* Please [report any issues or bugs](https://github.com/ropensci/spocc/issues).
 * License: MIT
 * Get citation information for `spocc` in R doing `citation(package = 'spocc')`
 
-[![ropensci footer](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)
+[![ropensci_footer](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)
 
 [gbif]: https://github.com/ropensci/rgbif
 [vertnet]: https://github.com/ropensci/rvertnet

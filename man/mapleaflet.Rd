@@ -9,9 +9,7 @@ mapleaflet(dat, popup = TRUE, map_provider = "osm", zoom = 3,
   overwrite = TRUE, incl.data = TRUE)
 }
 \arguments{
-\item{dat}{A data.frame, with any number of columns, but with at least the
-following: name (the taxonomic name), latitude (in dec. deg.), longitude
-(in dec. deg.)}
+\item{dat}{Object of class \code{occdat} as returned by \code{\link[spocc]{occ}}.}
 
 \item{popup}{If \code{TRUE} (default) popup tooltips are created for each point with
 metadta for that point.}

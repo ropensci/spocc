@@ -184,8 +184,7 @@ head(occ2df(out)); tail(occ2df(out))
 ```r
 spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta')
 dat <- occ(query = spp, from = 'gbif', gbifopts = list(hasCoordinate=TRUE))
-data <- occ2df(dat)
-mapleaflet(data = data, dest = ".")
+mapleaflet(data = dat, dest = ".")
 ```
 
 ![leafletmap](http://f.cl.ly/items/3w2Y1E3Z0T2T2z40310K/Screen%20Shot%202014-02-09%20at%2010.38.10%20PM.png)

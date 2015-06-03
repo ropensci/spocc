@@ -63,8 +63,8 @@ move_cols <- function(x, y)
 emptylist <- function(opts) list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
 
 stand_latlon <- function(x){
-  lngs <- c('decimalLongitude', 'decimallongitude', 'Longitude', 'lng', 'longitude', 'decimal_longitude')
-  lats <- c('decimalLatitude', 'decimallatitude', 'Latitude', 'lat', 'latitude', 'decimal_latitude')
+  lngs <- c('decimalLongitude', 'decimallongitude', 'Longitude', 'lng', 'longitude', 'decimal_longitude', 'geopoint.lon')
+  lats <- c('decimalLatitude', 'decimallatitude', 'Latitude', 'lat', 'latitude', 'decimal_latitude', 'geopoint.lat')
   names(x)[ names(x) %in% lngs ] <- 'longitude'
   names(x)[ names(x) %in% lats ] <- 'latitude'
   x
@@ -72,12 +72,13 @@ stand_latlon <- function(x){
 
 stand_dates <- function(dat, from){
   datevars <- list(gbif = 'eventDate', bison = c('eventDate', 'year'), inat = 'Datetime',
-                   ebird = 'obsDt', ecoengine = 'begin_date', vertnet = 'eventdate')
+                   ebird = 'obsDt', ecoengine = 'begin_date', vertnet = 'eventdate',
+                   idigbio = 'datecollected')
   var <- datevars[[from]]
-  if(from == "bison"){
-    var <- if( is.null(dat$eventDate) ) "year" else "eventDate"
+  if (from == "bison") {
+    var <- if ( is.null(dat$eventDate) ) "year" else "eventDate"
   }
-  if( is.null(dat[[var]]) ){
+  if ( is.null(dat[[var]]) ) {
     dat
   } else {
     dat[[var]] <- switch(from,
@@ -86,9 +87,10 @@ stand_dates <- function(dat, from){
                          inat = ymd_hms(dat[[var]], truncated = 3, quiet = TRUE),
                          ebird = ymd_hm(dat[[var]], truncated = 3, quiet = TRUE),
                          ecoengine = ymd(dat[[var]], truncated = 3, quiet = TRUE),
-                         vertnet = ymd(dat[[var]], truncated = 3, quiet = TRUE)
+                         vertnet = ymd(dat[[var]], truncated = 3, quiet = TRUE),
+                         idigbio = ymd_hms(dat[[var]], truncated = 3, quiet = TRUE)
     )
-    if(from == "bison") rename(dat, setNames('date', var)) else dat
+    if (from == "bison") rename(dat, setNames('date', var)) else dat
   }
 }
 
@@ -316,6 +318,52 @@ foo_vertnet <- function(sources, query, limit, callopts, opts) {
       df <- stand_latlon(df)
       df <- stand_dates(df, "vertnet")
       list(time = time, found = as.numeric(gsub(">|<", "", out$meta$matching_records)), data = df, opts = opts)
+    }
+  } else {
+    list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
+  }
+}
+
+#' @noRd
+foo_idigbio <- function(sources, query, limit, geometry, callopts, opts) {
+  if (any(grepl("idigbio", sources))) {
+    # opts <- limit_alias(opts, "idigbio")
+    time <- now()
+    # and only georeferenced records
+    # if (!is.null(query)) {
+    opts$rq <- list(scientificname = query)
+    # opts$rq$geopoint <- list(type = "exists")
+    # opts$rq <- list(genus = query, geopoint = list(type = "exists"))
+    # }
+    
+    if (!is.null(geometry)) {
+      opts$rq <- if (is.numeric(geometry) && length(geometry) == 4) {
+        list(geopoint = list(
+          type = "geo_bounding_box", 
+          top_left = list(
+            lat = geometry[4], lon = geometry[1]
+          ), 
+          bottom_right = list(
+            lat = geometry[2], lon = geometry[3]
+          )
+        ))
+      } else {
+        geometry 
+      }
+    }
+    
+    opts$limit <- limit
+    
+    out <- tryCatch(do.call(idig_search_records, opts), error = function(e) e)
+    if (is(out, "simpleError")) {
+      warning(sprintf("No records found in iDigBio for %s", query))
+      list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
+    } else{
+      out$prov <- rep("idigbio", nrow(out))
+      out <- rename(out, c('scientificname' = 'name'))
+      out <- stand_latlon(out)
+      out <- stand_dates(out, "idigbio")
+      list(time = time, found = NA, data = out, opts = opts)
     }
   } else {
     list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)

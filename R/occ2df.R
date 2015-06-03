@@ -65,14 +65,15 @@ occ2df.occdat <- function(obj, what = "data") {
   ee <- foolist(obj$ecoengine)
   aw <- foolist(obj$antweb)
   vn <- foolist(obj$vertnet)
+  id <- foolist(obj$idigbio)
   tmp <- data.frame(rbind_fill(
     Map(
       function(x, y){
-        if(NROW(x) == 0){
+        if (NROW(x) == 0) {
           data.frame(NULL)
         } else {
-          dat <- x[ , c('name','longitude','latitude','prov',datemap[[y]],keymap[[y]]) ]
-          if(is.null(datemap[[y]])){
+          dat <- x[ , c('name', 'longitude', 'latitude', 'prov', datemap[[y]], keymap[[y]]) ]
+          if (is.null(datemap[[y]])) {
             dat$date <- rep(NA_character_, NROW(dat))
           } else {
             dat <- rename(dat, setNames("date", datemap[[y]]))
@@ -80,15 +81,15 @@ occ2df.occdat <- function(obj, what = "data") {
           rename(dat, setNames("key", keymap[[y]]))
         }
       }, 
-      list(aa, bb, cc, dd, ee, aw, vn), c('gbif','bison','inat','ebird','ecoengine','antweb','vertnet')
+      list(aa, bb, cc, dd, ee, aw, vn, id), c('gbif','bison','inat','ebird','ecoengine','antweb','vertnet','idigbio')
     )
   ))
   tmpout <- list(meta = list(obj$gbif$meta, obj$bison$meta, obj$inat$meta, obj$ebird$meta,
-                             obj$ecoengine$meta, obj$aw$meta, obj$vn$meta), data = tmp)
-  if(what %in% "data") tmpout$data else tmpout
+                             obj$ecoengine$meta, obj$aw$meta, obj$vn$meta, obj$id$meta), data = tmp)
+  if (what %in% "data") tmpout$data else tmpout
 }
 
 datemap <- list(gbif='eventDate',bison='date',inat='datetime',ebird='obsDt',
-                ecoengine='begin_date',antweb=NULL,vertnet="eventdate")
+                ecoengine='begin_date',antweb=NULL,vertnet="eventdate",idigbio="datecollected")
 keymap <- list(gbif="key",bison="occurrenceID",inat="id",ebird="locID",
-               ecoengine="key",antweb="catalogNumber",vertnet="occurrenceid")
+               ecoengine="key",antweb="catalogNumber",vertnet="occurrenceid",idigbio="uuid")

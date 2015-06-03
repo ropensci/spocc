@@ -4,6 +4,7 @@
 #' or many data sources.
 #'
 #' @import rgbif rinat rebird ecoengine rbison AntWeb rvertnet
+#' @importFrom ridigbio idig_search_records
 #' @importFrom lubridate now ymd_hms ymd_hm ydm_hm ymd
 #' @template occtemp
 #' @export
@@ -29,6 +30,14 @@
 #' (by_species <- occ(query = "linepithema humile", from = "antweb", limit = 10))
 #' # or by genus
 #' (by_genus <- occ(query = "acanthognathus", from = "antweb"))
+#' 
+#' # idigbio data
+#' ## scientific name search
+#' # idig_search_records(rq=list(genus="acer"), limit = 5)
+#' occ(query = "Acer", from = "idigbio", limit = 5)
+#' ## geo search
+#' bounds <- c(-120, 40, -100, 45)
+#' occ(from = "idigbio", geometry = bounds, limit = 10)
 #'
 #' occ(query = 'Setophaga caerulescens', from = 'ebird', ebirdopts = list(region='US'))
 #' occ(query = 'Spinus tristis', from = 'ebird', ebirdopts =
@@ -179,7 +188,7 @@
 occ <- function(query = NULL, from = "gbif", limit = 500, geometry = NULL, rank = "species",
     type = "sci", ids = NULL, callopts=list(), gbifopts = list(), bisonopts = list(),
     inatopts = list(), ebirdopts = list(), ecoengineopts = list(), antwebopts = list(),
-    vertnetopts = list()) {
+    vertnetopts = list(), idigbioopts = list()) {
   
   if (!is.null(geometry)) {
     if (class(geometry) %in% c('SpatialPolygons', 'SpatialPolygonsDataFrame')) {
@@ -187,7 +196,7 @@ occ <- function(query = NULL, from = "gbif", limit = 500, geometry = NULL, rank 
     }
   }
   sources <- match.arg(from, choices = c("gbif", "bison", "inat", "ebird", 
-                                         "ecoengine", "antweb", "vertnet"),
+                                         "ecoengine", "antweb", "vertnet", "idigbio"),
                        several.ok = TRUE)
   if (!all(from %in% sources)) {
     stop(sprintf("Woops, the following are not supported or spelled incorrectly: %s", 
@@ -203,8 +212,10 @@ occ <- function(query = NULL, from = "gbif", limit = 500, geometry = NULL, rank 
     ecoengine_res <- foo_ecoengine(sources, x, y, z, w, ecoengineopts)
     antweb_res <- foo_antweb(sources, x, y, z, w, antwebopts)
     vertnet_res <- foo_vertnet(sources, x, y, w, vertnetopts)
+    idigbio_res <- foo_idigbio(sources, x, y, z, w, idigbioopts)
     list(gbif = gbif_res, bison = bison_res, inat = inat_res, ebird = ebird_res,
-         ecoengine = ecoengine_res, antweb = antweb_res, vertnet = vertnet_res)
+         ecoengine = ecoengine_res, antweb = antweb_res, vertnet = vertnet_res, 
+         idigbio = idigbio_res)
   }
 
   loopids <- function(x, y, z, w) {
@@ -226,7 +237,8 @@ occ <- function(query = NULL, from = "gbif", limit = 500, geometry = NULL, rank 
          ebird = list(time = NULL, data = data.frame(NULL)),
          ecoengine = list(time = NULL, data = data.frame(NULL)),
          antweb = list(time = NULL, data = data.frame(NULL)),
-         vertnet = list(time = NULL, data = data.frame(NULL))
+         vertnet = list(time = NULL, data = data.frame(NULL)),
+         idigbio = list(time = NULL, data = data.frame(NULL))
     )
   }
 
@@ -331,7 +343,9 @@ occ <- function(query = NULL, from = "gbif", limit = 500, geometry = NULL, rank 
   ecoengine_sp <- getsplist("ecoengine", ecoengineopts)
   antweb_sp <- getsplist("antweb", antwebopts)
   vertnet_sp <- getsplist("vertnet", vertnetopts)
+  idigbio_sp <- getsplist("idigbio", idigbioopts)
   p <- list(gbif = gbif_sp, bison = bison_sp, inat = inat_sp, ebird = ebird_sp,
-            ecoengine = ecoengine_sp, antweb = antweb_sp, vertnet = vertnet_sp)
+            ecoengine = ecoengine_sp, antweb = antweb_sp, vertnet = vertnet_sp,
+            idigbio = idigbio_sp)
   structure(p, class = "occdat", searched = from)
 }

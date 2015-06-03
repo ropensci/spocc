@@ -21,8 +21,10 @@ r_github_packages:
 - rstudio/leaflet
 - ropensci/rgbif 
 - ropensci/rinat 
+- ropensci/rvertnet
 - ropensci/bold 
 - ropensci/taxize
+- iDigBio/ridigbio
 
 after_success:
 - Rscript -e 'library(covr); coveralls()'

@@ -3,6 +3,8 @@ context("ggmap works correctly")
 library("ggplot2")
 
 test_that("ggmaps work as expected", {
+  skip_on_cran()
+  
 	ecoengine_data <- occ(query = "Lynx rufus californicus", from = "ecoengine")
   map1 <- suppressMessages(mapggplot(ecoengine_data))
  	gbif_data <- occ(query = 'Accipiter striatus', from = 'gbif')

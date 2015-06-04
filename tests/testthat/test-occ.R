@@ -1,6 +1,8 @@
 context("Occurrence data is correctly retrieved")
 
 test_that("occ works", {
+  skip_on_cran()
+  
   x1 <- occ(query = 'Accipiter striatus', from = 'gbif', limit = 30)
   x2 <- occ(query = 'Accipiter striatus', from = 'ecoengine', limit = 30)
   x3 <- occ(query = 'Danaus plexippus', from = 'inat', limit = 30)
@@ -69,6 +71,8 @@ test_that("occ works", {
 context("Testing geometry searches")
 
 test_that("geometry searches work", {
+  skip_on_cran()
+  
   # no results
   geo1 <- occ(query='Accipiter', from='gbif', limit = 30,
               geometry='POLYGON((30.1 10.1, 10 20, 20 60, 60 60, 30.1 10.1))')
@@ -94,6 +98,8 @@ test_that("geometry searches work", {
 context("Testing by taxon identifier searches")
 
 test_that("Taxon identifier searches work", {
+  skip_on_cran()
+  
   suppressPackageStartupMessages(require("taxize"))
   ids <- suppressMessages(get_ids(names=c("Chironomus riparius","Pinus contorta"), db = c('itis','gbif')))
   byid1 <- occ(ids = ids[[1]], from='bison', limit = 5)
@@ -118,6 +124,8 @@ test_that("Taxon identifier searches work", {
 
 
 test_that("passing in options to occ works", {
+  skip_on_cran()
+  
   opts1 <- occ(query = 'Accipiter striatus', from = 'gbif', gbifopts = list(hasCoordinate = TRUE), limit = 5)
   opts2 <- occ(query = 'Accipiter striatus', from = 'ecoengine', ecoengineopts = list(county="Sonoma"), limit = 5)
   opts3 <- occ(query = 'Danaus plexippus', from = 'inat', inatopts = list(year=2014), limit = 5)

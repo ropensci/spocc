@@ -3,8 +3,9 @@
 #' This can be helpful in visualizing the area in which you are searching for
 #' occurrences with the \code{\link{occ}} function.
 #'
-#' @import ggmap ggplot2 rgeos whisker
 #' @export
+#' @import ggplot2
+#' @importFrom whisker whisker.render
 #'
 #' @param x Input well-known text area (character)
 #' @param zoom Zoom level, defaults to 6 (numeric)

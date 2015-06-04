@@ -61,7 +61,10 @@ spocc_stylegeojson <- function(input, var = NULL, var_col = NULL, var_sym = NULL
 #' You can use a web interface called Ogre, or do conversions locally using the
 #' rgdal package.
 #'
-#' @import httr rgdal maptools
+#' @export
+#' @import rgdal
+#' @importFrom maptools readShapeSpatial
+#' @importFrom httr POST stop_for_status content upload_file
 #' @param input The file being uploaded, path to the file on your machine.
 #' @param method One of web or local. Matches on partial strings.
 #' @param destpath Destination for output geojson file. Defaults to your root
@@ -79,6 +82,7 @@ spocc_stylegeojson <- function(input, var = NULL, var_col = NULL, var_sym = NULL
 #'
 #' If you're having trouble rendering geoJSON files, ensure you have a valid
 #' geoJSON file by running it through a geoJSON linter \url{http://geojsonlint.com/}.
+#' @seealso \code{spocc_stylegeojson}
 #' @examples \dontrun{
 #' file <- '/Users/scottmac2/Downloads/taxon-placemarks-2441176.kml'
 #'
@@ -117,8 +121,6 @@ spocc_stylegeojson <- function(input, var = NULL, var_col = NULL, var_sym = NULL
 #' spocc_togeojson(input=file, method='web', outfilename='my')
 #' spocc_create_gist('~/my.geojson', description = 'Map of three bird species occurrences')
 #' }
-#' @export
-#' @seealso \code{spocc_stylegeojson}
 spocc_togeojson <- function(input, method = "web", destpath = "~/", outfilename = "myfile") {
     method <- match.arg(method, choices = c("web", "local"))
     if (method == "web") {

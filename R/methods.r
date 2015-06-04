@@ -1,6 +1,6 @@
 #' spocc objects and their print, plot, and summary methods
 #'
-#' @import sp rworldmap
+#' @importFrom rworldmap getMap
 #' @keywords internal
 #'
 #' @param x Input, of class occdatind
@@ -54,7 +54,7 @@ print.occdat <- function(x, ...) {
 
 gettype <- function(x){
   y <- unique(unlist(unname(sc(pluck(pluck(x, "meta"), "type")))))
-  switch(y, 
+  switch(y,
          sci = "Scientific",
          vern = "Vernacular",
          geometry = "Geometry")
@@ -122,7 +122,7 @@ pastemax <- function(w, n=10){
   rrows <- vapply(w, nrow, integer(1))
   tt <- list()
   for(i in seq_along(rrows)){
-    tt[[i]] <- sprintf("%s (%s)", gsub("_", " ", names(rrows[i])), rrows[[i]]) 
+    tt[[i]] <- sprintf("%s (%s)", gsub("_", " ", names(rrows[i])), rrows[[i]])
   }
   n <- min(n, length(tt))
   paste0(tt[1:n], collapse = ", ")
@@ -166,8 +166,8 @@ occinddf <- function(obj) {
 plot.occdat <- function(x, ...) {
   df <- occ2df(x)
   df <- df[complete.cases(df),]
-  coordinates(df) <- ~longitude + latitude
-  proj4string(df) <- CRS("+init=epsg:4326")
-  plot(getMap())
+  sp::coordinates(df) <- ~longitude + latitude
+  sp::proj4string(df) <- sp::CRS("+init=epsg:4326")
+  plot(rworldmap::getMap())
   points(df, col = "red", ...)
 }

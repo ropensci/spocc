@@ -66,6 +66,9 @@ See also \code{\link{occ_options}}.}
 
 \item{vertnetopts}{(list) List of named options to pass on to
 \code{\link[rvertnet]{searchbyterm}}. See also \code{\link{occ_options}}.}
+
+\item{idigbioopts}{(list) List of named options to pass on to
+\code{idig_search_records}. See also \code{\link{occ_options}}.}
 }
 \description{
 Search on a single species name, or many. And search across a single

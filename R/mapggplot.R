@@ -1,6 +1,6 @@
 #' ggplot2 visualization of species occurences
 #'
-#' @import ggmap
+#' @importFrom ggmap ggmap get_map
 #' @export
 #' @param df Input \code{data.frame}
 #' @param zoom zoom level for map. Adjust depending on how your data look.
@@ -29,9 +29,9 @@ mapggplot <- function(df, zoom = 5, point_color = "#86161f") {
     map_center <- c(lon = center_long, lat = center_lat)
     species_map <- get_map(location = map_center, zoom = zoom, maptype = "terrain")
     temp <- dt[, c("latitude", "longitude")]
-    ggmap(species_map) + geom_point(data = temp, aes(x = longitude, y = latitude), 
-        color = point_color, size = 3) + ggtitle(paste0("Distribution of ", species)) + 
+    ggmap(species_map) + geom_point(data = temp, aes(x = longitude, y = latitude),
+        color = point_color, size = 3) + ggtitle(paste0("Distribution of ", species)) +
         xlab("Longitude") + ylab("Latitude")
 }
 # [BUGS]: Can't figure out why it leaves out points even after I center the plot
-# on the data. Setting zoom = 'auto' leaves out even more points. 
+# on the data. Setting zoom = 'auto' leaves out even more points.

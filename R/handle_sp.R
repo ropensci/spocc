@@ -3,7 +3,7 @@
 #' Input various sp objects (e.g., x, y, z) and output WKT objects. If multiple polygons in the
 #' sp object, separate calls are made to the web API since they don't support MULTIPOLYGON.
 #'
-#' @import rgeos
+#' @importFrom rgeos writeWKT
 #' @param spobj A spatial object
 #' @return One or more WKT strings
 #' @keywords internal

@@ -1,7 +1,7 @@
 #' Clean spocc data
 #'
-#' @import rgdal sp
 #' @export
+#' @importFrom sp zerodist2 proj4string over coordinates<-
 #' @param input An object of class occdat
 #' @param country (logical) Attempt to clean based on country. Ignored for now.
 #' @param country_which (character) One of include, xxx. Ignored for now.
@@ -16,7 +16,7 @@
 #'  \item Removes any NA values of latitude and longitude
 #'  \item Removes points at 0,0 - these points are likely wrong
 #' }
-#' 
+#'
 #' Some examples below don't actually work yet, but will soon.
 #' @return Returns an object of class occdat+occlean. See attributes of the return object for
 #' details on cleaning results.
@@ -134,17 +134,17 @@ clean_country <- function(data, country=NULL, which='include', shppath=NULL)
 {
   shppath <- if(is.null(shppath)) "~/github/ropensci/shapefiles/ne_10m_admin_0_countries/" else shppath
   shppath <- path.expand(shppath)
-  layer <- ogrListLayers(shppath)
-  shp <- readOGR(shppath, layer = layer)
+  layer <- rgdal::ogrListLayers(shppath)
+  shp <- rgdal::readOGR(shppath, layer = layer)
   country_shp <- switch(which,
     include = shp[shp@data$name %in% country,],
     exclude = shp[!shp@data$name %in% country,]
   )
 
-  coordinates(data) <- ~longitude+latitude
-  proj4string(data) <- CRS('+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0')
+  sp::coordinates(data) <- ~longitude+latitude
+  sp::proj4string(data) <- sp::CRS('+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0')
 
-  ss <- over(data, country_shp)
+  ss <- sp::over(data, country_shp)
   tmp <- data[!apply(ss, 1, function(b) is.na(b['scalerank'])), ]
   tmp <- as(tmp, "data.frame")
   return( tmp )
@@ -163,23 +163,23 @@ clean_provider_duplicates <- function(data){
     if(!'gbif' %in% provs){ ret <- NULL } else {
       d1 <- data[[provs[1]]]$data[[1]]
       d2 <- data[[provs[2]]]$data[[1]]
-      coordinates(d1) <- ~decimalLongitude+decimalLatitude
-      coordinates(d2) <- ~Longitude+Latitude
-      zerodist2(d1, d2)
+      sp::coordinates(d1) <- ~decimalLongitude+decimalLatitude
+      sp::coordinates(d2) <- ~Longitude+Latitude
+      sp::zerodist2(d1, d2)
     }
   }
 }
 
 clean_habitat <- function(data){
 #   library(maptools)
-  res <- map_data("world")
+  res <- ggplot2::map_data("world")
   #     ogrListLayers("/Users/sacmac/Downloads/ne_110m_land")
   #     land <- readOGR("/Users/sacmac/Downloads/ne_110m_land/", layer = 'ne_110m_land')
-  land <- readOGR("/Users/sacmac/Downloads/ne_10m_land/", layer = 'ne_10m_land')
+  land <- rgdal::readOGR("/Users/sacmac/Downloads/ne_10m_land/", layer = 'ne_10m_land')
 
   data <- na.omit(data)
-  coordinates(data) <- ~longitude+latitude
-  proj4string(data) <- CRS('+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0')
+  sp::coordinates(data) <- ~longitude+latitude
+  sp::proj4string(data) <- sp::CRS('+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0')
 
-  over(data, land)
+  sp::over(data, land)
 }

@@ -39,6 +39,8 @@
 #' See also \code{\link{occ_options}}.
 #' @param vertnetopts (list) List of named options to pass on to 
 #' \code{\link[rvertnet]{searchbyterm}}. See also \code{\link{occ_options}}.
+#' @param idigbioopts (list) List of named options to pass on to 
+#' \code{idig_search_records}. See also \code{\link{occ_options}}.
 #'
 #' @details The \code{occ} function is an opinionated wrapper
 #' around the rgbif, rbison, rinat, rebird, AntWeb, ecoengine, and rvertnet packages to 

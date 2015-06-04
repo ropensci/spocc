@@ -12,7 +12,8 @@ occ(query = NULL, from = "gbif", limit = 500, geometry = NULL,
 }
 \arguments{
 \item{query}{(character) One to many names. Either a scientific name or a common name.
-Specify whether a scientific or common name in the type parameter.
+Specify whether a scientific or common name in the type parameter. For idigbio, we pass
+the query to the \code{scientificname} query parameter for their API.
 Only scientific names supported right now.}
 
 \item{from}{(character) Data source to get data from, any combination of gbif, bison,
@@ -291,6 +292,38 @@ occ(query = 'Accipiter striatus', from = c('ebird','bison'), limit=10, callopts=
 ## notice that callopts is ignored when from='inat' or from='antweb'
 occ(query = 'Accipiter striatus', from = 'inat', callopts=verbose())
 occ(query = 'linepithema humile', from = 'antweb', callopts=verbose())
+
+
+########## More thorough data source specific examples
+# idigbio
+## scientific name search
+res <- occ(query = "Acer", from = "idigbio", limit = 5)
+res$idigbio
+
+## geo search
+bounds <- c(-120, 40, -100, 45)
+occ(from = "idigbio", geometry = bounds, limit = 10)
+
+## limit fields returned
+occ(query = "Acer", from = "idigbio", limit = 5,
+   idigbioopts = list(fields = "scientificname"))
+
+## offset and max_items
+occ(query = "Acer", from = "idigbio", limit = 5,
+   idigbioopts = list(offset = 10))
+occ(query = "Acer", from = "idigbio", limit = 5,
+   idigbioopts = list(max_items = 6))
+
+## sort
+occ(query = "Acer", from = "idigbio", limit = 5,
+   idigbioopts = list(sort = TRUE))$idigbio
+occ(query = "Acer", from = "idigbio", limit = 5,
+   idigbioopts = list(sort = FALSE))$idigbio
+
+## more complex queries
+### parameters passed to "rq", get combined with the name queried
+occ(query = "Acer", from = "idigbio", limit = 5,
+   idigbioopts = list(rq = list(basisofrecord="fossilspecimen")))$idigbio
 }
 }
 

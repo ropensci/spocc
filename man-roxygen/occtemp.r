@@ -1,5 +1,6 @@
 #' @param query (character) One to many names. Either a scientific name or a common name.
-#' Specify whether a scientific or common name in the type parameter.
+#' Specify whether a scientific or common name in the type parameter. For idigbio, we pass
+#' the query to the \code{scientificname} query parameter for their API.
 #' Only scientific names supported right now.
 #' @param from (character) Data source to get data from, any combination of gbif, bison,
 #' inat, ebird, ecoengine and/or vertnet

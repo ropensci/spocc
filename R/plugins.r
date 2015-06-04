@@ -329,15 +329,17 @@ foo_idigbio <- function(sources, query, limit, geometry, callopts, opts) {
   if (any(grepl("idigbio", sources))) {
     # opts <- limit_alias(opts, "idigbio")
     time <- now()
+    
     # and only georeferenced records
     # if (!is.null(query)) {
-    opts$rq <- list(scientificname = query)
+    addopts <- list()
+    addopts$rq <- list(scientificname = query)
     # opts$rq$geopoint <- list(type = "exists")
     # opts$rq <- list(genus = query, geopoint = list(type = "exists"))
     # }
     
     if (!is.null(geometry)) {
-      opts$rq <- if (is.numeric(geometry) && length(geometry) == 4) {
+      addopts$rq <- if (is.numeric(geometry) && length(geometry) == 4) {
         list(geopoint = list(
           type = "geo_bounding_box", 
           top_left = list(
@@ -350,6 +352,12 @@ foo_idigbio <- function(sources, query, limit, geometry, callopts, opts) {
       } else {
         geometry 
       }
+    }
+    
+    if ("rq" %in% names(opts)) {
+      opts$rq <- c(addopts$rq, opts$rq)
+    } else {
+      opts$rq <- addopts$rq
     }
     
     opts$limit <- limit

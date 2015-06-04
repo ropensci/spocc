@@ -5,7 +5,7 @@ Description: A programmatic interface to many species occurrence data sources,
     eBird, AntWeb, and more as sources become easily available. This package
     includes functionality for retrieving species occurrence data, combining
     that data, and creating various kinds of static and interactive maps.
-Version: 0.2.8.9000
+Version: 0.2.8.9100
 License: MIT + file LICENSE
 Date: 2015-06-03
 Authors@R: c(person("Scott", "Chamberlain", role = c("aut", "cre"),

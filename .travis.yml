@@ -2,7 +2,7 @@ language: r
 
 before_install:
 - sudo apt-get update -qq
-- sudo apt-get install -y libv8-dev  libhdf5-serial-dev gdal-bin libgdal-dev libgdal1-dev netcdf-bin libproj-dev libgdal1h
+- sudo apt-get install -y libv8-dev  libhdf5-dev libhdf5-serial-dev gdal-bin libgdal-dev libgdal1-dev netcdf-bin libproj-dev libgdal1h
 
 r_binary_packages:
 - maps

@@ -361,6 +361,7 @@ foo_idigbio <- function(sources, query, limit, geometry, callopts, opts) {
     }
     
     opts$limit <- limit
+    opts$fields <- "all"
     
     out <- tryCatch(do.call(idig_search_records, opts), error = function(e) e)
     if (is(out, "simpleError")) {

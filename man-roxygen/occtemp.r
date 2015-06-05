@@ -49,6 +49,11 @@
 #' objects out at the cost of flexibility/options - although you can still set
 #' options for each of the packages via the gbifopts, bisonopts, inatopts,
 #' ebirdopts, ecoengineopts, vertnetopts, and antwebopts parameters.
+#' 
+#' When searching iDigBio note that by deafult we set \code{fields = "all"}, so that we return
+#' a richer suite of fields than the \code{ridigbio} R client gives by default. But you can 
+#' changes this by passing in a \code{fields} parameter to \code{idigbioopts} parameter with
+#' the specific fields you want.
 #'
 #' When searching ecoengine, you can leave the page argument blank to get a single page.
 #' Otherwise use page ranges or simply "all" to request all available pages.

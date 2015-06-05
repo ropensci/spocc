@@ -6,10 +6,10 @@
 #' (class occdat), \code{\link{occ2df}} (class data.frame), or a list, numeric,
 #' character, gbifkey, or occkey.
 #' @return One or more in a list of both class idigbiokey and occkey
-#' @details Internally, we use \code{idig_search_records}.
+#' @details Internally, we use \code{idig_view_records}, whereas we use 
+#' \code{\link{idig_search_records}} in the \code{\link{occ}} function. 
 #'
 #' @examples \dontrun{
-#' # idig_search(rq=list(uuid="0b657c62-fa7b-400e-8f47-d05bb3bbc463"))
 #' spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Carduelis tristis')
 #' out <- occ(query=spnames, from='idigbio', limit=2)
 #' res <- occ2df(out)
@@ -22,7 +22,7 @@
 #' as.idigbio(tt[1:2])
 #' 
 #' library("dplyr")
-#' rbind_all(lapply(tt, function(x) data.frame(unclass(x))))
+#' rbind_all(lapply(tt, function(x) data.frame(unclass(x)$data)))
 #' }
 as.idigbio <- function(x) {
   UseMethod("as.idigbio")
@@ -67,5 +67,5 @@ make_idigbio_df <- function(x){
 }
 
 make_idigbio <- function(y, ...){
-  structure(idig_search_records(rq = list(uuid = y), fields = "all", ...), class = c("idigbiokey", "occkey"))
+  structure(idig_view_records(uuid = y, ...), class = c("idigbiokey", "occkey"))
 }

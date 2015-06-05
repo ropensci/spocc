@@ -301,8 +301,12 @@ res <- occ(query = "Acer", from = "idigbio", limit = 5)
 res$idigbio
 
 ## geo search
+### bounding box
 bounds <- c(-120, 40, -100, 45)
 occ(from = "idigbio", geometry = bounds, limit = 10)
+### wkt
+wkt <- 'POLYGON((-69.9 49.2,-69.9 29.0,-123.3 29.0,-123.3 49.2,-69.9 49.2))'
+occ(from = "idigbio", geometry = wkt, limit = 10)
 
 ## limit fields returned
 occ(query = "Acer", from = "idigbio", limit = 5,

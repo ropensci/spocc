@@ -232,6 +232,11 @@ occ(geometry = bounds, from = "gbif", limit=50)
 ### Many bounding boxes
 occ(geometry = list(c(-125.0,38.4,-121.8,40.9), c(-115.0,22.4,-111.8,30.9)), from = "gbif")
 
+## Geometry only with WKT
+wkt <- 'POLYGON((-98.9 44.2,-89.1 36.6,-116.7 37.5,-102.5 39.6,-98.9 44.2))'
+occ(from = "gbif", geometry = bounds, limit = 10)
+occ(from = "idigbio", geometry = bounds, limit = 10)
+
 # Specify many data sources, another example
 ebirdopts = list(region = 'US'); gbifopts  =  list(country = 'US')
 out <- occ(query = 'Setophaga caerulescens', from = c('gbif','inat','bison','ebird'),
@@ -310,7 +315,8 @@ res$idigbio
 bounds <- c(-120, 40, -100, 45)
 occ(from = "idigbio", geometry = bounds, limit = 10)
 ### wkt
-wkt <- 'POLYGON((-69.9 49.2,-69.9 29.0,-123.3 29.0,-123.3 49.2,-69.9 49.2))'
+# wkt <- 'POLYGON((-69.9 49.2,-69.9 29.0,-123.3 29.0,-123.3 49.2,-69.9 49.2))'
+wkt <- 'POLYGON((-98.9 44.2,-89.1 36.6,-116.7 37.5,-102.5 39.6,-98.9 44.2))'
 occ(from = "idigbio", geometry = wkt, limit = 10)
 
 ## limit fields returned

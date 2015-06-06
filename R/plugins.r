@@ -333,12 +333,15 @@ foo_idigbio <- function(sources, query, limit, geometry, callopts, opts) {
     # and only georeferenced records
     # if (!is.null(query)) {
     addopts <- list()
-    addopts$rq <- list(scientificname = query)
+    if (!is.null(query)) addopts$rq <- list(scientificname = query)
     # opts$rq$geopoint <- list(type = "exists")
     # opts$rq <- list(genus = query, geopoint = list(type = "exists"))
     # }
     
     if (!is.null(geometry)) {
+      if (grepl('POLYGON', paste(as.character(geometry), collapse = " "))) {
+        geometry <- wkt2bbox(geometry)
+      }
       addopts$rq <- if (is.numeric(geometry) && length(geometry) == 4) {
         list(geopoint = list(
           type = "geo_bounding_box", 
@@ -350,7 +353,7 @@ foo_idigbio <- function(sources, query, limit, geometry, callopts, opts) {
           )
         ))
       } else {
-        geometry 
+        geometry
       }
     }
     

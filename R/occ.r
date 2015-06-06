@@ -107,7 +107,7 @@ occ <- function(query = NULL, from = "gbif", limit = 500, geometry = NULL, rank 
     tmp <- lapply(ids, loopids, y = limit, z = geometry, w = callopts)
   } else {
     type <- 'geometry'
-    if (is.numeric(geometry)) {
+    if (is.numeric(geometry) || is.character(geometry)) {
       tmp <- list(loopfun(z = geometry, y = limit, x = query, w = callopts))
     } else if (is.list(geometry)) {
       tmp <- lapply(geometry, function(b) loopfun(z = b, y = limit, x = query, w = callopts))

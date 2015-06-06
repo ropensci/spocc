@@ -236,18 +236,19 @@ foo_inat <- function(sources, query, limit, geometry, callopts, opts) {
     opts <- limit_alias(opts, "inat")
     time <- now()
     opts$query <- query
-    if(!'maxresults' %in% names(opts)) opts$maxresults <- limit
+    if (!'maxresults' %in% names(opts)) opts$maxresults <- limit
     opts$meta <- TRUE
-    if(!is.null(geometry)){
-      opts$bounds <- if(grepl('POLYGON', paste(as.character(geometry), collapse=" ")))
-      {
+    if (!is.null(geometry)) {
+      opts$bounds <- if (grepl('POLYGON', paste(as.character(geometry), collapse = " "))) {
         # flip lat  and long spots in the bounds vector for inat
         temp <- wkt2bbox(geometry)
         c(temp[2], temp[1], temp[4], temp[3])
-      } else { c(geometry[2], geometry[1], geometry[4], geometry[3]) }
+      } else { 
+        c(geometry[2], geometry[1], geometry[4], geometry[3]) 
+      }
     }
     out <- tryCatch(do.call(spocc_inat_obs, opts), error = function(e) e)
-    if(!is.data.frame(out$data) || is(out, "simpleError")){
+    if (!is.data.frame(out$data) || is(out, "simpleError")) {
       warning(sprintf("No records found in INAT for %s", query), call. = FALSE)
       list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
     } else{
@@ -273,7 +274,7 @@ foo_ebird <- function(sources, query, limit, callopts, opts) {
     if (!opts$method %in% c("ebirdregion", "ebirdgeo"))
       stop("ebird method must be one of ebirdregion or ebirdgeo")
     opts$species <- query
-    if(!'max' %in% names(opts)) opts$max <- limit
+    if (!'max' %in% names(opts)) opts$max <- limit
     opts$config <- callopts
     if (opts$method == "ebirdregion") {
       if (is.null(opts$region)) opts$region <- "US"
@@ -281,7 +282,7 @@ foo_ebird <- function(sources, query, limit, callopts, opts) {
     } else {
       out <- tryCatch(do.call(ebirdgeo, opts[!names(opts) %in% "method"]), error = function(e) e)
     }
-    if(!is.data.frame(out) || is(out, "simpleError")){
+    if (!is.data.frame(out) || is(out, "simpleError")) {
       warning(sprintf("No records found in eBird for %s", query), call. = FALSE)
       list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
     } else{
@@ -375,7 +376,7 @@ foo_idigbio <- function(sources, query, limit, geometry, callopts, opts) {
       out <- rename(out, c('scientificname' = 'name'))
       out <- stand_latlon(out)
       out <- stand_dates(out, "idigbio")
-      list(time = time, found = NA, data = out, opts = opts)
+      list(time = time, found = attr(out, "itemCount"), data = out, opts = opts)
     }
   } else {
     list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
@@ -383,12 +384,16 @@ foo_idigbio <- function(sources, query, limit, geometry, callopts, opts) {
 }
 
 limit_alias <- function(x, sources, geometry=NULL){
-  bisonvar <- if(is.null(geometry)) 'rows' else 'count'
-  if(length(x) != 0){
-    lim_name <- switch(sources, ecoengine="page_size", bison=bisonvar, inat="maxresults", ebird="max")
-    if("limit" %in% names(x)){
+  bisonvar <- if (is.null(geometry)) 'rows' else 'count'
+  if (length(x) != 0) {
+    lim_name <- switch(sources, ecoengine = "page_size", bison = bisonvar, inat = "maxresults", ebird = "max")
+    if ("limit" %in% names(x)) {
       names(x)[ which(names(x) == "limit") ] <- lim_name
       x
-    } else { x }
-  } else { x }
+    } else { 
+      x 
+    }
+  } else { 
+    x 
+  }
 }

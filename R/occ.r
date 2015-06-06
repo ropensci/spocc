@@ -14,10 +14,10 @@
 #' @importFrom lubridate now ymd_hms ymd_hm ydm_hm ymd
 #' @template occtemp
 #' @template occ_egs
-occ <- function(query = NULL, from = "gbif", limit = 500, geometry = NULL, rank = "species",
-    type = "sci", ids = NULL, callopts=list(), gbifopts = list(), bisonopts = list(),
-    inatopts = list(), ebirdopts = list(), ecoengineopts = list(), antwebopts = list(),
-    vertnetopts = list(), idigbioopts = list()) {
+occ <- function(query = NULL, from = "gbif", limit = 500, geometry = NULL, has_coords = NULL, 
+  rank = "species", type = "sci", ids = NULL, callopts=list(), gbifopts = list(), 
+  bisonopts = list(), inatopts = list(), ebirdopts = list(), ecoengineopts = list(), 
+  antwebopts = list(), vertnetopts = list(), idigbioopts = list()) {
   
   if (!is.null(geometry)) {
     if (class(geometry) %in% c('SpatialPolygons', 'SpatialPolygonsDataFrame')) {
@@ -32,16 +32,16 @@ occ <- function(query = NULL, from = "gbif", limit = 500, geometry = NULL, rank 
                  from[!from %in% sources]))
   }
 
-  loopfun <- function(x, y, z, w) {
-    # x = query; y = limit; z = geometry; w = callopts
-    gbif_res <- foo_gbif(sources, x, y, z, w, gbifopts)
+  loopfun <- function(x, y, z, hc, w) {
+    # x = query; y = limit; z = geometry; hc = has_coords; w = callopts
+    gbif_res <- foo_gbif(sources, x, y, z, hc, w, gbifopts)
     bison_res <- foo_bison(sources, x, y, z, w, bisonopts)
-    inat_res <- foo_inat(sources, x, y, z, w, inatopts)
+    inat_res <- foo_inat(sources, x, y, z, hc, w, inatopts)
     ebird_res <- foo_ebird(sources, x, y, w, ebirdopts)
-    ecoengine_res <- foo_ecoengine(sources, x, y, z, w, ecoengineopts)
-    antweb_res <- foo_antweb(sources, x, y, z, w, antwebopts)
-    vertnet_res <- foo_vertnet(sources, x, y, w, vertnetopts)
-    idigbio_res <- foo_idigbio(sources, x, y, z, w, idigbioopts)
+    ecoengine_res <- foo_ecoengine(sources, x, y, z, hc, w, ecoengineopts)
+    antweb_res <- foo_antweb(sources, x, y, z, hc, w, antwebopts)
+    vertnet_res <- foo_vertnet(sources, x, y, hc, w, vertnetopts)
+    idigbio_res <- foo_idigbio(sources, x, y, z, hc, w, idigbioopts)
     list(gbif = gbif_res, bison = bison_res, inat = inat_res, ebird = ebird_res,
          ecoengine = ecoengine_res, antweb = antweb_res, vertnet = vertnet_res, 
          idigbio = idigbio_res)
@@ -77,7 +77,7 @@ occ <- function(query = NULL, from = "gbif", limit = 500, geometry = NULL, rank 
 
   if (is.null(ids) && !is.null(query)) {
     # If query not null (taxonomic names passed in)
-    tmp <- lapply(query, loopfun, y = limit, z = geometry, w = callopts)
+    tmp <- lapply(query, loopfun, y = limit, z = geometry, hc = has_coords, w = callopts)
   } else if (is.null(query) && is.null(geometry)) {
     unlistids <- function(x) {
       if (length(x) == 1) {
@@ -108,9 +108,9 @@ occ <- function(query = NULL, from = "gbif", limit = 500, geometry = NULL, rank 
   } else {
     type <- 'geometry'
     if (is.numeric(geometry) || is.character(geometry)) {
-      tmp <- list(loopfun(z = geometry, y = limit, x = query, w = callopts))
+      tmp <- list(loopfun(z = geometry, y = limit, x = query, hc = has_coords, w = callopts))
     } else if (is.list(geometry)) {
-      tmp <- lapply(geometry, function(b) loopfun(z = b, y = limit, x = query, w = callopts))
+      tmp <- lapply(geometry, function(b) loopfun(z = b, y = limit, x = query, hc = has_coords, w = callopts))
     }
   }
 
@@ -120,10 +120,6 @@ occ <- function(query = NULL, from = "gbif", limit = 500, geometry = NULL, rank 
       names(tt) <- gsub("\\s", "_", query)
       optstmp <- tmp[[1]][[srce]]$opts
     } else if (is.null(query) && !is.null(geometry)) { # geometry
-#       if(is.numeric(geometry)){ gg <- paste(geometry,collapse=",") } else {
-#         gg <- lapply(geometry, paste, collapse=",")
-#       }
-#       names(tt) <- gg
       tt <- tt
       optstmp <- tmp[[1]][[srce]]$opts
     } else if (!is.null(query) && !is.null(geometry)) { # query & geometry
@@ -134,8 +130,6 @@ occ <- function(query = NULL, from = "gbif", limit = 500, geometry = NULL, rank 
       tt <- tt[!vapply(tt, nrow, 1) == 0]
       opts <- sc(lapply(tmp, function(x) x[[srce]]$opts))
       optstmp <- unlist(opts)
-#       optstmp <- as.list(c(optstmp[!names(optstmp) %in% 'limit'], optstmp[names(optstmp) %in% 'limit'][1]))
-#       optstmp <- as.list(c(optstmp[!names(optstmp) %in% 'count'], optstmp[names(optstmp) %in% 'count'][1]))
       simplist <- function(b){
         splitup <- unique(names(b))
         sapply(splitup, function(d){

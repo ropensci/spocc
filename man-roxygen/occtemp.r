@@ -18,6 +18,9 @@
 #' i.e. http://bit.ly/HwUSif. See Details for more examples of WKT objects. The format of a
 #' bounding box is [min-longitude, min-latitude, max-longitude, max-latitude]. Geometry
 #' is not possible with vertnet right now, but should be soon.
+#' @param has_coords (logical) Only return occurrences that have lat/long data. This works 
+#' for gbif, ecoengine, idigbio, antweb, rinat, and vertnet, but is ignored for ebird and 
+#' bison data sources. You can easily though remove records without lat/long data. 
 #' @param rank (character) Taxonomic rank. Not used right now.
 #' @param type (character) Type of search: sci (scientific) or com (common name, vernacular).
 #' Not used right now.

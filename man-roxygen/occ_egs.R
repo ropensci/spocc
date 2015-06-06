@@ -41,6 +41,11 @@
 #' (res <- occ(query = 'Accipiter striatus', from = c('gbif','ecoengine'),
 #'    gbifopts=list(limit = 10), ecoengineopts=list(limit = 5)))
 #'
+#' ## w/ or w/o coordinates, or don't pass it (default)
+#' occ(query = "Acer", from = "idigbio", limit = 5)
+#' occ(query = "Acer", from = "idigbio", limit = 5, has_coords = TRUE)
+#' occ(query = "Acer", from = "idigbio", limit = 5, has_coords = FALSE)
+#'
 #' # Many data sources
 #' (out <- occ(query = 'Pinus contorta', from=c('gbif','bison','vertnet'), limit=10))
 #'

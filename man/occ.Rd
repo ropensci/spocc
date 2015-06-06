@@ -5,10 +5,10 @@
 \title{Search for species occurrence data across many data sources.}
 \usage{
 occ(query = NULL, from = "gbif", limit = 500, geometry = NULL,
-  rank = "species", type = "sci", ids = NULL, callopts = list(),
-  gbifopts = list(), bisonopts = list(), inatopts = list(),
-  ebirdopts = list(), ecoengineopts = list(), antwebopts = list(),
-  vertnetopts = list(), idigbioopts = list())
+  has_coords = NULL, rank = "species", type = "sci", ids = NULL,
+  callopts = list(), gbifopts = list(), bisonopts = list(),
+  inatopts = list(), ebirdopts = list(), ecoengineopts = list(),
+  antwebopts = list(), vertnetopts = list(), idigbioopts = list())
 }
 \arguments{
 \item{query}{(character) One to many names. Either a scientific name or a common name.
@@ -34,6 +34,10 @@ box given as a bounding box or polygon described in WKT format. A WKT shape writ
 i.e. http://bit.ly/HwUSif. See Details for more examples of WKT objects. The format of a
 bounding box is [min-longitude, min-latitude, max-longitude, max-latitude]. Geometry
 is not possible with vertnet right now, but should be soon.}
+
+\item{has_coords}{(logical) Only return occurrences that have lat/long data. This works
+for gbif, ecoengine, idigbio, antweb, rinat, and vertnet, but is ignored for ebird and
+bison data sources. You can easily though remove records without lat/long data.}
 
 \item{rank}{(character) Taxonomic rank. Not used right now.}
 
@@ -173,6 +177,11 @@ res$ecoengine
 ## This is particularly useful when you want to set different limit for each source
 (res <- occ(query = 'Accipiter striatus', from = c('gbif','ecoengine'),
    gbifopts=list(limit = 10), ecoengineopts=list(limit = 5)))
+
+## w/ or w/o coordinates, or don't pass it (default)
+occ(query = "Acer", from = "idigbio", limit = 5)
+occ(query = "Acer", from = "idigbio", limit = 5, has_coords = TRUE)
+occ(query = "Acer", from = "idigbio", limit = 5, has_coords = FALSE)
 
 # Many data sources
 (out <- occ(query = 'Pinus contorta', from=c('gbif','bison','vertnet'), limit=10))

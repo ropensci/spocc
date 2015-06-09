@@ -111,11 +111,10 @@ wkt2bbox <- function(wkt=NULL){
   as.vector(tmp)
 }
 
+sc <- function(l) Filter(Negate(is.null), l)
 
-sc <- function (l) Filter(Negate(is.null), l)
-
-spocc_inat_obs <- function(query=NULL,taxon = NULL,quality=NULL,geo=NULL,year=NULL,month=NULL,day=NULL,bounds=NULL,maxresults=100,meta=FALSE)
-{
+spocc_inat_obs <- function(query=NULL, taxon = NULL, quality=NULL, geo=NULL, year=NULL,
+                           month=NULL, day=NULL, bounds=NULL, maxresults=100, meta=FALSE) {
 
   ## Parsing and error-handling of input strings
   search <- ""

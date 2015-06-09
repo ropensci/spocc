@@ -14,3 +14,4 @@ CONTRIBUTING.md
 cran-comments.md
 appveyor.yml
 README.Rmd
+^\.httr-oauth$

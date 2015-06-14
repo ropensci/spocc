@@ -37,7 +37,7 @@ mapgist <- function(data, description = "", file = "gistmap", dir = NULL,
   public = TRUE, browse = TRUE, ...) {
   
   stopifnot(is(data, "occdatind") | is(data, "occdat"))
-  data <- if(is(data, "occdatind")) {
+  data <- if (is(data, "occdatind")) {
     do.call(rbind, data$data) 
   } else {
     occ2df(data)
@@ -46,7 +46,6 @@ mapgist <- function(data, description = "", file = "gistmap", dir = NULL,
   spplist <- as.character(unique(data$name))
   datgeojson <- spocc_stylegeojson(input = data, var = "name", ...)
   write.csv(datgeojson, paste(dir, file, ".csv", sep = ""))
-  spocc_togeojson(input = paste(dir, file, ".csv", sep = ""), method = "web", destpath = dir, 
-                  outfilename = file)
+  spocc_togeojson(input = paste(dir, file, ".csv", sep = ""), destpath = dir, outfilename = file)
   gist_create(paste(dir, file, ".geojson", sep = ""), description = description, public = public, browse = browse)
 } 

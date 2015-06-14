@@ -32,7 +32,7 @@ one <- Polygon(cbind(c(91,90,90,91), c(30,30,32,30)))
 two <- Polygon(cbind(c(94,92,92,94), c(40,40,42,40)))
 spone = Polygons(list(one), "s1")
 sptwo = Polygons(list(two), "s2")
-sppoly = SpatialPolygons(list(spone), as.integer(1))
+sppoly = SpatialPolygons(list(spone, sptwo), as.integer(1:2))
 plot(sppoly)
 handle_sp(spobj = sppoly)
 

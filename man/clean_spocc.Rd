@@ -4,22 +4,10 @@
 \alias{clean_spocc}
 \title{Clean spocc data}
 \usage{
-clean_spocc(input, country = NULL, country_which = "include",
-  shppath = NULL, habitat = NULL, provider_duplicates = FALSE)
+clean_spocc(input)
 }
 \arguments{
 \item{input}{An object of class occdat}
-
-\item{country}{(logical) Attempt to clean based on country. Ignored for now.}
-
-\item{country_which}{(character) One of include, xxx. Ignored for now.}
-
-\item{shppath}{(character) Path to shape file to check against. Ignored for now.}
-
-\item{habitat}{(character) Attempt to clean based on habitat. Ignored for now.}
-
-\item{provider_duplicates}{(logical) Whether to remove duplicates from the same provider in
-separate sources. Ignored for now.}
 }
 \value{
 Returns an object of class occdat+occlean. See attributes of the return object for
@@ -36,8 +24,6 @@ We'll continue to add options for cleaning data, but for now, this function:
  \item Removes any NA values of latitude and longitude
  \item Removes points at 0,0 - these points are likely wrong
 }
-
-Some examples below don't actually work yet, but will soon.
 }
 \examples{
 \dontrun{
@@ -45,24 +31,6 @@ res <- occ(query = c('Ursus','Accipiter','Rubus'), from = 'bison', limit=10)
 class(res)
 res_cleaned <- clean_spocc(input=res)
 class(res_cleaned) # now with classes occdat and occclean
-
-#### THESE AREN'T WORKING...
-# Country cleaning
-res <- occ(query = 'Ursus americanus', from = 'gbif', limit=500,
-   gbifopts = list(hasCoordinate=TRUE))
-res$gbif
-plot(res)
-
-res <- occ(query = 'Ursus americanus', from = 'gbif', limit=1200,
-   gbifopts = list(hasCoordinate=TRUE))
-plot(res)
-res2 <- clean_spocc(res, country = "Mexico")
-plot(res2)
-
-# Clean provider duplicates
-res <- occ(query = 'Ursus americanus', from = c('gbif','inat'), limit=300)
-plot(res)
-res2 <- clean_spocc(input=res, provider_duplicates = TRUE)
 }
 }
 

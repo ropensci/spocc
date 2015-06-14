@@ -5,7 +5,7 @@ Description: A programmatic interface to many species occurrence data sources,
     eBird, AntWeb, and more as sources become easily available. This package
     includes functionality for retrieving species occurrence data, combining
     that data, and creating various kinds of static and interactive maps.
-Version: 0.2.8.9500
+Version: 0.2.9.9000
 License: MIT + file LICENSE
 Date: 2015-06-05
 Authors@R: c(person("Scott", "Chamberlain", role = c("aut", "cre"),
@@ -30,19 +30,19 @@ Imports:
     rvertnet (>= 0.2.6),
     ridigbio (>= 0.1),
     ggmap,
-    maptools,
     rworldmap,
     sp,
-    rgeos,
     lubridate,
     RColorBrewer,
     httr,
-    rgdal,
     leafletR (>= 0.2-0),
     whisker,
-    gistr
+    gistr,
+    V8,
+    jsonlite
 Suggests:
     roxygen2,
     testthat,
     knitr,
-    taxize
+    taxize,
+    maptools

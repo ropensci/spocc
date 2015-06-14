@@ -3,7 +3,7 @@
 #' Input various sp objects (e.g., x, y, z) and output WKT objects. If multiple polygons in the
 #' sp object, separate calls are made to the web API since they don't support MULTIPOLYGON.
 #'
-#' @importFrom rgeos writeWKT
+#' @importFrom jsonlite toJSON
 #' @param spobj A spatial object
 #' @return One or more WKT strings
 #' @keywords internal
@@ -22,7 +22,7 @@
 #' two <- Polygon(cbind(c(94,92,92,94), c(40,40,42,40)))
 #' spone = Polygons(list(one), "s1")
 #' sptwo = Polygons(list(two), "s2")
-#' sppoly = SpatialPolygons(list(spone), as.integer(1))
+#' sppoly = SpatialPolygons(list(spone, sptwo), as.integer(1:2))
 #' plot(sppoly)
 #' handle_sp(spobj = sppoly)
 #'
@@ -43,8 +43,18 @@
 #' }
 
 handle_sp <- function(spobj){
-  wkt <- writeWKT(spgeom = spobj, byid = TRUE)
+  wkt <- make_wkt(spobj)
   stopifnot(is.numeric(length(wkt)))
   stopifnot(length(wkt) > 0)
   return( wkt )
+}
+
+make_wkt <- function(x){
+  coords <- lapply(x@polygons, function(z) {
+    z@Polygons[[1]]@coords
+  })
+  lapply(coords, function(z) {
+    geojson <- jsonlite::toJSON(list(type = "Polygon", coordinates =  list(z)), auto_unbox = TRUE)
+    write_wkt(geojson)
+  })
 }

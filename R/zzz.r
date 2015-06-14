@@ -66,3 +66,7 @@ pluck <- function(x, name, type) {
     vapply(x, "[[", name, FUN.VALUE = type)
   }
 }
+
+strextract <- function(str, pattern) regmatches(str, regexpr(pattern, str))
+
+strtrim <- function(str) gsub("^\\s+|\\s+$", "", str)

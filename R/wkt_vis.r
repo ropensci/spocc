@@ -23,17 +23,16 @@
 #' wkt_vis(poly2)
 #' }
 
-wkt_vis <- function(x, zoom = 6, maptype = "terrain", which='interactive')
-{
+wkt_vis <- function(x, zoom = 6, maptype = "terrain", which='interactive') {
   long = lat = group = NULL
   stopifnot(!is.null(x))
   stopifnot(is.character(x))
 
-  poly_wkt <- readWKT(x)
-  df <- fortify(poly_wkt)
+  out <- read_wkt(gsub("\n|\n\\s+", "", strtrim(x)))
+  df <- data.frame(long = out$coordinates[,,1], lat = out$coordinates[,,2])
 
   which <- match.arg(which, c('static','interactive'))
-  if(which=='interactive'){
+  if (which == 'interactive') {
     pts <- apply(df, 1, function(x) as.list(x[c('long','lat')]))
     centroid <- poly_wkt@polygons[[1]]@labpt
     rend <- whisker.render(map)
@@ -48,7 +47,7 @@ wkt_vis <- function(x, zoom = 6, maptype = "terrain", which='interactive')
     map_center <- c(lon = center_long, lat = center_lat)
     species_map <- get_map(location = map_center, zoom = zoom, maptype = maptype)
     ggmap(species_map) +
-      geom_path(data = df, aes(x = long, y = lat, group = group, size = 2)) +
+      geom_polygon(data = df, aes(x = long, y = lat), fill = NA, colour = "black", size = 1) +
       theme(legend.position = "") +
       xlab("Longitude") +
       ylab("Latitude")

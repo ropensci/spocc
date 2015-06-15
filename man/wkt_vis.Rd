@@ -4,7 +4,7 @@
 \alias{wkt_vis}
 \title{Visualize well-known text area's on a map.}
 \usage{
-wkt_vis(x, zoom = 6, maptype = "terrain", which = "interactive")
+wkt_vis(x, zoom = 6, maptype = "terrain")
 }
 \arguments{
 \item{x}{Input well-known text area (character)}
@@ -12,20 +12,19 @@ wkt_vis(x, zoom = 6, maptype = "terrain", which = "interactive")
 \item{zoom}{Zoom level, defaults to 6 (numeric)}
 
 \item{maptype}{Map type, default is terrain (character)}
-
-\item{which}{One of interactive (default) or static. Interactive open Mapbox map in your
-browser, and static uses ggplot based ggmap package.}
 }
 \description{
 This can be helpful in visualizing the area in which you are searching for
 occurrences with the \code{\link{occ}} function.
+}
+\details{
+Uses Mapbox's map layers, openes in your default browser
 }
 \examples{
 \dontrun{
 poly <- 'POLYGON((-111.06 38.84, -110.80 39.37, -110.20 39.17, -110.20 38.90,
      -110.63 38.67, -111.06 38.84))'
 wkt_vis(poly)
-wkt_vis(poly, which='static')
 
 poly2 <- 'POLYGON((-125 38.4,-125 40.9,-121.8 40.9,-121.8 38.4,-125 38.4))'
 wkt_vis(poly2)

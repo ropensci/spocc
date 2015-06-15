@@ -4,26 +4,24 @@
 #' occurrences with the \code{\link{occ}} function.
 #'
 #' @export
-#' @import ggplot2
 #' @importFrom whisker whisker.render
 #'
 #' @param x Input well-known text area (character)
 #' @param zoom Zoom level, defaults to 6 (numeric)
 #' @param maptype Map type, default is terrain (character)
-#' @param which One of interactive (default) or static. Interactive open Mapbox map in your
-#' browser, and static uses ggplot based ggmap package.
+#' 
+#' @details Uses Mapbox's map layers, openes in your default browser
 #'
 #' @examples \dontrun{
 #' poly <- 'POLYGON((-111.06 38.84, -110.80 39.37, -110.20 39.17, -110.20 38.90,
 #'      -110.63 38.67, -111.06 38.84))'
 #' wkt_vis(poly)
-#' wkt_vis(poly, which='static')
 #'
 #' poly2 <- 'POLYGON((-125 38.4,-125 40.9,-121.8 40.9,-121.8 38.4,-125 38.4))'
 #' wkt_vis(poly2)
 #' }
 
-wkt_vis <- function(x, zoom = 6, maptype = "terrain", which='interactive') {
+wkt_vis <- function(x, zoom = 6, maptype = "terrain") {
   long = lat = group = NULL
   stopifnot(!is.null(x))
   stopifnot(is.character(x))
@@ -31,27 +29,21 @@ wkt_vis <- function(x, zoom = 6, maptype = "terrain", which='interactive') {
   out <- read_wkt(gsub("\n|\n\\s+", "", strtrim(x)))
   df <- data.frame(long = out$coordinates[,,1], lat = out$coordinates[,,2])
 
-  which <- match.arg(which, c('static','interactive'))
-  if (which == 'interactive') {
-    pts <- apply(df, 1, function(x) as.list(x[c('long','lat')]))
-    centroid <- poly_wkt@polygons[[1]]@labpt
-    rend <- whisker.render(map)
-    foot <- sprintf(footer, centroid[2], centroid[1])
-    res <- paste(rend, foot)
-    tmpfile <- tempfile(pattern = 'spocc', fileext = ".html")
-    write(res, file = tmpfile)
-    browseURL(tmpfile)
-  } else {
-    center_lat <- min(df$lat) + (max(df$lat) - min(df$lat))/2
-    center_long <- min(df$long) + (max(df$long) - min(df$long))/2
-    map_center <- c(lon = center_long, lat = center_lat)
-    species_map <- get_map(location = map_center, zoom = zoom, maptype = maptype)
-    ggmap(species_map) +
-      geom_polygon(data = df, aes(x = long, y = lat), fill = NA, colour = "black", size = 1) +
-      theme(legend.position = "") +
-      xlab("Longitude") +
-      ylab("Latitude")
-  }
+  pts <- apply(df, 1, function(x) as.list(x[c('long','lat')]))
+  centroid <- get_centroid(df)
+  rend <- whisker.render(map)
+  foot <- sprintf(footer, centroid[2], centroid[1], zoom)
+  res <- paste(rend, foot)
+  tmpfile <- tempfile(pattern = 'spocc', fileext = ".html")
+  write(res, file = tmpfile)
+  browseURL(tmpfile)
+}
+
+get_centroid <- function(x) {
+  x <- unname(as.matrix(x))
+  geojson <- jsonlite::toJSON(list(type = "Polygon", coordinates =  list(x)), auto_unbox = TRUE)
+  cent$eval(sprintf("var out = centroid(%s);", geojson))
+  cent$get("out.geometry.coordinates")
 }
 
 map <- '
@@ -95,7 +87,7 @@ var geojson = [
 
 footer <- '
 L.mapbox.map("map", "examples.map-i86nkdio")
-  .setView([ %s , %s ], 6)
+  .setView([ %s , %s ], %s)
   .featureLayer.setGeoJSON(geojson);
 </script>
 

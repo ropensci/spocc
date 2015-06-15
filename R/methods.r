@@ -1,6 +1,5 @@
 #' spocc objects and their print, plot, and summary methods
 #'
-#' @importFrom rworldmap getMap
 #' @keywords internal
 #'
 #' @param x Input, of class occdatind
@@ -27,11 +26,6 @@
 #'
 #' # print summary of occdatind object
 #' summary(res$gbif)
-#'
-#' # plot an occdat object
-#' spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Spinus tristis')
-#' out <- occ(query=spnames, from='gbif', gbifopts=list(hasCoordinate=TRUE))
-#' plot(out, cex=1, pch=10)
 #' }
 #' @name spocc_objects
 NULL
@@ -144,30 +138,4 @@ occinddf <- function(obj) {
                        'decimalLatitude','decimallatitude','Latitude','lat','latitude','decimal_latitude','prov',
                        'geopoint.lat','geopoint.lon')]
   do.call(cbind, list(df, z))
-}
-
-# occinddf <- function(obj) {
-#   z <- obj$data[[1]]
-#   df <- switch(obj$meta$source,
-#                gbif = data.frame(name = z$name, longitude = z$decimalLongitude, latitude = z$decimalLatitude, prov = z$prov),
-#                bison = data.frame(name = z$name, longitude = z$decimalLongitude, latitude = z$decimalLatitude, prov = z$prov),
-#                inat = data.frame(name = z$name, longitude = z$Longitude, latitude = z$Latitude, prov = z$prov),
-#                ebird = data.frame(name = z$name, longitude = z$lng, latitude = z$lat, prov = z$prov),
-#                ecoengine = data.frame(name = z$name, longitude = z$longitude, latitude = z$latitude, prov = z$prov),
-#                antweb = data.frame(name = z$name, longitude = z$decimal_longitude, latitude = z$decimal_latitude, prov = z$prov))
-#   z <- z[!names(z) %in% c('name','decimalLongitude','Longitude','lng','longitude','decimal_longitude',
-#                           'decimalLatitude','Latitude','lat','latitude','decimal_latitude','prov')]
-#   do.call(cbind, list(df, z))
-# }
-
-#' @export
-#' @method plot occdat
-#' @rdname spocc_objects
-plot.occdat <- function(x, ...) {
-  df <- occ2df(x)
-  df <- df[complete.cases(df),]
-  sp::coordinates(df) <- ~longitude + latitude
-  sp::proj4string(df) <- sp::CRS("+init=epsg:4326")
-  plot(rworldmap::getMap())
-  points(df, col = "red", ...)
 }

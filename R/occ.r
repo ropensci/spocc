@@ -10,25 +10,25 @@
 #' @importFrom rbison bison_solr bison bison_tax
 #' @importFrom AntWeb aw_data
 #' @importFrom rvertnet vertsearch
-#' @importFrom ridigbio idig_search_records
+#' @importFrom ridigbio idig_search_records idig_view_records
 #' @importFrom lubridate now ymd_hms ymd_hm ydm_hm ymd
 #' @template occtemp
 #' @template occ_egs
-occ <- function(query = NULL, from = "gbif", limit = 500, geometry = NULL, has_coords = NULL, 
-  rank = "species", type = "sci", ids = NULL, callopts=list(), gbifopts = list(), 
-  bisonopts = list(), inatopts = list(), ebirdopts = list(), ecoengineopts = list(), 
+occ <- function(query = NULL, from = "gbif", limit = 500, geometry = NULL, has_coords = NULL,
+  rank = "species", type = "sci", ids = NULL, callopts=list(), gbifopts = list(),
+  bisonopts = list(), inatopts = list(), ebirdopts = list(), ecoengineopts = list(),
   antwebopts = list(), vertnetopts = list(), idigbioopts = list()) {
-  
+
   if (!is.null(geometry)) {
     if (class(geometry) %in% c('SpatialPolygons', 'SpatialPolygonsDataFrame')) {
       geometry <- as.list(handle_sp(geometry))
     }
   }
-  sources <- match.arg(from, choices = c("gbif", "bison", "inat", "ebird", 
+  sources <- match.arg(from, choices = c("gbif", "bison", "inat", "ebird",
                                          "ecoengine", "antweb", "vertnet", "idigbio"),
                        several.ok = TRUE)
   if (!all(from %in% sources)) {
-    stop(sprintf("Woops, the following are not supported or spelled incorrectly: %s", 
+    stop(sprintf("Woops, the following are not supported or spelled incorrectly: %s",
                  from[!from %in% sources]))
   }
 
@@ -43,7 +43,7 @@ occ <- function(query = NULL, from = "gbif", limit = 500, geometry = NULL, has_c
     vertnet_res <- foo_vertnet(sources, x, y, hc, w, vertnetopts)
     idigbio_res <- foo_idigbio(sources, x, y, z, hc, w, idigbioopts)
     list(gbif = gbif_res, bison = bison_res, inat = inat_res, ebird = ebird_res,
-         ecoengine = ecoengine_res, antweb = antweb_res, vertnet = vertnet_res, 
+         ecoengine = ecoengine_res, antweb = antweb_res, vertnet = vertnet_res,
          idigbio = idigbio_res)
   }
 
@@ -79,8 +79,8 @@ occ <- function(query = NULL, from = "gbif", limit = 500, geometry = NULL, has_c
   } else if (is.null(query) && is.null(geometry)) {
     unlistids <- function(x) {
       if (length(x) == 1) {
-        if (is.null(names(x))) { 
-          list(x) 
+        if (is.null(names(x))) {
+          list(x)
         } else {
           if (!names(x) %in% c("gbif", "itis"))
             list(x)
@@ -132,8 +132,8 @@ occ <- function(query = NULL, from = "gbif", limit = 500, geometry = NULL, has_c
         splitup <- unique(names(b))
         sapply(splitup, function(d){
           tmp <- b[names(b) %in% d]
-          if (length(unique(unname(unlist(tmp)))) == 1) { 
-            as.list(tmp[1]) 
+          if (length(unique(unname(unlist(tmp)))) == 1) {
+            as.list(tmp[1])
           } else {
             outout <- list(unname(unlist(tmp)))
             names(outout) <- names(tmp)[1]

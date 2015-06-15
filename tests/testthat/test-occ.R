@@ -101,14 +101,14 @@ test_that("Taxon identifier searches work", {
   skip_on_cran()
   
   suppressPackageStartupMessages(require("taxize"))
-  ids <- suppressMessages(get_ids(names=c("Chironomus riparius","Pinus contorta"), db = c('itis','gbif')))
+  ids <- suppressMessages(get_ids(names=c("Chironomus riparius","Pinus contorta"), db = c('itis','gbif'), rows = 1))
   byid1 <- occ(ids = ids[[1]], from='bison', limit = 5)
   byid2 <- occ(ids = ids, from=c('bison','gbif'), limit = 5)
 
-  ids <- suppressMessages(get_ids(names="Chironomus riparius", db = 'gbif'))
+  ids <- suppressMessages(get_ids(names="Chironomus riparius", db = 'gbif', rows = 1))
   byid3 <- occ(ids = ids, from='gbif', limit = 5)
 
-  ids <- get_gbifid("Chironomus riparius", verbose = FALSE)
+  ids <- get_gbifid("Chironomus riparius", verbose = FALSE, rows = 1)
   byid4 <- occ(ids = ids, from='gbif', limit=5)
 
   ids <- get_tsn('Accipiter striatus', verbose = FALSE)
@@ -122,6 +122,7 @@ test_that("Taxon identifier searches work", {
   expect_equal(byid1$bison$meta$source, "bison")
 })
 
+context("Occ options work")
 
 test_that("passing in options to occ works", {
   skip_on_cran()
@@ -130,7 +131,7 @@ test_that("passing in options to occ works", {
   opts2 <- occ(query = 'Accipiter striatus', from = 'ecoengine', ecoengineopts = list(county="Sonoma"), limit = 5)
   opts3 <- occ(query = 'Danaus plexippus', from = 'inat', inatopts = list(year=2014), limit = 5)
   opts5 <- occ(query = 'Setophaga caerulescens', from = 'ebird', ebirdopts = list(region='US'), limit = 5)
-  opts6 <- occ(query = 'Spinus tristis', from = 'vertnet', vertnetopts = list(state = "california"), limit = 5)
+  opts6 <- occ(query = 'Spinus tristis', from = 'vertnet', vertnetopts = list(year = 2000), limit = 5)
   
   expect_is(opts1, "occdat")
   expect_is(opts2, "occdat")

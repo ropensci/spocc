@@ -47,14 +47,12 @@ occ <- function(query = NULL, from = "gbif", limit = 500, geometry = NULL, has_c
          idigbio = idigbio_res)
   }
 
-  loopids <- function(x, y, z, w) {
-    # x = query; y=limit; z=geometry
-#     classes <- ifelse(length(x)>1, vapply(x, class, ""), class(x))
+  loopids <- function(x, y, z, hc, w) {
     classes <- class(x)
     if (!all(classes %in% c("gbifid", "tsn")))
       stop("Currently, taxon identifiers have to be of class gbifid or tsn")
     if (class(x) == 'gbifid') {
-      gbif_res <- foo_gbif(sources, x, y, z, w, gbifopts)
+      gbif_res <- foo_gbif(sources, x, y, z, hc, w, gbifopts)
       bison_res <- list(time = NULL, data = data.frame(NULL))
     } else if (class(x) == 'tsn') {
       bison_res <- foo_bison(sources, x, y, z, w, bisonopts)
@@ -104,7 +102,7 @@ occ <- function(query = NULL, from = "gbif", limit = 500, geometry = NULL, has_c
     # if ids is not null (taxon identifiers passed in)
     # ids can only be passed to gbif and bison for now
     # so don't pass anything on to ecoengine, inat, or ebird
-    tmp <- lapply(ids, loopids, y = limit, z = geometry, w = callopts)
+    tmp <- lapply(ids, loopids, y = limit, z = geometry, hc = has_coords, w = callopts)
   } else {
     type <- 'geometry'
     if (is.numeric(geometry) || is.character(geometry)) {

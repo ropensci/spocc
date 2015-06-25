@@ -385,8 +385,10 @@ foo_idigbio <- function(sources, query, limit, geometry, has_coords, callopts, o
     } else{
       out$prov <- rep("idigbio", nrow(out))
       out <- rename(out, c('scientificname' = 'name'))
+      out <- add_latlong(out, nms = c('geopoint.lon', 'geopoint.lat'))
       out <- stand_latlon(out)
       out <- stand_dates(out, "idigbio")
+      # add lat long columns if missing
       list(time = time, found = attr(out, "itemCount"), data = out, opts = opts)
     }
   } else {
@@ -407,4 +409,13 @@ limit_alias <- function(x, sources, geometry=NULL){
   } else { 
     x 
   }
+}
+
+add_latlong <- function(x, nms) {
+  for (i in seq_along(nms)) {
+    if (!nms[[i]] %in% names(x)) {
+      x[[nms[[i]]]] <- NA
+    }
+  }
+  return(x)
 }

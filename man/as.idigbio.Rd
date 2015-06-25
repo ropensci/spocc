@@ -9,7 +9,7 @@ as.idigbio(x)
 \arguments{
 \item{x}{Various inputs, including the output from a call to \code{\link{occ}}
 (class occdat), \code{\link{occ2df}} (class data.frame), or a list, numeric,
-character, gbifkey, or occkey.}
+character, idigbiokey, or occkey.}
 }
 \value{
 One or more in a list of both class idigbiokey and occkey

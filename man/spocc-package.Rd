@@ -16,6 +16,7 @@ Currently supported species occurrence databases:
 Provider \tab Web \cr
 GBIF \tab \url{http://www.gbif.org/} \cr
 BISON \tab \url{http://bison.usgs.ornl.gov/} \cr
+eBird \tab \url{http://ebird.org/content/ebird/} \cr
 iNaturalist \tab \url{http://www.inaturalist.org/} \cr
 Berkeley ecoengine \tab \url{https://ecoengine.berkeley.edu/} \cr
 AntWeb \tab \url{http://www.antweb.org/} \cr

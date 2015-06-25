@@ -5,12 +5,11 @@
 \title{Search for species names across many data sources.}
 \usage{
 occ_names(query = NULL, from = "gbif", limit = 100, rank = "species",
-  type = "sci", callopts = list(), gbifopts = list(),
-  bisonopts = list(), ecoengineopts = list())
+  callopts = list(), gbifopts = list(), bisonopts = list(),
+  ecoengineopts = list())
 }
 \arguments{
 \item{query}{(character) One to many names. Either a scientific name or a common name.
-Specify whether a scientific or common name in the type parameter.
 Only scientific names supported right now.}
 
 \item{from}{(character) Data source to get data from, any combination of gbif, bison, or

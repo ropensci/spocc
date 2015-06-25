@@ -4,7 +4,7 @@
 #'
 #' @param x Various inputs, including the output from a call to \code{\link{occ}}
 #' (class occdat), \code{\link{occ2df}} (class data.frame), or a list, numeric,
-#' character, gbifkey, or occkey.
+#' character, idigbiokey, or occkey.
 #' @return One or more in a list of both class idigbiokey and occkey
 #' @details Internally, we use \code{idig_view_records}, whereas we use 
 #' \code{\link{idig_search_records}} in the \code{\link{occ}} function. 

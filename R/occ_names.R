@@ -3,7 +3,6 @@
 #' @export
 #' 
 #' @param query (character) One to many names. Either a scientific name or a common name.
-#' Specify whether a scientific or common name in the type parameter.
 #' Only scientific names supported right now.
 #' @param from (character) Data source to get data from, any combination of gbif, bison, or
 #' ecoengine.
@@ -45,7 +44,7 @@
 #' }
 
 occ_names <- function(query = NULL, from = "gbif", limit = 100, rank = "species",
-  type = "sci", callopts=list(), gbifopts = list(), bisonopts = list(), ecoengineopts = list()) {
+  callopts=list(), gbifopts = list(), bisonopts = list(), ecoengineopts = list()) {
   
   sources <- match.arg(from, choices = c("gbif", "bison", "ecoengine"), several.ok = TRUE)
   tmp <- lapply(query, loopfun, y = limit, w = callopts, src = sources, op = list(

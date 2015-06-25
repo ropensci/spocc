@@ -55,66 +55,79 @@ spocc_inat_obs <- function(query=NULL, taxon = NULL, quality=NULL, geo=NULL, yea
     search <- paste(search,"&day=",day,sep="")
   }
 
-  if(!is.null(bounds)){
-    if(length(bounds) != 4){stop("bounding box specifications must have 4 coordinates")}
-    search <- paste(search,"&swlat=",bounds[1],"&swlng=",bounds[2],"&nelat=",bounds[3],"&nelng=",bounds[4],sep="")
+  if (!is.null(bounds)) {
+    if (length(bounds) != 4) {
+      stop("bounding box specifications must have 4 coordinates")
+    }
+    search <- paste(search, "&swlat=", bounds[1], "&swlng=", 
+                    bounds[2], "&nelat=", bounds[3], "&nelng=", bounds[4], sep = "")
 
   }
 
-  base_url <- "http://www.inaturalist.org/"
   q_path <- "observations.csv"
   ping_path <- "observations.json"
-  ping_query <- paste(search,"&per_page=1&page=1",sep="")
-  ### Make the first ping to the server to get the number of results
-  ### easier to pull down if you make the query in json, but easier to arrange results
-  ### that come down in CSV format
-  ping <-  GET(base_url, path = ping_path, query = ping_query)
+  ping_query <- paste(search, "&per_page=1&page=1", sep = "")
+  ping <-  GET(inat_base_url(), path = ping_path, query = ping_query)
   total_res <- as.numeric(ping$headers$`x-total-entries`)
 
-  if(total_res == 0){
+  if (total_res == 0) {
     stop("Your search returned zero results.  Either your species of interest has no records or you entered an invalid search")
   }
 
-  page_query <- paste(search,"&per_page=200&page=1",sep="")
-  data <-  GET(base_url, path = q_path, query = page_query)
+  page_query <- paste(search, "&per_page=200&page=1", sep = "")
+  data <-  GET(inat_base_url(), path = q_path, query = page_query)
   data <- spocc_inat_handle(data)
-  data_out <- if(is.na(data)) NA else read.csv(textConnection(data), stringsAsFactors = FALSE)
+  data_out <- if (is.na(data)) NA else read.csv(textConnection(data), stringsAsFactors = FALSE)
 
-  if(total_res < maxresults) maxresults <- total_res
-  if(maxresults > 200){
-    for(i in 2:ceiling(maxresults/200)){
-      page_query <- paste(search,"&per_page=200&page=",i,sep="")
-      data <-  GET(base_url,path = q_path, query = page_query)
+  if (total_res < maxresults) maxresults <- total_res
+  if (maxresults > 200) {
+    for (i in 2:ceiling(maxresults/200)) {
+      page_query <- paste(search, "&per_page=200&page=", i, sep = "")
+      data <-  GET(inat_base_url(), path = q_path, query = page_query)
       data <- spocc_inat_handle(data)
       data_out <- rbind(data_out, read.csv(textConnection(data), stringsAsFactors = FALSE))
     }
   }
 
-  if(is.data.frame(data_out)){
-    if(maxresults < dim(data_out)[1]){
+  if (is.data.frame(data_out)) {
+    if (maxresults < dim(data_out)[1]) {
       data_out <- data_out[1:maxresults,]
     }
   }
 
-  if(meta){
-    return(list(meta=list(found=total_res, returned=nrow(data_out)), data=data_out))
-  } else { return(data_out) }
+  if (meta) {
+    return(list(meta = list(found = total_res, returned = nrow(data_out)), data = data_out))
+  } else { 
+    return(data_out) 
+  }
 }
 
 spocc_inat_handle <- function(x){
   res <- content(x, as = "text")
-  if(!x$headers$`content-type` == 'text/csv; charset=utf-8' || x$status_code > 202 || nchar(res)==0 ){
-    if(!x$headers$`content-type` == 'text/csv; charset=utf-8'){
+  if (!x$headers$`content-type` == 'text/csv; charset=utf-8' || x$status_code > 202 || nchar(res) == 0 ) {
+    if (!x$headers$`content-type` == 'text/csv; charset=utf-8') {
       warning("Conent type incorrect, should be 'text/csv; charset=utf-8'")
       NA
     }
-    if(x$status_code > 202){
+    if (x$status_code > 202) {
       warning(sprintf("Error: HTTP Status %s", data$status_code))
       NA
     }
-    if(nchar(res)==0){
+    if (nchar(res) == 0) {
       warning("No data found")
       NA
     }
-  } else { res }
+  } else { 
+    res 
+  }
 }
+
+spocc_get_inat_obs_id <- function(id, ...) {
+  q_path <- paste("observations/", as.character(id), ".json", sep = "")
+  res <- GET(inat_base_url(), path = q_path, ...)
+  stop_for_status(res)
+  tt <- content(res, as = "text")
+  jsonlite::fromJSON(tt)
+}
+
+inat_base_url <- function() "http://www.inaturalist.org/"

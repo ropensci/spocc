@@ -15,10 +15,12 @@
 #' @template occtemp
 #' @template occ_egs
 occ <- function(query = NULL, from = "gbif", limit = 500, geometry = NULL, has_coords = NULL,
-  rank = "species", type = "sci", ids = NULL, callopts=list(), gbifopts = list(),
-  bisonopts = list(), inatopts = list(), ebirdopts = list(), ecoengineopts = list(),
-  antwebopts = list(), vertnetopts = list(), idigbioopts = list()) {
+  ids = NULL, callopts=list(), gbifopts = list(), bisonopts = list(), inatopts = list(), 
+  ebirdopts = list(), ecoengineopts = list(), antwebopts = list(), 
+  vertnetopts = list(), idigbioopts = list()) {
 
+  type <- "sci"
+  
   if (!is.null(geometry)) {
     if (class(geometry) %in% c('SpatialPolygons', 'SpatialPolygonsDataFrame')) {
       geometry <- as.list(handle_sp(geometry))

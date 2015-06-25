@@ -21,9 +21,6 @@
 #' @param has_coords (logical) Only return occurrences that have lat/long data. This works 
 #' for gbif, ecoengine, idigbio, antweb, rinat, and vertnet, but is ignored for ebird and 
 #' bison data sources. You can easily though remove records without lat/long data. 
-#' @param rank (character) Taxonomic rank. Not used right now.
-#' @param type (character) Type of search: sci (scientific) or com (common name, vernacular).
-#' Not used right now.
 #' @param ids Taxonomic identifiers. This can be a list of length 1 to many. See examples for
 #' usage. Currently, identifiers for only 'gbif' and 'bison' for parameter 'from' supported. If
 #' this parameter is used, query parameter can not be used - if it is, a warning is thrown.
@@ -47,11 +44,21 @@
 #' \code{idig_search_records}. See also \code{\link{occ_options}}.
 #'
 #' @details The \code{occ} function is an opinionated wrapper
-#' around the rgbif, rbison, rinat, rebird, AntWeb, ecoengine, and rvertnet packages to 
-#' allow data access from a single access point. We take care of making sure you get useful
+#' around the rgbif, rbison, rinat, rebird, AntWeb, ecoengine, rvertnet, and 
+#' ridigbio packages to allow data access from a single access point. We take care 
+#' of making sure you get useful
 #' objects out at the cost of flexibility/options - although you can still set
 #' options for each of the packages via the gbifopts, bisonopts, inatopts,
-#' ebirdopts, ecoengineopts, vertnetopts, and antwebopts parameters.
+#' ebirdopts, ecoengineopts, vertnetopts, antwebopts, and idigbioopts parameters.
+#' 
+#' All inputs to \code{occ} are one of:
+#' \itemize{
+#'  \item scientific name
+#'  \item taxonomic id 
+#'  \item geometry as bounds, WKT, os Spatial classes
+#' }
+#' To search by common name, first use \code{\link{occ_names}} to find scientic names or
+#' taxonomic IDs, then feed those to this function. 
 #' 
 #' When searching iDigBio note that by deafult we set \code{fields = "all"}, so that we return
 #' a richer suite of fields than the \code{ridigbio} R client gives by default. But you can 

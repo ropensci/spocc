@@ -2,9 +2,9 @@ Package: spocc
 Title: Interface to Species Occurrence Data Sources
 Description: A programmatic interface to many species occurrence data sources,
     including 'GBIF', USGS's 'BISON', 'iNaturalist', Berkeley Ecoinformatics Engine
-    'eBird', 'AntWeb', and 'iDigBio'. Includes functionality for retrieving 
+    'eBird', 'AntWeb', and 'iDigBio'. Includes functionality for retrieving
     species occurrence data, and combining that data.
-Version: 0.2.9.9720
+Version: 0.2.9.9730
 License: MIT + file LICENSE
 Authors@R: c(person("Scott", "Chamberlain", role = c("aut", "cre"),
     email = "myrmecocystus@gmail.com"),

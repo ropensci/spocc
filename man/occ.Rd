@@ -5,10 +5,10 @@
 \title{Search for species occurrence data across many data sources.}
 \usage{
 occ(query = NULL, from = "gbif", limit = 500, geometry = NULL,
-  has_coords = NULL, rank = "species", type = "sci", ids = NULL,
-  callopts = list(), gbifopts = list(), bisonopts = list(),
-  inatopts = list(), ebirdopts = list(), ecoengineopts = list(),
-  antwebopts = list(), vertnetopts = list(), idigbioopts = list())
+  has_coords = NULL, ids = NULL, callopts = list(), gbifopts = list(),
+  bisonopts = list(), inatopts = list(), ebirdopts = list(),
+  ecoengineopts = list(), antwebopts = list(), vertnetopts = list(),
+  idigbioopts = list())
 }
 \arguments{
 \item{query}{(character) One to many names. Either a scientific name or a common name.
@@ -38,11 +38,6 @@ is not possible with vertnet right now, but should be soon.}
 \item{has_coords}{(logical) Only return occurrences that have lat/long data. This works
 for gbif, ecoengine, idigbio, antweb, rinat, and vertnet, but is ignored for ebird and
 bison data sources. You can easily though remove records without lat/long data.}
-
-\item{rank}{(character) Taxonomic rank. Not used right now.}
-
-\item{type}{(character) Type of search: sci (scientific) or com (common name, vernacular).
-Not used right now.}
 
 \item{ids}{Taxonomic identifiers. This can be a list of length 1 to many. See examples for
 usage. Currently, identifiers for only 'gbif' and 'bison' for parameter 'from' supported. If
@@ -81,11 +76,21 @@ or many data sources.
 }
 \details{
 The \code{occ} function is an opinionated wrapper
-around the rgbif, rbison, rinat, rebird, AntWeb, ecoengine, and rvertnet packages to
-allow data access from a single access point. We take care of making sure you get useful
+around the rgbif, rbison, rinat, rebird, AntWeb, ecoengine, rvertnet, and
+ridigbio packages to allow data access from a single access point. We take care
+of making sure you get useful
 objects out at the cost of flexibility/options - although you can still set
 options for each of the packages via the gbifopts, bisonopts, inatopts,
-ebirdopts, ecoengineopts, vertnetopts, and antwebopts parameters.
+ebirdopts, ecoengineopts, vertnetopts, antwebopts, and idigbioopts parameters.
+
+All inputs to \code{occ} are one of:
+\itemize{
+ \item scientific name
+ \item taxonomic id
+ \item geometry as bounds, WKT, os Spatial classes
+}
+To search by common name, first use \code{\link{occ_names}} to find scientic names or
+taxonomic IDs, then feed those to this function.
 
 When searching iDigBio note that by deafult we set \code{fields = "all"}, so that we return
 a richer suite of fields than the \code{ridigbio} R client gives by default. But you can

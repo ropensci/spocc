@@ -105,7 +105,7 @@ summary.occdatind <- function(object, ...){
   cat(sprintf('<time> %s', nn(mdat$time)), "\n")
   cat(sprintf('<found> %s', nn(mdat$found)), "\n")
   cat(sprintf('<returned> %s', nn(mdat$returned)), "\n")
-  cat(sprintf('<type> %s', nn(mdat$type)), "\n")
+  # cat(sprintf('<type> %s', nn(mdat$type)), "\n")
   opts <- unlist(Map(function(x, y) paste(paste(y, x, sep=": "), "\n"), mdat$opts, names(mdat$opts), USE.NAMES=FALSE))
   cat('<query options>\n', opts, "\n")
 }

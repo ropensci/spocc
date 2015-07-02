@@ -6,12 +6,9 @@
 \alias{spocc-package}
 \title{R interface to many species occurrence data sources}
 \description{
-You don't need API keys for any of the data providers thus far. However, some
-may be added in the future that require authentication, just FYI.
+Currently supported species occurrence databases:
 }
 \details{
-Currently supported species occurrence databases:
-
 \tabular{ll}{
 Provider \tab Web \cr
 GBIF \tab \url{http://www.gbif.org/} \cr
@@ -20,8 +17,7 @@ eBird \tab \url{http://ebird.org/content/ebird/} \cr
 iNaturalist \tab \url{http://www.inaturalist.org/} \cr
 Berkeley ecoengine \tab \url{https://ecoengine.berkeley.edu/} \cr
 AntWeb \tab \url{http://www.antweb.org/} \cr
-VertNet \tab \url{http://vertnet.org/} \cr
-iDigBio \tab \url{https://www.idigbio.org/}
+VertNet \tab \url{http://vertnet.org/}
 }
 }
 \author{

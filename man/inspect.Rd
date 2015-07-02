@@ -46,11 +46,6 @@ key <- as.gbif(res$key[1])
 inspect(key)
 key <- as.antweb("amsat-94817")
 inspect(key)
-
-# idigbio
-spnames <- c('Accipiter striatus', 'Carduelis tristis')
-out <- occ(query=spnames, from='idigbio', limit=20)
-inspect(out)
 }
 }
 

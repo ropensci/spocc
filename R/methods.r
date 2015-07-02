@@ -131,8 +131,7 @@ occinddf <- function(obj) {
          ebird = data.frame(name = z$name, longitude = z$longitude, latitude = z$latitude, prov = z$prov),
          ecoengine = data.frame(name = z$name, longitude = z$longitude, latitude = z$latitude, prov = z$prov),
          antweb = data.frame(name = z$name, longitude = z$longitude, latitude = z$latitude, prov = z$prov),
-         vertnet = data.frame(name = z$name, longitude = z$longitude, latitude = z$latitude, prov = z$prov),
-         idigbio = data.frame(name = z$name, longitude = z$longitude, latitude = z$latitude, prov = z$prov)
+         vertnet = data.frame(name = z$name, longitude = z$longitude, latitude = z$latitude, prov = z$prov)
   )
   z <- z[!names(z) %in% c('name','decimalLongitude','decimallongitude','Longitude','lng','longitude','decimal_longitude',
                        'decimalLatitude','decimallatitude','Latitude','lat','latitude','decimal_latitude','prov',

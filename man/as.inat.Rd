@@ -12,7 +12,7 @@ as.inat(x)
 character, inatkey, or occkey.}
 }
 \value{
-One or more in a list of both class idigbiokey and occkey
+One or more in a list of both class inatkey and occkey
 }
 \description{
 Coerce occurrence keys to iNaturalist id objects

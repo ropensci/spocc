@@ -19,22 +19,22 @@ foo_gbif <- function(sources, query, limit, geometry, has_coords, callopts, opts
           opts$scientificName <- query_use
         }
       }
-    } else { 
-      query_use <- NULL 
+    } else {
+      query_use <- NULL
     }
 
     if (is.null(query_use) && is.null(geometry)) {
       warning(sprintf("No records found in GBIF for %s", query), call. = FALSE)
-      emptylist(opts) 
+      emptylist(opts)
     } else {
       time <- now()
       if (!'limit' %in% names(opts)) opts$limit <- limit
       opts$fields <- 'all'
       if (!is.null(geometry)) {
         opts$geometry <- if (grepl('POLYGON', paste(as.character(geometry), collapse = " "))) {
-          geometry 
-        } else { 
-          bbox2wkt(bbox = geometry) 
+          geometry
+        } else {
+          bbox2wkt(bbox = geometry)
         }
       }
       opts$config <- callopts
@@ -58,8 +58,8 @@ foo_gbif <- function(sources, query, limit, geometry, has_coords, callopts, opts
         }
       }
     }
-  } else { 
-    emptylist(opts) 
+  } else {
+    emptylist(opts)
   }
 }
 
@@ -78,8 +78,7 @@ stand_latlon <- function(x){
 
 stand_dates <- function(dat, from){
   datevars <- list(gbif = 'eventDate', bison = c('eventDate', 'year'), inat = 'Datetime',
-                   ebird = 'obsDt', ecoengine = 'begin_date', vertnet = 'eventdate',
-                   idigbio = 'datecollected')
+                   ebird = 'obsDt', ecoengine = 'begin_date', vertnet = 'eventdate')
   var <- datevars[[from]]
   if (from == "bison") {
     var <- if ( is.null(dat$eventDate) ) "year" else "eventDate"
@@ -93,8 +92,7 @@ stand_dates <- function(dat, from){
                          inat = ymd_hms(dat[[var]], truncated = 3, quiet = TRUE),
                          ebird = ymd_hm(dat[[var]], truncated = 3, quiet = TRUE),
                          ecoengine = ymd(dat[[var]], truncated = 3, quiet = TRUE),
-                         vertnet = ymd(dat[[var]], truncated = 3, quiet = TRUE),
-                         idigbio = ymd_hms(dat[[var]], truncated = 3, quiet = TRUE)
+                         vertnet = ymd(dat[[var]], truncated = 3, quiet = TRUE)
     )
     if (from == "bison") rename(dat, setNames('date', var)) else dat
   }
@@ -163,7 +161,7 @@ foo_antweb <- function(sources, query, limit, geometry, has_coords, callopts, op
 
     if(!'limit' %in% names(opts)) opts$limit <- limit
     out <- tryCatch(do.call(aw_data, opts), error = function(e) e)
-    
+
     if(is.null(out) || is(out, "simpleError")){
       warning(sprintf("No records found in AntWeb for %s", query), call. = FALSE)
       list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
@@ -192,17 +190,17 @@ foo_bison <- function(sources, query, limit, geometry, callopts, opts) {
       bisonfxn <- "bison_solr"
     } else {
       if(is.null(geometry)){
-        opts$scientificName <- query 
+        opts$scientificName <- query
         bisonfxn <- "bison_solr"
       } else {
-        opts$species <- query 
+        opts$species <- query
         bisonfxn <- "bison"
       }
     }
 
     time <- now()
     opts$verbose <- FALSE
-    
+
     if(bisonfxn == "bison"){
       if(!'count' %in% names(opts)) opts$count <- limit
       opts$config <- callopts
@@ -210,12 +208,12 @@ foo_bison <- function(sources, query, limit, geometry, callopts, opts) {
       if(!'rows' %in% names(opts)) opts$rows <- limit
       opts$callopts <- callopts
     }
-    
+
     if(!is.null(geometry)){
       opts$aoi <- if(grepl('POLYGON', paste(as.character(geometry), collapse=" "))){
-        geometry 
-      } else { 
-        bbox2wkt(bbox=geometry) 
+        geometry
+      } else {
+        bbox2wkt(bbox=geometry)
       }
     }
     out <- tryCatch(do.call(eval(parse(text = bisonfxn)), opts), error = function(e) e)
@@ -251,8 +249,8 @@ foo_inat <- function(sources, query, limit, geometry, has_coords, callopts, opts
         # flip lat  and long spots in the bounds vector for inat
         temp <- wkt2bbox(geometry)
         c(temp[2], temp[1], temp[4], temp[3])
-      } else { 
-        c(geometry[2], geometry[1], geometry[4], geometry[3]) 
+      } else {
+        c(geometry[2], geometry[1], geometry[4], geometry[3])
       }
     }
     out <- tryCatch(do.call(spocc_inat_obs, opts), error = function(e) e)
@@ -336,65 +334,6 @@ foo_vertnet <- function(sources, query, limit, has_coords, callopts, opts) {
   }
 }
 
-#' @noRd
-foo_idigbio <- function(sources, query, limit, geometry, has_coords, callopts, opts) {
-  if (any(grepl("idigbio", sources))) {
-    # opts <- limit_alias(opts, "idigbio")
-    time <- now()
-    
-    addopts <- list()
-    if (!is.null(query)) addopts$rq <- list(scientificname = query)
-    if (!is.null(has_coords)) opts$rq$geopoint <- if (has_coords) {
-      list(type = "exists")
-    } else {
-      list(type = "missing")
-    }
-    
-    if (!is.null(geometry)) {
-      if (grepl('POLYGON', paste(as.character(geometry), collapse = " "))) {
-        geometry <- wkt2bbox(geometry)
-      }
-      addopts$rq <- if (is.numeric(geometry) && length(geometry) == 4) {
-        list(geopoint = list(
-          type = "geo_bounding_box", 
-          top_left = list(
-            lat = geometry[4], lon = geometry[1]
-          ), 
-          bottom_right = list(
-            lat = geometry[2], lon = geometry[3]
-          )
-        ))
-      } else {
-        geometry
-      }
-    }
-    
-    if ("rq" %in% names(opts)) {
-      opts$rq <- c(addopts$rq, opts$rq)
-    } else {
-      opts$rq <- addopts$rq
-    }
-    
-    opts$limit <- limit
-    opts$fields <- "all"
-    
-    out <- tryCatch(do.call(idig_search_records, opts), error = function(e) e)
-    if (is(out, "simpleError")) {
-      warning(sprintf("No records found in iDigBio for %s", query))
-      list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
-    } else{
-      out$prov <- rep("idigbio", nrow(out))
-      out <- rename(out, c('scientificname' = 'name'))
-      out <- add_latlong(out, nms = c('geopoint.lon', 'geopoint.lat'))
-      out <- stand_latlon(out)
-      out <- stand_dates(out, "idigbio")
-      # add lat long columns if missing
-      list(time = time, found = attr(out, "itemCount"), data = out, opts = opts)
-    }
-  } else {
-    list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
-  }
-}
 
 limit_alias <- function(x, sources, geometry=NULL){
   bisonvar <- if (is.null(geometry)) 'rows' else 'count'
@@ -403,11 +342,11 @@ limit_alias <- function(x, sources, geometry=NULL){
     if ("limit" %in% names(x)) {
       names(x)[ which(names(x) == "limit") ] <- lim_name
       x
-    } else { 
-      x 
+    } else {
+      x
     }
-  } else { 
-    x 
+  } else {
+    x
   }
 }
 

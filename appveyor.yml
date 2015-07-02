@@ -13,7 +13,7 @@ install:
 build_script:
   - travis-tool.sh install_deps
   - travis-tool.sh install_bioc sangerseqR
-  - travis-tool.sh install_github sckott/ridigbio@search-fix ropensci/rebird ropensci/rbison
+  - travis-tool.sh install_github ropensci/rbison
 
 test_script:
   - travis-tool.sh run_tests

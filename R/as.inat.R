@@ -5,7 +5,7 @@
 #' @param x Various inputs, including the output from a call to \code{\link{occ}}
 #' (class occdat), \code{\link{occ2df}} (class data.frame), or a list, numeric,
 #' character, inatkey, or occkey.
-#' @return One or more in a list of both class idigbiokey and occkey
+#' @return One or more in a list of both class inatkey and occkey
 #'
 #' @examples \dontrun{
 #' spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Carduelis tristis')
@@ -18,7 +18,7 @@
 #' as.inat(tt[[1]])
 #' as.inat(uu[[1]])
 #' as.inat(tt[1:2])
-#' 
+#'
 #' library("dplyr")
 #' rbind_all(lapply(tt, function(x) {
 #'   data.frame(x$taxon[c('id','name','rank','unique_name')], stringsAsFactors = FALSE)

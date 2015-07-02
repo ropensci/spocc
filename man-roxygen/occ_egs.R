@@ -20,14 +20,6 @@
 #' (by_species <- occ(query = "linepithema humile", from = "antweb", limit = 10))
 #' # or by genus
 #' (by_genus <- occ(query = "acanthognathus", from = "antweb"))
-#' 
-#' # idigbio data
-#' ## scientific name search
-#' # idig_search_records(rq=list(genus="acer"), limit = 5)
-#' occ(query = "Acer", from = "idigbio", limit = 5)
-#' ## geo search
-#' bounds <- c(-120, 40, -100, 45)
-#' occ(from = "idigbio", geometry = bounds, limit = 10)
 #'
 #' occ(query = 'Setophaga caerulescens', from = 'ebird', ebirdopts = list(region='US'))
 #' occ(query = 'Spinus tristis', from = 'ebird', ebirdopts =
@@ -40,11 +32,6 @@
 #' ## This is particularly useful when you want to set different limit for each source
 #' (res <- occ(query = 'Accipiter striatus', from = c('gbif','ecoengine'),
 #'    gbifopts=list(limit = 10), ecoengineopts=list(limit = 5)))
-#'
-#' ## w/ or w/o coordinates, or don't pass it (default)
-#' occ(query = "Acer", from = "idigbio", limit = 5)
-#' occ(query = "Acer", from = "idigbio", limit = 5, has_coords = TRUE)
-#' occ(query = "Acer", from = "idigbio", limit = 5, has_coords = FALSE)
 #'
 #' # Many data sources
 #' (out <- occ(query = 'Pinus contorta', from=c('gbif','bison','vertnet'), limit=10))
@@ -107,7 +94,6 @@
 #' ## Geometry only with WKT
 #' wkt <- 'POLYGON((-98.9 44.2,-89.1 36.6,-116.7 37.5,-102.5 39.6,-98.9 44.2))'
 #' occ(from = "gbif", geometry = bounds, limit = 10)
-#' occ(from = "idigbio", geometry = bounds, limit = 10)
 #'
 #' # Specify many data sources, another example
 #' ebirdopts = list(region = 'US'); gbifopts  =  list(country = 'US')
@@ -174,43 +160,6 @@
 #' ## notice that callopts is ignored when from='inat' or from='antweb'
 #' occ(query = 'Accipiter striatus', from = 'inat', callopts=verbose())
 #' occ(query = 'linepithema humile', from = 'antweb', callopts=verbose())
-#' 
-#' 
-#' ########## More thorough data source specific examples
-#' # idigbio
-#' ## scientific name search
-#' res <- occ(query = "Acer", from = "idigbio", limit = 5)
-#' res$idigbio
-#' 
-#' ## geo search
-#' ### bounding box 
-#' bounds <- c(-120, 40, -100, 45)
-#' occ(from = "idigbio", geometry = bounds, limit = 10)
-#' ### wkt
-#' # wkt <- 'POLYGON((-69.9 49.2,-69.9 29.0,-123.3 29.0,-123.3 49.2,-69.9 49.2))'
-#' wkt <- 'POLYGON((-98.9 44.2,-89.1 36.6,-116.7 37.5,-102.5 39.6,-98.9 44.2))'
-#' occ(from = "idigbio", geometry = wkt, limit = 10)
-#' 
-#' ## limit fields returned
-#' occ(query = "Acer", from = "idigbio", limit = 5, 
-#'    idigbioopts = list(fields = "scientificname"))
-#'    
-#' ## offset and max_items
-#' occ(query = "Acer", from = "idigbio", limit = 5, 
-#'    idigbioopts = list(offset = 10))
-#' occ(query = "Acer", from = "idigbio", limit = 5, 
-#'    idigbioopts = list(max_items = 6))
-#'    
-#' ## sort
-#' occ(query = "Acer", from = "idigbio", limit = 5, 
-#'    idigbioopts = list(sort = TRUE))$idigbio
-#' occ(query = "Acer", from = "idigbio", limit = 5, 
-#'    idigbioopts = list(sort = FALSE))$idigbio
-#'    
-#' ## more complex queries
-#' ### parameters passed to "rq", get combined with the name queried
-#' occ(query = "Acer", from = "idigbio", limit = 5, 
-#'    idigbioopts = list(rq = list(basisofrecord="fossilspecimen")))$idigbio
 #' }
 #' @examples \dontrun{
 #' #### NOTE: no support for multipolygons yet

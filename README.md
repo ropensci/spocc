@@ -12,7 +12,7 @@ spocc
 
 **`spocc` = SPecies OCCurrence data**
 
-At rOpenSci, we have been writing R packages to interact with many sources of species occurrence data, including [GBIF][gbif], [Vertnet][vertnet], [BISON][bison], [iNaturalist][inat], the [Berkeley ecoengine][ecoengine],  [AntWeb][antweb], and [iDigBio][idigbio]. `spocc` is an R package to query and collect species occurrence data from many sources. The goal is to wrap functions in other R packages to make a seamless experience across data sources for the user.
+At rOpenSci, we have been writing R packages to interact with many sources of species occurrence data, including [GBIF][gbif], [Vertnet][vertnet], [BISON][bison], [iNaturalist][inat], the [Berkeley ecoengine][ecoengine],  [AntWeb][antweb]. `spocc` is an R package to query and collect species occurrence data from many sources. The goal is to wrap functions in other R packages to make a seamless experience across data sources for the user.
 
 The inspiration for this comes from users requesting a more seamless experience across data sources, and from our work on a similar package for taxonomy data ([taxize][taxize]).
 
@@ -148,34 +148,8 @@ Get data from many sources in a single call
 ebirdopts = list(region='US'); gbifopts = list(country='US')
 out <- occ(query='Setophaga caerulescens', from=c('gbif','bison','inat','ebird'), gbifopts=gbifopts, ebirdopts=ebirdopts, limit=50)
 head(occ2df(out)); tail(occ2df(out))
-#>                     name longitude latitude prov                date
-#> 1 Setophaga caerulescens -80.82181 24.81413 gbif 2015-03-26 23:00:00
-#> 2 Setophaga caerulescens -82.55674 35.63396 gbif 2015-04-21 18:51:02
-#> 3 Setophaga caerulescens -82.87321 24.62802 gbif 2015-05-06 22:00:00
-#> 4 Setophaga caerulescens -83.19085 41.62769 gbif 2015-05-16 22:00:00
-#> 5 Setophaga caerulescens -81.36789 36.32292 gbif 2015-05-24 22:00:00
-#> 6 Setophaga caerulescens -77.07069 38.83192 gbif 2015-05-08 12:09:00
-#>          key
-#> 1 1088930021
-#> 2 1088954620
-#> 3 1092893709
-#> 4 1092893939
-#> 5 1092899848
-#> 6 1088980026
-#>                       name longitude latitude  prov                date
-#> 195 Setophaga caerulescens -75.70301 41.93996 ebird 2015-06-29 10:30:00
-#> 196 Setophaga caerulescens -72.26118 44.32990 ebird 2015-06-29 10:24:00
-#> 197 Setophaga caerulescens -72.13456 44.43617 ebird 2015-06-29 10:00:00
-#> 198 Setophaga caerulescens -71.95659 43.43291 ebird 2015-06-29 09:55:00
-#> 199 Setophaga caerulescens -73.10017 43.25967 ebird 2015-06-29 09:50:00
-#> 200 Setophaga caerulescens -72.33185 42.30331 ebird 2015-06-29 09:47:00
-#>          key
-#> 195  L728084
-#> 196  L752124
-#> 197 L3758114
-#> 198 L1188433
-#> 199 L3758537
-#> 200  L345835
+#> Error in mapply(FUN = f, ..., SIMPLIFY = FALSE): object 'id' not found
+#> Error in mapply(FUN = f, ..., SIMPLIFY = FALSE): object 'id' not found
 ```
 
 ## Make maps
@@ -197,4 +171,3 @@ All mapping functionality is now in a separate package [spoccutils](https://gith
 [taxize]: https://github.com/ropensci/taxize
 [ecoengine]: https://github.com/ropensci/ecoengine
 [antweb]: http://antweb.org/
-[idigbio]: https://www.idigbio.org/

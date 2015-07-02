@@ -13,6 +13,9 @@ knitr::opts_chunk$set(
 [![Build Status](https://api.travis-ci.org/ropensci/spocc.png)](https://travis-ci.org/ropensci/spocc)
 [![Build status](https://ci.appveyor.com/api/projects/status/3d43armi2oanva2s)](https://ci.appveyor.com/project/karthik/spocc)
 [![Coverage Status](https://coveralls.io/repos/ropensci/spocc/badge.svg)](https://coveralls.io/r/ropensci/spocc)
+[![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/spocc?color=FAB657)](https://github.com/metacran/cranlogs.app)
+[![cran version](http://www.r-pkg.org/badges/version/spocc)](http://cran.rstudio.com/web/packages/spocc)
+
 
 **`spocc` = SPecies OCCurrence data**
 
@@ -28,40 +31,13 @@ See [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ## Installation
 
-### rgdal
-
-Install `rgdal`. Change to the newest version of `rgdal` as needed.
-
-On Mac, if `install.packages("rgdal")` doesn't work, then
-
-```{r eval=FALSE}
-install.packages("http://cran.r-project.org/src/contrib/rgdal_0.9-1.tar.gz",
-                 repos = NULL, type = "source", configure.args = "--with-gdal-config=/Library/Frameworks/GDAL.framework/Versions/1.10/unix/bin/gdal-config --with-proj-include=/Library/Frameworks/PROJ.framework/unix/include --with-proj-lib=/Library/Frameworks/PROJ.framework/unix/lib")
-```
-
-On Windows - should be the same as Mac.
-
-On a linux box
-
-```
-sudo apt-get install r-cran-rgdal
-```
-
-### ridigbio
-
-```{r}
-devtools::install_github("sckott/ridigbio")
-```
-
-### spocc
-
-Install `spocc`
+Stable version from CRAN
 
 ```{r eval=FALSE}
 install.packages("spocc", dependencies = TRUE)
 ```
 
-Or the development version
+Or the development version from GitHub
 
 ```{r eval=FALSE}
 install.packages("devtools")
@@ -72,7 +48,7 @@ devtools::install_github("ropensci/spocc")
 library("spocc")
 ```
 
-## Get data
+## Basic use
 
 Get data from GBIF
 
@@ -84,12 +60,16 @@ Get data from GBIF
 out$gbif # just gbif data
 ```
 
+## Pas options to each data source
+
 Get fine-grained detail over each data source by passing on parameters to the packge rebird in this example.
 
 ```{r}
 out <- occ(query='Setophaga caerulescens', from='ebird', ebirdopts=list(region='US'))
 out$ebird # just ebird data
 ```
+
+## Many data sources at once
 
 Get data from many sources in a single call
 
@@ -101,56 +81,7 @@ head(occ2df(out)); tail(occ2df(out))
 
 ## Make maps
 
-All mapping functionality is now in a separate package `spoccutils`, to make `spocc` easier to maintain.
-
-```{r}
-library("spoccutils")
-```
-
-### Leaflet
-
-```{r eval=FALSE}
-spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta')
-dat <- occ(query = spp, from = 'gbif', gbifopts = list(hasCoordinate=TRUE))
-data <- occ2df(dat)
-mapleaflet(data = data, dest = ".")
-```
-
-![leafletmap](http://f.cl.ly/items/3w2Y1E3Z0T2T2z40310K/Screen%20Shot%202014-02-09%20at%2010.38.10%20PM.png)
-
-
-### Github gist
-
-```{r eval=FALSE}
-spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta')
-dat <- occ(query=spp, from='gbif', gbifopts=list(hasCoordinate=TRUE))
-dat <- fixnames(dat)
-dat <- occ2df(dat)
-mapgist(data=dat, color=c("#976AAE","#6B944D","#BD5945"))
-```
-
-![gistmap](http://f.cl.ly/items/343l2G0A2J3T0n2t433W/Screen%20Shot%202014-02-09%20at%2010.40.57%20PM.png)
-
-
-### ggplot2
-
-```{r eval=FALSE}
-ecoengine_data <- occ(query = 'Lynx rufus californicus', from = 'ecoengine')
-mapggplot(ecoengine_data)
-```
-
-![ggplot2map](http://f.cl.ly/items/1U1R0E0G392l2q362V33/Screen%20Shot%202014-02-09%20at%2010.44.59%20PM.png)
-
-
-### Base R plots
-
-```{r eval=FALSE}
-spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Spinus tristis')
-out <- occ(query=spnames, from='gbif', gbifopts=list(hasCoordinate=TRUE))
-plot(out, cex=1, pch=10)
-```
-
-![basremap](http://f.cl.ly/items/3O13330W3w3Z0H3u1X0s/Screen%20Shot%202014-02-09%20at%2010.46.25%20PM.png)
+All mapping functionality is now in a separate package [spoccutils](https://github.com/ropensci/spoccutils), to make `spocc` easier to maintain.
 
 ## Meta
 

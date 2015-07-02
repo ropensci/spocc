@@ -308,7 +308,7 @@ out$gbif$data
 # curl debugging
 library('httr')
 occ(query = 'Accipiter striatus', from = 'gbif', limit=10, callopts=verbose())
-occ(query = 'Accipiter striatus', from = 'ebird', limit=10, callopts=verbose())
+# occ(query = 'Accipiter striatus', from = 'ebird', limit=10, callopts=verbose())
 occ(query = 'Accipiter striatus', from = 'bison', limit=10, callopts=verbose())
 occ(query = 'Accipiter striatus', from = 'ecoengine', limit=10, callopts=verbose())
 occ(query = 'Accipiter striatus', from = c('ebird','bison'), limit=10, callopts=verbose())

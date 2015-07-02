@@ -21,7 +21,7 @@ Imports:
     rgbif (>= 0.8.4),
     rbison (>= 0.4.8),
     ecoengine (>= 1.9.1),
-    rebird (>= 0.1.5),
+    rebird (>= 0.1.1),
     AntWeb (>= 0.7),
     rvertnet (>= 0.3.0),
     ridigbio (>= 0.2.3),

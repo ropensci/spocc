@@ -18,6 +18,9 @@ LazyData: true
 VignetteBuilder: knitr
 Roxygen: list(wrap = FALSE)
 Imports:
+    utils,
+    stats,
+    methods,
     rgbif (>= 0.8.4),
     rbison (>= 0.4.8),
     ecoengine (>= 1.9.1),

@@ -13,7 +13,6 @@
 #'
 #' @importFrom jsonlite toJSON
 #' @importFrom utils browseURL head read.csv data
-#' @importFrom stats setNames complete.cases na.omit
 #' @importFrom methods is as
 #' @name spocc-package
 #' @aliases spocc

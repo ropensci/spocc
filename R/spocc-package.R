@@ -11,6 +11,7 @@
 #' VertNet \tab \url{http://vertnet.org/}
 #' }
 #'
+#' @importFrom jsonlite toJSON
 #' @name spocc-package
 #' @aliases spocc
 #' @docType package

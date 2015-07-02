@@ -39,7 +39,7 @@ occ_options <- function(from = 'gbif', where="console"){
     fxnrd <- res[[sprintf('%s.Rd', fxn)]]
     params <- fxnrd[ which(rd_tags(fxnrd) == "\\arguments") ]
     pars <- unlist(sc(sapply(params[[1]], function(x){
-      if(!x[[1]] == "\n") paste(x[[1]], gsub("\n", "", paste(unlist(x[[2]]), collapse = " ") ), sep = " - ")
+      if(!x[[1]] == "\n" && nchar(strtrim(x[[1]])) != 0) paste(x[[1]], gsub("\n", "", paste(unlist(x[[2]]), collapse = " ") ), sep = " - ")
     })))
     cat(sprintf("%s parameters:", fxn), sapply(pars, spocc_wrap, indent=6, width=80, USE.NAMES = FALSE), sep = "\n")
   } else {

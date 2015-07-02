@@ -40,9 +40,7 @@ bbox2wkt(bbox=c(38.4,-125.0,40.9,-121.8))
 
 ## Or pass in each value separately
 mm <- bbox2wkt(minx=38.4, miny=-125.0, maxx=40.9, maxy=-121.8)
-read_wkt(mm)
-
-========================================
+wkt_read(mm)
 
 # Convert a WKT object to a bounding box
 wkt <- "POLYGON((38.4 -125,40.9 -125,40.9 -121.8,38.4 -121.8,38.4 -125))"

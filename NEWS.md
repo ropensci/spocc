@@ -1,13 +1,25 @@
 spocc 0.3.0
 ===============
 
+### NEW FEATURES
+
+* Mapping functions all gone, and put into a new package `spoccutils` (https://github.com/ropensci/spoccutils) (#132)
+* `occ()` gains new parameter `has_coords` - a global parameter (except for ebird and bison) to return only records with lat/long data. (#128)
+* `type` (#134) and `rank` (#133) parameters dropped from `occ()` 
+* When object returned by `occ()` is printed, we now include a message that total count of records found (not returned) is not completely known __if ebird is included__, because eBird does not include data on records found on their servers with requests to their API (#111)
+* New functions `as.*()` (e.g., `as.gbif`) for most data sources. These functions take in occurrence keys or sets of keys, and retrieve detailed occurrence record data for each key (#112)
+* New data source: VertNet (#110)
+* `occ2df()` now returns more fields. This function collapses all essential fields that are easy to get in all data sources: `name`, `lat`, `long`, `prov`, `date`, `key`. The `key` field is the occurrence key for each record, which you can use to keep track of individual records, get more data on the record, etc. (#103) (#108)
+
 ### MINOR IMPROVEMENTS
 
-* zxvasfad
+* Now importing packages: `jsonlite`, `V8`, `utils`, and `methods`. No longer importing: `ggmap`, `maptools`, `rworldmap`, `sp`, `rgeos`, `RColorBrewer`, `rgdal`, and `leafletR`. Pkgs removed mostly due to splitting off some functionality into `spoccutils`. related issues: (#131) (#132)
+* Now importing explicitly all non-base R functions that we use: now importing `methods`, `utils` (#120)
+* We now attempt to standardize dates across all data sources, and return that in the output of a call to `occ2df()` (#106)
 
 ### BUG FIXES
 
-* adfasdf
+* Fixes to being able to pass curl options on to each data source's functions (#107)
 
 spocc 0.2.4
 ===============

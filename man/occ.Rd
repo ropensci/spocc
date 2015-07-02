@@ -50,7 +50,7 @@ also \code{\link{occ_options}}.}
 \item{bisonopts}{(list) List of named options to pass on to \code{\link[rbison]{bison}}. See
 also \code{\link{occ_options}}.}
 
-\item{inatopts}{(list) List of named options to pass on to \code{\link[rinat]{get_inat_obs}}.
+\item{inatopts}{(list) List of named options to pass on to \code{get_inat_obs}.
 See also \code{\link{occ_options}}.}
 
 \item{ebirdopts}{(list) List of named options to pass on to \code{\link[rebird]{ebirdregion}}

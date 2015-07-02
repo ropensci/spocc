@@ -1,7 +1,18 @@
+spocc 0.3.0
+===============
+
+### MINOR IMPROVEMENTS
+
+* zxvasfad
+
+### BUG FIXES
+
+* adfasdf
+
 spocc 0.2.4
 ===============
 
-MINOR IMPROVEMENTS
+### MINOR IMPROVEMENTS
 
 * Improved documentation for bounding boxes, their expected format, etc. (#96)
 * Remove dependency on the following packages: `assertthat`, `plyr`, `data.table`, and `XML` (#102)
@@ -9,7 +20,7 @@ MINOR IMPROVEMENTS
 * `rgbif` now must be `v0.7.7` or greater (the latest version on CRAN).
 * Removed the startup message.
 
-BUG FIXES
+### BUG FIXES
 
 * Duplicate, but not working correctly, function `occ2sp()` removed. The function `occ_to_sp()` function is the working version. (#97)
 * Fixed bug where some records returned form GBIF did not have lat/long column headers, and we internally rearranged columns, which caused complete stop when that happened. Fixed now. (#101)
@@ -18,14 +29,14 @@ BUG FIXES
 spocc 0.2.2
 ===============
 
-NEW FEATURES
+### NEW FEATURES
 
 * Added new function `occ_names()` to search only for taxonomic names. The goal here is to use ths function if there is some question about what names you want to use to search for occurrences with. (#84). Suggested by @jarioksa
 * New function `occ_names_options()` to quickly get parameter options to pass to `occ_names()`.
 * New `summary()` method for the `occdat` `S3` object that is output from `occ()` (#83)
 * In many places in `spocc` (README, vignette, `occ()` documentation file, at package startup), we make it clear that there could be duplicate records returned in certain scenarios. And a new documentation page detailing what to watch out for: `?spocc_duplicates`. (#77)
 
-MINOR IMPROVEMENTS
+### MINOR IMPROVEMENTS
 
 * All latitude/longitude column headers are now changed to latitude and longitude, whereas they use to vary from `latitude`, `decimalLatitude`, `Latitude`, `lat`, and `decimal_latitude`. (#91)
 * Default is 500 now for the `limit` parameter in `occ()` (#78)
@@ -36,27 +47,27 @@ MINOR IMPROVEMENTS
 spocc 0.2.0
 ===============
 
-NEW FEATURES
+### NEW FEATURES
 
 * `occ()` gains new parameter `callopts` to pass on curl debugging options to `httr::GET()` (#35)
 * `wkt_vis()` now by default plots a well known text area (WKT) on an interactive mapbox map in your default browser. New parameter `which` allows you to choose the interactive map or a static ggplot2 map. (#70)
 * Individual data sources `occ()` gains new class. In the previous version of this package, a `data.frame` was printed. Now the data is assigned the object `occdatind` (short for _occdat individual_).
 * `occ()` now uses a print method for the `occdatind` class, adopted from `dplyr` that prints a brief `data.frame`, with columns wrapped to fit the width of your console, and additional columns not printed given at bottom with their class type. Note that the print behavior for the resulting object of an `occ()` call remains the same. (#69) (#74)
 
-MINOR IMPROVEMENTS
+### MINOR IMPROVEMENTS
 
 * Added `whisker` as a package import to use in the `wkt_vis()` function. (#70)
 * Mapping functions now all accept the same input. Previously `mapggplot()` accepted the output of `occ()`, of class `occdat`, while the other two functions for mapping, `mapleaflet()` and `mapgist()` accepted a `data.frame`. Now all three functions accept  the output of `occ()`, an object of class `occdat`. (#75)
 * The `meta` slot in each returned object (indexed by `object$meta`) contains spots for `returned` and `found`, to designate number of records returned, and number of records found. (#64)
 
-BUG FIXES
+### BUG FIXES
 
 * Fixed bug in AntWeb output, where there was supposed to be a column titled `name`. (#71)
 
 spocc 0.1.4
 ===============
 
-NEW FEATURES
+### NEW FEATURES
 
 * Can now do geometry only queries. See examples in `occ()`.
 * In addition, you can pass in sp objects of SpatialPolygons or SpatialPolygonsDataFrame classes.
@@ -64,14 +75,14 @@ NEW FEATURES
 spocc 0.1.2
 ===============
 
-NEW FEATURES
+### NEW FEATURES
 
 * There were quite a few changes in one of the key packages that `spocc` depends on: `rgbif`. A number of input and output parameter names changed. A new version of `rgbif` was pushed to CRAN. (#56)
 * New function `clean_spocc()` started (not finished yet) to attempt to clean data. For example, one use case is removing impossible lat/long values (i.e., longitue values greater than absolute 180). Another, not implemented yet, is to remove points that are not in the country or habitat your points are supposed to be in. (#44)
 * New function `fixnames()` to trim species names with optional input parameters to make data easier to use for mapping.
 * New function `wkt_vis()` to visualize a WKT (well-known text) area on a map. Uses `ggmap` to pull down a Google map so that the visualization has some geographic and natural earth context. We'll soon introduce an interactive version of this function that will bring up a small Shiny app to draw a WKT area, then return those coordinates to your R session. (#34)
 
-MINOR IMPROVEMENTS
+### MINOR IMPROVEMENTS
 
 * Added a CONTRIBUTING.md file to the github repo to help guide contributions (#61)
 * Packages that require a certain version are forced to be X version or greater. Thes are rinat (>= 0.1.1), rbison (>= 0.3.2), rgbif (>= 0.6.2), ecoengine (>= 1.3), rebird (>= 0.1.1), AntWeb (>= 0.6.1), and leafletR (>= 0.2-0). This should help avoid problems.

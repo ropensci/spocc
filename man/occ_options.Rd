@@ -8,7 +8,8 @@ occ_options(from = "gbif", where = "console")
 }
 \arguments{
 \item{from}{(character) Data source to get data from, any combination of gbif, bison,
-inat, ebird, AntWeb, and/or ecoengine. Case doesn't matter.}
+ebird, AntWeb, and/or ecoengine. Case doesn't matter. inat is not included here,
+see that package's help docs.}
 
 \item{where}{(character) One of console (print to console) or html (opens help page, if in
 non-interactive R session, prints help to console).}
@@ -38,7 +39,6 @@ occ_options('ecoengine')
 occ_options('AntWeb')
 occ_options('antweb')
 occ_options('ebird')
-occ_options('inat')
 occ_options('bison')
 
 # Or open in html version

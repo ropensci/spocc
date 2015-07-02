@@ -1,7 +1,8 @@
 #' Look up options for parameters passed to each source
 #'
 #' @param from (character) Data source to get data from, any combination of gbif, bison,
-#' inat, ebird, AntWeb, and/or ecoengine. Case doesn't matter.
+#' ebird, AntWeb, and/or ecoengine. Case doesn't matter. inat is not included here,
+#' see that package's help docs.
 #' @param where (character) One of console (print to console) or html (opens help page, if in
 #' non-interactive R session, prints help to console).
 #' @return Opens up the documentation for the function that is used internally within
@@ -22,7 +23,6 @@
 #' occ_options('AntWeb')
 #' occ_options('antweb')
 #' occ_options('ebird')
-#' occ_options('inat')
 #' occ_options('bison')
 #'
 #' # Or open in html version
@@ -31,9 +31,9 @@
 
 occ_options <- function(from = 'gbif', where="console"){
   from <- tolower(from)
-  from <- match.arg(from, choices=c('gbif','bison','inat','ebird','ecoengine','antweb'))
-  pkgname <- switch(from, gbif='rgbif', bison='rbison', inat='rinat', ebird='rebird', ecoengine='ecoengine', antweb='AntWeb')
-  fxn <- switch(from, gbif='occ_search', bison='bison', inat='get_inat_obs', ebird='ebirdregion', ecoengine='ee_observations', antweb='aw_data')
+  from <- match.arg(from, choices=c('gbif','bison','ebird','ecoengine','antweb'))
+  pkgname <- switch(from, gbif='rgbif', bison='rbison', ebird='rebird', ecoengine='ecoengine', antweb='AntWeb')
+  fxn <- switch(from, gbif='occ_search', bison='bison', ebird='ebirdregion', ecoengine='ee_observations', antweb='aw_data')
   if(where == "console"){
     res <- tools::Rd_db(pkgname)
     fxnrd <- res[[sprintf('%s.Rd', fxn)]]
@@ -46,7 +46,6 @@ occ_options <- function(from = 'gbif', where="console"){
     showit <- switch(from,
                      gbif = "?rgbif::occ_search",
                      bison = "?rbison::bison",
-                     inat = "?rinat::get_inat_obs",
                      ebird = "?rebird::ebirdregion",
                      ecoengine = "?ecoengine::ee_observations",
                      antweb = "?AntWeb::aw_data")

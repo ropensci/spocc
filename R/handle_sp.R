@@ -55,6 +55,6 @@ make_wkt <- function(x){
   })
   lapply(coords, function(z) {
     geojson <- jsonlite::toJSON(list(type = "Polygon", coordinates =  list(z)), auto_unbox = TRUE)
-    write_wkt(geojson)
+    wkt_write(geojson)
   })
 }

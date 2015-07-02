@@ -1,10 +1,10 @@
-#' Coerce occurrence keys to ecoenginekey/occkey objects 
+#' Coerce occurrence keys to ecoenginekey/occkey objects
 #'
 #' @export
-#' @importFrom httr GET
+#' @importFrom httr GET stop_for_status content
 #'
-#' @param x Various inputs, including the output from a call to \code{\link{occ}} 
-#' (class occdat), \code{\link{occ2df}} (class data.frame), or a list, numeric, 
+#' @param x Various inputs, including the output from a call to \code{\link{occ}}
+#' (class occdat), \code{\link{occ2df}} (class data.frame), or a list, numeric,
 #' character, or ecoenginekey, or occkey.
 #' @return One or more in a list of both class ecoenginekey and occkey
 #' @examples \dontrun{

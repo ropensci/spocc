@@ -9,7 +9,7 @@
 #' @param x Input well-known text area (character)
 #' @param zoom Zoom level, defaults to 6 (numeric)
 #' @param maptype Map type, default is terrain (character)
-#' 
+#'
 #' @details Uses Mapbox's map layers, openes in your default browser
 #'
 #' @examples \dontrun{
@@ -26,7 +26,7 @@ wkt_vis <- function(x, zoom = 6, maptype = "terrain") {
   stopifnot(!is.null(x))
   stopifnot(is.character(x))
 
-  out <- read_wkt(gsub("\n|\n\\s+", "", strtrim(x)))
+  out <- wkt_read(gsub("\n|\n\\s+", "", strtrim(x)))
   df <- data.frame(long = out$coordinates[,,1], lat = out$coordinates[,,2])
 
   pts <- apply(df, 1, function(x) as.list(x[c('long','lat')]))

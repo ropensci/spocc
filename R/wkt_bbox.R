@@ -45,6 +45,6 @@ bbox2wkt <- function(minx=NA, miny=NA, maxx=NA, maxy=NA, bbox=NULL){
 #' @rdname bbox2wkt
 wkt2bbox <- function(wkt=NULL){
   stopifnot(!is.null(wkt))
-  tmp <- read_wkt(wkt)$bbox
+  tmp <- wkt_read(wkt)$bbox
   as.vector(tmp)
 }

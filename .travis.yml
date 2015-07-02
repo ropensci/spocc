@@ -9,7 +9,7 @@ before_script:
 - "./travis-tool.sh bootstrap"
 - "./travis-tool.sh install_deps"
 - "./travis-tool.sh install_bioc sangerseqR"
-- "./travis-tool.sh github_package jimhester/robustr jimhester/covr sckott/ridigbio@search-fix ropensci/rebird"
+- "./travis-tool.sh github_package jimhester/robustr jimhester/covr sckott/ridigbio@search-fix ropensci/rebird  ropensci/rbison"
 
 after_success:
 - Rscript -e 'library(covr); coveralls()'

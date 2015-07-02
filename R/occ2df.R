@@ -80,7 +80,7 @@ occ2df.occdat <- function(obj, what = "data") {
           rename(dat, setNames("key", keymap[[y]]))
         }
       },
-      list(aa, bb, cc, dd, ee, aw, vn, id), c('gbif','bison','inat','ebird','ecoengine','antweb','vertnet')
+      list(aa, bb, cc, dd, ee, aw, vn), c('gbif','bison','inat','ebird','ecoengine','antweb','vertnet')
     )
   ))
   tmpout <- list(meta = list(obj$gbif$meta, obj$bison$meta, obj$inat$meta, obj$ebird$meta,

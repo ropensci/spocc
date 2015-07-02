@@ -17,7 +17,7 @@ test_that("occ works", {
   expect_is(x4, "occdat")
   expect_is(x5, "occdat")
   expect_is(x6, "occdat")
-  expect_is(x7, "occdat")
+  # expect_is(x7, "occdat")
   # Testing x1
   expect_is(x1, "occdat")
   expect_is(x1$gbif, "occdatind")

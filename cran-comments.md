@@ -1,9 +1,14 @@
-R CMD CHECK passed on my local OS X install with R 3.1.2 and R development 
+- This is a re-submission of a submission from yesterday. I had forgotten to 
+include `importFrom("stats", "setNames")` - but is now included.
+
+
+R CMD CHECK passed on my local OS X install on R 3.2.1 and R development
 version, Ubuntu running on Travis-CI, and Win builder.
 
-This version includes a fix requested by CRAN:
-- CRAN reported some examples were not passing in R development version that
-were wrapped in \donttest. All examples are now in \dontrun because all work
-with web APIs and I can't be sure that the web API is up all the time. 
+This submission fixes a number of broken functions due to the
+recent update in httr on CRAN to v1.0.
+
+In addition, this package now imports non-base functions explicitly as
+needed in accordance with R-devel changes.
 
 Thanks! Scott Chamberlain

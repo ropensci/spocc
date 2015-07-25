@@ -10,13 +10,14 @@
 #' @importFrom rbison bison_solr bison bison_tax
 #' @importFrom AntWeb aw_data
 #' @importFrom rvertnet vertsearch
+#' @importFrom ridigbio idig_search_records idig_view_records
 #' @importFrom lubridate now ymd_hms ymd_hm ydm_hm ymd
 #' @template occtemp
 #' @template occ_egs
 occ <- function(query = NULL, from = "gbif", limit = 500, geometry = NULL, has_coords = NULL,
   ids = NULL, callopts=list(), gbifopts = list(), bisonopts = list(), inatopts = list(),
   ebirdopts = list(), ecoengineopts = list(), antwebopts = list(),
-  vertnetopts = list()) {
+  vertnetopts = list(), idigbioopts = list()) {
 
   type <- "sci"
 
@@ -26,7 +27,7 @@ occ <- function(query = NULL, from = "gbif", limit = 500, geometry = NULL, has_c
     }
   }
   sources <- match.arg(from, choices = c("gbif", "bison", "inat", "ebird",
-                                         "ecoengine", "antweb", "vertnet"),
+                                         "ecoengine", "antweb", "vertnet", "idigbio"),
                        several.ok = TRUE)
   if (!all(from %in% sources)) {
     stop(sprintf("Woops, the following are not supported or spelled incorrectly: %s",
@@ -42,8 +43,10 @@ occ <- function(query = NULL, from = "gbif", limit = 500, geometry = NULL, has_c
     ecoengine_res <- foo_ecoengine(sources, x, y, z, hc, w, ecoengineopts)
     antweb_res <- foo_antweb(sources, x, y, z, hc, w, antwebopts)
     vertnet_res <- foo_vertnet(sources, x, y, hc, w, vertnetopts)
+    idigbio_res <- foo_idigbio(sources, x, y, z, hc, w, idigbioopts)
     list(gbif = gbif_res, bison = bison_res, inat = inat_res, ebird = ebird_res,
-         ecoengine = ecoengine_res, antweb = antweb_res, vertnet = vertnet_res)
+         ecoengine = ecoengine_res, antweb = antweb_res, vertnet = vertnet_res,
+         idigbio = idigbio_res)
   }
 
   loopids <- function(x, y, z, hc, w) {
@@ -63,7 +66,8 @@ occ <- function(query = NULL, from = "gbif", limit = 500, geometry = NULL, has_c
          ebird = list(time = NULL, data = data.frame(NULL)),
          ecoengine = list(time = NULL, data = data.frame(NULL)),
          antweb = list(time = NULL, data = data.frame(NULL)),
-         vertnet = list(time = NULL, data = data.frame(NULL))
+         vertnet = list(time = NULL, data = data.frame(NULL)),
+         idigbio = list(time = NULL, data = data.frame(NULL))
     )
   }
 
@@ -162,7 +166,9 @@ occ <- function(query = NULL, from = "gbif", limit = 500, geometry = NULL, has_c
   ecoengine_sp <- getsplist("ecoengine", ecoengineopts)
   antweb_sp <- getsplist("antweb", antwebopts)
   vertnet_sp <- getsplist("vertnet", vertnetopts)
+  idigbio_sp <- getsplist("idigbio", idigbioopts)
   p <- list(gbif = gbif_sp, bison = bison_sp, inat = inat_sp, ebird = ebird_sp,
-            ecoengine = ecoengine_sp, antweb = antweb_sp, vertnet = vertnet_sp)
+            ecoengine = ecoengine_sp, antweb = antweb_sp, vertnet = vertnet_sp,
+            idigbio = idigbio_sp)
   structure(p, class = "occdat", searched = from)
 }

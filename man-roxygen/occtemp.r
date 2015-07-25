@@ -1,6 +1,5 @@
-#' @param query (character) One to many names. Either a scientific name or a common name.
-#' Specify whether a scientific or common name in the type parameter.
-#' Only scientific names supported right now.
+#' @param query (character) One to many scientific names.  For idigbio, we pass	the query 
+#' to the \code{scientificname} query parameter for their API.
 #' @param from (character) Data source to get data from, any combination of gbif, bison,
 #' inat, ebird, ecoengine and/or vertnet
 #' @param limit (numeric) Number of records to return. This is passed across all sources.
@@ -18,7 +17,7 @@
 #' bounding box is [min-longitude, min-latitude, max-longitude, max-latitude]. Geometry
 #' is not possible with vertnet right now, but should be soon.
 #' @param has_coords (logical) Only return occurrences that have lat/long data. This works
-#' for gbif, ecoengine, antweb, rinat, and vertnet, but is ignored for ebird and
+#' for gbif, ecoengine, antweb, rinat, idigbio, and vertnet, but is ignored for ebird and
 #' bison data sources. You can easily though remove records without lat/long data.
 #' @param ids Taxonomic identifiers. This can be a list of length 1 to many. See examples for
 #' usage. Currently, identifiers for only 'gbif' and 'bison' for parameter 'from' supported. If
@@ -39,14 +38,16 @@
 #' See also \code{\link{occ_options}}.
 #' @param vertnetopts (list) List of named options to pass on to
 #' \code{\link[rvertnet]{searchbyterm}}. See also \code{\link{occ_options}}..
+#' @param idigbioopts (list) List of named options to pass on to 
+#' \code{idig_search_records}. See also \code{\link{occ_options}}.
 #'
 #' @details The \code{occ} function is an opinionated wrapper
-#' around the rgbif, rbison, rinat, rebird, AntWeb, ecoengine, and rvertnet
-#' packages to allow data access from a single access point. We take care
-#' of making sure you get useful
-#' objects out at the cost of flexibility/options - although you can still set
-#' options for each of the packages via the gbifopts, bisonopts, inatopts,
-#' ebirdopts, ecoengineopts, vertnetopts, and antwebopts parameters.
+#' around the rgbif, rbison, rinat, rebird, AntWeb, ecoengine, rvertnet and 
+#' ridigbio packages to allow data access from a single access point. We take 
+#' care of making sure you get useful objects out at the cost of 
+#' flexibility/options - although you can still set options for each of the 
+#' packages via the gbifopts, bisonopts, inatopts, ebirdopts, ecoengineopts, 
+#' vertnetopts, antwebopts and idigbioopts parameters.
 #'
 #' All inputs to \code{occ} are one of:
 #' \itemize{
@@ -56,6 +57,11 @@
 #' }
 #' To search by common name, first use \code{\link{occ_names}} to find scientic names or
 #' taxonomic IDs, then feed those to this function.
+#' 
+#' When searching iDigBio note that by deafult we set \code{fields = "all"}, so that we return
+#' a richer suite of fields than the \code{ridigbio} R client gives by default. But you can
+#' changes this by passing in a \code{fields} parameter to \code{idigbioopts} parameter with
+#' the specific fields you want.
 #'
 #' When searching ecoengine, you can leave the page argument blank to get a single page.
 #' Otherwise use page ranges or simply "all" to request all available pages.

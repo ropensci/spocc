@@ -8,7 +8,8 @@
 #' iNaturalist \tab \url{http://www.inaturalist.org/} \cr
 #' Berkeley ecoengine \tab \url{https://ecoengine.berkeley.edu/} \cr
 #' AntWeb \tab \url{http://www.antweb.org/} \cr
-#' VertNet \tab \url{http://vertnet.org/}
+#' VertNet \tab \url{http://vertnet.org/} \cr
+#' iDigBio \tab \url{https://www.idigbio.org/}
 #' }
 #'
 #' @importFrom jsonlite toJSON

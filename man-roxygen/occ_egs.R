@@ -14,7 +14,7 @@
 #' res$vertnet
 #' res$vertnet$data$Bison_bison
 #' occ2df(res)
-#' 
+#'
 #' # Data from AntWeb
 #' # By species
 #' (by_species <- occ(query = "linepithema humile", from = "antweb", limit = 10))
@@ -24,6 +24,14 @@
 #' occ(query = 'Setophaga caerulescens', from = 'ebird', ebirdopts = list(region='US'))
 #' occ(query = 'Spinus tristis', from = 'ebird', ebirdopts =
 #'    list(method = 'ebirdgeo', lat = 42, lng = -76, dist = 50))
+#'
+#' # idigbio data
+#' ## scientific name search
+#' # idig_search_records(rq=list(genus="acer"), limit = 5)
+#' occ(query = "Acer", from = "idigbio", limit = 5)
+#' ## geo search
+#' bounds <- c(-120, 40, -100, 45)
+#' occ(from = "idigbio", geometry = bounds, limit = 10)
 #'
 #' # You can pass on limit param to all sources even though its a different param in that source
 #' ## ecoengine example
@@ -41,7 +49,7 @@
 #' out$gbif$data
 #' out$vertnet
 #'
-#' ## Coerce to combined data.frame, selects minimal set of 
+#' ## Coerce to combined data.frame, selects minimal set of
 #' ## columns (name, lat, long, provider, date, occurrence key)
 #' occ2df(out)
 #'
@@ -90,7 +98,7 @@
 #' occ(geometry = bounds, from = "gbif", limit=50)
 #' ### Many bounding boxes
 #' occ(geometry = list(c(-125.0,38.4,-121.8,40.9), c(-115.0,22.4,-111.8,30.9)), from = "gbif")
-#' 
+#'
 #' ## Geometry only with WKT
 #' wkt <- 'POLYGON((-98.9 44.2,-89.1 36.6,-116.7 37.5,-102.5 39.6,-98.9 44.2))'
 #' occ(from = "gbif", geometry = bounds, limit = 10)
@@ -160,6 +168,42 @@
 #' ## notice that callopts is ignored when from='inat' or from='antweb'
 #' occ(query = 'Accipiter striatus', from = 'inat', callopts=verbose())
 #' occ(query = 'linepithema humile', from = 'antweb', callopts=verbose())
+#'
+#' ########## More thorough data source specific examples
+#' # idigbio
+#' ## scientific name search
+#' res <- occ(query = "Acer", from = "idigbio", limit = 5)
+#' res$idigbio
+#'
+#' ## geo search
+#' ### bounding box
+#' bounds <- c(-120, 40, -100, 45)
+#' occ(from = "idigbio", geometry = bounds, limit = 10)
+#' ### wkt
+#' # wkt <- 'POLYGON((-69.9 49.2,-69.9 29.0,-123.3 29.0,-123.3 49.2,-69.9 49.2))'
+#' wkt <- 'POLYGON((-98.9 44.2,-89.1 36.6,-116.7 37.5,-102.5 39.6,-98.9 44.2))'
+#' occ(from = "idigbio", geometry = wkt, limit = 10)
+#'
+#' ## limit fields returned
+#' occ(query = "Acer", from = "idigbio", limit = 5,
+#'    idigbioopts = list(fields = "scientificname"))
+#'
+#' ## offset and max_items
+#' occ(query = "Acer", from = "idigbio", limit = 5,
+#'    idigbioopts = list(offset = 10))
+#' occ(query = "Acer", from = "idigbio", limit = 5,
+#'    idigbioopts = list(max_items = 6))
+#'
+#' ## sort
+#' occ(query = "Acer", from = "idigbio", limit = 5,
+#'    idigbioopts = list(sort = TRUE))$idigbio
+#' occ(query = "Acer", from = "idigbio", limit = 5,
+#'    idigbioopts = list(sort = FALSE))$idigbio
+#'
+#' ## more complex queries
+#' ### parameters passed to "rq", get combined with the name queried
+#' occ(query = "Acer", from = "idigbio", limit = 5,
+#'    idigbioopts = list(rq = list(basisofrecord="fossilspecimen")))$idigbio
 #' }
 #' @examples \dontrun{
 #' #### NOTE: no support for multipolygons yet

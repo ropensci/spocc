@@ -25,6 +25,11 @@
 #' inspect(key)
 #' key <- as.antweb("amsat-94817")
 #' inspect(key)
+#' 
+#' # idigbio		
+#' spnames <- c('Accipiter striatus', 'Carduelis tristis')
+#' out <- occ(query=spnames, from='idigbio', limit=20)
+#' inspect(out)
 #' }
 inspect <- function(x, from="gbif") {
   UseMethod("inspect")
@@ -48,7 +53,8 @@ inspect.occkey <- function(x, from="gbif"){
          gbifkey = as.gbif(x),
          bisonkey = as.bison(x),
          ecoenginekey = as.ecoengine(x),
-         antwebkey = as.antweb(x))
+         antwebkey = as.antweb(x),
+         idigbiokey = as.idigbio(x))
 }
 
 make_df <- function(x){
@@ -60,7 +66,8 @@ make_df <- function(x){
              gbif = as.gbif(obj[[i]]),
              bison = as.bison(obj[[i]]),
              ecoengine = as.ecoengine(obj[[i]]),
-             antweb = as.antweb(obj[[i]])
+             antweb = as.antweb(obj[[i]]),
+             idigbio = as.idigbio(obj[[i]])
       )
   }
   out

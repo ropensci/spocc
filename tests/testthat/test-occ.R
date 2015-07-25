@@ -10,14 +10,13 @@ test_that("occ works", {
   x4 <- occ(query = 'Bison bison', from = 'bison', limit = 30)
   x5 <- occ(query = 'Setophaga caerulescens', from = 'ebird', ebirdopts = list(region='US'), limit = 30)
   x6 <- occ(query = 'Spinus tristis', from = 'ebird', ebirdopts = list(method = 'ebirdgeo', lat = 42, lng = -76, dist = 50), limit = 30)
-  
-  # x7 <- occ(query = 'Spinus tristis', from = 'idigbio', limit = 30)
+  x7 <- occ(query = 'Spinus tristis', from = 'idigbio', limit = 30)
 
   expect_is(x3, "occdat")
   expect_is(x4, "occdat")
   expect_is(x5, "occdat")
   expect_is(x6, "occdat")
-  # expect_is(x7, "occdat")
+  expect_is(x7, "occdat")
   # Testing x1
   expect_is(x1, "occdat")
   expect_is(x1$gbif, "occdatind")
@@ -50,11 +49,11 @@ test_that("occ works", {
   expect_equal(unique(temp_df6$prov), "ebird")
   
   # Testing x7
-#   expect_is(x7, "occdat")
-#   expect_is(x7$idigbio, "occdatind")
-#   expect_is(x7$idigbio$data[[1]], "data.frame")
-#   temp_df7 <- x7$idigbio$data[[1]]
-#   expect_equal(unique(temp_df7$prov), "idigbio")
+  expect_is(x7, "occdat")
+  expect_is(x7$idigbio, "occdatind")
+  expect_is(x7$idigbio$data[[1]], "data.frame")
+  temp_df7 <- x7$idigbio$data[[1]]
+  expect_equal(unique(temp_df7$prov), "idigbio")
 
   # Adding tests for Antweb
   # by_species <- suppressWarnings(tryCatch(occ(query = "acanthognathus brevicornis", from = "antweb"), error=function(e) e))

@@ -11,8 +11,8 @@ occ(query = NULL, from = "gbif", limit = 500, geometry = NULL,
   idigbioopts = list())
 }
 \arguments{
-\item{query}{(character) One to many scientific names.  For idigbio, we pass    the query
-to the \code{scientificname} query parameter for their API.}
+\item{query}{(character) One to many scientific names. See Details for what parameter
+in each data source we query.}
 
 \item{from}{(character) Data source to get data from, any combination of gbif, bison,
 inat, ebird, ecoengine and/or vertnet}
@@ -66,7 +66,7 @@ See also \code{\link{occ_options}}.}
 \code{\link[rvertnet]{searchbyterm}}. See also \code{\link{occ_options}}..}
 
 \item{idigbioopts}{(list) List of named options to pass on to
-\code{idig_search_records}. See also \code{\link{occ_options}}.}
+\code{\link[ridigbio]{idig_search_records}}. See also \code{\link{occ_options}}.}
 }
 \description{
 Search on a single species name, or many. And search across a single
@@ -89,6 +89,35 @@ All inputs to \code{occ} are one of:
 }
 To search by common name, first use \code{\link{occ_names}} to find scientic names or
 taxonomic IDs, then feed those to this function.
+
+When you use the \code{query} parameter, we pass your search terms on to parameters
+within functions that query data sources you specify. Those parameters are:
+\itemize{
+ \item rgbif - \code{scientificName} in the \code{\link[rgbif]{occ_search}} function - API
+ parameter: same as the \code{occ} parameter
+ \item rebird - \code{species} in the \code{\link[rebird]{ebirdregion}} or
+ \code{\link[rebird]{ebirdgeo}} functions, depending on whether you set
+ \code{method="ebirdregion"} or \code{method="ebirdgeo"} - API parameters: \code{sci} for both
+ \code{\link[rebird]{ebirdregion}} and \code{\link[rebird]{ebirdgeo}}
+ \item ecoengine - \code{scientific_name} in the \code{\link[ecoengine]{ee_observations}}
+ function - API parameter: same as \code{occ} parameter
+ \item rbison - \code{species} or \code{scientificName} in the \code{\link[rbison]{bison}} or
+ \code{\link[rbison]{bison_solr}} functions, respectively. If you don't pass anything to
+ \code{geometry} parameter we use \code{bison_solr}, and if you do we use \code{bison} - API
+ parameters: same as \code{occ} parameters
+ \item AntWeb - \code{scientific_name} or \code{genus} in the \code{\link[AntWeb]{aw_data}}
+ function, depending on whether binomial or single name passed - API
+ parameter: \code{species} for \code{scientific_name} and \code{genus} for
+ \code{genus}
+ \item rvertnet - \code{taxon} in the \code{\link[rvertnet]{vertsearch}} function - API
+ parameter: \code{q}
+ \item ridigbio - \code{scientificname} in the \code{\link[ridigbio]{scientificname}}
+ function - API parameter: \code{scientificname}
+ \item inat - internal function - API parameter: \code{q}
+}
+If you have questions about how each of those parameters behaves with respect to
+the terms you pass to it, lookup documentation for those functions, or get in touch
+at the development repository \url{https://github.com/ropensci/spocc/issues}
 
 When searching iDigBio note that by deafult we set \code{fields = "all"}, so that we return
 a richer suite of fields than the \code{ridigbio} R client gives by default. But you can

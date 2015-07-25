@@ -1,8 +1,47 @@
 # Plugins for the occ function for each data source
+## helper functions
+move_cols <- function(x, y)
+  x[ c(y, names(x)[-sapply(y, function(z) grep(paste0('\\b', z, '\\b'), names(x)))]) ]
+
+emptylist <- function(opts) list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
+
+stand_latlon <- function(x){
+  lngs <- c('decimalLongitude', 'decimallongitude', 'Longitude', 'lng', 'longitude', 'decimal_longitude', 'geopoint.lon')
+  lats <- c('decimalLatitude', 'decimallatitude', 'Latitude', 'lat', 'latitude', 'decimal_latitude', 'geopoint.lat')
+  names(x)[ names(x) %in% lngs ] <- 'longitude'
+  names(x)[ names(x) %in% lats ] <- 'latitude'
+  x
+}
+
+stand_dates <- function(dat, from){
+  datevars <- list(gbif = 'eventDate', bison = c('eventDate', 'year'), inat = 'Datetime',
+                   ebird = 'obsDt', ecoengine = 'begin_date', vertnet = 'eventdate', 
+                   idigbio = 'datecollected')
+  var <- datevars[[from]]
+  if (from == "bison") {
+    var <- if ( is.null(dat$eventDate) ) "year" else "eventDate"
+  }
+  if ( is.null(dat[[var]]) ) {
+    dat
+  } else {
+    dat[[var]] <- switch(from,
+                         gbif = ymd_hms(dat[[var]], truncated = 3, quiet = TRUE),
+                         bison = ydm_hm(dat[[var]], truncated = 6, quiet = TRUE),
+                         inat = ymd_hms(dat[[var]], truncated = 3, quiet = TRUE),
+                         ebird = ymd_hm(dat[[var]], truncated = 3, quiet = TRUE),
+                         ecoengine = ymd(dat[[var]], truncated = 3, quiet = TRUE),
+                         vertnet = ymd(dat[[var]], truncated = 3, quiet = TRUE),
+                         idigbio = ymd_hms(dat[[var]], truncated = 3, quiet = TRUE)
+    )
+    if (from == "bison") rename(dat, setNames('date', var)) else dat
+  }
+}
+
+## the plugins
 #' @noRd
 foo_gbif <- function(sources, query, limit, geometry, has_coords, callopts, opts) {
   if (any(grepl("gbif", sources))) {
-
+    
     opts$hasCoordinate <- has_coords
     if (!is.null(query)) {
       if (class(query) %in% c("ids", "gbifid")) {
@@ -22,7 +61,7 @@ foo_gbif <- function(sources, query, limit, geometry, has_coords, callopts, opts
     } else {
       query_use <- NULL
     }
-
+    
     if (is.null(query_use) && is.null(geometry)) {
       warning(sprintf("No records found in GBIF for %s", query), call. = FALSE)
       emptylist(opts)
@@ -60,43 +99,6 @@ foo_gbif <- function(sources, query, limit, geometry, has_coords, callopts, opts
     }
   } else {
     emptylist(opts)
-  }
-}
-
-move_cols <- function(x, y)
-  x[ c(y, names(x)[-sapply(y, function(z) grep(paste0('\\b', z, '\\b'), names(x)))]) ]
-
-emptylist <- function(opts) list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
-
-stand_latlon <- function(x){
-  lngs <- c('decimalLongitude', 'decimallongitude', 'Longitude', 'lng', 'longitude', 'decimal_longitude', 'geopoint.lon')
-  lats <- c('decimalLatitude', 'decimallatitude', 'Latitude', 'lat', 'latitude', 'decimal_latitude', 'geopoint.lat')
-  names(x)[ names(x) %in% lngs ] <- 'longitude'
-  names(x)[ names(x) %in% lats ] <- 'latitude'
-  x
-}
-
-stand_dates <- function(dat, from){
-  datevars <- list(gbif = 'eventDate', bison = c('eventDate', 'year'), inat = 'Datetime',
-                   ebird = 'obsDt', ecoengine = 'begin_date', vertnet = 'eventdate', 
-                   idigbio = 'datecollected')
-  var <- datevars[[from]]
-  if (from == "bison") {
-    var <- if ( is.null(dat$eventDate) ) "year" else "eventDate"
-  }
-  if ( is.null(dat[[var]]) ) {
-    dat
-  } else {
-    dat[[var]] <- switch(from,
-                         gbif = ymd_hms(dat[[var]], truncated = 3, quiet = TRUE),
-                         bison = ydm_hm(dat[[var]], truncated = 6, quiet = TRUE),
-                         inat = ymd_hms(dat[[var]], truncated = 3, quiet = TRUE),
-                         ebird = ymd_hm(dat[[var]], truncated = 3, quiet = TRUE),
-                         ecoengine = ymd(dat[[var]], truncated = 3, quiet = TRUE),
-                         vertnet = ymd(dat[[var]], truncated = 3, quiet = TRUE),
-                         idigbio = ymd_hms(dat[[var]], truncated = 3, quiet = TRUE)
-    )
-    if (from == "bison") rename(dat, setNames('date', var)) else dat
   }
 }
 

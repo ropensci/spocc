@@ -6,11 +6,19 @@ move_cols <- function(x, y)
 emptylist <- function(opts) list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
 
 stand_latlon <- function(x){
-  lngs <- c('decimalLongitude', 'decimallongitude', 'Longitude', 'lng', 'longitude', 'decimal_longitude', 'geopoint.lon')
-  lats <- c('decimalLatitude', 'decimallatitude', 'Latitude', 'lat', 'latitude', 'decimal_latitude', 'geopoint.lat')
+  lngs <- c('decimalLongitude', 'decimallongitude', 'Longitude', 'lng', 'longitude', 
+            'decimal_longitude', 'geopoint.lon')
+  lats <- c('decimalLatitude', 'decimallatitude', 'Latitude', 'lat', 'latitude', 
+            'decimal_latitude', 'geopoint.lat')
   names(x)[ names(x) %in% lngs ] <- 'longitude'
   names(x)[ names(x) %in% lats ] <- 'latitude'
   x
+}
+
+add_latlong_if_missing <- function(x) {
+  if (is.null(x$longitude)) x$longitude <- NA
+  if (is.null(x$latitude)) x$latitude <- NA
+  return(x)
 }
 
 stand_dates <- function(dat, from){
@@ -91,6 +99,7 @@ foo_gbif <- function(sources, query, limit, geometry, has_coords, callopts, opts
             cols <- cols[ cols %in% sort(names(dat)) ]
             dat <- move_cols(x = dat, y = cols)
             dat <- stand_latlon(dat)
+            dat <- add_latlong_if_missing(dat)
             dat <- stand_dates(dat, "gbif")
             list(time = time, found = out$meta$count, data = dat, opts = opts)
           }
@@ -110,10 +119,13 @@ foo_ecoengine <- function(sources, query, limit, geometry, has_coords, callopts,
     opts$georeferenced <- has_coords
     opts$scientific_name <- query
     opts$georeferenced <- TRUE
-    if(!'page_size' %in% names(opts)) opts$page_size <- limit
-    if(!is.null(geometry)){
-      opts$bbox <- if(grepl('POLYGON', paste(as.character(geometry), collapse=" "))){
-        wkt2bbox(geometry) } else { geometry }
+    if (!'page_size' %in% names(opts)) opts$page_size <- limit
+    if (!is.null(geometry)) {
+      opts$bbox <- if (grepl('POLYGON', paste(as.character(geometry), collapse = " "))) {
+        wkt2bbox(geometry) 
+      } else {
+        geometry 
+      }
     }
     # This could hang things if request is super large.  Will deal with this issue
     # when it arises in a usecase
@@ -126,7 +138,7 @@ foo_ecoengine <- function(sources, query, limit, geometry, has_coords, callopts,
     opts$progress <- FALSE
     opts$foptions <- callopts
     out_ee <- tryCatch(do.call(ee_observations, opts), error = function(e) e)
-    if(out_ee$results == 0 || is(out_ee, "simpleError")){
+    if (out_ee$results == 0 || is(out_ee, "simpleError")) {
       warning(sprintf("No records found in Ecoengine for %s", query), call. = FALSE)
       list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
     } else{
@@ -136,6 +148,7 @@ foo_ecoengine <- function(sources, query, limit, geometry, has_coords, callopts,
       names(out)[names(out) == 'record'] <- "key"
       out$prov <- rep("ecoengine", nrow(out))
       names(out)[names(out) == 'scientific_name'] <- "name"
+      out <- add_latlong_if_missing(out)
       out <- stand_dates(out, "ecoengine")
       list(time = time, found = out_ee$results, data = out, opts = opts)
     }
@@ -156,7 +169,7 @@ foo_antweb <- function(sources, query, limit, geometry, has_coords, callopts, op
     query <- sub("^ +", "", query)
     query <- sub(" +$", "", query)
 
-    if(length(strsplit(query, " ")[[1]]) == 2) {
+    if (length(strsplit(query, " ")[[1]]) == 2) {
       opts$scientific_name <- query
     } else {
       opts$genus <- query
@@ -174,6 +187,7 @@ foo_antweb <- function(sources, query, limit, geometry, has_coords, callopts, op
       res$prov <- rep("antweb", nrow(res))
       res$name <- query
       res <- stand_latlon(res)
+      res <- add_latlong_if_missing(res)
       list(time = time, found = out$count, data = res, opts = opts)
     }
   } else {
@@ -229,6 +243,7 @@ foo_bison <- function(sources, query, limit, geometry, callopts, opts) {
       dat$prov <- rep("bison", nrow(dat))
       if(bisonfxn == "bison_solr") dat <- rename(dat, c('scientificName' = 'name'))
       dat <- stand_latlon(dat)
+      dat <- add_latlong_if_missing(dat)
       dat <- stand_dates(dat, "bison")
       found <- if(bisonfxn == "bison_solr") out$num_found else out$summary$total
       list(time = time, found = found, data = dat, opts = opts)
@@ -266,6 +281,7 @@ foo_inat <- function(sources, query, limit, geometry, has_coords, callopts, opts
       res$prov <- rep("inat", nrow(res))
       res <- rename(res, c('scientific_name' = 'name'))
       res <- stand_latlon(res)
+      res <- add_latlong_if_missing(res)
       res <- stand_dates(res, "inat")
       list(time = time, found = out$meta$found, data = res, opts = opts)
     }
@@ -299,6 +315,7 @@ foo_ebird <- function(sources, query, limit, callopts, opts) {
       out$prov <- rep("ebird", nrow(out))
       names(out)[names(out) == 'sciName'] <- "name"
       out <- stand_latlon(out)
+      out <- add_latlong_if_missing(out)
       out <- stand_dates(out, "ebird")
       list(time = time, found = NULL, data = out, opts = opts)
     }
@@ -330,6 +347,7 @@ foo_vertnet <- function(sources, query, limit, has_coords, callopts, opts) {
       cols <- cols[ cols %in% sort(names(df)) ]
       df <- move_cols(x = df, y = cols)
       df <- stand_latlon(df)
+      df <- add_latlong_if_missing(df)
       df <- stand_dates(df, "vertnet")
       list(time = time, found = as.numeric(gsub(">|<", "", out$meta$matching_records)), data = df, opts = opts)
     }
@@ -389,6 +407,7 @@ foo_idigbio <- function(sources, query, limit, geometry, has_coords, callopts, o
       out <- rename(out, c('scientificname' = 'name'))
       out <- add_latlong(out, nms = c('geopoint.lon', 'geopoint.lat'))
       out <- stand_latlon(out)
+      out <- add_latlong_if_missing(out)
       out <- stand_dates(out, "idigbio")
       # add lat long columns if missing
       list(time = time, found = attr(out, "itemCount"), data = out, opts = opts)

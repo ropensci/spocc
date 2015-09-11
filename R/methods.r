@@ -124,18 +124,29 @@ pastemax <- function(w, n=10){
 
 occinddf <- function(obj) {
   z <- obj$data[[1]]
-  df <- switch(obj$meta$source,
-         gbif = data.frame(name = z$name, longitude = z$longitude, latitude = z$latitude, prov = z$prov),
-         bison = data.frame(name = z$name, longitude = z$longitude, latitude = z$latitude, prov = z$prov),
-         inat = data.frame(name = z$name, longitude = z$longitude, latitude = z$latitude, prov = z$prov),
-         ebird = data.frame(name = z$name, longitude = z$longitude, latitude = z$latitude, prov = z$prov),
-         ecoengine = data.frame(name = z$name, longitude = z$longitude, latitude = z$latitude, prov = z$prov),
-         antweb = data.frame(name = z$name, longitude = z$longitude, latitude = z$latitude, prov = z$prov),
-         vertnet = data.frame(name = z$name, longitude = z$longitude, latitude = z$latitude, prov = z$prov),
-         idigbio = data.frame(name = z$name, longitude = z$longitude, latitude = z$latitude, prov = z$prov)
-  )
+  # z <- check_columns(z, obj$meta$source)
+  df <- data.frame(name = z$name, longitude = z$longitude, 
+                   latitude = z$latitude, prov = z$prov, stringsAsFactors = FALSE)
+  # df <- switch(obj$meta$source,
+  #        gbif = data.frame(name = z$name, longitude = z$longitude, latitude = z$latitude, prov = z$prov),
+  #        bison = data.frame(name = z$name, longitude = z$longitude, latitude = z$latitude, prov = z$prov),
+  #        inat = data.frame(name = z$name, longitude = z$longitude, latitude = z$latitude, prov = z$prov),
+  #        ebird = data.frame(name = z$name, longitude = z$longitude, latitude = z$latitude, prov = z$prov),
+  #        ecoengine = data.frame(name = z$name, longitude = z$longitude, latitude = z$latitude, prov = z$prov),
+  #        antweb = data.frame(name = z$name, longitude = z$longitude, latitude = z$latitude, prov = z$prov),
+  #        vertnet = data.frame(name = z$name, longitude = z$longitude, latitude = z$latitude, prov = z$prov),
+  #        idigbio = data.frame(name = z$name, longitude = z$longitude, latitude = z$latitude, prov = z$prov)
+  # )
   z <- z[!names(z) %in% c('name','decimalLongitude','decimallongitude','Longitude','lng','longitude','decimal_longitude',
                        'decimalLatitude','decimallatitude','Latitude','lat','latitude','decimal_latitude','prov',
                        'geopoint.lat','geopoint.lon')]
   do.call(cbind, list(df, z))
+}
+
+check_columns <- function(x, y) {
+  if (is.null(x$name)) x$name <- NA
+  if (is.null(x$longitude)) x$longitude <- NA
+  if (is.null(x$latitude)) x$latitude <- NA
+  if (is.null(x$prov)) x$prov <- y
+  return(x)
 }

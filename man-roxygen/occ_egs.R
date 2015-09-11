@@ -27,8 +27,8 @@
 #'
 #' # idigbio data
 #' ## scientific name search
-#' # idig_search_records(rq=list(genus="acer"), limit = 5)
 #' occ(query = "Acer", from = "idigbio", limit = 5)
+#' occ(query = "Acer", from = "idigbio", idigbioopts = list(offset = 5, limit  = 3))
 #' ## geo search
 #' bounds <- c(-120, 40, -100, 45)
 #' occ(from = "idigbio", geometry = bounds, limit = 10)

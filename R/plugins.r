@@ -395,7 +395,7 @@ foo_idigbio <- function(sources, query, limit, geometry, has_coords, callopts, o
       opts$rq <- addopts$rq
     }
     
-    opts$limit <- limit
+    if (is.null(opts$limit)) opts$limit <- limit
     opts$fields <- "all"
     
     out <- tryCatch(do.call(idig_search_records, opts), error = function(e) e)
@@ -409,7 +409,6 @@ foo_idigbio <- function(sources, query, limit, geometry, has_coords, callopts, o
       out <- stand_latlon(out)
       out <- add_latlong_if_missing(out)
       out <- stand_dates(out, "idigbio")
-      # add lat long columns if missing
       list(time = time, found = attr(out, "itemCount"), data = out, opts = opts)
     }
   } else {

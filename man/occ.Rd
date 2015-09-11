@@ -111,7 +111,7 @@ within functions that query data sources you specify. Those parameters are:
  \code{genus}
  \item rvertnet - \code{taxon} in the \code{\link[rvertnet]{vertsearch}} function - API
  parameter: \code{q}
- \item ridigbio - \code{scientificname} in the \code{\link[ridigbio]{scientificname}}
+ \item ridigbio - \code{scientificname} in the \code{\link[ridigbio]{idig_search_records}}
  function - API parameter: \code{scientificname}
  \item inat - internal function - API parameter: \code{q}
 }
@@ -196,8 +196,8 @@ occ(query = 'Spinus tristis', from = 'ebird', ebirdopts =
 
 # idigbio data
 ## scientific name search
-# idig_search_records(rq=list(genus="acer"), limit = 5)
 occ(query = "Acer", from = "idigbio", limit = 5)
+occ(query = "Acer", from = "idigbio", idigbioopts = list(offset = 5, limit  = 3))
 ## geo search
 bounds <- c(-120, 40, -100, 45)
 occ(from = "idigbio", geometry = bounds, limit = 10)

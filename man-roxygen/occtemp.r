@@ -79,7 +79,7 @@
 #'  \code{genus}
 #'  \item rvertnet - \code{taxon} in the \code{\link[rvertnet]{vertsearch}} function - API 
 #'  parameter: \code{q}
-#'  \item ridigbio - \code{scientificname} in the \code{\link[ridigbio]{scientificname}} 
+#'  \item ridigbio - \code{scientificname} in the \code{\link[ridigbio]{idig_search_records}} 
 #'  function - API parameter: \code{scientificname}
 #'  \item inat - internal function - API parameter: \code{q}
 #' }

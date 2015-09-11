@@ -106,16 +106,16 @@ summary.occdatind <- function(object, ...){
   cat(sprintf('<found> %s', nn(mdat$found)), "\n")
   cat(sprintf('<returned> %s', nn(mdat$returned)), "\n")
   # cat(sprintf('<type> %s', nn(mdat$type)), "\n")
-  opts <- unlist(Map(function(x, y) paste(paste(y, x, sep=": "), "\n"), mdat$opts, names(mdat$opts), USE.NAMES=FALSE))
+  opts <- unlist(Map(function(x, y) paste(paste(y, x, sep = ": "), "\n"), mdat$opts, names(mdat$opts), USE.NAMES = FALSE))
   cat('<query options>\n', opts, "\n")
 }
 
-nn <- function(x) if(is.null(x)) "" else x
+nn <- function(x) if (is.null(x)) "" else x
 
 pastemax <- function(w, n=10){
   rrows <- vapply(w, nrow, integer(1))
   tt <- list()
-  for(i in seq_along(rrows)){
+  for (i in seq_along(rrows)) {
     tt[[i]] <- sprintf("%s (%s)", gsub("_", " ", names(rrows[i])), rrows[[i]])
   }
   n <- min(n, length(tt))
@@ -124,29 +124,10 @@ pastemax <- function(w, n=10){
 
 occinddf <- function(obj) {
   z <- obj$data[[1]]
-  # z <- check_columns(z, obj$meta$source)
-  df <- data.frame(name = z$name, longitude = z$longitude, 
+  df <- data.frame(name = z$name, longitude = z$longitude,
                    latitude = z$latitude, prov = z$prov, stringsAsFactors = FALSE)
-  # df <- switch(obj$meta$source,
-  #        gbif = data.frame(name = z$name, longitude = z$longitude, latitude = z$latitude, prov = z$prov),
-  #        bison = data.frame(name = z$name, longitude = z$longitude, latitude = z$latitude, prov = z$prov),
-  #        inat = data.frame(name = z$name, longitude = z$longitude, latitude = z$latitude, prov = z$prov),
-  #        ebird = data.frame(name = z$name, longitude = z$longitude, latitude = z$latitude, prov = z$prov),
-  #        ecoengine = data.frame(name = z$name, longitude = z$longitude, latitude = z$latitude, prov = z$prov),
-  #        antweb = data.frame(name = z$name, longitude = z$longitude, latitude = z$latitude, prov = z$prov),
-  #        vertnet = data.frame(name = z$name, longitude = z$longitude, latitude = z$latitude, prov = z$prov),
-  #        idigbio = data.frame(name = z$name, longitude = z$longitude, latitude = z$latitude, prov = z$prov)
-  # )
   z <- z[!names(z) %in% c('name','decimalLongitude','decimallongitude','Longitude','lng','longitude','decimal_longitude',
                        'decimalLatitude','decimallatitude','Latitude','lat','latitude','decimal_latitude','prov',
                        'geopoint.lat','geopoint.lon')]
   do.call(cbind, list(df, z))
-}
-
-check_columns <- function(x, y) {
-  if (is.null(x$name)) x$name <- NA
-  if (is.null(x$longitude)) x$longitude <- NA
-  if (is.null(x$latitude)) x$latitude <- NA
-  if (is.null(x$prov)) x$prov <- y
-  return(x)
 }

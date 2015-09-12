@@ -53,8 +53,8 @@ map <- '
 <meta charset=utf-8 />
 <title>spocc WKT Viewer</title>
 <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
-<script src="https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.js"></script>
-<link href="https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.css" rel="stylesheet" />
+<script src="https://api.tiles.mapbox.com/mapbox.js/v2.2.2/mapbox.js"></script>
+<link href="https://api.tiles.mapbox.com/mapbox.js/v2.2.2/mapbox.css" rel="stylesheet" />
 <style>
   body { margin:0; padding:0; }
   #map { position:absolute; top:0; bottom:0; width:100%; }
@@ -86,7 +86,8 @@ var geojson = [
 '
 
 footer <- '
-L.mapbox.map("map", "examples.map-i86nkdio")
+L.mapbox.accessToken = "pk.eyJ1IjoicmVjb2xvZ3kiLCJhIjoiZWlta1B0WSJ9.u4w33vy6kkbvmPyGnObw7A"
+L.mapbox.map("map", "mapbox.streets")
   .setView([ %s , %s ], %s)
   .featureLayer.setGeoJSON(geojson);
 </script>

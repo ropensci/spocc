@@ -22,7 +22,7 @@ add_latlong_if_missing <- function(x) {
 }
 
 stand_dates <- function(dat, from){
-  datevars <- list(gbif = 'eventDate', bison = c('eventDate', 'year'), inat = 'Datetime',
+  datevars <- list(gbif = 'eventDate', bison = c('eventDate', 'year'), inat = 'datetime',
                    ebird = 'obsDt', ecoengine = 'begin_date', vertnet = 'eventdate', 
                    idigbio = 'datecollected')
   var <- datevars[[from]]

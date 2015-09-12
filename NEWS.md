@@ -9,9 +9,11 @@ spocc 0.3.2
 
 * Added much more detail on what parameters in child packages are being used inside of the `occ()` function. Each data source is taken care of in a separate package or set of wrapper functions, and the man file now details what API parameters are being queried (#138)
 
-### BIG FIXES
+### BUG FIXES
 
 * Fixed bug where when latitude/longitude columns missing, caused problems downstream in printing outputs, etc. Now we put in NA's when those columns missing (#139)
+* Fixed bug in inat data source - `Datetime` variable changed to `datetime`
+* Fixed bug in vertnet data source - `occurrenceID` variable changed to `occurrenceid`
 
 spocc 0.3.0
 ===============

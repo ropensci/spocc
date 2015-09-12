@@ -4,20 +4,13 @@ sudo: required
 before_install:
   - curl -OL https://raw.githubusercontent.com/metacran/r-builder/master/pkg-build.sh
   - chmod 755 pkg-build.sh
+  - sudo apt-get install -y libv8-dev
   - ./pkg-build.sh bootstrap
+  - ./pkg-build.sh install_bioc sangerseqR
 
 install:
   - ./pkg-build.sh install_deps
   - ./pkg-build.sh install_github jimhester/covr
-
-before_script:
- - curl -OL http://raw.github.com/craigcitro/r-travis/master/scripts/travis-tool.sh
- - chmod 755 ./travis-tool.sh
- - sudo apt-get install -y libv8-dev
- - "./travis-tool.sh bootstrap"
- - "./travis-tool.sh install_deps"
- - "./travis-tool.sh install_bioc sangerseqR"
- - "./travis-tool.sh github_package jimhester/covr"
 
 script:
   - ./pkg-build.sh run_tests

@@ -349,6 +349,7 @@ foo_vertnet <- function(sources, query, limit, has_coords, callopts, opts) {
       df <- stand_latlon(df)
       df <- add_latlong_if_missing(df)
       df <- stand_dates(df, "vertnet")
+      names(df) <- tolower(names(df))
       list(time = time, found = as.numeric(gsub(">|<", "", out$meta$matching_records)), data = df, opts = opts)
     }
   } else {

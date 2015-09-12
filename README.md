@@ -52,7 +52,7 @@ Get data from GBIF
 ```r
 (out <- occ(query='Accipiter striatus', from='gbif', limit=100))
 #> Searched: gbif
-#> Occurrences - Found: 447,905, Returned: 100
+#> Occurrences - Found: 447,930, Returned: 100
 #> Search type: Scientific
 #>   gbif: Accipiter striatus (100)
 ```
@@ -64,51 +64,53 @@ out$gbif # just gbif data
 #> First 10 rows of [Accipiter_striatus]
 #> 
 #>                  name  longitude latitude prov
-#> 1  Accipiter striatus    0.00000  0.00000 gbif
-#> 2  Accipiter striatus         NA       NA gbif
-#> 3  Accipiter striatus -104.88120 21.46585 gbif
-#> 4  Accipiter striatus  -71.19554 42.31845 gbif
-#> 5  Accipiter striatus  -78.15051 37.95521 gbif
-#> 6  Accipiter striatus  -97.80459 30.41678 gbif
-#> 7  Accipiter striatus  -75.17209 40.34000 gbif
-#> 8  Accipiter striatus -122.20175 37.88370 gbif
-#> 9  Accipiter striatus  -99.47894 27.44924 gbif
-#> 10 Accipiter striatus -135.32701 57.05420 gbif
+#> 1  Accipiter striatus  -97.64102 30.55880 gbif
+#> 2  Accipiter striatus -104.83266 21.47117 gbif
+#> 3  Accipiter striatus  -75.17209 40.34000 gbif
+#> 4  Accipiter striatus  -78.11608 37.98438 gbif
+#> 5  Accipiter striatus    0.00000  0.00000 gbif
+#> 6  Accipiter striatus  -97.25801 32.89462 gbif
+#> 7  Accipiter striatus  -72.54554 41.22175 gbif
+#> 8  Accipiter striatus  -71.06930 42.34816 gbif
+#> 9  Accipiter striatus  -99.47478 27.48211 gbif
+#> 10 Accipiter striatus -109.95193 23.79093 gbif
 #> ..                ...        ...      ...  ...
 #> Variables not shown: issues (chr), key (int), datasetKey (chr),
 #>      publishingOrgKey (chr), publishingCountry (chr), protocol (chr),
 #>      lastCrawled (chr), lastParsed (chr), extensions (chr), basisOfRecord
-#>      (chr), sex (chr), establishmentMeans (chr), taxonKey (int),
-#>      kingdomKey (int), phylumKey (int), classKey (int), orderKey (int),
-#>      familyKey (int), genusKey (int), speciesKey (int), scientificName
-#>      (chr), kingdom (chr), phylum (chr), order (chr), family (chr), genus
-#>      (chr), species (chr), genericName (chr), specificEpithet (chr),
-#>      taxonRank (chr), continent (chr), stateProvince (chr), year (int),
-#>      month (int), day (int), eventDate (time), modified (chr),
+#>      (chr), taxonKey (int), kingdomKey (int), phylumKey (int), classKey
+#>      (int), orderKey (int), familyKey (int), genusKey (int), speciesKey
+#>      (int), scientificName (chr), kingdom (chr), phylum (chr), order
+#>      (chr), family (chr), genus (chr), species (chr), genericName (chr),
+#>      specificEpithet (chr), taxonRank (chr), dateIdentified (chr), year
+#>      (int), month (int), day (int), eventDate (time), modified (chr),
 #>      lastInterpreted (chr), references (chr), identifiers (chr), facts
 #>      (chr), relations (chr), geodeticDatum (chr), class (chr), countryCode
-#>      (chr), country (chr), startDayOfYear (chr), verbatimEventDate (chr),
-#>      preparations (chr), institutionID (chr), verbatimLocality (chr),
-#>      nomenclaturalCode (chr), higherClassification (chr), rights (chr),
-#>      higherGeography (chr), occurrenceID (chr), type (chr), collectionCode
-#>      (chr), occurrenceRemarks (chr), gbifID (chr), accessRights (chr),
-#>      institutionCode (chr), endDayOfYear (chr), county (chr),
-#>      catalogNumber (chr), otherCatalogNumbers (chr), occurrenceStatus
-#>      (chr), locality (chr), language (chr), identifier (chr), disposition
-#>      (chr), dateIdentified (chr), informationWithheld (chr),
-#>      http...unknown.org.occurrenceDetails (chr), rightsHolder (chr),
-#>      taxonID (chr), datasetName (chr), recordedBy (chr), identificationID
-#>      (chr), eventTime (chr), georeferencedDate (chr), georeferenceSources
-#>      (chr), identifiedBy (chr), identificationVerificationStatus (chr),
-#>      samplingProtocol (chr), georeferenceVerificationStatus (chr),
-#>      individualID (chr), locationAccordingTo (chr),
-#>      verbatimCoordinateSystem (chr), previousIdentifications (chr),
-#>      georeferenceProtocol (chr), identificationQualifier (chr),
-#>      dynamicProperties (chr), georeferencedBy (chr), lifeStage (chr),
-#>      elevation (dbl), elevationAccuracy (dbl), waterBody (chr),
-#>      recordNumber (chr), samplingEffort (chr), locationRemarks (chr),
-#>      infraspecificEpithet (chr), collectionID (chr), ownerInstitutionCode
-#>      (chr), datasetID (chr), verbatimElevation (chr), vernacularName (chr)
+#>      (chr), country (chr), rightsHolder (chr), identifier (chr),
+#>      informationWithheld (chr), verbatimEventDate (chr), datasetName
+#>      (chr), collectionCode (chr), verbatimLocality (chr), gbifID (chr),
+#>      occurrenceID (chr), taxonID (chr), recordedBy (chr), catalogNumber
+#>      (chr), http...unknown.org.occurrenceDetails (chr), institutionCode
+#>      (chr), rights (chr), eventTime (chr), identificationID (chr),
+#>      occurrenceRemarks (chr), sex (chr), establishmentMeans (chr),
+#>      continent (chr), stateProvince (chr), institutionID (chr), county
+#>      (chr), language (chr), type (chr), preparations (chr),
+#>      occurrenceStatus (chr), higherGeography (chr), nomenclaturalCode
+#>      (chr), endDayOfYear (chr), locality (chr), disposition (chr),
+#>      otherCatalogNumbers (chr), startDayOfYear (chr), accessRights (chr),
+#>      higherClassification (chr), dynamicProperties (chr),
+#>      identificationVerificationStatus (chr), locationAccordingTo (chr),
+#>      identifiedBy (chr), georeferencedDate (chr), georeferencedBy (chr),
+#>      georeferenceProtocol (chr), georeferenceVerificationStatus (chr),
+#>      verbatimCoordinateSystem (chr), individualID (chr),
+#>      previousIdentifications (chr), identificationQualifier (chr),
+#>      samplingProtocol (chr), georeferenceSources (chr), elevation (dbl),
+#>      elevationAccuracy (dbl), lifeStage (chr), scientificNameID (chr),
+#>      georeferenceRemarks (chr), source (chr), fieldNotes (chr), waterBody
+#>      (chr), recordNumber (chr), samplingEffort (chr), locationRemarks
+#>      (chr), infraspecificEpithet (chr), collectionID (chr),
+#>      ownerInstitutionCode (chr), datasetID (chr), verbatimElevation (chr),
+#>      vernacularName (chr)
 ```
 
 ## Pas options to each data source
@@ -123,18 +125,18 @@ out$ebird # just ebird data
 #> First 10 rows of [Setophaga_caerulescens]
 #> 
 #>                      name longitude latitude  prov
-#> 1  Setophaga caerulescens -72.00877 43.44167 ebird
-#> 2  Setophaga caerulescens -71.71499 44.82760 ebird
-#> 3  Setophaga caerulescens -69.24381 46.10138 ebird
-#> 4  Setophaga caerulescens -83.48799 35.02802 ebird
-#> 5  Setophaga caerulescens -71.73941 44.76401 ebird
-#> 6  Setophaga caerulescens -86.01660 44.75613 ebird
-#> 7  Setophaga caerulescens -73.99459 44.30380 ebird
-#> 8  Setophaga caerulescens -80.27513 38.19799 ebird
-#> 9  Setophaga caerulescens -74.03718 42.20338 ebird
-#> 10 Setophaga caerulescens -73.88611 44.51111 ebird
+#> 1  Setophaga caerulescens -88.14688 39.46639 ebird
+#> 2  Setophaga caerulescens -71.16393 42.65060 ebird
+#> 3  Setophaga caerulescens -83.21080 39.90013 ebird
+#> 4  Setophaga caerulescens -80.30560 25.62582 ebird
+#> 5  Setophaga caerulescens -79.91361 32.74346 ebird
+#> 6  Setophaga caerulescens -76.43384 43.31383 ebird
+#> 7  Setophaga caerulescens -78.80536 36.06608 ebird
+#> 8  Setophaga caerulescens -75.18879 39.86365 ebird
+#> 9  Setophaga caerulescens -80.34590 36.81220 ebird
+#> 10 Setophaga caerulescens -77.04935 38.95550 ebird
 #> ..                    ...       ...      ...   ...
-#> Variables not shown: comName (chr), howMany (dbl), locID (chr), locName
+#> Variables not shown: comName (chr), howMany (int), locID (chr), locName
 #>      (chr), locationPrivate (lgl), obsDt (time), obsReviewed (lgl),
 #>      obsValid (lgl)
 ```
@@ -148,8 +150,34 @@ Get data from many sources in a single call
 ebirdopts = list(region='US'); gbifopts = list(country='US')
 out <- occ(query='Setophaga caerulescens', from=c('gbif','bison','inat','ebird'), gbifopts=gbifopts, ebirdopts=ebirdopts, limit=50)
 head(occ2df(out)); tail(occ2df(out))
-#> Error in mapply(FUN = f, ..., SIMPLIFY = FALSE): object 'id' not found
-#> Error in mapply(FUN = f, ..., SIMPLIFY = FALSE): object 'id' not found
+#>                     name longitude latitude prov                date
+#> 1 Setophaga caerulescens -80.82181 24.81413 gbif 2015-03-26 23:00:00
+#> 2 Setophaga caerulescens -82.55674 35.63396 gbif 2015-04-21 18:51:02
+#> 3 Setophaga caerulescens -81.69378 36.14885 gbif 2015-05-01 22:00:00
+#> 4 Setophaga caerulescens -83.19085 41.62769 gbif 2015-05-16 22:00:00
+#> 5 Setophaga caerulescens -82.87321 24.62802 gbif 2015-05-06 22:00:00
+#> 6 Setophaga caerulescens -77.07069 38.83192 gbif 2015-05-08 12:09:00
+#>          key
+#> 1 1088930021
+#> 2 1088954620
+#> 3 1122965432
+#> 4 1092893939
+#> 5 1092893709
+#> 6 1088980026
+#>                       name longitude latitude  prov                date
+#> 195 Setophaga caerulescens -78.01059 40.53442 ebird 2015-09-11 06:58:00
+#> 196 Setophaga caerulescens -75.39042 40.63633 ebird 2015-09-11 06:55:00
+#> 197 Setophaga caerulescens -76.47900 42.46045 ebird 2015-09-11 06:54:00
+#> 198 Setophaga caerulescens -77.04298 38.95766 ebird 2015-09-11 06:50:00
+#> 199 Setophaga caerulescens -77.05141 38.95940 ebird 2015-09-11 06:45:00
+#> 200 Setophaga caerulescens -77.04676 38.96532 ebird 2015-09-11 06:45:00
+#>          key
+#> 195 L2354489
+#> 196  L372101
+#> 197  L287796
+#> 198  L283552
+#> 199  L280792
+#> 200  L599606
 ```
 
 ## Make maps

@@ -72,11 +72,12 @@ occ2df.occdat <- function(obj, what = "data") {
         if (NROW(x) == 0) {
           data.frame(NULL)
         } else {
-          dat <- x[ , c('name', 'longitude', 'latitude', 'prov', datemap[[y]], keymap[[y]]) ]
+          dat <- x[ , c('name', 'longitude', 'latitude', 'prov', 
+                        pluck_fill(x, datemap[[y]]), pluck_fill(x, keymap[[y]])) ]
           if (is.null(datemap[[y]])) {
             dat$date <- rep(NA_character_, NROW(dat))
           } else {
-            dat <- rename(dat, setNames("date", datemap[[y]]))
+            dat <- rename(dat, setNames("date", datemap[[y]]), warn_missing = FALSE)
           }
           rename(dat, setNames("key", keymap[[y]]))
         }
@@ -89,9 +90,18 @@ occ2df.occdat <- function(obj, what = "data") {
   if (what %in% "data") tmpout$data else tmpout
 }
 
-datemap <- list(gbif = 'eventDate',bison = 'date',inat = 'datetime', ebird = 'obsDt',
+datemap <- list(gbif = 'eventDate', bison = 'date', inat = 'datetime', ebird = 'obsDt',
                 ecoengine = 'begin_date', antweb = NULL, vertnet = "eventdate", 
                 idigbio = "datecollected")
+
 keymap <- list(gbif = "key", bison = "occurrenceID", inat = "id", ebird = "locID",
                ecoengine = "key", antweb = "catalogNumber", vertnet = "occurrenceid",
                idigbio = "uuid")
+
+pluck_fill <- function(a, b) {
+  if (b %in% names(a)) {
+    b
+  } else {
+    NULL
+  }
+}

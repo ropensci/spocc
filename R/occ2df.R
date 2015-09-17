@@ -99,9 +99,13 @@ keymap <- list(gbif = "key", bison = "occurrenceID", inat = "id", ebird = "locID
                idigbio = "uuid")
 
 pluck_fill <- function(a, b) {
-  if (b %in% names(a)) {
-    b
-  } else {
+  if (is.null(b)) {
     NULL
+  } else {
+    if (b %in% names(a)) {
+      b
+    } else {
+      NULL
+    }
   }
 }

@@ -4,11 +4,11 @@
 \alias{occ}
 \title{Search for species occurrence data across many data sources.}
 \usage{
-occ(query = NULL, from = "gbif", limit = 500, geometry = NULL,
-  has_coords = NULL, ids = NULL, callopts = list(), gbifopts = list(),
-  bisonopts = list(), inatopts = list(), ebirdopts = list(),
-  ecoengineopts = list(), antwebopts = list(), vertnetopts = list(),
-  idigbioopts = list())
+occ(query = NULL, from = "gbif", limit = 500, start = 0, page = 1,
+  geometry = NULL, has_coords = NULL, ids = NULL, callopts = list(),
+  gbifopts = list(), bisonopts = list(), inatopts = list(),
+  ebirdopts = list(), ecoengineopts = list(), antwebopts = list(),
+  vertnetopts = list(), idigbioopts = list())
 }
 \arguments{
 \item{query}{(character) One to many scientific names. See Details for what parameter
@@ -24,6 +24,9 @@ Default: 500 for each source. BEWARE: if you have a lot of species to query for 
 n = 10), that's 10 * 500 = 5000, which can take a while to collect. So, when you first query,
 set the limit to something smallish so that you can get a result quickly, then do more as
 needed.}
+
+\item{start,page}{(integer) Record to start at or page to start at. See \code{Paging} in
+Details for how these parameters are used internally. Optional}
 
 \item{geometry}{(character or nmeric) One of a Well Known Text (WKT) object or a vector of
 length 4 specifying a bounding box. This parameter searches for occurrences inside a
@@ -230,6 +233,25 @@ varies depending on the inputs to the \code{query} parameter. Here are the optio
 }
 }
 
+\section{Paging}{
+
+\itemize{
+ \item gbif - Responds to \code{start}. Default: 0
+ \item ecoengine - Responds to \code{page}. Default: 1
+ \item antweb - Responds to \code{start}. Default: 0
+ \item bison - Responds to \code{start}. Default: 0
+ \item inat - Responds to \code{page}. Default: 1
+ \item ebird - No paging, both \code{start} and \code{page} ignored.
+ \item vertnet - No paging implemented here, both \code{start} and \code{page}
+ ignored. VertNet does have a form of paging, but it uses a cursor, and can't
+ easily be included  here via parameters. However, \code{rvertnet} does paging
+ internally for you.  For example, the max records per request for VertNet is
+ 1000; if you request 2000 records, we'll do the first request, and do the
+ second request for you automatically.
+ \item idigbio - Responds to \code{start}. Default: 0
+}
+}
+
 \section{BEWARE}{
 
 In cases where you request data from multiple providers, especially when
@@ -253,6 +275,12 @@ res$bison
 res$vertnet
 res$vertnet$data$Bison_bison
 occ2df(res)
+
+# Paging
+one <- occ(query = 'Accipiter striatus', from = 'gbif', limit = 5)
+two <- occ(query = 'Accipiter striatus', from = 'gbif', limit = 5, start = 5)
+one$gbif
+two$gbif
 
 # Data from AntWeb
 # By species

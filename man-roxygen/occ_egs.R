@@ -14,6 +14,12 @@
 #' res$vertnet
 #' res$vertnet$data$Bison_bison
 #' occ2df(res)
+#' 
+#' # Paging
+#' one <- occ(query = 'Accipiter striatus', from = 'gbif', limit = 5)
+#' two <- occ(query = 'Accipiter striatus', from = 'gbif', limit = 5, start = 5)
+#' one$gbif
+#' two$gbif
 #'
 #' # Data from AntWeb
 #' # By species

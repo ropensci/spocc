@@ -209,13 +209,12 @@
 #' ### parameters passed to "rq", get combined with the name queried
 #' occ(query = "Acer", from = "idigbio", limit = 5,
 #'    idigbioopts = list(rq = list(basisofrecord="fossilspecimen")))$idigbio
-#' }
-#' @examples \dontrun{
+#'    
 #' #### NOTE: no support for multipolygons yet
 #' ## WKT's are more flexible than bounding box's. You can pass in a WKT with multiple
 #' ## polygons like so (you can use POLYGON or MULTIPOLYGON) when specifying more than one
 #' ## polygon. Note how each polygon is in it's own set of parentheses.
-#' occ(query='Accipiter striatus', from='gbif',
-#'    geometry='MULTIPOLYGON((30 10, 10 20, 20 60, 60 60, 30 10),
-#'                           (30 10, 10 20, 20 60, 60 60, 30 10))')
+#' # occ(query='Accipiter striatus', from='gbif',
+#' #    geometry='MULTIPOLYGON((30 10, 10 20, 20 60, 60 60, 30 10),
+#' #                           (30 10, 10 20, 20 60, 60 60, 30 10))')
 #' }

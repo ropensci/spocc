@@ -9,8 +9,6 @@ spocc_trunc_mat <- function(x, n = NULL){
   df <- as.data.frame(head(x, n))
   if (nrow(df) == 0)
     return()
-#   is_list <- vapply(df, is.list, logical(1))
-#   df[is_list] <- lapply(df[is_list], function(x) vapply(x, spocc_obj_type, character(1)))
   mat <- format(df, justify = "left")
   width <- getOption("width")
   values <- c(format(rownames(mat))[[1]], unlist(mat[1, ]))
@@ -38,7 +36,7 @@ spocc_trunc_mat <- function(x, n = NULL){
   }
 }
 
-spocc_wrap <- function (..., indent = 0, width = getOption("width")){
+spocc_wrap <- function(..., indent = 0, width = getOption("width")){
   x <- paste0(..., collapse = "")
   wrapped <- strwrap(x, indent = indent, exdent = indent + 5, width = width)
   paste0(wrapped, collapse = "\n")
@@ -47,7 +45,7 @@ spocc_wrap <- function (..., indent = 0, width = getOption("width")){
 #' Type summary
 #' @export
 #' @keywords internal
-spocc_type_sum <- function (x) UseMethod("spocc_type_sum")
+spocc_type_sum <- function(x) UseMethod("spocc_type_sum")
 
 #' @method spocc_type_sum default
 #' @export

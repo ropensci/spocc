@@ -15,7 +15,8 @@
 #' 'POLYGON((30.1 10.1, 20, 20 40, 40 40, 30.1 10.1))' would be queried as is,
 #' i.e. http://bit.ly/HwUSif. See Details for more examples of WKT objects. The format of a
 #' bounding box is [min-longitude, min-latitude, max-longitude, max-latitude]. Geometry
-#' is not possible with vertnet right now, but should be soon.
+#' is not possible with vertnet right now, but should be soon. See Details for more info
+#' on geometry inputs.
 #' @param has_coords (logical) Only return occurrences that have lat/long data. This works
 #' for gbif, ecoengine, antweb, rinat, idigbio, and vertnet, but is ignored for ebird and
 #' bison data sources. You can easily though remove records without lat/long data.
@@ -48,7 +49,8 @@
 #' flexibility/options - although you can still set options for each of the 
 #' packages via the gbifopts, bisonopts, inatopts, ebirdopts, ecoengineopts, 
 #' vertnetopts, antwebopts and idigbioopts parameters.
-#'
+#' 
+#' @section Inputs:
 #' All inputs to \code{occ} are one of:
 #' \itemize{
 #'  \item scientific name
@@ -56,8 +58,10 @@
 #'  \item geometry as bounds, WKT, os Spatial classes
 #' }
 #' To search by common name, first use \code{\link{occ_names}} to find scientic names or
-#' taxonomic IDs, then feed those to this function.
+#' taxonomic IDs, then feed those to this function. Or use the \code{taxize} package 
+#' to get names and/or IDs to use here.
 #' 
+#' @section Using the query parameter:
 #' When you use the \code{query} parameter, we pass your search terms on to parameters
 #' within functions that query data sources you specify. Those parameters are: 
 #' \itemize{
@@ -87,15 +91,18 @@
 #' the terms you pass to it, lookup documentation for those functions, or get in touch
 #' at the development repository \url{https://github.com/ropensci/spocc/issues}
 #' 
+#' @section iDigBio notes:
 #' When searching iDigBio note that by deafult we set \code{fields = "all"}, so that we return
 #' a richer suite of fields than the \code{ridigbio} R client gives by default. But you can
 #' changes this by passing in a \code{fields} parameter to \code{idigbioopts} parameter with
 #' the specific fields you want.
 #'
+#' @section Ecoengine notes:
 #' When searching ecoengine, you can leave the page argument blank to get a single page.
 #' Otherwise use page ranges or simply "all" to request all available pages.
 #' Note however that this may hang your call if the request is simply too large.
 #'
+#' @section limit parameter:
 #' The \code{limit} parameter is set to a default of 25. This means that you will get \bold{up to}
 #' 25 results back for each data source you ask for data from. If there are no results for a
 #' particular source, you'll get zero back; if there are 8 results for a particular source, you'll
@@ -104,6 +111,7 @@
 #' a different number for each source, pass the appropriate parameter to each data source via the
 #' respective options parameter for each data source.
 #'
+#' @section WKT:
 #' WKT objects are strings of pairs of lat/long coordinates that define a shape. Many classes
 #' of shapes are supported, including POLYGON, POINT, and MULTIPOLYGON. Within each defined shape
 #' define all vertices of the shape with a coordinate like 30.1 10.1, the first of which is the
@@ -129,7 +137,30 @@
 #'  \item Bounding box - \url{http://boundingbox.klokantech.com/}
 #'  \item Well known text - \url{http://arthur-e.github.io/Wicket/sandbox-gmaps3.html}
 #' }
+#' 
+#' @section geometry parameter:
+#' The behavior of the \code{occ} function with respect to the \code{geometry} parameter 
+#' varies depending on the inputs to the \code{query} parameter. Here are the options:
+#' \itemize{
+#'  \item geometry (single), no query - If a single bounding box/WKT string passed in, 
+#'  and no query, a single query is made against each data source.
+#'  \item geometry (many), no query - If many bounding boxes/WKT strings are passed in,
+#'  we do a separate query for each bounding box/WKT string against each data source.
+#'  \item geometry (single), query - If a single bounding box/WKT string passed in,
+#'  and a single query, we do a single query against each data source.
+#'  \item geometry (many), query - If many bounding boxes/WKT strings are passed in,
+#'  and a single query, we do a separate query for each bounding box/WKT string with the
+#'  same queried name against each data source.
+#'  \item geometry (single), many query - If a single bounding box/WKT string passed in,
+#'  and many names to query, we do a separate query for each name, using the same geometry, 
+#'  for each data source.
+#'  \item geometry (many), many query - If many bounding boxes/WKT strings are passed in,
+#'  and many names to query, this poses a problem for all data sources, none of which
+#'  accept many bounding boxes of WKT strings. So, in this scenario, we loop over each
+#'  name and each geometry query, and then re-combine by queried name, so that you get 
+#'  back a single group of data for each name.
+#' }
 #'
-#' \bold{BEWARE:} In cases where you request data from multiple providers, especially when including GBIF,
-#' there could be duplicate records since many providers' data eventually ends up with GBIF. See
-#' \code{\link[spocc]{spocc_duplicates}} for more.
+#' \bold{BEWARE:} In cases where you request data from multiple providers, especially when 
+#' including GBIF, there could be duplicate records since many providers' data eventually 
+#' ends up with GBIF. See \code{\link[spocc]{spocc_duplicates}} for more.

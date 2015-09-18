@@ -98,6 +98,11 @@
 #' occ(geometry = bounds, from = "gbif", limit=50)
 #' ### Many bounding boxes
 #' occ(geometry = list(c(-125.0,38.4,-121.8,40.9), c(-115.0,22.4,-111.8,30.9)), from = "gbif")
+#' 
+#' ## Many geometry and many names
+#' res <- occ(query = c('Danaus plexippus', 'Accipiter striatus'), 
+#'    geometry = list(c(-125.0,38.4,-121.8,40.9), c(-115.0,22.4,-111.8,30.9)), from = "bison")
+#' res
 #'
 #' ## Geometry only with WKT
 #' wkt <- 'POLYGON((-98.9 44.2,-89.1 36.6,-116.7 37.5,-102.5 39.6,-98.9 44.2))'

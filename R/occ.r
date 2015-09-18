@@ -77,17 +77,53 @@ occ <- function(query = NULL, from = "gbif", limit = 500, geometry = NULL, has_c
 
   if (is.null(ids) && !is.null(query)) {
     # If query not null (taxonomic names passed in)
-    tmp <- lapply(query, loopfun, y = limit, z = geometry, hc = has_coords, w = callopts)
+    ## if geometry a list, do multiple queries for each geometry element
+    if (is.list(geometry)) {
+      tmp <- list()
+      for (i in seq_along(query)) {
+        tmpres <- lapply(geometry, function(b) {
+          loopfun(z = b, 
+                  y = limit, 
+                  x = query[[i]], 
+                  hc = has_coords, 
+                  w = callopts)
+        })
+        
+        collsinglefrom <- list()
+        allfrom <- names(tmpres[[1]])
+        for (j in seq_along(allfrom)) {
+          srctmp <- lapply(tmpres, "[[", allfrom[j])
+          collsinglefrom[[ allfrom[j] ]] <- list(time = time_null(pluck(srctmp, "time")), 
+               found = found_null(pluck(srctmp, "found")), 
+               data = rbind_fill(pluck(srctmp, "data")), 
+               opts = sc(list(
+                 hasCoordinate = srctmp[[1]]$opts$hasCoordinate, 
+                 scientificName = unlist(unique(pluck(srctmp, c("opts", "scientificName")))),
+                 limit = srctmp[[1]]$opts$hasCoordinate, 
+                 fields = srctmp[[1]]$opts$fields, 
+                 geometry = unlist(pluck(srctmp, c("opts", "geometry"))), 
+                 config = srctmp[[1]]$opts$config
+               ))
+          )
+        }
+        
+        tmp[[i]] <- collsinglefrom
+      }
+      # tmp <- unlist(tmp, recursive = FALSE)
+    } else {
+      tmp <- lapply(query, loopfun, y = limit, z = geometry, hc = has_coords, w = callopts)
+    }
   } else if (is.null(query) && is.null(geometry)) {
     unlistids <- function(x) {
       if (length(x) == 1) {
         if (is.null(names(x))) {
           list(x)
         } else {
-          if (!names(x) %in% c("gbif", "itis"))
+          if (!names(x) %in% c("gbif", "itis")) {
             list(x)
-          else
+          } else {
             list(x[[1]])
+          }
         }
       } else {
         gg <- as.list(unlist(x, use.names = FALSE))
@@ -123,8 +159,14 @@ occ <- function(query = NULL, from = "gbif", limit = 500, geometry = NULL, has_c
       tt <- tt
       optstmp <- tmp[[1]][[srce]]$opts
     } else if (!is.null(query) && !is.null(geometry)) { # query & geometry
+      # if (is.list(geometry)) {
+      #   names(tt) <- rep(gsub("\\s", "_", query), each = length(geometry))
+      # } else {
       names(tt) <- gsub("\\s", "_", query)
+      # }
       optstmp <- tmp[[1]][[srce]]$opts
+      optstmp$scientificName <- unique(names(tt))
+      # optstmp$opts$geometry <- geometry
     } else if (is.null(query) && is.null(geometry)) {
       names(tt) <- sapply(tmp, function(x) unclass(x[[srce]]$opts[[1]]))
       tt <- tt[!vapply(tt, nrow, 1) == 0]

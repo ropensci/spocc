@@ -58,3 +58,12 @@ pluck <- function(x, name, type) {
 strextract <- function(str, pattern) regmatches(str, regexpr(pattern, str))
 
 strtrim <- function(str) gsub("^\\s+|\\s+$", "", str)
+
+time_null <- function(x) {
+  if (length(sc(x)) == 0) NULL else sc(x)[[1]]
+}
+
+found_null <- function(x) {
+  if (length(sc(x)) == 0) NULL else sum(unlist(sc(x)), na.rm = TRUE)
+}
+

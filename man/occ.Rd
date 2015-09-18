@@ -205,8 +205,34 @@ varies depending on the inputs to the \code{query} parameter. Here are the optio
  name and each geometry query, and then re-combine by queried name, so that you get
  back a single group of data for each name.
 }
+}
 
-\bold{BEWARE:} In cases where you request data from multiple providers, especially when
+\section{Geometry options by data provider}{
+
+\bold{wkt & bbox allowed, see WKT section above}
+\itemize{
+ \item gbif
+ \item bison
+}
+
+\bold{bbox only}
+\itemize{
+ \item ecoengine
+ \item inat
+ \item idigbio
+}
+
+\bold{No spatial search allowed}
+\itemize{
+ \item antweb
+ \item ebird
+ \item vertnet - technically is allowed, but we don't support it yet
+}
+}
+
+\section{BEWARE}{
+
+In cases where you request data from multiple providers, especially when
 including GBIF, there could be duplicate records since many providers' data eventually
 ends up with GBIF. See \code{\link[spocc]{spocc_duplicates}} for more.
 }

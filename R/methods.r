@@ -104,14 +104,13 @@ summary.occdatind <- function(object, ...){
   cat(sprintf('<time> %s', nn(mdat$time)), "\n")
   cat(sprintf('<found> %s', nn(mdat$found)), "\n")
   cat(sprintf('<returned> %s', nn(mdat$returned)), "\n")
-  # cat(sprintf('<type> %s', nn(mdat$type)), "\n")
   opts <- unlist(Map(function(x, y) paste(paste(y, x, sep = ": "), "\n"), mdat$opts, names(mdat$opts), USE.NAMES = FALSE))
   cat('<query options>\n', opts, "\n")
 }
 
 nn <- function(x) if (is.null(x)) "" else x
 
-pastemax <- function(w, n=10){
+pastemax <- function(w, n = 10){
   rrows <- vapply(w, nrow, integer(1))
   tt <- list()
   for (i in seq_along(rrows)) {
@@ -127,8 +126,10 @@ occinddf <- function(obj, n = n) {
   
   if (NROW(z) == 0) {
     notzero <- obj$data[sapply(obj$data, NROW) > 0]
-    z <- notzero[[1]]
-    nms <- names(notzero)[1]
+    if (length(notzero) > 0) {
+      z <- notzero[[1]]
+      nms <- names(notzero)[1]
+    }
   }
   
   cat(sprintf("First 10 rows of [%s]\n\n", nms))

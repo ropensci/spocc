@@ -93,23 +93,23 @@ occ <- function(query = NULL, from = "gbif", limit = 500, geometry = NULL, has_c
         allfrom <- names(tmpres[[1]])
         for (j in seq_along(allfrom)) {
           srctmp <- lapply(tmpres, "[[", allfrom[j])
-          collsinglefrom[[ allfrom[j] ]] <- list(time = time_null(pluck(srctmp, "time")), 
-               found = found_null(pluck(srctmp, "found")), 
-               data = rbind_fill(pluck(srctmp, "data")), 
-               opts = sc(list(
-                 hasCoordinate = srctmp[[1]]$opts$hasCoordinate, 
-                 scientificName = unlist(unique(pluck(srctmp, c("opts", "scientificName")))),
-                 limit = srctmp[[1]]$opts$hasCoordinate, 
-                 fields = srctmp[[1]]$opts$fields, 
-                 geometry = unlist(pluck(srctmp, c("opts", "geometry"))), 
-                 config = srctmp[[1]]$opts$config
-               ))
+          collsinglefrom[[ allfrom[j] ]] <- list(
+            time = time_null(pluck(srctmp, "time")), 
+            found = found_null(pluck(srctmp, "found")), 
+            data = rbind_fill(pluck(srctmp, "data")), 
+            opts = sc(list(
+              hasCoordinate = srctmp[[1]]$opts$hasCoordinate, 
+              scientificName = unlist(unique(pluck(srctmp, c("opts", "scientificName")))),
+              limit = srctmp[[1]]$opts$limit,
+              fields = srctmp[[1]]$opts$fields, 
+              geometry = unlist(pluck(srctmp, c("opts", "geometry"))), 
+              config = srctmp[[1]]$opts$config
+            ))
           )
         }
         
         tmp[[i]] <- collsinglefrom
       }
-      # tmp <- unlist(tmp, recursive = FALSE)
     } else {
       tmp <- lapply(query, loopfun, y = limit, z = geometry, hc = has_coords, w = callopts)
     }
@@ -189,16 +189,22 @@ occ <- function(query = NULL, from = "gbif", limit = 500, geometry = NULL, has_c
     }
 
     if (any(grepl(srce, sources))) {
-      ggg <- list(meta = list(source = srce, time = tmp[[1]][[srce]]$time,
-          found = tmp[[1]][[srce]]$found, returned = nrow(tmp[[1]][[srce]]$data),
-          type = type, opts = optstmp), data = tt)
-      class(ggg) <- "occdatind"
-      ggg
+      ggg <- list(meta = list(
+        source = srce, 
+        time = time_null(pluck(tmp, c(srce, "time"))),
+        # tmp[[1]][[srce]]$time
+        found = sum(unlist(pluck(tmp, c(srce, "found")))),
+        # tmp[[1]][[srce]]$found, 
+        returned = sum(sapply(pluck(tmp, c(srce, "data")), NROW)),
+        # nrow(tmp[[1]][[srce]]$data),
+        type = type, 
+        opts = optstmp), 
+        data = tt)
+      structure(ggg, class = "occdatind")
     } else {
       ggg <- list(meta = list(source = srce, time = NULL, found = NULL, returned = NULL,
           type = NULL, opts = NULL), data = tt)
-      class(ggg) <- "occdatind"
-      ggg
+      structure(ggg, class = "occdatind")
     }
   }
   gbif_sp <- getsplist("gbif", gbifopts)

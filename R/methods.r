@@ -84,8 +84,7 @@ catif <- function(z){
 #' @rdname spocc_objects
 print.occdatind <- function(x, ..., n = 10){
   cat( spocc_wrap(sprintf("Species [%s]", pastemax(x$data))), '\n')
-  cat(sprintf("First 10 rows of [%s]\n\n", names(x$data)[1] ))
-  spocc_trunc_mat(occinddf(x), n = n)
+  occinddf(x, n = n)
 }
 
 #' @export
@@ -122,12 +121,22 @@ pastemax <- function(w, n=10){
   paste0(tt[1:n], collapse = ", ")
 }
 
-occinddf <- function(obj) {
+occinddf <- function(obj, n = n) {
   z <- obj$data[[1]]
+  nms <- names(obj$data)[1]
+  
+  if (NROW(z) == 0) {
+    notzero <- obj$data[sapply(obj$data, NROW) > 0]
+    z <- notzero[[1]]
+    nms <- names(notzero)[1]
+  }
+  
+  cat(sprintf("First 10 rows of [%s]\n\n", nms))
+  
   df <- data.frame(name = z$name, longitude = z$longitude,
                    latitude = z$latitude, prov = z$prov, stringsAsFactors = FALSE)
   z <- z[!names(z) %in% c('name','decimalLongitude','decimallongitude','Longitude','lng','longitude','decimal_longitude',
                        'decimalLatitude','decimallatitude','Latitude','lat','latitude','decimal_latitude','prov',
                        'geopoint.lat','geopoint.lon')]
-  do.call(cbind, list(df, z))
+  spocc_trunc_mat(do.call(cbind, list(df, z)), n = n)
 }

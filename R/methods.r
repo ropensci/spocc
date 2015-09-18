@@ -50,7 +50,7 @@ print.occdat <- function(x, ...) {
   cat(sprintf("Occurrences - Found: %s, Returned: %s", founded(found), fdec(rows)), sep = "\n")
   cat(sprintf("Search type: %s", gettype(x)), sep = "\n")
   if (gettype(x) == "Scientific") {
-    invisible(lapply(x, catif))
+    invisible(lapply(x, catif, type = unique(unlist(unname(sc(pluck(pluck(x, "meta"), "type")))))))
   }
   cat(founded_mssg(found))
 }
@@ -79,9 +79,9 @@ founded_mssg <- function(b){
     NULL
 }
 
-catif <- function(z){
+catif <- function(z, ...){
   if (!is.null(z$meta$time))
-    cat(sprintf("  %s: %s", z$meta$source, spocc_wrap(pastemax(z$data, n = 3))), sep = "\n")
+    cat(sprintf("  %s: %s", z$meta$source, spocc_wrap(pastemax(z$data, ..., n = 3))), sep = "\n")
 }
 
 #' @export

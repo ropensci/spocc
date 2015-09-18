@@ -51,6 +51,15 @@ summary(res)
 
 # print summary of occdatind object
 summary(res$gbif)
+
+# Geometry based searches print slightly differently
+bounds <- c(-120, 40, -100, 45)
+(res <- occ(from = "idigbio", geometry = bounds, limit = 10))
+res$idigbio
+## Many bounding boxes/WKT strings
+bounds <- list(c(165,-53,180,-29), c(-180,-53,-175,-29))
+res <- occ(from = "idigbio", geometry = bounds, limit = 10)
+res$idigbio
 }
 }
 \keyword{internal}

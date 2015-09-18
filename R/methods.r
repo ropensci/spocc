@@ -1,7 +1,8 @@
 #' spocc objects and their print, plot, and summary methods
 #'
-#' @keywords internal
 #'
+#' @name spocc_objects
+#' @keywords internal
 #' @param x Input, of class occdatind
 #' @param object Input to summary methods
 #' @param ... Further args to print, plot or summary methods
@@ -26,8 +27,16 @@
 #'
 #' # print summary of occdatind object
 #' summary(res$gbif)
+#' 
+#' # Geometry based searches print slightly differently
+#' bounds <- c(-120, 40, -100, 45)
+#' (res <- occ(from = "idigbio", geometry = bounds, limit = 10))
+#' res$idigbio
+#' ## Many bounding boxes/WKT strings
+#' bounds <- list(c(165,-53,180,-29), c(-180,-53,-175,-29))
+#' res <- occ(from = "idigbio", geometry = bounds, limit = 10)
+#' res$idigbio
 #' }
-#' @name spocc_objects
 NULL
 
 #' @export
@@ -59,11 +68,6 @@ fdec <- function(x) format(sum(unlist(x, recursive = TRUE)), big.mark = ",")
 founded <- function(b){
   tmp <- format(sum(unlist(b, recursive = TRUE)), big.mark = ",")
   tmp
-#   nofound <- names(b[vapply(b, is.null, logical(1))])
-#   if (length(nofound) != 0)
-#     "spocc cannot estimate complete additional records found as none available for ebird"
-#   else
-#     tmp
 }
 
 founded_mssg <- function(b){
@@ -83,7 +87,9 @@ catif <- function(z){
 #' @export
 #' @rdname spocc_objects
 print.occdatind <- function(x, ..., n = 10){
-  cat( spocc_wrap(sprintf("Species [%s]", pastemax(x$data))), '\n')
+  cat( spocc_wrap(sprintf("%s [%s]", 
+                          switch(x$meta$type, sci = "Species", geometry = "Geometry"), 
+                          pastemax(x$data, x$meta$type))), '\n')
   occinddf(x, n = n)
 }
 
@@ -110,11 +116,12 @@ summary.occdatind <- function(object, ...){
 
 nn <- function(x) if (is.null(x)) "" else x
 
-pastemax <- function(w, n = 10){
+pastemax <- function(w, type, n = 10){
   rrows <- vapply(w, nrow, integer(1))
   tt <- list()
   for (i in seq_along(rrows)) {
-    tt[[i]] <- sprintf("%s (%s)", gsub("_", " ", names(rrows[i])), rrows[[i]])
+    nms <- switch(type, sci = names(rrows[i]), geometry = sprintf('<geo%s>', i))
+    tt[[i]] <- sprintf("%s (%s)", gsub("_", " ", nms), rrows[[i]])
   }
   n <- min(n, length(tt))
   paste0(tt[1:n], collapse = ", ")

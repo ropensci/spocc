@@ -4,11 +4,11 @@
 \alias{occ}
 \title{Search for species occurrence data across many data sources.}
 \usage{
-occ(query = NULL, from = "gbif", limit = 500, start = 0, page = 1,
-  geometry = NULL, has_coords = NULL, ids = NULL, callopts = list(),
-  gbifopts = list(), bisonopts = list(), inatopts = list(),
-  ebirdopts = list(), ecoengineopts = list(), antwebopts = list(),
-  vertnetopts = list(), idigbioopts = list())
+occ(query = NULL, from = "gbif", limit = 500, start = NULL,
+  page = NULL, geometry = NULL, has_coords = NULL, ids = NULL,
+  callopts = list(), gbifopts = list(), bisonopts = list(),
+  inatopts = list(), ebirdopts = list(), ecoengineopts = list(),
+  antwebopts = list(), vertnetopts = list(), idigbioopts = list())
 }
 \arguments{
 \item{query}{(character) One to many scientific names. See Details for what parameter

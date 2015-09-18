@@ -14,7 +14,7 @@
 #' @importFrom lubridate now ymd_hms ymd_hm ydm_hm ymd
 #' @template occtemp
 #' @template occ_egs
-occ <- function(query = NULL, from = "gbif", limit = 500, start = 0, page = 1,
+occ <- function(query = NULL, from = "gbif", limit = 500, start = NULL, page = NULL,
   geometry = NULL, has_coords = NULL, ids = NULL, callopts=list(), 
   gbifopts = list(), bisonopts = list(), inatopts = list(),
   ebirdopts = list(), ecoengineopts = list(), antwebopts = list(),

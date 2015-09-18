@@ -267,7 +267,6 @@ foo_inat <- function(sources, query, limit, page, geometry, has_coords, callopts
     opts$query <- query
     if (!'maxresults' %in% names(opts)) opts$maxresults <- limit
     if (!'page' %in% names(opts)) opts$page <- page
-    opts$meta <- TRUE
     if (!is.null(geometry)) {
       opts$bounds <- if (grepl('POLYGON', paste(as.character(geometry), collapse = " "))) {
         # flip lat  and long spots in the bounds vector for inat
@@ -277,7 +276,8 @@ foo_inat <- function(sources, query, limit, page, geometry, has_coords, callopts
         c(geometry[2], geometry[1], geometry[4], geometry[3])
       }
     }
-    out <- tryCatch(do.call(spocc_inat_obs, opts), error = function(e) e)
+    opts$config <- callopts
+    out <- tryCatch(do.call("spocc_inat_obs", opts), error = function(e) e)
     if (!is.data.frame(out$data) || is(out, "simpleError")) {
       warning(sprintf("No records found in INAT for %s", query), call. = FALSE)
       list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)

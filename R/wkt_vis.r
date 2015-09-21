@@ -9,6 +9,8 @@
 #' @param x Input well-known text area (character)
 #' @param zoom Zoom level, defaults to 6 (numeric)
 #' @param maptype Map type, default is terrain (character)
+#' @param browse Open in browser or not. If not, gives back 
+#' path to html file. Default: \code{TRUE} (logical)
 #'
 #' @details Uses Mapbox's map layers, openes in your default browser
 #'
@@ -19,24 +21,50 @@
 #'
 #' poly2 <- 'POLYGON((-125 38.4,-125 40.9,-121.8 40.9,-121.8 38.4,-125 38.4))'
 #' wkt_vis(poly2)
+#' 
+#' # Multiple polygons
+#' x <- make_multipolygon(list(c(-125.0,38.4,-121.8,40.9), c(-115.0,22.4,-111.8,30.9)))
+#' wkt_vis(x)
+#' 
+#' # don't open in browser
+#' poly2 <- 'POLYGON((-125 38.4,-125 40.9,-121.8 40.9,-121.8 38.4,-125 38.4))'
+#' wkt_vis(poly2, browse = FALSE)
 #' }
 
-wkt_vis <- function(x, zoom = 6, maptype = "terrain") {
+wkt_vis <- function(x, zoom = 6, maptype = "terrain", browse = TRUE) {
   long = lat = group = NULL
   stopifnot(!is.null(x))
   stopifnot(is.character(x))
 
   out <- wkt_read(gsub("\n|\n\\s+", "", strtrim(x)))
-  df <- data.frame(long = out$coordinates[,,1], lat = out$coordinates[,,2])
-
-  pts <- apply(df, 1, function(x) as.list(x[c('long','lat')]))
-  centroid <- get_centroid(df)
-  rend <- whisker.render(map)
+  
+  if (is(out$coordinates[,,1], "matrix")) {
+    longs <- data.frame(out$coordinates[,,1])
+    lats <- data.frame(out$coordinates[,,2])
+  } else {
+    longs <- t(data.frame(out$coordinates[,,1]))
+    lats <- t(data.frame(out$coordinates[,,2]) )
+  }
+  tocentroid <- list()
+  dfs <- list()
+  for (i in 1:NROW(longs)) {
+    tocentroid[[i]] <- tmp <- data.frame(long = as.numeric(longs[i,]), lat = as.numeric(lats[i,]))
+    dfs[[i]] <- apply(tmp, 1, function(x) as.list(x[c('long','lat')]))
+  }
+  centroid <- get_centroid(do.call("rbind", tocentroid))
+  
+  whiskout <- list()
+  for (i in seq_along(dfs)) {
+    dats <- dfs[[i]]
+    whiskout[[i]] <- whisker.render(features)
+  }
+  rend <- paste0(map_header, paste(whiskout, sep = "", collapse = ","), map_end)
+  
   foot <- sprintf(footer, centroid[2], centroid[1], zoom)
   res <- paste(rend, foot)
   tmpfile <- tempfile(pattern = 'spocc', fileext = ".html")
   write(res, file = tmpfile)
-  browseURL(tmpfile)
+  if (browse) browseURL(tmpfile) else tmpfile
 }
 
 get_centroid <- function(x) {
@@ -46,7 +74,7 @@ get_centroid <- function(x) {
   cent$get("out.geometry.coordinates")
 }
 
-map <- '
+map_header <- '
 <!DOCTYPE html>
 <html>
 <head>
@@ -65,25 +93,34 @@ map <- '
 <div id="map"></div>
 
 <script>
-var geojson = [
-{
-    "type": "Feature",
-    "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-        [
-            {{#pts}}
-            [ {{long}}, {{lat}} ],
-            {{/pts}}
-        ]
-    ]
-    },
-    "properties": {
-        "title": "Polygon"
-    }
-}
-];
+var geojson = [{
+  "type": "FeatureCollection",
+  "features": [ 
 '
+
+map_end <- ']
+}];'
+
+features <- '
+    {
+      "type": "Feature",
+      "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+          [
+              {{#dats}}
+              [ {{long}}, {{lat}} ],
+              {{/dats}}
+          ]
+      ]
+      },
+      "properties": {
+          "title": "Polygon"
+      }
+    }
+'
+
+
 
 footer <- '
 L.mapbox.accessToken = "pk.eyJ1IjoicmVjb2xvZ3kiLCJhIjoiZWlta1B0WSJ9.u4w33vy6kkbvmPyGnObw7A"

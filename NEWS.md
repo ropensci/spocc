@@ -1,3 +1,34 @@
+spocc 0.4.0
+===============
+
+### NEW FEATURES
+
+* New function `as.vertnet()` to coerce various inputs (e.g., result from `occ()`, `occ2df()`, or a key itself) to occurrence data objects (#142)
+* `occ()` gains two parameters `start` and `page` to facilitate paging 
+through results across data sources, instead of having to page 
+individually for each data source. Some sources use the `start` parameter, 
+while others use the `page` parameter. See __Paging__ section in `?occ` for
+details on Paging (#140)
+
+### MINOR IMPROVEMENTS
+
+* Added Code of Conduct
+
+### BUG FIXES
+
+* `wkt_vis()` now works with WKT polygons with multipe polygons, e.g., 
+`spocc::wkt_vis("POLYGON((-125 38.4, -121.8 38.4, -121.8 40.9, -125 40.9, -125 38.4), (-115 22.4, -111.8 22.4, -111.8 30.9, -115 30.9, -115 22.4))")` (#147)
+* Fix to `print.occdatind()` to print more helpful info when a 
+geometry search is used as opposed to a taxonomy based search (#149)
+* Fix to `print.occdatind()` to not fail when first element not present; 
+proceeds to next slot with data (#143)
+* Fixed problem where `occ()` failed when multiple `geometry` elements
+passed in along with taxonomic names (#146)
+* Fix to `occ2df()` for combining outputs to not fail when AntWeb 
+doesn't give back dates (#144) (#145) - thanks @timcdlucas
+* Fix to `occ2df()` to not fail when date field missing (#141)
+
+
 spocc 0.3.2
 ===============
 

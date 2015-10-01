@@ -2,6 +2,31 @@ spocc
 ========
 
 ```{r echo=FALSE}
+library("knitr")
+hook_output <- knitr::knit_hooks$get("output")
+knitr::knit_hooks$set(output = function(x, options) {
+   lines <- options$output.lines
+   if (is.null(lines)) {
+     return(hook_output(x, options))  # pass to default hook
+   }
+   x <- unlist(strsplit(x, "\n"))
+   more <- "..."
+   if (length(lines)==1) {        # first n lines
+     if (length(x) > lines) {
+       # truncate the output, but add ....
+       x <- c(head(x, lines), more)
+     }
+   } else {
+     x <- c(if (abs(lines[1])>1) more else NULL,
+            x[lines],
+            if (length(x)>lines[abs(length(lines))]) more else NULL
+           )
+   }
+   # paste these lines together
+   x <- paste(c(x, ""), collapse = "\n")
+   hook_output(x, options)
+ })
+
 knitr::opts_chunk$set(
   warning = FALSE,
   message = FALSE,
@@ -53,19 +78,19 @@ library("spocc")
 Get data from GBIF
 
 ```{r}
-(out <- occ(query='Accipiter striatus', from='gbif', limit=100))
+(out <- occ(query = 'Accipiter striatus', from = 'gbif', limit = 100))
 ```
 
-```{r}
+```{r output.lines=1:10}
 out$gbif # just gbif data
 ```
 
-## Pas options to each data source
+## Pass options to each data source
 
 Get fine-grained detail over each data source by passing on parameters to the packge rebird in this example.
 
-```{r}
-out <- occ(query='Setophaga caerulescens', from='ebird', ebirdopts=list(region='US'))
+```{r output.lines=1:10}
+out <- occ(query = 'Setophaga caerulescens', from = 'ebird', ebirdopts = list(region = 'US'))
 out$ebird # just ebird data
 ```
 
@@ -74,8 +99,8 @@ out$ebird # just ebird data
 Get data from many sources in a single call
 
 ```{r}
-ebirdopts = list(region='US'); gbifopts = list(country='US')
-out <- occ(query='Setophaga caerulescens', from=c('gbif','bison','inat','ebird'), gbifopts=gbifopts, ebirdopts=ebirdopts, limit=50)
+ebirdopts = list(region = 'US'); gbifopts = list(country = 'US')
+out <- occ(query = 'Setophaga caerulescens', from = c('gbif','bison','inat','ebird'), gbifopts = gbifopts, ebirdopts = ebirdopts, limit = 50)
 head(occ2df(out)); tail(occ2df(out))
 ```
 

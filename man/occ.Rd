@@ -8,7 +8,8 @@ occ(query = NULL, from = "gbif", limit = 500, start = NULL,
   page = NULL, geometry = NULL, has_coords = NULL, ids = NULL,
   callopts = list(), gbifopts = list(), bisonopts = list(),
   inatopts = list(), ebirdopts = list(), ecoengineopts = list(),
-  antwebopts = list(), vertnetopts = list(), idigbioopts = list())
+  antwebopts = list(), vertnetopts = list(), idigbioopts = list(),
+  obisopts = list())
 }
 \arguments{
 \item{query}{(character) One to many scientific names. See Details for what parameter
@@ -275,6 +276,14 @@ res$bison
 res$vertnet
 res$vertnet$data$Bison_bison
 occ2df(res)
+
+(res <- occ(query = 'Mola mola', from = 'obis', limit = 200))
+res$obis
+library("spoccutils")
+map_ggplot(res)
+(res <- occ(query = 'Mola mola', from = c('obis', 'gbif'), limit = 200))
+res$gbif
+res$obis
 
 # Paging
 one <- occ(query = 'Accipiter striatus', from = 'gbif', limit = 5)

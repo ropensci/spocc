@@ -15,6 +15,14 @@
 #' res$vertnet$data$Bison_bison
 #' occ2df(res)
 #' 
+#' (res <- occ(query = 'Mola mola', from = 'obis', limit = 200))
+#' res$obis
+#' library("spoccutils")
+#' map_ggplot(res)
+#' (res <- occ(query = 'Mola mola', from = c('obis', 'gbif'), limit = 200))
+#' res$gbif
+#' res$obis
+#' 
 #' # Paging
 #' one <- occ(query = 'Accipiter striatus', from = 'gbif', limit = 5)
 #' two <- occ(query = 'Accipiter striatus', from = 'gbif', limit = 5, start = 5)

@@ -38,6 +38,9 @@
 #' (res2 <- occ(query = 'Mola mola', from = 'obis', limit = 10, start = 20))
 #' res1$obis
 #' res2$obis
+#' ## Pass in any occurrence route parameters to obisopts as a list
+#' (res <- occ(query = 'Mola mola', from = 'obis', 
+#'    obisopts = list(year = 2005)))
 #' 
 #' # Paging
 #' one <- occ(query = 'Accipiter striatus', from = 'gbif', limit = 5)

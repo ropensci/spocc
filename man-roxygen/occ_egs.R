@@ -23,6 +23,9 @@
 #' res$gbif
 #' res$obis
 #' 
+#' 
+#' (res <- occ(query = 'Linguimaera thomsoni', from = 'obis'))
+#' 
 #' # Paging
 #' one <- occ(query = 'Accipiter striatus', from = 'gbif', limit = 5)
 #' two <- occ(query = 'Accipiter striatus', from = 'gbif', limit = 5, start = 5)

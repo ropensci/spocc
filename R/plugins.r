@@ -394,7 +394,7 @@ foo_obis <- function(sources, query, limit, start, geometry, has_coords, callopt
     if (!'offset' %in% names(opts)) opts$offset <- start
     
     tmp <- tryCatch(do.call(obis_search, opts), error = function(e) e)
-    if (is(tmp, "simpleError")) {
+    if (is(tmp, "simpleError") || "message" %in% names(tmp)) {
       warning(sprintf("No records found in OBIS for %s", query))
       list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
     } else{

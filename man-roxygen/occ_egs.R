@@ -33,6 +33,12 @@
 #' geometry <- "POLYGON((8.98 48.05,15.66 48.05,15.66 45.40,8.98 45.40,8.98 48.05))"
 #' (res <- occ(from = 'obis', geometry = geometry, limit = 50))
 #' res$obis
+#' ## Pass in spatial classes
+#' library("sp")
+#' one <- Polygon(cbind(c(45,30,30,45), c(35,35,30,30)))
+#' spone = Polygons(list(one), "s1")
+#' sppoly = SpatialPolygons(list(spone), as.integer(1))
+#' (res <- occ(from = 'obis', geometry = sppoly, limit = 50))
 #' ## Do paging
 #' (res1 <- occ(query = 'Mola mola', from = 'obis', limit = 10))
 #' (res2 <- occ(query = 'Mola mola', from = 'obis', limit = 10, start = 20))

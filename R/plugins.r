@@ -397,15 +397,20 @@ foo_obis <- function(sources, query, limit, start, geometry, has_coords, callopt
     if (is(tmp, "simpleError") || "message" %in% names(tmp)) {
       warning(sprintf("No records found in OBIS for %s", query))
       list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
-    } else{
-      out <- tmp$results
-      out$prov <- rep("obis", NROW(out))
-      out <- rename(out, c('scientificName' = 'name'))
-      out <- add_latlong(out, nms = c('decimalLongitude', 'decimalLatitude'))
-      out <- stand_latlon(out)
-      out <- add_latlong_if_missing(out)
-      # out <- stand_dates(out, "obis")
-      list(time = time, found = tmp$count, data = out, opts = opts)
+    } else {
+      if (!"results" %in% names(tmp)) {
+        warning(sprintf("No records found in OBIS for %s", query))
+        list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
+      } else {
+        out <- tmp$results
+        out$prov <- rep("obis", NROW(out))
+        out <- rename(out, c('scientificName' = 'name'))
+        out <- add_latlong(out, nms = c('decimalLongitude', 'decimalLatitude'))
+        out <- stand_latlon(out)
+        out <- add_latlong_if_missing(out)
+        # out <- stand_dates(out, "obis")
+        list(time = time, found = tmp$count, data = out, opts = opts)
+      }
     }
   } else {
     list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)

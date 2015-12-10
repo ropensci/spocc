@@ -14,17 +14,30 @@
 #' res$vertnet
 #' res$vertnet$data$Bison_bison
 #' occ2df(res)
-#' 
+#'  
+#' # OBIS examples
+#' ## basic query
 #' (res <- occ(query = 'Mola mola', from = 'obis', limit = 200))
+#' ## get to obis data
 #' res$obis
+#' # make a map
 #' library("spoccutils")
 #' map_ggplot(res)
+#' ## get obis + gbif data
 #' (res <- occ(query = 'Mola mola', from = c('obis', 'gbif'), limit = 200))
 #' res$gbif
 #' res$obis
-#' 
-#' 
+#' ## no match found
 #' (res <- occ(query = 'Linguimaera thomsoni', from = 'obis'))
+#' ## geometry query
+#' geometry <- "POLYGON((8.98 48.05,15.66 48.05,15.66 45.40,8.98 45.40,8.98 48.05))"
+#' (res <- occ(from = 'obis', geometry = geometry, limit = 50))
+#' res$obis
+#' ## Do paging
+#' (res1 <- occ(query = 'Mola mola', from = 'obis', limit = 10))
+#' (res2 <- occ(query = 'Mola mola', from = 'obis', limit = 10, start = 20))
+#' res1$obis
+#' res2$obis
 #' 
 #' # Paging
 #' one <- occ(query = 'Accipiter striatus', from = 'gbif', limit = 5)

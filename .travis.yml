@@ -1,25 +1,19 @@
-language: c
+language: r
 sudo: required
+warnings_are_errors: true
 
-before_install:
-  - curl -OL https://raw.githubusercontent.com/metacran/r-builder/master/pkg-build.sh
-  - chmod 755 pkg-build.sh
+before_script:
   - sudo apt-get install -y libv8-dev
-  - ./pkg-build.sh bootstrap
-  - ./pkg-build.sh install_bioc sangerseqR
 
-install:
-  - ./pkg-build.sh install_deps
-  - ./pkg-build.sh install_github jimhester/covr ropensci/taxize
+r_packages:
+  - covr
+  - taxize
 
-script:
-  - ./pkg-build.sh run_tests
-
-after_failure:
-  - ./pkg-build.sh dump_logs
+bioc_packages:
+ - sangerseqR
 
 after_success:
-  - if [[ ! -z "$COVERAGE" ]];then ./pkg-build.sh run_script -e 'covr::codecov()'; fi
+  - Rscript -e 'covr::codecov()'
 
 notifications:
   email:
@@ -27,8 +21,3 @@ notifications:
     on_failure: change
   slack:
     secure: JgCatgv7Eeh6qHmi3TwWLdKHkCjnr5KHcBzVwy2F4IPafqPMEEhnSFxqP2Td8f7YcPqvdiv/blTGdgIOAi3V64O4fp3NZLLpzINNiL0i9iBZqkT71uw8ovcfrAeIHA9D9gapLtx3D4hdUF9jIyLIW2kMzIvaIA5PiDJ+oZitHow=
-
-env:
-  matrix:
-    - RVERSION=release
-    - RVERSION=devel COVERAGE=true

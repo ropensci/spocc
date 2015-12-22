@@ -18,7 +18,8 @@ iNaturalist \tab \url{http://www.inaturalist.org/} \cr
 Berkeley ecoengine \tab \url{https://ecoengine.berkeley.edu/} \cr
 AntWeb \tab \url{http://www.antweb.org/} \cr
 VertNet \tab \url{http://vertnet.org/} \cr
-iDigBio \tab \url{https://www.idigbio.org/}
+iDigBio \tab \url{https://www.idigbio.org/} \cr
+OBIS \tab \url{http://www.iobis.org/}
 }
 }
 \author{

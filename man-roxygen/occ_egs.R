@@ -48,6 +48,10 @@
 #' (res <- occ(query = 'Mola mola', from = 'obis', 
 #'    obisopts = list(year = 2005)))
 #' 
+#' # NBN egs.
+#' ## basic query
+#' (res <- occ(query = 'Mola mola', from = 'nbn', limit = 10))
+#' 
 #' # Paging
 #' one <- occ(query = 'Accipiter striatus', from = 'gbif', limit = 5)
 #' two <- occ(query = 'Accipiter striatus', from = 'gbif', limit = 5, start = 5)

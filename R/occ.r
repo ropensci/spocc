@@ -11,6 +11,7 @@
 #' @importFrom AntWeb aw_data
 #' @importFrom rvertnet vertsearch
 #' @importFrom ridigbio idig_search_records idig_view_records
+#' @importFrom rnbn getOccurrences
 #' @importFrom lubridate now ymd_hms ymd_hm ydm_hm ymd
 #' @template occtemp
 #' @template occ_egs

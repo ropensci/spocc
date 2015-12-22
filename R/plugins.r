@@ -416,3 +416,44 @@ foo_obis <- function(sources, query, limit, start, geometry, has_coords, callopt
     list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
   }
 }
+
+#' @noRd
+foo_nbn <- function(sources, query, limit, start, geometry, has_coords, callopts, opts) {
+  if (any(grepl("nbn", sources))) {
+    time <- now()
+    opts$scientificName <- query
+    
+    if (!is.null(geometry)) {
+      opts$geometry <- if (grepl('POLYGON', paste(as.character(geometry), collapse = " "))) {
+        geometry
+      } else {
+        bbox2wkt(bbox = geometry)
+      }
+    }
+    
+    if (!"limit" %in% names(opts)) opts$limit <- limit
+    if (!'offset' %in% names(opts)) opts$offset <- start
+    
+    tmp <- tryCatch(do.call(obis_search, opts), error = function(e) e)
+    if (is(tmp, "simpleError") || "message" %in% names(tmp)) {
+      warning(sprintf("No records found in NBN for %s", query))
+      list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
+    } else {
+      if (!"results" %in% names(tmp)) {
+        warning(sprintf("No records found in NBN for %s", query))
+        list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
+      } else {
+        out <- tmp$results
+        out$prov <- rep("obis", NROW(out))
+        out <- rename(out, c('scientificName' = 'name'))
+        out <- add_latlong(out, nms = c('decimalLongitude', 'decimalLatitude'))
+        out <- stand_latlon(out)
+        out <- add_latlong_if_missing(out)
+        # out <- stand_dates(out, "obis")
+        list(time = time, found = tmp$count, data = out, opts = opts)
+      }
+    }
+  } else {
+    list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
+  }
+}

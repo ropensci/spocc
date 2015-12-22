@@ -15,7 +15,7 @@ The rOpenSci projects aims to provide programmatic access to scientific data rep
 
 ### Data Sources
 
-`spocc` currently interfaces with eight major biodiversity repositories
+`spocc` currently interfaces with nine major biodiversity repositories
 
 1. [Global Biodiversity Information Facility (GBIF)](http://www.gbif.org/) (via `rgbif`)
 GBIF is a government funded open data repository with several partner organizations with the express goal of providing access to data on Earth's biodiversity. The data are made available by a network of member nodes, coordinating information from various participant organizations and government agencies.
@@ -40,6 +40,9 @@ AntWeb is the world's largest online database of images, specimen records, and n
 
 8. [iDigBio](https://www.idigbio.org/) (via `ridigbio`)
 iDigBio facilitates the digitization of biological and paleobiological specimens and their associated data, and houses specimen data, as well as providing their specimen data via RESTful web services.
+
+9. [OBIS](http://www.iobis.org/)
+OBIS (Ocean Biogeographic Information System) allows users to search marine species datasets from all of the world's oceans.
 
 __Important Note:__ It's important to keep in mind that several data providers interface with many of the above mentioned repositories. This means that occurence data obtained from BISON may be duplicates of data that are also available through GBIF. We do not have a way to resolve these duplicates or overlaps at this time but it is an issue we are hoping to resolve in future versions of the package. See `?spocc_duplicates`, after installation, for more.
 

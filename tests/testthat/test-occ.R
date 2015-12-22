@@ -11,12 +11,14 @@ test_that("occ works for each data source", {
   x5 <- occ(query = 'Setophaga caerulescens', from = 'ebird', ebirdopts = list(region='US'), limit = 30)
   x6 <- occ(query = 'Spinus tristis', from = 'ebird', ebirdopts = list(method = 'ebirdgeo', lat = 42, lng = -76, dist = 50), limit = 30)
   x7 <- occ(query = 'Spinus tristis', from = 'idigbio', limit = 30)
+  x8 <- occ(query = 'Mola mola', from = 'obis', limit = 30)
 
   expect_is(x3, "occdat")
   expect_is(x4, "occdat")
   expect_is(x5, "occdat")
   expect_is(x6, "occdat")
   expect_is(x7, "occdat")
+  expect_is(x8, "occdat")
   # Testing x1
   expect_is(x1, "occdat")
   expect_is(x1$gbif, "occdatind")
@@ -54,6 +56,13 @@ test_that("occ works for each data source", {
   expect_is(x7$idigbio$data[[1]], "data.frame")
   temp_df7 <- x7$idigbio$data[[1]]
   expect_equal(unique(temp_df7$prov), "idigbio")
+  
+  # Testing x8
+  expect_is(x8, "occdat")
+  expect_is(x8$obis, "occdatind")
+  expect_is(x8$obis$data[[1]], "data.frame")
+  temp_df8 <- x8$obis$data[[1]]
+  expect_equal(unique(temp_df8$prov), "obis")
 
   # Adding tests for Antweb
   by_species <- suppressWarnings(

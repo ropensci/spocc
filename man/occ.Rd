@@ -74,6 +74,9 @@ See also \code{\link{occ_options}}.}
 
 \item{obisopts}{(list) List of named options to pass on to internal function. See 
 \url{https://github.com/iobis/api-docs} for possible parameters}
+
+\item{nbnopts}{(list) List of named options to pass on to \code{\link[rnbn]{getOccurrences}}.
+See also \code{\link{occ_options}}.}
 }
 \description{
 Search on a single species name, or many. And search across a single
@@ -128,6 +131,7 @@ within functions that query data sources you specify. Those parameters are:
  function - API parameter: \code{scientificname}
  \item inat - internal function - API parameter: \code{q}
  \item obis - internal function - API parameter: \code{scientificName}
+ \item nbn - \code{query} in the \code{\link[rnbn]{getTVKQuery}} function
 }
 If you have questions about how each of those parameters behaves with respect to
 the terms you pass to it, lookup documentation for those functions, or get in touch
@@ -221,6 +225,7 @@ varies depending on the inputs to the \code{query} parameter. Here are the optio
  \item gbif
  \item bison
  \item obis
+ \item nbn
 }
 
 \bold{bbox only}
@@ -255,6 +260,7 @@ varies depending on the inputs to the \code{query} parameter. Here are the optio
  second request for you automatically.
  \item idigbio - Responds to \code{start}. Default: 0
  \item obis - Responds to \code{start}. Default: 0
+ \item nbn - Responds to \code{start}. Default: 0
 }
 }
 
@@ -281,39 +287,16 @@ res$bison
 res$vertnet
 res$vertnet$data$Bison_bison
 occ2df(res)
- 
-# OBIS examples
-## basic query
-(res <- occ(query = 'Mola mola', from = 'obis', limit = 200))
-## get to obis data
-res$obis
-# make a map
-library("spoccutils")
-map_ggplot(res)
-## get obis + gbif data
-(res <- occ(query = 'Mola mola', from = c('obis', 'gbif'), limit = 200))
-res$gbif
-res$obis
-## no match found
-(res <- occ(query = 'Linguimaera thomsoni', from = 'obis'))
-## geometry query
-geometry <- "POLYGON((8.98 48.05,15.66 48.05,15.66 45.40,8.98 45.40,8.98 48.05))"
-(res <- occ(from = 'obis', geometry = geometry, limit = 50))
-res$obis
-## Pass in spatial classes
-library("sp")
-one <- Polygon(cbind(c(45,30,30,45), c(35,35,30,30)))
-spone = Polygons(list(one), "s1")
-sppoly = SpatialPolygons(list(spone), as.integer(1))
-(res <- occ(from = 'obis', geometry = sppoly, limit = 50))
-## Do paging
-(res1 <- occ(query = 'Mola mola', from = 'obis', limit = 10))
-(res2 <- occ(query = 'Mola mola', from = 'obis', limit = 10, start = 20))
-res1$obis
-res2$obis
-## Pass in any occurrence route parameters to obisopts as a list
-(res <- occ(query = 'Mola mola', from = 'obis', 
-   obisopts = list(year = 2005)))
+
+# NBN egs.
+## basic query - if name string given, we search for match, and if > 1, we prompt you
+(res <- occ(query = 'Accipiter gentilis', from = 'nbn', limit = 10))
+res$nbn
+### get name keys first via taxize - probably easier this way
+library("taxize")
+x <- get_nbnid('Accipiter gentilis')
+(res <- occ(ids = x, from = 'nbn', limit = 10))
+res$nbn
 
 # Paging
 one <- occ(query = 'Accipiter striatus', from = 'gbif', limit = 5)

@@ -17,6 +17,7 @@
 #' @importFrom utils browseURL head read.csv data
 #' @importFrom methods is as
 #' @importFrom stats setNames
+#' @importFrom rnbn getOccurrences
 #' @name spocc-package
 #' @aliases spocc
 #' @docType package

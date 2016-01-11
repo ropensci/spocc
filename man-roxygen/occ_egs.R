@@ -14,43 +14,20 @@
 #' res$vertnet
 #' res$vertnet$data$Bison_bison
 #' occ2df(res)
-#'  
-#' # OBIS examples
-#' ## basic query
-#' (res <- occ(query = 'Mola mola', from = 'obis', limit = 200))
-#' ## get to obis data
-#' res$obis
-#' # make a map
-#' library("spoccutils")
-#' map_ggplot(res)
-#' ## get obis + gbif data
-#' (res <- occ(query = 'Mola mola', from = c('obis', 'gbif'), limit = 200))
-#' res$gbif
-#' res$obis
-#' ## no match found
-#' (res <- occ(query = 'Linguimaera thomsoni', from = 'obis'))
-#' ## geometry query
-#' geometry <- "POLYGON((8.98 48.05,15.66 48.05,15.66 45.40,8.98 45.40,8.98 48.05))"
-#' (res <- occ(from = 'obis', geometry = geometry, limit = 50))
-#' res$obis
-#' ## Pass in spatial classes
-#' library("sp")
-#' one <- Polygon(cbind(c(45,30,30,45), c(35,35,30,30)))
-#' spone = Polygons(list(one), "s1")
-#' sppoly = SpatialPolygons(list(spone), as.integer(1))
-#' (res <- occ(from = 'obis', geometry = sppoly, limit = 50))
-#' ## Do paging
-#' (res1 <- occ(query = 'Mola mola', from = 'obis', limit = 10))
-#' (res2 <- occ(query = 'Mola mola', from = 'obis', limit = 10, start = 20))
-#' res1$obis
-#' res2$obis
-#' ## Pass in any occurrence route parameters to obisopts as a list
-#' (res <- occ(query = 'Mola mola', from = 'obis', 
-#'    obisopts = list(year = 2005)))
 #' 
 #' # NBN egs.
-#' ## basic query
-#' (res <- occ(query = 'Mola mola', from = 'nbn', limit = 10))
+#' ## basic query - if name string given, we search for match, and if > 1, we prompt you
+#' (res <- occ(query = 'Accipiter gentilis', from = 'nbn', limit = 10))
+#' res$nbn
+#' ### get name keys first via taxize - probably easier this way
+#' library("taxize")
+#' x <- get_nbnid('Accipiter gentilis')
+#' (res <- occ(ids = x, from = 'nbn', nbnopts = list(startYear=1990, endYear=1991)))
+#' res$nbn
+#' head(occ2df(res))
+#' ## geometry
+#' wkt <- 'POLYGON((-2.0 52.7,-1.1 52.7,-1.1 52.4,-2.0 52.4,-2.0 52.7))'
+#' (res <- occ(ids = x, geometry = wkt, from = 'nbn'))
 #' 
 #' # Paging
 #' one <- occ(query = 'Accipiter striatus', from = 'gbif', limit = 5)

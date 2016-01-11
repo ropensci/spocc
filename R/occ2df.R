@@ -66,7 +66,7 @@ occ2df.occdat <- function(obj, what = "data") {
   aw <- foolist(obj$antweb)
   vn <- foolist(obj$vertnet)
   id <- foolist(obj$idigbio)
-  ob <- foolist(obj$obis)
+  nb <- foolist(obj$nbn)
   tmp <- data.frame(rbind_fill(
     Map(
       function(x, y){
@@ -83,22 +83,23 @@ occ2df.occdat <- function(obj, what = "data") {
           rename(dat, setNames("key", keymap[[y]]))
         }
       },
-      list(aa, bb, cc, dd, ee, aw, vn, id, ob), 
-      c('gbif','bison','inat','ebird','ecoengine','antweb','vertnet','idigbio','obis')
+      list(aa, bb, cc, dd, ee, aw, vn, id, nb), 
+      c('gbif','bison','inat','ebird','ecoengine','antweb','vertnet','idigbio','nbn')
     )
   ))
   tmpout <- list(meta = list(obj$gbif$meta, obj$bison$meta, obj$inat$meta, obj$ebird$meta,
-      obj$ecoengine$meta, obj$aw$meta, obj$vn$meta, obj$id$meta, obj$id$meta), data = tmp)
+      obj$ecoengine$meta, obj$antweb$meta, obj$vertnet$meta, 
+      obj$idigbio$meta, obj$nbn$meta), data = tmp)
   if (what %in% "data") tmpout$data else tmpout
 }
 
 datemap <- list(gbif = 'eventDate', bison = 'date', inat = 'datetime', ebird = 'obsDt',
                 ecoengine = 'begin_date', antweb = NULL, vertnet = "eventdate", 
-                idigbio = "datecollected", obis = "eventDate")
+                idigbio = "datecollected", nbn = "startDate")
 
 keymap <- list(gbif = "key", bison = "occurrenceID", inat = "id", ebird = "locID",
                ecoengine = "key", antweb = "catalogNumber", vertnet = "occurrenceid",
-               idigbio = "uuid", obis = "id")
+               idigbio = "uuid", nbn = "pTaxonVersionKey")
 
 pluck_fill <- function(a, b) {
   if (is.null(b)) {

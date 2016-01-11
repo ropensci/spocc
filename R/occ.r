@@ -17,7 +17,7 @@ occ <- function(query = NULL, from = "gbif", limit = 500, start = NULL, page = N
   geometry = NULL, has_coords = NULL, ids = NULL, callopts=list(), 
   gbifopts = list(), bisonopts = list(), inatopts = list(),
   ebirdopts = list(), ecoengineopts = list(), antwebopts = list(),
-  vertnetopts = list(), idigbioopts = list(), obisopts = list()) {
+  vertnetopts = list(), idigbioopts = list(), nbnopts = list()) {
 
   type <- "sci"
 
@@ -27,7 +27,7 @@ occ <- function(query = NULL, from = "gbif", limit = 500, start = NULL, page = N
     }
   }
   sources <- match.arg(from, choices = c("gbif", "bison", "inat", "ebird",
-            "ecoengine", "antweb", "vertnet", "idigbio", "obis"),
+            "ecoengine", "antweb", "vertnet", "idigbio", "nbn"),
                        several.ok = TRUE)
   if (!all(from %in% sources)) {
     stop(sprintf("Woops, the following are not supported or spelled incorrectly: %s",
@@ -45,33 +45,36 @@ occ <- function(query = NULL, from = "gbif", limit = 500, start = NULL, page = N
     antweb_res <- foo_antweb(sources, x, y, s, z, hc, w, antwebopts)
     vertnet_res <- foo_vertnet(sources, x, y, hc, w, vertnetopts)
     idigbio_res <- foo_idigbio(sources, x, y, s, z, hc, w, idigbioopts)
-    obis_res <- foo_obis(sources, x, y, s, z, hc, w, obisopts)
+    nbn_res <- foo_nbn(sources, x, y, s, z, hc, w, nbnopts)
     list(gbif = gbif_res, bison = bison_res, inat = inat_res, ebird = ebird_res,
          ecoengine = ecoengine_res, antweb = antweb_res, vertnet = vertnet_res,
-         idigbio = idigbio_res, obis = obis_res)
+         idigbio = idigbio_res, nbn = nbn_res)
   }
 
   loopids <- function(x, y, s, p, z, hc, w) {
     classes <- class(x)
-    if (!all(classes %in% c("gbifid", "tsn")))
-      stop("Currently, taxon identifiers have to be of class gbifid or tsn", 
+    if (!all(classes %in% c("gbifid", "tsn", 'nbnid')))
+      stop("Currently, taxon identifiers have to be of class gbifid, tsn, or nbnid",
            call. = FALSE)
     if (class(x) == 'gbifid') {
       gbif_res <- foo_gbif(sources, x, y, s, z, hc, w, gbifopts)
-      bison_res <- list(time = NULL, data = data.frame(NULL))
+      bison_res <- nbn_res <- empty_list
     } else if (class(x) == 'tsn') {
-      bison_res <- foo_bison(sources, x, y, s, z, w, bisonopts)
-      gbif_res <- list(time = NULL, data = data.frame(NULL))
+      bison_res <- foo_bison(sources, x, y, s, z, hc, w, bisonopts)
+      gbif_res <- nbn_res <- empty_list
+    } else if (class(x) == 'nbnid') {
+      nbn_res <- foo_nbn(sources, x, y, s, z, hc, w, nbnopts)
+      gbif_res <- bison_res <- empty_list
     }
     list(gbif = gbif_res,
          bison = bison_res,
-         inat = list(time = NULL, data = data.frame(NULL)),
-         ebird = list(time = NULL, data = data.frame(NULL)),
-         ecoengine = list(time = NULL, data = data.frame(NULL)),
-         antweb = list(time = NULL, data = data.frame(NULL)),
-         vertnet = list(time = NULL, data = data.frame(NULL)),
-         idigbio = list(time = NULL, data = data.frame(NULL)),
-         obis = list(time = NULL, data = data.frame(NULL))
+         inat = empty_list,
+         ebird = empty_list,
+         ecoengine = empty_list,
+         antweb = empty_list,
+         vertnet = empty_list,
+         idigbio = empty_list,
+         nbn = nbn_res
     )
   }
 
@@ -220,9 +223,11 @@ occ <- function(query = NULL, from = "gbif", limit = 500, start = NULL, page = N
   antweb_sp <- getsplist("antweb", antwebopts)
   vertnet_sp <- getsplist("vertnet", vertnetopts)
   idigbio_sp <- getsplist("idigbio", idigbioopts)
-  obis_sp <- getsplist("obis", obisopts)
+  nbn_sp <- getsplist("nbn", nbnopts)
   p <- list(gbif = gbif_sp, bison = bison_sp, inat = inat_sp, ebird = ebird_sp,
             ecoengine = ecoengine_sp, antweb = antweb_sp, vertnet = vertnet_sp,
-            idigbio = idigbio_sp, obis = obis_sp)
+            idigbio = idigbio_sp, nbn = nbn_sp)
   structure(p, class = "occdat", searched = from)
 }
+
+empty_list <- list(time = NULL, data = data.frame(NULL))

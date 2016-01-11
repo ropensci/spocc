@@ -1,25 +1,30 @@
 language: c
 sudo: required
+dist: trusty
+script: ./travis-tool.sh run_tests
 
-before_install:
-  - curl -OL https://raw.githubusercontent.com/metacran/r-builder/master/pkg-build.sh
-  - chmod 755 pkg-build.sh
+before_script:
+  - sudo apt-get --yes --force-yes update -qq
   - sudo apt-get install -y libv8-dev
-  - ./pkg-build.sh bootstrap
-  - ./pkg-build.sh install_bioc sangerseqR
-
-install:
-  - ./pkg-build.sh install_deps
-  - ./pkg-build.sh install_github jimhester/covr ropensci/taxize
-
-script:
-  - ./pkg-build.sh run_tests
-
-after_failure:
-  - ./pkg-build.sh dump_logs
+  - curl -OL http://raw.github.com/craigcitro/r-travis/master/scripts/travis-tool.sh
+  - chmod 755 ./travis-tool.sh
+  - ./travis-tool.sh bootstrap
+  - ./travis-tool.sh install_deps
+  - ./travis-tool.sh r_install covr taxize
+  - ./travis-tool.sh bioc_install sangerseqR
 
 after_success:
-  - if [[ ! -z "$COVERAGE" ]];then ./pkg-build.sh run_script -e 'covr::codecov()'; fi
+  - Rscript -e 'covr::codecov()'
+
+after_failure:
+  - ./travis-tool.sh dump_logs
+
+env:
+   global:
+     - R_LIBS="http://cran.rstudio.com"
+     - R_BUILD_ARGS="--no-build-vignettes --no-manual"
+     - R_CHECK_ARGS="--no-build-vignettes --no-manual --as-cran"
+     - BOOTSTRAP_LATEX=""
 
 notifications:
   email:
@@ -27,8 +32,3 @@ notifications:
     on_failure: change
   slack:
     secure: JgCatgv7Eeh6qHmi3TwWLdKHkCjnr5KHcBzVwy2F4IPafqPMEEhnSFxqP2Td8f7YcPqvdiv/blTGdgIOAi3V64O4fp3NZLLpzINNiL0i9iBZqkT71uw8ovcfrAeIHA9D9gapLtx3D4hdUF9jIyLIW2kMzIvaIA5PiDJ+oZitHow=
-
-env:
-  matrix:
-    - RVERSION=release
-    - RVERSION=devel COVERAGE=true

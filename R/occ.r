@@ -6,9 +6,7 @@
 #' @export
 #' @importFrom rgbif occ_search occ_get name_lookup
 #' @importFrom rebird ebirdregion ebirdgeo
-#' @importFrom ecoengine ee_observations ee_search
 #' @importFrom rbison bison_solr bison bison_tax
-#' @importFrom AntWeb aw_data
 #' @importFrom rvertnet vertsearch
 #' @importFrom ridigbio idig_search_records idig_view_records
 #' @importFrom rnbn getOccurrences

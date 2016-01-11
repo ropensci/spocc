@@ -4,7 +4,7 @@ Description: A programmatic interface to many species occurrence data sources,
     including 'GBIF', 'USGS's' 'BISON', 'iNaturalist', Berkeley 'Ecoinformatics'
     Engine 'eBird', 'AntWeb', 'iDigBio', and 'OBIS'. Includes functionality for
     retrieving species occurrence data, and combining that data.
-Version: 0.4.0.9640
+Version: 0.4.0.990
 License: MIT + file LICENSE
 Authors@R: c(person("Scott", "Chamberlain", role = c("aut", "cre"),
     email = "myrmecocystus@gmail.com"),
@@ -23,9 +23,7 @@ Imports:
     stats,
     rgbif (>= 0.8.8),
     rbison (>= 0.4.8),
-    ecoengine (>= 1.9.1),
     rebird (>= 0.2),
-    AntWeb (>= 0.7),
     rvertnet (>= 0.3.4),
     ridigbio (>= 0.3.1),
     rnbn (>= 1.0.3),

@@ -9,14 +9,14 @@
 #' Berkeley ecoengine \tab \url{https://ecoengine.berkeley.edu/} \cr
 #' AntWeb \tab \url{http://www.antweb.org/} \cr
 #' VertNet \tab \url{http://vertnet.org/} \cr
-#' iDigBio \tab \url{https://www.idigbio.org/} \cr
-#' OBIS \tab \url{http://www.iobis.org/}
+#' iDigBio \tab \url{https://www.idigbio.org/}
 #' }
 #'
 #' @importFrom jsonlite toJSON
 #' @importFrom utils browseURL head read.csv data
 #' @importFrom methods is as
 #' @importFrom stats setNames
+#' @importFrom data.table rbindlist
 #' @name spocc-package
 #' @aliases spocc
 #' @docType package

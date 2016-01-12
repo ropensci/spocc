@@ -67,3 +67,14 @@ found_null <- function(x) {
   if (length(sc(x)) == 0) NULL else sum(unlist(sc(x)), na.rm = TRUE)
 }
 
+pluck_fill <- function(a, b) {
+  if (is.null(b)) {
+    NULL
+  } else {
+    if (b %in% names(a)) {
+      b
+    } else {
+      NULL
+    }
+  }
+}

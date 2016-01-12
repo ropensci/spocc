@@ -1,7 +1,7 @@
 #' Coerce occurrence keys to ecoenginekey/occkey objects
 #'
 #' @export
-#' @importFrom httr GET stop_for_status content
+#' @importFrom httr GET stop_for_status warn_for_status content
 #'
 #' @param x Various inputs, including the output from a call to \code{\link{occ}}
 #' (class occdat), \code{\link{occ2df}} (class data.frame), or a list, numeric,

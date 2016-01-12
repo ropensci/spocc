@@ -8,11 +8,10 @@ occ(query = NULL, from = "gbif", limit = 500, start = NULL,
   page = NULL, geometry = NULL, has_coords = NULL, ids = NULL,
   callopts = list(), gbifopts = list(), bisonopts = list(),
   inatopts = list(), ebirdopts = list(), ecoengineopts = list(),
-  antwebopts = list(), vertnetopts = list(), idigbioopts = list(),
-  obisopts = list())
+  antwebopts = list(), vertnetopts = list(), idigbioopts = list())
 }
 \arguments{
-\item{query}{(character) One to many scientific names. See Details for what parameter 
+\item{query}{(character) One to many scientific names. See Details for what parameter
 in each data source we query.}
 
 \item{from}{(character) Data source to get data from, any combination of gbif, bison,
@@ -26,7 +25,7 @@ n = 10), that's 10 * 500 = 5000, which can take a while to collect. So, when you
 set the limit to something smallish so that you can get a result quickly, then do more as
 needed.}
 
-\item{start, page}{(integer) Record to start at or page to start at. See \code{Paging} in 
+\item{start, page}{(integer) Record to start at or page to start at. See \code{Paging} in
 Details for how these parameters are used internally. Optional}
 
 \item{geometry}{(character or nmeric) One of a Well Known Text (WKT) object or a vector of
@@ -69,11 +68,8 @@ See also \code{\link{occ_options}}.}
 \item{vertnetopts}{(list) List of named options to pass on to
 \code{\link[rvertnet]{searchbyterm}}. See also \code{\link{occ_options}}..}
 
-\item{idigbioopts}{(list) List of named options to pass on to 
+\item{idigbioopts}{(list) List of named options to pass on to
 \code{\link[ridigbio]{idig_search_records}}. See also \code{\link{occ_options}}.}
-
-\item{obisopts}{(list) List of named options to pass on to internal function. See 
-\url{https://github.com/iobis/api-docs} for possible parameters}
 }
 \description{
 Search on a single species name, or many. And search across a single
@@ -81,11 +77,11 @@ or many data sources.
 }
 \details{
 The \code{occ} function is an opinionated wrapper
-around the rgbif, rbison, rinat, rebird, AntWeb, ecoengine, rvertnet and 
-ridigbio packages to allow data access from a single access point. We take 
-care of making sure you get useful objects out at the cost of 
-flexibility/options - although you can still set options for each of the 
-packages via the gbifopts, bisonopts, inatopts, ebirdopts, ecoengineopts, 
+around the rgbif, rbison, rinat, rebird, AntWeb, ecoengine, rvertnet and
+ridigbio packages to allow data access from a single access point. We take
+care of making sure you get useful objects out at the cost of
+flexibility/options - although you can still set options for each of the
+packages via the gbifopts, bisonopts, inatopts, ebirdopts, ecoengineopts,
 vertnetopts, antwebopts and idigbioopts parameters.
 }
 \section{Inputs}{
@@ -97,37 +93,36 @@ All inputs to \code{occ} are one of:
  \item geometry as bounds, WKT, os Spatial classes
 }
 To search by common name, first use \code{\link{occ_names}} to find scientic names or
-taxonomic IDs, then feed those to this function. Or use the \code{taxize} package 
+taxonomic IDs, then feed those to this function. Or use the \code{taxize} package
 to get names and/or IDs to use here.
 }
 
 \section{Using the query parameter}{
 
 When you use the \code{query} parameter, we pass your search terms on to parameters
-within functions that query data sources you specify. Those parameters are: 
+within functions that query data sources you specify. Those parameters are:
 \itemize{
  \item rgbif - \code{scientificName} in the \code{\link[rgbif]{occ_search}} function - API
  parameter: same as the \code{occ} parameter
- \item rebird - \code{species} in the \code{\link[rebird]{ebirdregion}} or 
- \code{\link[rebird]{ebirdgeo}} functions, depending on whether you set 
+ \item rebird - \code{species} in the \code{\link[rebird]{ebirdregion}} or
+ \code{\link[rebird]{ebirdgeo}} functions, depending on whether you set
  \code{method="ebirdregion"} or \code{method="ebirdgeo"} - API parameters: \code{sci} for both
  \code{\link[rebird]{ebirdregion}} and \code{\link[rebird]{ebirdgeo}}
  \item ecoengine - \code{scientific_name} in the \code{\link[ecoengine]{ee_observations}}
  function - API parameter: same as \code{occ} parameter
- \item rbison - \code{species} or \code{scientificName} in the \code{\link[rbison]{bison}} or 
- \code{\link[rbison]{bison_solr}} functions, respectively. If you don't pass anything to 
- \code{geometry} parameter we use \code{bison_solr}, and if you do we use \code{bison} - API 
+ \item rbison - \code{species} or \code{scientificName} in the \code{\link[rbison]{bison}} or
+ \code{\link[rbison]{bison_solr}} functions, respectively. If you don't pass anything to
+ \code{geometry} parameter we use \code{bison_solr}, and if you do we use \code{bison} - API
  parameters: same as \code{occ} parameters
- \item AntWeb - \code{scientific_name} or \code{genus} in the \code{\link[AntWeb]{aw_data}} 
- function, depending on whether binomial or single name passed - API 
- parameter: \code{species} for \code{scientific_name} and \code{genus} for 
+ \item AntWeb - \code{scientific_name} or \code{genus} in the \code{\link[AntWeb]{aw_data}}
+ function, depending on whether binomial or single name passed - API
+ parameter: \code{species} for \code{scientific_name} and \code{genus} for
  \code{genus}
- \item rvertnet - \code{taxon} in the \code{\link[rvertnet]{vertsearch}} function - API 
+ \item rvertnet - \code{taxon} in the \code{\link[rvertnet]{vertsearch}} function - API
  parameter: \code{q}
- \item ridigbio - \code{scientificname} in the \code{\link[ridigbio]{idig_search_records}} 
+ \item ridigbio - \code{scientificname} in the \code{\link[ridigbio]{idig_search_records}}
  function - API parameter: \code{scientificname}
  \item inat - internal function - API parameter: \code{q}
- \item obis - internal function - API parameter: \code{scientificName}
 }
 If you have questions about how each of those parameters behaves with respect to
 the terms you pass to it, lookup documentation for those functions, or get in touch
@@ -191,10 +186,10 @@ a bounding box but for now, you can use a few sites on the web.
 
 \section{geometry parameter}{
 
-The behavior of the \code{occ} function with respect to the \code{geometry} parameter 
+The behavior of the \code{occ} function with respect to the \code{geometry} parameter
 varies depending on the inputs to the \code{query} parameter. Here are the options:
 \itemize{
- \item geometry (single), no query - If a single bounding box/WKT string passed in, 
+ \item geometry (single), no query - If a single bounding box/WKT string passed in,
  and no query, a single query is made against each data source.
  \item geometry (many), no query - If many bounding boxes/WKT strings are passed in,
  we do a separate query for each bounding box/WKT string against each data source.
@@ -204,12 +199,12 @@ varies depending on the inputs to the \code{query} parameter. Here are the optio
  and a single query, we do a separate query for each bounding box/WKT string with the
  same queried name against each data source.
  \item geometry (single), many query - If a single bounding box/WKT string passed in,
- and many names to query, we do a separate query for each name, using the same geometry, 
+ and many names to query, we do a separate query for each name, using the same geometry,
  for each data source.
  \item geometry (many), many query - If many bounding boxes/WKT strings are passed in,
  and many names to query, this poses a problem for all data sources, none of which
  accept many bounding boxes of WKT strings. So, in this scenario, we loop over each
- name and each geometry query, and then re-combine by queried name, so that you get 
+ name and each geometry query, and then re-combine by queried name, so that you get
  back a single group of data for each name.
 }
 }
@@ -220,7 +215,6 @@ varies depending on the inputs to the \code{query} parameter. Here are the optio
 \itemize{
  \item gbif
  \item bison
- \item obis
 }
 
 \bold{bbox only}
@@ -228,13 +222,13 @@ varies depending on the inputs to the \code{query} parameter. Here are the optio
  \item ecoengine
  \item inat
  \item idigbio
-} 
+}
 
 \bold{No spatial search allowed}
 \itemize{
  \item antweb
  \item ebird
- \item vertnet - technically is allowed, but we don't support it yet
+ \item vertnet
 }
 }
 
@@ -247,21 +241,20 @@ varies depending on the inputs to the \code{query} parameter. Here are the optio
  \item bison - Responds to \code{start}. Default: 0
  \item inat - Responds to \code{page}. Default: 1
  \item ebird - No paging, both \code{start} and \code{page} ignored.
- \item vertnet - No paging implemented here, both \code{start} and \code{page} 
- ignored. VertNet does have a form of paging, but it uses a cursor, and can't 
- easily be included  here via parameters. However, \code{rvertnet} does paging 
- internally for you.  For example, the max records per request for VertNet is 
- 1000; if you request 2000 records, we'll do the first request, and do the 
+ \item vertnet - No paging implemented here, both \code{start} and \code{page}
+ ignored. VertNet does have a form of paging, but it uses a cursor, and can't
+ easily be included  here via parameters. However, \code{rvertnet} does paging
+ internally for you.  For example, the max records per request for VertNet is
+ 1000; if you request 2000 records, we'll do the first request, and do the
  second request for you automatically.
  \item idigbio - Responds to \code{start}. Default: 0
- \item obis - Responds to \code{start}. Default: 0
 }
 }
 
 \section{BEWARE}{
- 
-In cases where you request data from multiple providers, especially when 
-including GBIF, there could be duplicate records since many providers' data eventually 
+
+In cases where you request data from multiple providers, especially when
+including GBIF, there could be duplicate records since many providers' data eventually
 ends up with GBIF. See \code{\link[spocc]{spocc_duplicates}} for more.
 }
 \examples{
@@ -281,45 +274,15 @@ res$bison
 res$vertnet
 res$vertnet$data$Bison_bison
 occ2df(res)
- 
-# OBIS examples
-## basic query
-(res <- occ(query = 'Mola mola', from = 'obis', limit = 200))
-## get to obis data
-res$obis
-# make a map
-library("spoccutils")
-map_ggplot(res)
-## get obis + gbif data
-(res <- occ(query = 'Mola mola', from = c('obis', 'gbif'), limit = 200))
-res$gbif
-res$obis
-## no match found
-(res <- occ(query = 'Linguimaera thomsoni', from = 'obis'))
-## geometry query
-geometry <- "POLYGON((8.98 48.05,15.66 48.05,15.66 45.40,8.98 45.40,8.98 48.05))"
-(res <- occ(from = 'obis', geometry = geometry, limit = 50))
-res$obis
-## Pass in spatial classes
-library("sp")
-one <- Polygon(cbind(c(45,30,30,45), c(35,35,30,30)))
-spone = Polygons(list(one), "s1")
-sppoly = SpatialPolygons(list(spone), as.integer(1))
-(res <- occ(from = 'obis', geometry = sppoly, limit = 50))
-## Do paging
-(res1 <- occ(query = 'Mola mola', from = 'obis', limit = 10))
-(res2 <- occ(query = 'Mola mola', from = 'obis', limit = 10, start = 20))
-res1$obis
-res2$obis
-## Pass in any occurrence route parameters to obisopts as a list
-(res <- occ(query = 'Mola mola', from = 'obis', 
-   obisopts = list(year = 2005)))
 
 # Paging
 one <- occ(query = 'Accipiter striatus', from = 'gbif', limit = 5)
 two <- occ(query = 'Accipiter striatus', from = 'gbif', limit = 5, start = 5)
 one$gbif
 two$gbif
+
+# Restrict to records with coordinates
+occ(query = "Acer", from = "idigbio", limit = 5, has_coords = TRUE)
 
 # Data from AntWeb
 # By species
@@ -406,7 +369,7 @@ occ(geometry = bounds, from = "gbif", limit=50)
 occ(geometry = list(c(-125.0,38.4,-121.8,40.9), c(-115.0,22.4,-111.8,30.9)), from = "gbif")
 
 ## Many geometry and many names
-res <- occ(query = c('Danaus plexippus', 'Accipiter striatus'), 
+res <- occ(query = c('Danaus plexippus', 'Accipiter striatus'),
    geometry = list(c(-125.0,38.4,-121.8,40.9), c(-115.0,22.4,-111.8,30.9)), from = "bison")
 res
 
@@ -515,7 +478,7 @@ occ(query = "Acer", from = "idigbio", limit = 5,
 ### parameters passed to "rq", get combined with the name queried
 occ(query = "Acer", from = "idigbio", limit = 5,
    idigbioopts = list(rq = list(basisofrecord="fossilspecimen")))$idigbio
-   
+
 #### NOTE: no support for multipolygons yet
 ## WKT's are more flexible than bounding box's. You can pass in a WKT with multiple
 ## polygons like so (you can use POLYGON or MULTIPOLYGON) when specifying more than one

@@ -30,7 +30,8 @@ Imports:
     httr (>= 1.0.0),
     whisker (>= 0.3-2),
     V8 (>= 0.8),
-    jsonlite (>= 0.9.17)
+    jsonlite (>= 0.9.17),
+    data.table
 Suggests:
     roxygen2,
     testthat,

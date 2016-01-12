@@ -2,7 +2,7 @@ context("Occurrence data is correctly retrieved")
 
 test_that("occ works for each data source", {
   skip_on_cran()
-  
+
   x1 <- occ(query = 'Accipiter striatus', from = 'gbif', limit = 30)
   x2 <- occ(query = 'Accipiter striatus', from = 'ecoengine', limit = 30)
   x3 <- occ(query = 'Danaus plexippus', from = 'inat', limit = 30)
@@ -11,14 +11,12 @@ test_that("occ works for each data source", {
   x5 <- occ(query = 'Setophaga caerulescens', from = 'ebird', ebirdopts = list(region='US'), limit = 30)
   x6 <- occ(query = 'Spinus tristis', from = 'ebird', ebirdopts = list(method = 'ebirdgeo', lat = 42, lng = -76, dist = 50), limit = 30)
   x7 <- occ(query = 'Spinus tristis', from = 'idigbio', limit = 30)
-  x8 <- occ(query = 'Mola mola', from = 'obis', limit = 30)
 
   expect_is(x3, "occdat")
   expect_is(x4, "occdat")
   expect_is(x5, "occdat")
   expect_is(x6, "occdat")
   expect_is(x7, "occdat")
-  expect_is(x8, "occdat")
   # Testing x1
   expect_is(x1, "occdat")
   expect_is(x1$gbif, "occdatind")
@@ -49,25 +47,18 @@ test_that("occ works for each data source", {
   expect_is(x6$ebird$data[[1]], "data.frame")
   temp_df6 <- x6$ebird$data[[1]]
   expect_equal(unique(temp_df6$prov), "ebird")
-  
+
   # Testing x7
   expect_is(x7, "occdat")
   expect_is(x7$idigbio, "occdatind")
   expect_is(x7$idigbio$data[[1]], "data.frame")
   temp_df7 <- x7$idigbio$data[[1]]
   expect_equal(unique(temp_df7$prov), "idigbio")
-  
-  # Testing x8
-  expect_is(x8, "occdat")
-  expect_is(x8$obis, "occdatind")
-  expect_is(x8$obis$data[[1]], "data.frame")
-  temp_df8 <- x8$obis$data[[1]]
-  expect_equal(unique(temp_df8$prov), "obis")
 
   # Adding tests for Antweb
   by_species <- suppressWarnings(
     tryCatch(suppressMessages(
-      occ(query = "acanthognathus brevicornis", from = "antweb", limit = 10)), error=function(e) e))
+      occ(query = "linepithema humile", from = "antweb", limit = 10)), error=function(e) e))
   by_genus <- suppressWarnings(
     tryCatch(suppressMessages(
       occ(query = "acanthognathus", from = "antweb", limit = 10)), error=function(e) e))
@@ -87,15 +78,14 @@ test_that("occ works for each data source", {
     temp_df8 <- by_genus$antweb$data[[1]]
     expect_equal(unique(temp_df8$prov), "antweb")
   }
-
 })
 
 test_that("occ works for geometry (single) - query (none)", {
   skip_on_cran()
-  
+
   bounds <- c(-120, 40, -100, 45)
   aa <- occ(from = "idigbio", geometry = bounds, limit = 10)
-  
+
   expect_is(aa, "occdat")
   expect_is(aa$idigbio, "occdatind")
   expect_is(aa$idigbio$meta$type, "character")
@@ -105,10 +95,10 @@ test_that("occ works for geometry (single) - query (none)", {
 
 test_that("occ works for geometry (many) - query (none)", {
   skip_on_cran()
-  
+
   bounds <- list(c(165,-53,180,-29), c(-180,-53,-175,-29))
   aa <- occ(from = "gbif", geometry = bounds, limit = 10)
-  
+
   expect_is(aa, "occdat")
   expect_is(aa$gbif, "occdatind")
   expect_is(aa$gbif$meta$type, "character")
@@ -118,10 +108,10 @@ test_that("occ works for geometry (many) - query (none)", {
 
 test_that("occ works for geometry (single) - query (single)", {
   skip_on_cran()
-  
+
   bounds <- c(-120, 40, -100, 45)
   aa <- occ(query = "Accipiter striatus", from = "gbif", geometry = bounds, limit = 10)
-  
+
   expect_is(aa, "occdat")
   expect_is(aa$gbif, "occdatind")
   expect_is(aa$gbif$meta$type, "character")
@@ -132,10 +122,10 @@ test_that("occ works for geometry (single) - query (single)", {
 
 test_that("occ works for geometry (many) - query (single)", {
   skip_on_cran()
-  
+
   bounds <- list(c(165,-53,180,-29), c(-180,-53,-175,-29))
   aa <- occ(query = "Poa annua", from = "gbif", geometry = bounds, limit = 10)
-  
+
   expect_is(aa, "occdat")
   expect_is(aa$gbif, "occdatind")
   expect_is(aa$gbif$meta$type, "character")
@@ -146,10 +136,10 @@ test_that("occ works for geometry (many) - query (single)", {
 
 test_that("occ works for geometry (single) - query (many)", {
   skip_on_cran()
-  
+
   bounds <- c(-120, 40, -100, 45)
   aa <- occ(query = c("Poa", "Quercus"), from = "gbif", geometry = bounds, limit = 10)
-  
+
   expect_is(aa, "occdat")
   expect_is(aa$gbif, "occdatind")
   expect_is(aa$gbif$meta$type, "character")
@@ -162,10 +152,10 @@ test_that("occ works for geometry (single) - query (many)", {
 
 test_that("occ works for geometry (many) - query (many)", {
   skip_on_cran()
-  
+
   bounds <- list(c(165,-53,180,-29), c(-180,-53,-175,-29))
   aa <- occ(query = c("Poa", "Quercus"), from = "gbif", geometry = bounds, limit = 10)
-  
+
   expect_is(aa, "occdat")
   expect_is(aa$gbif, "occdatind")
   expect_is(aa$gbif$meta$type, "character")
@@ -181,18 +171,18 @@ test_that("occ works for geometry (many) - query (many)", {
 
 test_that("occ paging works", {
   skip_on_cran()
-  
+
   one <- occ(query = 'Accipiter striatus', from = 'gbif', limit = 5)
   two <- occ(query = 'Accipiter striatus', from = 'gbif', limit = 5, start = 5)
   one$gbif
   two$gbif
-  
+
   expect_is(one, "occdat")
   expect_is(one$gbif, "occdatind")
-  
+
   expect_is(two, "occdat")
   expect_is(two$gbif, "occdatind")
-  
+
   expect_null(one$gbif$meta$opts$start)
   expect_false(is.null(two$gbif$meta$opts$start))
 })

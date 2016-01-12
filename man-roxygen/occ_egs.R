@@ -14,45 +14,15 @@
 #' res$vertnet
 #' res$vertnet$data$Bison_bison
 #' occ2df(res)
-#'  
-#' # OBIS examples
-#' ## basic query
-#' (res <- occ(query = 'Mola mola', from = 'obis', limit = 200))
-#' ## get to obis data
-#' res$obis
-#' # make a map
-#' library("spoccutils")
-#' map_ggplot(res)
-#' ## get obis + gbif data
-#' (res <- occ(query = 'Mola mola', from = c('obis', 'gbif'), limit = 200))
-#' res$gbif
-#' res$obis
-#' ## no match found
-#' (res <- occ(query = 'Linguimaera thomsoni', from = 'obis'))
-#' ## geometry query
-#' geometry <- "POLYGON((8.98 48.05,15.66 48.05,15.66 45.40,8.98 45.40,8.98 48.05))"
-#' (res <- occ(from = 'obis', geometry = geometry, limit = 50))
-#' res$obis
-#' ## Pass in spatial classes
-#' library("sp")
-#' one <- Polygon(cbind(c(45,30,30,45), c(35,35,30,30)))
-#' spone = Polygons(list(one), "s1")
-#' sppoly = SpatialPolygons(list(spone), as.integer(1))
-#' (res <- occ(from = 'obis', geometry = sppoly, limit = 50))
-#' ## Do paging
-#' (res1 <- occ(query = 'Mola mola', from = 'obis', limit = 10))
-#' (res2 <- occ(query = 'Mola mola', from = 'obis', limit = 10, start = 20))
-#' res1$obis
-#' res2$obis
-#' ## Pass in any occurrence route parameters to obisopts as a list
-#' (res <- occ(query = 'Mola mola', from = 'obis', 
-#'    obisopts = list(year = 2005)))
-#' 
+#'
 #' # Paging
 #' one <- occ(query = 'Accipiter striatus', from = 'gbif', limit = 5)
 #' two <- occ(query = 'Accipiter striatus', from = 'gbif', limit = 5, start = 5)
 #' one$gbif
 #' two$gbif
+#'
+#' # Restrict to records with coordinates
+#' occ(query = "Acer", from = "idigbio", limit = 5, has_coords = TRUE)
 #'
 #' # Data from AntWeb
 #' # By species
@@ -137,9 +107,9 @@
 #' occ(geometry = bounds, from = "gbif", limit=50)
 #' ### Many bounding boxes
 #' occ(geometry = list(c(-125.0,38.4,-121.8,40.9), c(-115.0,22.4,-111.8,30.9)), from = "gbif")
-#' 
+#'
 #' ## Many geometry and many names
-#' res <- occ(query = c('Danaus plexippus', 'Accipiter striatus'), 
+#' res <- occ(query = c('Danaus plexippus', 'Accipiter striatus'),
 #'    geometry = list(c(-125.0,38.4,-121.8,40.9), c(-115.0,22.4,-111.8,30.9)), from = "bison")
 #' res
 #'
@@ -248,7 +218,7 @@
 #' ### parameters passed to "rq", get combined with the name queried
 #' occ(query = "Acer", from = "idigbio", limit = 5,
 #'    idigbioopts = list(rq = list(basisofrecord="fossilspecimen")))$idigbio
-#'    
+#'
 #' #### NOTE: no support for multipolygons yet
 #' ## WKT's are more flexible than bounding box's. You can pass in a WKT with multiple
 #' ## polygons like so (you can use POLYGON or MULTIPOLYGON) when specifying more than one

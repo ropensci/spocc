@@ -77,3 +77,25 @@ ee_search <- function(query = NULL, foptions = list()) {
 }
 
 ee_base_url <- function() "https://ecoengine.berkeley.edu/api/"
+
+ee_paginator <- function(page, total_obs, page_size = 1000) {
+  all_pages <- ceiling(total_obs/page_size)
+  if (total_obs < page_size) {
+    req_pages <- 1
+  }
+  if (identical(page, "all")) {
+    req_pages <- seq_along(1:all_pages)
+  }
+  if (length(page) == 1 & identical(class(page), "numeric")) {
+    req_pages <- page
+  }
+  if (identical(class(page), "integer")) {
+    if (max(page) > all_pages) {
+      stop("Pages requested outside the range")
+    }
+    else {
+      req_pages <- seq_along(page)
+    }
+  }
+  req_pages
+}

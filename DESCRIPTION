@@ -16,7 +16,6 @@ URL: https://github.com/ropensci/spocc
 BugReports: https://github.com/ropensci/spocc/issues
 LazyData: true
 VignetteBuilder: knitr
-Roxygen: list(wrap = FALSE)
 Imports:
     utils,
     methods,
@@ -31,9 +30,8 @@ Imports:
     whisker (>= 0.3-2),
     V8 (>= 0.8),
     jsonlite (>= 0.9.17),
-    data.table
+    data.table (>= 1.9.6)
 Suggests:
-    roxygen2,
     testthat,
     knitr,
     taxize

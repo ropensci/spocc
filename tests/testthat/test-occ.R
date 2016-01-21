@@ -166,6 +166,24 @@ test_that("occ works for geometry (many) - query (many)", {
   expect_equal(length(aa$gbif$data), 2)
 })
 
+## there was at one point a problem with ecoengine queries, testing for that
+test_that("occ works for geometry for ecoengine", {
+  skip_on_cran()
+  
+  x <- "POLYGON((-113.527516 20.929036 ,-113.357516 20.929036 ,-113.357516 21.099036 ,-113.527516 21.099036 ,-113.527516 20.929036))"
+  aa <- suppressWarnings(occ(geometry = x, from = "ecoengine", limit = 10))
+  expect_warning(occ(geometry = x, from = "ecoengine", limit = 10))
+  expect_is(aa, "occdat")
+  expect_equal(NROW(aa$ecoengine$data[[1]]), 0)
+  
+  y <- "POLYGON((-110.527516 20.929036, -120.357516 20.929036, -120.357516 31.099036, -110.527516 31.099036, -110.527516 20.929036))"
+  aa <- suppressWarnings(occ(geometry = y, from = "ecoengine", limit = 10))
+  expect_is(aa, "occdat")
+  expect_is(aa$gbif, "occdatind")
+  expect_gt(NROW(aa$ecoengine$data[[1]]), 0)
+  expect_equal(aa$ecoengine$meta$opts$bbox, "-120.357516,20.929036,-110.527516,31.099036")
+})
+
 
 ######## paging
 

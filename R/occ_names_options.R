@@ -32,6 +32,7 @@ occ_names_options <- function(from = 'gbif', where="console"){
   from <- tolower(from)
   from <- match.arg(from, choices=c('gbif','bison','ecoengine'))
   pkgname <- switch(from, gbif='rgbif', bison='rbison', ecoengine='ecoengine')
+  check_for_package(pkgname)
   fxn <- switch(from, gbif='name_lookup', bison='bison_tax', ecoengine='ee_search')
   if(where == "console"){
     res <- tools::Rd_db(pkgname)

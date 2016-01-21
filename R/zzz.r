@@ -78,3 +78,11 @@ pluck_fill <- function(a, b) {
     }
   }
 }
+
+check_for_package <- function(x) {
+  if (!requireNamespace(x, quietly = TRUE)) {
+    stop("Please install ", x, call. = FALSE)
+  } else {
+    invisible(TRUE)
+  }
+}

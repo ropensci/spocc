@@ -73,12 +73,12 @@ foo_ecoengine <- function(sources, query, limit, page, geometry, has_coords, cal
     time <- now()
     opts$georeferenced <- has_coords
     opts$scientific_name <- query
-    opts$georeferenced <- TRUE
+    #opts$georeferenced <- TRUE
     if (!'page_size' %in% names(opts)) opts$page_size <- limit
     if (!'page' %in% names(opts)) opts$page <- page
     if (!is.null(geometry)) {
       opts$bbox <- if (grepl('POLYGON', paste(as.character(geometry), collapse = " "))) {
-        wkt2bbox(geometry) 
+        paste0(wkt2bbox(geometry), collapse = ",")
       } else {
         geometry 
       }
@@ -93,9 +93,11 @@ foo_ecoengine <- function(sources, query, limit, page, geometry, has_coords, cal
     opts$quiet <- TRUE
     opts$progress <- FALSE
     opts$foptions <- callopts
-    out_ee <- tryCatch(do.call(ee_observations, opts), error = function(e) e)
+    out_ee <- tryCatch(do.call(ee_observations2, opts), error = function(e) e)
     if (out_ee$results == 0 || is(out_ee, "simpleError")) {
-      warning(sprintf("No records found in Ecoengine for %s", query), call. = FALSE)
+      warning(sprintf("No records found in Ecoengine for %s", 
+        if (is.null(query)) paste0(substr(geometry, 1, 20), ' ...') else query
+      ), call. = FALSE)
       list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
     } else{
       out <- out_ee$data

@@ -1,26 +1,26 @@
-ee_observations <- function(page = NULL, page_size = 1000, country = "United States", 
-  state_province = NULL, county = NULL, kingdom  = NULL, phylum = NULL, order  = NULL, 
+ee_observations2 <- function(page = NULL, page_size = 1000, country = "United States",
+  state_province = NULL, county = NULL, kingdom  = NULL, phylum = NULL, order  = NULL,
   clss = NULL, family = NULL, genus = NULL, scientific_name = NULL, kingdom__exact = NULL,
-  phylum__exact = NULL, order__exact = NULL, clss__exact = NULL, family__exact = NULL, 
-  genus__exact = NULL, scientific_name__exact = NULL, remote_id = NULL, collection_code = NULL, 
-  source  = NULL, min_date = NULL, max_date = NULL, georeferenced = FALSE, bbox = NULL, 
+  phylum__exact = NULL, order__exact = NULL, clss__exact = NULL, family__exact = NULL,
+  genus__exact = NULL, scientific_name__exact = NULL, remote_id = NULL, collection_code = NULL,
+  source  = NULL, min_date = NULL, max_date = NULL, georeferenced = FALSE, bbox = NULL,
   exclude = NULL, extra = NULL, quiet = FALSE, progress = TRUE, foptions = list()) {
-  
+
   # obs_url <- "http://ecoengine.berkeley.edu/api/observations/?format=json"
-  obs_url <- paste0(ee_base_url(), "observations/?format=geojson")
-  
+  obs_url <- paste0(eee_base_url(), "observations/?format=geojson")
+
   if (georeferenced) georeferenced = "True"
   extra <- ifelse(is.null(extra), "last_modified", paste0(extra,",last_modified"))
-  
+
   args <- as.list(sc(c(country = country, kingdom = kingdom, phylum = phylum,
-      order = order, clss = clss,family = family, genus  = genus, 
-      scientific_name = scientific_name, kingdom__exact = kingdom__exact, 
-      phylum__exact = phylum__exact, county = county, order__exact = order__exact, 
-      clss__exact = clss__exact ,family__exact = family__exact , genus__exact  = genus__exact, 
-      scientific_name__exact = scientific_name__exact, remote_id = remote_id, 
-      collection_code = collection_code, source = source, min_date = min_date, max_date = max_date, 
+      order = order, clss = clss,family = family, genus  = genus,
+      scientific_name = scientific_name, kingdom__exact = kingdom__exact,
+      phylum__exact = phylum__exact, county = county, order__exact = order__exact,
+      clss__exact = clss__exact ,family__exact = family__exact , genus__exact  = genus__exact,
+      scientific_name__exact = scientific_name__exact, remote_id = remote_id,
+      collection_code = collection_code, source = source, min_date = min_date, max_date = max_date,
       bbox = bbox, exclude = exclude, extra = extra, georeferenced = georeferenced, page_size = page_size)))
-  if(is.null(page)) { page <- 1 }
+  if (is.null(page)) { page <- 1 }
   main_args <- args
   main_args$page <- as.character(page)
   data_sources <- GET(obs_url, query = args, foptions)
@@ -28,16 +28,16 @@ ee_observations <- function(page = NULL, page_size = 1000, country = "United Sta
   warn_for_status(data_sources)
   obs_data <- content(data_sources, type = "application/json")
   stopifnot(obs_data$count > 0)
-  required_pages <- ee_paginator(page, obs_data$count, page_size = page_size)
+  required_pages <- eee_paginator(page, obs_data$count, page_size = page_size)
   all_the_pages <- ceiling(obs_data$count/page_size)
-  
-  if(!quiet)  message(sprintf("Search contains %s observations (downloading %s of %s pages)", 
+
+  if (!quiet)  message(sprintf("Search contains %s observations (downloading %s of %s pages)",
                               obs_data$count, length(required_pages), all_the_pages))
-  if(progress) pb <- txtProgressBar(min = 0, max = length(required_pages), style = 3)
-  
+  if (progress) pb <- txtProgressBar(min = 0, max = length(required_pages), style = 3)
+
   results <- list()
   for (i in required_pages) {
-    args$page <- i 
+    args$page <- i
     data_sources <- GET(obs_url, query = args, foptions)
     obs_data <- content(data_sources, type = "application/json")
     obs_results <- lapply(obs_data$features, function(z) {
@@ -57,14 +57,14 @@ ee_observations <- function(page = NULL, page_size = 1000, country = "United Sta
   if(!is.null(obs_data_all$order)) {  obs_data_all$order <- basename(obs_data_all$order) }
   if(!is.null(obs_data_all$family)) {  obs_data_all$family <- basename(obs_data_all$family) }
   if(!is.null(obs_data_all$genus)) {  obs_data_all$genus <- basename(obs_data_all$genus) }
-  
+
   ss <- list(results = obs_data$count, call = main_args, type = "FeatureCollection", data = obs_data_all)
   if(progress) close(pb)
   ss
 }
 
-ee_search <- function(query = NULL, foptions = list()) {
-  search_url <- paste0(ee_base_url(), "search/?format=json")
+eee_search <- function(query = NULL, foptions = list()) {
+  search_url <- paste0(eee_base_url(), "search/?format=json")
   result <- GET(search_url, query = as.list(sc(c(q = query))), foptions)
   es_results <- content(result, type = "application/json")
   fields_compacted <- Filter(function(i) length(i) > 0, es_results$fields)
@@ -76,9 +76,9 @@ ee_search <- function(query = NULL, foptions = list()) {
   df
 }
 
-ee_base_url <- function() "https://ecoengine.berkeley.edu/api/"
+eee_base_url <- function() "https://ecoengine.berkeley.edu/api/"
 
-ee_paginator <- function(page, total_obs, page_size = 1000) {
+eee_paginator <- function(page, total_obs, page_size = 1000) {
   all_pages <- ceiling(total_obs/page_size)
   if (total_obs < page_size) {
     req_pages <- 1

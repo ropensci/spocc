@@ -36,7 +36,7 @@
 #' or \code{\link[rebird]{ebirdgeo}}. See also \code{\link{occ_options}}.
 #' @param ecoengineopts (list) List of named options to pass on to
 #' \code{ee_observations}. See also \code{\link{occ_options}}.
-#' @param antwebopts (list) List of named options to pass on to \code{\link[AntWeb]{aw_data}}.
+#' @param antwebopts (list) List of named options to pass on to \code{aw_data}.
 #' See also \code{\link{occ_options}}.
 #' @param vertnetopts (list) List of named options to pass on to
 #' \code{\link[rvertnet]{searchbyterm}}. See also \code{\link{occ_options}}..
@@ -78,7 +78,7 @@
 #'  \code{\link[rbison]{bison_solr}} functions, respectively. If you don't pass anything to
 #'  \code{geometry} parameter we use \code{bison_solr}, and if you do we use \code{bison} - API
 #'  parameters: same as \code{occ} parameters
-#'  \item AntWeb - \code{scientific_name} or \code{genus} in the \code{\link[AntWeb]{aw_data}}
+#'  \item AntWeb - \code{scientific_name} or \code{genus} in the \code{aw_data}
 #'  function, depending on whether binomial or single name passed - API
 #'  parameter: \code{species} for \code{scientific_name} and \code{genus} for
 #'  \code{genus}

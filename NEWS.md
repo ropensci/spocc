@@ -1,3 +1,16 @@
+spocc 0.4.4
+===============
+
+### MINOR IMPROVEMENTS
+
+* New import `data.table` for fast list to data.frame
+
+### BUG FIXES
+
+* Fix to ecoengine spatial search - internally we were not making the 
+bounding box correctly - fixed now (#158)
+
+
 spocc 0.4.0
 ===============
 

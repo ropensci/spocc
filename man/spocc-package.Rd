@@ -4,7 +4,13 @@
 \name{spocc-package}
 \alias{spocc}
 \alias{spocc-package}
-\title{R interface to many species occurrence data sources}
+\title{Interface to many species occurrence data sources}
+\description{
+A programmatic interface to many species occurrence data sources,
+including GBIF, USGS's BISON, iNaturalist, Berkeley Ecoinformatics Engine, 
+eBird, AntWeb, and iDigBio. Includes functionality for retrieving species 
+occurrence data, and combining that data.
+}
 \section{Package API}{
 
 

@@ -32,7 +32,7 @@ also \code{\link[spocc]{occ_names_options}}.}
 also \code{\link[spocc]{occ_names_options}}.}
 
 \item{ecoengineopts}{(list) List of named options to pass on to
-\code{\link[ecoengine]{ee_search}}. See also \code{\link[spocc]{occ_names_options}}.}
+\code{ee_search}. See also \code{\link[spocc]{occ_names_options}}.}
 }
 \description{
 Search for species names across many data sources.

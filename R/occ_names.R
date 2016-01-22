@@ -18,7 +18,7 @@
 #' @param bisonopts (list) List of named options to pass on to \code{\link[rbison]{bison_tax}}. See
 #' also \code{\link[spocc]{occ_names_options}}.
 #' @param ecoengineopts (list) List of named options to pass on to
-#' \code{\link[ecoengine]{ee_search}}. See also \code{\link[spocc]{occ_names_options}}.
+#' \code{ee_search}. See also \code{\link[spocc]{occ_names_options}}.
 #'
 #' @details Not all 7 data sources available from the \code{\link{occ}} function are
 #' available here, as not all of those sources have functionality to search for names.

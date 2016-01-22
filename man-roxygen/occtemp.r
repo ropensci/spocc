@@ -35,7 +35,7 @@
 #' @param ebirdopts (list) List of named options to pass on to \code{\link[rebird]{ebirdregion}}
 #' or \code{\link[rebird]{ebirdgeo}}. See also \code{\link{occ_options}}.
 #' @param ecoengineopts (list) List of named options to pass on to
-#' \code{\link[ecoengine]{ee_observations}}. See also \code{\link{occ_options}}.
+#' \code{ee_observations}. See also \code{\link{occ_options}}.
 #' @param antwebopts (list) List of named options to pass on to \code{\link[AntWeb]{aw_data}}.
 #' See also \code{\link{occ_options}}.
 #' @param vertnetopts (list) List of named options to pass on to
@@ -72,7 +72,7 @@
 #'  \code{\link[rebird]{ebirdgeo}} functions, depending on whether you set
 #'  \code{method="ebirdregion"} or \code{method="ebirdgeo"} - API parameters: \code{sci} for both
 #'  \code{\link[rebird]{ebirdregion}} and \code{\link[rebird]{ebirdgeo}}
-#'  \item ecoengine - \code{scientific_name} in the \code{\link[ecoengine]{ee_observations}}
+#'  \item ecoengine - \code{scientific_name} in the \code{ee_observations}
 #'  function - API parameter: same as \code{occ} parameter
 #'  \item rbison - \code{species} or \code{scientificName} in the \code{\link[rbison]{bison}} or
 #'  \code{\link[rbison]{bison_solr}} functions, respectively. If you don't pass anything to

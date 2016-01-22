@@ -1,4 +1,19 @@
-#' Currently supported species occurrence databases:
+#' @title R interface to many species occurrence data sources
+#' 
+#' @section Package API:
+#' 
+#' The main function to use is \code{\link{occ}} - a single interface to many species 
+#' occurrence databases (see below for a list). 
+#' 
+#' Other functions include:
+#' \itemize{
+#'  \item \code{\link{occ2df}} - Combine results from \code{occ} into a data.frame
+#'  \item \code{\link{fixnames}} - Change names to be the same for each taxon
+#'  \item \code{\link{wkt_vis}} - Visualize WKT strings (used to define geometry based
+#'  searches for some data sources) in an interactive map
+#' }
+#' 
+#' @section Currently supported species occurrence databases:
 #'
 #' \tabular{ll}{
 #' Provider \tab Web \cr
@@ -11,6 +26,20 @@
 #' VertNet \tab \url{http://vertnet.org/} \cr
 #' iDigBio \tab \url{https://www.idigbio.org/}
 #' }
+#' 
+#' @section Duplicates:
+#' 
+#' See \code{\link{spocc_duplicates}} for more.
+#' 
+#' @section Clean data:
+#' 
+#' All data cleaning functionality is in a new package: \code{scrubr} 
+#' (\url{https://github.com/ropenscilabs/scrubr})
+#' 
+#' @section Make maps:
+#' 
+#' All mapping functionality is now in a separate package: \code{mapr} 
+#' (\url{https://github.com/ropensci/mapr}) (formerly known as `spoccutils`)
 #'
 #' @importFrom jsonlite toJSON
 #' @importFrom utils browseURL head read.csv data
@@ -20,7 +49,6 @@
 #' @name spocc-package
 #' @aliases spocc
 #' @docType package
-#' @title R interface to many species occurrence data sources
 #' @author Scott Chamberlain \email{myrmecocystus@@gmail.com}
 #' @author Karthik Ram \email{karthik.ram@@gmail.com}
 #' @author Ted Hart \email{edmund.m.hart@@gmail.com}

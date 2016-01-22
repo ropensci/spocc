@@ -12,7 +12,7 @@ spocc
 
 **`spocc` = SPecies OCCurrence data**
 
-At rOpenSci, we have been writing R packages to interact with many sources of species occurrence data, including [GBIF][gbif], [iDigBio][idigbio], [OBIS][obis], [Vertnet][vertnet], [BISON][bison], [iNaturalist][inat], the [Berkeley ecoengine][ecoengine], and [AntWeb][antweb]. `spocc` is an R package to query and collect species occurrence data from many sources. The goal is to wrap functions in other R packages to make a seamless experience across data sources for the user.
+At rOpenSci, we have been writing R packages to interact with many sources of species occurrence data, including [GBIF][gbif], [iDigBio][idigbio], [Vertnet][vertnet], [BISON][bison], [iNaturalist][inat], the [Berkeley ecoengine][ecoengine], and [AntWeb][antweb]. `spocc` is an R package to query and collect species occurrence data from many sources. The goal is to wrap functions in other R packages to make a seamless experience across data sources for the user.
 
 The inspiration for this comes from users requesting a more seamless experience across data sources, and from our work on a similar package for taxonomy data ([taxize][taxize]).
 
@@ -52,7 +52,7 @@ Get data from GBIF
 ```r
 (out <- occ(query = 'Accipiter striatus', from = 'gbif', limit = 100))
 #> Searched: gbif
-#> Occurrences - Found: 528,945, Returned: 100
+#> Occurrences - Found: 529,026, Returned: 100
 #> Search type: Scientific
 #>   gbif: Accipiter striatus (100)
 ```
@@ -64,12 +64,12 @@ out$gbif # just gbif data
 #> First 10 rows of [Accipiter_striatus]
 #> 
 #>                  name  longitude latitude prov
-#> 1  Accipiter striatus  -97.64102 30.55880 gbif
-#> 2  Accipiter striatus -104.83266 21.47117 gbif
-#> 3  Accipiter striatus    0.00000  0.00000 gbif
-#> 4  Accipiter striatus  -71.06930 42.34816 gbif
-#> 5  Accipiter striatus  -97.25801 32.89462 gbif
-#> 6  Accipiter striatus  -72.54554 41.22175 gbif
+#> 1  Accipiter striatus  -73.23131 44.28476 gbif
+#> 2  Accipiter striatus -135.32684 57.05398 gbif
+#> 3  Accipiter striatus -116.67145 32.94147 gbif
+#> 4  Accipiter striatus  -95.50117 29.76086 gbif
+#> 5  Accipiter striatus  -75.65139 45.44557 gbif
+#> 6  Accipiter striatus -103.01232 36.38905 gbif
 ...
 ```
 
@@ -81,16 +81,16 @@ Get fine-grained detail over each data source by passing on parameters to the pa
 ```r
 out <- occ(query = 'Setophaga caerulescens', from = 'ebird', ebirdopts = list(region = 'US'))
 out$ebird # just ebird data
-#> Species [Setophaga caerulescens (21)] 
+#> Species [Setophaga caerulescens (22)] 
 #> First 10 rows of [Setophaga_caerulescens]
 #> 
 #>                      name longitude latitude  prov               obsDt
-#> 1  Setophaga caerulescens -80.31008 25.73942 ebird 2015-12-07 10:51:00
-#> 2  Setophaga caerulescens -80.23916 26.11568 ebird 2015-12-06 10:45:00
-#> 3  Setophaga caerulescens -80.43430 25.65986 ebird 2015-12-04 14:05:00
-#> 4  Setophaga caerulescens -80.31012 25.60561 ebird 2015-12-04 12:55:00
-#> 5  Setophaga caerulescens -80.16164 25.90072 ebird 2015-12-04 11:00:00
-#> 6  Setophaga caerulescens -80.21689 26.49281 ebird 2015-12-02 07:30:00
+#> 1  Setophaga caerulescens -80.12837 26.95568 ebird 2016-01-21 14:30:00
+#> 2  Setophaga caerulescens -80.85031 25.21461 ebird 2016-01-21 14:05:00
+#> 3  Setophaga caerulescens -80.40980 25.99068 ebird 2016-01-21 06:48:00
+#> 4  Setophaga caerulescens -80.21406 26.27687 ebird 2016-01-20 09:30:00
+#> 5  Setophaga caerulescens -80.41000 25.12806 ebird 2016-01-20 08:45:00
+#> 6  Setophaga caerulescens -81.78261 24.55572 ebird 2016-01-20 08:30:00
 ...
 ```
 
@@ -118,24 +118,28 @@ head(occ2df(out)); tail(occ2df(out))
 #> 5 1147045067
 #> 6 1211969844
 #>                       name longitude latitude  prov                date
-#> 116 Setophaga caerulescens -80.28651 25.69103 ebird 2015-11-27 11:25:00
-#> 117 Setophaga caerulescens -81.91432 26.60963 ebird 2015-11-27 11:07:00
-#> 118 Setophaga caerulescens -80.40980 25.99068 ebird 2015-11-27 07:20:00
-#> 119 Setophaga caerulescens -80.35457 25.65022 ebird 2015-11-27 07:00:00
-#> 120 Setophaga caerulescens -80.25908 26.33311 ebird 2015-11-26 08:00:00
-#> 121 Setophaga caerulescens -80.23563 27.19440 ebird 2015-11-24 06:30:00
+#> 167 Setophaga caerulescens -71.21852 42.28859 ebird 2016-01-14 14:00:00
+#> 168 Setophaga caerulescens -80.44960 25.55820 ebird 2016-01-13 07:55:00
+#> 169 Setophaga caerulescens -80.34988 27.16120 ebird 2016-01-12 16:00:00
+#> 170 Setophaga caerulescens -80.43668 25.66582 ebird 2016-01-12 11:30:00
+#> 171 Setophaga caerulescens -80.27130 25.67640 ebird 2016-01-10 10:33:00
+#> 172 Setophaga caerulescens -80.11240 26.07110 ebird 2016-01-09 09:00:00
 #>          key
-#> 116 L3274775
-#> 117  L490572
-#> 118 L1874513
-#> 119 L1795249
-#> 120 L2429004
-#> 121 L1792300
+#> 167 L4119294
+#> 168  L127428
+#> 169 L2624377
+#> 170 L4063054
+#> 171  L127426
+#> 172  L127419
 ```
+
+## Clean data
+
+All data cleaning functionality is in a new package [scrubr](https://github.com/ropenscilabs/scrubr) - not yet on CRAN.
 
 ## Make maps
 
-All mapping functionality is now in a separate package [spoccutils](https://github.com/ropensci/spoccutils), to make `spocc` easier to maintain.
+All mapping functionality is now in a separate package [mapr](https://github.com/ropensci/mapr) (formerly known as `spoccutils`), to make `spocc` easier to maintain.
 
 ## Meta
 
@@ -154,4 +158,3 @@ All mapping functionality is now in a separate package [spoccutils](https://gith
 [ecoengine]: https://github.com/ropensci/ecoengine
 [antweb]: http://antweb.org/
 [idigbio]: https://www.idigbio.org/
-[obis]: http://www.iobis.org/

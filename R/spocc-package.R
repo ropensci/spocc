@@ -47,7 +47,7 @@
 #' (\url{https://github.com/ropensci/mapr}) (formerly known as `spoccutils`)
 #'
 #' @importFrom jsonlite toJSON
-#' @importFrom utils browseURL head read.csv data
+#' @importFrom utils browseURL head read.csv data setTxtProgressBar txtProgressBar
 #' @importFrom methods is as
 #' @importFrom stats setNames
 #' @importFrom data.table rbindlist

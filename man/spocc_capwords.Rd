@@ -19,8 +19,8 @@ Capitalize the first letter of a character string.
 }
 \examples{
  \dontrun{
-capwords(c('using AIC for model selection'))
-capwords(c('using AIC for model selection'), strict=TRUE)
+spocc_capwords(c('using AIC for model selection'))
+spocc_capwords(c('using AIC for model selection'), strict=TRUE)
 }
 }
 \keyword{internal}

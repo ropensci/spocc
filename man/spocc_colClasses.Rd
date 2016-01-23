@@ -19,7 +19,7 @@ Coerces data.frame columns to the specified classes
  \dontrun{
 dat <- data.frame(xvar = seq(1:10), yvar = rep(c('a','b'),5)) # make a data.frame
 str(dat)
-str(colClasses(dat, c('factor','factor')))
+str(spocc_colClasses(dat, c('factor','factor')))
 }
 }
 \keyword{internal}

@@ -5,8 +5,8 @@
 #' @param onlyfirst Capitalize only first word, lowercase all others. Useful for
 #' taxonomic names.
 #' @examples  \dontrun{
-#' capwords(c('using AIC for model selection'))
-#' capwords(c('using AIC for model selection'), strict=TRUE)
+#' spocc_capwords(c('using AIC for model selection'))
+#' spocc_capwords(c('using AIC for model selection'), strict=TRUE)
 #' }
 #' @export
 #' @keywords internal
@@ -32,7 +32,7 @@ spocc_capwords <- function(s, strict = FALSE, onlyfirst = FALSE) {
 #' @examples  \dontrun{
 #' dat <- data.frame(xvar = seq(1:10), yvar = rep(c('a','b'),5)) # make a data.frame
 #' str(dat)
-#' str(colClasses(dat, c('factor','factor')))
+#' str(spocc_colClasses(dat, c('factor','factor')))
 #' }
 #' @export
 #' @keywords internal

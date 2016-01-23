@@ -87,9 +87,11 @@ catif <- function(z, ...){
 #' @export
 #' @rdname spocc_objects
 print.occdatind <- function(x, ..., n = 10){
-  cat( spocc_wrap(sprintf("%s [%s]", 
-                          switch(x$meta$type, sci = "Species", geometry = "Geometry"), 
-                          pastemax(x$data, x$meta$type))), '\n')
+  if (!is.null(x$meta$type)) {
+    cat( spocc_wrap(sprintf("%s [%s]", 
+                            switch(x$meta$type, sci = "Species", geometry = "Geometry"), 
+                            pastemax(x$data, x$meta$type))), '\n')
+  }
   occinddf(x, n = n)
 }
 

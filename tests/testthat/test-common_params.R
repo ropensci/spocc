@@ -26,18 +26,3 @@ test_that("geometry", {
   
   expect_less_than(geom_2$gbif$meta$found, geom_1$gbif$meta$found)  
 })
-
-test_that("has_coords", {
-  skip_on_cran()
-  
-  hc_1 <- occ(query = 'Accipiter', from = 'gbif', limit = 5, has_coords = TRUE)
-  hc_2 <- occ(query = 'Accipiter striatus', from = 'gbif', limit = 5, has_coords = FALSE)
-  
-  expect_is(hc_1, "occdat")
-  expect_is(hc_2, "occdat")
-  
-  expect_true(hc_1$gbif$meta$opts$hasCoordinate)
-  expect_false(hc_2$gbif$meta$opts$hasCoordinate)
-  
-  expect_less_than(hc_2$gbif$meta$found, hc_1$gbif$meta$found)
-})

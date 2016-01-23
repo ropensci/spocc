@@ -25,7 +25,7 @@ test_that("taxize based searches works with > 1 get_ids input", {
 	expect_is(bb$bison, "occdatind")
 	expect_equal(length(bb$gbif$data), 2)
 	expect_equal(length(bb$bison$data), 2)
-	expect_equal(length(aa$vertnet$data), 0)
+	expect_equal(length(bb$vertnet$data), 0)
 	expect_named(bb$gbif$data, c("1448237", "5285750"))
 	expect_named(bb$bison$data, c("129313", "183327"))
 })

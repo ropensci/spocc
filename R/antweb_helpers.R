@@ -50,7 +50,8 @@ aw_data <- function(genus = NULL, species = NULL, scientific_name = NULL,
       df <- data.frame(t(unlist(x)), stringsAsFactors=FALSE)
       df
     })
-    final_df <- data.frame(rbindlist(data_df, use.names = TRUE, fill = TRUE))
+    final_df <- rbindlist(data_df, use.names = TRUE, fill = TRUE)
+    setDF(final_df)
     names(final_df)[grep("geojson.coord1", names(final_df))] <- "decimal_latitude"
     names(final_df)[grep("geojson.coord2", names(final_df))] <- "decimal_longitude"
     # There seem to be extra field when searching for just a genus

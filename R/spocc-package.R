@@ -50,7 +50,7 @@
 #' @importFrom utils browseURL head read.csv data setTxtProgressBar txtProgressBar
 #' @importFrom methods is as
 #' @importFrom stats setNames
-#' @importFrom data.table rbindlist
+#' @importFrom data.table rbindlist setDF
 #' @name spocc-package
 #' @aliases spocc
 #' @docType package

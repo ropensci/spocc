@@ -46,7 +46,10 @@ ee_observations2 <- function(page = NULL, page_size = 1000, country = "United St
       if (!is.null(ll)) ll <- setNames(ll, c('longitude', 'latitude'))
       c(ll, z$properties)
     })
-    results[[i]] <- data.frame(rbindlist(obs_results, use.names = TRUE, fill = TRUE), stringsAsFactors = FALSE)
+    xx <- rbindlist(obs_results, use.names = TRUE, fill = TRUE)
+    setDF(xx)
+    results[[i]] <- xx
+    #results[[i]] <- data.frame(rbindlist(obs_results, use.names = TRUE, fill = TRUE), stringsAsFactors = FALSE)
     if (progress) setTxtProgressBar(pb, i)
   }
   obs_data_all <- do.call(rbind, results)

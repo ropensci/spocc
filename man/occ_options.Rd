@@ -41,6 +41,7 @@ occ_options('antweb')
 occ_options('ebird')
 occ_options('bison')
 occ_options('idigbio')
+occ_options('vertnet')
 
 # Or open in html version
 occ_options('bison', 'html')

@@ -136,7 +136,7 @@ foo_antweb <- function(sources, query, limit, start, geometry, has_coords, callo
     
     if (!'limit' %in% names(opts)) opts$limit <- limit
     if (!'offset' %in% names(opts)) opts$offset <- start
-    out <- tryCatch(do.call(aw_data, opts), error = function(e) e)
+    out <- tryCatch(do.call(aw_data2, opts), error = function(e) e)
     
     if (is.null(out) || is(out, "simpleError")) {
       warning(sprintf("No records found in AntWeb for %s", query), call. = FALSE)

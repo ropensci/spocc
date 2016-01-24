@@ -25,6 +25,7 @@
 #' occ_options('ebird')
 #' occ_options('bison')
 #' occ_options('idigbio')
+#' occ_options('vertnet')
 #'
 #' # Or open in html version
 #' occ_options('bison', 'html')
@@ -32,11 +33,15 @@
 
 occ_options <- function(from = 'gbif', where="console"){
   from <- tolower(from)
-  from <- match.arg(from, choices = c('gbif', 'bison', 'ebird', 'ecoengine', 'antweb', 'idigbio'))
+  from <- match.arg(from, choices = c('gbif', 'bison', 'ebird', 'ecoengine', 
+                                      'antweb', 'idigbio', 'vertnet'))
   pkgname <- switch(from, gbif = 'rgbif', bison = 'rbison', ebird = 'rebird', 
-                    ecoengine = 'ecoengine', antweb = 'AntWeb', idigbio = 'ridigbio')
+                    ecoengine = 'ecoengine', antweb = 'AntWeb', idigbio = 'ridigbio',
+                    vertnet = 'rvertnet')
+  check_for_package(pkgname)
   fxn <- switch(from, gbif = 'occ_search', bison = 'bison', ebird = 'ebirdregion', 
-                ecoengine = 'ee_observations', antweb = 'aw_data', idigbio = 'idig_search_records')
+                ecoengine = 'ee_observations', antweb = 'aw_data', idigbio = 'idig_search_records',
+                vertnet = 'vertsearch')
   if (where == "console") {
     res <- tools::Rd_db(pkgname)
     fxnrd <- res[[sprintf('%s.Rd', fxn)]]
@@ -52,7 +57,8 @@ occ_options <- function(from = 'gbif', where="console"){
                      ebird = "?rebird::ebirdregion",
                      ecoengine = "?ecoengine::ee_observations",
                      antweb = "?AntWeb::aw_data",
-                     idigbio = "?ridigbio::idig_search_records")
+                     idigbio = "?ridigbio::idig_search_records",
+                     vertnet = "?rvertnet::vertsearch")
     eval(parse(text = showit))
   }
 }

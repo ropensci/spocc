@@ -115,7 +115,7 @@
 #'
 #' ## Geometry only with WKT
 #' wkt <- 'POLYGON((-98.9 44.2,-89.1 36.6,-116.7 37.5,-102.5 39.6,-98.9 44.2))'
-#' occ(from = "gbif", geometry = bounds, limit = 10)
+#' occ(from = "gbif", geometry = wkt, limit = 10)
 #'
 #' # Specify many data sources, another example
 #' ebirdopts = list(region = 'US'); gbifopts  =  list(country = 'US')

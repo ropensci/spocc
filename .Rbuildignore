@@ -15,5 +15,4 @@ cran-comments.md
 appveyor.yml
 README.Rmd
 ^\.httr-oauth$
-NEWS.md
 ^CONDUCT\.md$

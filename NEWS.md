@@ -1,3 +1,21 @@
+spocc 0.4.5
+===============
+
+### MINOR IMPROVEMENTS
+
+* Using `data.table::setDF()` instead of `data.frame()` to set a `data.table` 
+style table to a `data.frame`
+* Added many more tests to make it less likely errors will occur
+* Added `vertnet` as an option to `occ_options()` to get the options for passing
+to `vertopts` in `occ()`
+
+### BUG FIXES
+
+* Fix to `print.occdatind()` - which in last version introduced a bug in this
+print method - wasn't fatal as only applied to empty slots in the output 
+of a call to `occ()`, but nonetheless, not good (#159)
+
+
 spocc 0.4.4
 ===============
 

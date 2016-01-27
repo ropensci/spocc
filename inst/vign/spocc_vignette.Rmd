@@ -121,6 +121,10 @@ df_comb <- occ2df(df)
 head(df_comb); tail(df_comb)
 ```
 
-### Visualization routines
+### Clean data
 
-All mapping functionality is now in a separate package [spoccutils](https://github.com/ropensci/spoccutils), to make `spocc` easier to maintain.
+All data cleaning functionality is in a new package [scrubr](https://github.com/ropenscilabs/scrubr) - not yet on CRAN.
+
+### Make maps
+
+All mapping functionality is now in a separate package [mapr](https://github.com/ropensci/mapr) (formerly known as `spoccutils`), to make `spocc` easier to maintain.

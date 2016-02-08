@@ -65,5 +65,5 @@ make_antweb <- function(y, ...){
 get_antweb <- function(z) {
   res <- GET(sprintf('http://antweb.org/api/v2/?occurrenceId=CAS:ANTWEB:%s', z))
   stop_for_status(res)
-  content(res)
+  jsonlite::fromJSON(content(res, "text", encoding = "UTF-8"))
 }

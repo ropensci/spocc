@@ -66,5 +66,5 @@ make_ecoengine <- function(y, ...){
 get_ecoengine <- function(z) {
   res <- GET(sprintf('https://ecoengine.berkeley.edu/api/observations/%s/?format=json', z))
   stop_for_status(res)
-  content(res)
+  jsonlite::fromJSON(content(res, "text", encoding = "UTF-8"))
 }

@@ -85,7 +85,7 @@ spocc_inat_obs <- function(query=NULL, taxon = NULL, quality=NULL, geo=TRUE, yea
 }
 
 spocc_inat_handle <- function(x){
-  res <- content(x, as = "text")
+  res <- content(x, as = "text", encoding = "UTF-8")
   if (!x$headers$`content-type` == 'text/csv; charset=utf-8' || x$status_code > 202 || nchar(res) == 0 ) {
     if (!x$headers$`content-type` == 'text/csv; charset=utf-8') {
       warning("Conent type incorrect, should be 'text/csv; charset=utf-8'")
@@ -108,7 +108,7 @@ spocc_get_inat_obs_id <- function(id, ...) {
   q_path <- paste("observations/", as.character(id), ".json", sep = "")
   res <- GET(inat_base_url(), path = q_path, ...)
   stop_for_status(res)
-  tt <- content(res, as = "text")
+  tt <- content(res, as = "text", encoding = "UTF-8")
   jsonlite::fromJSON(tt)
 }
 

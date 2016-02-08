@@ -25,7 +25,7 @@ aw_data2 <- function(genus = NULL, species = NULL, scientific_name = NULL,
                        offset = offset, georeferenced = georeferenced)))
   results <- GET(base_url, query = args, callopts)
   warn_for_status(results)
-  data <- jsonlite::fromJSON(content(results, "text"), FALSE)
+  data <- jsonlite::fromJSON(content(results, "text", encoding = "UTF-8"), FALSE)
   data <- sc(data) # Remove NULL
   
   if(data$count > 1000 & is.null(limit)) {
@@ -37,7 +37,7 @@ aw_data2 <- function(genus = NULL, species = NULL, scientific_name = NULL,
     results <- GET(base_url, query = args)
   }
   
-  data <- jsonlite::fromJSON(content(results, "text"), FALSE)
+  data <- jsonlite::fromJSON(content(results, "text", encoding = "UTF-8"), FALSE)
   data <- sc(data)
   
   if (identical(data$specimens$empty_set, "No records found.")) {

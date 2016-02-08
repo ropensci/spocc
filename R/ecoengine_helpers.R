@@ -26,7 +26,7 @@ ee_observations2 <- function(page = NULL, page_size = 1000, country = "United St
   data_sources <- GET(obs_url, query = args, foptions)
   stopifnot(data_sources$status_code < 400)
   warn_for_status(data_sources)
-  obs_data <- content(data_sources, type = "application/json")
+  obs_data <- content(data_sources, type = "application/json", encoding = "UTF-8")
   stopifnot(obs_data$count > 0)
   required_pages <- eee_paginator(page, obs_data$count, page_size = page_size)
   all_the_pages <- ceiling(obs_data$count/page_size)
@@ -39,7 +39,7 @@ ee_observations2 <- function(page = NULL, page_size = 1000, country = "United St
   for (i in required_pages) {
     args$page <- i
     data_sources <- GET(obs_url, query = args, foptions)
-    obs_data <- content(data_sources, type = "application/json")
+    obs_data <- content(data_sources, type = "application/json", encoding = "UTF-8")
     obs_results <- lapply(obs_data$features, function(z) {
       z$properties[vapply(z$properties, is.null, logical(1))] <- NULL
       ll <- z$geometry$coordinates
@@ -69,7 +69,7 @@ ee_observations2 <- function(page = NULL, page_size = 1000, country = "United St
 eee_search <- function(query = NULL, foptions = list()) {
   search_url <- paste0(eee_base_url(), "search/?format=json")
   result <- GET(search_url, query = as.list(sc(c(q = query))), foptions)
-  es_results <- content(result, type = "application/json")
+  es_results <- content(result, type = "application/json", encoding = "UTF-8")
   fields_compacted <- Filter(function(i) length(i) > 0, es_results$fields)
   df <- do.call(rbind, Map(function(a, b) {
     tt <- data.frame(type = b, do.call(rbind.data.frame, a), stringsAsFactors = FALSE)

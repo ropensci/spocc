@@ -79,3 +79,36 @@ test_that("occ works for each data source", {
     expect_equal(unique(temp_df8$prov), "antweb")
   }
 })
+
+
+test_that("occ fails well", {
+  skip_on_cran()
+  
+  # expect class character
+  expect_error(occ(mtcars, from = 'gbif', limit = 30), 
+               "'query' param. must be of class character")
+  expect_error(occ(list(4, 5), from = 'gbif', limit = 30), 
+               "'query' param. must be of class character")
+  expect_error(occ(45454545, from = 'gbif', limit = 30), 
+               "'query' param. must be of class character")
+  
+  # expect range of from values
+  expect_error(occ("Helianthus", from = 'tree'), 
+               "'arg' should be one of")
+  
+  # expect integer limit, start and page values
+  expect_error(occ("Helianthus", from = 'gbif', limit = "ASdfadsf"), 
+               "'limit' must be an integer")
+  expect_error(occ("Helianthus", from = 'gbif', start = "ASdfadsf"), 
+               "'start' must be an integer")
+  expect_error(occ("Helianthus", from = 'gbif', page = "ASdfadsf"), 
+               "'page' must be an integer")
+  
+  # expect boolean has_coords value
+  expect_error(occ("Helianthus", from = 'gbif', has_coords = 'asfasf'), 
+               "'has_coords' must be logical")
+  expect_error(occ("Helianthus", from = 'gbif', has_coords = 5), 
+               "'has_coords' must be logical")
+  expect_error(occ("Helianthus", from = 'gbif', has_coords = mtcars), 
+               "'has_coords' must be logical")
+})

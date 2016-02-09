@@ -20,6 +20,21 @@ occ <- function(query = NULL, from = "gbif", limit = 500, start = NULL, page = N
 
   type <- "sci"
 
+  # if query not NULL, has to be character
+  if (!is.null(query)) {
+    if (!is(query, "character")) {
+      stop("'query' param. must be of class character", call. = FALSE)
+    }
+  }
+  
+  # limit, start, and page must be an integer
+  if (!is_numeric(limit)) stop("'limit' must be an integer", call. = FALSE)
+  if (!is_numeric(start)) stop("'start' must be an integer", call. = FALSE)
+  if (!is_numeric(page)) stop("'page' must be an integer", call. = FALSE)
+  
+  # has_coords must be a boolean
+  if (!is(has_coords, "logical")) stop("'has_coords' must be logical (TRUE/FALSE)", call. = FALSE)
+  
   if (!is.null(geometry)) {
     if (class(geometry) %in% c('SpatialPolygons', 'SpatialPolygonsDataFrame')) {
       geometry <- as.list(handle_sp(geometry))

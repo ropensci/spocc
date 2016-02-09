@@ -86,3 +86,20 @@ check_for_package <- function(x) {
     invisible(TRUE)
   }
 }
+
+check_integer <- function(x) {
+  !grepl("[^[:digit:]]", format(x,  digits = 20, scientific = FALSE))
+}
+
+is_numeric <- function(x) {
+  if (!is.null(x)) {
+    tt <- tryCatch(as.numeric(x), error = function(e) e, warning = function(w) w)
+    if (is(tt, 'warning') || is(tt, 'error') || typeof(x) == "list") {
+      FALSE 
+    } else {
+      check_integer(x)
+    }
+  } else {
+    TRUE
+  }
+}

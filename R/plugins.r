@@ -269,7 +269,7 @@ foo_ebird <- function(sources, query, limit, callopts, opts) {
     } else {
       out <- tryCatch(do.call(ebirdgeo, opts[!names(opts) %in% "method"]), error = function(e) e)
     }
-    if (!is.data.frame(out) || is(out, "simpleError")) {
+    if (!is.data.frame(out) || is(out, "simpleError") || NROW(out) == 0) {
       warning(sprintf("No records found in eBird for %s", query), call. = FALSE)
       list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
     } else{

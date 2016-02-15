@@ -103,3 +103,11 @@ is_numeric <- function(x) {
     TRUE
   }
 }
+
+is_logical <- function(x) {
+  if (!is.null(x)) {
+    inherits(x, 'logical')
+  } else {
+    TRUE
+  }
+}

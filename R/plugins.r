@@ -24,7 +24,7 @@ foo_gbif <- function(sources, query, limit, start, geometry, has_coords, callopt
       query_use <- NULL
     }
     
-    if (is.null(query_use) && is.null(geometry)) {
+    if (is.null(query_use) && is.null(geometry) && length(opts) == 0) {
       warning(sprintf("No records found in GBIF for %s", query), call. = FALSE)
       emptylist(opts)
     } else {
@@ -47,7 +47,11 @@ foo_gbif <- function(sources, query, limit, start, geometry, has_coords, callopt
       } else {
         if (class(out) == "character") { emptylist(opts) } else {
           if (class(out$data) == "character") { emptylist(opts) } else {
-            dat <- out$data
+            if (length(out) > 1 && !all(c('meta', 'data') %in% names(out))) {
+              dat <- setDF(rbindlist(lapply(out, "[[", "data"), fill = TRUE, use.names = TRUE))
+            } else {
+              dat <- out$data
+            }
             dat$prov <- rep("gbif", nrow(dat))
             dat$name <- as.character(dat$name)
             cols <- c('name', 'decimalLongitude', 'decimalLatitude', 'issues', 'prov')

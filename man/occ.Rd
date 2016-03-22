@@ -390,6 +390,13 @@ spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Spinus tristis')
 df <- occ2df(out)
 head(df)
 
+# no query, geometry, or ids passed
+## many dataset keys to gbif
+dsets <- c("14f3151a-e95d-493c-a40d-d9938ef62954", "f934f8e2-32ca-46a7-b2f8-b032a4740454")
+occ(limit = 20, from = "gbif", gbifopts = list(datasetKey = dsets))
+## class name to idigbio
+occ(limit = 20, from = "idigbio", idigbioopts = list(rq = list(class = 'arachnida')))
+
 # taxize integration
 ## You can pass in taxonomic identifiers
 library("taxize")

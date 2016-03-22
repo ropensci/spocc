@@ -88,8 +88,8 @@ occ <- function(query = NULL, from = "gbif", limit = 500, start = NULL, page = N
   }
 
   # check that one of query or ids is non-NULL
-  if (!any(!is.null(query), !is.null(ids), !is.null(geometry)))
-    stop("One of query, ids, or geometry parameters must be non-NULL")
+  # if (!any(!is.null(query), !is.null(ids), !is.null(geometry)))
+  #   stop("One of query, ids, or geometry parameters must be non-NULL")
 
   if (is.null(ids) && !is.null(query)) {
     # If query not null (taxonomic names passed in)
@@ -129,10 +129,10 @@ occ <- function(query = NULL, from = "gbif", limit = 500, start = NULL, page = N
         tmp[[i]] <- collsinglefrom
       }
     } else {
-      tmp <- lapply(query, loopfun, y = limit, s = start, p = page, 
+      tmp <- lapply(query, loopfun, y = limit, s = start, p = page,
                     z = geometry, hc = has_coords, w = callopts)
     }
-  } else if (is.null(query) && is.null(geometry)) {
+  } else if (is.null(query) && is.null(geometry) && !is.null(ids)) {
     unlistids <- function(x) {
       if (length(x) == 1) {
         if (is.null(names(x))) {
@@ -161,6 +161,9 @@ occ <- function(query = NULL, from = "gbif", limit = 500, start = NULL, page = N
     # so don't pass anything on to ecoengine, inat, or ebird
     tmp <- lapply(ids, loopids, y = limit, s = start, p = page, 
                   z = geometry, hc = has_coords, w = callopts)
+  } else if (is.null(query) && is.null(geometry) && is.null(ids)) {
+    tmp <- list(loopfun(x = query, y = limit, s = start, p = page,
+                  z = geometry, hc = has_coords, w = callopts))
   } else {
     type <- 'geometry'
     if (is.numeric(geometry) || is.character(geometry)) {
@@ -184,7 +187,7 @@ occ <- function(query = NULL, from = "gbif", limit = 500, start = NULL, page = N
       names(tt) <- gsub("\\s", "_", query)
       optstmp <- tmp[[1]][[srce]]$opts
       optstmp$scientificName <- unique(names(tt))
-    } else if (is.null(query) && is.null(geometry)) { # neither query or geometry
+    } else if (is.null(query) && is.null(geometry) && !is.null(ids)) { # neither query or geometry
       names(tt) <- sapply(tmp, function(x) unclass(x[[srce]]$opts[[1]]))
       tt <- tt[!vapply(tt, nrow, 1) == 0]
       opts <- sc(lapply(tmp, function(x) x[[srce]]$opts))
@@ -203,17 +206,17 @@ occ <- function(query = NULL, from = "gbif", limit = 500, start = NULL, page = N
         }, USE.NAMES = FALSE)
       }
       optstmp <- simplist(optstmp)
+    } else if (is.null(query) && is.null(geometry) && is.null(ids)) { # nothing passed except opts
+      names(tt) <- rep("custom_query", length(tt))
+      optstmp <- tmp[[1]][[srce]]$opts
     }
 
     if (any(grepl(srce, sources))) {
       ggg <- list(meta = list(
         source = srce, 
         time = time_null(pluck(tmp, c(srce, "time"))),
-        # tmp[[1]][[srce]]$time
         found = sum(unlist(pluck(tmp, c(srce, "found")))),
-        # tmp[[1]][[srce]]$found, 
         returned = sum(sapply(pluck(tmp, c(srce, "data")), NROW)),
-        # nrow(tmp[[1]][[srce]]$data),
         type = type, 
         opts = optstmp), 
         data = tt)
@@ -224,6 +227,7 @@ occ <- function(query = NULL, from = "gbif", limit = 500, start = NULL, page = N
       structure(ggg, class = "occdatind")
     }
   }
+  
   gbif_sp <- getsplist("gbif", gbifopts)
   bison_sp <- getsplist("bison", bisonopts)
   inat_sp <- getsplist("inat", inatopts)

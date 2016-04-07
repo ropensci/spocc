@@ -301,6 +301,13 @@ occ(query = "Acer", from = "idigbio", idigbioopts = list(offset = 5, limit  = 3)
 ## geo search
 bounds <- c(-120, 40, -100, 45)
 occ(from = "idigbio", geometry = bounds, limit = 10)
+## just class arachnida, spiders
+occ(idigbioopts = list(rq = list(class = 'arachnida')), from = "idigbio", limit = 10)
+## search certain recordsets
+sets <- c("1ffce054-8e3e-4209-9ff4-c26fa6c24c2f",
+    "8dc14464-57b3-423e-8cb0-950ab8f36b6f", 
+    "26f7cbde-fbcb-4500-80a9-a99daa0ead9d")
+occ(idigbioopts = list(rq = list(recordset = sets)), from = "idigbio", limit = 10)
 
 # You can pass on limit param to all sources even though its a different param in that source
 ## ecoengine example

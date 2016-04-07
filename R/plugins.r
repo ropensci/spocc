@@ -364,6 +364,8 @@ foo_idigbio <- function(sources, query, limit, start, geometry, has_coords, call
     if (!'offset' %in% names(opts)) opts$offset <- start
     opts$fields <- "all"
     
+    opts$config <- callopts
+    
     out <- tryCatch(do.call(idig_search_records, opts), error = function(e) e)
     if (is(out, "simpleError")) {
       warning(sprintf("No records found in iDigBio for %s", query))

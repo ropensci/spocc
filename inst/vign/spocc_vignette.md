@@ -96,9 +96,9 @@ df$gbif
 #> 
 #>                  name  longitude latitude  prov              issues
 #>                 <chr>      <dbl>    <dbl> <chr>               <chr>
-#> 1  Accipiter striatus  -98.24809 26.10815  gbif      cdround,gass84
-#> 2  Accipiter striatus  -72.48018 43.72704  gbif      cdround,gass84
-#> 3  Accipiter striatus  -97.21962 32.88749  gbif      cdround,gass84
+#> 1  Accipiter striatus  -97.21962 32.88749  gbif      cdround,gass84
+#> 2  Accipiter striatus  -98.24809 26.10815  gbif      cdround,gass84
+#> 3  Accipiter striatus  -72.48018 43.72704  gbif      cdround,gass84
 #> 4  Accipiter striatus  -95.50117 29.76086  gbif      cdround,gass84
 #> 5  Accipiter striatus -116.67145 32.94147  gbif      cdround,gass84
 #> 6  Accipiter striatus -123.44703 48.54571  gbif      cdround,gass84
@@ -115,7 +115,7 @@ df$gbif
 #>   phylum <chr>, order <chr>, family <chr>, genus <chr>, species <chr>,
 #>   genericName <chr>, specificEpithet <chr>, taxonRank <chr>,
 #>   dateIdentified <chr>, coordinateAccuracy <dbl>, year <int>, month <int>,
-#>   day <int>, eventDate <time>, modified <chr>, lastInterpreted <chr>,
+#>   day <int>, eventDate <date>, modified <chr>, lastInterpreted <chr>,
 #>   references <chr>, identifiers <chr>, facts <chr>, relations <chr>,
 #>   coordinateAccuracyInMeters <dbl>, geodeticDatum <chr>, class <chr>,
 #>   countryCode <chr>, country <chr>, rightsHolder <chr>, identifier <chr>,
@@ -123,10 +123,10 @@ df$gbif
 #>   gbifID <chr>, verbatimLocality <chr>, collectionCode <chr>, occurrenceID
 #>   <chr>, taxonID <chr>, license <chr>, recordedBy <chr>, catalogNumber
 #>   <chr>, http...unknown.org.occurrenceDetails <chr>, institutionCode
-#>   <chr>, rights <chr>, eventTime <chr>, identificationID <chr>,
-#>   occurrenceRemarks <chr>, sex <chr>, establishmentMeans <chr>, continent
-#>   <chr>, stateProvince <chr>, institutionID <chr>, county <chr>, language
-#>   <chr>, type <chr>, preparations <chr>, occurrenceStatus <chr>,
+#>   <chr>, rights <chr>, occurrenceRemarks <chr>, identificationID <chr>,
+#>   eventTime <chr>, sex <chr>, establishmentMeans <chr>, continent <chr>,
+#>   stateProvince <chr>, institutionID <chr>, county <chr>, language <chr>,
+#>   type <chr>, preparations <chr>, occurrenceStatus <chr>,
 #>   nomenclaturalCode <chr>, higherGeography <chr>, endDayOfYear <chr>,
 #>   locality <chr>, disposition <chr>, otherCatalogNumbers <chr>,
 #>   startDayOfYear <chr>, accessRights <chr>, higherClassification <chr>,
@@ -172,7 +172,7 @@ df$gbif$data$Accipiter_striatus
 #>   phylum <chr>, order <chr>, family <chr>, genus <chr>, species <chr>,
 #>   genericName <chr>, specificEpithet <chr>, taxonRank <chr>,
 #>   dateIdentified <chr>, coordinateAccuracy <dbl>, year <int>, month <int>,
-#>   day <int>, eventDate <time>, modified <chr>, lastInterpreted <chr>,
+#>   day <int>, eventDate <date>, modified <chr>, lastInterpreted <chr>,
 #>   references <chr>, identifiers <chr>, facts <chr>, relations <chr>,
 #>   coordinateAccuracyInMeters <dbl>, geodeticDatum <chr>, class <chr>,
 #>   countryCode <chr>, country <chr>, rightsHolder <chr>, identifier <chr>,
@@ -193,16 +193,16 @@ df$ecoengine$data$Accipiter_striatus
 #> 
 #>    longitude latitude
 #>        <dbl>    <dbl>
-#> 1  -122.5593  38.0921
-#> 2  -122.6840  37.9101
-#> 3  -122.0499  37.4719
-#> 4  -122.1538  37.8616
-#> 5         NA       NA
-#> 6  -122.6870  37.9062
-#> 7  -122.0583  37.7154
-#> 8         NA       NA
-#> 9         NA       NA
-#> 10 -121.9768  37.8168
+#> 1  -122.1706  37.4289
+#> 2  -122.2238  37.4698
+#> 3  -122.2238  37.4698
+#> 4  -122.2238  37.4698
+#> 5  -122.2238  37.4698
+#> 6  -122.2238  37.4698
+#> 7  -122.2238  37.4698
+#> 8  -122.2238  37.4698
+#> 9  -122.2238  37.4698
+#> 10 -122.2576  37.4286
 #> ..       ...      ...
 #> Variables not shown: url <chr>, key <chr>, observation_type <chr>, name
 #>   <chr>, country <chr>, state_province <chr>, begin_date <date>, end_date
@@ -221,20 +221,19 @@ occ2df(df)
 ```
 #> Source: local data frame [50 x 6]
 #> 
-#>                  name  longitude latitude  prov                date
-#>                 <chr>      <dbl>    <dbl> <chr>              <time>
-#> 1  Accipiter striatus  -97.21962 32.88749  gbif 2016-01-30 23:00:00
-#> 2  Accipiter striatus  -98.24809 26.10815  gbif 2016-01-13 15:18:28
-#> 3  Accipiter striatus  -72.48018 43.72704  gbif 2016-01-17 08:07:26
-#> 4  Accipiter striatus  -95.50117 29.76086  gbif 2016-01-09 17:05:47
-#> 5  Accipiter striatus -116.67145 32.94147  gbif 2016-01-12 11:45:00
-#> 6  Accipiter striatus -123.44703 48.54571  gbif 2016-01-30 23:00:00
-#> 7  Accipiter striatus -123.44703 48.54571  gbif 2016-01-30 23:00:00
-#> 8  Accipiter striatus  -97.63810 30.24674  gbif 2016-01-16 14:25:40
-#> 9  Accipiter striatus  -97.40153 30.74022  gbif 2016-01-27 14:50:00
-#> 10 Accipiter striatus  -81.85267 28.81852  gbif 2016-01-17 23:00:00
-#> ..                ...        ...      ...   ...                 ...
-#> Variables not shown: key <chr>.
+#>                  name  longitude latitude  prov       date        key
+#>                 <chr>      <dbl>    <dbl> <chr>     <date>      <chr>
+#> 1  Accipiter striatus  -97.21962 32.88749  gbif 2016-01-30 1249281822
+#> 2  Accipiter striatus  -98.24809 26.10815  gbif 2016-01-13 1229927690
+#> 3  Accipiter striatus  -72.48018 43.72704  gbif 2016-01-17 1233600875
+#> 4  Accipiter striatus  -95.50117 29.76086  gbif 2016-01-09 1229610478
+#> 5  Accipiter striatus -116.67145 32.94147  gbif 2016-01-12 1229613664
+#> 6  Accipiter striatus -123.44703 48.54571  gbif 2016-01-30 1249281491
+#> 7  Accipiter striatus -123.44703 48.54571  gbif 2016-01-30 1249281424
+#> 8  Accipiter striatus  -97.63810 30.24674  gbif 2016-01-16 1229927481
+#> 9  Accipiter striatus  -97.40153 30.74022  gbif 2016-01-27 1249286013
+#> 10 Accipiter striatus  -81.85267 28.81852  gbif 2016-01-17 1253301153
+#> ..                ...        ...      ...   ...        ...        ...
 ```
 
 
@@ -269,31 +268,31 @@ df$ecoengine$data$Pinus_contorta$name
 ```
 
 ```
-#>  [1] "Pinus contorta murrayana" "Pinus contorta murrayana"
-#>  [3] "Pinus contorta murrayana" "Pinus contorta murrayana"
-#>  [5] "Pinus contorta murrayana" "Pinus contorta murrayana"
-#>  [7] "Pinus contorta murrayana" "Pinus contorta murrayana"
-#>  [9] "Pinus contorta murrayana" "Pinus contorta murrayana"
-#> [11] "Pinus contorta murrayana" "Pinus contorta murrayana"
-#> [13] "Pinus contorta murrayana" "Pinus contorta murrayana"
-#> [15] "Pinus contorta murrayana" "Pinus contorta murrayana"
-#> [17] "Pinus contorta murrayana" "Pinus contorta murrayana"
-#> [19] "Pinus contorta murrayana" "Pinus contorta murrayana"
-#> [21] "Pinus contorta murrayana" "Pinus contorta murrayana"
-#> [23] "Pinus contorta murrayana" "Pinus contorta murrayana"
-#> [25] "Pinus contorta murrayana" "Pinus contorta murrayana"
-#> [27] "Pinus contorta murrayana" "Pinus contorta murrayana"
-#> [29] "Pinus contorta murrayana" "Pinus contorta murrayana"
-#> [31] "Pinus contorta murrayana" "Pinus contorta murrayana"
-#> [33] "Pinus contorta murrayana" "Pinus contorta murrayana"
-#> [35] "Pinus contorta murrayana" "Pinus contorta murrayana"
-#> [37] "Pinus contorta murrayana" "Pinus contorta murrayana"
-#> [39] "Pinus contorta murrayana" "Pinus contorta murrayana"
-#> [41] "Pinus contorta murrayana" "Pinus contorta murrayana"
-#> [43] "Pinus contorta murrayana" "Pinus contorta murrayana"
-#> [45] "Pinus contorta murrayana" "Pinus contorta murrayana"
-#> [47] "Pinus contorta murrayana" "Pinus contorta murrayana"
-#> [49] "Pinus contorta murrayana" "Pinus contorta murrayana"
+#>  [1] "Pinus contorta"                  "Pinus contorta"                 
+#>  [3] "Pinus contorta"                  "Pinus contorta"                 
+#>  [5] "Pinus contorta"                  "Pinus contorta"                 
+#>  [7] "Pinus contorta"                  "Pinus contorta"                 
+#>  [9] "Pinus contorta"                  "Pinus contorta"                 
+#> [11] "Pinus contorta"                  "Pinus contorta"                 
+#> [13] "Pinus contorta"                  "Pinus contorta"                 
+#> [15] "Pinus contorta"                  "Pinus contorta"                 
+#> [17] "Pinus contorta"                  "Pinus contorta"                 
+#> [19] "Pinus contorta subsp. murrayana" "Pinus contorta"                 
+#> [21] "Pinus contorta"                  "Pinus contorta"                 
+#> [23] "Pinus contorta"                  "Pinus contorta"                 
+#> [25] "Pinus contorta"                  "Pinus contorta"                 
+#> [27] "Pinus contorta"                  "Pinus contorta"                 
+#> [29] "Pinus contorta"                  "Pinus contorta"                 
+#> [31] "Pinus contorta subsp. murrayana" "Pinus contorta subsp. murrayana"
+#> [33] "Pinus contorta"                  "Pinus contorta subsp. murrayana"
+#> [35] "Pinus contorta subsp. murrayana" "Pinus contorta subsp. murrayana"
+#> [37] "Pinus contorta"                  "Pinus contorta"                 
+#> [39] "Pinus contorta"                  "Pinus contorta"                 
+#> [41] "Pinus contorta"                  "Pinus contorta"                 
+#> [43] "Pinus contorta"                  "Pinus contorta"                 
+#> [45] "Pinus contorta"                  "Pinus contorta"                 
+#> [47] "Pinus contorta"                  "Pinus contorta"                 
+#> [49] "Pinus contorta"                  "Pinus contorta"
 ```
 
 This is fine, but when trying to make a map in which points are colored for each taxon, you can have many colors for a single taxon, where instead one color per taxon is more appropriate. There is a function in `spocc` called `fixnames`, which has a few options in which you can take the shortest names (usually just the plain binomials like _Homo sapiens_), or the original name queried, or a vector of names supplied by the user.
@@ -348,33 +347,34 @@ head(df_comb); tail(df_comb)
 ```
 #> Source: local data frame [6 x 6]
 #> 
-#>             name  longitude  latitude  prov                date        key
-#>            <chr>      <dbl>     <dbl> <chr>              <time>      <chr>
-#> 1 Pinus contorta -120.33987  39.34308  gbif 2016-01-03 20:08:17 1249276846
-#> 2 Pinus contorta  -79.39836  44.31028  gbif 2016-02-06 23:00:00 1249290834
-#> 3 Pinus contorta -123.35278  48.90594  gbif 2016-02-28 23:00:00 1253314823
-#> 4 Pinus contorta  176.32093 -39.33307  gbif 2016-02-15 23:00:00 1249301037
-#> 5 Pinus contorta -123.98210  46.20296  gbif 2016-02-07 17:51:19 1249288703
-#> 6 Pinus contorta -110.69412  44.72325  gbif 2015-01-01 23:00:00 1088897277
+#>             name  longitude  latitude  prov       date        key
+#>            <chr>      <dbl>     <dbl> <chr>     <date>      <chr>
+#> 1 Pinus contorta -120.33987  39.34308  gbif 2016-01-03 1249276846
+#> 2 Pinus contorta  -79.39836  44.31028  gbif 2016-02-06 1249290834
+#> 3 Pinus contorta -123.35278  48.90594  gbif 2016-02-28 1253314823
+#> 4 Pinus contorta  176.32093 -39.33307  gbif 2016-02-15 1249301037
+#> 5 Pinus contorta -123.98210  46.20296  gbif 2016-02-07 1249288703
+#> 6 Pinus contorta -110.69412  44.72325  gbif 2015-01-01 1088897277
 ```
 
 ```
 #> Source: local data frame [6 x 6]
 #> 
-#>             name longitude latitude      prov   date               key
-#>            <chr>     <dbl>    <dbl>     <chr> <time>             <chr>
-#> 1 Pinus contorta -119.4537  37.9135 ecoengine   <NA>  vtm:plot:76B12:3
-#> 2 Pinus contorta -119.4187  37.8953 ecoengine   <NA>  vtm:plot:76B16:1
-#> 3 Pinus contorta        NA       NA ecoengine   <NA>  vtm:plot:52F34:2
-#> 4 Pinus contorta        NA       NA ecoengine   <NA>  vtm:plot:52F36:1
-#> 5 Pinus contorta -119.4654  37.8874 ecoengine   <NA>  vtm:plot:76B18:1
-#> 6 Pinus contorta -119.4915  37.8819 ecoengine   <NA> vtm:plot:76B110:2
+#>             name longitude latitude      prov   date
+#>            <chr>     <dbl>    <dbl>     <chr> <date>
+#> 1 Pinus contorta -120.3358  39.1632 ecoengine   <NA>
+#> 2 Pinus contorta -119.9564  38.7905 ecoengine   <NA>
+#> 3 Pinus contorta -121.2308  40.3064 ecoengine   <NA>
+#> 4 Pinus contorta -121.2308  40.3064 ecoengine   <NA>
+#> 5 Pinus contorta -119.5066  37.6013 ecoengine   <NA>
+#> 6 Pinus contorta -119.5158  37.6024 ecoengine   <NA>
+#> Variables not shown: key <chr>.
 ```
 
 ## Clean data
 
-All data cleaning functionality is in a new package [scrubr](https://github.com/ropenscilabs/scrubr). [On CRAN](https://cran.rstudio.com/web/packages/scrubr/).
+All data cleaning functionality is in a new package [scrubr](https://github.com/ropenscilabs/scrubr). [On CRAN](https://cran.r-project.org/package=scrubr).
 
 ## Make maps
 
-All mapping functionality is now in a separate package [mapr](https://github.com/ropensci/mapr) (formerly known as `spoccutils`), to make `spocc` easier to maintain. [On CRAN](https://cran.rstudio.com/web/packages/mapr/).
+All mapping functionality is now in a separate package [mapr](https://github.com/ropensci/mapr) (formerly known as `spoccutils`), to make `spocc` easier to maintain. [On CRAN](https://cran.r-project.org/package=mapr).

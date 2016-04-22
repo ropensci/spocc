@@ -4,12 +4,6 @@
 #' or many data sources.
 #'
 #' @export
-#' @importFrom rgbif occ_search occ_get name_lookup
-#' @importFrom rebird ebirdregion ebirdgeo
-#' @importFrom rbison bison_solr bison bison_tax
-#' @importFrom rvertnet vertsearch
-#' @importFrom ridigbio idig_search_records idig_view_records
-#' @importFrom lubridate now ymd_hms ymd_hm ydm_hm ymd
 #' @template occtemp
 #' @template occ_egs
 occ <- function(query = NULL, from = "gbif", limit = 500, start = NULL, page = NULL,

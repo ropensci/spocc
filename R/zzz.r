@@ -117,3 +117,8 @@ spocc_wrap <- function(..., indent = 0, width = getOption("width")){
   wrapped <- strwrap(x, indent = indent, exdent = indent + 5, width = width)
   paste0(wrapped, collapse = "\n")
 }
+
+rbindl <- function(x) {
+  xx <- data.table::setDF(data.table::rbindlist(x, fill = TRUE, use.names = TRUE))
+  xx
+}

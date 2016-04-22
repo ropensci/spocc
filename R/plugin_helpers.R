@@ -31,14 +31,15 @@ stand_dates <- function(dat, from){
   if ( is.null(dat[[var]]) ) {
     dat
   } else {
-    dat[[var]] <- switch(from,
-                         gbif = ymd_hms(dat[[var]], truncated = 3, quiet = TRUE),
-                         bison = ydm_hm(dat[[var]], truncated = 6, quiet = TRUE),
-                         inat = ymd_hms(dat[[var]], truncated = 3, quiet = TRUE),
-                         ebird = ymd_hm(dat[[var]], truncated = 3, quiet = TRUE),
-                         ecoengine = ymd(dat[[var]], truncated = 3, quiet = TRUE),
-                         vertnet = ymd(dat[[var]], truncated = 3, quiet = TRUE),
-                         idigbio = ymd_hms(dat[[var]], truncated = 3, quiet = TRUE)
+    dat[[var]] <- switch(
+      from,
+      gbif = as_date(ymd_hms(dat[[var]], truncated = 3, quiet = TRUE)),
+      bison = as_date(ydm_hm(dat[[var]], truncated = 6, quiet = TRUE)),
+      inat = as_date(ymd_hms(dat[[var]], truncated = 3, quiet = TRUE)),
+      ebird = as_date(ymd_hm(dat[[var]], truncated = 3, quiet = TRUE)),
+      ecoengine = as_date(ymd(dat[[var]], truncated = 3, quiet = TRUE)),
+      vertnet = as_date(ymd(dat[[var]], truncated = 3, quiet = TRUE)),
+      idigbio = as_date(ymd_hms(dat[[var]], truncated = 3, quiet = TRUE))
     )
     if (from == "bison") rename(dat, setNames('date', var)) else dat
   }

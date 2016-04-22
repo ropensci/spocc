@@ -9,7 +9,7 @@ test_that("occ2df basic functionality works", {
   aadf <- occ2df(aa)
   expect_is(aadf, "data.frame")
   expect_named(aadf, c('name', 'longitude', 'latitude', 'prov', 'date', 'key'))
-  expect_is(aadf$date, "POSIXct")
+  expect_is(aadf$date, "Date")
 })
 
 test_that("occ2df works when no eventDate given back from gbif", {
@@ -30,7 +30,7 @@ test_that("occ2df works when eventDate gone - another eg", {
   
   # make date field null
   out$gbif$data$Pinus_contorta$eventDate <- NULL
-  expect_error(out$gbif$data$Pinus_contorta$eventDate, 
+  expect_error(out$gbif$data$Pinus_contorta$eventDate,
                "Unknown column")
   
   # but should still work

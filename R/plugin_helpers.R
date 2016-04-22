@@ -26,9 +26,9 @@ stand_dates <- function(dat, from){
                    idigbio = 'datecollected')
   var <- datevars[[from]]
   if (from == "bison") {
-    var <- if ( is.null(dat$eventDate) ) "year" else "eventDate"
+    var <- if ( is_null(dat$eventDate) ) "year" else "eventDate"
   }
-  if ( is.null(dat[[var]]) ) {
+  if ( is_null(dat[[var]]) ) {
     dat
   } else {
     dat[[var]] <- switch(
@@ -43,6 +43,11 @@ stand_dates <- function(dat, from){
     )
     if (from == "bison") rename(dat, setNames('date', var)) else dat
   }
+}
+
+is_null <- function(...) {
+  xx <- tryCatch(..., error = function(e) e)
+  inherits(xx, "error") || is.null(xx)
 }
 
 limit_alias <- function(x, sources, geometry=NULL){

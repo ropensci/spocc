@@ -453,8 +453,8 @@ occ(query = 'Accipiter striatus', from = 'bison', limit=10, callopts=verbose())
 occ(query = 'Accipiter striatus', from = 'ecoengine', limit=10, callopts=verbose())
 occ(query = 'Accipiter striatus', from = c('ebird','bison'), limit=10, callopts=verbose())
 # occ(query = 'Accipiter striatus', from = 'ebird', limit=10, callopts=timeout(seconds = 0.1))
-## notice that callopts is ignored when from='inat' or from='antweb'
 occ(query = 'Accipiter striatus', from = 'inat', callopts=verbose())
+## notice that callopts is ignored when from='antweb'
 occ(query = 'linepithema humile', from = 'antweb', callopts=verbose())
 
 ########## More thorough data source specific examples
@@ -479,8 +479,6 @@ occ(query = "Acer", from = "idigbio", limit = 5,
 ## offset and max_items
 occ(query = "Acer", from = "idigbio", limit = 5,
    idigbioopts = list(offset = 10))
-occ(query = "Acer", from = "idigbio", limit = 5,
-   idigbioopts = list(max_items = 6))
 
 ## sort
 occ(query = "Acer", from = "idigbio", limit = 5,

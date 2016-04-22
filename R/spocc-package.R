@@ -39,12 +39,14 @@
 #' @section Clean data:
 #' 
 #' All data cleaning functionality is in a new package: \code{scrubr} 
-#' (\url{https://github.com/ropenscilabs/scrubr})
+#' (\url{https://github.com/ropenscilabs/scrubr}).
+#' On CRAN: \url{https://cran.rstudio.com/web/packages/scrubr}
 #' 
 #' @section Make maps:
 #' 
 #' All mapping functionality is now in a separate package: \code{mapr} 
-#' (\url{https://github.com/ropensci/mapr}) (formerly known as `spoccutils`)
+#' (\url{https://github.com/ropensci/mapr}) (formerly known as `spoccutils`).
+#' On CRAN: \url{https://cran.rstudio.com/web/packages/mapr}
 #'
 #' @importFrom jsonlite toJSON
 #' @importFrom utils browseURL head read.csv data setTxtProgressBar txtProgressBar

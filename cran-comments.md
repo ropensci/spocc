@@ -1,8 +1,7 @@
-R CMD CHECK passed on my local OS X install on R 3.2.3 and R development 
+R CMD CHECK passed on my local OS X install on R 3.2.5-patched and R development 
 version, Ubuntu running on Travis-CI, and Win-Builder.
 
-I apologize for submitting another version of this package so soon, but 
-I found a bug that needed to be fixed quickly. I've fixed that bug and added 
-many more unit tests.
+This submission fixes a bug, uses explicit encoding on httr::content() calls
+and changes to using tibble for data.frames.
 
 Thanks! Scott Chamberlain

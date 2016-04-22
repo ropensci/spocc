@@ -1,3 +1,28 @@
+spocc 0.5.0
+===============
+
+### NEW FEATURES
+
+* `occ()` now allows queries that only pass `from` and one of the data
+source opts params (e.g., `gbifopts`) - allows specifying any options
+passed down to the internal functions used to do data queries without
+having to use the other params in `occ` (#163)
+
+### MINOR IMPROVEMENTS
+
+* Now using `tibble` for representing data.frames (#164)
+* Now using explicit `encoding="UTF-8"` in `httr::content()` calls 
+to parse raw data from web requests (#160)
+* Now using `ridigbio` as its on CRAN - was using 
+internal fxns prior to this (#154)
+
+### BUG FIXES
+
+* There was a problem in the ebird parser where it wasn't processing 
+results from ebird with no data. A problem with `has_coords` also 
+fixed. (#161)
+
+
 spocc 0.4.5
 ===============
 

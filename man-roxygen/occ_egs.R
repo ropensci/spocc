@@ -143,6 +143,8 @@
 #' occ(limit = 20, from = "gbif", gbifopts = list(datasetKey = dsets))
 #' ## class name to idigbio
 #' occ(limit = 20, from = "idigbio", idigbioopts = list(rq = list(class = 'arachnida')))
+#' ## limit to ecoengine
+#' occ(from = "ecoengine", ecoengineopts = list(limit = 3))
 #'
 #' # taxize integration
 #' ## You can pass in taxonomic identifiers

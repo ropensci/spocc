@@ -80,6 +80,32 @@ test_that("occ works for each data source", {
   }
 })
 
+test_that("occ works when only opts passed", {
+  skip_on_cran()
+  
+  dsets <- c("14f3151a-e95d-493c-a40d-d9938ef62954", "f934f8e2-32ca-46a7-b2f8-b032a4740454")
+  aa <- occ(limit = 20, from = "gbif", gbifopts = list(datasetKey = dsets))
+  
+  bb <- occ(limit = 20, from = "idigbio", idigbioopts = list(rq = list(class = 'arachnida')))
+  
+  cc <- occ(from = "ecoengine", ecoengineopts = list(limit = 3))
+  
+  expect_is(aa, "occdat")
+  expect_is(bb, "occdat")
+  expect_is(cc, "occdat")
+  
+  expect_is(aa$gbif, "occdatind")
+  expect_is(bb$idigbio, "occdatind")
+  expect_is(cc$ecoengine, "occdatind")
+  
+  expect_named(aa$gbif$data, "custom_query")
+  expect_named(bb$idigbio$data, "custom_query")
+  expect_named(cc$ecoengine$data, "custom_query")
+  
+  expect_equal(sort(unique(aa$gbif$data$custom_query$datasetKey)), sort(dsets))
+  expect_equal(unique(bb$idigbio$data$custom_query$class), "arachnida")
+  expect_equal(NROW(cc$ecoengine$data$custom_query), 3)
+})
 
 test_that("occ fails well", {
   skip_on_cran()

@@ -86,13 +86,13 @@ catif <- function(z, ...){
 
 #' @export
 #' @rdname spocc_objects
-print.occdatind <- function(x, ..., n = 10){
+print.occdatind <- function(x, ...){
   if (!is.null(x$meta$type)) {
     cat( spocc_wrap(sprintf("%s [%s]", 
                             switch(x$meta$type, sci = "Species", geometry = "Geometry"), 
                             pastemax(x$data, x$meta$type))), '\n')
   }
-  occinddf(x, n = n)
+  print(occinddf(x))
 }
 
 #' @export
@@ -129,7 +129,7 @@ pastemax <- function(w, type, n = 10){
   paste0(tt[1:n], collapse = ", ")
 }
 
-occinddf <- function(obj, n = n) {
+occinddf <- function(obj) {
   if (is(obj$data, "list")) {
     if (is(tryCatch(obj$data[[1]], error = function(e) e), "error")) {
       obj$data[[1]] <- data.frame(NULL)

@@ -11,7 +11,7 @@
 \usage{
 \method{print}{occdat}(x, ...)
 
-\method{print}{occdatind}(x, ..., n = 10)
+\method{print}{occdatind}(x, ...)
 
 \method{summary}{occdat}(object, ...)
 
@@ -24,11 +24,11 @@
 
 \item{...}{Further args to print, plot or summary methods}
 
+\item{object}{Input to summary methods}
+
 \item{n}{Number of rows to show. If \code{NULL}, the default, will print
 all rows if less than option \code{dplyr.print_max}. Otherwise, will
 print \code{dplyr.print_min}}
-
-\item{object}{Input to summary methods}
 }
 \description{
 spocc objects and their print, plot, and summary methods

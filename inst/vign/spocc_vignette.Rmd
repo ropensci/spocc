@@ -90,14 +90,14 @@ When you get data from multiple providers, the fields returned are slightly diff
 
 ```{r difffields}
 df <- occ(query = 'Accipiter striatus', from = c('gbif', 'ecoengine'), limit = 25)
-head(df$gbif$data$Accipiter_striatus)[1:6,1:10]
-head(df$ecoengine$data$Accipiter_striatus)
+df$gbif$data$Accipiter_striatus
+df$ecoengine$data$Accipiter_striatus
 ```
 
 We provide a function `occ2df` that pulls out a few key columns needed for making maps:
 
 ```{r occ2df}
-head(occ2df(df))
+occ2df(df)
 ```
 
 
@@ -107,24 +107,24 @@ One problem you often run in to is that there can be various names for the same 
 
 ```{r fixnames1}
 df <- occ(query = 'Pinus contorta', from = c('gbif', 'ecoengine'), limit = 50)
-head(df$gbif$data$Pinus_contorta)[1:6, 1:5]
-head(df$ecoengine$data$Pinus_contorta)[1:6, 1:5]
+df$gbif$data$Pinus_contorta$name
+df$ecoengine$data$Pinus_contorta$name
 ```
 
 This is fine, but when trying to make a map in which points are colored for each taxon, you can have many colors for a single taxon, where instead one color per taxon is more appropriate. There is a function in `spocc` called `fixnames`, which has a few options in which you can take the shortest names (usually just the plain binomials like _Homo sapiens_), or the original name queried, or a vector of names supplied by the user.
 
 ```{r fixnames2}
-df <- fixnames(df, how = 'shortest')
-head(df$gbif$data$Pinus_contorta[,1:2])
-head(df$ecoengine$data$Pinus_contorta[,1:2])
+df <- fixnames(df, how = 'query')
+df$gbif$data$Pinus_contorta$name
+df$ecoengine$data$Pinus_contorta$name
 df_comb <- occ2df(df)
 head(df_comb); tail(df_comb)
 ```
 
-### Clean data
+## Clean data
 
-All data cleaning functionality is in a new package [scrubr](https://github.com/ropenscilabs/scrubr) - not yet on CRAN.
+All data cleaning functionality is in a new package [scrubr](https://github.com/ropenscilabs/scrubr). [On CRAN](https://cran.rstudio.com/web/packages/scrubr/).
 
-### Make maps
+## Make maps
 
-All mapping functionality is now in a separate package [mapr](https://github.com/ropensci/mapr) (formerly known as `spoccutils`), to make `spocc` easier to maintain.
+All mapping functionality is now in a separate package [mapr](https://github.com/ropensci/mapr) (formerly known as `spoccutils`), to make `spocc` easier to maintain. [On CRAN](https://cran.rstudio.com/web/packages/mapr/).

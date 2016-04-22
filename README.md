@@ -52,24 +52,26 @@ Get data from GBIF
 ```r
 (out <- occ(query = 'Accipiter striatus', from = 'gbif', limit = 100))
 #> Searched: gbif
-#> Occurrences - Found: 529,026, Returned: 100
+#> Occurrences - Found: 529,394, Returned: 100
 #> Search type: Scientific
 #>   gbif: Accipiter striatus (100)
 ```
 
+Just gbif data
+
 
 ```r
-out$gbif # just gbif data
+out$gbif
 #> Species [Accipiter striatus (100)] 
 #> First 10 rows of [Accipiter_striatus]
 #> 
-#>                  name  longitude latitude prov
-#> 1  Accipiter striatus  -73.23131 44.28476 gbif
-#> 2  Accipiter striatus -135.32684 57.05398 gbif
-#> 3  Accipiter striatus -116.67145 32.94147 gbif
-#> 4  Accipiter striatus  -95.50117 29.76086 gbif
-#> 5  Accipiter striatus  -75.65139 45.44557 gbif
-#> 6  Accipiter striatus -103.01232 36.38905 gbif
+#> Source: local data frame [100 x 111]
+#> 
+#>                  name  longitude latitude  prov              issues
+#>                 <chr>      <dbl>    <dbl> <chr>               <chr>
+#> 1  Accipiter striatus  -98.24809 26.10815  gbif      cdround,gass84
+#> 2  Accipiter striatus  -72.48018 43.72704  gbif      cdround,gass84
+#> 3  Accipiter striatus  -97.21962 32.88749  gbif      cdround,gass84
 ...
 ```
 
@@ -79,18 +81,28 @@ Get fine-grained detail over each data source by passing on parameters to the pa
 
 
 ```r
-out <- occ(query = 'Setophaga caerulescens', from = 'ebird', ebirdopts = list(region = 'US'))
-out$ebird # just ebird data
-#> Species [Setophaga caerulescens (22)] 
+(out <- occ(query = 'Setophaga caerulescens', from = 'ebird', ebirdopts = list(region = 'US')))
+#> Searched: ebird
+#> Occurrences - Found: 0, Returned: 252
+#> Search type: Scientific
+#>   ebird: Setophaga caerulescens (252)
+```
+
+Just ebird data
+
+
+```r
+out$ebird
+#> Species [Setophaga caerulescens (252)] 
 #> First 10 rows of [Setophaga_caerulescens]
 #> 
+#> Source: local data frame [252 x 12]
+#> 
 #>                      name longitude latitude  prov               obsDt
-#> 1  Setophaga caerulescens -80.12837 26.95568 ebird 2016-01-21 14:30:00
-#> 2  Setophaga caerulescens -80.85031 25.21461 ebird 2016-01-21 14:05:00
-#> 3  Setophaga caerulescens -80.40980 25.99068 ebird 2016-01-21 06:48:00
-#> 4  Setophaga caerulescens -80.21406 26.27687 ebird 2016-01-20 09:30:00
-#> 5  Setophaga caerulescens -80.41000 25.12806 ebird 2016-01-20 08:45:00
-#> 6  Setophaga caerulescens -81.78261 24.55572 ebird 2016-01-20 08:30:00
+#>                     <chr>     <dbl>    <dbl> <chr>              <time>
+#> 1  Setophaga caerulescens -78.88946 36.00959 ebird 2016-04-21 15:37:00
+#> 2  Setophaga caerulescens -80.11240 26.07110 ebird 2016-04-21 14:17:00
+#> 3  Setophaga caerulescens -81.54980 27.81274 ebird 2016-04-21 14:00:00
 ...
 ```
 
@@ -102,44 +114,39 @@ Get data from many sources in a single call
 ```r
 ebirdopts = list(region = 'US'); gbifopts = list(country = 'US')
 out <- occ(query = 'Setophaga caerulescens', from = c('gbif','bison','inat','ebird'), gbifopts = gbifopts, ebirdopts = ebirdopts, limit = 50)
-head(occ2df(out)); tail(occ2df(out))
-#>                     name longitude latitude prov                date
-#> 1 Setophaga caerulescens -80.82181 24.81413 gbif 2015-03-26 23:00:00
-#> 2 Setophaga caerulescens -82.55674 35.63396 gbif 2015-04-21 18:51:02
-#> 3 Setophaga caerulescens -77.06987 38.83266 gbif 2015-05-05 17:13:00
-#> 4 Setophaga caerulescens -81.69378 36.14885 gbif 2015-05-01 22:00:00
-#> 5 Setophaga caerulescens -76.30042 42.43431 gbif 2015-05-08 22:00:00
-#> 6 Setophaga caerulescens -74.44134 40.51806 gbif 2015-05-05 22:00:00
-#>          key
-#> 1 1088930021
-#> 2 1088954620
-#> 3 1088980050
-#> 4 1122965432
-#> 5 1147045067
-#> 6 1211969844
-#>                       name longitude latitude  prov                date
-#> 167 Setophaga caerulescens -71.21852 42.28859 ebird 2016-01-14 14:00:00
-#> 168 Setophaga caerulescens -80.44960 25.55820 ebird 2016-01-13 07:55:00
-#> 169 Setophaga caerulescens -80.34988 27.16120 ebird 2016-01-12 16:00:00
-#> 170 Setophaga caerulescens -80.43668 25.66582 ebird 2016-01-12 11:30:00
-#> 171 Setophaga caerulescens -80.27130 25.67640 ebird 2016-01-10 10:33:00
-#> 172 Setophaga caerulescens -80.11240 26.07110 ebird 2016-01-09 09:00:00
-#>          key
-#> 167 L4119294
-#> 168  L127428
-#> 169 L2624377
-#> 170 L4063054
-#> 171  L127426
-#> 172  L127419
+dat <- occ2df(out)
+head(dat); tail(dat)
+#> Source: local data frame [6 x 6]
+#> 
+#>                     name longitude latitude  prov                date
+#>                    <chr>     <dbl>    <dbl> <chr>              <time>
+#> 1 Setophaga caerulescens -80.82181 24.81413  gbif 2015-03-26 23:00:00
+#> 2 Setophaga caerulescens -82.55674 35.63396  gbif 2015-04-21 18:51:02
+#> 3 Setophaga caerulescens -83.19085 41.62769  gbif 2015-05-16 22:00:00
+#> 4 Setophaga caerulescens -82.87321 24.62802  gbif 2015-05-06 22:00:00
+#> 5 Setophaga caerulescens -71.14539 42.37083  gbif 2015-05-15 11:35:56
+#> 6 Setophaga caerulescens -81.36789 36.32292  gbif 2015-05-24 22:00:00
+#> Variables not shown: key <chr>.
+#> Source: local data frame [6 x 6]
+#> 
+#>                     name longitude latitude  prov                date
+#>                    <chr>     <dbl>    <dbl> <chr>              <time>
+#> 1 Setophaga caerulescens -82.36339 29.66126 ebird 2016-04-20 09:42:00
+#> 2 Setophaga caerulescens -81.02529 35.10243 ebird 2016-04-20 09:27:00
+#> 3 Setophaga caerulescens -80.86127 36.25218 ebird 2016-04-20 09:04:00
+#> 4 Setophaga caerulescens -82.78100 28.03240 ebird 2016-04-20 08:57:00
+#> 5 Setophaga caerulescens -84.72965 34.16452 ebird 2016-04-20 08:52:00
+#> 6 Setophaga caerulescens -81.39138 24.72999 ebird 2016-04-20 08:35:00
+#> Variables not shown: key <chr>.
 ```
 
 ## Clean data
 
-All data cleaning functionality is in a new package [scrubr](https://github.com/ropenscilabs/scrubr) - not yet on CRAN.
+All data cleaning functionality is in a new package [scrubr](https://github.com/ropenscilabs/scrubr). [On CRAN](https://cran.rstudio.com/web/packages/scrubr/).
 
 ## Make maps
 
-All mapping functionality is now in a separate package [mapr](https://github.com/ropensci/mapr) (formerly known as `spoccutils`), to make `spocc` easier to maintain.
+All mapping functionality is now in a separate package [mapr](https://github.com/ropensci/mapr) (formerly known as `spoccutils`), to make `spocc` easier to maintain. [On CRAN](https://cran.rstudio.com/web/packages/mapr/).
 
 ## Meta
 

@@ -95,7 +95,7 @@ is_numeric <- function(x) {
   if (!is.null(x)) {
     tt <- tryCatch(as.numeric(x), error = function(e) e, warning = function(w) w)
     if (is(tt, 'warning') || is(tt, 'error') || typeof(x) == "list") {
-      FALSE 
+      FALSE
     } else {
       check_integer(x)
     }
@@ -110,4 +110,10 @@ is_logical <- function(x) {
   } else {
     TRUE
   }
+}
+
+spocc_wrap <- function(..., indent = 0, width = getOption("width")){
+  x <- paste0(..., collapse = "")
+  wrapped <- strwrap(x, indent = indent, exdent = indent + 5, width = width)
+  paste0(wrapped, collapse = "\n")
 }

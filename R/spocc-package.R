@@ -51,6 +51,7 @@
 #' @importFrom methods is as
 #' @importFrom stats setNames
 #' @importFrom data.table rbindlist setDF
+#' @importFrom tibble as_data_frame data_frame
 #' @name spocc-package
 #' @aliases spocc
 #' @docType package

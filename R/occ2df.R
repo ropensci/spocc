@@ -28,8 +28,11 @@
 #' spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Carduelis tristis')
 #' out <- occ(query=spnames, from='gbif', gbifopts=list(hasCoordinate=TRUE), limit=10)
 #' occ2df(out)
+#' occ2df(out$gbif)
+#' 
 #' out <- occ(query='Accipiter striatus', from=c('gbif','bison','ecoengine','ebird','inat','vertnet'),
 #'    gbifopts=list(hasCoordinate=TRUE), limit=2)
+#' occ2df(out)
 #' occ2df(out)
 #'
 #' # or combine many results from a single data source
@@ -51,7 +54,7 @@ occ2df <- function(obj, what = "data") {
 
 #' @export
 occ2df.occdatind <- function(obj, what = "data") {
-  rbind_fill(obj$data)
+  as_data_frame(rbind_fill(obj$data))
 }
 
 #' @export
@@ -88,7 +91,7 @@ occ2df.occdat <- function(obj, what = "data") {
   ))
   tmpout <- list(meta = list(obj$gbif$meta, obj$bison$meta, obj$inat$meta, obj$ebird$meta,
       obj$ecoengine$meta, obj$aw$meta, obj$vn$meta, obj$id$meta), data = tmp)
-  if (what %in% "data") tmpout$data else tmpout
+  if (what %in% "data") as_data_frame(tmpout$data) else tmpout
 }
 
 datemap <- list(gbif = 'eventDate', bison = 'date', inat = 'datetime', ebird = 'obsDt',

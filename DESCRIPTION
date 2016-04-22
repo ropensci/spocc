@@ -4,7 +4,7 @@ Description: A programmatic interface to many species occurrence data sources,
     including 'GBIF', 'USGS's' 'BISON', 'iNaturalist', Berkeley 'Ecoinformatics'
     Engine 'eBird', 'AntWeb', and 'iDigBio'. Includes functionality for
     retrieving species occurrence data, and combining that data.
-Version: 0.4.5.9881
+Version: 0.4.5.9887
 License: MIT + file LICENSE
 Authors@R: c(
     person("Scott", "Chamberlain", role = c("aut", "cre"), email = "myrmecocystus@gmail.com"),
@@ -29,7 +29,8 @@ Imports:
     whisker (>= 0.3-2),
     V8 (>= 0.9),
     jsonlite (>= 0.9.19),
-    data.table (>= 1.9.6)
+    data.table (>= 1.9.6),
+    tibble (>= 1.0)
 Suggests:
     testthat,
     knitr,

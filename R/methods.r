@@ -153,5 +153,5 @@ occinddf <- function(obj, n = n) {
   z <- z[!names(z) %in% c('name','decimalLongitude','decimallongitude','Longitude','lng','longitude','decimal_longitude',
                           'decimalLatitude','decimallatitude','Latitude','lat','latitude','decimal_latitude','prov',
                           'geopoint.lat','geopoint.lon')]
-  spocc_trunc_mat(do.call(cbind, list(df, z)), n = n)
+  as_data_frame(do.call(cbind, list(df, z)))
 }

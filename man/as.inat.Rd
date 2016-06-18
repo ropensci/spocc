@@ -31,7 +31,7 @@ as.inat(uu[[1]])
 as.inat(tt[1:2])
 
 library("dplyr")
-rbind_all(lapply(tt, function(x) {
+bind_rows(lapply(tt, function(x) {
   data.frame(x$taxon[c('id','name','rank','unique_name')], stringsAsFactors = FALSE)
 }))
 }

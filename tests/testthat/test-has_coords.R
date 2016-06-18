@@ -1,8 +1,8 @@
 context("Limit to records with coordinates via has_coords")
 
-no_ <- function(x) {
-
-}
+# no_ <- function(x) {
+# 
+# }
 
 test_that("has_coords works as expected", {
   skip_on_cran()

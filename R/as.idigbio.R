@@ -22,7 +22,7 @@
 #' as.idigbio(tt[1:2])
 #' 
 #' library("dplyr")
-#' rbind_all(lapply(tt, function(x) data.frame(unclass(x)$data)))
+#' bind_rows(lapply(tt, function(x) data.frame(unclass(x)$data)))
 #' }
 as.idigbio <- function(x) {
   UseMethod("as.idigbio")

@@ -94,7 +94,7 @@ occ2df.occdat <- function(obj, what = "data") {
   if (what %in% "data") as_data_frame(tmpout$data) else tmpout
 }
 
-datemap <- list(gbif = 'eventDate', bison = 'date', inat = 'datetime', ebird = 'obsDt',
+datemap <- list(gbif = 'eventDate', bison = 'date', inat = 'observed_on', ebird = 'obsDt',
                 ecoengine = 'begin_date', antweb = NULL, vertnet = "eventdate", 
                 idigbio = "datecollected")
 

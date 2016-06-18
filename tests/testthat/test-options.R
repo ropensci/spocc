@@ -5,12 +5,12 @@ test_that("passing in options to occ works", {
   
   opts1 <- occ(query = 'Accipiter striatus', from = 'gbif', 
                gbifopts = list(hasCoordinate = TRUE), limit = 5)
-  opts2 <- occ(query = 'Accipiter striatus', from = 'ecoengine', 
-               ecoengineopts = list(county="Sonoma"), limit = 5)
+  opts2 <- occ(query = 'Accipiter', from = 'ecoengine', 
+               ecoengineopts = list(county = "Sonoma"), limit = 5)
   opts3 <- occ(query = 'Danaus plexippus', from = 'inat',
                inatopts = list(year=2014), limit = 5)
-  opts4 <- occ(query = "linepithema humile", from = 'antweb', 
-               antwebopts = list(country='Australia'), limit = 5)
+  opts4 <- suppressMessages(occ(query = "linepithema humile", from = 'antweb', 
+               antwebopts = list(country='Australia'), limit = 5))
   opts5 <- occ(query = 'Setophaga caerulescens', from = 'ebird', 
                ebirdopts = list(region='US'), limit = 5)
   opts6 <- occ("mustela", from = 'vertnet', 
@@ -27,7 +27,7 @@ test_that("passing in options to occ works", {
   
   expect_false(anyNA(opts1$gbif$data$Accipiter_striatus$longitude))
   
-  expect_equal(strsplit(as.character(opts3$inat$data$Danaus_plexippus$datetime[1]), "-")[[1]][1], 
+  expect_equal(strsplit(as.character(opts3$inat$data$Danaus_plexippus$observed_on[1]), "-")[[1]][1], 
                "2014")
   
   expect_is(opts4$antweb$data$linepithema_humile$country[1], "character")

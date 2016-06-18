@@ -244,7 +244,7 @@ foo_inat <- function(sources, query, limit, page, geometry, has_coords, callopts
     } else{
       res <- out$data
       res$prov <- rep("inat", nrow(res))
-      res <- rename(res, c('scientific_name' = 'name'))
+      res <- rename(res, c('taxon.name' = 'name'))
       res <- stand_latlon(res)
       res <- add_latlong_if_missing(res)
       res <- stand_dates(res, "inat")

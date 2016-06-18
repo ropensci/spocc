@@ -60,9 +60,12 @@ spocc_inat_obs <- function(query=NULL, taxon = NULL, quality=NULL, geo=TRUE, yea
     }
     
     page_query <- c(args, per_page = 200, page = 1)
-    data <- GET(inat_base_url(), path = q_path, query = page_query, ...)
+    data <- GET(inat_base_url(), path = ping_path, query = page_query, ...)
     data <- spocc_inat_handle(data)
-    data_out <- if (is.na(data)) NA else read.csv(textConnection(data), stringsAsFactors = FALSE)
+    #data_out <- if (is.na(data)) NA else read.csv(textConnection(data), stringsAsFactors = FALSE)
+    data_out <- jsonlite::fromJSON(data, flatten = TRUE)
+    data_out$photos <- NULL
+    data_out$tag_list <- sapply(data_out$tag_list, function(x) if(length(x) == 0) "" else paste0(x, collapse = ", "))
     
     if (total_res < maxresults) maxresults <- total_res
     if (maxresults > 200) {
@@ -70,7 +73,11 @@ spocc_inat_obs <- function(query=NULL, taxon = NULL, quality=NULL, geo=TRUE, yea
         page_query <- c(args, per_page = 200, page = i)
         data <- GET(inat_base_url(), path = q_path, query = page_query, ...)
         data <- spocc_inat_handle(data)
-        data_out <- rbind(data_out, read.csv(textConnection(data), stringsAsFactors = FALSE))
+        data_out2 <- jsonlite::fromJSON(data, flatten = TRUE)
+        data_out2$photos <- NULL
+        data_out2$tag_list <- sapply(data_out2$tag_list, function(x) if(length(x) == 0) "" else paste0(x, collapse = ", "))
+        data_out <- rbind(data_out, data_out2)
+        #data_out <- rbind(data_out, read.csv(textConnection(data), stringsAsFactors = FALSE))
       }
     }
     
@@ -86,9 +93,9 @@ spocc_inat_obs <- function(query=NULL, taxon = NULL, quality=NULL, geo=TRUE, yea
 
 spocc_inat_handle <- function(x){
   res <- content(x, as = "text", encoding = "UTF-8")
-  if (!x$headers$`content-type` == 'text/csv; charset=utf-8' || x$status_code > 202 || nchar(res) == 0 ) {
-    if (!x$headers$`content-type` == 'text/csv; charset=utf-8') {
-      warning("Conent type incorrect, should be 'text/csv; charset=utf-8'")
+  if (!x$headers$`content-type` == 'application/json; charset=utf-8' || x$status_code > 202 || nchar(res) == 0 ) {
+    if (!x$headers$`content-type` == 'application/json; charset=utf-8') {
+      warning("Conent type incorrect, should be 'application/json; charset=utf-8'")
       NA
     }
     if (x$status_code > 202) {

@@ -15,8 +15,8 @@ stand_latlon <- function(x){
 }
 
 add_latlong_if_missing <- function(x) {
-  if (is.null(x$longitude)) x$longitude <- NA
-  if (is.null(x$latitude)) x$latitude <- NA
+  if (is.null(unclass(x)$longitude)) x$longitude <- NA
+  if (is.null(unclass(x)$latitude)) x$latitude <- NA
   return(x)
 }
 

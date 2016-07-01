@@ -41,12 +41,12 @@ foo_gbif <- function(sources, query, limit, start, geometry, has_coords, callopt
       }
       opts$config <- callopts
       out <- tryCatch(do.call("occ_search", opts), error = function(e) e)
-      if (is(out, "simpleError")) {
+      if (inherits(out, "simpleError")) {
         warning(sprintf("No records found in GBIF for %s", query), call. = FALSE)
         emptylist(opts)
       } else {
-        if (class(out) == "character") { emptylist(opts) } else {
-          if (class(out$data) == "character") { emptylist(opts) } else {
+        if (inherits(out, "character")) { emptylist(opts) } else {
+          if (inherits(out$data, "character")) { emptylist(opts) } else {
             if (length(out) > 1 && !all(c('meta', 'data') %in% names(out))) {
               dat <- setDF(rbindlist(lapply(out, "[[", "data"), fill = TRUE, use.names = TRUE))
             } else {

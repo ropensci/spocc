@@ -34,6 +34,7 @@ Imports:
 Suggests:
     testthat,
     knitr,
-    taxize,
+    taxize (>= 0.7.8.9164),
     covr
+Remotes: ropensci/taxize
 RoxygenNote: 5.0.1

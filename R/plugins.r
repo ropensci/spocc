@@ -341,7 +341,7 @@ foo_idigbio <- function(sources, query, limit, start, geometry, has_coords, call
       if (grepl('POLYGON', paste(as.character(geometry), collapse = " "))) {
         geometry <- wkt2bbox(geometry)
       }
-      addopts$rq <- if (is.numeric(geometry) && length(geometry) == 4) {
+      addopts$rq <- c(addopts$rq, if (is.numeric(geometry) && length(geometry) == 4) {
         list(geopoint = list(
           type = "geo_bounding_box",
           top_left = list(
@@ -353,7 +353,7 @@ foo_idigbio <- function(sources, query, limit, start, geometry, has_coords, call
         ))
       } else {
         geometry
-      }
+      })
     }
 
     if ("rq" %in% names(opts)) {

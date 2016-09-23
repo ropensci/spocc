@@ -16,3 +16,5 @@ appveyor.yml
 README.Rmd
 ^\.httr-oauth$
 ^CONDUCT\.md$
+^issue_template\.md$
+

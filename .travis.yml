@@ -1,11 +1,5 @@
 language: r
 sudo: false
-cache: packages
-
-r:
-  - oldrel
-  - release
-  - devel
 
 bioc_packages:
   - sangerseqR

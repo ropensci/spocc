@@ -8,7 +8,7 @@
 #' non-interactive R session, prints help to console).
 #' @return Opens up the documentation for the function that is used internally within
 #' the occ function for each source.
-#' @details Any of the parameters passed to e.g. \code{\link[rgbif]{occ_search}} from the
+#' @details Any of the parameters passed to e.g. \code{\link[rgbif]{occ_data}} from the
 #' \code{rgbif} package can be passed in the associated gbifopts list in \code{\link[spocc]{occ}}.
 #'
 #' Note that the from parameter is lowercased within the function and is called through
@@ -39,7 +39,7 @@ occ_options <- function(from = 'gbif', where="console"){
                     ecoengine = 'ecoengine', antweb = 'AntWeb', idigbio = 'ridigbio',
                     vertnet = 'rvertnet')
   check_for_package(pkgname)
-  fxn <- switch(from, gbif = 'occ_search', bison = 'bison', ebird = 'ebirdregion', 
+  fxn <- switch(from, gbif = 'occ_data', bison = 'bison', ebird = 'ebirdregion', 
                 ecoengine = 'ee_observations', antweb = 'aw_data', idigbio = 'idig_search_records',
                 vertnet = 'vertsearch')
   if (where == "console") {
@@ -52,7 +52,7 @@ occ_options <- function(from = 'gbif', where="console"){
     cat(sprintf("%s parameters:", fxn), sapply(pars, spocc_wrap, indent = 6, width = 80, USE.NAMES = FALSE), sep = "\n")
   } else {
     showit <- switch(from,
-                     gbif = "?rgbif::occ_search",
+                     gbif = "?rgbif::occ_data",
                      bison = "?rbison::bison",
                      ebird = "?rebird::ebirdregion",
                      ecoengine = "?ecoengine::ee_observations",

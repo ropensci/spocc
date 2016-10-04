@@ -14,7 +14,7 @@ test_that("passing in options to occ works", {
   opts5 <- occ(query = 'Setophaga caerulescens', from = 'ebird', 
                ebirdopts = list(region='US'), limit = 5)
   opts6 <- occ("mustela", from = 'vertnet', 
-               vertnetopts = list(species = "(nivalis OR erminea)"), limit = 5)
+               vertnetopts = list(specificepithet = "(nivalis OR erminea)"), limit = 5)
   opts7 <- occ(query = "Helianthus annuus", from = 'bison', 
                bisonopts = list(year = 2003), limit = 5)
   opts8 <- occ("Acer", from = 'idigbio', 

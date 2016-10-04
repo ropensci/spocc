@@ -19,7 +19,7 @@ Coerce occurrence keys to gbifkey/occkey objects
 }
 \details{
 Internally, we use \code{\link[rgbif]{occ_get}}, whereas \code{\link{occ}} 
-uses \code{\link[rgbif]{occ_search}}. We can use \code{\link[rgbif]{occ_get}} here 
+uses \code{\link[rgbif]{occ_data}}. We can use \code{\link[rgbif]{occ_get}} here 
 because we have the occurrence key to go directly to the occurrence record.
 }
 \examples{

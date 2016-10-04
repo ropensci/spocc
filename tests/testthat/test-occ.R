@@ -11,12 +11,15 @@ test_that("occ works for each data source", {
   x5 <- occ(query = 'Setophaga caerulescens', from = 'ebird', ebirdopts = list(region='US'), limit = 30)
   x6 <- occ(query = 'Spinus tristis', from = 'ebird', ebirdopts = list(method = 'ebirdgeo', lat = 42, lng = -76, dist = 50), limit = 30)
   x7 <- occ(query = 'Spinus tristis', from = 'idigbio', limit = 30)
+  
+  x8 <- occ(query = 'Spinus tristis', from = 'vertnet', limit = 30)
 
   expect_is(x3, "occdat")
   expect_is(x4, "occdat")
   expect_is(x5, "occdat")
   expect_is(x6, "occdat")
   expect_is(x7, "occdat")
+  expect_is(x8, "occdat")
   # Testing x1
   expect_is(x1, "occdat")
   expect_is(x1$gbif, "occdatind")
@@ -54,7 +57,16 @@ test_that("occ works for each data source", {
   expect_is(x7$idigbio$data[[1]], "data.frame")
   temp_df7 <- x7$idigbio$data[[1]]
   expect_equal(unique(temp_df7$prov), "idigbio")
+  
+  # Testing x8
+  expect_is(x8$vertnet, "occdatind")
+  expect_is(x8$vertnet$data[[1]], "data.frame")
+  expect_equal(unique(x8$vertnet$data[[1]]$prov), "vertnet")
+})
 
+test_that("occ antweb tests", {
+  skip_on_cran()
+  
   # Adding tests for Antweb
   by_species <- suppressWarnings(
     tryCatch(suppressMessages(
@@ -80,10 +92,11 @@ test_that("occ works for each data source", {
   }
 })
 
+
 test_that("occ works when only opts passed", {
   skip_on_cran()
   
-  dsets <- c("14f3151a-e95d-493c-a40d-d9938ef62954", "f934f8e2-32ca-46a7-b2f8-b032a4740454")
+  dsets <- c("7b5d6a48-f762-11e1-a439-00145eb45e9a", "50c9509d-22c7-4a22-a47d-8c48425ef4a7")
   aa <- occ(limit = 20, from = "gbif", gbifopts = list(datasetKey = dsets))
   
   bb <- occ(limit = 20, from = "idigbio", idigbioopts = list(rq = list(class = 'arachnida')))

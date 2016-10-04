@@ -22,7 +22,7 @@ the occ function for each source.
 Look up options for parameters passed to each source
 }
 \details{
-Any of the parameters passed to e.g. \code{\link[rgbif]{occ_search}} from the
+Any of the parameters passed to e.g. \code{\link[rgbif]{occ_data}} from the
 \code{rgbif} package can be passed in the associated gbifopts list in \code{\link[spocc]{occ}}.
 
 Note that the from parameter is lowercased within the function and is called through

@@ -39,14 +39,22 @@ foo_gbif <- function(sources, query, limit, start, geometry, has_coords, callopt
           bbox2wkt(bbox = geometry)
         }
       }
-      opts$config <- callopts
-      out <- tryCatch(do.call("occ_search", opts), error = function(e) e)
+      if (length(callopts) > 0) opts$config <- callopts
+      out <- tryCatch(do.call("occ_data", opts), error = function(e) e)
       if (inherits(out, "simpleError")) {
         warning(sprintf("No records found in GBIF for %s", query), call. = FALSE)
         emptylist(opts)
       } else {
-        if (inherits(out, "character")) { emptylist(opts) } else {
-          if (inherits(out$data, "character")) { emptylist(opts) } else {
+        if (inherits(out, "character")) { 
+          emptylist(opts) 
+        } else {
+          if (
+            all(names(out) %in% c('meta', 'data')) && 
+              (is.null(out$data) || 
+              inherits(out$data, "character"))
+          ) {
+            emptylist(opts)
+          } else {
             if (length(out) > 1 && !all(c('meta', 'data') %in% names(out))) {
               dat <- setDF(rbindlist(lapply(out, "[[", "data"), fill = TRUE, use.names = TRUE))
             } else {
@@ -294,14 +302,14 @@ foo_vertnet <- function(sources, query, limit, has_coords, callopts, opts) {
   if (any(grepl("vertnet", sources))) {
     time <- now()
     if (!is.null(has_coords)) {
-      opts$mappable <- ifelse(has_coords, 1, 0)
+      opts$mappable <- has_coords
     }
-    opts$taxon <- query
+    opts$query <- query
     opts$verbose <- FALSE
     if (!'limit' %in% names(opts)) opts$limit <- limit
     opts$config <- callopts
-    out <- tryCatch(do.call(vertsearch, opts), error = function(e) e)
-    if (!is.data.frame(out$data) || is(out, "simpleError")) {
+    out <- tryCatch(do.call(rvertnet::searchbyterm, opts), error = function(e) e)
+    if (!is.data.frame(out$data) || inherits(out, "simpleError")) {
       warning(sprintf("No records found in VertNet for %s", query), call. = FALSE)
       emptylist(opts)
     } else{
@@ -368,7 +376,7 @@ foo_idigbio <- function(sources, query, limit, start, geometry, has_coords, call
 
     opts$config <- callopts
 
-    out <- tryCatch(do.call(idig_search_records, opts), error = function(e) e)
+    out <- tryCatch(suppressWarnings(do.call(idig_search_records, opts)), error = function(e) e)
     if (is(out, "simpleError")) {
       warning(sprintf("No records found in iDigBio for %s", query))
       emptylist(opts)

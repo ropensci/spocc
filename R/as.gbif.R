@@ -7,7 +7,7 @@
 #' character, gbifkey, or occkey.
 #' @return One or more in a list of both class gbifkey and occkey
 #' @details Internally, we use \code{\link[rgbif]{occ_get}}, whereas \code{\link{occ}} 
-#' uses \code{\link[rgbif]{occ_search}}. We can use \code{\link[rgbif]{occ_get}} here 
+#' uses \code{\link[rgbif]{occ_data}}. We can use \code{\link[rgbif]{occ_get}} here 
 #' because we have the occurrence key to go directly to the occurrence record.
 #' @examples \dontrun{
 #' spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Carduelis tristis')

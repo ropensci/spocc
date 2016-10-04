@@ -55,7 +55,7 @@
 #' @importFrom data.table rbindlist setDF
 #' @importFrom tibble as_data_frame data_frame
 #' @importFrom lubridate now ymd_hms ymd_hm ydm_hm ymd as_date
-#' @importFrom rgbif occ_search occ_get name_lookup
+#' @importFrom rgbif occ_data occ_get name_lookup
 #' @importFrom rebird ebirdregion ebirdgeo
 #' @importFrom rbison bison_solr bison bison_tax
 #' @importFrom rvertnet vertsearch

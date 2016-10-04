@@ -120,6 +120,22 @@ test_that("occ works when only opts passed", {
   expect_equal(NROW(cc$ecoengine$data$custom_query), 3)
 })
 
+test_that("occ works when opts passed result in no results", {
+  skip_on_cran()
+  
+  aa <- occ(
+    query = "Accipiter striatus", 
+    gbifopts = list(datasetKey = c("f934f8e2-32ca-46a7-b2f8-b032a4740454", 
+                                 "6ce7290f-47f6-4046-8356-371f5b6749df")), 
+    limit = 20
+  )
+  
+  expect_is(aa, "occdat")
+  expect_is(aa$gbif, "occdatind")
+  expect_named(aa$gbif$data, "Accipiter_striatus")
+  expect_equal(NROW(aa$gbif$data[[1]]), 0)
+})
+
 test_that("occ fails well", {
   skip_on_cran()
   

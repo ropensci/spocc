@@ -60,6 +60,9 @@ foo_gbif <- function(sources, query, limit, start, geometry, has_coords, callopt
             } else {
               dat <- out$data
             }
+            if (NROW(dat) == 0) {
+              return(emptylist(opts))
+            }
             dat$prov <- rep("gbif", nrow(dat))
             dat$name <- as.character(dat$name)
             cols <- c('name', 'decimalLongitude', 'decimalLatitude', 'issues', 'prov')

@@ -20,7 +20,7 @@ Imports:
     methods,
     stats,
     rgbif (>= 0.9.0),
-    rbison (>= 0.4.8),
+    rbison (>= 0.5.0),
     rebird (>= 0.2),
     rvertnet (>= 0.5.0),
     ridigbio (>= 0.3.3),
@@ -36,4 +36,5 @@ Suggests:
     knitr,
     taxize (>= 0.7.9),
     covr
+Remotes: ropensci/spocc
 RoxygenNote: 5.0.1

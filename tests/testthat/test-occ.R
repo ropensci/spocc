@@ -124,7 +124,7 @@ test_that("occ works when opts passed result in no results", {
   skip_on_cran()
   
   aa <- occ(
-    query = "Accipiter striatus", 
+    query = "Accipiter striatus",
     gbifopts = list(datasetKey = c("f934f8e2-32ca-46a7-b2f8-b032a4740454", 
                                  "6ce7290f-47f6-4046-8356-371f5b6749df")), 
     limit = 20

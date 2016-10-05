@@ -36,5 +36,5 @@ Suggests:
     knitr,
     taxize (>= 0.7.9),
     covr
-Remotes: ropensci/rbison
+Remotes: ropensci/rbison, ropensci/rgbif
 RoxygenNote: 5.0.1

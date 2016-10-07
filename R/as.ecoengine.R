@@ -42,7 +42,7 @@ as.ecoengine.character <- function(x) make_ecoengine(x)
 #' @export
 as.ecoengine.list <- function(x){
   lapply(x, function(z) {
-    if (is(z, "ecoenginekey")) {
+    if (inherits(z, "ecoenginekey")) {
       as.ecoengine(z)
     } else {
       make_ecoengine(z)
@@ -55,7 +55,7 @@ make_ecoengine_df <- function(x){
   if (NROW(tmp) == 0) {
     stop("no data from ecoengine found", call. = FALSE)
   } else {
-    setNames(lapply(tmp$key, make_ecoengine), tmp$key)
+    stats::setNames(lapply(tmp$key, make_ecoengine), tmp$key)
   }
 }
 

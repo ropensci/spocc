@@ -43,7 +43,7 @@ ee_observations2 <- function(page = NULL, page_size = 1000, country = "United St
     obs_results <- lapply(obs_data$features, function(z) {
       z$properties[vapply(z$properties, is.null, logical(1))] <- NULL
       ll <- z$geometry$coordinates
-      if (!is.null(ll)) ll <- setNames(ll, c('longitude', 'latitude'))
+      if (!is.null(ll)) ll <- stats::setNames(ll, c('longitude', 'latitude'))
       c(ll, z$properties)
     })
     xx <- rbindlist(obs_results, use.names = TRUE, fill = TRUE)
@@ -73,7 +73,7 @@ eee_search <- function(query = NULL, foptions = list()) {
   fields_compacted <- Filter(function(i) length(i) > 0, es_results$fields)
   df <- do.call(rbind, Map(function(a, b) {
     tt <- data.frame(type = b, do.call(rbind.data.frame, a), stringsAsFactors = FALSE)
-    setNames(tt, c("type", "field", "results", "search_url"))
+    stats::setNames(tt, c("type", "field", "results", "search_url"))
   }, fields_compacted, names(fields_compacted)))
   row.names(df) <- NULL
   df

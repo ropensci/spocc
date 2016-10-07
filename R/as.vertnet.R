@@ -44,7 +44,7 @@ as.vertnet.character <- function(x) make_vertnet(as.numeric(x))
 #' @export
 as.vertnet.list <- function(x){
   lapply(x, function(z) {
-    if (is(z, "vertnetkey")) {
+    if (inherits(z, "vertnetkey")) {
       as.vertnet(z)
     } else {
       make_vertnet(as.numeric(z))
@@ -58,7 +58,7 @@ make_vertnet_df <- function(x){
     stop("no data from vertnet found", call. = FALSE)
   } else {
     keys <- Filter(Negate(is.na), tmp$key)
-    setNames(lapply(keys, make_vertnet), keys)
+    stats::setNames(lapply(keys, make_vertnet), keys)
   }
 }
 

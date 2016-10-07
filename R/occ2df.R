@@ -29,7 +29,7 @@
 #' out <- occ(query=spnames, from='gbif', gbifopts=list(hasCoordinate=TRUE), limit=10)
 #' occ2df(out)
 #' occ2df(out$gbif)
-#' 
+#'
 #' out <- occ(query='Accipiter striatus', from=c('gbif','bison','ecoengine','ebird','inat','vertnet'),
 #'    gbifopts=list(hasCoordinate=TRUE), limit=2)
 #' occ2df(out)
@@ -75,17 +75,17 @@ occ2df.occdat <- function(obj, what = "data") {
         if (NROW(x) == 0) {
           data_frame()
         } else {
-          dat <- x[ , c('name', 'longitude', 'latitude', 'prov', 
+          dat <- x[ , c('name', 'longitude', 'latitude', 'prov',
                         pluck_fill(x, datemap[[y]]), pluck_fill(x, keymap[[y]])) ]
           if (is.null(datemap[[y]])) {
             dat$date <- as.Date(rep(NA_character_, NROW(dat)))
           } else {
-            dat <- rename(dat, setNames("date", datemap[[y]]), warn_missing = FALSE)
+            dat <- rename(dat, stats::setNames("date", datemap[[y]]), warn_missing = FALSE)
           }
-          rename(dat, setNames("key", keymap[[y]]))
+          rename(dat, stats::setNames("key", keymap[[y]]))
         }
       },
-      list(aa, bb, cc, dd, ee, aw, vn, id), 
+      list(aa, bb, cc, dd, ee, aw, vn, id),
       c('gbif','bison','inat','ebird','ecoengine','antweb','vertnet','idigbio')
     )
   )
@@ -95,7 +95,7 @@ occ2df.occdat <- function(obj, what = "data") {
 }
 
 datemap <- list(gbif = 'eventDate', bison = 'date', inat = 'observed_on', ebird = 'obsDt',
-                ecoengine = 'begin_date', antweb = NULL, vertnet = "eventdate", 
+                ecoengine = 'begin_date', antweb = NULL, vertnet = "eventdate",
                 idigbio = "datecollected")
 
 keymap <- list(gbif = "key", bison = "occurrenceID", inat = "id", ebird = "locID",

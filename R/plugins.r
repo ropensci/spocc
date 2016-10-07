@@ -110,7 +110,7 @@ foo_ecoengine <- function(sources, query, limit, page, geometry, has_coords, cal
     opts$progress <- FALSE
     opts$foptions <- callopts
     out_ee <- tryCatch(do.call(ee_observations2, opts), error = function(e) e)
-    if (out_ee$results == 0 || is(out_ee, "simpleError")) {
+    if (out_ee$results == 0 || inherits(out_ee, "simpleError")) {
       warning(sprintf("No records found in Ecoengine for %s",
         if (is.null(query)) paste0(substr(geometry, 1, 20), ' ...') else query
       ), call. = FALSE)
@@ -154,7 +154,7 @@ foo_antweb <- function(sources, query, limit, start, geometry, has_coords, callo
     if (!'offset' %in% names(opts)) opts$offset <- start
     out <- tryCatch(do.call(aw_data2, opts), error = function(e) e)
 
-    if (is.null(out) || is(out, "simpleError")) {
+    if (is.null(out) || inherits(out, "simpleError")) {
       warning(sprintf("No records found in AntWeb for %s", query), call. = FALSE)
       emptylist(opts)
     } else{
@@ -211,7 +211,7 @@ foo_bison <- function(sources, query, limit, start, geometry, callopts, opts) {
       }
     }
     out <- tryCatch(do.call(eval(parse(text = bisonfxn)), opts), error = function(e) e)
-    if (is.null(out$points) || is(out, "simpleError")) {
+    if (is.null(out$points) || inherits(out, "simpleError")) {
       warning(sprintf("No records found in Bison for %s", query), call. = FALSE)
       emptylist(opts)
     } else{
@@ -249,7 +249,7 @@ foo_inat <- function(sources, query, limit, page, geometry, has_coords, callopts
     }
     opts$config <- callopts
     out <- tryCatch(do.call("spocc_inat_obs", opts), error = function(e) e)
-    if (!is.data.frame(out$data) || is(out, "simpleError")) {
+    if (!is.data.frame(out$data) || inherits(out, "simpleError")) {
       warning(sprintf("No records found in INAT for %s", query), call. = FALSE)
       emptylist(opts)
     } else{
@@ -284,7 +284,7 @@ foo_ebird <- function(sources, query, limit, callopts, opts) {
     } else {
       out <- tryCatch(do.call(ebirdgeo, opts[!names(opts) %in% "method"]), error = function(e) e)
     }
-    if (!is.data.frame(out) || is(out, "simpleError") || NROW(out) == 0) {
+    if (!is.data.frame(out) || inherits(out, "simpleError") || NROW(out) == 0) {
       warning(sprintf("No records found in eBird for %s", query), call. = FALSE)
       emptylist(opts)
     } else{
@@ -380,7 +380,7 @@ foo_idigbio <- function(sources, query, limit, start, geometry, has_coords, call
     opts$config <- callopts
 
     out <- tryCatch(suppressWarnings(do.call(idig_search_records, opts)), error = function(e) e)
-    if (is(out, "simpleError")) {
+    if (inherits(out, "simpleError")) {
       warning(sprintf("No records found in iDigBio for %s", query))
       emptylist(opts)
     } else{

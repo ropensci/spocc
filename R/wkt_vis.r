@@ -39,7 +39,7 @@ wkt_vis <- function(x, zoom = 6, maptype = "terrain", browse = TRUE) {
 
   out <- wkt_read(gsub("\n|\n\\s+", "", strtrim(x)))
   
-  if (is(out$coordinates[,,1], "matrix")) {
+  if (inherits(out$coordinates[,,1], "matrix")) {
     longs <- data.frame(out$coordinates[,,1])
     lats <- data.frame(out$coordinates[,,2])
   } else {

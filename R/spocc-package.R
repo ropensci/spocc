@@ -50,8 +50,6 @@
 #'
 #' @importFrom jsonlite toJSON
 #' @importFrom utils browseURL head read.csv data setTxtProgressBar txtProgressBar
-#' @importFrom methods is as
-#' @importFrom stats setNames
 #' @importFrom data.table rbindlist setDF
 #' @importFrom tibble as_data_frame data_frame
 #' @importFrom lubridate now ymd_hms ymd_hm ydm_hm ymd as_date

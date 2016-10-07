@@ -16,7 +16,7 @@ occ <- function(query = NULL, from = "gbif", limit = 500, start = NULL, page = N
 
   # if query not NULL, has to be character
   if (!is.null(query)) {
-    if (!is(query, "character")) {
+    if (!inherits(query, "character")) {
       stop("'query' param. must be of class character", call. = FALSE)
     }
   }

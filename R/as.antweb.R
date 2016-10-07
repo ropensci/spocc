@@ -2,8 +2,8 @@
 #'
 #' @export
 #'
-#' @param x Various inputs, including the output from a call to \code{\link{occ}} 
-#' (class occdat), \code{\link{occ2df}} (class data.frame), or a list, numeric, 
+#' @param x Various inputs, including the output from a call to \code{\link{occ}}
+#' (class occdat), \code{\link{occ2df}} (class data.frame), or a list, numeric,
 #' character, or antwebkey, or occkey.
 #' @return One or more in a list of both class antwebkey and occkey
 #' @examples \dontrun{
@@ -41,7 +41,7 @@ as.antweb.character <- function(x) make_antweb(x)
 #' @export
 as.antweb.list <- function(x){
   lapply(x, function(z) {
-    if (is(z, "antwebkey")) {
+    if (inherits(z, "antwebkey")) {
       as.antweb(z)
     } else {
       make_antweb(z)
@@ -54,7 +54,7 @@ make_antweb_df <- function(x){
   if (NROW(tmp) == 0) {
     stop("no data from antweb found", call. = FALSE)
   } else {
-    setNames(lapply(tmp$key, make_antweb), tmp$key)
+    stats::setNames(lapply(tmp$key, make_antweb), tmp$key)
   }
 }
 

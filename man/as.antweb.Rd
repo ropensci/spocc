@@ -7,8 +7,8 @@
 as.antweb(x)
 }
 \arguments{
-\item{x}{Various inputs, including the output from a call to \code{\link{occ}} 
-(class occdat), \code{\link{occ2df}} (class data.frame), or a list, numeric, 
+\item{x}{Various inputs, including the output from a call to \code{\link{occ}}
+(class occdat), \code{\link{occ2df}} (class data.frame), or a list, numeric,
 character, or antwebkey, or occkey.}
 }
 \value{

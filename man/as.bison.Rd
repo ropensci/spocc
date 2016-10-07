@@ -7,8 +7,8 @@
 as.bison(x)
 }
 \arguments{
-\item{x}{Various inputs, including the output from a call to \code{\link{occ}} 
-(class occdat), \code{\link{occ2df}} (class data.frame), or a list, numeric, 
+\item{x}{Various inputs, including the output from a call to \code{\link{occ}}
+(class occdat), \code{\link{occ2df}} (class data.frame), or a list, numeric,
 character, or bisonkey, or occkey.}
 }
 \value{
@@ -18,8 +18,8 @@ One or more in a list of both class bisonkey and occkey
 Coerce occurrence keys to bisonkey/occkey objects
 }
 \details{
-Internally, we use \code{\link[rbison]{bison_solr}}, same function we use  
-internally within the \code{\link{occ}} function. Although, we query here with the 
+Internally, we use \code{\link[rbison]{bison_solr}}, same function we use
+internally within the \code{\link{occ}} function. Although, we query here with the
 \code{occurrenceID} parameter to get the occurrence directly instead of searching for it.
 }
 \examples{

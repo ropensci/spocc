@@ -15,12 +15,12 @@
 #' res <- occ(query = 'Accipiter striatus', from = 'gbif')
 #' res
 #' print(res)
-#' is(res)
+#' class(res)
 #'
 #' # occdatind object
 #' res$gbif
 #' print(res$gbif)
-#' is(res$gbif)
+#' class(res$gbif)
 #'
 #' # print summary of occdat object
 #' summary(res)
@@ -130,8 +130,8 @@ pastemax <- function(w, type, n = 10){
 }
 
 occinddf <- function(obj) {
-  if (is(obj$data, "list")) {
-    if (is(tryCatch(obj$data[[1]], error = function(e) e), "error")) {
+  if (inherits(obj$data, "list")) {
+    if (inherits(tryCatch(obj$data[[1]], error = function(e) e), "error")) {
       obj$data[[1]] <- data.frame(NULL)
     }
   }

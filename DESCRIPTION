@@ -2,14 +2,14 @@ Package: spocc
 Title: Interface to Species Occurrence Data Sources
 Description: A programmatic interface to many species occurrence data sources,
     including 'GBIF', 'USGS's' 'BISON', 'iNaturalist', Berkeley 'Ecoinformatics'
-    Engine 'eBird', 'AntWeb', and 'iDigBio'. Includes functionality for
+    Engine, 'eBird', 'AntWeb', and 'iDigBio'. Includes functionality for
     retrieving species occurrence data, and combining that data.
-Version: 0.5.0.9596
+Version: 0.5.3.9100
 License: MIT + file LICENSE
 Authors@R: c(
     person("Scott", "Chamberlain", role = c("aut", "cre"), email = "myrmecocystus@gmail.com"),
-    person("Karthik", "Ram", role = "aut", email = "karthik.ram@gmail.com"),
-    person("Ted", "Hart", role = "aut", email = "edmund.m.hart@gmail.com")
+    person("Karthik", "Ram", role = "ctb"),
+    person("Ted", "Hart", role = "ctb")
     )
 URL: https://github.com/ropensci/spocc
 BugReports: https://github.com/ropensci/spocc/issues
@@ -17,24 +17,21 @@ LazyData: true
 VignetteBuilder: knitr
 Imports:
     utils,
-    methods,
-    stats,
-    rgbif (>= 0.9.0),
+    rgbif (>= 0.9.5),
     rbison (>= 0.5.0),
-    rebird (>= 0.2),
+    rebird (>= 0.3.0),
     rvertnet (>= 0.5.0),
     ridigbio (>= 0.3.3),
     lubridate (>= 1.5.0),
-    httr (>= 1.0.0),
+    httr (>= 1.1.0),
     whisker (>= 0.3-2),
-    V8 (>= 0.9),
-    jsonlite (>= 0.9.19),
+    V8 (>= 1.1),
+    jsonlite (>= 1.1),
     data.table (>= 1.9.6),
-    tibble (>= 1.0)
+    tibble (>= 1.2)
 Suggests:
     testthat,
     knitr,
     taxize (>= 0.7.9),
     covr
-Remotes: ropensci/rbison, ropensci/rgbif
 RoxygenNote: 5.0.1

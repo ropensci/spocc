@@ -39,12 +39,12 @@ spocc objects and their print, plot, and summary methods
 res <- occ(query = 'Accipiter striatus', from = 'gbif')
 res
 print(res)
-is(res)
+class(res)
 
 # occdatind object
 res$gbif
 print(res$gbif)
-is(res$gbif)
+class(res$gbif)
 
 # print summary of occdat object
 summary(res)

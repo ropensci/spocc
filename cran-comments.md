@@ -1,7 +1,27 @@
-R CMD CHECK passed on my local OS X install on R 3.2.5-patched and R development 
-version, Ubuntu running on Travis-CI, and Win-Builder.
+## Test environments
 
-This submission fixes a bug, uses explicit encoding on httr::content() calls
-and changes to using tibble for data.frames.
+* local OS X install, R 3.3.1
+* ubuntu 12.04 (on travis-ci), R 3.3.1
+* win-builder (devel and release)
 
-Thanks! Scott Chamberlain
+## R CMD check results
+
+0 errors | 0 warnings | 1 note
+
+License components with restrictions and base license permitting such:
+  MIT + file LICENSE
+File 'LICENSE':
+  YEAR: 2016
+  COPYRIGHT HOLDER: Scott Chamberlain
+
+## Reverse dependencies
+
+* I have run R CMD check on the 1 downstream dependency. No problems were
+found; the maintainer (me) is aware of the changes.
+
+--------
+
+This version xxx.
+
+Thanks!
+Scott Chamberlain

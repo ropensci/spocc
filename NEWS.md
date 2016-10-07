@@ -1,23 +1,26 @@
 spocc 0.5.4
 ===============
 
-### NEW FEATURES
-
-* xxx (#xxx)
-* xxx (#xxx)
-* xxx (#xxx)
-
 ### MINOR IMPROVEMENTS
 
-* xxx (#xxx)
-* xxx (#xxx)
-* xxx (#xxx)
+* `rvertnet`, a dependency dealing with data from Vertnet, was failing 
+on certain searches. `rvertnet` was fixed and a new version on CRAN now. 
+No changes here other than requiring the new version of `rvertnet` (#168)
+* Fix to internal INAT parsers to handle JSON data output instead of 
+CSV output. And fix to internal date parsing; INAT changed field for date 
+from `datetime` to `observed_on`.
+* Move all `is()` to `inherits()`, and namespace all `setNames()` calls
+* We are now using `rgbif::occ_data()` instead of `rgbif::occ_search()`
+* We are now using `rvertnet::searchbyterm()` instead of 
+`rgbif::vertsearch()`
 
 ### BUG FIXES
 
-* xxx (#xxx)
-* xxx (#xxx)
-* xxx (#xxx)
+* Fixes to iDigBio internal plugin - we were dropping scientificname
+if geometry was passed by the user. Fixed now. (#167)
+* Fixed bug in GBIF internal plugin - when more than 1 result given back
+(e.g., multiple searches were done, resulting in a list of objects)
+we weren't parsing the output correctly. Fixed now. (#166)
 
 
 

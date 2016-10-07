@@ -21,7 +21,8 @@ found; the maintainer (me) is aware of the changes.
 
 --------
 
-This version xxx.
+This version fixes some bugs and requires new versions of some 
+package dependencies which were fixed themselves.
 
 Thanks!
 Scott Chamberlain

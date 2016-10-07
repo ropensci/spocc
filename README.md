@@ -52,7 +52,7 @@ Get data from GBIF
 ```r
 (out <- occ(query = 'Accipiter striatus', from = 'gbif', limit = 100))
 #> Searched: gbif
-#> Occurrences - Found: 529,394, Returned: 100
+#> Occurrences - Found: 528,936, Returned: 100
 #> Search type: Scientific
 #>   gbif: Accipiter striatus (100)
 ```
@@ -65,13 +65,13 @@ out$gbif
 #> Species [Accipiter striatus (100)] 
 #> First 10 rows of [Accipiter_striatus]
 #> 
-#> Source: local data frame [100 x 111]
-#> 
-#>                  name  longitude latitude  prov              issues
-#>                 <chr>      <dbl>    <dbl> <chr>               <chr>
-#> 1  Accipiter striatus  -98.24809 26.10815  gbif      cdround,gass84
-#> 2  Accipiter striatus  -72.48018 43.72704  gbif      cdround,gass84
-#> 3  Accipiter striatus  -97.21962 32.88749  gbif      cdround,gass84
+#> # A tibble: 100 × 108
+#>                  name  longitude latitude  prov         issues        key
+#>                 <chr>      <dbl>    <dbl> <chr>          <chr>      <int>
+#> 1  Accipiter striatus  -97.94314 30.04580  gbif cdround,gass84 1233600470
+#> 2  Accipiter striatus  -77.05161 38.87834  gbif cdround,gass84 1270044795
+#> 3  Accipiter striatus  -95.50117 29.76086  gbif cdround,gass84 1229610478
+#> 4  Accipiter striatus  -96.74874 33.03102  gbif cdround,gass84 1257416040
 ...
 ```
 
@@ -83,9 +83,9 @@ Get fine-grained detail over each data source by passing on parameters to the pa
 ```r
 (out <- occ(query = 'Setophaga caerulescens', from = 'ebird', ebirdopts = list(region = 'US')))
 #> Searched: ebird
-#> Occurrences - Found: 0, Returned: 252
+#> Occurrences - Found: 0, Returned: 500
 #> Search type: Scientific
-#>   ebird: Setophaga caerulescens (252)
+#>   ebird: Setophaga caerulescens (500)
 ```
 
 Just ebird data
@@ -93,16 +93,16 @@ Just ebird data
 
 ```r
 out$ebird
-#> Species [Setophaga caerulescens (252)] 
+#> Species [Setophaga caerulescens (500)] 
 #> First 10 rows of [Setophaga_caerulescens]
 #> 
-#> Source: local data frame [252 x 12]
-#> 
-#>                      name longitude latitude  prov               obsDt
-#>                     <chr>     <dbl>    <dbl> <chr>              <time>
-#> 1  Setophaga caerulescens -78.88946 36.00959 ebird 2016-04-21 15:37:00
-#> 2  Setophaga caerulescens -80.11240 26.07110 ebird 2016-04-21 14:17:00
-#> 3  Setophaga caerulescens -81.54980 27.81274 ebird 2016-04-21 14:00:00
+#> # A tibble: 500 × 12
+#>                      name longitude latitude  prov      obsDt
+#>                     <chr>     <dbl>    <dbl> <chr>     <date>
+#> 1  Setophaga caerulescens -74.96229 38.94037 ebird 2016-10-07
+#> 2  Setophaga caerulescens -81.78414 24.54900 ebird 2016-10-07
+#> 3  Setophaga caerulescens -74.04066 40.62207 ebird 2016-10-07
+#> 4  Setophaga caerulescens -71.13179 42.29393 ebird 2016-10-07
 ...
 ```
 
@@ -116,28 +116,24 @@ ebirdopts = list(region = 'US'); gbifopts = list(country = 'US')
 out <- occ(query = 'Setophaga caerulescens', from = c('gbif','bison','inat','ebird'), gbifopts = gbifopts, ebirdopts = ebirdopts, limit = 50)
 dat <- occ2df(out)
 head(dat); tail(dat)
-#> Source: local data frame [6 x 6]
-#> 
-#>                     name longitude latitude  prov                date
-#>                    <chr>     <dbl>    <dbl> <chr>              <time>
-#> 1 Setophaga caerulescens -80.82181 24.81413  gbif 2015-03-26 23:00:00
-#> 2 Setophaga caerulescens -82.55674 35.63396  gbif 2015-04-21 18:51:02
-#> 3 Setophaga caerulescens -83.19085 41.62769  gbif 2015-05-16 22:00:00
-#> 4 Setophaga caerulescens -82.87321 24.62802  gbif 2015-05-06 22:00:00
-#> 5 Setophaga caerulescens -71.14539 42.37083  gbif 2015-05-15 11:35:56
-#> 6 Setophaga caerulescens -81.36789 36.32292  gbif 2015-05-24 22:00:00
-#> Variables not shown: key <chr>.
-#> Source: local data frame [6 x 6]
-#> 
-#>                     name longitude latitude  prov                date
-#>                    <chr>     <dbl>    <dbl> <chr>              <time>
-#> 1 Setophaga caerulescens -82.36339 29.66126 ebird 2016-04-20 09:42:00
-#> 2 Setophaga caerulescens -81.02529 35.10243 ebird 2016-04-20 09:27:00
-#> 3 Setophaga caerulescens -80.86127 36.25218 ebird 2016-04-20 09:04:00
-#> 4 Setophaga caerulescens -82.78100 28.03240 ebird 2016-04-20 08:57:00
-#> 5 Setophaga caerulescens -84.72965 34.16452 ebird 2016-04-20 08:52:00
-#> 6 Setophaga caerulescens -81.39138 24.72999 ebird 2016-04-20 08:35:00
-#> Variables not shown: key <chr>.
+#> # A tibble: 6 × 6
+#>                     name longitude latitude  prov       date        key
+#>                    <chr>     <chr>    <chr> <chr>     <date>      <chr>
+#> 1 Setophaga caerulescens -71.80166 44.53323  gbif 2016-05-31 1291120531
+#> 2 Setophaga caerulescens -72.83974 44.07966  gbif 2016-05-17 1269567302
+#> 3 Setophaga caerulescens -83.44952 44.25382  gbif 2016-05-07 1291149671
+#> 4 Setophaga caerulescens -83.59349 41.58065  gbif 2016-05-11 1291674787
+#> 5 Setophaga caerulescens -75.19615 39.95469  gbif 2016-05-11 1269552963
+#> 6 Setophaga caerulescens -83.44952 44.25382  gbif 2016-05-08 1291149541
+#> # A tibble: 6 × 6
+#>                     name   longitude   latitude  prov       date      key
+#>                    <chr>       <chr>      <chr> <chr>     <date>    <chr>
+#> 1 Setophaga caerulescens -76.5798569 39.2896713 ebird 2016-10-07  L449982
+#> 2 Setophaga caerulescens -76.2258053 39.0347918 ebird 2016-10-07  L126631
+#> 3 Setophaga caerulescens -75.3904152 40.6363295 ebird 2016-10-07  L372101
+#> 4 Setophaga caerulescens -73.9869263 40.4392518 ebird 2016-10-07  L197353
+#> 5 Setophaga caerulescens   -88.21148   40.11972 ebird 2016-10-07  L251002
+#> 6 Setophaga caerulescens -75.1045883 40.0237695 ebird 2016-10-07 L3694793
 ```
 
 ## Clean data

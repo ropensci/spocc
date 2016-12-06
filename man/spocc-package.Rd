@@ -8,8 +8,9 @@
 \description{
 A programmatic interface to many species occurrence data 
 sources, including GBIF, USGS's BISON, iNaturalist, Berkeley Ecoinformatics 
-Engine, eBird, AntWeb, iDigBio, and OBIS. Includes functionality for 
-retrieving species occurrence data, and combining that data.
+Engine, eBird, AntWeb, iDigBio, VertNet, OBIS, and ALA. Includes 
+functionality for retrieving species occurrence data, and 
+combining that data.
 }
 \section{Package API}{
 
@@ -27,7 +28,7 @@ Other functions include:
 }
 }
 
-\section{Currently supported species occurrence databases}{
+\section{Currently supported species occurrence data sources}{
 
 
 \tabular{ll}{
@@ -39,8 +40,9 @@ iNaturalist \tab \url{http://www.inaturalist.org/} \cr
 Berkeley ecoengine \tab \url{https://ecoengine.berkeley.edu/} \cr
 AntWeb \tab \url{http://www.antweb.org/} \cr
 VertNet \tab \url{http://vertnet.org/} \cr
-iDigBio \tab \url{https://www.idigbio.org/}
-OBIS \tab \url{http://www.iobis.org/}
+iDigBio \tab \url{https://www.idigbio.org/} \cr
+OBIS \tab \url{http://www.iobis.org/} \cr
+ALA \tab \url{http://www.ala.org.au/}
 }
 }
 

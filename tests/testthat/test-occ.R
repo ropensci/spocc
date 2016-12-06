@@ -15,6 +15,8 @@ test_that("occ works for each data source", {
   x8 <- occ(query = 'Spinus tristis', from = 'vertnet', limit = 30)
   
   x9 <- occ(query = 'Mola mola', from = 'obis', limit = 30)
+  
+  x10 <- occ(query = 'Alaba vibex', from = 'ala', limit = 30)
 
   expect_is(x3, "occdat")
   expect_is(x4, "occdat")
@@ -22,6 +24,9 @@ test_that("occ works for each data source", {
   expect_is(x6, "occdat")
   expect_is(x7, "occdat")
   expect_is(x8, "occdat")
+  expect_is(x9, "occdat")
+  expect_is(x10, "occdat")
+  
   # Testing x1
   expect_is(x1, "occdat")
   expect_is(x1$gbif, "occdatind")
@@ -71,6 +76,13 @@ test_that("occ works for each data source", {
   expect_is(x9$obis$data[[1]], "data.frame")
   temp_df9 <- x9$obis$data[[1]]
   expect_equal(unique(temp_df9$prov), "obis")
+  
+  # Testing x10
+  expect_is(x10, "occdat")
+  expect_is(x10$ala, "occdatind")
+  expect_is(x10$ala$data[[1]], "data.frame")
+  temp_df10 <- x10$ala$data[[1]]
+  expect_equal(unique(temp_df10$prov), "ala")
 })
 
 test_that("occ antweb tests", {

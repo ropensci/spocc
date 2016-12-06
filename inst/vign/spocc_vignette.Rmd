@@ -22,7 +22,7 @@ The rOpenSci projects aims to provide programmatic access to scientific data rep
 
 ### Data Sources
 
-`spocc` currently interfaces with nine major biodiversity repositories
+`spocc` currently interfaces with ten major biodiversity repositories
 
 1. [Global Biodiversity Information Facility (GBIF)](http://www.gbif.org/) (via `rgbif`)
 GBIF is a government funded open data repository with several partner organizations with the express goal of providing access to data on Earth's biodiversity. The data are made available by a network of member nodes, coordinating information from various participant organizations and government agencies.
@@ -50,6 +50,9 @@ iDigBio facilitates the digitization of biological and paleobiological specimens
 
 9. [OBIS](http://www.iobis.org/)
 OBIS (Ocean Biogeographic Information System) allows users to search marine species datasets from all of the world's oceans.
+
+10. [Atlas of Living Australia](http://www.ala.org.au/)
+ALA (Atlas of Living Australia) contains information on all the known species in Australia aggregated from a wide range of data providers: museums, herbaria, community groups, government departments, individuals and universities; it contains more than 50 million occurrence records.
 
 __Important Note:__ It's important to keep in mind that several data providers interface with many of the above mentioned repositories. This means that occurence data obtained from BISON may be duplicates of data that are also available through GBIF. We do not have a way to resolve these duplicates or overlaps at this time but it is an issue we are hoping to resolve in future versions of the package. See `?spocc_duplicates`, after installation, for more.
 

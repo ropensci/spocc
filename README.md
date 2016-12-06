@@ -12,7 +12,39 @@ spocc
 
 **`spocc` = SPecies OCCurrence data**
 
-At rOpenSci, we have been writing R packages to interact with many sources of species occurrence data, including [GBIF][gbif], [iDigBio][idigbio], [Vertnet][vertnet], [BISON][bison], [iNaturalist][inat], the [Berkeley ecoengine][ecoengine], and [AntWeb][antweb]. `spocc` is an R package to query and collect species occurrence data from many sources. The goal is to wrap functions in other R packages to make a seamless experience across data sources for the user.
+At rOpenSci, we have been writing R packages to interact with many sources of species occurrence data, including [GBIF][gbif], [Vertnet][vertnet], [BISON][bison], [iNaturalist][inat], the [Berkeley ecoengine][ecoengine], [AntWeb][antweb], and [eBird][ebird]. Other databases are out there as well, which we can pull in. `spocc` is an R package to query and collect species occurrence data from many sources. The goal is to to create a seamless search experience across data sources, as well as creating unified outputs across data sources.
+
+`spocc` currently interfaces with ten major biodiversity repositories
+
+1. [Global Biodiversity Information Facility (GBIF)][gbif] (via `rgbif`)
+GBIF is a government funded open data repository with several partner organizations with the express goal of providing access to data on Earth's biodiversity. The data are made available by a network of member nodes, coordinating information from various participant organizations and government agencies.
+
+2. [Berkeley Ecoengine][ecoengine] (via `ecoengine`)
+The ecoengine is an open API built by the [Berkeley Initiative for Global Change Biology](http://globalchange.berkeley.edu/). The repository provides access to over 3 million specimens from various Berkeley natural history museums. These data span more than a century and provide access to georeferenced specimens, species checklists, photographs, vegetation surveys and resurveys and a variety of measurements from environmental sensors located at reserves across University of California's natural reserve system.
+
+3. [iNaturalist][inat]
+iNaturalist provides access to crowd sourced citizen science data on species observations.
+
+4. [VertNet][vertnet] (via `rvertnet`)
+Similar to `rgbif`, ecoengine, and `rbison` (see below), VertNet provides access to more than 80 million vertebrate records spanning a large number of institutions and museums primarly covering four major disciplines (mammology, herpetology, ornithology, and icthyology). __Note that we don't currenlty support VertNet data in this package, but we should soon__
+
+5. [Biodiversity Information Serving Our Nation][bison] (via `rbison`)
+Built by the US Geological Survey's core science analytic team, BISON is a portal that provides access to species occurrence data from several participating institutions.
+
+6. [eBird][ebird] (via `rebird`)
+ebird is a database developed and maintained by the Cornell Lab of Ornithology and the National Audubon Society. It provides real-time access to checklist data, data on bird abundance and distribution, and communtiy reports from birders.
+
+7. [AntWeb][antweb] (via `AntWeb`)
+AntWeb is the world's largest online database of images, specimen records, and natural history information on ants. It is community driven and open to contribution from anyone with specimen records, natural history comments, or images.
+
+8. [iDigBio][idigbio] (via `ridigbio`)
+iDigBio facilitates the digitization of biological and paleobiological specimens and their associated data, and houses specimen data, as well as providing their specimen data via RESTful web services.
+
+9. [OBIS][obis]
+OBIS (Ocean Biogeographic Information System) allows users to search marine species datasets from all of the world's oceans.
+
+10. [Atlas of Living Australia][ala]
+ALA (Atlas of Living Australia) contains information on all the known species in Australia aggregated from a wide range of data providers: museums, herbaria, community groups, government departments, individuals and universities; it contains more than 50 million occurrence records.
 
 The inspiration for this comes from users requesting a more seamless experience across data sources, and from our work on a similar package for taxonomy data ([taxize][taxize]).
 
@@ -52,7 +84,7 @@ Get data from GBIF
 ```r
 (out <- occ(query = 'Accipiter striatus', from = 'gbif', limit = 100))
 #> Searched: gbif
-#> Occurrences - Found: 528,936, Returned: 100
+#> Occurrences - Found: 617,192, Returned: 100
 #> Search type: Scientific
 #>   gbif: Accipiter striatus (100)
 ```
@@ -65,13 +97,13 @@ out$gbif
 #> Species [Accipiter striatus (100)] 
 #> First 10 rows of [Accipiter_striatus]
 #> 
-#> # A tibble: 100 × 108
-#>                  name  longitude latitude  prov         issues        key
-#>                 <chr>      <dbl>    <dbl> <chr>          <chr>      <int>
-#> 1  Accipiter striatus  -97.94314 30.04580  gbif cdround,gass84 1233600470
-#> 2  Accipiter striatus  -77.05161 38.87834  gbif cdround,gass84 1270044795
-#> 3  Accipiter striatus  -95.50117 29.76086  gbif cdround,gass84 1229610478
-#> 4  Accipiter striatus  -96.74874 33.03102  gbif cdround,gass84 1257416040
+#> # A tibble: 100 × 97
+#>                  name  longitude latitude  prov                 issues
+#>                 <chr>      <dbl>    <dbl> <chr>                  <chr>
+#> 1  Accipiter striatus -106.31531 31.71593  gbif         cdround,gass84
+#> 2  Accipiter striatus  -97.81493 26.03150  gbif cdround,cucdmis,gass84
+#> 3  Accipiter striatus  -81.85267 28.81852  gbif                 gass84
+#> 4  Accipiter striatus  -81.85329 28.81806  gbif         cdround,gass84
 ...
 ```
 
@@ -83,9 +115,9 @@ Get fine-grained detail over each data source by passing on parameters to the pa
 ```r
 (out <- occ(query = 'Setophaga caerulescens', from = 'ebird', ebirdopts = list(region = 'US')))
 #> Searched: ebird
-#> Occurrences - Found: 0, Returned: 500
+#> Occurrences - Found: 0, Returned: 19
 #> Search type: Scientific
-#>   ebird: Setophaga caerulescens (500)
+#>   ebird: Setophaga caerulescens (19)
 ```
 
 Just ebird data
@@ -93,16 +125,16 @@ Just ebird data
 
 ```r
 out$ebird
-#> Species [Setophaga caerulescens (500)] 
+#> Species [Setophaga caerulescens (19)] 
 #> First 10 rows of [Setophaga_caerulescens]
 #> 
-#> # A tibble: 500 × 12
-#>                      name longitude latitude  prov      obsDt
-#>                     <chr>     <dbl>    <dbl> <chr>     <date>
-#> 1  Setophaga caerulescens -74.96229 38.94037 ebird 2016-10-07
-#> 2  Setophaga caerulescens -81.78414 24.54900 ebird 2016-10-07
-#> 3  Setophaga caerulescens -74.04066 40.62207 ebird 2016-10-07
-#> 4  Setophaga caerulescens -71.13179 42.29393 ebird 2016-10-07
+#> # A tibble: 19 × 12
+#>                      name longitude latitude  prov
+#>                     <chr>     <dbl>    <dbl> <chr>
+#> 1  Setophaga caerulescens -70.30958 43.67663 ebird
+#> 2  Setophaga caerulescens -80.22349 26.11165 ebird
+#> 3  Setophaga caerulescens -80.37937 25.75437 ebird
+#> 4  Setophaga caerulescens -80.59637 24.94986 ebird
 ...
 ```
 
@@ -119,21 +151,21 @@ head(dat); tail(dat)
 #> # A tibble: 6 × 6
 #>                     name longitude latitude  prov       date        key
 #>                    <chr>     <chr>    <chr> <chr>     <date>      <chr>
-#> 1 Setophaga caerulescens -71.80166 44.53323  gbif 2016-05-31 1291120531
-#> 2 Setophaga caerulescens -72.83974 44.07966  gbif 2016-05-17 1269567302
-#> 3 Setophaga caerulescens -83.44952 44.25382  gbif 2016-05-07 1291149671
-#> 4 Setophaga caerulescens -83.59349 41.58065  gbif 2016-05-11 1291674787
-#> 5 Setophaga caerulescens -75.19615 39.95469  gbif 2016-05-11 1269552963
-#> 6 Setophaga caerulescens -83.44952 44.25382  gbif 2016-05-08 1291149541
+#> 1 Setophaga caerulescens -83.44952 44.25382  gbif 2016-05-07 1291149600
+#> 2 Setophaga caerulescens -83.44952 44.25382  gbif 2016-05-07 1291149586
+#> 3 Setophaga caerulescens -83.16294 41.61554  gbif 2016-05-12 1269558094
+#> 4 Setophaga caerulescens  -80.0972 42.16493  gbif 2016-05-07 1269546812
+#> 5 Setophaga caerulescens    -72.52 43.62952  gbif 2016-05-21 1269574255
+#> 6 Setophaga caerulescens -71.14216 42.37114  gbif 2016-05-12 1269554454
 #> # A tibble: 6 × 6
 #>                     name   longitude   latitude  prov       date      key
 #>                    <chr>       <chr>      <chr> <chr>     <date>    <chr>
-#> 1 Setophaga caerulescens -76.5798569 39.2896713 ebird 2016-10-07  L449982
-#> 2 Setophaga caerulescens -76.2258053 39.0347918 ebird 2016-10-07  L126631
-#> 3 Setophaga caerulescens -75.3904152 40.6363295 ebird 2016-10-07  L372101
-#> 4 Setophaga caerulescens -73.9869263 40.4392518 ebird 2016-10-07  L197353
-#> 5 Setophaga caerulescens   -88.21148   40.11972 ebird 2016-10-07  L251002
-#> 6 Setophaga caerulescens -75.1045883 40.0237695 ebird 2016-10-07 L3694793
+#> 1 Setophaga caerulescens -91.0964843 30.3108869 ebird 2016-11-26 L3254433
+#> 2 Setophaga caerulescens -80.3733989 25.6767589 ebird 2016-11-25 L3379090
+#> 3 Setophaga caerulescens -80.2770996 26.0697361 ebird 2016-11-25  L631602
+#> 4 Setophaga caerulescens -74.0071169 40.7121688 ebird 2016-11-24 L5102248
+#> 5 Setophaga caerulescens -80.2081604 26.9128593 ebird 2016-11-24 L3068365
+#> 6 Setophaga caerulescens  -80.214057 26.2768695 ebird 2016-11-24 L1306908
 ```
 
 ## Clean data
@@ -151,7 +183,7 @@ All mapping functionality is now in a separate package [mapr](https://github.com
 * Get citation information for `spocc` in R doing `citation(package = 'spocc')`
 * Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
 
-[![ropensci_footer](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)
+[![ropensci_footer](https://ropensci.org/public_images/github_footer.png)](https://ropensci.org)
 
 [gbif]: https://github.com/ropensci/rgbif
 [vertnet]: https://github.com/ropensci/rvertnet
@@ -161,3 +193,6 @@ All mapping functionality is now in a separate package [mapr](https://github.com
 [ecoengine]: https://github.com/ropensci/ecoengine
 [antweb]: http://antweb.org/
 [idigbio]: https://www.idigbio.org/
+[obis]: http://www.iobis.org/
+[ebird]: http://ebird.org/content/ebird/
+[ala]: http://www.ala.org.au/

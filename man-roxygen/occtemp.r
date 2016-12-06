@@ -44,14 +44,17 @@
 #' \code{\link[ridigbio]{idig_search_records}}. See also \code{\link{occ_options}}.
 #' @param obisopts (list) List of named options to pass on to internal function. See 
 #' \url{https://github.com/iobis/api-docs} for possible parameters
+#' @param alaopts (list) List of named options to pass on to internal function. 
+#' See \code{Occurrence search} part of the API docs at 
+#' \url{http://api.ala.org.au/#ws3} for possible parameters.
 #'
 #' @details The \code{occ} function is an opinionated wrapper
 #' around the rgbif, rbison, rinat, rebird, AntWeb, ecoengine, rvertnet and
-#' ridigbio packages to allow data access from a single access point. We take
+#' ridigbio packages (as well as internal custom wrappers around some data
+#' sources) to allow data access from a single access point. We take
 #' care of making sure you get useful objects out at the cost of
 #' flexibility/options - although you can still set options for each of the
-#' packages via the gbifopts, bisonopts, inatopts, ebirdopts, ecoengineopts,
-#' vertnetopts, antwebopts and idigbioopts parameters.
+#' packages via the gbifopts, bisonopts, inatopts, etc. parameters.
 #'
 #' @section Inputs:
 #' All inputs to \code{occ} are one of:
@@ -90,6 +93,7 @@
 #'  function - API parameter: \code{scientificname}
 #'  \item inat - internal function - API parameter: \code{q}
 #'  \item obis - internal function - API parameter: \code{scientificName}
+#'  \item ala - internal function - API parameter: \code{q}
 #' }
 #' If you have questions about how each of those parameters behaves with respect to
 #' the terms you pass to it, lookup documentation for those functions, or get in touch
@@ -171,6 +175,7 @@
 #'  \item gbif
 #'  \item bison
 #'  \item obis
+#'  \item ala
 #' }
 #'
 #' \bold{bbox only}
@@ -188,6 +193,12 @@
 #' }
 #'
 #' @section Paging:
+#' All data sources respond to the \code{limit} parameter passed to \code{occ}.
+#' 
+#' Data sources, however, vary as to whether they respond to an offset. Here's
+#' the details on which data sources will respond to \code{start} and which 
+#' to the \code{page} parameter:
+#' 
 #' \itemize{
 #'  \item gbif - Responds to \code{start}. Default: 0
 #'  \item ecoengine - Responds to \code{page}. Default: 1
@@ -203,6 +214,7 @@
 #'  second request for you automatically.
 #'  \item idigbio - Responds to \code{start}. Default: 0
 #'  \item obis - Responds to \code{start}. Default: 0
+#'  \item ala - Responds to \code{start}. Default: 0
 #' }
 #'
 #' @section BEWARE:

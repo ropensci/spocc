@@ -2,15 +2,15 @@
 #'
 #' @export
 #'
-#' @param obj Input from occ, an object of class \code{occdat}, or an object of class
-#' \code{occdatind}, the individual objects from each source within the
+#' @param obj Input from occ, an object of class \code{occdat}, or an object 
+#' of class \code{occdatind}, the individual objects from each source within the
 #' \code{occdat} class.
 #' @param what (character) One of data (default) or all (with metadata)
 #'
 #' @details
-#' This function combines a subset of data from each data provider to a single data.frame, or
-#' metadata plus data if you request \code{what="all"}. The single data.frame contains the
-#' following columns:
+#' This function combines a subset of data from each data provider to a single 
+#' data.frame, or metadata plus data if you request \code{what="all"}. The 
+#' single data.frame contains the following columns:
 #'
 #' \itemize{
 #'  \item name - scientific (or common) name
@@ -21,17 +21,22 @@
 #'  \item key - occurrence record key
 #' }
 #'
-#' AntWeb doesn't provide dates, so occurrence rows from that provider are blank.
+#' AntWeb doesn't provide dates, so occurrence rows from that provider 
+#' are blank.
 #'
 #' @examples \dontrun{
 #' # combine results from output of an occ() call
-#' spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Carduelis tristis')
-#' out <- occ(query=spnames, from='gbif', gbifopts=list(hasCoordinate=TRUE), limit=10)
+#' spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 
+#'   'Carduelis tristis')
+#' out <- occ(query=spnames, from='gbif', gbifopts=list(hasCoordinate=TRUE), 
+#'   limit=10)
 #' occ2df(out)
 #' occ2df(out$gbif)
 #'
-#' out <- occ(query='Accipiter striatus', from=c('gbif','bison','ecoengine','ebird','inat','vertnet'),
-#'    gbifopts=list(hasCoordinate=TRUE), limit=2)
+#' out <- occ(
+#'   query='Accipiter striatus', 
+#'   from=c('gbif','bison','ecoengine','ebird','inat','vertnet'),
+#'   gbifopts=list(hasCoordinate=TRUE), limit=2)
 #' occ2df(out)
 #' occ2df(out$vertnet)
 #'
@@ -69,6 +74,7 @@ occ2df.occdat <- function(obj, what = "data") {
   aw <- foolist(obj$antweb)
   vn <- foolist(obj$vertnet)
   id <- foolist(obj$idigbio)
+  ob <- foolist(obj$obis)
   tmp <- rbind_fill(
     Map(
       function(x, y){
@@ -85,19 +91,22 @@ occ2df.occdat <- function(obj, what = "data") {
           rename(dat, stats::setNames("key", keymap[[y]]))
         }
       },
-      list(aa, bb, cc, dd, ee, aw, vn, id),
-      c('gbif','bison','inat','ebird','ecoengine','antweb','vertnet','idigbio')
+      list(aa, bb, cc, dd, ee, aw, vn, id, ob),
+      c('gbif','bison','inat','ebird','ecoengine','antweb',
+        'vertnet','idigbio','obis')
     )
   )
-  tmpout <- list(meta = list(obj$gbif$meta, obj$bison$meta, obj$inat$meta, obj$ebird$meta,
-      obj$ecoengine$meta, obj$aw$meta, obj$vn$meta, obj$id$meta), data = tmp)
+  tmpout <- list(meta = list(obj$gbif$meta, obj$bison$meta, obj$inat$meta, 
+      obj$ebird$meta, obj$ecoengine$meta, obj$aw$meta, obj$vn$meta, 
+      obj$id$meta, obj$ob$meta), data = tmp)
   if (what %in% "data") as_data_frame(tmpout$data) else tmpout
 }
 
-datemap <- list(gbif = 'eventDate', bison = 'date', inat = 'observed_on', ebird = 'obsDt',
-                ecoengine = 'begin_date', antweb = NULL, vertnet = "eventdate",
-                idigbio = "datecollected")
+datemap <- list(gbif = 'eventDate', bison = 'date', inat = 'observed_on', 
+                ebird = 'obsDt', ecoengine = 'begin_date', antweb = NULL, 
+                vertnet = "eventdate", idigbio = "datecollected", 
+                obis = "eventDate")
 
-keymap <- list(gbif = "key", bison = "occurrenceID", inat = "id", ebird = "locID",
-               ecoengine = "key", antweb = "catalogNumber", vertnet = "occurrenceid",
-               idigbio = "uuid")
+keymap <- list(gbif = "key", bison = "occurrenceID", inat = "id", 
+               ebird = "locID", ecoengine = "key", antweb = "catalogNumber", 
+               vertnet = "occurrenceid", idigbio = "uuid", obis = "id")

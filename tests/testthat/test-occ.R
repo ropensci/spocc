@@ -13,6 +13,8 @@ test_that("occ works for each data source", {
   x7 <- occ(query = 'Spinus tristis', from = 'idigbio', limit = 30)
   
   x8 <- occ(query = 'Spinus tristis', from = 'vertnet', limit = 30)
+  
+  x9 <- occ(query = 'Mola mola', from = 'obis', limit = 30)
 
   expect_is(x3, "occdat")
   expect_is(x4, "occdat")
@@ -62,6 +64,13 @@ test_that("occ works for each data source", {
   expect_is(x8$vertnet, "occdatind")
   expect_is(x8$vertnet$data[[1]], "data.frame")
   expect_equal(unique(x8$vertnet$data[[1]]$prov), "vertnet")
+  
+  # Testing x9
+  expect_is(x9, "occdat")
+  expect_is(x9$obis, "occdatind")
+  expect_is(x9$obis$data[[1]], "data.frame")
+  temp_df9 <- x9$obis$data[[1]]
+  expect_equal(unique(temp_df9$prov), "obis")
 })
 
 test_that("occ antweb tests", {

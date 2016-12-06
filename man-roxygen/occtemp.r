@@ -42,6 +42,8 @@
 #' \code{\link[rvertnet]{searchbyterm}}. See also \code{\link{occ_options}}..
 #' @param idigbioopts (list) List of named options to pass on to
 #' \code{\link[ridigbio]{idig_search_records}}. See also \code{\link{occ_options}}.
+#' @param obisopts (list) List of named options to pass on to internal function. See 
+#' \url{https://github.com/iobis/api-docs} for possible parameters
 #'
 #' @details The \code{occ} function is an opinionated wrapper
 #' around the rgbif, rbison, rinat, rebird, AntWeb, ecoengine, rvertnet and
@@ -87,6 +89,7 @@
 #'  \item ridigbio - \code{scientificname} in the \code{\link[ridigbio]{idig_search_records}}
 #'  function - API parameter: \code{scientificname}
 #'  \item inat - internal function - API parameter: \code{q}
+#'  \item obis - internal function - API parameter: \code{scientificName}
 #' }
 #' If you have questions about how each of those parameters behaves with respect to
 #' the terms you pass to it, lookup documentation for those functions, or get in touch
@@ -167,6 +170,7 @@
 #' \itemize{
 #'  \item gbif
 #'  \item bison
+#'  \item obis
 #' }
 #'
 #' \bold{bbox only}
@@ -198,6 +202,7 @@
 #'  1000; if you request 2000 records, we'll do the first request, and do the
 #'  second request for you automatically.
 #'  \item idigbio - Responds to \code{start}. Default: 0
+#'  \item obis - Responds to \code{start}. Default: 0
 #' }
 #'
 #' @section BEWARE:

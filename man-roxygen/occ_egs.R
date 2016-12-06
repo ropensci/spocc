@@ -14,7 +14,7 @@
 #' res$vertnet
 #' res$vertnet$data$Bison_bison
 #' occ2df(res)
-#'
+#' 
 #' # Paging
 #' one <- occ(query = 'Accipiter striatus', from = 'gbif', limit = 5)
 #' two <- occ(query = 'Accipiter striatus', from = 'gbif', limit = 5, start = 5)
@@ -196,6 +196,7 @@
 #' occ(query = 'Accipiter striatus', from = c('ebird','bison'), limit=10, callopts=verbose())
 #' # occ(query = 'Accipiter striatus', from = 'ebird', limit=10, callopts=timeout(seconds = 0.1))
 #' occ(query = 'Accipiter striatus', from = 'inat', callopts=verbose())
+#' occ(query = 'Mola mola', from = 'obis', limit = 200, callopts = verbose())
 #' ## notice that callopts is ignored when from='antweb'
 #' occ(query = 'linepithema humile', from = 'antweb', callopts=verbose())
 #'
@@ -240,4 +241,38 @@
 #' # occ(query='Accipiter striatus', from='gbif',
 #' #    geometry='MULTIPOLYGON((30 10, 10 20, 20 60, 60 60, 30 10),
 #' #                           (30 10, 10 20, 20 60, 60 60, 30 10))')
+#' 
+#' # OBIS examples
+#' ## basic query
+#' (res <- occ(query = 'Mola mola', from = 'obis', limit = 200))
+#' ## get to obis data
+#' res$obis
+#' # make a map
+#' library("mapr")
+#' map_ggplot(res)
+#' ## get obis + gbif data
+#' (res <- occ(query = 'Mola mola', from = c('obis', 'gbif'), limit = 200))
+#' res$gbif
+#' res$obis
+#' ## no match found
+#' (res <- occ(query = 'Linguimaera thomsonia', from = 'obis'))
+#' ## geometry query
+#' geometry <- "POLYGON((8.98 48.05,15.66 48.05,15.66 45.40,8.98 45.40,8.98 48.05))"
+#' (res <- occ(from = 'obis', geometry = geometry, limit = 50))
+#' res$obis
+#' ## Pass in spatial classes
+#' library("sp")
+#' one <- Polygon(cbind(c(45,30,30,45), c(35,35,30,30)))
+#' spone = Polygons(list(one), "s1")
+#' sppoly = SpatialPolygons(list(spone), as.integer(1))
+#' (res <- occ(from = 'obis', geometry = sppoly, limit = 50))
+#' ## Do paging
+#' (res1 <- occ(query = 'Mola mola', from = 'obis', limit = 10))
+#' (res2 <- occ(query = 'Mola mola', from = 'obis', limit = 10, start = 20))
+#' res1$obis
+#' res2$obis
+#' ## Pass in any occurrence route parameters to obisopts as a list
+#' (res <- occ(query = 'Mola mola', from = 'obis', 
+#'    obisopts = list(year = 2005)))
+#' unique(res$obis$data$Mola_mola$yearcollected)
 #' }

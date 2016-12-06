@@ -1,5 +1,4 @@
 language: r
-sudo: false
 cache: packages
 
 bioc_packages:
@@ -9,6 +8,8 @@ addons:
   apt:
     packages:
       - libv8-dev
+      - libproj-dev
+      - libgeos++-dev
 
 after_success:
   - Rscript -e 'covr::codecov()'

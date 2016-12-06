@@ -4,12 +4,13 @@ cache: packages
 bioc_packages:
   - sangerseqR
 
+before_install:
+  - sudo apt-get install libproj-dev libgeos++-dev
+
 addons:
   apt:
     packages:
       - libv8-dev
-      - libproj-dev
-      - libgeos++-dev
 
 after_success:
   - Rscript -e 'covr::codecov()'

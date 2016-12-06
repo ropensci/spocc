@@ -2,7 +2,7 @@
 move_cols <- function(x, y)
   x[ c(y, names(x)[-sapply(y, function(z) grep(paste0('\\b', z, '\\b'), names(x)))]) ]
 
-emptylist <- function(opts) list(time = NULL, found = NULL, data = data.frame(NULL), opts = opts)
+emptylist <- function(x) list(time = NULL, found = NULL, data = data_frame(), opts = x)
 
 stand_latlon <- function(x){
   lngs <- c('decimalLongitude', 'decimallongitude', 'Longitude', 'lng', 'longitude',
@@ -23,7 +23,7 @@ add_latlong_if_missing <- function(x) {
 stand_dates <- function(dat, from){
   datevars <- list(gbif = 'eventDate', bison = c('eventDate', 'year'), inat = 'observed_on',
                    ebird = 'obsDt', ecoengine = 'begin_date', vertnet = 'eventdate',
-                   idigbio = 'datecollected')
+                   idigbio = 'datecollected', ala = 'eventDate')
   var <- datevars[[from]]
   if (from == "bison") {
     var <- if ( is_null(dat$eventDate) ) "year" else "eventDate"
@@ -39,7 +39,9 @@ stand_dates <- function(dat, from){
       ebird = as_date(ymd_hm(dat[[var]], truncated = 3, quiet = TRUE)),
       ecoengine = as_date(ymd(dat[[var]], truncated = 3, quiet = TRUE)),
       vertnet = as_date(ymd(dat[[var]], truncated = 3, quiet = TRUE)),
-      idigbio = as_date(ymd_hms(dat[[var]], truncated = 3, quiet = TRUE))
+      idigbio = as_date(ymd_hms(dat[[var]], truncated = 3, quiet = TRUE)),
+      obis = as_date(ymd_hms(dat[[var]], truncated = 3, quiet = TRUE)),
+      ala = as_date(ymd_hms(dat[[var]], truncated = 3, quiet = TRUE))
     )
     if (from == "bison") rename(dat, stats::setNames('date', var)) else dat
   }

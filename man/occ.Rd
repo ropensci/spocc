@@ -9,7 +9,7 @@ occ(query = NULL, from = "gbif", limit = 500, start = NULL,
   callopts = list(), gbifopts = list(), bisonopts = list(),
   inatopts = list(), ebirdopts = list(), ecoengineopts = list(),
   antwebopts = list(), vertnetopts = list(), idigbioopts = list(),
-  obisopts = list())
+  obisopts = list(), alaopts = list())
 }
 \arguments{
 \item{query}{(character) One to many scientific names. See Details for what parameter
@@ -542,6 +542,20 @@ res2$obis
 (res <- occ(query = 'Mola mola', from = 'obis', 
    obisopts = list(year = 2005)))
 unique(res$obis$data$Mola_mola$yearcollected)
+
+
+# ALA examples
+## basic query
+(res <- occ(query = 'Alaba vibex', from = 'ala', limit = 200))
+## get to ala data
+res$ala
+occ2df(res)
+
+# geometry search
+(x <- occ(query = "Macropus", from = 'ala',
+  geometry = "POLYGON((145 -37,150 -37,150 -30,145 -30,145 -37))"))
+x$ala
+occ2df(x)
 }
 }
 

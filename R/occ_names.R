@@ -162,5 +162,3 @@ names_ecoengine <- function(sources, query, limit, callopts, opts){
     emptylist(opts)
   }
 }
-
-emptylist <- function(x) list(time = NULL, found = NULL, data = data_frame(), opts = x)

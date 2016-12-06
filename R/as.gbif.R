@@ -2,16 +2,19 @@
 #'
 #' @export
 #'
-#' @param x Various inputs, including the output from a call to \code{\link{occ}}
-#' (class occdat), \code{\link{occ2df}} (class data.frame), or a list, numeric,
-#' character, gbifkey, or occkey.
+#' @param x Various inputs, including the output from a call to 
+#' \code{\link{occ}} (class occdat), \code{\link{occ2df}} (class data.frame), 
+#' or a list, numeric, character, gbifkey, or occkey.
 #' @return One or more in a list of both class gbifkey and occkey
-#' @details Internally, we use \code{\link[rgbif]{occ_get}}, whereas \code{\link{occ}}
-#' uses \code{\link[rgbif]{occ_data}}. We can use \code{\link[rgbif]{occ_get}} here
-#' because we have the occurrence key to go directly to the occurrence record.
+#' @details Internally, we use \code{\link[rgbif]{occ_get}}, whereas 
+#' \code{\link{occ}} uses \code{\link[rgbif]{occ_data}}. We can use 
+#' \code{\link[rgbif]{occ_get}} here because we have the occurrence key to 
+#' go directly to the occurrence record.
 #' @examples \dontrun{
-#' spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Carduelis tristis')
-#' out <- occ(query=spnames, from=c('gbif','ebird'), gbifopts=list(hasCoordinate=TRUE), limit=2)
+#' spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 
+#'   'Carduelis tristis')
+#' out <- occ(query=spnames, from=c('gbif','ebird'), 
+#'   gbifopts=list(hasCoordinate=TRUE), limit=2)
 #' res <- occ2df(out)
 #' (tt <- as.gbif(out))
 #' (uu <- as.gbif(res))
@@ -66,5 +69,6 @@ make_gbif_df <- function(x){
 }
 
 make_gbif <- function(y, ...){
-  structure(occ_get(key = y, fields = "all", ...), class = c("gbifkey", "occkey"))
+  structure(occ_get(key = y, fields = "all", ...), 
+            class = c("gbifkey", "occkey"))
 }

@@ -7,12 +7,12 @@
 as.obis(x)
 }
 \arguments{
-\item{x}{Various inputs, including the output from a call to \code{\link{occ}}
-(class occdat), \code{\link{occ2df}} (class data.frame), or a list, numeric,
-character, obiskey, or occkey.}
+\item{x}{Various inputs, including the output from a call to 
+\code{\link{occ}} (class occdat), \code{\link{occ2df}} (class data.frame), 
+or a list, numeric, obiskey, or occkey.}
 }
 \value{
-One or more in a list of both class obiskey and occkey#'
+One or more in a list of both class obiskey and occkey
 }
 \description{
 Coerce occurrence keys to obis id objects
@@ -21,7 +21,7 @@ Coerce occurrence keys to obis id objects
 \dontrun{
 spnames <- c('Mola mola', 'Loligo vulgaris', 'Stomias boa')
 out <- occ(query=spnames, from='obis', limit=2)
-res <- occ2df(out)
+(res <- occ2df(out))
 (tt <- as.obis(out))
 (uu <- as.obis(res))
 as.obis(x = res$key[1])
@@ -30,9 +30,8 @@ as.obis(tt[[1]])
 as.obis(uu[[1]])
 as.obis(tt[1:2])
 
-library("dplyr")
-rbind_all(lapply(tt, function(x) data.frame(unclass(x)$data)))
+library("data.table")
+rbindlist(tt, use.names = TRUE, fill = TRUE)
 }
 }
-\keyword{internal}
 

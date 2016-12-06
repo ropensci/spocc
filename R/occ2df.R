@@ -75,6 +75,7 @@ occ2df.occdat <- function(obj, what = "data") {
   vn <- foolist(obj$vertnet)
   id <- foolist(obj$idigbio)
   ob <- foolist(obj$obis)
+  ala <- foolist(obj$ala)
   tmp <- rbind_fill(
     Map(
       function(x, y){
@@ -91,22 +92,26 @@ occ2df.occdat <- function(obj, what = "data") {
           rename(dat, stats::setNames("key", keymap[[y]]))
         }
       },
-      list(aa, bb, cc, dd, ee, aw, vn, id, ob),
+      list(aa, bb, cc, dd, ee, aw, vn, id, ob, ala),
       c('gbif','bison','inat','ebird','ecoengine','antweb',
-        'vertnet','idigbio','obis')
+        'vertnet','idigbio','obis','ala')
     )
   )
-  tmpout <- list(meta = list(obj$gbif$meta, obj$bison$meta, obj$inat$meta, 
-      obj$ebird$meta, obj$ecoengine$meta, obj$aw$meta, obj$vn$meta, 
-      obj$id$meta, obj$ob$meta), data = tmp)
+  tmpout <- list(
+    meta = list(obj$gbif$meta, obj$bison$meta, obj$inat$meta, 
+                obj$ebird$meta, obj$ecoengine$meta, obj$aw$meta, obj$vn$meta, 
+                obj$id$meta, obj$ob$meta, obj$ala$meta), 
+    data = tmp
+  )
   if (what %in% "data") as_data_frame(tmpout$data) else tmpout
 }
 
 datemap <- list(gbif = 'eventDate', bison = 'date', inat = 'observed_on', 
                 ebird = 'obsDt', ecoengine = 'begin_date', antweb = NULL, 
                 vertnet = "eventdate", idigbio = "datecollected", 
-                obis = "eventDate")
+                obis = "eventDate", ala = "eventDate")
 
 keymap <- list(gbif = "key", bison = "occurrenceID", inat = "id", 
                ebird = "locID", ecoengine = "key", antweb = "catalogNumber", 
-               vertnet = "occurrenceid", idigbio = "uuid", obis = "id")
+               vertnet = "occurrenceid", idigbio = "uuid", obis = "id",
+               ala = "uuid")

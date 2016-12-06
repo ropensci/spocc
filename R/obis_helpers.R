@@ -1,3 +1,5 @@
+obis_base <- function() "http://api.iobis.org/occurrence"
+
 obis_search <- function(scientificName = NULL, limit = 500, offset = 0, 
   obisid = NULL, aphiaid = NULL, resourceid = NULL, year = NULL,
   startdate = NULL, enddate = NULL, startdepth = NULL,
@@ -12,4 +14,8 @@ obis_search <- function(scientificName = NULL, limit = 500, offset = 0,
   jsonlite::fromJSON(content(res, "text"))
 }
 
-obis_base <- function() "http://api.iobis.org/occurrence"
+obis_occ_id <- function(id, ...) {
+  res <- GET(file.path(obis_base(), id), ...)
+  stop_for_status(res)
+  jsonlite::fromJSON(content(res, "text"))
+}

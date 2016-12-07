@@ -2,11 +2,11 @@ Package: spocc
 Title: Interface to Species Occurrence Data Sources
 Description: A programmatic interface to many species occurrence data sources,
     including Global Biodiversity Information Facility ('GBIF'), 'USGS's'
-    Biodiversity Information Serving Our Nation ('BISON'), 'iNaturalist', 
-    Berkeley 'Ecoinformatics' Engine, 'eBird', 'AntWeb', Integrated Digitized 
-    Biocollections ('iDigBio'), 'VertNet', Ocean Biogeographic Information 
-    System ('OBIS'), and Atlas of Living Australia ('ALA'). Includes 
-    functionality for retrieving species occurrence data, and combining 
+    Biodiversity Information Serving Our Nation ('BISON'), 'iNaturalist',
+    Berkeley 'Ecoinformatics' Engine, 'eBird', 'AntWeb', Integrated Digitized
+    Biocollections ('iDigBio'), 'VertNet', Ocean Biogeographic Information
+    System ('OBIS'), and Atlas of Living Australia ('ALA'). Includes
+    functionality for retrieving species occurrence data, and combining
     those data.
 Version: 0.6.0
 License: MIT + file LICENSE
@@ -38,4 +38,4 @@ Suggests:
     knitr,
     taxize (>= 0.7.9),
     covr
-RoxygenNote: 5.0.1.9000
+RoxygenNote: 5.0.1

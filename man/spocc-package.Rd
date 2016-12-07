@@ -2,8 +2,8 @@
 % Please edit documentation in R/spocc-package.R
 \docType{package}
 \name{spocc-package}
-\alias{spocc-package}
 \alias{spocc}
+\alias{spocc-package}
 \title{Interface to many species occurrence data sources}
 \description{
 A programmatic interface to many species occurrence data 

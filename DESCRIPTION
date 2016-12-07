@@ -1,10 +1,10 @@
 Package: spocc
 Title: Interface to Species Occurrence Data Sources
 Description: A programmatic interface to many species occurrence data sources,
-    including Global Biodiversity Information Facility ('GBIF'), 'USGS's'
+    including Global Biodiversity Information Facility ('GBIF'), 'USGSs'
     Biodiversity Information Serving Our Nation ('BISON'), 'iNaturalist',
     Berkeley 'Ecoinformatics' Engine, 'eBird', 'AntWeb', Integrated Digitized
-    Biocollections ('iDigBio'), 'VertNet', Ocean Biogeographic Information
+    'Biocollections' ('iDigBio'), 'VertNet', Ocean 'Biogeographic' Information
     System ('OBIS'), and Atlas of Living Australia ('ALA'). Includes
     functionality for retrieving species occurrence data, and combining
     those data.

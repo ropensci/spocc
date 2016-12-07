@@ -2,7 +2,6 @@
 kr_local.R
 Makefile
 man-roxygen
-man-roxygen/^.*\.Rproj$
 spocc.Rproj
 ^\.Rproj\.user$
 vignettes/margins.sty
@@ -11,11 +10,10 @@ inst/shiny
 inst/vign
 inst/ignore
 CONTRIBUTING.md
-cran-comments.md
 appveyor.yml
 README.Rmd
 ^\.httr-oauth$
 ^CONDUCT\.md$
 ^issue_template\.md$
-
+revdep
 ^cran-comments\.md$

@@ -1,4 +1,4 @@
-#' Coerce occurrence keys to idigbio uuid objects
+#' Coerce occurrence keys to idigbio objects
 #'
 #' @export
 #'
@@ -10,7 +10,8 @@
 #' \code{\link{idig_search_records}} in the \code{\link{occ}} function.
 #'
 #' @examples \dontrun{
-#' spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Carduelis tristis')
+#' spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 
+#'   'Carduelis tristis')
 #' out <- occ(query=spnames, from='idigbio', limit=2)
 #' res <- occ2df(out)
 #' (tt <- as.idigbio(out))
@@ -67,5 +68,6 @@ make_idigbio_df <- function(x){
 }
 
 make_idigbio <- function(y, ...){
-  structure(idig_view_records(uuid = y, ...), class = c("idigbiokey", "occkey"))
+  structure(ridigbio::idig_view_records(uuid = y, ...), 
+            class = c("idigbiokey", "occkey"))
 }

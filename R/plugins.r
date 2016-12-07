@@ -379,9 +379,12 @@ foo_idigbio <- function(sources, query, limit, start, geometry, has_coords, call
 
     opts$config <- callopts
 
-    out <- tryCatch(suppressWarnings(do.call(idig_search_records, opts)), error = function(e) e)
+    out <- tryCatch(suppressWarnings(
+      do.call(ridigbio::idig_search_records, opts)), error = function(e) e)
     if (inherits(out, "simpleError")) {
-      warning(sprintf("No records found in iDigBio for %s", query))
+      # check for meaningful/useful error messages
+      warning(out$message)
+      #warning(sprintf("No records found in iDigBio for %s", query))
       emptylist(opts)
     } else{
       out$prov <- rep("idigbio", nrow(out))

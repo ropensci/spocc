@@ -2,7 +2,7 @@
 % Please edit documentation in R/as.idigbio.R
 \name{as.idigbio}
 \alias{as.idigbio}
-\title{Coerce occurrence keys to idigbio uuid objects}
+\title{Coerce occurrence keys to idigbio objects}
 \usage{
 as.idigbio(x)
 }
@@ -15,7 +15,7 @@ character, idigbiokey, or occkey.}
 One or more in a list of both class idigbiokey and occkey
 }
 \description{
-Coerce occurrence keys to idigbio uuid objects
+Coerce occurrence keys to idigbio objects
 }
 \details{
 Internally, we use \code{idig_view_records}, whereas we use
@@ -23,7 +23,8 @@ Internally, we use \code{idig_view_records}, whereas we use
 }
 \examples{
 \dontrun{
-spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Carduelis tristis')
+spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 
+  'Carduelis tristis')
 out <- occ(query=spnames, from='idigbio', limit=2)
 res <- occ2df(out)
 (tt <- as.idigbio(out))

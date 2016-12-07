@@ -104,6 +104,9 @@
 #' a richer suite of fields than the \code{ridigbio} R client gives by default. But you can
 #' changes this by passing in a \code{fields} parameter to \code{idigbioopts} parameter with
 #' the specific fields you want.
+#' 
+#' Maximum of 100,000 results are allowed to be returned. See 
+#' \url{https://github.com/iDigBio/ridigbio/issues/33}
 #'
 #' @section Ecoengine notes:
 #' When searching ecoengine, you can leave the page argument blank to get a single page.

@@ -17,3 +17,4 @@ README.Rmd
 ^issue_template\.md$
 revdep
 ^cran-comments\.md$
+^.*\.Rproj$

@@ -1,17 +1,24 @@
 spocc 0.6.0
 ===========
 
+### NEW FEATURES
+
+* Added a new data source: Atlas of Living Australia (ALA), under
+the abbreviation `ala` (#98)
+* Added a new data source: Ocean Biogeographic Information System (OBIS), 
+under the abbreviation `obis` (#155)
+
 ### MINOR IMPROVEMENTS
 
-* xx (#xxx)
-* xx (#xxx)
-* xx (#xxx)
+* Added note to docs and minor tweak to internal methods to account
+for max results from iDigBio of 100,000. Now when you request more than 
+100K, you should get a warning saying as much (#169)
 
 ### BUG FIXES
 
-* xx (#xxx)
-* xx (#xxx)
-* xx (#xxx)
+* Made `occ2df()` more robust to varied inputs - allowing for users
+that may on purpose or not have a subset of the data source slots
+normally in the `occdat` class object (#171)
 
 
 spocc 0.5.4

@@ -34,7 +34,7 @@ Other functions include:
 \tabular{ll}{
 Provider \tab Web \cr
 GBIF \tab \url{http://www.gbif.org/} \cr
-BISON \tab \url{https://bison.usgs.ornl.gov/} \cr
+BISON \tab \url{https://bison.usgs.gov/} \cr
 eBird \tab \url{http://ebird.org/content/ebird/} \cr
 iNaturalist \tab \url{http://www.inaturalist.org/} \cr
 Berkeley ecoengine \tab \url{https://ecoengine.berkeley.edu/} \cr

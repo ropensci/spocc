@@ -3,6 +3,7 @@
 * local OS X install, R 3.3.2
 * ubuntu 12.04 (on travis-ci), R 3.3.2
 * win-builder (devel and release)
+* R-hub (xxx)
 
 ## R CMD check results
 
@@ -19,10 +20,12 @@ File 'LICENSE':
 * I have run R CMD check on the 1 downstream dependency. No problems were
 found; the maintainer (me) is aware of the changes.
 
+summary at <https://github.com/ropensci/spocc/tree/master/revdep#setup>
+
 --------
 
-This version fixes some bugs and requires new versions of some 
-package dependencies which were fixed themselves.
+This version adds two new data sources, and makes one of the exported
+methods more robust to varied inputs.
 
 Thanks!
 Scott Chamberlain

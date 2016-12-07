@@ -62,10 +62,17 @@ occ2df.occdatind <- function(obj, what = "data") {
   as_data_frame(rbind_fill(obj$data))
 }
 
+foolist <- function(x) {
+  if (is.null(x)) {
+    data.frame(NULL)
+  } else {
+    do.call(rbind_fill, x$data)
+  }
+}
+
 #' @export
 occ2df.occdat <- function(obj, what = "data") {
   what <- match.arg(what, choices = c("all", "data"))
-  foolist <- function(x) do.call(rbind_fill, x$data)
   aa <- foolist(obj$gbif)
   bb <- foolist(obj$bison)
   cc <- foolist(obj$inat)

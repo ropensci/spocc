@@ -32,7 +32,8 @@ Imports:
     V8 (>= 1.1),
     jsonlite (>= 1.1),
     data.table (>= 1.9.6),
-    tibble (>= 1.2)
+    tibble (>= 1.2),
+    wicket
 Suggests:
     testthat,
     knitr,

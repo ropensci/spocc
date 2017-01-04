@@ -14,41 +14,43 @@
 #' # Convert a bounding box to a WKT
 #'
 #' ## Pass in a vector of length 4 with all values
-#' bbox2wkt(bbox=c(38.4,-125.0,40.9,-121.8))
+#' bbox2wkt(bbox = list(c(-125.0,-121.8,38.4,40.9)))
 #'
 #' ## Or pass in each value separately
-#' mm <- bbox2wkt(minx=38.4, miny=-125.0, maxx=40.9, maxy=-121.8)
+#' mm <- bbox2wkt(-125.0, -121.8, 38.4, 40.9)
 #' wkt_read(mm)
 #'
 #' # Convert a WKT object to a bounding box
-#' wkt <- "POLYGON((38.4 -125,40.9 -125,40.9 -121.8,38.4 -121.8,38.4 -125))"
+#' wkt <- "POLYGON((-125 38.4,-125 40.9,-121.8 40.9,-121.8 38.4,-125 38.4))"
 #' wkt2bbox(wkt)
 #' }
 
-bbox2wkt <- function(minx=NA, miny=NA, maxx=NA, maxy=NA, bbox=NULL){
-  if (is.null(bbox)) bbox <- c(minx, miny, maxx, maxy)
-
-  stopifnot(length(bbox) == 4) #check for 4 digits
-  stopifnot(!any(is.na(bbox))) #check for NAs
-  stopifnot(is.numeric(as.numeric(bbox))) #check for numeric-ness
-  paste('POLYGON((',
-        sprintf('%s %s',bbox[1],bbox[2]), ',', sprintf(' %s %s',bbox[3],bbox[2]), ',',
-        sprintf(' %s %s',bbox[3],bbox[4]), ',', sprintf(' %s %s',bbox[1],bbox[4]), ',',
-        sprintf(' %s %s',bbox[1],bbox[2]),
-        '))', sep = "")
+bbox2wkt <- function(minx=NA, maxx=NA, miny=NA, maxy=NA, bbox=NULL) {
+  if (is.null(bbox)) bbox <- list(c(minx, maxx, miny, maxy))
+  wicket::bounding_wkt(values = bbox)
+  # stopifnot(length(bbox) == 4) #check for 4 digits
+  # stopifnot(!any(is.na(bbox))) #check for NAs
+  # stopifnot(is.numeric(as.numeric(bbox))) #check for numeric-ness
+  # paste('POLYGON((',
+  #       sprintf('%s %s',bbox[1],bbox[2]), ',', sprintf(' %s %s',bbox[3],bbox[2]), ',',
+  #       sprintf(' %s %s',bbox[3],bbox[4]), ',', sprintf(' %s %s',bbox[1],bbox[4]), ',',
+  #       sprintf(' %s %s',bbox[1],bbox[2]),
+  #       '))', sep = "")
 }
 
 #' @param wkt A Well Known Text object.
 #' @export
 #' @rdname bbox2wkt
-wkt2bbox <- function(wkt=NULL){
-  stopifnot(!is.null(wkt))
-  tmp <- wkt_read(wkt)$bbox
-  as.vector(tmp)
+wkt2bbox <- function(wkt){
+  # stopifnot(!is.null(wkt))
+  # tmp <- wkt_read(wkt)$bbox
+  # as.vector(tmp)
+  wicket::wkt_bounding(wkt)
 }
 
 
 # internal fxns
+## FIXME - for using wicket - can just use wicket::bounding_wkt, and remove class if needed
 bbox2wkt_noclass <- function(minx=NA, miny=NA, maxx=NA, maxy=NA, bbox=NULL){
   if (is.null(bbox)) bbox <- c(minx, miny, maxx, maxy)
   

@@ -47,24 +47,3 @@ wkt2bbox <- function(wkt){
   # as.vector(tmp)
   wicket::wkt_bounding(wkt)
 }
-
-
-# internal fxns
-## FIXME - for using wicket - can just use wicket::bounding_wkt, and remove class if needed
-bbox2wkt_noclass <- function(minx=NA, miny=NA, maxx=NA, maxy=NA, bbox=NULL){
-  if (is.null(bbox)) bbox <- c(minx, miny, maxx, maxy)
-  
-  stopifnot(length(bbox) == 4) #check for 4 digits
-  stopifnot(!any(is.na(bbox))) #check for NAs
-  stopifnot(is.numeric(as.numeric(bbox))) #check for numeric-ness
-  paste('(',
-        sprintf('%s %s',bbox[1],bbox[2]), ',', sprintf(' %s %s',bbox[3],bbox[2]), ',',
-        sprintf(' %s %s',bbox[3],bbox[4]), ',', sprintf(' %s %s',bbox[1],bbox[4]), ',',
-        sprintf(' %s %s',bbox[1],bbox[2]),
-        ')', sep = "")
-}
-
-make_multipolygon <- function(x) {
-  tmp <- vapply(x, function(z) bbox2wkt_noclass(bbox = z), "")
-  sprintf("POLYGON(%s)", paste0(tmp, collapse = ", "))
-}

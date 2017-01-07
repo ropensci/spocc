@@ -7,7 +7,7 @@
 \usage{
 bbox2wkt(minx = NA, miny = NA, maxx = NA, maxy = NA, bbox = NULL)
 
-wkt2bbox(wkt = NULL)
+wkt2bbox(wkt)
 }
 \arguments{
 \item{minx}{Minimum x value, or the most western longitude}
@@ -36,14 +36,14 @@ Convert a bounding box to a Well Known Text polygon, and a WKT to a bounding box
 # Convert a bounding box to a WKT
 
 ## Pass in a vector of length 4 with all values
-bbox2wkt(bbox=c(38.4,-125.0,40.9,-121.8))
+bbox2wkt(bbox = list(c(-125.0,38.4,-121.8,40.9)))
 
 ## Or pass in each value separately
-mm <- bbox2wkt(minx=38.4, miny=-125.0, maxx=40.9, maxy=-121.8)
+mm <- bbox2wkt(-125.0, 38.4, -121.8, 40.9)
 wkt_read(mm)
 
 # Convert a WKT object to a bounding box
-wkt <- "POLYGON((38.4 -125,40.9 -125,40.9 -121.8,38.4 -121.8,38.4 -125))"
+wkt <- "POLYGON((-125 38.4,-125 40.9,-121.8 40.9,-121.8 38.4,-125 38.4))"
 wkt2bbox(wkt)
 }
 }

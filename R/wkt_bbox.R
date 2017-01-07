@@ -14,10 +14,10 @@
 #' # Convert a bounding box to a WKT
 #'
 #' ## Pass in a vector of length 4 with all values
-#' bbox2wkt(bbox = list(c(-125.0,-121.8,38.4,40.9)))
+#' bbox2wkt(bbox = list(c(-125.0,38.4,-121.8,40.9)))
 #'
 #' ## Or pass in each value separately
-#' mm <- bbox2wkt(-125.0, -121.8, 38.4, 40.9)
+#' mm <- bbox2wkt(-125.0, 38.4, -121.8, 40.9)
 #' wkt_read(mm)
 #'
 #' # Convert a WKT object to a bounding box
@@ -25,8 +25,8 @@
 #' wkt2bbox(wkt)
 #' }
 
-bbox2wkt <- function(minx=NA, maxx=NA, miny=NA, maxy=NA, bbox=NULL) {
-  if (is.null(bbox)) bbox <- list(c(minx, maxx, miny, maxy))
+bbox2wkt <- function(minx=NA, miny=NA, maxx=NA, maxy=NA, bbox=NULL) {
+  if (is.null(bbox)) bbox <- list(c(minx, miny, maxx, maxy))
   wicket::bounding_wkt(values = bbox)
   # stopifnot(length(bbox) == 4) #check for 4 digits
   # stopifnot(!any(is.na(bbox))) #check for NAs

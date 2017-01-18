@@ -34,25 +34,19 @@
 
 wkt_vis <- function(x, zoom = 6, maptype = "terrain", browse = TRUE) {
   long = lat = group = NULL
+  
   stopifnot(!is.null(x))
   stopifnot(is.character(x))
-
-  out <- wkt_read(gsub("\n|\n\\s+", "", strtrim(x)))
-  
-  if (inherits(out$coordinates[,,1], "matrix")) {
-    longs <- data.frame(out$coordinates[,,1])
-    lats <- data.frame(out$coordinates[,,2])
-  } else {
-    longs <- t(data.frame(out$coordinates[,,1]))
-    lats <- t(data.frame(out$coordinates[,,2]) )
-  }
-  tocentroid <- list()
-  dfs <- list()
-  for (i in 1:NROW(longs)) {
-    tocentroid[[i]] <- tmp <- data.frame(long = as.numeric(longs[i,]), lat = as.numeric(lats[i,]))
-    dfs[[i]] <- apply(tmp, 1, function(x) as.list(x[c('long','lat')]))
-  }
-  centroid <- get_centroid(do.call("rbind", tocentroid))
+  x <- gsub("\n|\n\\s+", "", strtrim(x))
+  out <- wicket::wkt_coords(x)
+  centroid <- wicket::get_centroid(x)
+  dfs <- unname(lapply(split(out, out$ring), function(z) {
+    unname(
+      apply(z, 1, function(x) {
+        as.list(stats::setNames(x[c('lng','lat')], c('long', 'lat')))
+      })
+    )
+  }))
   
   whiskout <- list()
   for (i in seq_along(dfs)) {
@@ -60,20 +54,37 @@ wkt_vis <- function(x, zoom = 6, maptype = "terrain", browse = TRUE) {
     whiskout[[i]] <- whisker.render(features)
   }
   rend <- paste0(map_header, paste(whiskout, sep = "", collapse = ","), map_end)
-  
-  foot <- sprintf(footer, centroid[2], centroid[1], zoom)
+  foot <- sprintf(footer, centroid$lat, centroid$lng, zoom)
   res <- paste(rend, foot)
   tmpfile <- tempfile(pattern = 'spocc', fileext = ".html")
   write(res, file = tmpfile)
   if (browse) browseURL(tmpfile) else tmpfile
 }
 
-get_centroid <- function(x) {
-  x <- unname(as.matrix(x))
-  geojson <- jsonlite::toJSON(list(type = "Polygon", coordinates =  list(x)), auto_unbox = TRUE)
-  cent$eval(sprintf("var out = centroid(%s);", geojson))
-  cent$get("out.geometry.coordinates")
-}
+
+# out <- wkt_read(gsub("\n|\n\\s+", "", strtrim(x)))
+# if (inherits(out$coordinates[,,1], "matrix")) {
+#   longs <- data.frame(out$coordinates[,,1])
+#   lats <- data.frame(out$coordinates[,,2])
+# } else {
+#   longs <- t(data.frame(out$coordinates[,,1]))
+#   lats <- t(data.frame(out$coordinates[,,2]) )
+# }
+# tocentroid <- list()
+# dfs <- list()
+# for (i in 1:NROW(longs)) {
+#   tocentroid[[i]] <- tmp <- data.frame(long = as.numeric(longs[i,]), 
+#                                        lat = as.numeric(lats[i,]))
+#   dfs[[i]] <- apply(tmp, 1, function(x) as.list(x[c('long','lat')]))
+# }
+# centroid <- get_centroid(do.call("rbind", tocentroid))
+
+# get_centroid <- function(x) {
+#   x <- unname(as.matrix(x))
+#   geojson <- jsonlite::toJSON(list(type = "Polygon", coordinates =  list(x)), auto_unbox = TRUE)
+#   cent$eval(sprintf("var out = centroid(%s);", geojson))
+#   cent$get("out.geometry.coordinates")
+# }
 
 map_header <- '
 <!DOCTYPE html>
@@ -82,8 +93,8 @@ map_header <- '
 <meta charset=utf-8 />
 <title>spocc WKT Viewer</title>
 <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
-<script src="https://api.tiles.mapbox.com/mapbox.js/v2.2.2/mapbox.js"></script>
-<link href="https://api.tiles.mapbox.com/mapbox.js/v2.2.2/mapbox.css" rel="stylesheet" />
+<script src="https://api.tiles.mapbox.com/mapbox.js/v3.0.1/mapbox.js"></script>
+<link href="https://api.tiles.mapbox.com/mapbox.js/v3.0.1/mapbox.css" rel="stylesheet" />
 <style>
   body { margin:0; padding:0; }
   #map { position:absolute; top:0; bottom:0; width:100%; }

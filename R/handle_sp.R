@@ -32,19 +32,6 @@
 # handle_sp(sppoly_df)
 # handle_sp(sppoly_df, group = FALSE)[[1]]
 
-handle_sp <- function(spobj, group = TRUE) wicket::sp_convert(spobj, group = group)
-  # wkt <- make_wkt(spobj)
-  # stopifnot(is.numeric(length(wkt)))
-  # stopifnot(length(wkt) > 0)
-  # return( wkt )
-# }
-
-# make_wkt <- function(x){
-#   coords <- lapply(x@polygons, function(z) {
-#     z@Polygons[[1]]@coords
-#   })
-#   lapply(coords, function(z) {
-#     geojson <- jsonlite::toJSON(list(type = "Polygon", coordinates =  list(z)), auto_unbox = TRUE)
-#     wkt_write(geojson)
-#   })
-# }
+handle_sp <- function(spobj, group = TRUE) {
+  wicket::sp_convert(spobj, group = group)
+}

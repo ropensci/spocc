@@ -24,26 +24,14 @@
 #' wkt <- "POLYGON((-125 38.4,-125 40.9,-121.8 40.9,-121.8 38.4,-125 38.4))"
 #' wkt2bbox(wkt)
 #' }
-
 bbox2wkt <- function(minx=NA, miny=NA, maxx=NA, maxy=NA, bbox=NULL) {
   if (is.null(bbox)) bbox <- list(c(minx, miny, maxx, maxy))
   wicket::bounding_wkt(values = bbox)
-  # stopifnot(length(bbox) == 4) #check for 4 digits
-  # stopifnot(!any(is.na(bbox))) #check for NAs
-  # stopifnot(is.numeric(as.numeric(bbox))) #check for numeric-ness
-  # paste('POLYGON((',
-  #       sprintf('%s %s',bbox[1],bbox[2]), ',', sprintf(' %s %s',bbox[3],bbox[2]), ',',
-  #       sprintf(' %s %s',bbox[3],bbox[4]), ',', sprintf(' %s %s',bbox[1],bbox[4]), ',',
-  #       sprintf(' %s %s',bbox[1],bbox[2]),
-  #       '))', sep = "")
 }
 
 #' @param wkt A Well Known Text object.
 #' @export
 #' @rdname bbox2wkt
 wkt2bbox <- function(wkt){
-  # stopifnot(!is.null(wkt))
-  # tmp <- wkt_read(wkt)$bbox
-  # as.vector(tmp)
   wicket::wkt_bounding(wkt)
 }

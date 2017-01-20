@@ -36,7 +36,7 @@ wkt_vis <- function(x, zoom = 6, maptype = "terrain", browse = TRUE) {
   stopifnot(is.character(x))
   x <- gsub("\n|\n\\s+", "", strtrim(x))
   out <- wicket::wkt_coords(x)
-  centroid <- wicket::get_centroid(x)
+  centroid <- wicket::wkt_centroid(x)
   dfs <- unname(lapply(split(out, out$ring), function(z) {
     unname(
       apply(z, 1, function(x) {

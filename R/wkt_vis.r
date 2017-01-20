@@ -4,8 +4,6 @@
 #' occurrences with the \code{\link{occ}} function.
 #'
 #' @export
-#' @importFrom whisker whisker.render
-#'
 #' @param x Input well-known text area (character)
 #' @param zoom Zoom level, defaults to 6 (numeric)
 #' @param maptype Map type, default is terrain (character)
@@ -31,7 +29,6 @@
 #' poly2 <- 'POLYGON((-125 38.4,-125 40.9,-121.8 40.9,-121.8 38.4,-125 38.4))'
 #' wkt_vis(poly2, browse = FALSE)
 #' }
-
 wkt_vis <- function(x, zoom = 6, maptype = "terrain", browse = TRUE) {
   long = lat = group = NULL
   
@@ -60,31 +57,6 @@ wkt_vis <- function(x, zoom = 6, maptype = "terrain", browse = TRUE) {
   write(res, file = tmpfile)
   if (browse) browseURL(tmpfile) else tmpfile
 }
-
-
-# out <- wkt_read(gsub("\n|\n\\s+", "", strtrim(x)))
-# if (inherits(out$coordinates[,,1], "matrix")) {
-#   longs <- data.frame(out$coordinates[,,1])
-#   lats <- data.frame(out$coordinates[,,2])
-# } else {
-#   longs <- t(data.frame(out$coordinates[,,1]))
-#   lats <- t(data.frame(out$coordinates[,,2]) )
-# }
-# tocentroid <- list()
-# dfs <- list()
-# for (i in 1:NROW(longs)) {
-#   tocentroid[[i]] <- tmp <- data.frame(long = as.numeric(longs[i,]), 
-#                                        lat = as.numeric(lats[i,]))
-#   dfs[[i]] <- apply(tmp, 1, function(x) as.list(x[c('long','lat')]))
-# }
-# centroid <- get_centroid(do.call("rbind", tocentroid))
-
-# get_centroid <- function(x) {
-#   x <- unname(as.matrix(x))
-#   geojson <- jsonlite::toJSON(list(type = "Polygon", coordinates =  list(x)), auto_unbox = TRUE)
-#   cent$eval(sprintf("var out = centroid(%s);", geojson))
-#   cent$get("out.geometry.coordinates")
-# }
 
 map_header <- '
 <!DOCTYPE html>

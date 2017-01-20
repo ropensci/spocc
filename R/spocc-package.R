@@ -63,6 +63,7 @@
 #' @importFrom rbison bison_solr bison bison_tax
 #' @importFrom rvertnet vertsearch
 #' @importFrom ridigbio idig_search_records idig_view_records
+#' @importFrom whisker whisker.render
 #' @name spocc-package
 #' @aliases spocc
 #' @docType package

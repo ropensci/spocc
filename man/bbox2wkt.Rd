@@ -3,11 +3,12 @@
 \name{bbox2wkt}
 \alias{bbox2wkt}
 \alias{wkt2bbox}
-\title{Convert a bounding box to a Well Known Text polygon, and a WKT to a bounding box}
+\title{Convert a bounding box to a Well Known Text polygon, and a WKT to a 
+bounding box}
 \usage{
 bbox2wkt(minx = NA, miny = NA, maxx = NA, maxy = NA, bbox = NULL)
 
-wkt2bbox(wkt = NULL)
+wkt2bbox(wkt)
 }
 \arguments{
 \item{minx}{Minimum x value, or the most western longitude}
@@ -23,28 +24,42 @@ wkt2bbox(wkt = NULL)
 \item{wkt}{A Well Known Text object.}
 }
 \value{
-bbox2wkt returns an object of class charactere, a Well Known Text string
-of the form 'POLYGON((minx miny, maxx miny, maxx maxy, minx maxy, minx miny))'.
+bbox2wkt returns an object of class charactere, a Well Known Text 
+string of the form 
+'POLYGON((minx miny, maxx miny, maxx maxy, minx maxy, minx miny))'
 
-wkt2bbox returns a numeric vector of length 4, like c(minx, miny, maxx, maxy).
+wkt2bbox returns a numeric vector of length 4, like c(minx, miny, 
+maxx, maxy).
 }
 \description{
-Convert a bounding box to a Well Known Text polygon, and a WKT to a bounding box
+Convert a bounding box to a Well Known Text polygon, and a WKT to a 
+bounding box
 }
 \examples{
-\dontrun{
 # Convert a bounding box to a WKT
 
 ## Pass in a vector of length 4 with all values
-bbox2wkt(bbox=c(38.4,-125.0,40.9,-121.8))
+bbox2wkt(bbox = list(c(-125.0,38.4,-121.8,40.9)))
 
 ## Or pass in each value separately
-mm <- bbox2wkt(minx=38.4, miny=-125.0, maxx=40.9, maxy=-121.8)
-wkt_read(mm)
+bbox2wkt(-125.0, 38.4, -121.8, 40.9)
 
 # Convert a WKT object to a bounding box
-wkt <- "POLYGON((38.4 -125,40.9 -125,40.9 -121.8,38.4 -121.8,38.4 -125))"
+wkt <- "POLYGON((-125 38.4,-125 40.9,-121.8 40.9,-121.8 38.4,-125 38.4))"
 wkt2bbox(wkt)
-}
+
+identical(
+ bbox2wkt(-125.0, 38.4, -121.8, 40.9),
+ "POLYGON((-125 38.4,-125 40.9,-121.8 40.9,-121.8 38.4,-125 38.4))"
+)
+
+identical(
+ c(-125.0, 38.4, -121.8, 40.9),
+ as.numeric(
+   wkt2bbox(
+     "POLYGON((-125 38.4,-125 40.9,-121.8 40.9,-121.8 38.4,-125 38.4))"
+   )
+ )
+)
 }
 

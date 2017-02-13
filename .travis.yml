@@ -12,6 +12,8 @@ before_script:
   - ./travis-tool.sh install_deps
   - ./travis-tool.sh bioc_packages sangerseqR
 
+r_check_args: "--as-cran --run-dontrun"
+
 after_failure:
   - ./travis-tool.sh dump_logs
 

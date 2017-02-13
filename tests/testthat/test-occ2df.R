@@ -32,7 +32,7 @@ test_that("occ2df works when eventDate gone - another eg", {
   # make date field null
   out$gbif$data$Pinus_contorta$eventDate <- NULL
   expect_warning(out$gbif$data$Pinus_contorta$eventDate,
-               "Unknown column")
+               "Unknown")
   
   # but should still work
   outdf <- occ2df(out)

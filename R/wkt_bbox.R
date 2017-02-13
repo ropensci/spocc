@@ -14,7 +14,7 @@
 #' wkt2bbox returns a numeric vector of length 4, like c(minx, miny, 
 #' maxx, maxy).
 #' 
-#' @examples \dontrun{
+#' @examples
 #' # Convert a bounding box to a WKT
 #'
 #' ## Pass in a vector of length 4 with all values
@@ -26,7 +26,20 @@
 #' # Convert a WKT object to a bounding box
 #' wkt <- "POLYGON((-125 38.4,-125 40.9,-121.8 40.9,-121.8 38.4,-125 38.4))"
 #' wkt2bbox(wkt)
-#' }
+#' 
+#' identical(
+#'  bbox2wkt(-125.0, 38.4, -121.8, 40.9),
+#'  "POLYGON((-125 38.4,-125 40.9,-121.8 40.9,-121.8 38.4,-125 38.4))"
+#' )
+#' 
+#' identical(
+#'  c(-125.0, 38.4, -121.8, 40.9),
+#'  as.numeric(
+#'    wkt2bbox(
+#'      "POLYGON((-125 38.4,-125 40.9,-121.8 40.9,-121.8 38.4,-125 38.4))"
+#'    )
+#'  )
+#' )
 bbox2wkt <- function(minx=NA, miny=NA, maxx=NA, maxy=NA, bbox=NULL) {
   if (is.null(bbox)) bbox <- list(c(minx, miny, maxx, maxy))
   wicket::bounding_wkt(values = bbox)

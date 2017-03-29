@@ -32,11 +32,9 @@ Imports:
     jsonlite (>= 1.1),
     data.table (>= 1.9.6),
     tibble (>= 1.2),
-    wicket (>= 0.2.0)
+    wicket (>= 0.3.0)
 Suggests:
     testthat,
     knitr,
-    taxize (>= 0.7.9),
-    covr
-Remotes: ropensci/wicket
+    taxize (>= 0.7.9)
 RoxygenNote: 5.0.1

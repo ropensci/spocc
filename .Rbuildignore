@@ -18,3 +18,5 @@ README.Rmd
 revdep
 ^cran-comments\.md$
 ^.*\.Rproj$
+.github
+

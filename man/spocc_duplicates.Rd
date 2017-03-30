@@ -27,4 +27,3 @@ Do get in touch with us if you have concerns, have ideas for eliminating duplica
 \email{support@ropensci.org}, or at the issue tracker for the spocc package 
 \url{https://github.com/ropensci/spocc/issues/new}
 }
-

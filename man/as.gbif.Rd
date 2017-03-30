@@ -40,4 +40,3 @@ as.gbif(uu[[1]])
 as.gbif(tt[1:2])
 }
 }
-

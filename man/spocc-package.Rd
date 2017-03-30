@@ -2,8 +2,8 @@
 % Please edit documentation in R/spocc-package.R
 \docType{package}
 \name{spocc-package}
-\alias{spocc}
 \alias{spocc-package}
+\alias{spocc}
 \title{Interface to many species occurrence data sources}
 \description{
 A programmatic interface to many species occurrence data 
@@ -67,8 +67,8 @@ All mapping functionality is now in a separate package: \code{mapr}
 (\url{https://github.com/ropensci/mapr}) (formerly known as `spoccutils`).
 On CRAN: \url{https://cran.r-project.org/package=mapr}
 }
+
 \author{
 Scott Chamberlain \email{myrmecocystus@gmail.com}
 }
 \keyword{package}
-

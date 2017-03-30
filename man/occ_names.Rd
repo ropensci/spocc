@@ -62,4 +62,3 @@ res$bison$data
 head(res$ecoengine$data[[1]])
 }
 }
-

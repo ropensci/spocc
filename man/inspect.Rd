@@ -53,4 +53,3 @@ out <- occ(query=spnames, from='idigbio', limit=20)
 inspect(out)
 }
 }
-

@@ -19,11 +19,10 @@ Coerce occurrence keys to ALA id objects
 }
 \examples{
 \dontrun{
-spnames <- c('Barnardius zonarius', 'Grus rubicunda', 'Cracticus tibicen')
-out <- occ(query=spnames, from='ala', limit=2)
-(res <- occ2df(out))
-(tt <- as.ala(out))
-as.ala(x = res$key[1])
+# spnames <- c('Barnardius zonarius', 'Grus rubicunda', 'Cracticus tibicen')
+# out <- occ(query=spnames, from='ala', limit=2)
+# (res <- occ2df(out))
+# (tt <- as.ala(out))
+# as.ala(x = res$key[1])
 }
 }
-

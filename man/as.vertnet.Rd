@@ -36,4 +36,3 @@ as.vertnet(uu[[1]])
 as.vertnet(tt[1:2])
 }
 }
-

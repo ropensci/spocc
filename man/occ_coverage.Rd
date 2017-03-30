@@ -15,4 +15,3 @@ occ_coverage(occObj, coverage = "all")
 This function will automatically generate metadata for spocc queries that can then be converted to other standards.
 }
 \keyword{internal}
-

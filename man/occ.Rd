@@ -280,6 +280,7 @@ In cases where you request data from multiple providers, especially when
 including GBIF, there could be duplicate records since many providers' data eventually
 ends up with GBIF. See \code{\link[spocc]{spocc_duplicates}} for more.
 }
+
 \examples{
 \dontrun{
 # Single data sources
@@ -574,4 +575,3 @@ x$ala
 occ2df(x)
 }
 }
-

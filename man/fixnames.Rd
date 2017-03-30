@@ -47,4 +47,3 @@ fixnames(dat, how="supplied",
    namevec = c("Danaus","Accipiter","Pinus"))$ecoengine$data$Danaus_plexippus
 }
 }
-

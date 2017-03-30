@@ -39,4 +39,3 @@ library("dplyr")
 bind_rows(lapply(tt, function(x) data.frame(unclass(x)$data)))
 }
 }
-

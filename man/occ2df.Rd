@@ -64,4 +64,3 @@ out <- occ(query=spp, from='antweb', limit=2)
 occ2df(out$antweb)
 }
 }
-

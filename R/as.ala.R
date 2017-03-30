@@ -1,17 +1,17 @@
 #' Coerce occurrence keys to ALA id objects
 #'
 #' @export
-#' 
+#'
 #' @param x Various inputs, including the output from a call to
 #' \code{\link{occ}} (class occdat), \code{\link{occ2df}} (class data.frame),
 #' or a list, numeric, alakey, or occkey.
 #' @return One or more in a list of both class alakey and occkey
 #' @examples \dontrun{
-#' spnames <- c('Barnardius zonarius', 'Grus rubicunda', 'Cracticus tibicen')
-#' out <- occ(query=spnames, from='ala', limit=2)
-#' (res <- occ2df(out))
-#' (tt <- as.ala(out))
-#' as.ala(x = res$key[1])
+#' # spnames <- c('Barnardius zonarius', 'Grus rubicunda', 'Cracticus tibicen')
+#' # out <- occ(query=spnames, from='ala', limit=2)
+#' # (res <- occ2df(out))
+#' # (tt <- as.ala(out))
+#' # as.ala(x = res$key[1])
 #' }
 as.ala <- function(x) {
   UseMethod("as.ala")

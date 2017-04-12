@@ -7,10 +7,6 @@ bioc_packages:
 
 r_packages:
   - covr
-  - mapr
-
-r_github_packages:
-  - ropensci/rgbif
 
 r_check_args: "--as-cran --run-dontrun"
 

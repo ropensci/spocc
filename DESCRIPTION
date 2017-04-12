@@ -23,15 +23,15 @@ VignetteBuilder: knitr
 Roxygen: list(markdown = TRUE)
 Imports:
     utils,
-    rgbif (>= 0.9.5),
+    rgbif (>= 0.9.7),
     rbison (>= 0.5.0),
     rebird (>= 0.3.0),
     rvertnet (>= 0.5.0),
-    ridigbio (>= 0.3.3),
+    ridigbio (>= 0.3.5),
     lubridate (>= 1.5.0),
     crul (>= 0.3.4),
     whisker (>= 0.3-2),
-    jsonlite (>= 1.1),
+    jsonlite (>= 1.4),
     data.table (>= 1.9.6),
     tibble (>= 1.2),
     wicket (>= 0.3.0)
@@ -39,5 +39,5 @@ Suggests:
     roxygen2 (>= 6.0.1),
     testthat,
     knitr,
-    taxize (>= 0.7.9)
+    taxize (>= 0.8.4)
 RoxygenNote: 6.0.1

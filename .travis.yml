@@ -8,6 +8,9 @@ bioc_packages:
 r_packages:
   - covr
 
+r_github_packages:
+  - ropensci/rgbif
+
 r_check_args: "--as-cran --run-dontrun"
 
 after_success:

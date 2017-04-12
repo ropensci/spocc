@@ -4,12 +4,14 @@
 \alias{as.gbif}
 \title{Coerce occurrence keys to gbifkey/occkey objects}
 \usage{
-as.gbif(x)
+as.gbif(x, ...)
 }
 \arguments{
-\item{x}{Various inputs, including the output from a call to 
-\code{\link{occ}} (class occdat), \code{\link{occ2df}} (class data.frame), 
+\item{x}{Various inputs, including the output from a call to
+\code{\link[=occ]{occ()}} (class occdat), \code{\link[=occ2df]{occ2df()}} (class data.frame),
 or a list, numeric, character, gbifkey, or occkey.}
+
+\item{...}{curl options; named parameters passed on to \code{httr::GET()}}
 }
 \value{
 One or more in a list of both class gbifkey and occkey
@@ -18,9 +20,9 @@ One or more in a list of both class gbifkey and occkey
 Coerce occurrence keys to gbifkey/occkey objects
 }
 \details{
-Internally, we use \code{\link[rgbif]{occ_get}}, whereas 
-\code{\link{occ}} uses \code{\link[rgbif]{occ_data}}. We can use 
-\code{\link[rgbif]{occ_get}} here because we have the occurrence key to 
+Internally, we use \code{\link[rgbif:occ_get]{rgbif::occ_get()}}, whereas
+\code{\link[=occ]{occ()}} uses \code{\link[rgbif:occ_data]{rgbif::occ_data()}}. We can use
+\code{\link[rgbif:occ_get]{rgbif::occ_get()}} here because we have the occurrence key to
 go directly to the occurrence record.
 }
 \examples{

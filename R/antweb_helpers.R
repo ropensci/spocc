@@ -4,40 +4,57 @@ aw_data2 <- function(genus = NULL, species = NULL, scientific_name = NULL,
   limit = NULL, offset = NULL, quiet = FALSE, callopts = list()) {
   
   # Check for minimum arguments to run a query
-  main_args <- sc(as.list(c(scientific_name, genus, country, type, habitat, bbox)))
+  main_args <- sc(as.list(c(scientific_name, genus, country, type, 
+                            habitat, bbox)))
   date_args <- sc(as.list(c(min_date, max_date)))
   elev_args <- sc(as.list(c(min_elevation, max_elevation)))
   arg_lengths <- c(length(main_args), length(date_args), length(elev_args))
   
   stopifnot(any(arg_lengths) > 0)
   decimal_latitude <- decimal_longitude <- NA
-  if(!is.null(scientific_name)) {
+  if (!is.null(scientific_name)) {
     genus <- strsplit(scientific_name, " ")[[1]][1]
     species <- strsplit(scientific_name, " ")[[1]][2]
   }
   
-  base_url <- "http://www.antweb.org/api/v2/"
+  base_url <- "http://www.antweb.org"
   original_limit <- limit
   args <- sc(as.list(c(genus = genus, species = species, bbox = bbox, 
-                       min_elevation = min_elevation, max_elevation = max_elevation, 
+                       min_elevation = min_elevation, 
+                       max_elevation = max_elevation, 
                        habitat = habitat, country = country, type = type, 
                        min_date = min_date, max_date = max_date, limit = 1, 
                        offset = offset, georeferenced = georeferenced)))
-  results <- GET(base_url, query = args, callopts)
-  warn_for_status(results)
-  data <- jsonlite::fromJSON(content(results, "text", encoding = "UTF-8"), FALSE)
+  cli <- crul::HttpClient$new(url = base_url, opts = callopts)
+  out <- cli$get(path = "api/v2", query = args)
+  out$raise_for_status()
+  data <- jsonlite::fromJSON(out$parse("UTF-8"), FALSE)
   data <- sc(data) # Remove NULL
   
-  if(data$count > 1000 & is.null(limit)) {
+  if (data$count > 1000 && is.null(limit)) {
     args$limit <- 1000
-    results <- GET(base_url, query = args)
-    if(!quiet) message(sprintf("Query contains %s results. First 1000 retrieved. Use the offset argument to retrieve more \n", data$count))
+    cli <- crul::HttpClient$new(url = base_url, opts = callopts)
+    out <- cli$get(path = "api/v2", query = args)
+    out$raise_for_status()
+    results <- out$parse("UTF-8")
+    
+    if (!quiet) {
+      message(
+        gsub('\n', '', sprintf(
+          "Query contains %s results. 
+          First 1000 retrieved. Use the offset argument to retrieve more \n", 
+          data$count))
+      )
+    }
   } else { 
     args$limit <- original_limit
-    results <- GET(base_url, query = args)
+    cli <- crul::HttpClient$new(url = base_url, opts = callopts)
+    out <- cli$get(path = "api/v2", query = args)
+    out$raise_for_status()
+    results <- out$parse("UTF-8")
   }
   
-  data <- jsonlite::fromJSON(content(results, "text", encoding = "UTF-8"), FALSE)
+  data <- jsonlite::fromJSON(results, FALSE)
   data <- sc(data)
   
   if (identical(data$specimens$empty_set, "No records found.")) {
@@ -46,18 +63,21 @@ aw_data2 <- function(genus = NULL, species = NULL, scientific_name = NULL,
     if (!quiet) message(sprintf("%s results available for query.", data$count))
     data_df <- lapply(data$specimens, function(x){ 
       x$images <- NULL	 	
-      # In a future fix, I should coerce the image data back to a df and add it here.
-      df <- data.frame(t(unlist(x)), stringsAsFactors=FALSE)
-      df
+      # In a future fix, I should coerce the image data back to a df and 
+      # add it here.
+      data.frame(t(unlist(x)), stringsAsFactors = FALSE)
     })
     final_df <- rbindlist(data_df, use.names = TRUE, fill = TRUE)
     setDF(final_df)
-    names(final_df)[grep("geojson.coord1", names(final_df))] <- "decimal_latitude"
-    names(final_df)[grep("geojson.coord2", names(final_df))] <- "decimal_longitude"
+    names(final_df)[grep("geojson.coord1", names(final_df))] <- 
+      "decimal_latitude"
+    names(final_df)[grep("geojson.coord2", names(final_df))] <- 
+      "decimal_longitude"
     # There seem to be extra field when searching for just a genus
     final_df$decimalLatitude <- NULL
     final_df$decimalLongitude <- NULL
-    final_df$minimumElevationInMeters <- as.numeric(final_df$minimumElevationInMeters)
+    final_df$minimumElevationInMeters <- 
+      as.numeric(final_df$minimumElevationInMeters)
     list(count = data$count, call = args, data = final_df)
   }
 }	

@@ -1,14 +1,14 @@
 #' Visualize well-known text area's on a map.
 #'
 #' This can be helpful in visualizing the area in which you are searching for
-#' occurrences with the \code{\link{occ}} function.
+#' occurrences with the [occ()] function.
 #'
 #' @export
 #' @param x Input well-known text area (character)
 #' @param zoom Zoom level, defaults to 6 (numeric)
 #' @param maptype Map type, default is terrain (character)
 #' @param browse Open in browser or not. If not, gives back 
-#' path to html file. Default: \code{TRUE} (logical)
+#' path to html file. Default: `TRUE` (logical)
 #'
 #' @details Uses Mapbox's map layers, openes in your default browser
 #'

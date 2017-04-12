@@ -7,7 +7,7 @@
 occ2df(obj, what = "data")
 }
 \arguments{
-\item{obj}{Input from occ, an object of class \code{occdat}, or an object 
+\item{obj}{Input from occ, an object of class \code{occdat}, or an object
 of class \code{occdatind}, the individual objects from each source within the
 \code{occdat} class.}
 
@@ -17,20 +17,20 @@ of class \code{occdatind}, the individual objects from each source within the
 Combine results from occ calls to a single data.frame
 }
 \details{
-This function combines a subset of data from each data provider to a single 
-data.frame, or metadata plus data if you request \code{what="all"}. The 
+This function combines a subset of data from each data provider to a single
+data.frame, or metadata plus data if you request \code{what="all"}. The
 single data.frame contains the following columns:
 
 \itemize{
- \item name - scientific (or common) name
- \item longitude - decimal degree longitude
- \item latitude - decimal degree latitude
- \item prov - data provider
- \item date - occurrence record date
- \item key - occurrence record key
+\item name - scientific (or common) name
+\item longitude - decimal degree longitude
+\item latitude - decimal degree latitude
+\item prov - data provider
+\item date - occurrence record date
+\item key - occurrence record key
 }
 
-AntWeb doesn't provide dates, so occurrence rows from that provider 
+AntWeb doesn't provide dates, so occurrence rows from that provider
 are blank.
 }
 \examples{

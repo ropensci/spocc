@@ -1,10 +1,11 @@
 #' Capitalize the first letter of a character string.
 #'
 #' @param s A character string
-#' @param strict Should the algorithm be strict about capitalizing. Defaults to FALSE.
-#' @param onlyfirst Capitalize only first word, lowercase all others. Useful for
-#' taxonomic names.
-#' @examples  \dontrun{
+#' @param strict Should the algorithm be strict about capitalizing. 
+#' Default: `FALSE`
+#' @param onlyfirst Capitalize only first word, lowercase all others. 
+#' Useful for taxonomic names.
+#' @examples \dontrun{
 #' spocc_capwords(c('using AIC for model selection'))
 #' spocc_capwords(c('using AIC for model selection'), strict=TRUE)
 #' }
@@ -17,9 +18,11 @@ spocc_capwords <- function(s, strict = FALSE, onlyfirst = FALSE) {
             tolower(s) else s
     }, sep = "", collapse = " ")
     if (!onlyfirst) {
-        vapply(strsplit(s, split = " "), cap, "", USE.NAMES = !is.null(names(s)))
+        vapply(strsplit(s, split = " "), cap, "", 
+               USE.NAMES = !is.null(names(s)))
     } else {
-        vapply(s, function(x) paste(toupper(substring(x, 1, 1)), tolower(substring(x,
+        vapply(s, function(x) paste(toupper(substring(x, 1, 1)), 
+                                    tolower(substring(x,
             2)), sep = "", collapse = " "), "", USE.NAMES = F)
     }
 }
@@ -72,8 +75,10 @@ check_integer <- function(x) {
 
 is_numeric <- function(x) {
   if (!is.null(x)) {
-    tt <- tryCatch(as.numeric(x), error = function(e) e, warning = function(w) w)
-    if (inherits(tt, 'warning') || inherits(tt, 'error') || typeof(x) == "list") {
+    tt <- tryCatch(as.numeric(x), error = function(e) e, 
+                   warning = function(w) w)
+    if (inherits(tt, 'warning') || inherits(tt, 'error') || 
+        typeof(x) == "list") {
       FALSE
     } else {
       check_integer(x)
@@ -98,6 +103,7 @@ spocc_wrap <- function(..., indent = 0, width = getOption("width")){
 }
 
 rbindl <- function(x) {
-  xx <- data.table::setDF(data.table::rbindlist(x, fill = TRUE, use.names = TRUE))
+  xx <- data.table::setDF(data.table::rbindlist(x, fill = TRUE, 
+                                                use.names = TRUE))
   xx
 }

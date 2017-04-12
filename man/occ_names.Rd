@@ -9,42 +9,44 @@ occ_names(query = NULL, from = "gbif", limit = 100, rank = "species",
   ecoengineopts = list())
 }
 \arguments{
-\item{query}{(character) One to many names. Either a scientific name or a common name.
-Only scientific names supported right now.}
+\item{query}{(character) One to many names. Either a scientific name or a
+common name. Only scientific names supported right now.}
 
-\item{from}{(character) Data source to get data from, any combination of gbif, bison, or
-ecoengine.}
+\item{from}{(character) Data source to get data from, any combination of
+gbif, bison, or ecoengine.}
 
-\item{limit}{(numeric) Number of records to return. This is passed across all sources.
-To specify different limits for each source, use the options for each source (gbifopts,
-bisonopts, ecoengineopts). See Details for more. This parameter is ignored for ecoengine.}
+\item{limit}{(numeric) Number of records to return. This is passed across
+all sources. To specify different limits for each source, use the options
+for each source (gbifopts, bisonopts, ecoengineopts). See Details for more.
+This parameter is ignored for ecoengine.}
 
-\item{rank}{(character) Taxonomic rank to limit search space. Used in GBIF, but not
-used in BISON.}
+\item{rank}{(character) Taxonomic rank to limit search space. Used in GBIF,
+but not used in BISON.}
 
-\item{callopts}{Options passed on to \code{\link[httr]{GET}}, e.g., for debugging curl calls,
-setting timeouts, etc.}
+\item{callopts}{Options passed on to \code{\link[crul:HttpClient]{crul::HttpClient()}}, e.g., for
+debugging curl calls, setting timeouts, etc.}
 
-\item{gbifopts}{(list) List of named options to pass on to \code{\link[rgbif]{name_lookup}}. See
-also \code{\link[spocc]{occ_names_options}}.}
+\item{gbifopts}{(list) List of named options to pass on to
+\code{\link[rgbif:name_lookup]{rgbif::name_lookup()}}. See also \code{\link[spocc:occ_names_options]{spocc::occ_names_options()}}}
 
-\item{bisonopts}{(list) List of named options to pass on to \code{\link[rbison]{bison_tax}}. See
-also \code{\link[spocc]{occ_names_options}}.}
+\item{bisonopts}{(list) List of named options to pass on to
+\code{\link[rbison:bison_tax]{rbison::bison_tax()}}. See also \code{\link[spocc:occ_names_options]{spocc::occ_names_options()}}}
 
 \item{ecoengineopts}{(list) List of named options to pass on to
-\code{ee_search}. See also \code{\link[spocc]{occ_names_options}}.}
+\code{ee_search}. See also \code{\link[spocc:occ_names_options]{spocc::occ_names_options()}}}
 }
 \description{
 Search for species names across many data sources.
 }
 \details{
-Not all 7 data sources available from the \code{\link{occ}} function are
-available here, as not all of those sources have functionality to search for names.
+Not all 7 data sources available from the \code{\link[=occ]{occ()}} function are
+available here, as not all of those sources have functionality to search
+for names.
 
-We strongly encourage you to use the \code{taxize} package if you want to search for
-taxonomic or common names, convert common to scientific names, etc. That package
-was built exactly for that purpose, and we only provide a bit of name searching here
-in this function.
+We strongly encourage you to use the \code{taxize} package if you want to
+search for taxonomic or common names, convert common to scientific names,
+etc. That package was built exactly for that purpose, and we only provide
+a bit of name searching here in this function.
 }
 \examples{
 \dontrun{

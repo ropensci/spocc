@@ -1,13 +1,17 @@
 ## plugin helper functions
 move_cols <- function(x, y)
-  x[ c(y, names(x)[-sapply(y, function(z) grep(paste0('\\b', z, '\\b'), names(x)))]) ]
+  x[ c(y, names(x)[-sapply(y, function(z) grep(paste0('\\b', z, '\\b'), 
+                                               names(x)))]) ]
 
-emptylist <- function(x) list(time = NULL, found = NULL, data = data_frame(), opts = x)
+emptylist <- function(x) list(time = NULL, found = NULL, data = data_frame(), 
+                              opts = x)
 
 stand_latlon <- function(x){
-  lngs <- c('decimalLongitude', 'decimallongitude', 'Longitude', 'lng', 'longitude',
+  lngs <- c('decimalLongitude', 'decimallongitude', 'Longitude', 'lng', 
+            'longitude',
             'decimal_longitude', 'geopoint.lon')
-  lats <- c('decimalLatitude', 'decimallatitude', 'Latitude', 'lat', 'latitude',
+  lats <- c('decimalLatitude', 'decimallatitude', 'Latitude', 'lat', 
+            'latitude',
             'decimal_latitude', 'geopoint.lat')
   names(x)[ names(x) %in% lngs ] <- 'longitude'
   names(x)[ names(x) %in% lats ] <- 'latitude'
@@ -21,8 +25,9 @@ add_latlong_if_missing <- function(x) {
 }
 
 stand_dates <- function(dat, from){
-  datevars <- list(gbif = 'eventDate', bison = c('eventDate', 'year'), inat = 'observed_on',
-                   ebird = 'obsDt', ecoengine = 'begin_date', vertnet = 'eventdate',
+  datevars <- list(gbif = 'eventDate', bison = c('eventDate', 'year'), 
+                   inat = 'observed_on', ebird = 'obsDt', 
+                   ecoengine = 'begin_date', vertnet = 'eventdate',
                    idigbio = 'datecollected', ala = 'eventDate')
   var <- datevars[[from]]
   if (from == "bison") {
@@ -55,7 +60,8 @@ is_null <- function(...) {
 limit_alias <- function(x, sources, geometry=NULL){
   bisonvar <- if (is.null(geometry)) 'rows' else 'count'
   if (length(x) != 0) {
-    lim_name <- switch(sources, ecoengine = "page_size", bison = bisonvar, inat = "maxresults", ebird = "max")
+    lim_name <- switch(sources, ecoengine = "page_size", bison = bisonvar, 
+                       inat = "maxresults", ebird = "max")
     if ("limit" %in% names(x)) {
       names(x)[ which(names(x) == "limit") ] <- lim_name
       x

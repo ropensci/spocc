@@ -6,25 +6,25 @@
 \alias{spocc}
 \title{Interface to many species occurrence data sources}
 \description{
-A programmatic interface to many species occurrence data 
-sources, including GBIF, USGS's BISON, iNaturalist, Berkeley Ecoinformatics 
-Engine, eBird, AntWeb, iDigBio, VertNet, OBIS, and ALA. Includes 
-functionality for retrieving species occurrence data, and 
+A programmatic interface to many species occurrence data
+sources, including GBIF, USGS's BISON, iNaturalist, Berkeley Ecoinformatics
+Engine, eBird, AntWeb, iDigBio, VertNet, OBIS, and ALA. Includes
+functionality for retrieving species occurrence data, and
 combining that data.
 }
 \section{Package API}{
 
 
-The main function to use is \code{\link{occ}} - a single interface to 
-many species occurrence databases (see below for a list). 
+The main function to use is \code{\link[=occ]{occ()}} - a single interface to
+many species occurrence databases (see below for a list).
 
 Other functions include:
 \itemize{
- \item \code{\link{occ2df}} - Combine results from \code{occ} into a 
- data.frame
- \item \code{\link{fixnames}} - Change names to be the same for each taxon
- \item \code{\link{wkt_vis}} - Visualize WKT strings (used to define 
- geometry based searches for some data sources) in an interactive map
+\item \code{\link[=occ2df]{occ2df()}} - Combine results from \code{occ} into a
+data.frame
+\item \code{\link[=fixnames]{fixnames()}} - Change names to be the same for each taxon
+\item \code{\link[=wkt_vis]{wkt_vis()}} - Visualize WKT strings (used to define
+geometry based searches for some data sources) in an interactive map
 }
 }
 
@@ -49,13 +49,13 @@ ALA \tab \url{http://www.ala.org.au/}
 \section{Duplicates}{
 
 
-See \code{\link{spocc_duplicates}} for more.
+See \code{\link[=spocc_duplicates]{spocc_duplicates()}} for more.
 }
 
 \section{Clean data}{
 
 
-All data cleaning functionality is in a new package: \code{scrubr} 
+All data cleaning functionality is in a new package: \code{scrubr}
 (\url{https://github.com/ropensci/scrubr}).
 On CRAN: \url{https://cran.r-project.org/package=scrubr}
 }
@@ -63,8 +63,7 @@ On CRAN: \url{https://cran.r-project.org/package=scrubr}
 \section{Make maps}{
 
 
-All mapping functionality is now in a separate package: \code{mapr} 
-(\url{https://github.com/ropensci/mapr}) (formerly known as `spoccutils`).
+All mapping functionality is now in a separate package: \code{mapr`` (<https://github.com/ropensci/mapr>) (formerly known as}spoccutils`).
 On CRAN: \url{https://cran.r-project.org/package=mapr}
 }
 

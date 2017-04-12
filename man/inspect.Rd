@@ -19,12 +19,12 @@ inspect(x, from = "gbif")
 \item{x}{The output from \code{\link{occ}} call, output from call to
 \code{\link{occ2df}}, or an occurrence ID as a occkey class.}
 
-\item{from}{(character) The data provider. One of gbif, bison, inat, antweb, ecoengine,
-or vertnet}
+\item{from}{(character) The data provider. One of gbif, bison, inat,
+antweb, ecoengine, or vertnet}
 }
 \value{
-A list, with each slot named for the data source, and then within data
-sources is a slot for each taxon, named by it's occurrence ID.
+A list, with each slot named for the data source, and then
+within data sources is a slot for each taxon, named by it's occurrence ID.
 }
 \description{
 Get more data on individual occurrences.
@@ -37,7 +37,8 @@ out <- occ(query=spnames, from=c('gbif','bison','ecoengine'),
 res <- occ2df(out)
 inspect(res)
 
-out <- occ(query=spnames, from='gbif', gbifopts=list(hasCoordinate=TRUE), limit=4)
+out <- occ(query=spnames, from='gbif', gbifopts=list(hasCoordinate=TRUE), 
+  limit=4)
 res <- occ2df(out)
 inspect(res)
 

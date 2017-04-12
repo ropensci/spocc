@@ -4,12 +4,14 @@
 \alias{as.obis}
 \title{Coerce occurrence keys to obis id objects}
 \usage{
-as.obis(x)
+as.obis(x, ...)
 }
 \arguments{
-\item{x}{Various inputs, including the output from a call to 
-\code{\link{occ}} (class occdat), \code{\link{occ2df}} (class data.frame), 
+\item{x}{Various inputs, including the output from a call to
+\code{\link[=occ]{occ()}} (class occdat), \code{\link[=occ2df]{occ2df()}} (class data.frame),
 or a list, numeric, obiskey, or occkey.}
+
+\item{...}{curl options; named parameters passed on to \code{\link[crul:HttpClient]{crul::HttpClient()}}}
 }
 \value{
 One or more in a list of both class obiskey and occkey

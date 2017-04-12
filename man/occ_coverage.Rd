@@ -9,9 +9,11 @@ occ_coverage(occObj, coverage = "all")
 \arguments{
 \item{occObj}{an search object returned by occ}
 
-\item{coverage}{a vector of coverage types to generate.  These include 'temporal','spatial','taxa', or just 'all'.}
+\item{coverage}{a vector of coverage types to generate. These include
+'temporal','spatial','taxa', or just 'all'.}
 }
 \description{
-This function will automatically generate metadata for spocc queries that can then be converted to other standards.
+This function will automatically generate metadata for spocc
+queries that can then be converted to other standards.
 }
 \keyword{internal}

@@ -2,14 +2,14 @@
 #'
 #' @export
 #'
-#' @param obj Input from occ, an object of class \code{occdat}, or an object 
-#' of class \code{occdatind}, the individual objects from each source within the
-#' \code{occdat} class.
+#' @param obj Input from occ, an object of class `occdat`, or an object 
+#' of class `occdatind`, the individual objects from each source within the
+#' `occdat` class.
 #' @param what (character) One of data (default) or all (with metadata)
 #'
 #' @details
 #' This function combines a subset of data from each data provider to a single 
-#' data.frame, or metadata plus data if you request \code{what="all"}. The 
+#' data.frame, or metadata plus data if you request `what="all"`. The 
 #' single data.frame contains the following columns:
 #'
 #' \itemize{
@@ -90,11 +90,13 @@ occ2df.occdat <- function(obj, what = "data") {
           data_frame()
         } else {
           dat <- x[ , c('name', 'longitude', 'latitude', 'prov',
-                        pluck_fill(x, datemap[[y]]), pluck_fill(x, keymap[[y]])) ]
+                        pluck_fill(x, datemap[[y]]), 
+                        pluck_fill(x, keymap[[y]])) ]
           if (is.null(datemap[[y]])) {
             dat$date <- as.Date(rep(NA_character_, NROW(dat)))
           } else {
-            dat <- rename(dat, stats::setNames("date", datemap[[y]]), warn_missing = FALSE)
+            dat <- rename(dat, stats::setNames("date", datemap[[y]]), 
+                          warn_missing = FALSE)
           }
           rename(dat, stats::setNames("key", keymap[[y]]))
         }

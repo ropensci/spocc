@@ -2,14 +2,15 @@
 #'
 #' @export
 #'
-#' @param x Various inputs, including the output from a call to \code{\link{occ}}
-#' (class occdat), \code{\link{occ2df}} (class data.frame), or a list, numeric,
+#' @param x Various inputs, including the output from a call to [occ()]
+#' (class occdat), [occ2df()] (class data.frame), or a list, numeric,
 #' character, vertnetkey, or occkey.
 #' @return One or more in a list of both class vertnetkey and occkey
-#' @details Internally, we use \code{\link[rvertnet]{vert_id}}, whereas \code{\link{occ}}
-#' uses \code{\link[rvertnet]{vertsearch}}.
+#' @details Internally, we use [rvertnet::vert_id()], whereas [occ()]
+#' uses [rvertnet::vertsearch()].
 #' @examples \dontrun{
-#' spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Carduelis tristis')
+#' spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 
+#'   'Carduelis tristis')
 #' out <- occ(query=spnames, from='vertnet', has_coords=TRUE, limit=2)
 #' res <- occ2df(out)
 #' (tt <- as.vertnet(out))

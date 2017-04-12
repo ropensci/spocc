@@ -8,10 +8,11 @@ Description: A programmatic interface to many species occurrence data sources,
     System ('OBIS'), and Atlas of Living Australia ('ALA'). Includes
     functionality for retrieving species occurrence data, and combining
     those data.
-Version: 0.6.2.9140
+Version: 0.6.6.9100
 License: MIT + file LICENSE
 Authors@R: c(
-    person("Scott", "Chamberlain", role = c("aut", "cre"), email = "myrmecocystus@gmail.com"),
+    person("Scott", "Chamberlain", role = c("aut", "cre"),
+      email = "myrmecocystus@gmail.com"),
     person("Karthik", "Ram", role = "ctb"),
     person("Ted", "Hart", role = "ctb")
     )
@@ -19,6 +20,7 @@ URL: https://github.com/ropensci/spocc
 BugReports: https://github.com/ropensci/spocc/issues
 LazyData: true
 VignetteBuilder: knitr
+Roxygen: list(markdown = TRUE)
 Imports:
     utils,
     rgbif (>= 0.9.5),
@@ -27,7 +29,7 @@ Imports:
     rvertnet (>= 0.5.0),
     ridigbio (>= 0.3.3),
     lubridate (>= 1.5.0),
-    httr (>= 1.1.0),
+    crul (>= 0.3.4),
     whisker (>= 0.3-2),
     jsonlite (>= 1.1),
     data.table (>= 1.9.6),

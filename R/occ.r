@@ -6,8 +6,8 @@
 #' @export
 #' @template occtemp
 #' @template occ_egs
-occ <- function(query = NULL, from = "gbif", limit = 500, start = NULL, page = NULL,
-  geometry = NULL, has_coords = NULL, ids = NULL, callopts=list(),
+occ <- function(query = NULL, from = "gbif", limit = 500, start = NULL, 
+  page = NULL, geometry = NULL, has_coords = NULL, ids = NULL, callopts=list(),
   gbifopts = list(), bisonopts = list(), inatopts = list(),
   ebirdopts = list(), ecoengineopts = list(), antwebopts = list(),
   vertnetopts = list(), idigbioopts = list(), obisopts = list(), 
@@ -28,7 +28,8 @@ occ <- function(query = NULL, from = "gbif", limit = 500, start = NULL, page = N
   if (!is_numeric(page)) stop("'page' must be an integer", call. = FALSE)
 
   # has_coords must be a boolean
-  if (!is_logical(has_coords)) stop("'has_coords' must be logical (TRUE/FALSE)", call. = FALSE)
+  if (!is_logical(has_coords)) stop("'has_coords' must be logical (TRUE/FALSE)", 
+                                    call. = FALSE)
 
   if (!is.null(geometry)) {
     if (class(geometry) %in% c('SpatialPolygons', 'SpatialPolygonsDataFrame')) {
@@ -39,8 +40,10 @@ occ <- function(query = NULL, from = "gbif", limit = 500, start = NULL, page = N
             "ecoengine", "antweb", "vertnet", "idigbio", "obis", "ala"),
                        several.ok = TRUE)
   if (!all(from %in% sources)) {
-    stop(sprintf("Woops, the following are not supported or spelled incorrectly: %s",
-                 from[!from %in% sources]))
+    stop(
+      sprintf(
+        "Woops, the following are not supported or spelled incorrectly: %s",
+        from[!from %in% sources]))
   }
 
   loopfun <- function(x, y, s, p, z, hc, w) {
@@ -116,7 +119,8 @@ occ <- function(query = NULL, from = "gbif", limit = 500, start = NULL, page = N
             data = rbind_fill(pluck(srctmp, "data")),
             opts = sc(list(
               hasCoordinate = srctmp[[1]]$opts$hasCoordinate,
-              scientificName = unlist(unique(pluck(srctmp, c("opts", "scientificName")))),
+              scientificName = unlist(
+                unique(pluck(srctmp, c("opts", "scientificName")))),
               limit = srctmp[[1]]$opts$limit,
               fields = srctmp[[1]]$opts$fields,
               geometry = unlist(pluck(srctmp, c("opts", "geometry"))),
@@ -145,7 +149,8 @@ occ <- function(query = NULL, from = "gbif", limit = 500, start = NULL, page = N
         }
       } else {
         gg <- as.list(unlist(x, use.names = FALSE))
-        hh <- as.vector(rep(vapply(x, class, ""), vapply(x, length, numeric(1))))
+        hh <- as.vector(rep(vapply(x, class, ""), vapply(x, length, 
+                                                         numeric(1))))
         if (all(hh == "character"))
           hh <- rep(class(x), length(x))
         for (i in seq_along(gg)) {
@@ -169,24 +174,29 @@ occ <- function(query = NULL, from = "gbif", limit = 500, start = NULL, page = N
       tmp <- list(loopfun(z = geometry, y = limit, s = start, p = page,
                           x = query, hc = has_coords, w = callopts))
     } else if (is.list(geometry)) {
-      tmp <- lapply(geometry, function(b) loopfun(z = b, y = limit, s = start, p = page,
-                                                  x = query, hc = has_coords, w = callopts))
+      tmp <- lapply(geometry, function(b) {
+        loopfun(z = b, y = limit, s = start, p = page,
+                x = query, hc = has_coords, w = callopts)
+      })
     }
   }
-
+  
   getsplist <- function(srce, opts) {
     tt <- lapply(tmp, function(x) x[[srce]]$data)
     if (!is.null(query) && is.null(geometry)) { # query
       names(tt) <- gsub("\\s", "_", query)
       optstmp <- tmp[[1]][[srce]]$opts
-    } else if (is.null(query) && !is.null(geometry)) { # geometry
+    } else if (is.null(query) && !is.null(geometry)) {
+      # geometry
       tt <- tt
       optstmp <- tmp[[1]][[srce]]$opts
-    } else if (!is.null(query) && !is.null(geometry)) { # query & geometry
+    } else if (!is.null(query) && !is.null(geometry)) {
+      # query & geometry
       names(tt) <- gsub("\\s", "_", query)
       optstmp <- tmp[[1]][[srce]]$opts
       optstmp$scientificName <- unique(names(tt))
-    } else if (is.null(query) && is.null(geometry) && !is.null(ids)) { # neither query or geometry
+    } else if (is.null(query) && is.null(geometry) && !is.null(ids)) {
+      # neither query or geometry
       names(tt) <- sapply(tmp, function(x) unclass(x[[srce]]$opts[[1]]))
       tt <- tt[!vapply(tt, nrow, 1) == 0]
       opts <- sc(lapply(tmp, function(x) x[[srce]]$opts))
@@ -205,7 +215,8 @@ occ <- function(query = NULL, from = "gbif", limit = 500, start = NULL, page = N
         }, USE.NAMES = FALSE)
       }
       optstmp <- simplist(optstmp)
-    } else if (is.null(query) && is.null(geometry) && is.null(ids)) { # nothing passed except opts
+    } else if (is.null(query) && is.null(geometry) && is.null(ids)) { 
+      # nothing passed except opts
       names(tt) <- rep("custom_query", length(tt))
       optstmp <- tmp[[1]][[srce]]$opts
     }
@@ -221,7 +232,8 @@ occ <- function(query = NULL, from = "gbif", limit = 500, start = NULL, page = N
         data = tt)
       structure(ggg, class = "occdatind")
     } else {
-      ggg <- list(meta = list(source = srce, time = NULL, found = NULL, returned = NULL,
+      ggg <- list(meta = list(source = srce, time = NULL, found = NULL, 
+                              returned = NULL,
           type = NULL, opts = NULL), data = tt)
       structure(ggg, class = "occdatind")
     }

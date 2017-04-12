@@ -4,12 +4,14 @@
 \alias{as.inat}
 \title{Coerce occurrence keys to iNaturalist id objects}
 \usage{
-as.inat(x)
+as.inat(x, ...)
 }
 \arguments{
-\item{x}{Various inputs, including the output from a call to \code{\link{occ}}
-(class occdat), \code{\link{occ2df}} (class data.frame), or a list, numeric,
+\item{x}{Various inputs, including the output from a call to
+\code{\link[=occ]{occ()}} (class occdat), \code{\link[=occ2df]{occ2df()}} (class data.frame), or a list, numeric,
 character, inatkey, or occkey.}
+
+\item{...}{curl options; named parameters passed on to \code{\link[crul:HttpClient]{crul::HttpClient()}}}
 }
 \value{
 One or more in a list of both class inatkey and occkey
@@ -19,7 +21,8 @@ Coerce occurrence keys to iNaturalist id objects
 }
 \examples{
 \dontrun{
-spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Carduelis tristis')
+spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 
+  'Carduelis tristis')
 out <- occ(query=spnames, from='inat', limit=2)
 res <- occ2df(out)
 (tt <- as.inat(out))
@@ -32,7 +35,8 @@ as.inat(tt[1:2])
 
 library("dplyr")
 bind_rows(lapply(tt, function(x) {
-  data.frame(x$taxon[c('id','name','rank','unique_name')], stringsAsFactors = FALSE)
+  data.frame(x$taxon[c('id','name','rank','unique_name')], 
+             stringsAsFactors = FALSE)
 }))
 }
 }

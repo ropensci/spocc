@@ -17,7 +17,8 @@
 # handle_sp(spobj = sppoly)
 # 
 # # Another example
-# one <- Polygon(cbind(c(-121.0,-117.9,-121.0,-121.0), c(39.4, 37.1, 35.1, 39.4)))
+# one <- Polygon(cbind(c(-121.0,-117.9,-121.0,-121.0), c(39.4, 37.1, 35.1, 
+#   39.4)))
 # two <- Polygon(cbind(c(-123.0,-121.2,-122.3,-124.5,-123.5,-124.1,-123.0),
 #                      c(44.8,42.9,41.9,42.6,43.3,44.3,44.8)))
 # spone = Polygons(list(one), "s1")
@@ -27,7 +28,8 @@
 # handle_sp(spobj=sppoly)
 # 
 # # From SpatialPolygonsDataFrame class
-# sppoly_df <- SpatialPolygonsDataFrame(sppoly, data.frame(a=c(1,2), b=c("a","b"), c=c(TRUE,FALSE),
+# sppoly_df <- SpatialPolygonsDataFrame(sppoly, data.frame(a=c(1,2), 
+#  b=c("a","b"), c=c(TRUE,FALSE),
 # row.names=row.names(sppoly)))
 # handle_sp(sppoly_df)
 # handle_sp(sppoly_df, group = FALSE)[[1]]

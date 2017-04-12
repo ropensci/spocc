@@ -4,12 +4,14 @@
 \alias{as.idigbio}
 \title{Coerce occurrence keys to idigbio objects}
 \usage{
-as.idigbio(x)
+as.idigbio(x, ...)
 }
 \arguments{
-\item{x}{Various inputs, including the output from a call to \code{\link{occ}}
-(class occdat), \code{\link{occ2df}} (class data.frame), or a list, numeric,
+\item{x}{Various inputs, including the output from a call to \code{\link[=occ]{occ()}}
+(class occdat), \code{\link[=occ2df]{occ2df()}} (class data.frame), or a list, numeric,
 character, idigbiokey, or occkey.}
+
+\item{...}{curl options; named parameters passed on to \code{httr::GET()}}
 }
 \value{
 One or more in a list of both class idigbiokey and occkey
@@ -19,7 +21,7 @@ Coerce occurrence keys to idigbio objects
 }
 \details{
 Internally, we use \code{idig_view_records}, whereas we use
-\code{\link{idig_search_records}} in the \code{\link{occ}} function.
+\code{\link[=idig_search_records]{idig_search_records()}} in the \code{\link[=occ]{occ()}} function.
 }
 \examples{
 \dontrun{

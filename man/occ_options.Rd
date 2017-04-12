@@ -7,26 +7,28 @@
 occ_options(from = "gbif", where = "console")
 }
 \arguments{
-\item{from}{(character) Data source to get data from, any combination of gbif, bison,
-ebird, AntWeb, idigibio and/or ecoengine. Case doesn't matter. inat is not included here,
-see that package's help docs.}
+\item{from}{(character) Data source to get data from, any combination of
+gbif, bison, ebird, AntWeb, idigibio and/or ecoengine. Case doesn't matter.
+inat is not included here, see that package's help docs.}
 
-\item{where}{(character) One of console (print to console) or html (opens help page, if in
-non-interactive R session, prints help to console).}
+\item{where}{(character) One of console (print to console) or html (opens
+help page, if in non-interactive R session, prints help to console).}
 }
 \value{
-Opens up the documentation for the function that is used internally within
-the occ function for each source.
+Opens up the documentation for the function that is used internally
+within the occ function for each source.
 }
 \description{
 Look up options for parameters passed to each source
 }
 \details{
-Any of the parameters passed to e.g. \code{\link[rgbif]{occ_data}} from the
-\code{rgbif} package can be passed in the associated gbifopts list in \code{\link[spocc]{occ}}.
+Any of the parameters passed to e.g. \code{\link[rgbif:occ_data]{rgbif::occ_data()}} from the
+\code{rgbif} package can be passed in the associated gbifopts list
+in \code{\link[=occ]{occ()}}
 
-Note that the from parameter is lowercased within the function and is called through
-match.arg first, so you can match on unique partial strings too (e.g., 'e' for 'ecoengine').
+Note that the from parameter is lowercased within the function and is
+called through match.arg first, so you can match on unique partial
+strings too (e.g., 'e' for 'ecoengine').
 }
 \examples{
 \dontrun{

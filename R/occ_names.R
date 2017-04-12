@@ -2,31 +2,33 @@
 #'
 #' @export
 #'
-#' @param query (character) One to many names. Either a scientific name or a common name.
-#' Only scientific names supported right now.
-#' @param from (character) Data source to get data from, any combination of gbif, bison, or
-#' ecoengine.
-#' @param limit (numeric) Number of records to return. This is passed across all sources.
-#' To specify different limits for each source, use the options for each source (gbifopts,
-#' bisonopts, ecoengineopts). See Details for more. This parameter is ignored for ecoengine.
-#' @param rank (character) Taxonomic rank to limit search space. Used in GBIF, but not
-#' used in BISON.
-#' @param callopts Options passed on to \code{\link[httr]{GET}}, e.g., for debugging curl calls,
-#' setting timeouts, etc.
-#' @param gbifopts (list) List of named options to pass on to \code{\link[rgbif]{name_lookup}}. See
-#' also \code{\link[spocc]{occ_names_options}}.
-#' @param bisonopts (list) List of named options to pass on to \code{\link[rbison]{bison_tax}}. See
-#' also \code{\link[spocc]{occ_names_options}}.
+#' @param query (character) One to many names. Either a scientific name or a 
+#' common name. Only scientific names supported right now.
+#' @param from (character) Data source to get data from, any combination of 
+#' gbif, bison, or ecoengine.
+#' @param limit (numeric) Number of records to return. This is passed across 
+#' all sources. To specify different limits for each source, use the options 
+#' for each source (gbifopts, bisonopts, ecoengineopts). See Details for more. 
+#' This parameter is ignored for ecoengine.
+#' @param rank (character) Taxonomic rank to limit search space. Used in GBIF, 
+#' but not used in BISON.
+#' @param callopts Options passed on to [crul::HttpClient()], e.g., for 
+#' debugging curl calls, setting timeouts, etc.
+#' @param gbifopts (list) List of named options to pass on to 
+#' [rgbif::name_lookup()]. See also [spocc::occ_names_options()]
+#' @param bisonopts (list) List of named options to pass on to 
+#' [rbison::bison_tax()]. See also [spocc::occ_names_options()]
 #' @param ecoengineopts (list) List of named options to pass on to
-#' \code{ee_search}. See also \code{\link[spocc]{occ_names_options}}.
+#' `ee_search`. See also [spocc::occ_names_options()]
 #'
-#' @details Not all 7 data sources available from the \code{\link{occ}} function are
-#' available here, as not all of those sources have functionality to search for names.
+#' @details Not all 7 data sources available from the [occ()] function are
+#' available here, as not all of those sources have functionality to search 
+#' for names.
 #'
-#' We strongly encourage you to use the \code{taxize} package if you want to search for
-#' taxonomic or common names, convert common to scientific names, etc. That package
-#' was built exactly for that purpose, and we only provide a bit of name searching here
-#' in this function.
+#' We strongly encourage you to use the `taxize` package if you want to 
+#' search for taxonomic or common names, convert common to scientific names, 
+#' etc. That package was built exactly for that purpose, and we only provide 
+#' a bit of name searching here in this function.
 #'
 #' @examples \dontrun{
 #' # Single data sources
@@ -43,17 +45,20 @@
 #' head(res$ecoengine$data[[1]])
 #' }
 
-occ_names <- function(query = NULL, from = "gbif", limit = 100, rank = "species",
-  callopts=list(), gbifopts = list(), bisonopts = list(), ecoengineopts = list()) {
+occ_names <- function(query = NULL, from = "gbif", limit = 100, 
+  rank = "species", callopts=list(), gbifopts = list(), bisonopts = list(), 
+  ecoengineopts = list()) {
 
-  sources <- match.arg(from, choices = c("gbif", "bison", "ecoengine"), several.ok = TRUE)
-  tmp <- lapply(query, loopfun, y = limit, w = callopts, src = sources, op = list(
-    gbi = gbifopts, bis = bisonopts, eco = ecoengineopts)
+  sources <- match.arg(from, choices = c("gbif", "bison", "ecoengine"), 
+                       several.ok = TRUE)
+  tmp <- lapply(query, loopfun, y = limit, w = callopts, src = sources, 
+                op = list(gbi = gbifopts, bis = bisonopts, eco = ecoengineopts)
   )
   gbif_sp <- getnameslist(tmp, "gbif", sources, query, gbifopts)
   bison_sp <- getnameslist(tmp, "bison", sources, query, bisonopts)
   ecoengine_sp <- getnameslist(tmp, "ecoengine", sources, query, ecoengineopts)
-  structure(list(gbif = gbif_sp, bison = bison_sp, ecoengine = ecoengine_sp), class = "occnames")
+  structure(list(gbif = gbif_sp, bison = bison_sp, ecoengine = ecoengine_sp), 
+            class = "occnames")
 }
 
 loopfun <- function(x, y, w, op, src) {

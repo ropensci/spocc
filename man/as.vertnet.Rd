@@ -7,8 +7,8 @@
 as.vertnet(x)
 }
 \arguments{
-\item{x}{Various inputs, including the output from a call to \code{\link{occ}}
-(class occdat), \code{\link{occ2df}} (class data.frame), or a list, numeric,
+\item{x}{Various inputs, including the output from a call to \code{\link[=occ]{occ()}}
+(class occdat), \code{\link[=occ2df]{occ2df()}} (class data.frame), or a list, numeric,
 character, vertnetkey, or occkey.}
 }
 \value{
@@ -18,12 +18,13 @@ One or more in a list of both class vertnetkey and occkey
 Coerce occurrence keys to vertnetkey/occkey objects
 }
 \details{
-Internally, we use \code{\link[rvertnet]{vert_id}}, whereas \code{\link{occ}}
-uses \code{\link[rvertnet]{vertsearch}}.
+Internally, we use \code{\link[rvertnet:vert_id]{rvertnet::vert_id()}}, whereas \code{\link[=occ]{occ()}}
+uses \code{\link[rvertnet:vertsearch]{rvertnet::vertsearch()}}.
 }
 \examples{
 \dontrun{
-spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Carduelis tristis')
+spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 
+  'Carduelis tristis')
 out <- occ(query=spnames, from='vertnet', has_coords=TRUE, limit=2)
 res <- occ2df(out)
 (tt <- as.vertnet(out))

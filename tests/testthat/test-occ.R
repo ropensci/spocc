@@ -6,7 +6,6 @@ test_that("occ works for each data source", {
   x1 <- occ(query = 'Accipiter striatus', from = 'gbif', limit = 30)
   x2 <- occ(query = 'Accipiter striatus', from = 'ecoengine', limit = 30)
   x3 <- occ(query = 'Danaus plexippus', from = 'inat', limit = 30)
-  # Make sure they are all occdats
   x4 <- occ(query = 'Bison bison', from = 'bison', limit = 30)
   x5 <- occ(query = 'Setophaga caerulescens', from = 'ebird', ebirdopts = list(region='US'), limit = 30)
   x6 <- occ(query = 'Spinus tristis', from = 'ebird', ebirdopts = list(method = 'ebirdgeo', lat = 42, lng = -76, dist = 50), limit = 30)
@@ -16,8 +15,9 @@ test_that("occ works for each data source", {
   
   x9 <- occ(query = 'Mola mola', from = 'obis', limit = 30)
   
-  x10 <- occ(query = 'Alaba vibex', from = 'ala', limit = 30)
+  x10 <- occ(query = 'Macropus', from = 'ala', limit = 30)
 
+  # Make sure they are all occdats
   expect_is(x3, "occdat")
   expect_is(x4, "occdat")
   expect_is(x5, "occdat")

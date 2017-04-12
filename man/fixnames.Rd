@@ -9,25 +9,28 @@ fixnames(obj, how = "shortest", namevec = NULL)
 \arguments{
 \item{obj}{An object of class occdat}
 
-\item{how}{One of a few different methods: 
+\item{how}{One of a few different methods:
 \itemize{
- \item shortest Takes the shortest name string that is likely to be the prettiest
- to display name, and replaces alll names with that one, better for maps, etc.
- \item query This method takes the names you orginally queried on (in the occdat
- object), and replaces names in the occurrence data with them.
- \item supplied If this method, supply a vector of names to replace the names with
+\item shortest Takes the shortest name string that is likely to be the
+prettiest to display name, and replaces alll names with that one, better
+for maps, etc.
+\item query This method takes the names you orginally queried on (in the
+occdat object), and replaces names in the occurrence data with them.
+\item supplied If this method, supply a vector of names to replace the
+names with
 }}
 
-\item{namevec}{A vector of names to replace names in the occurrence data.frames
-with. Only used if how="supplied"}
+\item{namevec}{A vector of names to replace names in the occurrence
+data.frames with. Only used if how="supplied"}
 }
 \value{
 An object of class occdat.
 }
 \description{
-That is, this function attempts to take all the names that are synonyms, for whatever
-reason (e.g., some names have authorities on them), and collapses them to the same
-string - making data easier to deal with for making maps, etc.
+That is, this function attempts to take all the names that are synonyms,
+for whatever reason (e.g., some names have authorities on them), and
+collapses them to the same string - making data easier to deal with for
+making maps, etc.
 }
 \examples{
 \dontrun{
@@ -44,6 +47,6 @@ fixnames(dat, how="shortest")$ecoengine$data$Danaus_plexippus
 fixnames(dat, how="query")$ecoengine$data$Danaus_plexippus
 ## or this
 fixnames(dat, how="supplied", 
-   namevec = c("Danaus","Accipiter","Pinus"))$ecoengine$data$Danaus_plexippus
+ namevec = c("Danaus","Accipiter","Pinus"))$ecoengine$data$Danaus_plexippus
 }
 }

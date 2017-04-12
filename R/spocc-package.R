@@ -8,15 +8,15 @@
 #' 
 #' @section Package API:
 #' 
-#' The main function to use is \code{\link{occ}} - a single interface to 
+#' The main function to use is [occ()] - a single interface to 
 #' many species occurrence databases (see below for a list). 
 #' 
 #' Other functions include:
 #' \itemize{
-#'  \item \code{\link{occ2df}} - Combine results from \code{occ} into a 
+#'  \item [occ2df()] - Combine results from `occ` into a 
 #'  data.frame
-#'  \item \code{\link{fixnames}} - Change names to be the same for each taxon
-#'  \item \code{\link{wkt_vis}} - Visualize WKT strings (used to define 
+#'  \item [fixnames()] - Change names to be the same for each taxon
+#'  \item [wkt_vis()] - Visualize WKT strings (used to define 
 #'  geometry based searches for some data sources) in an interactive map
 #' }
 #' 
@@ -24,33 +24,33 @@
 #'
 #' \tabular{ll}{
 #' Provider \tab Web \cr
-#' GBIF \tab \url{http://www.gbif.org/} \cr
-#' BISON \tab \url{https://bison.usgs.gov/} \cr
-#' eBird \tab \url{http://ebird.org/content/ebird/} \cr
-#' iNaturalist \tab \url{http://www.inaturalist.org/} \cr
-#' Berkeley ecoengine \tab \url{https://ecoengine.berkeley.edu/} \cr
-#' AntWeb \tab \url{http://www.antweb.org/} \cr
-#' VertNet \tab \url{http://vertnet.org/} \cr
-#' iDigBio \tab \url{https://www.idigbio.org/} \cr
-#' OBIS \tab \url{http://www.iobis.org/} \cr
-#' ALA \tab \url{http://www.ala.org.au/}
+#' GBIF \tab <http://www.gbif.org/> \cr
+#' BISON \tab <https://bison.usgs.gov/> \cr
+#' eBird \tab <http://ebird.org/content/ebird/> \cr
+#' iNaturalist \tab <http://www.inaturalist.org/> \cr
+#' Berkeley ecoengine \tab <https://ecoengine.berkeley.edu/> \cr
+#' AntWeb \tab <http://www.antweb.org/> \cr
+#' VertNet \tab <http://vertnet.org/> \cr
+#' iDigBio \tab <https://www.idigbio.org/> \cr
+#' OBIS \tab <http://www.iobis.org/> \cr
+#' ALA \tab <http://www.ala.org.au/>
 #' }
 #' 
 #' @section Duplicates:
 #' 
-#' See \code{\link{spocc_duplicates}} for more.
+#' See [spocc_duplicates()] for more.
 #' 
 #' @section Clean data:
 #' 
-#' All data cleaning functionality is in a new package: \code{scrubr} 
-#' (\url{https://github.com/ropensci/scrubr}).
-#' On CRAN: \url{https://cran.r-project.org/package=scrubr}
+#' All data cleaning functionality is in a new package: `scrubr` 
+#' (<https://github.com/ropensci/scrubr>).
+#' On CRAN: <https://cran.r-project.org/package=scrubr>
 #' 
 #' @section Make maps:
 #' 
-#' All mapping functionality is now in a separate package: \code{mapr} 
-#' (\url{https://github.com/ropensci/mapr}) (formerly known as `spoccutils`).
-#' On CRAN: \url{https://cran.r-project.org/package=mapr}
+#' All mapping functionality is now in a separate package: `mapr``
+#' (<https://github.com/ropensci/mapr>) (formerly known as `spoccutils`).
+#' On CRAN: <https://cran.r-project.org/package=mapr>
 #'
 #' @importFrom jsonlite toJSON
 #' @importFrom utils browseURL head read.csv data setTxtProgressBar 

@@ -6,9 +6,9 @@
 #' @param x Input, of class occdatind
 #' @param object Input to summary methods
 #' @param ... Further args to print, plot or summary methods
-#' @param n Number of rows to show. If \code{NULL}, the default, will print
-#'   all rows if less than option \code{dplyr.print_max}. Otherwise, will
-#'   print \code{dplyr.print_min}
+#' @param n Number of rows to show. If `NULL`, the default, will print
+#'   all rows if less than option `dplyr.print_max`. Otherwise, will
+#'   print `dplyr.print_min`
 #'
 #' @examples \dontrun{
 #' # occdat object
@@ -47,10 +47,13 @@ print.occdat <- function(x, ...) {
   searched <- attr(x, "searched")
   found <- pluck(pluck(x[searched], "meta"), "found")
   cat(sprintf("Searched: %s", paste0(searched, collapse = ", ")), sep = "\n")
-  cat(sprintf("Occurrences - Found: %s, Returned: %s", founded(found), fdec(rows)), sep = "\n")
+  cat(sprintf("Occurrences - Found: %s, Returned: %s", founded(found), 
+              fdec(rows)), sep = "\n")
   cat(sprintf("Search type: %s", gettype(x)), sep = "\n")
   if (gettype(x) == "Scientific") {
-    invisible(lapply(x, catif, type = unique(unlist(unname(sc(pluck(pluck(x, "meta"), "type")))))))
+    invisible(lapply(x, catif, type = 
+                       unique(
+                         unlist(unname(sc(pluck(pluck(x, "meta"), "type")))))))
   }
   cat(founded_mssg(found))
 }
@@ -81,7 +84,8 @@ founded_mssg <- function(b){
 
 catif <- function(z, ...){
   if (!is.null(z$meta$time))
-    cat(sprintf("  %s: %s", z$meta$source, spocc_wrap(pastemax(z$data, ..., n = 3))), sep = "\n")
+    cat(sprintf("  %s: %s", z$meta$source, 
+                spocc_wrap(pastemax(z$data, ..., n = 3))), sep = "\n")
 }
 
 #' @export
@@ -89,7 +93,8 @@ catif <- function(z, ...){
 print.occdatind <- function(x, ...){
   if (!is.null(x$meta$type)) {
     cat( spocc_wrap(sprintf("%s [%s]", 
-                            switch(x$meta$type, sci = "Species", geometry = "Geometry"), 
+                            switch(x$meta$type, sci = "Species", 
+                                   geometry = "Geometry"), 
                             pastemax(x$data, x$meta$type))), '\n')
   }
   print(occinddf(x))
@@ -112,7 +117,8 @@ summary.occdatind <- function(object, ...){
   cat(sprintf('<time> %s', nn(mdat$time)), "\n")
   cat(sprintf('<found> %s', nn(mdat$found)), "\n")
   cat(sprintf('<returned> %s', nn(mdat$returned)), "\n")
-  opts <- unlist(Map(function(x, y) paste(paste(y, x, sep = ": "), "\n"), mdat$opts, names(mdat$opts), USE.NAMES = FALSE))
+  opts <- unlist(Map(function(x, y) paste(paste(y, x, sep = ": "), "\n"), 
+                     mdat$opts, names(mdat$opts), USE.NAMES = FALSE))
   cat('<query options>\n', opts, "\n")
 }
 
@@ -149,9 +155,12 @@ occinddf <- function(obj) {
   cat(sprintf("First 10 rows of [%s]\n\n", nms))
   
   df <- data.frame(name = z$name, longitude = z$longitude,
-                   latitude = z$latitude, prov = z$prov, stringsAsFactors = FALSE)
-  z <- z[!names(z) %in% c('name','decimalLongitude','decimallongitude','Longitude','lng','longitude','decimal_longitude',
-                          'decimalLatitude','decimallatitude','Latitude','lat','latitude','decimal_latitude','prov',
+                   latitude = z$latitude, prov = z$prov, 
+                   stringsAsFactors = FALSE)
+  z <- z[!names(z) %in% c('name','decimalLongitude','decimallongitude',
+                          'Longitude','lng','longitude','decimal_longitude',
+                          'decimalLatitude','decimallatitude','Latitude','lat',
+                          'latitude','decimal_latitude','prov',
                           'geopoint.lat','geopoint.lon')]
   as_data_frame(do.call(cbind, list(df, z)))
 }

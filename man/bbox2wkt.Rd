@@ -3,7 +3,7 @@
 \name{bbox2wkt}
 \alias{bbox2wkt}
 \alias{wkt2bbox}
-\title{Convert a bounding box to a Well Known Text polygon, and a WKT to a 
+\title{Convert a bounding box to a Well Known Text polygon, and a WKT to a
 bounding box}
 \usage{
 bbox2wkt(minx = NA, miny = NA, maxx = NA, maxy = NA, bbox = NULL)
@@ -24,15 +24,15 @@ wkt2bbox(wkt)
 \item{wkt}{A Well Known Text object.}
 }
 \value{
-bbox2wkt returns an object of class charactere, a Well Known Text 
-string of the form 
+bbox2wkt returns an object of class charactere, a Well Known Text
+string of the form
 'POLYGON((minx miny, maxx miny, maxx maxy, minx maxy, minx miny))'
 
-wkt2bbox returns a numeric vector of length 4, like c(minx, miny, 
+wkt2bbox returns a numeric vector of length 4, like c(minx, miny,
 maxx, maxy).
 }
 \description{
-Convert a bounding box to a Well Known Text polygon, and a WKT to a 
+Convert a bounding box to a Well Known Text polygon, and a WKT to a
 bounding box
 }
 \examples{

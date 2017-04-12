@@ -1,4 +1,4 @@
-ala_base <- function() "http://biocache.ala.org.au/ws/occurrences"
+ala_base <- function() "http://biocache.ala.org.au"
 
 ala_search <- function(taxon = NULL, limit = 500, offset = 0, fq = NULL,
   facet = "off", facets = NULL, sort = NULL, dir = NULL, flimit = NULL, 
@@ -12,22 +12,29 @@ ala_search <- function(taxon = NULL, limit = 500, offset = 0, fq = NULL,
     foffset = foffset, fprefix = fprefix, lat = lat, lon = lon,
     radius = radius, wkt = geometry
   ))
-  res <- httr::GET(file.path(ala_base(), "search"), query = args, ...)
-  httr::stop_for_status(res)
-  jsonlite::fromJSON(httr::content(res, "text", encoding = "UTF-8"), flatten = TRUE)
+  cli <- crul::HttpClient$new(
+    url = ala_base(),
+    opts = list(...)
+  )
+  out <- cli$get(path = "ws/occurrences/search", query = args)
+  out$raise_for_status()
+  jsonlite::fromJSON(out$parse("UTF-8"), flatten = TRUE)
 }
 
 ala_occ_id <- function(id, ...) {
   if (length(id) > 1) {
-    lapply(file.path(ala_base(), id), ala_GET, ...)
+    lapply(id, ala_GET, ...)
   } else {
-    ala_GET(file.path(ala_base(), id), ...)
+    ala_GET(id, ...)
   }
 }
 
-ala_GET <- function(url, args = list(), ...) {
-  res <- httr::GET(url, args, ...)
-  httr::stop_for_status(res)
-  jsonlite::fromJSON(httr::content(res, "text", encoding = "UTF-8"), 
-                     flatten = TRUE)  
+ala_GET <- function(id, args = list(), ...) {
+  cli <- crul::HttpClient$new(
+    url = ala_base(),
+    opts = list(...)
+  )
+  out <- cli$get(path = file.path("ws/occurrence", id), query = args)
+  out$raise_for_status()
+  jsonlite::fromJSON(out$parse("UTF-8"), flatten = TRUE)
 }

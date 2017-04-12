@@ -9,16 +9,17 @@ spocc_capwords(s, strict = FALSE, onlyfirst = FALSE)
 \arguments{
 \item{s}{A character string}
 
-\item{strict}{Should the algorithm be strict about capitalizing. Defaults to FALSE.}
+\item{strict}{Should the algorithm be strict about capitalizing.
+Default: \code{FALSE}}
 
-\item{onlyfirst}{Capitalize only first word, lowercase all others. Useful for
-taxonomic names.}
+\item{onlyfirst}{Capitalize only first word, lowercase all others.
+Useful for taxonomic names.}
 }
 \description{
 Capitalize the first letter of a character string.
 }
 \examples{
- \dontrun{
+\dontrun{
 spocc_capwords(c('using AIC for model selection'))
 spocc_capwords(c('using AIC for model selection'), strict=TRUE)
 }

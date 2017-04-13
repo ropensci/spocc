@@ -531,9 +531,6 @@ occ(query = "Acer", from = "idigbio", limit = 5,
 (res <- occ(query = 'Mola mola', from = 'obis', limit = 200))
 ## get to obis data
 res$obis
-# make a map
-library("mapr")
-map_ggplot(res)
 ## get obis + gbif data
 (res <- occ(query = 'Mola mola', from = c('obis', 'gbif'), limit = 200))
 res$gbif

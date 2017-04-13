@@ -6,7 +6,6 @@ bioc_packages:
   - sangerseqR
 
 r_packages:
-  - mapr
   - taxize
 
 r_github_packages:

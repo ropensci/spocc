@@ -8,7 +8,7 @@ Description: A programmatic interface to many species occurrence data sources,
     System ('OBIS'), and Atlas of Living Australia ('ALA'). Includes
     functionality for retrieving species occurrence data, and combining
     those data.
-Version: 0.6.6.9100
+Version: 0.6.6.9104
 License: MIT + file LICENSE
 Authors@R: c(
     person("Scott", "Chamberlain", role = c("aut", "cre"),
@@ -39,5 +39,6 @@ Suggests:
     roxygen2 (>= 6.0.1),
     testthat,
     knitr,
-    taxize (>= 0.8.4)
+    taxize (>= 0.8.4),
+    mapr
 RoxygenNote: 6.0.1

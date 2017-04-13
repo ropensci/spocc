@@ -6,10 +6,12 @@ bioc_packages:
   - sangerseqR
 
 r_packages:
-  - covr
+  - mapr
+  - taxize
 
 r_github_packages:
   - ropensci/rgbif
+  - jimhester/covr
 
 r_check_args: "--as-cran --run-dontrun"
 

@@ -1,13 +1,13 @@
 #' Coerce occurrence keys to ecoenginekey/occkey objects
 #'
 #' @export
-#' @param x Various inputs, including the output from a call to 
-#' [occ()] (class occdat), [occ2df()] (class data.frame), 
+#' @param x Various inputs, including the output from a call to
+#' [occ()] (class occdat), [occ2df()] (class data.frame),
 #' or a list, numeric, character, or ecoenginekey, or occkey.
 #' @param ... curl options; named parameters passed on to [crul::HttpClient()]
 #' @return One or more in a list of both class ecoenginekey and occkey
 #' @examples \dontrun{
-#' spnames <- c('Accipiter striatus', 'Carduelis tristis')
+#' spnames <- c('Accipiter striatus', 'Spinus tristis')
 #' out <- occ(query=spnames, from='ecoengine', limit=2)
 #' res <- occ2df(out)
 #' (tt <- as.ecoengine(out))

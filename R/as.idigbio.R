@@ -11,8 +11,8 @@
 #' [idig_search_records()] in the [occ()] function.
 #'
 #' @examples \dontrun{
-#' spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 
-#'   'Carduelis tristis')
+#' spnames <- c('Accipiter striatus', 'Setophaga caerulescens',
+#'   'Spinus tristis')
 #' out <- occ(query=spnames, from='idigbio', limit=2)
 #' res <- occ2df(out)
 #' (tt <- as.idigbio(out))
@@ -67,6 +67,6 @@ make_idigbio_df <- function(x, ...) {
 }
 
 make_idigbio <- function(y, ...){
-  structure(ridigbio::idig_view_records(uuid = y, ...), 
+  structure(ridigbio::idig_view_records(uuid = y, ...),
             class = c("idigbiokey", "occkey"))
 }

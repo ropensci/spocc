@@ -4,19 +4,19 @@
 #'
 #' @param x The output from \code{\link{occ}} call, output from call to
 #' \code{\link{occ2df}}, or an occurrence ID as a occkey class.
-#' @param from  (character) The data provider. One of gbif, bison, inat, 
+#' @param from  (character) The data provider. One of gbif, bison, inat,
 #' antweb, ecoengine, or vertnet
-#' @return A list, with each slot named for the data source, and then 
+#' @return A list, with each slot named for the data source, and then
 #' within data sources is a slot for each taxon, named by it's occurrence ID.
 #'
 #' @examples \dontrun{
-#' spnames <- c('Accipiter striatus', 'Carduelis tristis')
+#' spnames <- c('Accipiter striatus', 'Spinus tristis')
 #' out <- occ(query=spnames, from=c('gbif','bison','ecoengine'),
 #'    gbifopts=list(hasCoordinate=TRUE), limit=2)
 #' res <- occ2df(out)
 #' inspect(res)
 #'
-#' out <- occ(query=spnames, from='gbif', gbifopts=list(hasCoordinate=TRUE), 
+#' out <- occ(query=spnames, from='gbif', gbifopts=list(hasCoordinate=TRUE),
 #'   limit=4)
 #' res <- occ2df(out)
 #' inspect(res)
@@ -26,9 +26,9 @@
 #' inspect(key)
 #' key <- as.antweb("amsat-94817")
 #' inspect(key)
-#' 
-#' # idigbio		
-#' spnames <- c('Accipiter striatus', 'Carduelis tristis')
+#'
+#' # idigbio
+#' spnames <- c('Accipiter striatus', 'Spinus tristis')
 #' out <- occ(query=spnames, from='idigbio', limit=20)
 #' inspect(out)
 #' }

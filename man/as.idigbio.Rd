@@ -25,8 +25,8 @@ Internally, we use \code{idig_view_records}, whereas we use
 }
 \examples{
 \dontrun{
-spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 
-  'Carduelis tristis')
+spnames <- c('Accipiter striatus', 'Setophaga caerulescens',
+  'Spinus tristis')
 out <- occ(query=spnames, from='idigbio', limit=2)
 res <- occ2df(out)
 (tt <- as.idigbio(out))

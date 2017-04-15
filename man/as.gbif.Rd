@@ -11,7 +11,7 @@ as.gbif(x, ...)
 \code{\link[=occ]{occ()}} (class occdat), \code{\link[=occ2df]{occ2df()}} (class data.frame),
 or a list, numeric, character, gbifkey, or occkey.}
 
-\item{...}{curl options; named parameters passed on to \code{httr::GET()}}
+\item{...}{curl options; named parameters passed on to \code{\link[crul:HttpClient]{crul::HttpClient()}}}
 }
 \value{
 One or more in a list of both class gbifkey and occkey
@@ -28,7 +28,7 @@ go directly to the occurrence record.
 \examples{
 \dontrun{
 spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 
-  'Carduelis tristis')
+  'Spinus tristis')
 out <- occ(query=spnames, from=c('gbif','ebird'), 
   gbifopts=list(hasCoordinate=TRUE), limit=2)
 res <- occ2df(out)

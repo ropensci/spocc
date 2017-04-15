@@ -2,15 +2,15 @@
 #'
 #' @export
 #'
-#' @param x Various inputs, including the output from a call to 
+#' @param x Various inputs, including the output from a call to
 #' [occ()] (class occdat), [occ2df()] (class data.frame), or a list, numeric,
 #' character, inatkey, or occkey.
 #' @param ... curl options; named parameters passed on to [crul::HttpClient()]
 #' @return One or more in a list of both class inatkey and occkey
 #'
 #' @examples \dontrun{
-#' spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 
-#'   'Carduelis tristis')
+#' spnames <- c('Accipiter striatus', 'Setophaga caerulescens',
+#'   'Spinus tristis')
 #' out <- occ(query=spnames, from='inat', limit=2)
 #' res <- occ2df(out)
 #' (tt <- as.inat(out))
@@ -23,7 +23,7 @@
 #'
 #' library("dplyr")
 #' bind_rows(lapply(tt, function(x) {
-#'   data.frame(x$taxon[c('id','name','rank','unique_name')], 
+#'   data.frame(x$taxon[c('id','name','rank','unique_name')],
 #'              stringsAsFactors = FALSE)
 #' }))
 #' }
@@ -71,6 +71,6 @@ make_inat_df <- function(x, ...) {
 }
 
 make_inat <- function(y, ...) {
-  structure(spocc_get_inat_obs_id(id = y, callopts = list(...)), 
+  structure(spocc_get_inat_obs_id(id = y, callopts = list(...)),
             class = c("inatkey", "occkey"))
 }

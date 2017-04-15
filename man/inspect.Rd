@@ -31,13 +31,13 @@ Get more data on individual occurrences.
 }
 \examples{
 \dontrun{
-spnames <- c('Accipiter striatus', 'Carduelis tristis')
+spnames <- c('Accipiter striatus', 'Spinus tristis')
 out <- occ(query=spnames, from=c('gbif','bison','ecoengine'),
    gbifopts=list(hasCoordinate=TRUE), limit=2)
 res <- occ2df(out)
 inspect(res)
 
-out <- occ(query=spnames, from='gbif', gbifopts=list(hasCoordinate=TRUE), 
+out <- occ(query=spnames, from='gbif', gbifopts=list(hasCoordinate=TRUE),
   limit=4)
 res <- occ2df(out)
 inspect(res)
@@ -48,8 +48,8 @@ inspect(key)
 key <- as.antweb("amsat-94817")
 inspect(key)
 
-# idigbio		
-spnames <- c('Accipiter striatus', 'Carduelis tristis')
+# idigbio
+spnames <- c('Accipiter striatus', 'Spinus tristis')
 out <- occ(query=spnames, from='idigbio', limit=20)
 inspect(out)
 }

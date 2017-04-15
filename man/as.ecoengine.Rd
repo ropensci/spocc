@@ -21,7 +21,7 @@ Coerce occurrence keys to ecoenginekey/occkey objects
 }
 \examples{
 \dontrun{
-spnames <- c('Accipiter striatus', 'Carduelis tristis')
+spnames <- c('Accipiter striatus', 'Spinus tristis')
 out <- occ(query=spnames, from='ecoengine', limit=2)
 res <- occ2df(out)
 (tt <- as.ecoengine(out))

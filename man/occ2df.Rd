@@ -36,26 +36,26 @@ are blank.
 \examples{
 \dontrun{
 # combine results from output of an occ() call
-spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 
-  'Carduelis tristis')
-out <- occ(query=spnames, from='gbif', gbifopts=list(hasCoordinate=TRUE), 
+spnames <- c('Accipiter striatus', 'Setophaga caerulescens',
+  'Spinus tristis')
+out <- occ(query=spnames, from='gbif', gbifopts=list(hasCoordinate=TRUE),
   limit=10)
 occ2df(out)
 occ2df(out$gbif)
 
 out <- occ(
-  query='Accipiter striatus', 
+  query='Accipiter striatus',
   from=c('gbif','bison','ecoengine','ebird','inat','vertnet'),
   gbifopts=list(hasCoordinate=TRUE), limit=2)
 occ2df(out)
 occ2df(out$vertnet)
 
 # or combine many results from a single data source
-spnames <- c('Accipiter striatus', 'Carduelis tristis')
+spnames <- c('Accipiter striatus', 'Spinus tristis')
 out <- occ(query=spnames, from='ecoengine', limit=2)
 occ2df(out$ecoengine)
 
-spnames <- c('Accipiter striatus', 'Carduelis tristis')
+spnames <- c('Accipiter striatus', 'Spinus tristis')
 out <- occ(query=spnames, from='gbif', limit=2)
 occ2df(out$gbif)
 

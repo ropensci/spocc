@@ -9,11 +9,11 @@
 #' @return One or more in a list of both class bisonkey and occkey
 #' @details Internally, we use [rbison::bison_solr()], same function we use
 #' internally within the [occ()] function. Although, we query here with the
-#' `occurrenceID` parameter to get the occurrence directly instead of 
+#' `occurrenceID` parameter to get the occurrence directly instead of
 #' searching for it.
 #' @examples \dontrun{
-#' spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 
-#'   'Carduelis tristis')
+#' spnames <- c('Accipiter striatus', 'Setophaga caerulescens',
+#'   'Spinus tristis')
 #' out <- occ(query=spnames, from='bison', limit=2)
 #' res <- occ2df(out)
 #' (tt <- as.bison(out))
@@ -64,13 +64,13 @@ make_bison_df <- function(x, ...) {
   if (NROW(tmp) == 0) {
     stop("no data from bison found", call. = FALSE)
   } else {
-    stats::setNames(lapply(as.numeric(tmp$key), make_bison, ...), 
+    stats::setNames(lapply(as.numeric(tmp$key), make_bison, ...),
                     as.numeric(tmp$key))
   }
 }
 
 make_bison <- function(y, ...){
-  structure(bison_solr(occurrenceID = y, verbose = FALSE, 
-                       callopts = list(...)), 
+  structure(bison_solr(occurrenceID = y, verbose = FALSE,
+                       callopts = list(...)),
             class = c("bisonkey", "occkey"))
 }

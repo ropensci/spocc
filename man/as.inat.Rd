@@ -21,8 +21,8 @@ Coerce occurrence keys to iNaturalist id objects
 }
 \examples{
 \dontrun{
-spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 
-  'Carduelis tristis')
+spnames <- c('Accipiter striatus', 'Setophaga caerulescens',
+  'Spinus tristis')
 out <- occ(query=spnames, from='inat', limit=2)
 res <- occ2df(out)
 (tt <- as.inat(out))
@@ -35,7 +35,7 @@ as.inat(tt[1:2])
 
 library("dplyr")
 bind_rows(lapply(tt, function(x) {
-  data.frame(x$taxon[c('id','name','rank','unique_name')], 
+  data.frame(x$taxon[c('id','name','rank','unique_name')],
              stringsAsFactors = FALSE)
 }))
 }

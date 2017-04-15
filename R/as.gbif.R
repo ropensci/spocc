@@ -5,7 +5,7 @@
 #' @param x Various inputs, including the output from a call to 
 #' [occ()] (class occdat), [occ2df()] (class data.frame), 
 #' or a list, numeric, character, gbifkey, or occkey.
-#' @param ... curl options; named parameters passed on to `httr::GET()`
+#' @param ... curl options; named parameters passed on to [crul::HttpClient()]
 #' @return One or more in a list of both class gbifkey and occkey
 #' @details Internally, we use [rgbif::occ_get()], whereas 
 #' [occ()] uses [rgbif::occ_data()]. We can use 
@@ -13,7 +13,7 @@
 #' go directly to the occurrence record.
 #' @examples \dontrun{
 #' spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 
-#'   'Carduelis tristis')
+#'   'Spinus tristis')
 #' out <- occ(query=spnames, from=c('gbif','ebird'), 
 #'   gbifopts=list(hasCoordinate=TRUE), limit=2)
 #' res <- occ2df(out)
@@ -71,6 +71,6 @@ make_gbif_df <- function(x, ...) {
 }
 
 make_gbif <- function(y, ...) {
-  structure(occ_get(key = y, fields = "all", ...), 
+  structure(occ_get(key = y, fields = "all", curlopts = list(...)), 
             class = c("gbifkey", "occkey"))
 }

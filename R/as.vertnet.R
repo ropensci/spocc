@@ -9,8 +9,8 @@
 #' @details Internally, we use [rvertnet::vert_id()], whereas [occ()]
 #' uses [rvertnet::vertsearch()].
 #' @examples \dontrun{
-#' spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 
-#'   'Carduelis tristis')
+#' spnames <- c('Accipiter striatus', 'Setophaga caerulescens',
+#'   'Spinus tristis')
 #' out <- occ(query=spnames, from='vertnet', has_coords=TRUE, limit=2)
 #' res <- occ2df(out)
 #' (tt <- as.vertnet(out))

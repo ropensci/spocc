@@ -32,7 +32,6 @@ foo_gbif <- function(sources, query, limit, start, geometry, has_coords,
       time <- now()
       if (!'limit' %in% names(opts)) opts$limit <- limit
       if (!'start' %in% names(opts)) opts$start <- start
-      opts$fields <- 'all'
       if (!is.null(geometry)) {
         opts$geometry <- if (grepl('POLYGON', paste(as.character(geometry), 
                                                     collapse = " "))) {
@@ -41,7 +40,7 @@ foo_gbif <- function(sources, query, limit, start, geometry, has_coords,
           bbox2wkt(bbox = geometry)
         }
       }
-      if (length(callopts) > 0) opts$config <- callopts
+      if (length(callopts) > 0) opts$curlopts <- callopts
       out <- tryCatch(do.call("occ_data", opts), error = function(e) e)
       if (inherits(out, "simpleError")) {
         warning(sprintf("No records found in GBIF for %s", query), 

@@ -107,7 +107,7 @@ names_gbif <- function(sources, query, limit, callopts, opts){
       time <- now()
       opts$query <- query
       if (!'limit' %in% names(opts)) opts$limit <- limit
-      opts$callopts <- callopts
+      opts$curlopts <- callopts
       out <- do.call(name_lookup, opts)
       if (class(out) == "character" || class(out$data) == "character") {
         emptylist(opts)

@@ -9,7 +9,6 @@ r_packages:
   - taxize
 
 r_github_packages:
-  - ropensci/rgbif
   - jimhester/covr
 
 r_check_args: "--as-cran --run-dontrun"

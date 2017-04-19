@@ -2,7 +2,7 @@
 
 * local OS X install, R 3.3.3
 * ubuntu 12.04 (on travis-ci), R 3.3.3
-* win-builder (devel and release)
+* win-builder devel
 
 ## R CMD check results
 
@@ -23,7 +23,8 @@ summary at <https://github.com/ropensci/spocc/tree/master/revdep#setup>
 
 --------
 
-This version xxx.
+This version removes V8 dependency as well, replaced one dependency
+with another, and a few other minor changes.
 
 Thanks!
 Scott Chamberlain

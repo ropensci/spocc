@@ -6,21 +6,16 @@ spocc 0.7.0
 * Removed javascript and V8 package import and using
 `wicket` C++ based package instead. So you no longer need V8
 which should make installation easier on some platforms. (#172)
-* xxx (#xxx)
-* xxx (#xxx)
 
 ### MINOR IMPROVEMENTS
 
 * `httr` replaced with `crul` for HTTP reqeusts (#174)
-* Moved to using markdown for docs (#176)
+* Moved to using markdown for docs. The only thing you should 
+notice that's different now is doing curl options is slightly
+different - it's just `curl::curl_options()` (#176)
 * All `as.*()` functions can now pass on curl options to the 
 http client (#177)
-
-### BUG FIXES
-
-* xxx (#xxx)
-* xxx (#xxx)
-* xxx (#xxx)
+* Bumped minimum versions for a number of dependencies
 
 
 spocc 0.6.0

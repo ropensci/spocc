@@ -480,7 +480,7 @@ foo_ala <- function(sources, query, limit, start, geometry, has_coords,
                     callopts, opts) {
   if (any(grepl("ala", sources))) {
     time <- now()
-    opts$taxon <- query
+    opts$taxon <- sprintf('taxon_name:"%s"', query)
     
     if (!is.null(geometry)) {
       opts$wkt <- if (grepl('POLYGON', paste(as.character(geometry), 
@@ -505,14 +505,19 @@ foo_ala <- function(sources, query, limit, start, geometry, has_coords,
         warning(sprintf("No records found in ALA for %s", query))
         emptylist(opts)
       } else {
-        out <- tmp$occurrences
-        out$prov <- rep("ala", NROW(out))
-        out <- rename(out, c('scientificName' = 'name'))
-        out <- add_latlong(out, nms = c('decimalLongitude', 'decimalLatitude'))
-        out <- stand_latlon(out)
-        out <- add_latlong_if_missing(out)
-        out <- stand_dates(out, "ala")
-        list(time = time, found = tmp$count, data = out, opts = opts)
+        if (!length(tmp$occurrences)) {
+          warning(sprintf("No records found in ALA for %s", query))
+          emptylist(opts)
+        } else {
+          out <- tmp$occurrences
+          out$prov <- rep("ala", NROW(out))
+          out <- rename(out, c('scientificName' = 'name'))
+          out <- add_latlong(out, nms = c('decimalLongitude', 'decimalLatitude'))
+          out <- stand_latlon(out)
+          out <- add_latlong_if_missing(out)
+          out <- stand_dates(out, "ala")
+          list(time = time, found = tmp$count, data = out, opts = opts)
+        }
       }
     }
   } else {

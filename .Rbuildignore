@@ -20,3 +20,5 @@ revdep
 ^.*\.Rproj$
 .github
 revdep
+docs
+

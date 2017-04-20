@@ -17,6 +17,15 @@ different - it's just `curl::curl_options()` (#176)
 http client (#177)
 * Bumped minimum versions for a number of dependencies
 
+### BUG FIXES
+
+* Fix to `foo_ala()` - the internal plugin for `occ()` that 
+handles ALA queries: changed query from full text query using 
+`q=foo bar` to `q=taxon_name="foo bar"` - in addition, improved
+error handling as sometimes `occurrences` slot is returned in 
+results but is empty, whereas before it seemd to always be 
+absent if no results (#178)
+
 
 spocc 0.6.0
 ===========

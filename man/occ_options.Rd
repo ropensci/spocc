@@ -8,7 +8,7 @@ occ_options(from = "gbif", where = "console")
 }
 \arguments{
 \item{from}{(character) Data source to get data from, any combination of
-gbif, bison, ebird, AntWeb, idigibio and/or ecoengine. Case doesn't matter.
+gbif, bison, ebird, idigibio and/or vertnet. Case doesn't matter.
 inat is not included here, see that package's help docs.}
 
 \item{where}{(character) One of console (print to console) or html (opens
@@ -28,7 +28,19 @@ in \code{\link[=occ]{occ()}}
 
 Note that the from parameter is lowercased within the function and is
 called through match.arg first, so you can match on unique partial
-strings too (e.g., 'e' for 'ecoengine').
+strings too (e.g., 'rv' for 'rvertnet').
+
+For some data sources we don't import the canonical package, but instead
+have our own intenral helper functions and the package in question is
+not imported, but we do suggest seeing the help for the package on
+their parameters:
+
+\itemize{
+\item \strong{AntWeb}: \code{?AntWeb::aw_data}
+\item \strong{ecoengine}: \code{?ecoengine::ee_observations}
+}
+
+For others,
 }
 \examples{
 \dontrun{
@@ -37,9 +49,6 @@ occ_options()
 
 # Open up documentation for the appropriate search function for each source
 occ_options('gbif')
-occ_options('ecoengine')
-occ_options('AntWeb')
-occ_options('antweb')
 occ_options('ebird')
 occ_options('bison')
 occ_options('idigbio')

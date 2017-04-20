@@ -2,7 +2,7 @@
 
 * local OS X install, R 3.3.3
 * ubuntu 12.04 (on travis-ci), R 3.3.3
-* win-builder devel
+* win-builder (devel)
 
 ## R CMD check results
 
@@ -25,6 +25,10 @@ summary at <https://github.com/ropensci/spocc/tree/master/revdep#setup>
 
 This version removes V8 dependency as well, replaced one dependency
 with another, and a few other minor changes.
+
+Note that the R release binary is not available yet for one dependency
+(rgbif), but is available for other R versions. Hopefully that's okay.
+
 
 Thanks!
 Scott Chamberlain

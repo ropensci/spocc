@@ -36,8 +36,14 @@ test_that("passing in options to occ works", {
   expect_is(opts5$ebird$data$Setophaga_caerulescens$comName, "character")
   expect_equal(opts5$ebird$data$Setophaga_caerulescens$comName[1], "Black-throated Blue Warbler")
   
-  expect_true(any(vapply(opts6$vertnet$data$mustela$name, function(z) grepl("erminea", z), logical(1))))
-  expect_true(any(vapply(opts6$vertnet$data$mustela$name, function(z) grepl("nivalis", z), logical(1))))
+  expect_true(
+    any(vapply(opts6$vertnet$data$mustela$name, function(z) grepl("erminea", z), 
+               logical(1)))
+  )
+  expect_true(
+    any(vapply(opts6$vertnet$data$mustela$name, function(z) grepl("nivalis", z), 
+               logical(1)))
+  )
   
   expect_equal(opts7$bison$data$Helianthus_annuus$year[1], 2003)
   expect_is(opts7$bison$data$Helianthus_annuus$year[1], "integer")

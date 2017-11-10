@@ -2,7 +2,7 @@ context("taxize integration")
 
 library("taxize")
 
-test_that("taxize based searches works with > 1 get_ids, 
+test_that("taxize based searches works with > 1 get_ids,
           but indexed to 1 input", {
   skip_on_cran()
 
@@ -20,7 +20,7 @@ test_that("taxize based searches works with > 1 get_ids,
 test_that("taxize based searches works with > 1 get_ids input", {
   skip_on_cran()
 
-  ids <- get_ids(names=c("Chironomus riparius","Pinus contorta"), 
+  ids <- get_ids(names=c("Chironomus riparius","Pinus contorta"),
                  db = c('itis','gbif'), verbose = FALSE, rows = 1)
 	bb <- occ(ids = ids, from=c('bison','gbif'), limit=20)
 	expect_is(bb, "occdat")
@@ -59,7 +59,7 @@ test_that("taxize based searches works with get_gbifid input", {
 
 test_that("taxize based searches works with get_tsn input", {
   skip_on_cran()
-  
+
   ids <- get_tsn('Accipiter striatus', verbose = FALSE, rows = 1)
   ee <- occ(ids = ids, from='bison', limit=20)
   expect_is(ee, "occdat")

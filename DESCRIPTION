@@ -8,7 +8,7 @@ Description: A programmatic interface to many species occurrence data sources,
     System ('OBIS'), and Atlas of Living Australia ('ALA'). Includes
     functionality for retrieving species occurrence data, and combining
     those data.
-Version: 0.7.0.9210
+Version: 0.7.0.9212
 License: MIT + file LICENSE
 Authors@R: c(
     person("Scott", "Chamberlain", role = c("aut", "cre"),
@@ -26,7 +26,7 @@ Imports:
     rgbif (>= 0.9.8),
     rbison (>= 0.5.0),
     rebird (>= 0.3.0),
-    rvertnet (>= 0.6.2),
+    rvertnet (>= 0.6.3.9110),
     ridigbio (>= 0.3.5),
     lubridate (>= 1.5.0),
     crul (>= 0.3.4),

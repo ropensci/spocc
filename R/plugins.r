@@ -377,10 +377,10 @@ foo_idigbio <- function(sources, query, limit, start, geometry, has_coords,
 
     if (!is.null(geometry)) {
       if (grepl('POLYGON', paste(as.character(geometry), collapse = " "))) {
-        geometry <- wkt2bbox(geometry)
+        geometry <- unlist(unname(c(wkt2bbox(geometry))))
       }
-      addopts$rq <- c(addopts$rq, if (is.numeric(geometry) &&
-                                      length(geometry) == 4) {
+      # force all geometry requests into this format if possible
+      addopts$rq <- c(addopts$rq, 
         list(geopoint = list(
           type = "geo_bounding_box",
           top_left = list(
@@ -390,9 +390,7 @@ foo_idigbio <- function(sources, query, limit, start, geometry, has_coords,
             lat = geometry[2], lon = geometry[3]
           )
         ))
-      } else {
-        geometry
-      })
+      )
     }
 
     if ("rq" %in% names(opts)) {

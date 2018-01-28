@@ -19,6 +19,6 @@ revdep
 ^cran-comments\.md$
 ^.*\.Rproj$
 .github
-revdep
 docs
 
+^codemeta\.json$

@@ -333,6 +333,29 @@ two <- occ(query = 'Accipiter striatus', from = 'gbif', limit = 5, start = 5)
 one$gbif
 two$gbif
 
+
+# Date range searches across data sources
+## Not possible for ebird
+## bison
+occ(query = 'Acer', date = c('2010-08-08', '2010-08-21'), from = 'bison', limit=5)
+## ala
+occ(date = c('2018-01-01T00:00:00Z', '2018-03-28T00:00:00Z'), from = 'ala', limit = 5)
+## gbif
+occ(query = 'Accipiter striatus', date = c('2010-08-01', '2010-08-31'), from = 'gbif', limit=5)
+# ecoengine
+occ(date = c('2010-01-01', '2010-12-31'), from = 'ecoengine', limit=5)
+## antweb
+occ(query = "acanthognathus", date = c('2010-01-01', '2010-12-31'), from = 'antweb', limit=5)
+## vertnet
+occ(query = 'Mustela nigripes', date = c('1990-01-01', '2015-12-31'), from = 'vertnet', limit=5)
+## idigbio
+occ(query = 'Acer', date = c('2010-01-01', '2015-12-31'), from = 'idigbio', limit=5)
+## obis
+occ(query = 'Mola mola', date = c('2015-01-01', '2015-12-31'), from = 'obis', limit=5)
+## inat
+occ(query = 'Danaus plexippus', date = c('2015-01-01', '2015-12-31'), from = 'inat', limit=5)
+
+
 # Restrict to records with coordinates
 occ(query = "Acer", from = "idigbio", limit = 5, has_coords = TRUE)
 

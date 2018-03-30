@@ -2,7 +2,7 @@
 ## the plugins
 #' @noRd
 foo_gbif <- function(sources, query, limit, start, geometry, has_coords,
-                     callopts, opts) {
+                     date, callopts, opts) {
   if (any(grepl("gbif", sources))) {
 
     opts$hasCoordinate <- has_coords
@@ -23,6 +23,10 @@ foo_gbif <- function(sources, query, limit, start, geometry, has_coords,
       }
     } else {
       query_use <- NULL
+    }
+    if (!is.null(date)) {
+      if (length(date) != 2) stop("'date' for GBIF must be length 2")
+      opts$eventDate <- paste0(date, collapse = ",")
     }
 
     if (is.null(query_use) && is.null(geometry) && length(opts) == 0) {
@@ -88,7 +92,7 @@ foo_gbif <- function(sources, query, limit, start, geometry, has_coords,
 
 #' @noRd
 foo_ecoengine <- function(sources, query, limit, page, geometry, has_coords,
-                          callopts, opts) {
+                          date, callopts, opts) {
   if (any(grepl("ecoengine", sources))) {
     opts <- limit_alias(opts, "ecoengine")
     time <- now()
@@ -104,6 +108,11 @@ foo_ecoengine <- function(sources, query, limit, page, geometry, has_coords,
       } else {
         geometry
       }
+    }
+    if (!is.null(date)) {
+      if (length(date) != 2) stop("'date' for Ecoengine must be length 2")
+      opts$min_date <- date[1]
+      opts$max_date <- date[2]
     }
     # This could hang things if request is super large.  Will deal with this issue
     # when it arises in a usecase
@@ -141,7 +150,7 @@ foo_ecoengine <- function(sources, query, limit, page, geometry, has_coords,
 
 #' @noRd
 foo_antweb <- function(sources, query, limit, start, geometry, has_coords,
-                       callopts, opts) {
+                       date, callopts, opts) {
   if (any(grepl("antweb", sources))) {
     time <- now()
     opts$georeferenced <- has_coords
@@ -158,8 +167,15 @@ foo_antweb <- function(sources, query, limit, start, geometry, has_coords,
       opts$scientific_name <- NULL
     }
 
+    if (!is.null(date)) {
+      if (length(date) != 2) stop("'date' for Ecoengine must be length 2")
+      opts$min_date <- date[1]
+      opts$max_date <- date[2]
+    }
+
     if (!'limit' %in% names(opts)) opts$limit <- limit
     if (!'offset' %in% names(opts)) opts$offset <- start
+    if (length(callopts) > 0) opts$callopts <- callopts
     out <- tryCatch(do.call(aw_data2, opts), error = function(e) e)
 
     if (is.null(out) || inherits(out, "simpleError")) {
@@ -181,7 +197,9 @@ foo_antweb <- function(sources, query, limit, start, geometry, has_coords,
 }
 
 #' @noRd
-foo_bison <- function(sources, query, limit, start, geometry, callopts, opts) {
+foo_bison <- function(sources, query, limit, start, geometry, date, 
+  callopts, opts) {
+
   if (any(grepl("bison", sources))) {
     opts <- limit_alias(opts, "bison", geometry)
     if (class(query) %in% c("ids","tsn")) {
@@ -190,10 +208,12 @@ foo_bison <- function(sources, query, limit, start, geometry, callopts, opts) {
       } else {
         opts$TSNs <- query
       }
+      if (!is.null(date)) opts$eventDate <- date
       bisonfxn <- "bison_solr"
     } else {
       if (is.null(geometry)) {
-        opts$scientificName <- query
+        opts$ITISscientificName <- query
+        if (!is.null(date)) opts$eventDate <- date
         bisonfxn <- "bison_solr"
       } else {
         opts$species <- query
@@ -250,7 +270,8 @@ foo_bison <- function(sources, query, limit, start, geometry, callopts, opts) {
 
 #' @noRd
 foo_inat <- function(sources, query, limit, page, geometry, has_coords,
-                     callopts, opts) {
+                     date, callopts, opts) {
+
   if (any(grepl("inat", sources))) {
     opts <- limit_alias(opts, "inat")
     opts$geo <- has_coords
@@ -267,6 +288,11 @@ foo_inat <- function(sources, query, limit, page, geometry, has_coords,
       } else {
         c(geometry[2], geometry[1], geometry[4], geometry[3])
       }
+    }
+    if (!is.null(date)) {
+      if (length(date) != 2) stop("'date' for Inaturalist must be length 2")
+      opts$date_start <- date[1]
+      opts$date_end <- date[2]
     }
     opts$callopts <- callopts
     out <- tryCatch(do.call("spocc_inat_obs", opts), error = function(e) e)
@@ -325,7 +351,7 @@ foo_ebird <- function(sources, query, limit, callopts, opts) {
 }
 
 #' @noRd
-foo_vertnet <- function(sources, query, limit, has_coords, callopts, opts) {
+foo_vertnet <- function(sources, query, limit, has_coords, date, callopts, opts) {
   if (any(grepl("vertnet", sources))) {
     time <- now()
     if (!is.null(has_coords)) {
@@ -333,6 +359,17 @@ foo_vertnet <- function(sources, query, limit, has_coords, callopts, opts) {
     }
     opts$query <- query
     opts$messages <- FALSE
+    if (!is.null(date)) {
+      if (length(date) != 2) stop("'date' for Vertnet must be length 2")
+      date <- tryCatch(as.Date(date), error = function(e) e)
+      if (inherits(date, "error")) stop("'date' values do not appear to be dates")
+      opts$year <- c(paste0('>=', format(date[1], "%Y")),
+        paste0('<=', format(date[2], "%Y")))
+      opts$month <- c(paste0('>=', as.numeric(format(date[1], "%m"))),
+        paste0('<=', as.numeric(format(date[2], "%m"))))
+      opts$day <- c(paste0('>=', as.numeric(format(date[1], "%d"))),
+        paste0('<=', as.numeric(format(date[2], "%d"))))
+    }
     if (!'limit' %in% names(opts)) opts$limit <- limit
     opts$callopts <- callopts
     out <- tryCatch(do.call(rvertnet::searchbyterm, opts),
@@ -363,7 +400,7 @@ foo_vertnet <- function(sources, query, limit, has_coords, callopts, opts) {
 
 #' @noRd
 foo_idigbio <- function(sources, query, limit, start, geometry, has_coords,
-                        callopts, opts) {
+                        date, callopts, opts) {
   if (any(grepl("idigbio", sources))) {
     time <- now()
 
@@ -373,6 +410,11 @@ foo_idigbio <- function(sources, query, limit, start, geometry, has_coords,
       list(type = "exists")
     } else {
       list(type = "missing")
+    }
+
+    if (!is.null(date)) {
+      if (length(date) != 2) stop("'date' for IdigBio must be length 2")
+      opts$rq$datecollected <- list(type = "range", gte = date[1], lte = date[2])
     }
 
     if (!is.null(geometry)) {
@@ -429,7 +471,7 @@ foo_idigbio <- function(sources, query, limit, start, geometry, has_coords,
 
 #' @noRd
 foo_obis <- function(sources, query, limit, start, geometry, has_coords,
-                     callopts, opts) {
+                     date, callopts, opts) {
 
   if (any(grepl("obis", sources))) {
     time <- now()
@@ -442,6 +484,12 @@ foo_obis <- function(sources, query, limit, start, geometry, has_coords,
       } else {
         bbox2wkt(bbox = geometry)
       }
+    }
+
+    if (!is.null(date)) {
+      if (length(date) != 2) stop("'date' for OBIS must be length 2")
+      opts$startdate <- date[1]
+      opts$enddate <- date[2]
     }
 
     if (!"limit" %in% names(opts)) opts$limit <- limit
@@ -475,10 +523,15 @@ foo_obis <- function(sources, query, limit, start, geometry, has_coords,
 
 #' @noRd
 foo_ala <- function(sources, query, limit, start, geometry, has_coords,
-                    callopts, opts) {
+                    date, callopts, opts) {
+
   if (any(grepl("ala", sources))) {
     time <- now()
     opts$taxon <- sprintf('taxon_name:"%s"', query)
+    if (!is.null(date)) {
+      if (length(date) != 2) stop("'date' for ALA must be length 2")
+      opts$taxon <- paste0(opts$taxon, sprintf(" occurrence_date:[%s TO %s]", date[1], date[2]))
+    }
 
     if (!is.null(geometry)) {
       opts$wkt <- if (grepl('POLYGON', paste(as.character(geometry),

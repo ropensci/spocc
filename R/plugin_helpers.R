@@ -42,14 +42,20 @@ stand_dates <- function(dat, from){
       bison = as_date(ydm_hm(dat[[var]], truncated = 6, quiet = TRUE)),
       inat = as_date(ymd_hms(dat[[var]], truncated = 3, quiet = TRUE)),
       ebird = as_date(ymd_hm(dat[[var]], truncated = 3, quiet = TRUE)),
-      ecoengine = as_date(ymd(dat[[var]], truncated = 3, quiet = TRUE)),
+      ecoengine = as_date(ymd_hms(dat[[var]], truncated = 3, quiet = TRUE)),
       vertnet = as_date(ymd(dat[[var]], truncated = 3, quiet = TRUE)),
       idigbio = as_date(ymd_hms(dat[[var]], truncated = 3, quiet = TRUE)),
       obis = as_date(ymd_hms(dat[[var]], truncated = 3, quiet = TRUE)),
-      ala = as_date(ymd_hms(dat[[var]], truncated = 3, quiet = TRUE))
+      ala = as_date(date_ala(dat[[var]]))
     )
     if (from == "bison") rename(dat, stats::setNames('date', var)) else dat
   }
+}
+
+date_ala <- function(x) {
+  x <- as.numeric(substr(x, 1, 10))
+  x <- as.POSIXct(x, origin = "1970-01-01", tz = "UTC")
+  sub("\\sUTC$", "", x)
 }
 
 is_null <- function(...) {

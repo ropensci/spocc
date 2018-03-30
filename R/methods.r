@@ -154,6 +154,7 @@ occinddf <- function(obj) {
   
   cat(sprintf("First 10 rows of [%s]\n\n", nms))
   
+  if (NROW(z) == 0) return(data_frame())
   df <- data.frame(name = z$name, longitude = z$longitude,
                    latitude = z$latitude, prov = z$prov, 
                    stringsAsFactors = FALSE)

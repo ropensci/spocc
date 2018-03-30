@@ -25,8 +25,13 @@
 #' @param ids Taxonomic identifiers. This can be a list of length 1 to many. See examples for
 #' usage. Currently, identifiers for only 'gbif' and 'bison' for parameter 'from' supported. If
 #' this parameter is used, query parameter can not be used - if it is, a warning is thrown.
-#' @param callopts Options passed on to \code{\link[httr]{GET}}, e.g., for debugging curl calls,
-#' setting timeouts, etc. This parameter is ignored for sources: antweb, inat.
+#' @param date (character/Date) A length 2 vector containing two dates of the form 
+#' YYY-MM-DD. These can be character of Date class. These are used to do a date range search.
+#' Of course there are other types of date searches one may want to do but date range 
+#' seems like the most common date search use case.
+#' @param callopts Options passed on to \code{\link[crul]{HttpClient}}, e.g., 
+#' for debugging curl calls, setting timeouts, etc. This parameter is ignored 
+#' for sources: antweb, inat.
 #' @param gbifopts (list) List of named options to pass on to \code{\link[rgbif]{occ_search}}. See
 #' also \code{\link{occ_options}}.
 #' @param bisonopts (list) List of named options to pass on to \code{\link[rbison]{bison}}. See
@@ -194,6 +199,26 @@
 #'  \item ebird
 #'  \item vertnet
 #' }
+#' 
+#' @section Notes on the date parameter:
+#' Date searches with the `date` parameter are allowed for all sources 
+#' except ebird.
+#' 
+#' Notes on some special cases
+#' 
+#' \itemize{
+#'  \item idigbio: We search on the `datecollected` field. Other date fields can be 
+#' searched on, but we chose `datecollected` as it seemed most appropriate.
+#'  \item vertnet: If you want more flexible date searches, you can pass various 
+#' types of date searches to `vertnetopts`. See [rvertnet::searchbyterm()]
+#' for more information
+#'  \item ala: There's some issues with the dates returned from ALA. They are 
+#' returned as time stamps, and some seem to be malformed. So do beware 
+#' of using ALA dates for important things.
+#' }
+#' 
+#' Get in touch if you have other date search use cases you think 
+#' are widely useful
 #'
 #' @section Paging:
 #' All data sources respond to the \code{limit} parameter passed to \code{occ}.

@@ -1,5 +1,6 @@
 spocc_inat_obs <- function(query=NULL, taxon = NULL, quality=NULL, geo=TRUE, 
                            year=NULL, month=NULL, day=NULL, bounds=NULL, 
+                           date_start = NULL, date_end = NULL,
                            maxresults=100, page=NULL, callopts) {
   
   # input parameter checks
@@ -45,7 +46,8 @@ spocc_inat_obs <- function(query=NULL, taxon = NULL, quality=NULL, geo=TRUE,
   
   args <- sc(list(q = query, quality_grade = quality, taxon_name = taxon, 
                   `has[]` = if (!is.null(geo) && geo) "geo" else NULL, 
-                  year = year, month = month, day = day))
+                  year = year, month = month, day = day, 
+                  d1 = date_start, d2 = date_end))
   bounds <- list(swlat = bounds[1], swlng = bounds[2], nelat = bounds[3], 
                  nelng = bounds[4])
   args <- sc(c(args, bounds))

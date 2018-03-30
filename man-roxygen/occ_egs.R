@@ -182,23 +182,30 @@
 #' out$gbif$data
 #'
 #' ## Two polygons in SpatialPolygonsDataFrame class
-#' sppoly_df <- SpatialPolygonsDataFrame(sppoly, data.frame(a=c(1,2), b=c("a","b"), c=c(TRUE,FALSE),
+#' sppoly_df <- SpatialPolygonsDataFrame(sppoly, 
+#'    data.frame(a=c(1,2), b=c("a","b"), c=c(TRUE,FALSE),
 #'    row.names=row.names(sppoly)))
 #' out <- occ(geometry = sppoly_df, limit=50)
 #' out$gbif$data
 #'
 #' # curl debugging
 #' library('httr')
-#' occ(query = 'Accipiter striatus', from = 'gbif', limit=10, callopts=verbose())
-#' # occ(query = 'Accipiter striatus', from = 'ebird', limit=10, callopts=verbose())
-#' occ(query = 'Accipiter striatus', from = 'bison', limit=10, callopts=verbose())
-#' occ(query = 'Accipiter striatus', from = 'ecoengine', limit=10, callopts=verbose())
-#' occ(query = 'Accipiter striatus', from = c('ebird','bison'), limit=10, callopts=verbose())
-#' # occ(query = 'Accipiter striatus', from = 'ebird', limit=10, callopts=timeout(seconds = 0.1))
-#' occ(query = 'Accipiter striatus', from = 'inat', callopts=verbose())
-#' occ(query = 'Mola mola', from = 'obis', limit = 200, callopts = verbose())
-#' ## notice that callopts is ignored when from='antweb'
-#' occ(query = 'linepithema humile', from = 'antweb', callopts=verbose())
+#' occ(query = 'Accipiter striatus', from = 'gbif', limit=10, 
+#'  callopts=list(verbose = TRUE))
+#' occ(query = 'Accipiter striatus', from = 'bison', limit=10, 
+#'  callopts=list(verbose = TRUE))
+#' occ(query = 'Accipiter striatus', from = 'ecoengine', limit=10, 
+#'  callopts=list(verbose = TRUE))
+#' occ(query = 'Accipiter striatus', from = c('ebird','bison'), limit=10, 
+#'  callopts=list(verbose = TRUE))
+#' # occ(query = 'Accipiter striatus', from = 'ebird', limit=10, 
+#' # callopts=timeout(seconds = 0.1))
+#' occ(query = 'Accipiter striatus', from = 'inat', 
+#'  callopts=list(verbose = TRUE))
+#' occ(query = 'Mola mola', from = 'obis', limit = 200, 
+#'  callopts = list(verbose = TRUE))
+#' occ(query = 'linepithema humile', from = 'antweb', 
+#'  callopts=list(verbose = TRUE))
 #'
 #' ########## More thorough data source specific examples
 #' # idigbio

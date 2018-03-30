@@ -7,7 +7,8 @@
 #' @template occtemp
 #' @template occ_egs
 occ <- function(query = NULL, from = "gbif", limit = 500, start = NULL, 
-  page = NULL, geometry = NULL, has_coords = NULL, ids = NULL, callopts=list(),
+  page = NULL, geometry = NULL, has_coords = NULL, ids = NULL, date = NULL,
+  callopts=list(),
   gbifopts = list(), bisonopts = list(), inatopts = list(),
   ebirdopts = list(), ecoengineopts = list(), antwebopts = list(),
   vertnetopts = list(), idigbioopts = list(), obisopts = list(), 
@@ -43,37 +44,44 @@ occ <- function(query = NULL, from = "gbif", limit = 500, start = NULL,
     stop(
       sprintf(
         "Woops, the following are not supported or spelled incorrectly: %s",
-        from[!from %in% sources]))
+        from[!from %in% sources]), 
+      call. = FALSE)
   }
 
-  loopfun <- function(x, y, s, p, z, hc, w) {
+  if (!is.null(date)) {
+    if (!inherits(date, c('character', 'Date'))) {
+      stop("'date' must be of class character or Date", call. = FALSE)
+    }
+  }
+
+  loopfun <- function(x, y, s, p, z, hc, d, w) {
     # x = query; y = limit; s = start; p = page;
-    # z = geometry; hc = has_coords; w = callopts
-    gbif_res <- foo_gbif(sources, x, y, s, z, hc, w, gbifopts)
-    bison_res <- foo_bison(sources, x, y, s, z, w, bisonopts)
-    inat_res <- foo_inat(sources, x, y, p, z, hc, w, inatopts)
+    # z = geometry; hc = has_coords; d = date; w = callopts
+    gbif_res <- foo_gbif(sources, x, y, s, z, hc, d, w, gbifopts)
+    bison_res <- foo_bison(sources, x, y, s, z, d, w, bisonopts)
+    inat_res <- foo_inat(sources, x, y, p, z, hc, d, w, inatopts)
     ebird_res <- foo_ebird(sources, x, y, w, ebirdopts)
-    ecoengine_res <- foo_ecoengine(sources, x, y, p, z, hc, w, ecoengineopts)
-    antweb_res <- foo_antweb(sources, x, y, s, z, hc, w, antwebopts)
-    vertnet_res <- foo_vertnet(sources, x, y, hc, w, vertnetopts)
-    idigbio_res <- foo_idigbio(sources, x, y, s, z, hc, w, idigbioopts)
-    obis_res <- foo_obis(sources, x, y, s, z, hc, w, obisopts)
-    ala_res <- foo_ala(sources, x, y, s, z, hc, w, alaopts)
+    ecoengine_res <- foo_ecoengine(sources, x, y, p, z, hc, d, w, ecoengineopts)
+    antweb_res <- foo_antweb(sources, x, y, s, z, hc, d, w, antwebopts)
+    vertnet_res <- foo_vertnet(sources, x, y, hc, d, w, vertnetopts)
+    idigbio_res <- foo_idigbio(sources, x, y, s, z, hc, d, w, idigbioopts)
+    obis_res <- foo_obis(sources, x, y, s, z, hc, d, w, obisopts)
+    ala_res <- foo_ala(sources, x, y, s, z, hc, d, w, alaopts)
     list(gbif = gbif_res, bison = bison_res, inat = inat_res, ebird = ebird_res,
          ecoengine = ecoengine_res, antweb = antweb_res, vertnet = vertnet_res,
          idigbio = idigbio_res, obis = obis_res, ala = ala_res)
   }
 
-  loopids <- function(x, y, s, p, z, hc, w) {
+  loopids <- function(x, y, s, p, z, hc, d, w) {
     classes <- class(x)
     if (!all(classes %in% c("gbifid", "tsn")))
       stop("Currently, taxon identifiers have to be of class gbifid or tsn",
            call. = FALSE)
     if (class(x) == 'gbifid') {
-      gbif_res <- foo_gbif(sources, x, y, s, z, hc, w, gbifopts)
+      gbif_res <- foo_gbif(sources, x, y, s, z, hc, d, w, gbifopts)
       bison_res <- list(time = NULL, data = data_frame())
     } else if (class(x) == 'tsn') {
-      bison_res <- foo_bison(sources, x, y, s, z, w, bisonopts)
+      bison_res <- foo_bison(sources, x, y, s, z, d, w, bisonopts)
       gbif_res <- list(time = NULL, data = data_frame())
     }
     list(gbif = gbif_res,
@@ -106,6 +114,7 @@ occ <- function(query = NULL, from = "gbif", limit = 500, start = NULL,
                   p = page,
                   x = query[[i]],
                   hc = has_coords,
+                  d = date,
                   w = callopts)
         })
 
@@ -133,7 +142,7 @@ occ <- function(query = NULL, from = "gbif", limit = 500, start = NULL,
       }
     } else {
       tmp <- lapply(query, loopfun, y = limit, s = start, p = page,
-                    z = geometry, hc = has_coords, w = callopts)
+                    z = geometry, hc = has_coords, d = date, w = callopts)
     }
   } else if (is.null(query) && is.null(geometry) && !is.null(ids)) {
     unlistids <- function(x) {
@@ -164,19 +173,19 @@ occ <- function(query = NULL, from = "gbif", limit = 500, start = NULL,
     # ids can only be passed to gbif and bison for now
     # so don't pass anything on to ecoengine, inat, or ebird
     tmp <- lapply(ids, loopids, y = limit, s = start, p = page,
-                  z = geometry, hc = has_coords, w = callopts)
+                  z = geometry, hc = has_coords, d = date, w = callopts)
   } else if (is.null(query) && is.null(geometry) && is.null(ids)) {
     tmp <- list(loopfun(x = query, y = limit, s = start, p = page,
-                  z = geometry, hc = has_coords, w = callopts))
+                  z = geometry, hc = has_coords, d = date, w = callopts))
   } else {
     type <- 'geometry'
     if (is.numeric(geometry) || is.character(geometry)) {
       tmp <- list(loopfun(z = geometry, y = limit, s = start, p = page,
-                          x = query, hc = has_coords, w = callopts))
+                          x = query, hc = has_coords, d = date, w = callopts))
     } else if (is.list(geometry)) {
       tmp <- lapply(geometry, function(b) {
         loopfun(z = b, y = limit, s = start, p = page,
-                x = query, hc = has_coords, w = callopts)
+                x = query, hc = has_coords, d = date, w = callopts)
       })
     }
   }

@@ -13,8 +13,8 @@ test_that("passing in options to occ works", {
                antwebopts = list(country='Australia'), limit = 5))
   opts5 <- occ(query = 'Setophaga caerulescens', from = 'ebird',
                ebirdopts = list(region='US'), limit = 5)
-  opts6 <- occ("mustela", from = 'vertnet',
-               vertnetopts = list(specificepithet = "(nivalis OR erminea)"), limit = 5)
+  opts6 <- occ(query = "Mustela", from = 'vertnet',
+               vertnetopts = list(year = 2010), limit = 5)
   opts7 <- occ(query = "Helianthus annuus", from = 'bison',
                bisonopts = list(year = 2003), limit = 5)
   opts8 <- occ("Acer", from = 'idigbio',
@@ -39,14 +39,7 @@ test_that("passing in options to occ works", {
   expect_is(opts5$ebird$data$Setophaga_caerulescens$comName, "character")
   expect_equal(opts5$ebird$data$Setophaga_caerulescens$comName[1], "Black-throated Blue Warbler")
 
-  expect_true(
-    any(vapply(opts6$vertnet$data$mustela$name, function(z) grepl("erminea", z),
-               logical(1)))
-  )
-  expect_true(
-    any(vapply(opts6$vertnet$data$mustela$name, function(z) grepl("nivalis", z),
-               logical(1)))
-  )
+  expect_true(all(as.numeric(opts6$vertnet$data$Mustela$year) == 2010))
 
   expect_equal(opts7$bison$data$Helianthus_annuus$year[1], 2003)
   expect_is(opts7$bison$data$Helianthus_annuus$year[1], "integer")

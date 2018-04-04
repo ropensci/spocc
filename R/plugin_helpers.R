@@ -53,8 +53,7 @@ stand_dates <- function(dat, from){
 }
 
 date_ala <- function(x) {
-  x <- as.numeric(substr(x, 1, 10))
-  x <- as.POSIXct(x, origin = "1970-01-01", tz = "UTC")
+  x <- as.POSIXct(x/1000, origin = "1970-01-01", tz = "UTC")
   sub("\\sUTC$", "", x)
 }
 

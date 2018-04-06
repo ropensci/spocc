@@ -36,8 +36,10 @@ test_that("passing in options to occ works", {
   expect_is(opts4$antweb$data$linepithema_humile$country[1], "character")
   expect_equal(opts4$antweb$data$linepithema_humile$country[1], "Australia")
 
-  expect_is(opts5$ebird$data$Setophaga_caerulescens$comName, "character")
-  expect_equal(opts5$ebird$data$Setophaga_caerulescens$comName[1], "Black-throated Blue Warbler")
+  if (!is.null(opts5$ebird$data$Setophaga_caerulescens$comName[1])) {
+    expect_is(opts5$ebird$data$Setophaga_caerulescens$comName, "character")
+    expect_equal(opts5$ebird$data$Setophaga_caerulescens$comName[1], "Black-throated Blue Warbler")
+  }
 
   expect_true(all(as.numeric(opts6$vertnet$data$Mustela$year) == 2010))
 

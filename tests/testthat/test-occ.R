@@ -50,13 +50,13 @@ test_that("occ works for each data source", {
   expect_is(x5$ebird, "occdatind")
   expect_is(x5$ebird$data[[1]], "data.frame")
   temp_df4 <- x5$ebird$data[[1]]
-  expect_equal(unique(temp_df4$prov), "ebird")
+  if (!is.null(temp_df4)) expect_equal(unique(temp_df4$prov), "ebird")
   # Testing x6
   expect_is(x6, "occdat")
   expect_is(x6$ebird, "occdatind")
   expect_is(x6$ebird$data[[1]], "data.frame")
   temp_df6 <- x6$ebird$data[[1]]
-  expect_equal(unique(temp_df6$prov), "ebird")
+  if (!is.null(temp_df6)) expect_equal(unique(temp_df6$prov), "ebird")
 
   # Testing x7
   expect_is(x7, "occdat")

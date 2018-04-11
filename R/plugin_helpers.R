@@ -39,7 +39,7 @@ stand_dates <- function(dat, from){
     dat[[var]] <- switch(
       from,
       gbif = as_date(ymd_hms(dat[[var]], truncated = 3, quiet = TRUE)),
-      bison = as_date(ydm_hm(dat[[var]], truncated = 6, quiet = TRUE)),
+      bison = as_date(ymd(dat[[var]], quiet = TRUE)),
       inat = as_date(ymd_hms(dat[[var]], truncated = 3, quiet = TRUE)),
       ebird = as_date(ymd_hm(dat[[var]], truncated = 3, quiet = TRUE)),
       ecoengine = as_date(ymd_hms(dat[[var]], truncated = 3, quiet = TRUE)),
@@ -56,6 +56,7 @@ date_ala <- function(x) {
   x <- as.POSIXct(x/1000, origin = "1970-01-01", tz = "UTC")
   sub("\\sUTC$", "", x)
 }
+
 
 is_null <- function(...) {
   xx <- tryCatch(..., error = function(e) e)

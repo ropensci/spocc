@@ -25,7 +25,7 @@
 #' # Date range searches across data sources
 #' ## Not possible for ebird
 #' ## bison
-#' occ(query = 'Acer', date = c('2010-08-08', '2010-08-21'), from = 'bison', limit=5)
+#' x<-occ(query = 'Accipiter striatus', date = c('2010-01-01', '2010-12-31'), from = 'bison', limit=300)
 #' ## ala
 #' occ(date = c('2018-01-01T00:00:00Z', '2018-03-28T00:00:00Z'), from = 'ala', limit = 5)
 #' ## gbif

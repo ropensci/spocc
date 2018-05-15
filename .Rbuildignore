@@ -13,7 +13,7 @@ CONTRIBUTING.md
 appveyor.yml
 README.Rmd
 ^\.httr-oauth$
-^CONDUCT\.md$
+^CODE_OF_CONDUCT\.md$
 ^issue_template\.md$
 revdep
 ^cran-comments\.md$

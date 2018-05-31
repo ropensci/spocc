@@ -6,6 +6,8 @@ foo_gbif <- function(sources, query, limit, start, geometry, has_coords,
   if (any(grepl("gbif", sources))) {
 
     opts$hasCoordinate <- has_coords
+    # skip WKT validation for now, GBIF follows "left hand rule"
+    opts$skip_validate <- TRUE
     if (!is.null(query)) {
       if (class(query) %in% c("ids", "gbifid")) {
         if (class(query) %in% "ids") {

@@ -32,7 +32,7 @@ Details for how these parameters are used internally. Optional}
 \item{geometry}{(character or nmeric) One of a Well Known Text (WKT) object or a vector of
 length 4 specifying a bounding box. This parameter searches for occurrences inside a
 box given as a bounding box or polygon described in WKT format. A WKT shape written as
-'POLYGON((30.1 10.1, 20, 20 40, 40 40, 30.1 10.1))' would be queried as is,
+'POLYGON((30.1 10.1, 20 40, 40 40, 30.1 10.1))' would be queried as is,
 i.e. http://bit.ly/HwUSif. See Details for more examples of WKT objects. The format of a
 bounding box is [min-longitude, min-latitude, max-longitude, max-latitude]. Geometry
 is not possible with vertnet right now, but should be soon. See Details for more info

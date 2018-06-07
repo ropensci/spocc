@@ -41,6 +41,12 @@ bounding box
 ## Pass in a vector of length 4 with all values
 bbox2wkt(bbox = list(c(-125.0,38.4,-121.8,40.9)))
 
+
+wicket::wkt_reverse(bbox2wkt(bbox = list(c(-125.0,38.4,-121.8,40.9))))
+library(sf)
+bb <- st_bbox(c(xmin = -125.0, xmax = -121.8, ymax = 40.9, ymin = 38.4), crs = st_crs(4326))
+st_as_text(st_as_sfc(bb))
+
 ## Or pass in each value separately
 bbox2wkt(-125.0, 38.4, -121.8, 40.9)
 

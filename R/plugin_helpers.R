@@ -3,8 +3,11 @@ move_cols <- function(x, y)
   x[ c(y, names(x)[-sapply(y, function(z) grep(paste0('\\b', z, '\\b'), 
                                                names(x)))]) ]
 
-emptylist <- function(x) list(time = NULL, found = NULL, data = data_frame(), 
-                              opts = x)
+emptylist <- function(x, err = NULL) {
+  list(
+    time = NULL, found = NULL, data = data_frame(), opts = x, errors = err
+  )
+}
 
 stand_latlon <- function(x){
   lngs <- c('decimalLongitude', 'decimallongitude', 'Longitude', 'lng', 

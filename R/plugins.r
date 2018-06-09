@@ -51,7 +51,7 @@ foo_gbif <- function(sources, query, limit, start, geometry, has_coords,
       if (inherits(out, "simpleError")) {
         warning(sprintf("No records found in GBIF for %s", query),
                 call. = FALSE)
-        emptylist(opts)
+        emptylist(opts, out$message)
       } else {
         if (inherits(out, "character")) {
           emptylist(opts)

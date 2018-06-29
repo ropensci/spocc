@@ -25,7 +25,7 @@ test_that("has_coords works with all data sources as planned", {
   ee <- occ('Accipiter striatus', from = 'idigbio', limit = 5, has_coords = TRUE)
   ff <- occ('Accipiter striatus', from = 'vertnet', limit = 5, has_coords = TRUE)
 
-  gg <- occ('Accipiter striatus', from = 'ebird', limit = 5, has_coords = TRUE)
+  # gg <- occ('Accipiter striatus', from = 'ebird', limit = 5, has_coords = TRUE)
   hh <- occ('Accipiter striatus', from = 'bison', limit = 5, has_coords = TRUE)
 
   expect_is(aa, "occdat")
@@ -34,7 +34,7 @@ test_that("has_coords works with all data sources as planned", {
   expect_is(dd, "occdat")
   expect_is(ee, "occdat")
   expect_is(ff, "occdat")
-  expect_is(gg, "occdat")
+  # expect_is(gg, "occdat")
   expect_is(hh, "occdat")
 
   expect_false(anyNA(aa$gbif$data[[1]]$longitude))

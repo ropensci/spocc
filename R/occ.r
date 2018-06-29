@@ -206,7 +206,12 @@ occ <- function(query = NULL, from = "gbif", limit = 500, start = NULL,
       optstmp$scientificName <- unique(names(tt))
     } else if (is.null(query) && is.null(geometry) && !is.null(ids)) {
       # neither query or geometry
-      names(tt) <- sapply(tmp, function(x) unclass(x[[srce]]$opts[[1]]))
+      # names(tt) <- sapply(tmp, function(x) unclass(x[[srce]]$opts[[1]]))
+      if (srce == "gbif") {
+        names(tt) <- sapply(tmp, function(x) unname(unlist(x[[srce]]$opts$taxonKey)))
+      } else {
+        names(tt) <- sapply(tmp, function(x) unname(unlist(x[[srce]]$opts$TSNs)))
+      }
       tt <- tt[!vapply(tt, nrow, 1) == 0]
       opts <- sc(lapply(tmp, function(x) x[[srce]]$opts))
       optstmp <- unlist(opts)

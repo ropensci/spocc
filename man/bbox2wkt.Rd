@@ -39,7 +39,7 @@ bounding box
 # Convert a bounding box to a WKT
 
 ## Pass in a vector of length 4 with all values
-bbox2wkt(bbox = list(c(-125.0,38.4,-121.8,40.9)))
+bbox2wkt(bbox = c(-125.0,38.4,-121.8,40.9))
 
 ## Or pass in each value separately
 bbox2wkt(-125.0, 38.4, -121.8, 40.9)
@@ -50,7 +50,7 @@ wkt2bbox(wkt)
 
 identical(
  bbox2wkt(-125.0, 38.4, -121.8, 40.9),
- "POLYGON((-125 38.4,-125 40.9,-121.8 40.9,-121.8 38.4,-125 38.4))"
+ "POLYGON((-125 38.4,-121.8 38.4,-121.8 40.9,-125 40.9,-125 38.4))"
 )
 
 identical(

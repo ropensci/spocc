@@ -1,3 +1,20 @@
+spocc 0.8.0
+===========
+
+### NEW FEATURES
+
+* `occ()` gains new parameter `date` to do date range based searches across data sources without having to know the vagaries of each data source (#181)
+
+### BUG FIXES
+
+* fix to idigbio geometry queries (#180)
+* fix `print.occdatind` so that empty data.frame's don't throw tibble warnings (#184)
+* fix to internal method for standardizing dates `stand_dates()` due to ALA giving back a timestamp now (#182) (#185)
+* vertnet fixes (#179)
+* fix to geometry bounding box queries (#187) thanks @timcdlucas
+* fix to output of list names for gbif data source when using taxonomic IDs, was resulting in booleans, should be the taxonomic IDs  (#191)
+
+
 spocc 0.7.0
 ===========
 

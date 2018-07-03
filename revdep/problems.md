@@ -1,23 +1,26 @@
-# Setup
+# mapr
 
-## Platform
+Version: 0.4.0
 
-|setting  |value                                       |
-|:--------|:-------------------------------------------|
-|version  |R version 3.3.3 Patched (2017-03-15 r72501) |
-|system   |x86_64, darwin13.4.0                        |
-|ui       |RStudio (1.1.204)                           |
-|language |(EN)                                        |
-|collate  |en_US.UTF-8                                 |
-|tz       |America/Vancouver                           |
-|date     |2017-04-19                                  |
+## In both
 
-## Packages
+*   checking data for non-ASCII characters ... NOTE
+    ```
+      Note: found 164 marked UTF-8 strings
+    ```
 
-|package |*  |version    |date       |source                          |
-|:-------|:--|:----------|:----------|:-------------------------------|
-|spocc   |   |0.6.9.9113 |2017-04-19 |local (ropensci/spocc@NA)       |
-|taxize  |   |0.8.5.9113 |2017-04-19 |local (ropensci/taxize@ac27758) |
+# wallace
 
-# Check results
-0 packages with problems
+Version: 1.0.5
+
+## In both
+
+*   checking dependencies in R code ... NOTE
+    ```
+    Namespaces in Imports field not imported from:
+      ‘DT’ ‘ENMeval’ ‘RColorBrewer’ ‘XML’ ‘dismo’ ‘dplyr’ ‘leaflet.extras’
+      ‘maptools’ ‘raster’ ‘rgdal’ ‘rgeos’ ‘rmarkdown’ ‘shinyjs’
+      ‘shinythemes’ ‘spThin’ ‘spocc’ ‘testthat’
+      All declared Imports should be used.
+    ```
+

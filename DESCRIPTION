@@ -8,11 +8,12 @@ Description: A programmatic interface to many species occurrence data sources,
     System ('OBIS'), and Atlas of Living Australia ('ALA'). Includes
     functionality for retrieving species occurrence data, and combining
     those data.
-Version: 0.7.3.9318
+Version: 0.7.4.9210
 License: MIT + file LICENSE
 Authors@R: c(
     person("Scott", "Chamberlain", role = c("aut", "cre"),
-      email = "myrmecocystus@gmail.com"),
+      email = "myrmecocystus@gmail.com", 
+      comment = c(ORCID = "0000-0003-1444-9135")),
     person("Karthik", "Ram", role = "ctb"),
     person("Ted", "Hart", role = "ctb")
     )
@@ -23,7 +24,7 @@ VignetteBuilder: knitr
 Roxygen: list(markdown = TRUE)
 Imports:
     utils,
-    rgbif (>= 0.9.9.9615),
+    rgbif (>= 1.0.0),
     rbison (>= 0.6.0),
     rebird (>= 0.3.0),
     rvertnet (>= 0.7.0),
@@ -40,5 +41,4 @@ Suggests:
     testthat,
     knitr,
     taxize (>= 0.8.4)
-Remotes: ropensci/rgbif
 RoxygenNote: 6.0.1

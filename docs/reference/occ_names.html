@@ -18,19 +18,34 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
+
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
 
+
+
+<meta property="og:title" content="Search for species names across many data sources. — occ_names" />
+
+<meta property="og:description" content="Search for species names across many data sources." />
+<meta name="twitter:card" content="summary" />
+
+
+
 <!-- mathjax -->
-<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
   </head>
 
   <body>
@@ -44,18 +59,37 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">spocc</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">spocc</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.8.0</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
+  <a href="../index.html">
+    <span class="fa fa-home fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="../reference/index.html">Reference</a>
 </li>
-<li>
-  <a href="../articles/index.html">Articles</a>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/spocc_vignette.html">UNKNOWN TITLE</a>
+    </li>
+  </ul>
 </li>
 <li>
-  <a href="../news/index.html">News</a>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
@@ -67,6 +101,7 @@
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -74,76 +109,97 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Search for species names across many data sources.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/ropensci/spocc/blob/master/R/occ_names.R'><code>R/occ_names.R</code></a></small>
+    <div class="hidden name"><code>occ_names.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Search for species names across many data sources.</p>
     
+    </div>
 
-    <pre><span class='fu'>occ_names</span>(<span class='kw'>query</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='st'>"gbif"</span>, <span class='kw'>limit</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='kw'>rank</span> <span class='kw'>=</span> <span class='st'>"species"</span>,
+    <pre class="usage"><span class='fu'>occ_names</span>(<span class='kw'>query</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='st'>"gbif"</span>, <span class='kw'>limit</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='kw'>rank</span> <span class='kw'>=</span> <span class='st'>"species"</span>,
   <span class='kw'>callopts</span> <span class='kw'>=</span> <span class='fu'>list</span>(), <span class='kw'>gbifopts</span> <span class='kw'>=</span> <span class='fu'>list</span>(), <span class='kw'>bisonopts</span> <span class='kw'>=</span> <span class='fu'>list</span>(),
   <span class='kw'>ecoengineopts</span> <span class='kw'>=</span> <span class='fu'>list</span>())</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
-    <dl class="dl-horizontal">
-      <dt>query</dt>
-      <dd>(character) One to many names. Either a scientific name or a
-common name. Only scientific names supported right now.</dd>
-      <dt>from</dt>
-      <dd>(character) Data source to get data from, any combination of
-gbif, bison, or ecoengine.</dd>
-      <dt>limit</dt>
-      <dd>(numeric) Number of records to return. This is passed across
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>query</th>
+      <td><p>(character) One to many names. Either a scientific name or a
+common name. Only scientific names supported right now.</p></td>
+    </tr>
+    <tr>
+      <th>from</th>
+      <td><p>(character) Data source to get data from, any combination of
+gbif, bison, or ecoengine.</p></td>
+    </tr>
+    <tr>
+      <th>limit</th>
+      <td><p>(numeric) Number of records to return. This is passed across
 all sources. To specify different limits for each source, use the options
 for each source (gbifopts, bisonopts, ecoengineopts). See Details for more.
-This parameter is ignored for ecoengine.</dd>
-      <dt>rank</dt>
-      <dd>(character) Taxonomic rank to limit search space. Used in GBIF,
-but not used in BISON.</dd>
-      <dt>callopts</dt>
-      <dd>Options passed on to <code><a href='http://www.rdocumentation.org/packages/crul/topics/HttpClient'>crul::HttpClient()</a></code>, e.g., for
-debugging curl calls, setting timeouts, etc.</dd>
-      <dt>gbifopts</dt>
-      <dd>(list) List of named options to pass on to
-<code><a href='http://www.rdocumentation.org/packages/rgbif/topics/name_lookup'>rgbif::name_lookup()</a></code>. See also <code>spocc::occ_names_options()</code></dd>
-      <dt>bisonopts</dt>
-      <dd>(list) List of named options to pass on to
-<code><a href='http://www.rdocumentation.org/packages/rbison/topics/bison_tax'>rbison::bison_tax()</a></code>. See also <code>spocc::occ_names_options()</code></dd>
-      <dt>ecoengineopts</dt>
-      <dd>(list) List of named options to pass on to
-<code>ee_search</code>. See also <code>spocc::occ_names_options()</code></dd>
-    </dl>
+This parameter is ignored for ecoengine.</p></td>
+    </tr>
+    <tr>
+      <th>rank</th>
+      <td><p>(character) Taxonomic rank to limit search space. Used in GBIF,
+but not used in BISON.</p></td>
+    </tr>
+    <tr>
+      <th>callopts</th>
+      <td><p>Options passed on to <code><a href='http://www.rdocumentation.org/packages/crul/topics/HttpClient'>crul::HttpClient()</a></code>, e.g., for
+debugging curl calls, setting timeouts, etc.</p></td>
+    </tr>
+    <tr>
+      <th>gbifopts</th>
+      <td><p>(list) List of named options to pass on to
+<code><a href='http://www.rdocumentation.org/packages/rgbif/topics/name_lookup'>rgbif::name_lookup()</a></code>. See also <code><a href='occ_names_options.html'>spocc::occ_names_options()</a></code></p></td>
+    </tr>
+    <tr>
+      <th>bisonopts</th>
+      <td><p>(list) List of named options to pass on to
+<code><a href='http://www.rdocumentation.org/packages/rbison/topics/bison_tax'>rbison::bison_tax()</a></code>. See also <code><a href='occ_names_options.html'>spocc::occ_names_options()</a></code></p></td>
+    </tr>
+    <tr>
+      <th>ecoengineopts</th>
+      <td><p>(list) List of named options to pass on to
+<code>ee_search</code>. See also <code><a href='occ_names_options.html'>spocc::occ_names_options()</a></code></p></td>
+    </tr>
+    </table>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Not all 7 data sources available from the <code><a href='occ.html'>occ()</a></code> function are
 available here, as not all of those sources have functionality to search
 for names.</p>
-    <p>We strongly encourage you to use the <code>taxize</code> package if you want to
+<p>We strongly encourage you to use the <code>taxize</code> package if you want to
 search for taxonomic or common names, convert common to scientific names,
 etc. That package was built exactly for that purpose, and we only provide
 a bit of name searching here in this function.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## Not run: ------------------------------------</span>
-<span class='co'># # Single data sources</span>
-<span class='co'># ## gbif</span>
-<span class='co'># (res &lt;- occ_names(query = 'Accipiter striatus', from = 'gbif'))</span>
-<span class='co'># head(res$gbif$data[[1]])</span>
-<span class='co'># </span>
-<span class='co'># ## bison</span>
-<span class='co'># (res &lt;- occ_names(query = '*bear', from = 'bison'))</span>
-<span class='co'># res$bison$data</span>
-<span class='co'># </span>
-<span class='co'># ## ecoengine</span>
-<span class='co'># (res &lt;- occ_names(query = 'genus:Lynx', from = 'ecoengine'))</span>
-<span class='co'># head(res$ecoengine$data[[1]])</span>
-<span class='co'>## ---------------------------------------------</span></div></pre>
+    <pre class="examples"><span class='co'># NOT RUN {</span>
+<span class='co'># Single data sources</span>
+<span class='co'>## gbif</span>
+(<span class='no'>res</span> <span class='kw'>&lt;-</span> <span class='fu'>occ_names</span>(<span class='kw'>query</span> <span class='kw'>=</span> <span class='st'>'Accipiter striatus'</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='st'>'gbif'</span>))
+<span class='fu'>head</span>(<span class='no'>res</span>$<span class='no'>gbif</span>$<span class='no'>data</span><span class='kw'>[[</span><span class='fl'>1</span>]])
+
+<span class='co'>## bison</span>
+(<span class='no'>res</span> <span class='kw'>&lt;-</span> <span class='fu'>occ_names</span>(<span class='kw'>query</span> <span class='kw'>=</span> <span class='st'>'*bear'</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='st'>'bison'</span>))
+<span class='no'>res</span>$<span class='no'>bison</span>$<span class='no'>data</span>
+
+<span class='co'>## ecoengine</span>
+(<span class='no'>res</span> <span class='kw'>&lt;-</span> <span class='fu'>occ_names</span>(<span class='kw'>query</span> <span class='kw'>=</span> <span class='st'>'genus:Lynx'</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='st'>'ecoengine'</span>))
+<span class='fu'>head</span>(<span class='no'>res</span>$<span class='no'>ecoengine</span>$<span class='no'>data</span><span class='kw'>[[</span><span class='fl'>1</span>]])
+<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -164,11 +220,14 @@ a bit of name searching here in this function.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

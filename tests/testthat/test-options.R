@@ -9,8 +9,8 @@ test_that("passing in options to occ works", {
                ecoengineopts = list(county = "Sonoma"), limit = 5)
   opts3 <- occ(query = 'Danaus plexippus', from = 'inat',
                inatopts = list(year=2014), limit = 5)
-  opts4 <- suppressMessages(occ(query = "linepithema humile", from = 'antweb',
-               antwebopts = list(country='Australia'), limit = 5))
+  # opts4 <- suppressMessages(occ(query = "linepithema humile", from = 'antweb',
+  #              antwebopts = list(country='Australia'), limit = 5))
   # opts5 <- occ(query = 'Setophaga caerulescens', from = 'ebird',
   #              ebirdopts = list(region='US'), limit = 5)
   opts6 <- occ(query = "Mustela", from = 'vertnet',
@@ -33,8 +33,8 @@ test_that("passing in options to occ works", {
   expect_equal(strsplit(as.character(opts3$inat$data$Danaus_plexippus$observed_on[1]), "-")[[1]][1],
                "2014")
 
-  expect_is(opts4$antweb$data$linepithema_humile$country[1], "character")
-  expect_equal(opts4$antweb$data$linepithema_humile$country[1], "Australia")
+  # expect_is(opts4$antweb$data$linepithema_humile$country[1], "character")
+  # expect_equal(opts4$antweb$data$linepithema_humile$country[1], "Australia")
 
   # if (!is.null(opts5$ebird$data$Setophaga_caerulescens$comName[1])) {
   #   expect_is(opts5$ebird$data$Setophaga_caerulescens$comName, "character")

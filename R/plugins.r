@@ -180,11 +180,11 @@ foo_antweb <- function(sources, query, limit, start, geometry, has_coords,
     if (length(callopts) > 0) opts$callopts <- callopts
     out <- tryCatch(do.call(aw_data2, opts), error = function(e) e)
 
-    if (is.null(out) || inherits(out, "simpleError")) {
+    if (is.null(out) || inherits(out, "simpleError") || NROW(out$data) == 0) {
       warning(sprintf("No records found in AntWeb for %s", query),
               call. = FALSE)
       emptylist(opts)
-    } else{
+    } else {
       res <- out$data
       res$prov <- rep("antweb", nrow(res))
       res$name <- query

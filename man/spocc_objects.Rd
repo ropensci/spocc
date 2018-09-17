@@ -62,4 +62,5 @@ res <- occ(from = "idigbio", geometry = bounds, limit = 10)
 res$idigbio
 }
 }
+\concept{queries}
 \keyword{internal}

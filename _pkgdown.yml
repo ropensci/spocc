@@ -2,3 +2,8 @@ authors:
   rOpenSci:
     href: "https://ropensci.org"
     html: "<img src='https://github.com/ropensci.png' height=24>"
+    
+reference:
+- title: Queries
+    contents:
+    - has_concept("queries")

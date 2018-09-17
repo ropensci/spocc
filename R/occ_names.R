@@ -86,6 +86,7 @@ getnameslist <- function(tmp, srce, sources, q, opts) {
 
 #' @export
 #' @rdname spocc_objects
+#' @family queries
 print.occnames <- function(x, ...) {
   rows <- lapply(x, function(y) vapply(y$data, nrow, numeric(1)))
   perspp <- lapply(rows, function(z) c(sum(z), length(z)))

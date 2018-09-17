@@ -49,4 +49,4 @@ Suggests:
     testthat,
     knitr,
     taxize (>= 0.8.4)
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.0

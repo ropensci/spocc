@@ -58,3 +58,9 @@ occ_options('vertnet')
 occ_options('bison', 'html')
 }
 }
+\seealso{
+Other queries: \code{\link{occ_names_options}},
+  \code{\link{occ_names}}, \code{\link{occ}},
+  \code{\link{spocc_objects}}
+}
+\concept{queries}

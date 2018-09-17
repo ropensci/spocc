@@ -34,7 +34,7 @@ length 4 specifying a bounding box. This parameter searches for occurrences insi
 box given as a bounding box or polygon described in WKT format. A WKT shape written as
 'POLYGON((30.1 10.1, 20 40, 40 40, 30.1 10.1))' would be queried as is,
 i.e. http://bit.ly/HwUSif. See Details for more examples of WKT objects. The format of a
-bounding box is \link{min-longitude, min-latitude, max-longitude, max-latitude}. Geometry
+bounding box is \code{min-longitude, min-latitude, max-longitude, max-latitude}. Geometry
 is not possible with vertnet right now, but should be soon. See Details for more info
 on geometry inputs.}
 

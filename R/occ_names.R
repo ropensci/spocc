@@ -1,6 +1,7 @@
 #' Search for species names across many data sources.
 #'
 #' @export
+#' @family queries
 #'
 #' @param query (character) One to many names. Either a scientific name or a 
 #' common name. Only scientific names supported right now.

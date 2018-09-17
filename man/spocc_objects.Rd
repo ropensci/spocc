@@ -62,5 +62,8 @@ res <- occ(from = "idigbio", geometry = bounds, limit = 10)
 res$idigbio
 }
 }
+\seealso{
+Other queries: \code{\link{occ_names}}, \code{\link{occ}}
+}
 \concept{queries}
 \keyword{internal}

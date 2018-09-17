@@ -4,6 +4,7 @@
 #' or many data sources.
 #'
 #' @export
+#' @family queries
 #' @template occtemp
 #' @template occ_egs
 occ <- function(query = NULL, from = "gbif", limit = 500, start = NULL, 

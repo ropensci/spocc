@@ -5,5 +5,11 @@ authors:
     
 reference:
 - title: Queries
-    contents:
-    - has_concept("queries")
+  contents:
+  - has_concept("queries")
+- title: Bounding boxes
+  contents:
+  - has_concept("bbox")
+- title: Object coercion
+  contents:
+  - has_concept("bbox")

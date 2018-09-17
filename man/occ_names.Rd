@@ -64,3 +64,8 @@ res$bison$data
 head(res$ecoengine$data[[1]])
 }
 }
+\seealso{
+Other queries: \code{\link{occ}},
+  \code{\link{spocc_objects}}
+}
+\concept{queries}

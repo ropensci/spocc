@@ -630,3 +630,8 @@ x$ala
 occ2df(x)
 }
 }
+\seealso{
+Other queries: \code{\link{occ_names}},
+  \code{\link{spocc_objects}}
+}
+\concept{queries}

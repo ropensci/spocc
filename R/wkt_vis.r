@@ -4,6 +4,7 @@
 #' occurrences with the [occ()] function.
 #'
 #' @export
+#' @family bbox
 #' @param x Input well-known text area (character)
 #' @param zoom Zoom level, defaults to 6 (numeric)
 #' @param maptype Map type, default is terrain (character)

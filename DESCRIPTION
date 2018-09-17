@@ -10,13 +10,21 @@ Description: A programmatic interface to many species occurrence data sources,
     those data.
 Version: 0.8.0.9100
 License: MIT + file LICENSE
-Authors@R: c(
-    person("Scott", "Chamberlain", role = c("aut", "cre"),
-      email = "myrmecocystus@gmail.com", 
-      comment = c(ORCID = "0000-0003-1444-9135")),
-    person("Karthik", "Ram", role = "ctb"),
-    person("Ted", "Hart", role = "ctb")
-    )
+Authors@R: 
+    c(person(given = "Scott",
+             family = "Chamberlain",
+             role = c("aut", "cre"),
+             email = "myrmecocystus@gmail.com",
+             comment = c(ORCID = "0000-0003-1444-9135")),
+      person(given = "Karthik",
+             family = "Ram",
+             role = "ctb"),
+      person(given = "Ted",
+             family = "Hart",
+             role = "ctb"),
+      person(given = "rOpenSci",
+             role = "fnd",
+             comment = "https://ropensci.org/"))
 URL: https://github.com/ropensci/spocc
 BugReports: https://github.com/ropensci/spocc/issues
 LazyData: true
@@ -41,4 +49,4 @@ Suggests:
     testthat,
     knitr,
     taxize (>= 0.8.4)
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.0

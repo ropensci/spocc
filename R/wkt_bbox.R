@@ -2,6 +2,7 @@
 #' bounding box
 #'
 #' @export
+#' @family bbox
 #' @param minx Minimum x value, or the most western longitude
 #' @param miny Minimum y value, or the most southern latitude
 #' @param maxx Maximum x value, or the most eastern longitude
@@ -56,6 +57,7 @@ bbox2wkt <- function(minx=NA, miny=NA, maxx=NA, maxy=NA, bbox=NULL) {
 
 #' @param wkt A Well Known Text object.
 #' @export
+#' @family bbox
 #' @rdname bbox2wkt
 wkt2bbox <- function(wkt){
   wicket::wkt_bounding(wkt)

@@ -1,6 +1,8 @@
 #' Look up options for parameters passed to each source for occ_names function
 #'
 #' @export
+#' 
+#' @family queries
 #'
 #' @param from (character) Data source to get data from, any combination of 
 #' gbif or bison. Case doesn't matter.

@@ -1,6 +1,9 @@
 #' Look up options for parameters passed to each source
 #'
 #' @export
+#' 
+#' @family queries
+#' 
 #' @param from (character) Data source to get data from, any combination of 
 #' gbif, bison, ebird, idigibio and/or vertnet. Case doesn't matter. 
 #' inat is not included here, see that package's help docs.

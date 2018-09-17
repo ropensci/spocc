@@ -1,6 +1,7 @@
 #' Search for species names across many data sources.
 #'
 #' @export
+#' @family queries
 #'
 #' @param query (character) One to many names. Either a scientific name or a 
 #' common name. Only scientific names supported right now.
@@ -86,6 +87,7 @@ getnameslist <- function(tmp, srce, sources, q, opts) {
 
 #' @export
 #' @rdname spocc_objects
+#' @family queries
 print.occnames <- function(x, ...) {
   rows <- lapply(x, function(y) vapply(y$data, nrow, numeric(1)))
   perspp <- lapply(rows, function(z) c(sum(z), length(z)))

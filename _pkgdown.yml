@@ -4,12 +4,22 @@ authors:
     html: "<img src='https://github.com/ropensci.png' height=24>"
     
 reference:
+- title: General information
+  contents:
+  - spocc-package
 - title: Queries
   contents:
   - has_concept("queries")
+  - spocc_objects
 - title: Queries helpers - Bounding boxes
   contents:
   - has_concept("bbox")
-- title: Object coercion
+- title: Output enrichment and cleaning
   contents:
+  - inspect
+  - fixnames
+  - spocc_duplicates
+- title: Output conversion
+  contents:
+  - occ2df
   - has_concept("coercion")

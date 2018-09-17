@@ -39,13 +39,7 @@ bounding box
 # Convert a bounding box to a WKT
 
 ## Pass in a vector of length 4 with all values
-bbox2wkt(bbox = list(c(-125.0,38.4,-121.8,40.9)))
-
-
-wicket::wkt_reverse(bbox2wkt(bbox = list(c(-125.0,38.4,-121.8,40.9))))
-library(sf)
-bb <- st_bbox(c(xmin = -125.0, xmax = -121.8, ymax = 40.9, ymin = 38.4), crs = st_crs(4326))
-st_as_text(st_as_sfc(bb))
+bbox2wkt(bbox = c(-125.0,38.4,-121.8,40.9))
 
 ## Or pass in each value separately
 bbox2wkt(-125.0, 38.4, -121.8, 40.9)
@@ -56,7 +50,7 @@ wkt2bbox(wkt)
 
 identical(
  bbox2wkt(-125.0, 38.4, -121.8, 40.9),
- "POLYGON((-125 38.4,-125 40.9,-121.8 40.9,-121.8 38.4,-125 38.4))"
+ "POLYGON((-125 38.4,-121.8 38.4,-121.8 40.9,-125 40.9,-125 38.4))"
 )
 
 identical(
@@ -68,3 +62,9 @@ identical(
  )
 )
 }
+\seealso{
+Other bbox: \code{\link{wkt_vis}}
+
+Other bbox: \code{\link{wkt_vis}}
+}
+\concept{bbox}

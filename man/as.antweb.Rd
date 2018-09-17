@@ -21,15 +21,23 @@ Coerce occurrence keys to antwebkey/occkey objects
 }
 \examples{
 \dontrun{
-spp <- c("linepithema humile", "acanthognathus")
-out <- occ(query=spp, from='antweb', limit=2)
-res <- occ2df(out)
-(tt <- as.antweb(out))
-(uu <- as.antweb(res))
-as.antweb(res$key[1])
-as.antweb(as.list(res$key[1:2]))
-as.antweb(tt[[1]])
-as.antweb(uu[[1]])
-as.antweb(tt[1:2])
+# spp <- c("linepithema humile", "acanthognathus")
+# out <- occ(query=spp, from='antweb', limit=2)
+# res <- occ2df(out)
+# (tt <- as.antweb(out))
+# (uu <- as.antweb(res))
+# as.antweb(res$key[1])
+# as.antweb(as.list(res$key[1:2]))
+# as.antweb(tt[[1]])
+# as.antweb(uu[[1]])
+# as.antweb(tt[1:2])
 }
 }
+\seealso{
+Other coercion: \code{\link{as.ala}},
+  \code{\link{as.bison}}, \code{\link{as.ecoengine}},
+  \code{\link{as.gbif}}, \code{\link{as.idigbio}},
+  \code{\link{as.inat}}, \code{\link{as.obis}},
+  \code{\link{as.vertnet}}
+}
+\concept{coercion}

@@ -1,7 +1,7 @@
 ## Test environments
 
-* local OS X install, R 3.3.3
-* ubuntu 12.04 (on travis-ci), R 3.3.3
+* local OS X install, R 3.5.1 RC
+* ubuntu 14.04 (on travis-ci), R 3.5.1 RC
 * win-builder (devel)
 
 ## R CMD check results
@@ -11,7 +11,7 @@
 License components with restrictions and base license permitting such:
   MIT + file LICENSE
 File 'LICENSE':
-  YEAR: 2017
+  YEAR: 2018
   COPYRIGHT HOLDER: Scott Chamberlain
 
 ## Reverse dependencies
@@ -19,16 +19,11 @@ File 'LICENSE':
 * I have run R CMD check on the 3 reverse dependencies. No problems were
 found; maintainers were notified.
 
-summary at <https://github.com/ropensci/spocc/tree/master/revdep#setup>
+summary at <https://github.com/ropensci/spocc/tree/master/revdep>
 
 --------
 
-This version removes V8 dependency as well, replaced one dependency
-with another, and a few other minor changes.
-
-Note that the R release binary is not available yet for one dependency
-(rgbif), but is available for other R versions. Hopefully that's okay.
-
+This version fixes a lot of bugs.
 
 Thanks!
 Scott Chamberlain

@@ -1,6 +1,8 @@
 #' Coerce occurrence keys to antwebkey/occkey objects
 #'
 #' @export
+#' 
+#' @family coercion
 #'
 #' @param x Various inputs, including the output from a call to [occ()]
 #' (class occdat), [occ2df()] (class data.frame), or a list, numeric,
@@ -8,16 +10,16 @@
 #' @param ... curl options; named parameters passed on to [crul::HttpClient()]
 #' @return One or more in a list of both class antwebkey and occkey
 #' @examples \dontrun{
-#' spp <- c("linepithema humile", "acanthognathus")
-#' out <- occ(query=spp, from='antweb', limit=2)
-#' res <- occ2df(out)
-#' (tt <- as.antweb(out))
-#' (uu <- as.antweb(res))
-#' as.antweb(res$key[1])
-#' as.antweb(as.list(res$key[1:2]))
-#' as.antweb(tt[[1]])
-#' as.antweb(uu[[1]])
-#' as.antweb(tt[1:2])
+#' # spp <- c("linepithema humile", "acanthognathus")
+#' # out <- occ(query=spp, from='antweb', limit=2)
+#' # res <- occ2df(out)
+#' # (tt <- as.antweb(out))
+#' # (uu <- as.antweb(res))
+#' # as.antweb(res$key[1])
+#' # as.antweb(as.list(res$key[1:2]))
+#' # as.antweb(tt[[1]])
+#' # as.antweb(uu[[1]])
+#' # as.antweb(tt[1:2])
 #' }
 as.antweb <- function(x, ...) UseMethod("as.antweb")
 

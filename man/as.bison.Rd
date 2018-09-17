@@ -41,3 +41,11 @@ as.bison(uu[[1]])
 as.bison(tt[1:2])
 }
 }
+\seealso{
+Other coercion: \code{\link{as.ala}},
+  \code{\link{as.antweb}}, \code{\link{as.ecoengine}},
+  \code{\link{as.gbif}}, \code{\link{as.idigbio}},
+  \code{\link{as.inat}}, \code{\link{as.obis}},
+  \code{\link{as.vertnet}}
+}
+\concept{coercion}

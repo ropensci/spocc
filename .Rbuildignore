@@ -1,3 +1,5 @@
+^docs$
+^_pkgdown\.yml$
 .travis.yml
 kr_local.R
 Makefile
@@ -15,10 +17,10 @@ README.Rmd
 ^\.httr-oauth$
 ^CODE_OF_CONDUCT\.md$
 ^issue_template\.md$
-revdep
+^revdep$
 ^cran-comments\.md$
 ^.*\.Rproj$
 .github
 docs
-
 ^codemeta\.json$
+test.csv

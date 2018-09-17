@@ -42,3 +42,7 @@ poly2 <- 'POLYGON((-125 38.4,-125 40.9,-121.8 40.9,-121.8 38.4,-125 38.4))'
 wkt_vis(poly2, browse = FALSE)
 }
 }
+\seealso{
+Other bbox: \code{\link{bbox2wkt}}
+}
+\concept{bbox}

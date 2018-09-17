@@ -1,6 +1,9 @@
 #' Coerce occurrence keys to ecoenginekey/occkey objects
 #'
 #' @export
+#' 
+#' @family coercion
+#' 
 #' @param x Various inputs, including the output from a call to
 #' [occ()] (class occdat), [occ2df()] (class data.frame),
 #' or a list, numeric, character, or ecoenginekey, or occkey.

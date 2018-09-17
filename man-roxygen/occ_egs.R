@@ -33,7 +33,7 @@
 #' # ecoengine
 #' occ(date = c('2010-01-01', '2010-12-31'), from = 'ecoengine', limit=5)
 #' ## antweb
-#' occ(query = "acanthognathus", date = c('2010-01-01', '2010-12-31'), from = 'antweb', limit=5)
+#' # occ(query = "acanthognathus", date = c('2010-01-01', '2010-12-31'), from = 'antweb', limit=5)
 #' ## vertnet
 #' occ(query = 'Mustela nigripes', date = c('1990-01-01', '2015-12-31'), from = 'vertnet', limit=5)
 #' ## idigbio
@@ -49,9 +49,9 @@
 #'
 #' # Data from AntWeb
 #' # By species
-#' (by_species <- occ(query = "linepithema humile", from = "antweb", limit = 10))
+#' # (by_species <- occ(query = "linepithema humile", from = "antweb", limit = 10))
 #' # or by genus
-#' (by_genus <- occ(query = "acanthognathus", from = "antweb"))
+#' # (by_genus <- occ(query = "acanthognathus", from = "antweb"))
 #'
 #' occ(query = 'Setophaga caerulescens', from = 'ebird', ebirdopts = list(region='US'))
 #' occ(query = 'Spinus tristis', from = 'ebird', ebirdopts =
@@ -227,8 +227,8 @@
 #'  callopts=list(verbose = TRUE))
 #' occ(query = 'Mola mola', from = 'obis', limit = 200, 
 #'  callopts = list(verbose = TRUE))
-#' occ(query = 'linepithema humile', from = 'antweb', 
-#'  callopts=list(verbose = TRUE))
+#' # occ(query = 'linepithema humile', from = 'antweb', 
+#' #  callopts=list(verbose = TRUE))
 #'
 #' ########## More thorough data source specific examples
 #' # idigbio

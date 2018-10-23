@@ -63,7 +63,7 @@ On CRAN: \url{https://cran.r-project.org/package=scrubr}
 \section{Make maps}{
 
 
-All mapping functionality is now in a separate package: \code{mapr`` (<https://github.com/ropensci/mapr>) (formerly known as}spoccutils`).
+All mapping functionality is now in a separate package: \code{mapr`` (<https://github.com/ropensci/mapr>) (formerly known as }spoccutils`).
 On CRAN: \url{https://cran.r-project.org/package=mapr}
 }
 

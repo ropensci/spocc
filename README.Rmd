@@ -125,13 +125,13 @@ out$gbif
 Get fine-grained detail over each data source by passing on parameters to the packge rebird in this example.
 
 ```{r}
-(out <- occ(query = 'Setophaga caerulescens', from = 'ebird', ebirdopts = list(region = 'US')))
+(out <- occ(query = 'Setophaga caerulescens', from = 'gbif', gbifopts = list(country = 'US')))
 ```
 
-Just ebird data
+Get just gbif data
 
-```{r output.lines=1:10}
-out$ebird
+```{r}
+out$gbif
 ```
 
 ## Many data sources at once
@@ -147,11 +147,11 @@ head(dat); tail(dat)
 
 ## Clean data
 
-All data cleaning functionality is in a new package [scrubr](https://github.com/ropenscilabs/scrubr). [On CRAN](https://cran.r-project.org/package=scrubr).
+All data cleaning functionality is in a new package [scrubr](https://github.com/ropenscilabs/scrubr). `scrubr` [on CRAN](https://cran.r-project.org/package=scrubr).
 
 ## Make maps
 
-All mapping functionality is now in a separate package [mapr](https://github.com/ropensci/mapr) (formerly known as `spoccutils`), to make `spocc` easier to maintain. [On CRAN](https://cran.r-project.org/package=mapr).
+All mapping functionality is now in a separate package [mapr](https://github.com/ropensci/mapr) (formerly known as `spoccutils`), to make `spocc` easier to maintain. `mapr` [on CRAN](https://cran.r-project.org/package=mapr).
 
 ## Meta
 

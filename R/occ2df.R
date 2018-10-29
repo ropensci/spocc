@@ -48,10 +48,6 @@
 #' spnames <- c('Accipiter striatus', 'Spinus tristis')
 #' out <- occ(query=spnames, from='gbif', limit=2)
 #' occ2df(out$gbif)
-#'
-#' spp <- c("Linepithema humile", "Crematogaster brasiliensis")
-#' out <- occ(query=spp, from='antweb', limit=2)
-#' occ2df(out$antweb)
 #' }
 occ2df <- function(obj, what = "data") {
   UseMethod("occ2df")

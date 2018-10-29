@@ -17,7 +17,8 @@ aw_data2 <- function(genus = NULL, species = NULL, scientific_name = NULL,
     species <- strsplit(scientific_name, " ")[[1]][2]
   }
   
-  base_url <- "http://www.antweb.org"
+  # base_url <- "http://www.antweb.org"
+  base_url <- "http://api.antweb.org"
   original_limit <- limit
   args <- sc(as.list(c(genus = genus, species = species, bbox = bbox, 
                        min_elevation = min_elevation, 
@@ -26,7 +27,7 @@ aw_data2 <- function(genus = NULL, species = NULL, scientific_name = NULL,
                        min_date = min_date, max_date = max_date, limit = 1, 
                        offset = offset, georeferenced = georeferenced)))
   cli <- crul::HttpClient$new(url = base_url, opts = callopts)
-  out <- cli$get(path = "api/v2", query = args)
+  out <- cli$get(path = "v3.1/specimens", query = args)
   out$raise_for_status()
   data <- jsonlite::fromJSON(out$parse("UTF-8"), FALSE)
   data <- sc(data) # Remove NULL

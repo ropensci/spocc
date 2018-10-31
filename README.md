@@ -13,7 +13,7 @@ spocc
 
 **`spocc` = SPecies OCCurrence data**
 
-At rOpenSci, we have been writing R packages to interact with many sources of species occurrence data, including [GBIF][gbif], [Vertnet][vertnet], [BISON][bison], [iNaturalist][inat], the [Berkeley ecoengine][ecoengine], [AntWeb][antweb], and [eBird][ebird]. Other databases are out there as well, which we can pull in. `spocc` is an R package to query and collect species occurrence data from many sources. The goal is to to create a seamless search experience across data sources, as well as creating unified outputs across data sources.
+At rOpenSci, we have been writing R packages to interact with many sources of species occurrence data, including [GBIF][gbif], [Vertnet][vertnet], [BISON][bison], [iNaturalist][inat], the [Berkeley ecoengine][ecoengine], and [eBird][ebird]. Other databases are out there as well, which we can pull in. `spocc` is an R package to query and collect species occurrence data from many sources. The goal is to to create a seamless search experience across data sources, as well as creating unified outputs across data sources.
 
 `spocc` currently interfaces with ten major biodiversity repositories
 
@@ -35,16 +35,13 @@ Built by the US Geological Survey's core science analytic team, BISON is a porta
 6. [eBird][ebird] (via `rebird`)
 ebird is a database developed and maintained by the Cornell Lab of Ornithology and the National Audubon Society. It provides real-time access to checklist data, data on bird abundance and distribution, and communtiy reports from birders.
 
-7. [AntWeb][antweb] (via `AntWeb`)
-AntWeb is the world's largest online database of images, specimen records, and natural history information on ants. It is community driven and open to contribution from anyone with specimen records, natural history comments, or images.
-
-8. [iDigBio][idigbio] (via `ridigbio`)
+7. [iDigBio][idigbio] (via `ridigbio`)
 iDigBio facilitates the digitization of biological and paleobiological specimens and their associated data, and houses specimen data, as well as providing their specimen data via RESTful web services.
 
-9. [OBIS][obis]
+8. [OBIS][obis]
 OBIS (Ocean Biogeographic Information System) allows users to search marine species datasets from all of the world's oceans.
 
-10. [Atlas of Living Australia][ala]
+9. [Atlas of Living Australia][ala]
 ALA (Atlas of Living Australia) contains information on all the known species in Australia aggregated from a wide range of data providers: museums, herbaria, community groups, government departments, individuals and universities; it contains more than 50 million occurrence records.
 
 The inspiration for this comes from users requesting a more seamless experience across data sources, and from our work on a similar package for taxonomy data ([taxize][taxize]).
@@ -85,7 +82,7 @@ Get data from GBIF
 ```r
 (out <- occ(query = 'Accipiter striatus', from = 'gbif', limit = 100))
 #> Searched: gbif
-#> Occurrences - Found: 735,928, Returned: 100
+#> Occurrences - Found: 736,001, Returned: 100
 #> Search type: Scientific
 #>   gbif: Accipiter striatus (100)
 ```
@@ -116,7 +113,7 @@ Get fine-grained detail over each data source by passing on parameters to the pa
 ```r
 (out <- occ(query = 'Setophaga caerulescens', from = 'gbif', gbifopts = list(country = 'US')))
 #> Searched: gbif
-#> Occurrences - Found: 238,852, Returned: 500
+#> Occurrences - Found: 238,863, Returned: 500
 #> Search type: Scientific
 #>   gbif: Setophaga caerulescens (500)
 ```
@@ -135,8 +132,8 @@ out$gbif
 #>  1 Seto…     -80.3     25.7 gbif  cdrou… 1.81e9 50c9509d-… 28eb1a3f-1c15-4…
 #>  2 Seto…     -80.3     25.8 gbif  cdrou… 1.81e9 50c9509d-… 28eb1a3f-1c15-4…
 #>  3 Seto…     -81.4     28.6 gbif  cdrou… 1.84e9 50c9509d-… 28eb1a3f-1c15-4…
-#>  4 Seto…     -83.2     41.6 gbif  cdrou… 1.88e9 50c9509d-… 28eb1a3f-1c15-4…
-#>  5 Seto…     -77.3     39.0 gbif  cdrou… 1.84e9 50c9509d-… 28eb1a3f-1c15-4…
+#>  4 Seto…     -77.3     39.0 gbif  cdrou… 1.84e9 50c9509d-… 28eb1a3f-1c15-4…
+#>  5 Seto…     -83.2     41.6 gbif  cdrou… 1.88e9 50c9509d-… 28eb1a3f-1c15-4…
 #>  6 Seto…     -74.0     40.8 gbif  cdrou… 1.84e9 50c9509d-… 28eb1a3f-1c15-4…
 #>  7 Seto…     -80.8     35.5 gbif  cdrou… 1.85e9 50c9509d-… 28eb1a3f-1c15-4…
 #>  8 Seto…     -97.2     26.1 gbif  cdrou… 1.84e9 50c9509d-… 28eb1a3f-1c15-4…
@@ -202,12 +199,12 @@ head(dat); tail(dat)
 #> # A tibble: 6 x 6
 #>   name                 longitude     latitude     prov  date       key    
 #>   <chr>                <chr>         <chr>        <chr> <date>     <chr>  
-#> 1 Setophaga caerulesc… -80.26378881… 25.85100964… inat  2018-10-11 174204…
-#> 2 Setophaga caerulesc… -80.159375    26.48928333  inat  2018-10-10 174188…
-#> 3 Setophaga caerulesc… -80.32971915… 25.87379376… inat  2018-10-10 173965…
-#> 4 Setophaga caerulesc… -82.38013333… 23.14381383… inat  2018-10-08 173942…
-#> 5 Setophaga caerulesc… -87.6331366   41.9631998   inat  2017-05-22 173767…
-#> 6 Setophaga caerulesc… -81.180918    39.524063    inat  2018-10-06 173660…
+#> 1 Setophaga caerulesc… -73.94453706… 40.77460859… inat  2018-10-17 176031…
+#> 2 Setophaga caerulesc… -76.88181081… 39.21472314… inat  2018-10-17 175909…
+#> 3 Setophaga caerulesc… -83.16792165… 41.61632902… inat  2016-05-11 175862…
+#> 4 Setophaga caerulesc… -79.48059082… 43.74208054… inat  2017-05-01 175756…
+#> 5 Setophaga caerulesc… -80.79570739… 35.18428139… inat  2018-10-12 175692…
+#> 6 Setophaga caerulesc… -80.35602594… 25.77058197… inat  2018-10-14 175490…
 ```
 
 ## Clean data
@@ -233,7 +230,6 @@ All mapping functionality is now in a separate package [mapr](https://github.com
 [inat]: https://github.com/ropensci/rinat
 [taxize]: https://github.com/ropensci/taxize
 [ecoengine]: https://github.com/ropensci/ecoengine
-[antweb]: http://antweb.org/
 [idigbio]: https://www.idigbio.org/
 [obis]: http://www.iobis.org/
 [ebird]: http://ebird.org/content/ebird/

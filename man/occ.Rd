@@ -8,8 +8,8 @@ occ(query = NULL, from = "gbif", limit = 500, start = NULL,
   page = NULL, geometry = NULL, has_coords = NULL, ids = NULL,
   date = NULL, callopts = list(), gbifopts = list(),
   bisonopts = list(), inatopts = list(), ebirdopts = list(),
-  ecoengineopts = list(), antwebopts = list(), vertnetopts = list(),
-  idigbioopts = list(), obisopts = list(), alaopts = list())
+  ecoengineopts = list(), vertnetopts = list(), idigbioopts = list(),
+  obisopts = list(), alaopts = list())
 }
 \arguments{
 \item{query}{(character) One to many scientific names. See Details for what parameter
@@ -20,7 +20,7 @@ inat, ebird, ecoengine and/or vertnet}
 
 \item{limit}{(numeric) Number of records to return. This is passed across all sources.
 To specify different limits for each source, use the options for each source (gbifopts,
-bisonopts, inatopts, ebirdopts, ecoengineopts, and antwebopts). See Details for more.
+bisonopts, inatopts, ebirdopts, and ecoengineopts). See Details for more.
 Default: 500 for each source. BEWARE: if you have a lot of species to query for (e.g.,
 n = 10), that's 10 * 500 = 5000, which can take a while to collect. So, when you first query,
 set the limit to something smallish so that you can get a result quickly, then do more as
@@ -39,7 +39,7 @@ is not possible with vertnet right now, but should be soon. See Details for more
 on geometry inputs.}
 
 \item{has_coords}{(logical) Only return occurrences that have lat/long data. This works
-for gbif, ecoengine, antweb, rinat, idigbio, and vertnet, but is ignored for ebird and
+for gbif, ecoengine, rinat, idigbio, and vertnet, but is ignored for ebird and
 bison data sources. You can easily though remove records without lat/long data.}
 
 \item{ids}{Taxonomic identifiers. This can be a list of length 1 to many. See examples for
@@ -53,7 +53,7 @@ seems like the most common date search use case.}
 
 \item{callopts}{Options passed on to \code{\link[crul]{HttpClient}}, e.g.,
 for debugging curl calls, setting timeouts, etc. This parameter is ignored
-for sources: antweb, inat.}
+for sources: inat.}
 
 \item{gbifopts}{(list) List of named options to pass on to \code{\link[rgbif]{occ_search}}. See
 also \code{\link{occ_options}}.}
@@ -68,9 +68,6 @@ or \code{\link[rebird]{ebirdgeo}}. See also \code{\link{occ_options}}.}
 
 \item{ecoengineopts}{(list) List of named options to pass on to
 \code{ee_observations}. See also \code{\link{occ_options}}.}
-
-\item{antwebopts}{(list) List of named options to pass on to \code{aw_data}.
-See also \code{\link{occ_options}}.}
 
 \item{vertnetopts}{(list) List of named options to pass on to
 \code{\link[rvertnet]{searchbyterm}}. See also \code{\link{occ_options}}..}
@@ -91,7 +88,7 @@ or many data sources.
 }
 \details{
 The \code{occ} function is an opinionated wrapper
-around the rgbif, rbison, rinat, rebird, AntWeb, ecoengine, rvertnet and
+around the rgbif, rbison, rinat, rebird, ecoengine, rvertnet and
 ridigbio packages (as well as internal custom wrappers around some data
 sources) to allow data access from a single access point. We take
 care of making sure you get useful objects out at the cost of
@@ -128,10 +125,6 @@ function - API parameter: same as \code{occ} parameter
 \code{\link[rbison]{bison_solr}} functions, respectively. If you don't pass anything to
 \code{geometry} parameter we use \code{bison_solr}, and if you do we use \code{bison} - API
 parameters: same as \code{occ} parameters
-\item AntWeb - \code{scientific_name} or \code{genus} in the \code{aw_data}
-function, depending on whether binomial or single name passed - API
-parameter: \code{species} for \code{scientific_name} and \code{genus} for
-\code{genus}
 \item rvertnet - \code{taxon} in the \code{\link[rvertnet]{vertsearch}} function - API
 parameter: \code{q}
 \item ridigbio - \code{scientificname} in the \code{\link[ridigbio]{idig_search_records}}
@@ -247,7 +240,6 @@ back a single group of data for each name.
 
 \bold{No spatial search allowed}
 \itemize{
-\item antweb
 \item ebird
 \item vertnet
 }
@@ -286,7 +278,6 @@ to the \code{page} parameter:
 \itemize{
 \item gbif - Responds to \code{start}. Default: 0
 \item ecoengine - Responds to \code{page}. Default: 1
-\item antweb - Responds to \code{start}. Default: 0
 \item bison - Responds to \code{start}. Default: 0
 \item inat - Responds to \code{page}. Default: 1
 \item ebird - No paging, both \code{start} and \code{page} ignored.
@@ -344,8 +335,6 @@ occ(date = c('2018-01-01T00:00:00Z', '2018-03-28T00:00:00Z'), from = 'ala', limi
 occ(query = 'Accipiter striatus', date = c('2010-08-01', '2010-08-31'), from = 'gbif', limit=5)
 # ecoengine
 occ(date = c('2010-01-01', '2010-12-31'), from = 'ecoengine', limit=5)
-## antweb
-# occ(query = "acanthognathus", date = c('2010-01-01', '2010-12-31'), from = 'antweb', limit=5)
 ## vertnet
 occ(query = 'Mustela nigripes', date = c('1990-01-01', '2015-12-31'), from = 'vertnet', limit=5)
 ## idigbio
@@ -358,12 +347,6 @@ occ(query = 'Danaus plexippus', date = c('2015-01-01', '2015-12-31'), from = 'in
 
 # Restrict to records with coordinates
 occ(query = "Acer", from = "idigbio", limit = 5, has_coords = TRUE)
-
-# Data from AntWeb
-# By species
-# (by_species <- occ(query = "linepithema humile", from = "antweb", limit = 10))
-# or by genus
-# (by_genus <- occ(query = "acanthognathus", from = "antweb"))
 
 occ(query = 'Setophaga caerulescens', from = 'ebird', ebirdopts = list(region='US'))
 occ(query = 'Spinus tristis', from = 'ebird', ebirdopts =
@@ -539,8 +522,6 @@ occ(query = 'Accipiter striatus', from = 'inat',
  callopts=list(verbose = TRUE))
 occ(query = 'Mola mola', from = 'obis', limit = 200, 
  callopts = list(verbose = TRUE))
-# occ(query = 'linepithema humile', from = 'antweb', 
-#  callopts=list(verbose = TRUE))
 
 ########## More thorough data source specific examples
 # idigbio

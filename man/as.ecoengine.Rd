@@ -35,9 +35,8 @@ as.ecoengine(tt[1:2])
 }
 \seealso{
 Other coercion: \code{\link{as.ala}},
-  \code{\link{as.antweb}}, \code{\link{as.bison}},
-  \code{\link{as.gbif}}, \code{\link{as.idigbio}},
-  \code{\link{as.inat}}, \code{\link{as.obis}},
-  \code{\link{as.vertnet}}
+  \code{\link{as.bison}}, \code{\link{as.gbif}},
+  \code{\link{as.idigbio}}, \code{\link{as.inat}},
+  \code{\link{as.obis}}, \code{\link{as.vertnet}}
 }
 \concept{coercion}

@@ -4,7 +4,7 @@
 #' inat, ebird, ecoengine and/or vertnet
 #' @param limit (numeric) Number of records to return. This is passed across all sources.
 #' To specify different limits for each source, use the options for each source (gbifopts,
-#' bisonopts, inatopts, ebirdopts, ecoengineopts, and antwebopts). See Details for more.
+#' bisonopts, inatopts, ebirdopts, and ecoengineopts). See Details for more.
 #' Default: 500 for each source. BEWARE: if you have a lot of species to query for (e.g.,
 #' n = 10), that's 10 * 500 = 5000, which can take a while to collect. So, when you first query,
 #' set the limit to something smallish so that you can get a result quickly, then do more as
@@ -20,7 +20,7 @@
 #' is not possible with vertnet right now, but should be soon. See Details for more info
 #' on geometry inputs.
 #' @param has_coords (logical) Only return occurrences that have lat/long data. This works
-#' for gbif, ecoengine, antweb, rinat, idigbio, and vertnet, but is ignored for ebird and
+#' for gbif, ecoengine, rinat, idigbio, and vertnet, but is ignored for ebird and
 #' bison data sources. You can easily though remove records without lat/long data.
 #' @param ids Taxonomic identifiers. This can be a list of length 1 to many. See examples for
 #' usage. Currently, identifiers for only 'gbif' and 'bison' for parameter 'from' supported. If
@@ -31,7 +31,7 @@
 #' seems like the most common date search use case.
 #' @param callopts Options passed on to \code{\link[crul]{HttpClient}}, e.g., 
 #' for debugging curl calls, setting timeouts, etc. This parameter is ignored 
-#' for sources: antweb, inat.
+#' for sources: inat.
 #' @param gbifopts (list) List of named options to pass on to \code{\link[rgbif]{occ_search}}. See
 #' also \code{\link{occ_options}}.
 #' @param bisonopts (list) List of named options to pass on to \code{\link[rbison]{bison}}. See
@@ -41,8 +41,6 @@
 #' or \code{\link[rebird]{ebirdgeo}}. See also \code{\link{occ_options}}.
 #' @param ecoengineopts (list) List of named options to pass on to
 #' \code{ee_observations}. See also \code{\link{occ_options}}.
-#' @param antwebopts (list) List of named options to pass on to \code{aw_data}.
-#' See also \code{\link{occ_options}}.
 #' @param vertnetopts (list) List of named options to pass on to
 #' \code{\link[rvertnet]{searchbyterm}}. See also \code{\link{occ_options}}..
 #' @param idigbioopts (list) List of named options to pass on to
@@ -54,7 +52,7 @@
 #' \url{http://api.ala.org.au/#ws3} for possible parameters.
 #'
 #' @details The \code{occ} function is an opinionated wrapper
-#' around the rgbif, rbison, rinat, rebird, AntWeb, ecoengine, rvertnet and
+#' around the rgbif, rbison, rinat, rebird, ecoengine, rvertnet and
 #' ridigbio packages (as well as internal custom wrappers around some data
 #' sources) to allow data access from a single access point. We take
 #' care of making sure you get useful objects out at the cost of
@@ -88,10 +86,6 @@
 #'  \code{\link[rbison]{bison_solr}} functions, respectively. If you don't pass anything to
 #'  \code{geometry} parameter we use \code{bison_solr}, and if you do we use \code{bison} - API
 #'  parameters: same as \code{occ} parameters
-#'  \item AntWeb - \code{scientific_name} or \code{genus} in the \code{aw_data}
-#'  function, depending on whether binomial or single name passed - API
-#'  parameter: \code{species} for \code{scientific_name} and \code{genus} for
-#'  \code{genus}
 #'  \item rvertnet - \code{taxon} in the \code{\link[rvertnet]{vertsearch}} function - API
 #'  parameter: \code{q}
 #'  \item ridigbio - \code{scientificname} in the \code{\link[ridigbio]{idig_search_records}}
@@ -195,7 +189,6 @@
 #'
 #' \bold{No spatial search allowed}
 #' \itemize{
-#'  \item antweb
 #'  \item ebird
 #'  \item vertnet
 #' }
@@ -230,7 +223,6 @@
 #' \itemize{
 #'  \item gbif - Responds to \code{start}. Default: 0
 #'  \item ecoengine - Responds to \code{page}. Default: 1
-#'  \item antweb - Responds to \code{start}. Default: 0
 #'  \item bison - Responds to \code{start}. Default: 0
 #'  \item inat - Responds to \code{page}. Default: 1
 #'  \item ebird - No paging, both \code{start} and \code{page} ignored.

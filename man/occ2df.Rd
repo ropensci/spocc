@@ -29,9 +29,6 @@ single data.frame contains the following columns:
 \item date - occurrence record date
 \item key - occurrence record key
 }
-
-AntWeb doesn't provide dates, so occurrence rows from that provider
-are blank.
 }
 \examples{
 \dontrun{

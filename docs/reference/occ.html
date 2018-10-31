@@ -129,8 +129,8 @@ or many data sources.</p>
   <span class='kw'>page</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>geometry</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>has_coords</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>ids</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>date</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>callopts</span> <span class='kw'>=</span> <span class='fu'>list</span>(), <span class='kw'>gbifopts</span> <span class='kw'>=</span> <span class='fu'>list</span>(),
   <span class='kw'>bisonopts</span> <span class='kw'>=</span> <span class='fu'>list</span>(), <span class='kw'>inatopts</span> <span class='kw'>=</span> <span class='fu'>list</span>(), <span class='kw'>ebirdopts</span> <span class='kw'>=</span> <span class='fu'>list</span>(),
-  <span class='kw'>ecoengineopts</span> <span class='kw'>=</span> <span class='fu'>list</span>(), <span class='kw'>antwebopts</span> <span class='kw'>=</span> <span class='fu'>list</span>(), <span class='kw'>vertnetopts</span> <span class='kw'>=</span> <span class='fu'>list</span>(),
-  <span class='kw'>idigbioopts</span> <span class='kw'>=</span> <span class='fu'>list</span>(), <span class='kw'>obisopts</span> <span class='kw'>=</span> <span class='fu'>list</span>(), <span class='kw'>alaopts</span> <span class='kw'>=</span> <span class='fu'>list</span>())</pre>
+  <span class='kw'>ecoengineopts</span> <span class='kw'>=</span> <span class='fu'>list</span>(), <span class='kw'>vertnetopts</span> <span class='kw'>=</span> <span class='fu'>list</span>(), <span class='kw'>idigbioopts</span> <span class='kw'>=</span> <span class='fu'>list</span>(),
+  <span class='kw'>obisopts</span> <span class='kw'>=</span> <span class='fu'>list</span>(), <span class='kw'>alaopts</span> <span class='kw'>=</span> <span class='fu'>list</span>())</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -149,7 +149,7 @@ inat, ebird, ecoengine and/or vertnet</p></td>
       <th>limit</th>
       <td><p>(numeric) Number of records to return. This is passed across all sources.
 To specify different limits for each source, use the options for each source (gbifopts,
-bisonopts, inatopts, ebirdopts, ecoengineopts, and antwebopts). See Details for more.
+bisonopts, inatopts, ebirdopts, and ecoengineopts). See Details for more.
 Default: 500 for each source. BEWARE: if you have a lot of species to query for (e.g.,
 n = 10), that's 10 * 500 = 5000, which can take a while to collect. So, when you first query,
 set the limit to something smallish so that you can get a result quickly, then do more as
@@ -174,7 +174,7 @@ on geometry inputs.</p></td>
     <tr>
       <th>has_coords</th>
       <td><p>(logical) Only return occurrences that have lat/long data. This works
-for gbif, ecoengine, antweb, rinat, idigbio, and vertnet, but is ignored for ebird and
+for gbif, ecoengine, rinat, idigbio, and vertnet, but is ignored for ebird and
 bison data sources. You can easily though remove records without lat/long data.</p></td>
     </tr>
     <tr>
@@ -194,7 +194,7 @@ seems like the most common date search use case.</p></td>
       <th>callopts</th>
       <td><p>Options passed on to <code><a href='http://www.rdocumentation.org/packages/crul/topics/HttpClient'>HttpClient</a></code>, e.g.,
 for debugging curl calls, setting timeouts, etc. This parameter is ignored
-for sources: antweb, inat.</p></td>
+for sources: inat.</p></td>
     </tr>
     <tr>
       <th>gbifopts</th>
@@ -219,11 +219,6 @@ or <code><a href='http://www.rdocumentation.org/packages/rebird/topics/ebirdgeo'
       <th>ecoengineopts</th>
       <td><p>(list) List of named options to pass on to
 <code>ee_observations</code>. See also <code><a href='occ_options.html'>occ_options</a></code>.</p></td>
-    </tr>
-    <tr>
-      <th>antwebopts</th>
-      <td><p>(list) List of named options to pass on to <code>aw_data</code>.
-See also <code><a href='occ_options.html'>occ_options</a></code>.</p></td>
     </tr>
     <tr>
       <th>vertnetopts</th>
@@ -251,7 +246,7 @@ See <code>Occurrence search</code> part of the API docs at
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>The <code>occ</code> function is an opinionated wrapper
-around the rgbif, rbison, rinat, rebird, AntWeb, ecoengine, rvertnet and
+around the rgbif, rbison, rinat, rebird, ecoengine, rvertnet and
 ridigbio packages (as well as internal custom wrappers around some data
 sources) to allow data access from a single access point. We take
 care of making sure you get useful objects out at the cost of
@@ -286,10 +281,6 @@ function - API parameter: same as <code>occ</code> parameter</p></li>
 <code><a href='http://www.rdocumentation.org/packages/rbison/topics/bison_solr'>bison_solr</a></code> functions, respectively. If you don't pass anything to
 <code>geometry</code> parameter we use <code>bison_solr</code>, and if you do we use <code>bison</code> - API
 parameters: same as <code>occ</code> parameters</p></li>
-<li><p>AntWeb - <code>scientific_name</code> or <code>genus</code> in the <code>aw_data</code>
-function, depending on whether binomial or single name passed - API
-parameter: <code>species</code> for <code>scientific_name</code> and <code>genus</code> for
-<code>genus</code></p></li>
 <li><p>rvertnet - <code>taxon</code> in the <code><a href='http://www.rdocumentation.org/packages/rvertnet/topics/vertsearch'>vertsearch</a></code> function - API
 parameter: <code>q</code></p></li>
 <li><p>ridigbio - <code>scientificname</code> in the <code><a href='http://www.rdocumentation.org/packages/ridigbio/topics/idig_search_records'>idig_search_records</a></code>
@@ -392,7 +383,6 @@ back a single group of data for each name.</p></li>
 <li><p>idigbio</p></li>
 </ul>
     <p><b>No spatial search allowed</b></p><ul>
-<li><p>antweb</p></li>
 <li><p>ebird</p></li>
 <li><p>vertnet</p></li>
 </ul>
@@ -426,7 +416,6 @@ to the <code>page</code> parameter:</p>
 <ul>
 <li><p>gbif - Responds to <code>start</code>. Default: 0</p></li>
 <li><p>ecoengine - Responds to <code>page</code>. Default: 1</p></li>
-<li><p>antweb - Responds to <code>start</code>. Default: 0</p></li>
 <li><p>bison - Responds to <code>start</code>. Default: 0</p></li>
 <li><p>inat - Responds to <code>page</code>. Default: 1</p></li>
 <li><p>ebird - No paging, both <code>start</code> and <code>page</code> ignored.</p></li>
@@ -490,8 +479,6 @@ ends up with GBIF. See <code><a href='spocc_duplicates.html'>spocc_duplicates</a
 <span class='fu'>occ</span>(<span class='kw'>query</span> <span class='kw'>=</span> <span class='st'>'Accipiter striatus'</span>, <span class='kw'>date</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>'2010-08-01'</span>, <span class='st'>'2010-08-31'</span>), <span class='kw'>from</span> <span class='kw'>=</span> <span class='st'>'gbif'</span>, <span class='kw'>limit</span><span class='kw'>=</span><span class='fl'>5</span>)
 <span class='co'># ecoengine</span>
 <span class='fu'>occ</span>(<span class='kw'>date</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>'2010-01-01'</span>, <span class='st'>'2010-12-31'</span>), <span class='kw'>from</span> <span class='kw'>=</span> <span class='st'>'ecoengine'</span>, <span class='kw'>limit</span><span class='kw'>=</span><span class='fl'>5</span>)
-<span class='co'>## antweb</span>
-<span class='co'># occ(query = "acanthognathus", date = c('2010-01-01', '2010-12-31'), from = 'antweb', limit=5)</span>
 <span class='co'>## vertnet</span>
 <span class='fu'>occ</span>(<span class='kw'>query</span> <span class='kw'>=</span> <span class='st'>'Mustela nigripes'</span>, <span class='kw'>date</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>'1990-01-01'</span>, <span class='st'>'2015-12-31'</span>), <span class='kw'>from</span> <span class='kw'>=</span> <span class='st'>'vertnet'</span>, <span class='kw'>limit</span><span class='kw'>=</span><span class='fl'>5</span>)
 <span class='co'>## idigbio</span>
@@ -504,12 +491,6 @@ ends up with GBIF. See <code><a href='spocc_duplicates.html'>spocc_duplicates</a
 
 <span class='co'># Restrict to records with coordinates</span>
 <span class='fu'>occ</span>(<span class='kw'>query</span> <span class='kw'>=</span> <span class='st'>"Acer"</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='st'>"idigbio"</span>, <span class='kw'>limit</span> <span class='kw'>=</span> <span class='fl'>5</span>, <span class='kw'>has_coords</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-
-<span class='co'># Data from AntWeb</span>
-<span class='co'># By species</span>
-<span class='co'># (by_species &lt;- occ(query = "linepithema humile", from = "antweb", limit = 10))</span>
-<span class='co'># or by genus</span>
-<span class='co'># (by_genus &lt;- occ(query = "acanthognathus", from = "antweb"))</span>
 
 <span class='fu'>occ</span>(<span class='kw'>query</span> <span class='kw'>=</span> <span class='st'>'Setophaga caerulescens'</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='st'>'ebird'</span>, <span class='kw'>ebirdopts</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='kw'>region</span><span class='kw'>=</span><span class='st'>'US'</span>))
 <span class='fu'>occ</span>(<span class='kw'>query</span> <span class='kw'>=</span> <span class='st'>'Spinus tristis'</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='st'>'ebird'</span>, <span class='kw'>ebirdopts</span> <span class='kw'>=</span>
@@ -685,8 +666,6 @@ ends up with GBIF. See <code><a href='spocc_duplicates.html'>spocc_duplicates</a
  <span class='kw'>callopts</span><span class='kw'>=</span><span class='fu'>list</span>(<span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>))
 <span class='fu'>occ</span>(<span class='kw'>query</span> <span class='kw'>=</span> <span class='st'>'Mola mola'</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='st'>'obis'</span>, <span class='kw'>limit</span> <span class='kw'>=</span> <span class='fl'>200</span>,
  <span class='kw'>callopts</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>))
-<span class='co'># occ(query = 'linepithema humile', from = 'antweb', </span>
-<span class='co'>#  callopts=list(verbose = TRUE))</span>
 
 <span class='co'>########## More thorough data source specific examples</span>
 <span class='co'># idigbio</span>

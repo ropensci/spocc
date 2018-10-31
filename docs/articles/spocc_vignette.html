@@ -113,7 +113,6 @@
 <li><p><a href="http://vertnet.org/">VertNet</a> (via <code>rvertnet</code>) Similar to <code>rgbif</code>, ecoengine, and <code>rbison</code> (see below), VertNet provides access to more than 80 million vertebrate records spanning a large number of institutions and museums primarly covering four major disciplines (mammology, herpetology, ornithology, and icthyology). <strong>Note that we don’t currenlty support VertNet data in this package, but we should soon</strong></p></li>
 <li><p><a href="https://bison.usgs.gov/">Biodiversity Information Serving Our Nation</a> (via <code>rbison</code>) Built by the US Geological Survey’s core science analytic team, BISON is a portal that provides access to species occurrence data from several participating institutions.</p></li>
 <li><p><a href="http://ebird.org/content/ebird/">eBird</a> (via <code>rebird</code>) ebird is a database developed and maintained by the Cornell Lab of Ornithology and the National Audubon Society. It provides real-time access to checklist data, data on bird abundance and distribution, and communtiy reports from birders.</p></li>
-<li><p><a href="http://antweb.org">AntWeb</a> (via <code>AntWeb</code>) AntWeb is the world’s largest online database of images, specimen records, and natural history information on ants. It is community driven and open to contribution from anyone with specimen records, natural history comments, or images.</p></li>
 <li><p><a href="https://www.idigbio.org/">iDigBio</a> (via <code>ridigbio</code>) iDigBio facilitates the digitization of biological and paleobiological specimens and their associated data, and houses specimen data, as well as providing their specimen data via RESTful web services.</p></li>
 <li><p><a href="http://www.iobis.org/">OBIS</a> OBIS (Ocean Biogeographic Information System) allows users to search marine species datasets from all of the world’s oceans.</p></li>
 <li><p><a href="http://www.ala.org.au/">Atlas of Living Australia</a> ALA (Atlas of Living Australia) contains information on all the known species in Australia aggregated from a wide range of data providers: museums, herbaria, community groups, government departments, individuals and universities; it contains more than 50 million occurrence records.</p></li>
@@ -127,7 +126,7 @@
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>(<span class="st">'spocc'</span>)</a>
 <a class="sourceLine" id="cb1-2" data-line-number="2">(df &lt;-<span class="st"> </span><span class="kw"><a href="../reference/occ.html">occ</a></span>(<span class="dt">query =</span> <span class="st">'Accipiter striatus'</span>, <span class="dt">from =</span> <span class="st">'gbif'</span>))</a></code></pre></div>
 <pre><code>#&gt; Searched: gbif
-#&gt; Occurrences - Found: 617,957, Returned: 500
+#&gt; Occurrences - Found: 736,001, Returned: 500
 #&gt; Search type: Scientific
 #&gt;   gbif: Accipiter striatus (500)</code></pre>
 <p>The data returned are part of a <code>S3</code> class called <code>occdat</code>. This class has slots for each of the data sources described above. One can easily switch the source by changing the <code>from</code> parameter in the function call above.</p>
@@ -149,29 +148,31 @@
 <pre><code>#&gt; Species [Accipiter striatus (500)] 
 #&gt; First 10 rows of [Accipiter_striatus]
 #&gt; 
-#&gt; # A tibble: 500 × 105
-#&gt;                  name  longitude latitude  prov         issues        key
-#&gt;                 &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;      &lt;int&gt;
-#&gt; 1  Accipiter striatus  -97.12924 32.70085  gbif cdround,gass84 1453324136
-#&gt; 2  Accipiter striatus  -84.74625 40.01773  gbif cdround,gass84 1453369124
-#&gt; 3  Accipiter striatus  -72.58904 43.85320  gbif cdround,gass84 1453335509
-#&gt; 4  Accipiter striatus  -96.77096 33.22315  gbif cdround,gass84 1453335637
-#&gt; 5  Accipiter striatus -111.01449 32.27128  gbif cdround,gass84 1453356813
-#&gt; 6  Accipiter striatus  -77.41813 39.49461  gbif cdround,gass84 1453332084
-#&gt; 7  Accipiter striatus -122.05344 36.95316  gbif cdround,gass84 1453346783
-#&gt; 8  Accipiter striatus -122.59224 38.05409  gbif cdround,gass84 1453398190
-#&gt; 9  Accipiter striatus -100.92892 25.45035  gbif cdround,gass84 1453328268
-#&gt; 10 Accipiter striatus  -96.82008 33.17463  gbif cdround,gass84 1453360827
-#&gt; # ... with 490 more rows, and 99 more variables: datasetKey &lt;chr&gt;,
-#&gt; #   publishingOrgKey &lt;chr&gt;, publishingCountry &lt;chr&gt;, protocol &lt;chr&gt;,
+#&gt; # A tibble: 500 x 117
+#&gt;    name  longitude latitude prov  issues    key datasetKey publishingOrgKey
+#&gt;    &lt;chr&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;      &lt;chr&gt;           
+#&gt;  1 Acci…    -104.      20.7 gbif  cdrou… 1.81e9 50c9509d-… 28eb1a3f-1c15-4…
+#&gt;  2 Acci…     -98.6     33.8 gbif  cdrou… 1.81e9 50c9509d-… 28eb1a3f-1c15-4…
+#&gt;  3 Acci…     -74.1     40.1 gbif  cdrou… 1.81e9 50c9509d-… 28eb1a3f-1c15-4…
+#&gt;  4 Acci…    -122.      38.0 gbif  cdrou… 1.80e9 50c9509d-… 28eb1a3f-1c15-4…
+#&gt;  5 Acci…    -122.      37.2 gbif  cdrou… 1.81e9 50c9509d-… 28eb1a3f-1c15-4…
+#&gt;  6 Acci…    -122.      37.0 gbif  cdrou… 1.80e9 50c9509d-… 28eb1a3f-1c15-4…
+#&gt;  7 Acci…    -103.      50.1 gbif  cdrou… 1.80e9 50c9509d-… 28eb1a3f-1c15-4…
+#&gt;  8 Acci…    -122.      38.0 gbif  cdrou… 1.80e9 50c9509d-… 28eb1a3f-1c15-4…
+#&gt;  9 Acci…    -115.      36.2 gbif  cdrou… 1.81e9 50c9509d-… 28eb1a3f-1c15-4…
+#&gt; 10 Acci…    -122.      37.1 gbif  cdrou… 1.81e9 50c9509d-… 28eb1a3f-1c15-4…
+#&gt; # ... with 490 more rows, and 109 more variables: networkKeys &lt;list&gt;,
+#&gt; #   installationKey &lt;chr&gt;, publishingCountry &lt;chr&gt;, protocol &lt;chr&gt;,
 #&gt; #   lastCrawled &lt;chr&gt;, lastParsed &lt;chr&gt;, crawlId &lt;int&gt;,
 #&gt; #   basisOfRecord &lt;chr&gt;, taxonKey &lt;int&gt;, kingdomKey &lt;int&gt;,
 #&gt; #   phylumKey &lt;int&gt;, classKey &lt;int&gt;, orderKey &lt;int&gt;, familyKey &lt;int&gt;,
-#&gt; #   genusKey &lt;int&gt;, scientificName &lt;chr&gt;, kingdom &lt;chr&gt;, phylum &lt;chr&gt;,
+#&gt; #   genusKey &lt;int&gt;, acceptedTaxonKey &lt;int&gt;, scientificName &lt;chr&gt;,
+#&gt; #   acceptedScientificName &lt;chr&gt;, kingdom &lt;chr&gt;, phylum &lt;chr&gt;,
 #&gt; #   order &lt;chr&gt;, family &lt;chr&gt;, genus &lt;chr&gt;, genericName &lt;chr&gt;,
-#&gt; #   specificEpithet &lt;chr&gt;, taxonRank &lt;chr&gt;, dateIdentified &lt;chr&gt;,
-#&gt; #   coordinateUncertaintyInMeters &lt;dbl&gt;, year &lt;int&gt;, month &lt;int&gt;,
-#&gt; #   day &lt;int&gt;, eventDate &lt;date&gt;, modified &lt;chr&gt;, lastInterpreted &lt;chr&gt;,
+#&gt; #   specificEpithet &lt;chr&gt;, taxonRank &lt;chr&gt;, taxonomicStatus &lt;chr&gt;,
+#&gt; #   dateIdentified &lt;chr&gt;, coordinateUncertaintyInMeters &lt;dbl&gt;,
+#&gt; #   stateProvince &lt;chr&gt;, year &lt;int&gt;, month &lt;int&gt;, day &lt;int&gt;,
+#&gt; #   eventDate &lt;date&gt;, modified &lt;chr&gt;, lastInterpreted &lt;chr&gt;,
 #&gt; #   references &lt;chr&gt;, license &lt;chr&gt;, geodeticDatum &lt;chr&gt;, class &lt;chr&gt;,
 #&gt; #   countryCode &lt;chr&gt;, country &lt;chr&gt;, rightsHolder &lt;chr&gt;,
 #&gt; #   identifier &lt;chr&gt;, informationWithheld &lt;chr&gt;, verbatimEventDate &lt;chr&gt;,
@@ -179,50 +180,53 @@
 #&gt; #   verbatimLocality &lt;chr&gt;, occurrenceID &lt;chr&gt;, taxonID &lt;chr&gt;,
 #&gt; #   catalogNumber &lt;chr&gt;, recordedBy &lt;chr&gt;,
 #&gt; #   `http://unknown.org/occurrenceDetails` &lt;chr&gt;, institutionCode &lt;chr&gt;,
-#&gt; #   rights &lt;chr&gt;, eventTime &lt;chr&gt;, identificationID &lt;chr&gt;,
-#&gt; #   identificationRemarks &lt;chr&gt;, occurrenceRemarks &lt;chr&gt;,
-#&gt; #   infraspecificEpithet &lt;chr&gt;, continent &lt;chr&gt;, stateProvince &lt;chr&gt;,
-#&gt; #   recordNumber &lt;chr&gt;, higherGeography &lt;chr&gt;, institutionID &lt;chr&gt;,
-#&gt; #   nomenclaturalCode &lt;chr&gt;, locality &lt;chr&gt;, county &lt;chr&gt;, language &lt;chr&gt;,
-#&gt; #   type &lt;chr&gt;, preparations &lt;chr&gt;, organismID &lt;chr&gt;,
-#&gt; #   startDayOfYear &lt;chr&gt;, ownerInstitutionCode &lt;chr&gt;, datasetID &lt;chr&gt;,
-#&gt; #   accessRights &lt;chr&gt;, verbatimElevation &lt;chr&gt;, collectionID &lt;chr&gt;,
-#&gt; #   higherClassification &lt;chr&gt;, individualCount &lt;int&gt;, elevation &lt;dbl&gt;,
-#&gt; #   elevationAccuracy &lt;dbl&gt;, identificationVerificationStatus &lt;chr&gt;,
-#&gt; #   locationAccordingTo &lt;chr&gt;, identifiedBy &lt;chr&gt;,
-#&gt; #   georeferencedDate &lt;chr&gt;, georeferencedBy &lt;chr&gt;,
-#&gt; #   georeferenceProtocol &lt;chr&gt;, georeferenceVerificationStatus &lt;chr&gt;,
-#&gt; #   endDayOfYear &lt;chr&gt;, verbatimCoordinateSystem &lt;chr&gt;,
-#&gt; #   otherCatalogNumbers &lt;chr&gt;, previousIdentifications &lt;chr&gt;,
-#&gt; #   identificationQualifier &lt;chr&gt;, samplingProtocol &lt;chr&gt;,
-#&gt; #   georeferenceSources &lt;chr&gt;, sex &lt;chr&gt;, dynamicProperties &lt;chr&gt;,
-#&gt; #   lifeStage &lt;chr&gt;, vernacularName &lt;chr&gt;, reproductiveCondition &lt;chr&gt;</code></pre>
+#&gt; #   rights &lt;chr&gt;, eventTime &lt;chr&gt;,
+#&gt; #   `http://unknown.org/http_//rs.gbif.org/terms/1.0/Multimedia` &lt;chr&gt;,
+#&gt; #   identificationID &lt;chr&gt;, occurrenceRemarks &lt;chr&gt;,
+#&gt; #   identificationRemarks &lt;chr&gt;, elevation &lt;dbl&gt;, elevationAccuracy &lt;dbl&gt;,
+#&gt; #   organismQuantity &lt;chr&gt;, eventID &lt;chr&gt;, dynamicProperties &lt;chr&gt;,
+#&gt; #   georeferenceProtocol &lt;chr&gt;, verbatimSRS &lt;chr&gt;, locality &lt;chr&gt;,
+#&gt; #   verbatimCoordinateSystem &lt;chr&gt;, county &lt;chr&gt;, eventRemarks &lt;chr&gt;,
+#&gt; #   `http://unknown.org/http_//rs.tdwg.org/dwc/terms/MeasurementOrFact` &lt;chr&gt;,
+#&gt; #   vernacularName &lt;chr&gt;,
+#&gt; #   `http://unknown.org/http_//rs.tdwg.org/dwc/terms/ResourceRelationship` &lt;chr&gt;,
+#&gt; #   organismQuantityType &lt;chr&gt;, samplingProtocol &lt;chr&gt;,
+#&gt; #   identifiedBy &lt;chr&gt;, recordNumber &lt;chr&gt;, habitat &lt;chr&gt;,
+#&gt; #   preparations &lt;chr&gt;, sex &lt;chr&gt;, infraspecificEpithet &lt;chr&gt;,
+#&gt; #   continent &lt;chr&gt;, institutionID &lt;chr&gt;, language &lt;chr&gt;, type &lt;chr&gt;,
+#&gt; #   verbatimElevation &lt;chr&gt;, nomenclaturalCode &lt;chr&gt;,
+#&gt; #   higherGeography &lt;chr&gt;, dataGeneralizations &lt;chr&gt;, organismID &lt;chr&gt;,
+#&gt; #   ownerInstitutionCode &lt;chr&gt;, startDayOfYear &lt;chr&gt;, datasetID &lt;chr&gt;,
+#&gt; #   accessRights &lt;chr&gt;, collectionID &lt;chr&gt;, higherClassification &lt;chr&gt;,
+#&gt; #   establishmentMeans &lt;chr&gt;, …</code></pre>
 <p>When you get data from multiple providers, the fields returned are slightly different, e.g.:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">df &lt;-<span class="st"> </span><span class="kw"><a href="../reference/occ.html">occ</a></span>(<span class="dt">query =</span> <span class="st">'Accipiter striatus'</span>, <span class="dt">from =</span> <span class="kw">c</span>(<span class="st">'gbif'</span>, <span class="st">'ecoengine'</span>), <span class="dt">limit =</span> <span class="dv">25</span>)</a>
 <a class="sourceLine" id="cb6-2" data-line-number="2">df<span class="op">$</span>gbif<span class="op">$</span>data<span class="op">$</span>Accipiter_striatus</a></code></pre></div>
-<pre><code>#&gt; # A tibble: 25 × 63
-#&gt;                  name  longitude latitude         issues  prov        key
-#&gt;                 &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt;          &lt;chr&gt; &lt;chr&gt;      &lt;int&gt;
-#&gt; 1  Accipiter striatus  -97.12924 32.70085 cdround,gass84  gbif 1453324136
-#&gt; 2  Accipiter striatus  -84.74625 40.01773 cdround,gass84  gbif 1453369124
-#&gt; 3  Accipiter striatus  -72.58904 43.85320 cdround,gass84  gbif 1453335509
-#&gt; 4  Accipiter striatus  -96.77096 33.22315 cdround,gass84  gbif 1453335637
-#&gt; 5  Accipiter striatus -111.01449 32.27128 cdround,gass84  gbif 1453356813
-#&gt; 6  Accipiter striatus  -77.41813 39.49461 cdround,gass84  gbif 1453332084
-#&gt; 7  Accipiter striatus -122.05344 36.95316 cdround,gass84  gbif 1453346783
-#&gt; 8  Accipiter striatus -122.59224 38.05409 cdround,gass84  gbif 1453398190
-#&gt; 9  Accipiter striatus -100.92892 25.45035 cdround,gass84  gbif 1453328268
-#&gt; 10 Accipiter striatus  -96.82008 33.17463 cdround,gass84  gbif 1453360827
-#&gt; # ... with 15 more rows, and 57 more variables: datasetKey &lt;chr&gt;,
-#&gt; #   publishingOrgKey &lt;chr&gt;, publishingCountry &lt;chr&gt;, protocol &lt;chr&gt;,
+<pre><code>#&gt; # A tibble: 25 x 69
+#&gt;    name  longitude latitude issues prov     key datasetKey publishingOrgKey
+#&gt;    &lt;chr&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;int&gt; &lt;chr&gt;      &lt;chr&gt;           
+#&gt;  1 Acci…    -104.      20.7 cdrou… gbif  1.81e9 50c9509d-… 28eb1a3f-1c15-4…
+#&gt;  2 Acci…     -98.6     33.8 cdrou… gbif  1.81e9 50c9509d-… 28eb1a3f-1c15-4…
+#&gt;  3 Acci…     -74.1     40.1 cdrou… gbif  1.81e9 50c9509d-… 28eb1a3f-1c15-4…
+#&gt;  4 Acci…    -122.      38.0 cdrou… gbif  1.80e9 50c9509d-… 28eb1a3f-1c15-4…
+#&gt;  5 Acci…    -122.      37.2 cdrou… gbif  1.81e9 50c9509d-… 28eb1a3f-1c15-4…
+#&gt;  6 Acci…    -122.      37.0 cdrou… gbif  1.80e9 50c9509d-… 28eb1a3f-1c15-4…
+#&gt;  7 Acci…    -103.      50.1 cdrou… gbif  1.80e9 50c9509d-… 28eb1a3f-1c15-4…
+#&gt;  8 Acci…    -122.      38.0 cdrou… gbif  1.80e9 50c9509d-… 28eb1a3f-1c15-4…
+#&gt;  9 Acci…    -115.      36.2 cdrou… gbif  1.81e9 50c9509d-… 28eb1a3f-1c15-4…
+#&gt; 10 Acci…    -122.      37.1 cdrou… gbif  1.81e9 50c9509d-… 28eb1a3f-1c15-4…
+#&gt; # ... with 15 more rows, and 61 more variables: networkKeys &lt;list&gt;,
+#&gt; #   installationKey &lt;chr&gt;, publishingCountry &lt;chr&gt;, protocol &lt;chr&gt;,
 #&gt; #   lastCrawled &lt;chr&gt;, lastParsed &lt;chr&gt;, crawlId &lt;int&gt;,
 #&gt; #   basisOfRecord &lt;chr&gt;, taxonKey &lt;int&gt;, kingdomKey &lt;int&gt;,
 #&gt; #   phylumKey &lt;int&gt;, classKey &lt;int&gt;, orderKey &lt;int&gt;, familyKey &lt;int&gt;,
-#&gt; #   genusKey &lt;int&gt;, scientificName &lt;chr&gt;, kingdom &lt;chr&gt;, phylum &lt;chr&gt;,
+#&gt; #   genusKey &lt;int&gt;, acceptedTaxonKey &lt;int&gt;, scientificName &lt;chr&gt;,
+#&gt; #   acceptedScientificName &lt;chr&gt;, kingdom &lt;chr&gt;, phylum &lt;chr&gt;,
 #&gt; #   order &lt;chr&gt;, family &lt;chr&gt;, genus &lt;chr&gt;, genericName &lt;chr&gt;,
-#&gt; #   specificEpithet &lt;chr&gt;, taxonRank &lt;chr&gt;, dateIdentified &lt;chr&gt;,
-#&gt; #   coordinateUncertaintyInMeters &lt;dbl&gt;, year &lt;int&gt;, month &lt;int&gt;,
-#&gt; #   day &lt;int&gt;, eventDate &lt;date&gt;, modified &lt;chr&gt;, lastInterpreted &lt;chr&gt;,
+#&gt; #   specificEpithet &lt;chr&gt;, taxonRank &lt;chr&gt;, taxonomicStatus &lt;chr&gt;,
+#&gt; #   dateIdentified &lt;chr&gt;, coordinateUncertaintyInMeters &lt;dbl&gt;,
+#&gt; #   stateProvince &lt;chr&gt;, year &lt;int&gt;, month &lt;int&gt;, day &lt;int&gt;,
+#&gt; #   eventDate &lt;date&gt;, modified &lt;chr&gt;, lastInterpreted &lt;chr&gt;,
 #&gt; #   references &lt;chr&gt;, license &lt;chr&gt;, geodeticDatum &lt;chr&gt;, class &lt;chr&gt;,
 #&gt; #   countryCode &lt;chr&gt;, country &lt;chr&gt;, rightsHolder &lt;chr&gt;,
 #&gt; #   identifier &lt;chr&gt;, informationWithheld &lt;chr&gt;, verbatimEventDate &lt;chr&gt;,
@@ -230,43 +234,43 @@
 #&gt; #   verbatimLocality &lt;chr&gt;, occurrenceID &lt;chr&gt;, taxonID &lt;chr&gt;,
 #&gt; #   catalogNumber &lt;chr&gt;, recordedBy &lt;chr&gt;,
 #&gt; #   `http://unknown.org/occurrenceDetails` &lt;chr&gt;, institutionCode &lt;chr&gt;,
-#&gt; #   rights &lt;chr&gt;, eventTime &lt;chr&gt;, identificationID &lt;chr&gt;,
-#&gt; #   identificationRemarks &lt;chr&gt;, occurrenceRemarks &lt;chr&gt;</code></pre>
+#&gt; #   rights &lt;chr&gt;, eventTime &lt;chr&gt;,
+#&gt; #   `http://unknown.org/http_//rs.gbif.org/terms/1.0/Multimedia` &lt;chr&gt;,
+#&gt; #   identificationID &lt;chr&gt;, occurrenceRemarks &lt;chr&gt;</code></pre>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">df<span class="op">$</span>ecoengine<span class="op">$</span>data<span class="op">$</span>Accipiter_striatus</a></code></pre></div>
-<pre><code>#&gt; # A tibble: 25 × 17
-#&gt;    longitude latitude
-#&gt; *      &lt;dbl&gt;    &lt;dbl&gt;
-#&gt; 1   -87.5932  41.7945
-#&gt; 2   -86.9241  41.2665
-#&gt; 3  -118.3016  34.0320
-#&gt; 4  -118.3016  34.0320
-#&gt; 5  -118.3016  34.0320
-#&gt; 6  -118.3016  34.0320
-#&gt; 7  -118.4415  34.2677
-#&gt; 8  -118.4415  34.2677
-#&gt; 9  -118.3016  34.0320
-#&gt; 10 -118.3016  34.0320
-#&gt; # ... with 15 more rows, and 15 more variables: url &lt;chr&gt;, key &lt;chr&gt;,
-#&gt; #   observation_type &lt;chr&gt;, name &lt;chr&gt;, country &lt;chr&gt;,
-#&gt; #   state_province &lt;chr&gt;, begin_date &lt;date&gt;, end_date &lt;chr&gt;, source &lt;chr&gt;,
+<pre><code>#&gt; # A tibble: 25 x 17
+#&gt;    longitude latitude url   key   observation_type name  country
+#&gt;        &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;            &lt;chr&gt; &lt;chr&gt;  
+#&gt;  1     -115.     33.4 http… MVZ:… specimen         Acci… United…
+#&gt;  2     -117.     33.1 http… MVZ:… specimen         Acci… United…
+#&gt;  3     -119.     39.5 http… MVZ:… specimen         Acci… United…
+#&gt;  4     -116.     40.2 http… MVZ:… specimen         Acci… United…
+#&gt;  5     -117.     38.9 http… MVZ:… specimen         Acci… United…
+#&gt;  6     -118.     45.1 http… MVZ:… specimen         Acci… United…
+#&gt;  7     -123.     39.7 http… MVZ:… specimen         Acci… United…
+#&gt;  8     -123.     40.5 http… MVZ:… specimen         Acci… United…
+#&gt;  9     -124.     40.5 http… MVZ:… specimen         Acci… United…
+#&gt; 10     -120.     41.4 http… MVZ:… specimen         Acci… United…
+#&gt; # ... with 15 more rows, and 10 more variables: state_province &lt;chr&gt;,
+#&gt; #   begin_date &lt;date&gt;, end_date &lt;chr&gt;, source &lt;chr&gt;,
 #&gt; #   remote_resource &lt;chr&gt;, locality &lt;chr&gt;,
 #&gt; #   coordinate_uncertainty_in_meters &lt;int&gt;, recorded_by &lt;chr&gt;,
 #&gt; #   last_modified &lt;chr&gt;, prov &lt;chr&gt;</code></pre>
 <p>We provide a function <code>occ2df</code> that pulls out a few key columns needed for making maps:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw"><a href="../reference/occ2df.html">occ2df</a></span>(df)</a></code></pre></div>
-<pre><code>#&gt; # A tibble: 50 × 6
-#&gt;                  name  longitude latitude  prov       date        key
-#&gt;                 &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;     &lt;date&gt;      &lt;chr&gt;
-#&gt; 1  Accipiter striatus  -97.12924 32.70085  gbif 2017-01-01 1453324136
-#&gt; 2  Accipiter striatus  -84.74625 40.01773  gbif 2017-01-21 1453369124
-#&gt; 3  Accipiter striatus  -72.58904 43.85320  gbif 2017-01-07 1453335509
-#&gt; 4  Accipiter striatus  -96.77096 33.22315  gbif 2017-01-04 1453335637
-#&gt; 5  Accipiter striatus -111.01449 32.27128  gbif 2017-01-15 1453356813
-#&gt; 6  Accipiter striatus  -77.41813 39.49461  gbif 2017-01-05 1453332084
-#&gt; 7  Accipiter striatus -122.05344 36.95316  gbif 2017-01-11 1453346783
-#&gt; 8  Accipiter striatus -122.59224 38.05409  gbif 2017-01-31 1453398190
-#&gt; 9  Accipiter striatus -100.92892 25.45035  gbif 2017-01-03 1453328268
-#&gt; 10 Accipiter striatus  -96.82008 33.17463  gbif 2017-01-05 1453360827
+<pre><code>#&gt; # A tibble: 50 x 6
+#&gt;    name               longitude latitude prov  date       key       
+#&gt;    &lt;chr&gt;                  &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt; &lt;date&gt;     &lt;chr&gt;     
+#&gt;  1 Accipiter striatus    -104.      20.7 gbif  2018-01-27 1806372635
+#&gt;  2 Accipiter striatus     -98.6     33.8 gbif  2018-01-21 1806341314
+#&gt;  3 Accipiter striatus     -74.1     40.1 gbif  2018-01-26 1806363338
+#&gt;  4 Accipiter striatus    -122.      38.0 gbif  2018-01-01 1802760979
+#&gt;  5 Accipiter striatus    -122.      37.2 gbif  2018-01-20 1806339729
+#&gt;  6 Accipiter striatus    -122.      37.0 gbif  2018-01-01 1802763269
+#&gt;  7 Accipiter striatus    -103.      50.1 gbif  2018-01-04 1802777994
+#&gt;  8 Accipiter striatus    -122.      38.0 gbif  2018-01-06 1802790830
+#&gt;  9 Accipiter striatus    -115.      36.2 gbif  2018-01-23 1806356037
+#&gt; 10 Accipiter striatus    -122.      37.1 gbif  2018-01-01 1807330165
 #&gt; # ... with 40 more rows</code></pre>
 </div>
 <div id="fix-names" class="section level3">
@@ -289,31 +293,56 @@
 #&gt; [45] "Pinus contorta" "Pinus contorta" "Pinus contorta" "Pinus contorta"
 #&gt; [49] "Pinus contorta" "Pinus contorta"</code></pre>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1">df<span class="op">$</span>ecoengine<span class="op">$</span>data<span class="op">$</span>Pinus_contorta<span class="op">$</span>name</a></code></pre></div>
-<pre><code>#&gt;  [1] "Pinus contorta"                  "Pinus contorta"                 
-#&gt;  [3] "Pinus contorta"                  "Pinus contorta"                 
-#&gt;  [5] "Pinus contorta"                  "Pinus contorta"                 
-#&gt;  [7] "Pinus contorta"                  "Pinus contorta"                 
-#&gt;  [9] "Pinus contorta"                  "Pinus contorta"                 
-#&gt; [11] "Pinus contorta"                  "Pinus contorta"                 
-#&gt; [13] "Pinus contorta"                  "Pinus contorta"                 
-#&gt; [15] "Pinus contorta"                  "Pinus contorta"                 
-#&gt; [17] "Pinus contorta"                  "Pinus contorta"                 
-#&gt; [19] "Pinus contorta subsp. murrayana" "Pinus contorta"                 
-#&gt; [21] "Pinus contorta"                  "Pinus contorta"                 
-#&gt; [23] "Pinus contorta"                  "Pinus contorta"                 
-#&gt; [25] "Pinus contorta"                  "Pinus contorta"                 
-#&gt; [27] "Pinus contorta"                  "Pinus contorta"                 
-#&gt; [29] "Pinus contorta"                  "Pinus contorta"                 
-#&gt; [31] "Pinus contorta subsp. murrayana" "Pinus contorta subsp. murrayana"
-#&gt; [33] "Pinus contorta"                  "Pinus contorta subsp. murrayana"
-#&gt; [35] "Pinus contorta subsp. murrayana" "Pinus contorta subsp. murrayana"
-#&gt; [37] "Pinus contorta"                  "Pinus contorta"                 
-#&gt; [39] "Pinus contorta"                  "Pinus contorta"                 
-#&gt; [41] "Pinus contorta"                  "Pinus contorta"                 
-#&gt; [43] "Pinus contorta"                  "Pinus contorta"                 
-#&gt; [45] "Pinus contorta"                  "Pinus contorta"                 
-#&gt; [47] "Pinus contorta"                  "Pinus contorta"                 
-#&gt; [49] "Pinus contorta"                  "Pinus contorta"</code></pre>
+<pre><code>#&gt;  [1] "Pinus contorta subsp. contorta"         
+#&gt;  [2] "Pinus contorta"                         
+#&gt;  [3] "Pinus contorta subsp. murrayana"        
+#&gt;  [4] "Pinus contorta subsp. murrayana"        
+#&gt;  [5] "Pinus contorta subsp. murrayana"        
+#&gt;  [6] "Pinus contorta subsp. murrayana"        
+#&gt;  [7] "Pinus contorta subsp. murrayana"        
+#&gt;  [8] "Pinus contorta subsp. murrayana"        
+#&gt;  [9] "Pinus contorta subsp. murrayana"        
+#&gt; [10] "Pinus contorta subsp. murrayana"        
+#&gt; [11] "Pinus contorta subsp. murrayana"        
+#&gt; [12] "Pinus contorta"                         
+#&gt; [13] "Pinus contorta subsp. murrayana"        
+#&gt; [14] "Pinus contorta subsp. murrayana"        
+#&gt; [15] "Pinus contorta"                         
+#&gt; [16] "Pinus contorta subsp. murrayana"        
+#&gt; [17] "Pinus contorta"                         
+#&gt; [18] "Pinus contorta"                         
+#&gt; [19] "Pinus contorta subsp. murrayana"        
+#&gt; [20] "Pinus contorta subsp. murrayana"        
+#&gt; [21] "Pinus contorta var. latifolia"          
+#&gt; [22] "Pinus contorta subsp. murrayana"        
+#&gt; [23] "Pinus contorta"                         
+#&gt; [24] "Pinus contorta"                         
+#&gt; [25] "Pinus contorta subsp. murrayana"        
+#&gt; [26] "Pinus contorta"                         
+#&gt; [27] "Pinus contorta"                         
+#&gt; [28] "Pinus contorta subsp. murrayana"        
+#&gt; [29] "Pinus contorta subsp. murrayana"        
+#&gt; [30] "Pinus contorta subsp. murrayana"        
+#&gt; [31] "Pinus contorta subsp. murrayana"        
+#&gt; [32] "Pinus contorta subsp. murrayana"        
+#&gt; [33] "Pinus contorta subsp. murrayana"        
+#&gt; [34] "Pinus contorta subsp. murrayana"        
+#&gt; [35] "Pinus contorta subsp. murrayana"        
+#&gt; [36] "Pinus contorta subsp. murrayana"        
+#&gt; [37] "Pinus contorta subsp. murrayana"        
+#&gt; [38] "Pinus contorta"                         
+#&gt; [39] "Pinus contorta"                         
+#&gt; [40] "Pinus contorta subsp. murrayana"        
+#&gt; [41] "Pinus contorta subsp. murrayana"        
+#&gt; [42] "Pinus contorta subsp. murrayana (Balf.)"
+#&gt; [43] "Pinus contorta murrayana"               
+#&gt; [44] "Pinus contorta murrayana"               
+#&gt; [45] "Pinus contorta murrayana"               
+#&gt; [46] "Pinus contorta subsp. murrayana"        
+#&gt; [47] "Pinus contorta"                         
+#&gt; [48] "Pinus contorta var. contorta"           
+#&gt; [49] "Pinus contorta subsp. murrayana"        
+#&gt; [50] "Pinus contorta murrayana"</code></pre>
 <p>This is fine, but when trying to make a map in which points are colored for each taxon, you can have many colors for a single taxon, where instead one color per taxon is more appropriate. There is a function in <code>spocc</code> called <code>fixnames</code>, which has a few options in which you can take the shortest names (usually just the plain binomials like <em>Homo sapiens</em>), or the original name queried, or a vector of names supplied by the user.</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1">df &lt;-<span class="st"> </span><span class="kw"><a href="../reference/fixnames.html">fixnames</a></span>(df, <span class="dt">how =</span> <span class="st">'query'</span>)</a>
 <a class="sourceLine" id="cb16-2" data-line-number="2">df<span class="op">$</span>gbif<span class="op">$</span>data<span class="op">$</span>Pinus_contorta<span class="op">$</span>name</a></code></pre></div>
@@ -346,25 +375,24 @@
 #&gt; [49] "Pinus contorta" "Pinus contorta"</code></pre>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1">df_comb &lt;-<span class="st"> </span><span class="kw"><a href="../reference/occ2df.html">occ2df</a></span>(df)</a>
 <a class="sourceLine" id="cb20-2" data-line-number="2"><span class="kw">head</span>(df_comb); <span class="kw">tail</span>(df_comb)</a></code></pre></div>
-<pre><code>#&gt; # A tibble: 6 × 6
-#&gt;             name longitude latitude  prov       date        key
-#&gt;            &lt;chr&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;     &lt;date&gt;      &lt;chr&gt;
-#&gt; 1 Pinus contorta   12.3983 59.59840  gbif 2017-01-03 1433805430
-#&gt; 2 Pinus contorta -135.3480 57.05074  gbif 2017-01-12 1453348580
-#&gt; 3 Pinus contorta   17.5647 59.84490  gbif 2017-01-25 1434022908
-#&gt; 4 Pinus contorta -135.3265 57.05411  gbif 2017-01-20 1453367506
-#&gt; 5 Pinus contorta   17.5646 59.84520  gbif 2017-01-07 1433834252
-#&gt; 6 Pinus contorta   17.5646 59.84520  gbif 2017-01-09 1433861481</code></pre>
-<pre><code>#&gt; # A tibble: 6 × 6
-#&gt;             name longitude latitude      prov   date
-#&gt;            &lt;chr&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;chr&gt; &lt;date&gt;
-#&gt; 1 Pinus contorta -120.3358  39.1632 ecoengine   &lt;NA&gt;
-#&gt; 2 Pinus contorta -119.9564  38.7905 ecoengine   &lt;NA&gt;
-#&gt; 3 Pinus contorta -121.2308  40.3064 ecoengine   &lt;NA&gt;
-#&gt; 4 Pinus contorta -121.2308  40.3064 ecoengine   &lt;NA&gt;
-#&gt; 5 Pinus contorta -119.5066  37.6013 ecoengine   &lt;NA&gt;
-#&gt; 6 Pinus contorta -119.5158  37.6024 ecoengine   &lt;NA&gt;
-#&gt; # ... with 1 more variables: key &lt;chr&gt;</code></pre>
+<pre><code>#&gt; # A tibble: 6 x 6
+#&gt;   name           longitude latitude prov  date       key       
+#&gt;   &lt;chr&gt;              &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt; &lt;date&gt;     &lt;chr&gt;     
+#&gt; 1 Pinus contorta    -110.      45.0 gbif  2018-01-18 1805419334
+#&gt; 2 Pinus contorta      17.6     59.8 gbif  2018-01-01 1821183578
+#&gt; 3 Pinus contorta    -110.      44.9 gbif  2018-01-18 1805419531
+#&gt; 4 Pinus contorta    -135.      57.1 gbif  2018-01-14 1805399256
+#&gt; 5 Pinus contorta    -113.      47.2 gbif  2018-01-06 1802781699
+#&gt; 6 Pinus contorta    -135.      57.1 gbif  2018-01-06 1802784638</code></pre>
+<pre><code>#&gt; # A tibble: 6 x 6
+#&gt;   name           longitude latitude prov      date       key              
+#&gt;   &lt;chr&gt;              &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;     &lt;date&gt;     &lt;chr&gt;            
+#&gt; 1 Pinus contorta     -122.     37.5 ecoengine 1928-08-01 vtm:plot:82CC34:2
+#&gt; 2 Pinus contorta     -118.     34.3 ecoengine 1953-04-01 SD90152          
+#&gt; 3 Pinus contorta     -124.     40.8 ecoengine 1931-05-01 UCD134473        
+#&gt; 4 Pinus contorta     -124.     39.3 ecoengine 1953-05-30 RSA82866         
+#&gt; 5 Pinus contorta     -120.     38.8 ecoengine 2009-07-22 SD237235         
+#&gt; 6 Pinus contorta     -120.     37.9 ecoengine 1920-01-01 vtm:plot:77B415:2</code></pre>
 </div>
 <div id="clean-data" class="section level2">
 <h2 class="hasAnchor">

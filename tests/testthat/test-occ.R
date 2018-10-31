@@ -69,34 +69,6 @@ test_that("occ works for each data source", {
   expect_equal(unique(temp_df10$prov), "ala")
 })
 
-# test_that("occ antweb tests", {
-#   skip_on_cran()
-  
-#   # Adding tests for Antweb
-#   by_species <- suppressWarnings(
-#     tryCatch(suppressMessages(
-#       occ(query = "linepithema humile", from = "antweb", limit = 10)), error=function(e) e))
-#   by_genus <- suppressWarnings(
-#     tryCatch(suppressMessages(
-#       occ(query = "acanthognathus", from = "antweb", limit = 10)), error=function(e) e))
-
-#   if (!"error" %in% class(by_species)) {
-#     expect_is(by_species, "occdat")
-#     expect_is(by_species$antweb, "occdatind")
-#     expect_is(by_species$antweb$data[[1]], "data.frame")
-#     temp_df7 <- by_species$antweb$data[[1]]
-#     expect_equal(unique(temp_df7$prov), "antweb")
-#   }
-
-#   if (!"error" %in% class(by_genus)) {
-#     expect_is(by_genus, "occdat")
-#     expect_is(by_genus$antweb, "occdatind")
-#     expect_is(by_genus$antweb$data[[1]], "data.frame")
-#     temp_df8 <- by_genus$antweb$data[[1]]
-#     expect_equal(unique(temp_df8$prov), "antweb")
-#   }
-# })
-
 
 test_that("occ works when only opts passed", {
   skip_on_cran()

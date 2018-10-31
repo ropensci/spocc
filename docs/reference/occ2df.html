@@ -153,8 +153,6 @@ single data.frame contains the following columns:</p>
 <li><p>date - occurrence record date</p></li>
 <li><p>key - occurrence record key</p></li>
 </ul>
-    <p>AntWeb doesn't provide dates, so occurrence rows from that provider
-are blank.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -182,10 +180,6 @@ are blank.</p>
 <span class='no'>spnames</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='st'>'Accipiter striatus'</span>, <span class='st'>'Spinus tristis'</span>)
 <span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='occ.html'>occ</a></span>(<span class='kw'>query</span><span class='kw'>=</span><span class='no'>spnames</span>, <span class='kw'>from</span><span class='kw'>=</span><span class='st'>'gbif'</span>, <span class='kw'>limit</span><span class='kw'>=</span><span class='fl'>2</span>)
 <span class='fu'>occ2df</span>(<span class='no'>out</span>$<span class='no'>gbif</span>)
-
-<span class='no'>spp</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='st'>"Linepithema humile"</span>, <span class='st'>"Crematogaster brasiliensis"</span>)
-<span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='occ.html'>occ</a></span>(<span class='kw'>query</span><span class='kw'>=</span><span class='no'>spp</span>, <span class='kw'>from</span><span class='kw'>=</span><span class='st'>'antweb'</span>, <span class='kw'>limit</span><span class='kw'>=</span><span class='fl'>2</span>)
-<span class='fu'>occ2df</span>(<span class='no'>out</span>$<span class='no'>antweb</span>)
 <span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

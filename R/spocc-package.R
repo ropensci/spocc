@@ -2,7 +2,7 @@
 #' 
 #' @description A programmatic interface to many species occurrence data 
 #' sources, including GBIF, USGS's BISON, iNaturalist, Berkeley Ecoinformatics 
-#' Engine, eBird, AntWeb, iDigBio, VertNet, OBIS, and ALA. Includes 
+#' Engine, eBird, iDigBio, VertNet, OBIS, and ALA. Includes 
 #' functionality for retrieving species occurrence data, and 
 #' combining that data.
 #' 
@@ -29,7 +29,6 @@
 #' eBird \tab <http://ebird.org/content/ebird/> \cr
 #' iNaturalist \tab <http://www.inaturalist.org/> \cr
 #' Berkeley ecoengine \tab <https://ecoengine.berkeley.edu/> \cr
-#' AntWeb \tab <http://www.antweb.org/> \cr
 #' VertNet \tab <http://vertnet.org/> \cr
 #' iDigBio \tab <https://www.idigbio.org/> \cr
 #' OBIS \tab <http://www.iobis.org/> \cr

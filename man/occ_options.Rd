@@ -31,16 +31,13 @@ called through match.arg first, so you can match on unique partial
 strings too (e.g., 'rv' for 'rvertnet').
 
 For some data sources we don't import the canonical package, but instead
-have our own intenral helper functions and the package in question is
+have our own internal helper functions and the package in question is
 not imported, but we do suggest seeing the help for the package on
 their parameters:
 
 \itemize{
-\item \strong{AntWeb}: \code{?AntWeb::aw_data}
 \item \strong{ecoengine}: \code{?ecoengine::ee_observations}
 }
-
-For others,
 }
 \examples{
 \dontrun{

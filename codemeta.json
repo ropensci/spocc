@@ -10,7 +10,7 @@
   "codeRepository": "https://github.com/ropensci/spocc",
   "issueTracker": "https://github.com/ropensci/spocc/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "0.8.1.9100",
+  "version": "0.8.2.9100",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -272,12 +272,31 @@
   "contIntegration": "https://travis-ci.org/ropensci/spocc",
   "releaseNotes": "https://github.com/ropensci/spocc/blob/master/NEWS.md",
   "readme": "https://github.com/ropensci/spocc/blob/master/README.md",
-  "fileSize": "728.794KB",
+  "fileSize": "728.408KB",
   "funder": [
     {
       "@type": "Organization",
       "name": "rOpenSci"
     }
   ],
-  "keywords": ["gbif", "vertnet", "ecoengine", "antweb", "ebird", "data", "api", "rstats", "r", "species", "inaturalist", "idigbio", "obis", "bison", "species-occurrence", "occurrence", "spocc", "r-package"]
+  "keywords": [
+    "gbif",
+    "vertnet",
+    "ecoengine",
+    "antweb",
+    "ebird",
+    "data",
+    "api",
+    "rstats",
+    "r",
+    "species",
+    "inaturalist",
+    "idigbio",
+    "obis",
+    "bison",
+    "species-occurrence",
+    "occurrence",
+    "spocc",
+    "r-package"
+  ]
 }

@@ -20,7 +20,7 @@ inspect(x, from = "gbif")
 \code{\link{occ2df}}, or an occurrence ID as a occkey class.}
 
 \item{from}{(character) The data provider. One of gbif, bison, inat,
-antweb, ecoengine, or vertnet}
+ecoengine, or vertnet}
 }
 \value{
 A list, with each slot named for the data source, and then
@@ -44,8 +44,6 @@ inspect(res)
 
 # from occkeys
 key <- as.gbif(res$key[1])
-inspect(key)
-key <- as.antweb("amsat-94817")
 inspect(key)
 
 # idigbio

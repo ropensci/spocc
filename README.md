@@ -13,7 +13,7 @@ spocc
 
 **`spocc` = SPecies OCCurrence data**
 
-At rOpenSci, we have been writing R packages to interact with many sources of species occurrence data, including [GBIF][gbif], [Vertnet][vertnet], [BISON][bison], [iNaturalist][inat], the [Berkeley ecoengine][ecoengine], [AntWeb][antweb], and [eBird][ebird]. Other databases are out there as well, which we can pull in. `spocc` is an R package to query and collect species occurrence data from many sources. The goal is to to create a seamless search experience across data sources, as well as creating unified outputs across data sources.
+At rOpenSci, we have been writing R packages to interact with many sources of species occurrence data, including [GBIF][gbif], [Vertnet][vertnet], [BISON][bison], [iNaturalist][inat], the [Berkeley ecoengine][ecoengine], and [eBird][ebird]. Other databases are out there as well, which we can pull in. `spocc` is an R package to query and collect species occurrence data from many sources. The goal is to to create a seamless search experience across data sources, as well as creating unified outputs across data sources.
 
 `spocc` currently interfaces with ten major biodiversity repositories
 
@@ -35,16 +35,13 @@ Built by the US Geological Survey's core science analytic team, BISON is a porta
 6. [eBird][ebird] (via `rebird`)
 ebird is a database developed and maintained by the Cornell Lab of Ornithology and the National Audubon Society. It provides real-time access to checklist data, data on bird abundance and distribution, and communtiy reports from birders.
 
-7. [AntWeb][antweb] (via `AntWeb`)
-AntWeb is the world's largest online database of images, specimen records, and natural history information on ants. It is community driven and open to contribution from anyone with specimen records, natural history comments, or images.
-
-8. [iDigBio][idigbio] (via `ridigbio`)
+7. [iDigBio][idigbio] (via `ridigbio`)
 iDigBio facilitates the digitization of biological and paleobiological specimens and their associated data, and houses specimen data, as well as providing their specimen data via RESTful web services.
 
-9. [OBIS][obis]
+8. [OBIS][obis]
 OBIS (Ocean Biogeographic Information System) allows users to search marine species datasets from all of the world's oceans.
 
-10. [Atlas of Living Australia][ala]
+9. [Atlas of Living Australia][ala]
 ALA (Atlas of Living Australia) contains information on all the known species in Australia aggregated from a wide range of data providers: museums, herbaria, community groups, government departments, individuals and universities; it contains more than 50 million occurrence records.
 
 The inspiration for this comes from users requesting a more seamless experience across data sources, and from our work on a similar package for taxonomy data ([taxize][taxize]).
@@ -85,7 +82,7 @@ Get data from GBIF
 ```r
 (out <- occ(query = 'Accipiter striatus', from = 'gbif', limit = 100))
 #> Searched: gbif
-#> Occurrences - Found: 617,957, Returned: 100
+#> Occurrences - Found: 736,001, Returned: 100
 #> Search type: Scientific
 #>   gbif: Accipiter striatus (100)
 ```
@@ -98,13 +95,13 @@ out$gbif
 #> Species [Accipiter striatus (100)] 
 #> First 10 rows of [Accipiter_striatus]
 #> 
-#> # A tibble: 100 × 63
-#>                  name  longitude latitude  prov         issues        key
-#>                 <chr>      <dbl>    <dbl> <chr>          <chr>      <int>
-#> 1  Accipiter striatus  -97.12924 32.70085  gbif cdround,gass84 1453324136
-#> 2  Accipiter striatus  -84.74625 40.01773  gbif cdround,gass84 1453369124
-#> 3  Accipiter striatus  -72.58904 43.85320  gbif cdround,gass84 1453335509
-#> 4  Accipiter striatus  -96.77096 33.22315  gbif cdround,gass84 1453335637
+#> # A tibble: 100 x 87
+#>    name  longitude latitude prov  issues    key datasetKey publishingOrgKey
+#>    <chr>     <dbl>    <dbl> <chr> <chr>   <int> <chr>      <chr>           
+#>  1 Acci…    -104.      20.7 gbif  cdrou… 1.81e9 50c9509d-… 28eb1a3f-1c15-4…
+#>  2 Acci…     -98.6     33.8 gbif  cdrou… 1.81e9 50c9509d-… 28eb1a3f-1c15-4…
+#>  3 Acci…     -74.1     40.1 gbif  cdrou… 1.81e9 50c9509d-… 28eb1a3f-1c15-4…
+#>  4 Acci…    -122.      38.0 gbif  cdrou… 1.80e9 50c9509d-… 28eb1a3f-1c15-4…
 ...
 ```
 
@@ -114,29 +111,70 @@ Get fine-grained detail over each data source by passing on parameters to the pa
 
 
 ```r
-(out <- occ(query = 'Setophaga caerulescens', from = 'ebird', ebirdopts = list(region = 'US')))
-#> Searched: ebird
-#> Occurrences - Found: 0, Returned: 199
+(out <- occ(query = 'Setophaga caerulescens', from = 'gbif', gbifopts = list(country = 'US')))
+#> Searched: gbif
+#> Occurrences - Found: 238,863, Returned: 500
 #> Search type: Scientific
-#>   ebird: Setophaga caerulescens (199)
+#>   gbif: Setophaga caerulescens (500)
 ```
 
-Just ebird data
+Get just gbif data
 
 
 ```r
-out$ebird
-#> Species [Setophaga caerulescens (199)] 
+out$gbif
+#> Species [Setophaga caerulescens (500)] 
 #> First 10 rows of [Setophaga_caerulescens]
 #> 
-#> # A tibble: 199 × 12
-#>                      name longitude latitude  prov
-#>                     <chr>     <dbl>    <dbl> <chr>
-#> 1  Setophaga caerulescens -81.74960 24.57340 ebird
-#> 2  Setophaga caerulescens -82.50378 27.31897 ebird
-#> 3  Setophaga caerulescens -82.81150 27.83556 ebird
-#> 4  Setophaga caerulescens -93.94818 29.69841 ebird
-...
+#> # A tibble: 500 x 105
+#>    name  longitude latitude prov  issues    key datasetKey publishingOrgKey
+#>    <chr>     <dbl>    <dbl> <chr> <chr>   <int> <chr>      <chr>           
+#>  1 Seto…     -80.3     25.7 gbif  cdrou… 1.81e9 50c9509d-… 28eb1a3f-1c15-4…
+#>  2 Seto…     -80.3     25.8 gbif  cdrou… 1.81e9 50c9509d-… 28eb1a3f-1c15-4…
+#>  3 Seto…     -81.4     28.6 gbif  cdrou… 1.84e9 50c9509d-… 28eb1a3f-1c15-4…
+#>  4 Seto…     -77.3     39.0 gbif  cdrou… 1.84e9 50c9509d-… 28eb1a3f-1c15-4…
+#>  5 Seto…     -83.2     41.6 gbif  cdrou… 1.88e9 50c9509d-… 28eb1a3f-1c15-4…
+#>  6 Seto…     -74.0     40.8 gbif  cdrou… 1.84e9 50c9509d-… 28eb1a3f-1c15-4…
+#>  7 Seto…     -80.8     35.5 gbif  cdrou… 1.85e9 50c9509d-… 28eb1a3f-1c15-4…
+#>  8 Seto…     -97.2     26.1 gbif  cdrou… 1.84e9 50c9509d-… 28eb1a3f-1c15-4…
+#>  9 Seto…     -80.3     25.8 gbif  cdrou… 1.85e9 50c9509d-… 28eb1a3f-1c15-4…
+#> 10 Seto…     -77.1     38.9 gbif  cdrou… 1.84e9 50c9509d-… 28eb1a3f-1c15-4…
+#> # ... with 490 more rows, and 97 more variables: networkKeys <list>,
+#> #   installationKey <chr>, publishingCountry <chr>, protocol <chr>,
+#> #   lastCrawled <chr>, lastParsed <chr>, crawlId <int>,
+#> #   basisOfRecord <chr>, taxonKey <int>, kingdomKey <int>,
+#> #   phylumKey <int>, classKey <int>, orderKey <int>, familyKey <int>,
+#> #   genusKey <int>, acceptedTaxonKey <int>, scientificName <chr>,
+#> #   acceptedScientificName <chr>, kingdom <chr>, phylum <chr>,
+#> #   order <chr>, family <chr>, genus <chr>, genericName <chr>,
+#> #   specificEpithet <chr>, taxonRank <chr>, taxonomicStatus <chr>,
+#> #   dateIdentified <chr>, coordinateUncertaintyInMeters <dbl>,
+#> #   stateProvince <chr>, year <int>, month <int>, day <int>,
+#> #   eventDate <date>, modified <chr>, lastInterpreted <chr>,
+#> #   references <chr>, license <chr>, geodeticDatum <chr>, class <chr>,
+#> #   countryCode <chr>, country <chr>, rightsHolder <chr>,
+#> #   identifier <chr>, verbatimEventDate <chr>, datasetName <chr>,
+#> #   collectionCode <chr>, gbifID <chr>, verbatimLocality <chr>,
+#> #   occurrenceID <chr>, taxonID <chr>, catalogNumber <chr>,
+#> #   recordedBy <chr>, `http://unknown.org/occurrenceDetails` <chr>,
+#> #   institutionCode <chr>, rights <chr>, eventTime <chr>,
+#> #   occurrenceRemarks <chr>,
+#> #   `http://unknown.org/http_//rs.gbif.org/terms/1.0/Multimedia` <chr>,
+#> #   identificationID <chr>, informationWithheld <chr>, sex <chr>,
+#> #   lifeStage <chr>, establishmentMeans <chr>, infraspecificEpithet <chr>,
+#> #   continent <chr>, recordNumber <chr>, nomenclaturalCode <chr>,
+#> #   higherGeography <chr>, dynamicProperties <chr>, endDayOfYear <chr>,
+#> #   georeferenceVerificationStatus <chr>, locality <chr>, county <chr>,
+#> #   language <chr>, type <chr>, preparations <chr>,
+#> #   occurrenceStatus <chr>, startDayOfYear <chr>,
+#> #   bibliographicCitation <chr>, accessRights <chr>,
+#> #   higherClassification <chr>, institutionID <chr>,
+#> #   verbatimElevation <chr>, dataGeneralizations <chr>, organismID <chr>,
+#> #   ownerInstitutionCode <chr>, datasetID <chr>, collectionID <chr>,
+#> #   habitat <chr>, georeferencedDate <chr>, georeferencedBy <chr>,
+#> #   georeferenceProtocol <chr>, otherCatalogNumbers <chr>,
+#> #   georeferenceSources <chr>, identificationRemarks <chr>,
+#> #   individualCount <int>
 ```
 
 ## Many data sources at once
@@ -149,33 +187,33 @@ ebirdopts = list(region = 'US'); gbifopts = list(country = 'US')
 out <- occ(query = 'Setophaga caerulescens', from = c('gbif','bison','inat','ebird'), gbifopts = gbifopts, ebirdopts = ebirdopts, limit = 50)
 dat <- occ2df(out)
 head(dat); tail(dat)
-#> # A tibble: 6 × 6
-#>                     name   longitude  latitude  prov       date        key
-#>                    <chr>       <chr>     <chr> <chr>     <date>      <chr>
-#> 1 Setophaga caerulescens -122.673863 45.476817  gbif 2017-01-09 1453379582
-#> 2 Setophaga caerulescens  -83.035698 35.431075  gbif 2016-04-25 1453190650
-#> 3 Setophaga caerulescens  -83.162943 41.615537  gbif 2016-05-12 1269558094
-#> 4 Setophaga caerulescens  -74.405661 40.058324  gbif 2016-05-20 1453340127
-#> 5 Setophaga caerulescens  -83.449402 44.252577  gbif 2016-05-14 1291104360
-#> 6 Setophaga caerulescens  -83.449517 44.253819  gbif 2016-05-07 1291149600
-#> # A tibble: 6 × 6
-#>                     name   longitude   latitude  prov       date      key
-#>                    <chr>       <chr>      <chr> <chr>     <date>    <chr>
-#> 1 Setophaga caerulescens -82.8282344 27.8851167 ebird 2017-04-18 L3547190
-#> 2 Setophaga caerulescens   -82.64435  27.532639 ebird 2017-04-18  L189003
-#> 3 Setophaga caerulescens -81.7713915 26.1084774 ebird 2017-04-18 L2603780
-#> 4 Setophaga caerulescens -84.8486335  29.671734 ebird 2017-04-18  L352112
-#> 5 Setophaga caerulescens -80.7833333 33.7833333 ebird 2017-04-18  L109521
-#> 6 Setophaga caerulescens -81.9212021  26.746724 ebird 2017-04-17 L3579621
+#> # A tibble: 6 x 6
+#>   name                   longitude  latitude  prov  date       key       
+#>   <chr>                  <chr>      <chr>     <chr> <date>     <chr>     
+#> 1 Setophaga caerulescens -80.347459 25.743763 gbif  2018-01-20 1806338790
+#> 2 Setophaga caerulescens -80.342233 25.77536  gbif  2018-01-19 1805421161
+#> 3 Setophaga caerulescens -81.355815 28.569623 gbif  2018-03-14 1837766480
+#> 4 Setophaga caerulescens -83.192381 41.627135 gbif  2018-04-28 1880571743
+#> 5 Setophaga caerulescens -77.254868 39.006651 gbif  2018-04-29 1841263350
+#> 6 Setophaga caerulescens -73.965355 40.782865 gbif  2018-04-29 1841260747
+#> # A tibble: 6 x 6
+#>   name                 longitude     latitude     prov  date       key    
+#>   <chr>                <chr>         <chr>        <chr> <date>     <chr>  
+#> 1 Setophaga caerulesc… -73.94453706… 40.77460859… inat  2018-10-17 176031…
+#> 2 Setophaga caerulesc… -76.88181081… 39.21472314… inat  2018-10-17 175909…
+#> 3 Setophaga caerulesc… -83.16792165… 41.61632902… inat  2016-05-11 175862…
+#> 4 Setophaga caerulesc… -79.48059082… 43.74208054… inat  2017-05-01 175756…
+#> 5 Setophaga caerulesc… -80.79570739… 35.18428139… inat  2018-10-12 175692…
+#> 6 Setophaga caerulesc… -80.35602594… 25.77058197… inat  2018-10-14 175490…
 ```
 
 ## Clean data
 
-All data cleaning functionality is in a new package [scrubr](https://github.com/ropenscilabs/scrubr). [On CRAN](https://cran.r-project.org/package=scrubr).
+All data cleaning functionality is in a new package [scrubr](https://github.com/ropenscilabs/scrubr). `scrubr` [on CRAN](https://cran.r-project.org/package=scrubr).
 
 ## Make maps
 
-All mapping functionality is now in a separate package [mapr](https://github.com/ropensci/mapr) (formerly known as `spoccutils`), to make `spocc` easier to maintain. [On CRAN](https://cran.r-project.org/package=mapr).
+All mapping functionality is now in a separate package [mapr](https://github.com/ropensci/mapr) (formerly known as `spoccutils`), to make `spocc` easier to maintain. `mapr` [on CRAN](https://cran.r-project.org/package=mapr).
 
 ## Meta
 
@@ -192,7 +230,6 @@ All mapping functionality is now in a separate package [mapr](https://github.com
 [inat]: https://github.com/ropensci/rinat
 [taxize]: https://github.com/ropensci/taxize
 [ecoengine]: https://github.com/ropensci/ecoengine
-[antweb]: http://antweb.org/
 [idigbio]: https://www.idigbio.org/
 [obis]: http://www.iobis.org/
 [ebird]: http://ebird.org/content/ebird/

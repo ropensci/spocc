@@ -149,55 +149,6 @@ foo_ecoengine <- function(sources, query, limit, page, geometry, has_coords,
   }
 }
 
-
-#' @noRd
-foo_antweb <- function(sources, query, limit, start, geometry, has_coords,
-                       date, callopts, opts) {
-  if (any(grepl("antweb", sources))) {
-    time <- now()
-    opts$georeferenced <- has_coords
-    # limit <- NULL
-    geometry <- NULL
-
-    query <- sub("^ +", "", query)
-    query <- sub(" +$", "", query)
-
-    if (length(strsplit(query, " ")[[1]]) == 2) {
-      opts$scientific_name <- query
-    } else {
-      opts$genus <- query
-      opts$scientific_name <- NULL
-    }
-
-    if (!is.null(date)) {
-      if (length(date) != 2) stop("'date' for Ecoengine must be length 2")
-      opts$min_date <- date[1]
-      opts$max_date <- date[2]
-    }
-
-    if (!'limit' %in% names(opts)) opts$limit <- limit
-    if (!'offset' %in% names(opts)) opts$offset <- start
-    if (length(callopts) > 0) opts$callopts <- callopts
-    out <- tryCatch(do.call(aw_data2, opts), error = function(e) e)
-
-    if (is.null(out) || inherits(out, "simpleError") || NROW(out$data) == 0) {
-      warning(sprintf("No records found in AntWeb for %s", query),
-              call. = FALSE)
-      emptylist(opts)
-    } else {
-      res <- out$data
-      res$prov <- rep("antweb", nrow(res))
-      res$name <- query
-      res <- stand_latlon(res)
-      res <- add_latlong_if_missing(res)
-      list(time = time, found = out$count, data = as_data_frame(res),
-           opts = opts)
-    }
-  } else {
-    emptylist(opts)
-  }
-}
-
 #' @noRd
 foo_bison <- function(sources, query, limit, start, geometry, date, 
   callopts, opts) {

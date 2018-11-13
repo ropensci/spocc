@@ -21,9 +21,6 @@
 #'  \item key - occurrence record key
 #' }
 #'
-#' AntWeb doesn't provide dates, so occurrence rows from that provider
-#' are blank.
-#'
 #' @examples \dontrun{
 #' # combine results from output of an occ() call
 #' spnames <- c('Accipiter striatus', 'Setophaga caerulescens',
@@ -48,10 +45,6 @@
 #' spnames <- c('Accipiter striatus', 'Spinus tristis')
 #' out <- occ(query=spnames, from='gbif', limit=2)
 #' occ2df(out$gbif)
-#'
-#' spp <- c("Linepithema humile", "Crematogaster brasiliensis")
-#' out <- occ(query=spp, from='antweb', limit=2)
-#' occ2df(out$antweb)
 #' }
 occ2df <- function(obj, what = "data") {
   UseMethod("occ2df")
@@ -78,7 +71,6 @@ occ2df.occdat <- function(obj, what = "data") {
   cc <- foolist(obj$inat)
   dd <- foolist(obj$ebird)
   ee <- foolist(obj$ecoengine)
-  aw <- foolist(obj$antweb)
   vn <- foolist(obj$vertnet)
   id <- foolist(obj$idigbio)
   ob <- foolist(obj$obis)
@@ -101,14 +93,14 @@ occ2df.occdat <- function(obj, what = "data") {
           rename(dat, stats::setNames("key", keymap[[y]]))
         }
       },
-      list(aa, bb, cc, dd, ee, aw, vn, id, ob, ala),
-      c('gbif','bison','inat','ebird','ecoengine','antweb',
+      list(aa, bb, cc, dd, ee, vn, id, ob, ala),
+      c('gbif','bison','inat','ebird','ecoengine',
         'vertnet','idigbio','obis','ala')
     )
   )
   tmpout <- list(
     meta = list(obj$gbif$meta, obj$bison$meta, obj$inat$meta,
-                obj$ebird$meta, obj$ecoengine$meta, obj$aw$meta, obj$vn$meta,
+                obj$ebird$meta, obj$ecoengine$meta, obj$vn$meta,
                 obj$id$meta, obj$ob$meta, obj$ala$meta),
     data = tmp
   )
@@ -116,11 +108,11 @@ occ2df.occdat <- function(obj, what = "data") {
 }
 
 datemap <- list(gbif = 'eventDate', bison = 'date', inat = 'observed_on',
-                ebird = 'obsDt', ecoengine = 'begin_date', antweb = NULL,
+                ebird = 'obsDt', ecoengine = 'begin_date',
                 vertnet = "eventdate", idigbio = "datecollected",
                 obis = "eventDate", ala = "eventDate")
 
 keymap <- list(gbif = "key", bison = "occurrenceID", inat = "id",
-               ebird = "locID", ecoengine = "key", antweb = "catalogNumber",
+               ebird = "locID", ecoengine = "key",
                vertnet = "occurrenceid", idigbio = "uuid", obis = "id",
                ala = "uuid")

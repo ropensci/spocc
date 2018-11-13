@@ -42,16 +42,13 @@ Built by the US Geological Survey's core science analytic team, BISON is a porta
 6. [eBird](http://ebird.org/content/ebird/) (via `rebird`)
 ebird is a database developed and maintained by the Cornell Lab of Ornithology and the National Audubon Society. It provides real-time access to checklist data, data on bird abundance and distribution, and communtiy reports from birders.
 
-7. [AntWeb](http://antweb.org) (via `AntWeb`)
-AntWeb is the world's largest online database of images, specimen records, and natural history information on ants. It is community driven and open to contribution from anyone with specimen records, natural history comments, or images.
-
-8. [iDigBio](https://www.idigbio.org/) (via `ridigbio`)
+7. [iDigBio](https://www.idigbio.org/) (via `ridigbio`)
 iDigBio facilitates the digitization of biological and paleobiological specimens and their associated data, and houses specimen data, as well as providing their specimen data via RESTful web services.
 
-9. [OBIS](http://www.iobis.org/)
+8. [OBIS](http://www.iobis.org/)
 OBIS (Ocean Biogeographic Information System) allows users to search marine species datasets from all of the world's oceans.
 
-10. [Atlas of Living Australia](http://www.ala.org.au/)
+9. [Atlas of Living Australia](http://www.ala.org.au/)
 ALA (Atlas of Living Australia) contains information on all the known species in Australia aggregated from a wide range of data providers: museums, herbaria, community groups, government departments, individuals and universities; it contains more than 50 million occurrence records.
 
 __Important Note:__ It's important to keep in mind that several data providers interface with many of the above mentioned repositories. This means that occurence data obtained from BISON may be duplicates of data that are also available through GBIF. We do not have a way to resolve these duplicates or overlaps at this time but it is an issue we are hoping to resolve in future versions of the package. See `?spocc_duplicates`, after installation, for more.

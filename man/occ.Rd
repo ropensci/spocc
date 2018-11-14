@@ -13,7 +13,8 @@ occ(query = NULL, from = "gbif", limit = 500, start = NULL,
 }
 \arguments{
 \item{query}{(character) One to many scientific names. See Details for what parameter
-in each data source we query.}
+in each data source we query. Note: ebird now expects species codes instead of
+scientific names - we pass you name through \code{\link[rebird:species_code]{rebird::species_code()}} internally}
 
 \item{from}{(character) Data source to get data from, any combination of gbif, bison,
 inat, ebird, ecoengine and/or vertnet}
@@ -348,7 +349,7 @@ occ(query = 'Danaus plexippus', date = c('2015-01-01', '2015-12-31'), from = 'in
 # Restrict to records with coordinates
 occ(query = "Acer", from = "idigbio", limit = 5, has_coords = TRUE)
 
-occ(query = 'Setophaga caerulescens', from = 'ebird', ebirdopts = list(region='US'))
+occ(query = 'Setophaga caerulescens', from = 'ebird', ebirdopts = list(loc='US'))
 occ(query = 'Spinus tristis', from = 'ebird', ebirdopts =
    list(method = 'ebirdgeo', lat = 42, lng = -76, dist = 50))
 
@@ -443,7 +444,7 @@ wkt <- 'POLYGON((-98.9 44.2,-89.1 36.6,-116.7 37.5,-102.5 39.6,-98.9 44.2))'
 occ(from = "gbif", geometry = wkt, limit = 10)
 
 # Specify many data sources, another example
-ebirdopts = list(region = 'US'); gbifopts  =  list(country = 'US')
+ebirdopts = list(loc = 'US'); gbifopts  =  list(country = 'US')
 out <- occ(query = 'Setophaga caerulescens', from = c('gbif','inat','bison','ebird'),
     gbifopts = gbifopts, ebirdopts = ebirdopts, limit=20)
 occ2df(out)
@@ -514,10 +515,6 @@ occ(query = 'Accipiter striatus', from = 'bison', limit=10,
  callopts=list(verbose = TRUE))
 occ(query = 'Accipiter striatus', from = 'ecoengine', limit=10, 
  callopts=list(verbose = TRUE))
-occ(query = 'Accipiter striatus', from = c('ebird','bison'), limit=10, 
- callopts=list(verbose = TRUE))
-# occ(query = 'Accipiter striatus', from = 'ebird', limit=10, 
-# callopts=timeout(seconds = 0.1))
 occ(query = 'Accipiter striatus', from = 'inat', 
  callopts=list(verbose = TRUE))
 occ(query = 'Mola mola', from = 'obis', limit = 200, 

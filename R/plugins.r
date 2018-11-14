@@ -285,11 +285,17 @@ foo_ebird <- function(sources, query, limit, callopts, opts) {
       opts$method <- "ebirdregion"
     if (!opts$method %in% c("ebirdregion", "ebirdgeo"))
       stop("ebird method must be one of ebirdregion or ebirdgeo")
-    opts$species <- query
+    spnm <- tryCatch(suppressMessages(rebird::species_code(query)), 
+      error = function(e) e)
+    if (inherits(spnm, "error")) {
+      warning(spnm$message, ": ", query, call. = FALSE)
+      return(emptylist(opts))
+    }
+    opts$species <- spnm
     if (!'max' %in% names(opts)) opts$max <- limit
     opts$config <- callopts
     if (opts$method == "ebirdregion") {
-      if (is.null(opts$region)) opts$loc <- "US"
+      if (is.null(opts$loc)) opts$loc <- "US"
       out <- tryCatch(do.call(ebirdregion, opts[!names(opts) %in% "method"]),
                       error = function(e) e)
     } else {

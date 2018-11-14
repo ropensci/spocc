@@ -29,7 +29,7 @@ ee_observations2 <- function(page = NULL, page_size = 1000,
   main_args$page <- as.character(page)
   
   cli <- crul::HttpClient$new(url = eee_base_url(), opts = foptions)
-  out <- cli$get(path = "api/observations", query = c(args, format = "geojson"))
+  out <- cli$get(path = "api/observations/", query = c(args, format = "geojson"))
   out$raise_for_status()
   obs_data <- jsonlite::fromJSON(out$parse("UTF-8"), FALSE)
   stopifnot(obs_data$count > 0)
@@ -50,7 +50,7 @@ ee_observations2 <- function(page = NULL, page_size = 1000,
     args$page <- i
     
     cli <- crul::HttpClient$new(url = eee_base_url(), opts = foptions)
-    out <- cli$get(path = "api/observations", 
+    out <- cli$get(path = "api/observations/", 
                    query = c(args, format = "geojson"))
     out$raise_for_status()
     obs_data <- jsonlite::fromJSON(out$parse("UTF-8"), FALSE)

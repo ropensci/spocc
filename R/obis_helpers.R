@@ -16,7 +16,13 @@ obis_search <- function(scientificName = NULL, limit = 500, offset = 0,
     opts = list(...)
   )
   out <- cli$get(query = args)
-  out$raise_for_status()
+  if (out$status_code > 201) {
+    txt <- out$parse("UTF-8")
+    tt <- tryCatch(jsonlite::fromJSON(txt, FALSE), error = function(e) e)
+    if (inherits(tt, "error")) out$raise_for_status()
+    mssg <- strsplit(tt$message, ";")[[1]]
+    stop(mssg[length(mssg)], call. = FALSE)
+  }
   jsonlite::fromJSON(out$parse("UTF-8"))
 }
 

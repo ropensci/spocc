@@ -289,18 +289,18 @@ foo_ebird <- function(sources, query, limit, callopts, opts) {
       error = function(e) e)
     if (inherits(spnm, "error")) {
       warning(spnm$message, ": ", query, call. = FALSE)
-      return(emptylist(opts))
+      return(emptylist(opts, spnm$message))
     }
     opts$species <- spnm
     if (!'max' %in% names(opts)) opts$max <- limit
-    opts$config <- callopts
+    opts$opts <- callopts
     if (opts$method == "ebirdregion") {
       if (is.null(opts$loc)) opts$loc <- "US"
-      out <- tryCatch(do.call(ebirdregion, opts[!names(opts) %in% "method"]),
-                      error = function(e) e)
+      out <- tryCatch(do.call(spocc_ebird_region, opts[!names(opts) %in% "method"]),
+                      error = function(e) e, warning = function(w) w)
     } else {
-      out <- tryCatch(do.call(ebirdgeo, opts[!names(opts) %in% "method"]),
-                      error = function(e) e)
+      out <- tryCatch(do.call(spocc_ebirdgeo, opts[!names(opts) %in% "method"]),
+                      error = function(e) e, warning = function(w) w)
     }
     if (!is.data.frame(out) || inherits(out, "simpleError") || NROW(out) == 0) {
       warning(sprintf("No records returned in eBird for %s", query), call. = FALSE)
@@ -421,8 +421,9 @@ foo_idigbio <- function(sources, query, limit, start, geometry, has_coords,
       do.call(ridigbio::idig_search_records, opts)), error = function(e) e)
     if (inherits(out, "simpleError")) {
       # check for meaningful/useful error messages
-      warning(out$message)
-      #warning(sprintf("No records returned in iDigBio for %s", query))
+      # warning(out$message)
+      warning(sprintf("No records returned in iDigBio for %s", query), 
+        call. = FALSE)
       throw_error(out$message)
       emptylist(opts, out$message)
     } else{
@@ -470,7 +471,8 @@ foo_obis <- function(sources, query, limit, start, geometry, has_coords,
 
     tmp <- tryCatch(do.call(obis_search, opts), error = function(e) e)
     if (inherits(tmp, "simpleError") || "message" %in% names(tmp)) {
-      warning(sprintf("No records returned in OBIS for %s", query))
+      warning(sprintf("No records returned in OBIS for %s", query), 
+        call. = FALSE)
       throw_error(tmp$message)
       emptylist(opts, tmp$message)
     } else {
@@ -520,9 +522,11 @@ foo_ala <- function(sources, query, limit, start, geometry, has_coords,
     opts <- c(opts, callopts)
 
     tmp <- tryCatch(do.call(ala_search, opts), error = function(e) e)
-    if (inherits(tmp, "simpleError")) {
-      warning(sprintf("No records returned in ALA for %s", query))
-      emptylist(opts)
+    if (inherits(tmp, "error")) {
+      warning(sprintf("No records returned in ALA for %s", query),
+        call. = FALSE)
+      throw_error(tmp$message)
+      emptylist(opts, tmp$message)
     } else {
       if (!"occurrences" %in% names(tmp)) {
         warning(sprintf("No records returned in ALA for %s", query))

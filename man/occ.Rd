@@ -82,6 +82,12 @@ or \code{\link[rebird:ebirdgeo]{rebird::ebirdgeo()}}. See also \code{\link[=occ_
 \item{alaopts}{(list) List of named options to pass on to internal function.
 See \code{Occurrence search} part of the API docs at
 \url{http://api.ala.org.au/#ws3} for possible parameters.}
+
+\item{throw_errors}{(logical) \code{occ()} collects errors returned from each
+data provider when they occur, and are accessible in the \code{$meta$errors} slot for
+each data provider. If you set \code{throw_errors=TRUE}, we give these request errors as
+warnings with \code{\link[=warning]{warning()}}. if \code{FALSE}, we don't give warnings, but you can still
+access them in the output.}
 }
 \value{
 an object of class \code{occdat}, with a print method to give a brief summary.

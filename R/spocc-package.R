@@ -42,7 +42,9 @@
 #' 
 #' All data cleaning functionality is in a new package: `scrubr` 
 #' (<https://github.com/ropensci/scrubr>).
-#' On CRAN: <https://cran.r-project.org/package=scrubr>
+#' On CRAN: <https://cran.r-project.org/package=scrubr>. 
+#' See also package 
+#' <https://cran.r-project.org/package=CoordinateCleaner>
 #' 
 #' @section Make maps:
 #' 

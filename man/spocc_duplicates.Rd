@@ -13,19 +13,14 @@ provides data to GBIF, so if you search for occurrence records for
 \emph{Pinus contorta} from iNaturalist and GBIF, you could get, for example,
 20 of the same records.
 
-We are working on a way to programatically flag and/or remove these
-duplicate records. As  you could imagine, this is rather difficult as
-data is often lost in translation, significant digits could change from
-provider to provider for the same data, etc.
-
-Still, we think a single R interface to many occurrence record providers
+We think a single R interface to many occurrence record providers
 will provide a consistent way to work with occurrence data, making
 analyses and vizualizations more repeatable across providers.
 
-We are working on a set of tools for cleaning data, as well as removing
-duplicates in the \code{spocc_clean} function - so keep an eye on that.
+For cleaning data, see packages \code{scrubr}
+(\url{https://cran.r-project.org/package=scrubr}) and \code{CoordinateCleaner}
+(\url{https://cran.r-project.org/package=CoordinateCleaner})
 
 Do get in touch with us if you have concerns, have ideas for eliminating
-duplicates, etc, at \email{support@ropensci.org}, or at the issue tracker
-for the spocc package \url{https://github.com/ropensci/spocc/issues/new}
+duplicates
 }

@@ -56,7 +56,9 @@ See \code{\link[=spocc_duplicates]{spocc_duplicates()}} for more.
 
 All data cleaning functionality is in a new package: \code{scrubr}
 (\url{https://github.com/ropensci/scrubr}).
-On CRAN: \url{https://cran.r-project.org/package=scrubr}
+On CRAN: \url{https://cran.r-project.org/package=scrubr}.
+See also package
+\url{https://cran.r-project.org/package=CoordinateCleaner}
 }
 
 \section{Make maps}{

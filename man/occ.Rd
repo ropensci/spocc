@@ -201,6 +201,14 @@ Otherwise use page ranges or simply "all" to request all available pages.
 Note however that this may hang your call if the request is simply too large.
 }
 
+\section{BISON notes}{
+
+We use two different functions when you request data from \code{bison}. We use
+\code{\link[rbison:bison_solr]{rbison::bison_solr()}} by default as it's more flexible. If you pass a value to the
+\code{geometry} parameter we use \code{\link[rbison:bison]{rbison::bison()}}. We'd prefer to just use one function
+to simplify things, but \code{\link[rbison:bison_solr]{rbison::bison_solr()}} doesn't support geometry queries.
+}
+
 \section{limit parameter}{
 
 The \code{limit} parameter is set to a default of 25. This means that you will get \strong{up to}

@@ -148,6 +148,12 @@
 #' When searching ecoengine, you can leave the page argument blank to get a single page.
 #' Otherwise use page ranges or simply "all" to request all available pages.
 #' Note however that this may hang your call if the request is simply too large.
+#' 
+#' @section BISON notes:
+#' We use two different functions when you request data from `bison`. We use 
+#' [rbison::bison_solr()] by default as it's more flexible. If you pass a value to the 
+#' `geometry` parameter we use [rbison::bison()]. We'd prefer to just use one function 
+#' to simplify things, but [rbison::bison_solr()] doesn't support geometry queries.
 #'
 #' @section limit parameter:
 #' The `limit` parameter is set to a default of 25. This means that you will get **up to**

@@ -83,6 +83,42 @@ or \code{\link[rebird]{ebirdgeo}}. See also \code{\link{occ_options}}.}
 See \code{Occurrence search} part of the API docs at
 \url{http://api.ala.org.au/#ws3} for possible parameters.}
 }
+\value{
+an object of class \code{occdat}, with a print method to give a brief summary.
+the \code{occdat} class is just a thin wrapper around a named list, wher the top level names
+are the data sources:
+\itemize{
+\item gbif
+\item bison
+\item inat
+\item ebird
+\item ecoengine
+\item vertnet
+\item idigbio
+\item obis
+\item ala
+}
+
+Note that you only get data back for sources that were specified in the \code{from}
+parameter. All others are present, but empty.
+
+Then within each data source is an object of class \code{occdatind} holding another
+named list that contains:
+\itemize{
+\item meta: metadata
+\itemize{
+\item source: the data source name (e.g., "gbif")
+\item time: time the request was sent
+\item found: number of records found (number found across all queries)
+\item returned: number of records returned (number of rows in all data.frame's
+in the \code{data} slot)
+\item type: query type, only "sci" for scientific
+\item opts: a named list with the options you sent to the data source
+\item errors: a character vector of errors returned, if any occurred
+}
+\item data: named list of data.frame's, named by the queries sent
+}
+}
 \description{
 Search on a single species name, or many. And search across a single
 or many data sources.

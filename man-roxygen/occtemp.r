@@ -51,6 +51,37 @@
 #' @param alaopts (list) List of named options to pass on to internal function. 
 #' See \code{Occurrence search} part of the API docs at 
 #' \url{http://api.ala.org.au/#ws3} for possible parameters.
+#' 
+#' @return an object of class `occdat`, with a print method to give a brief summary. 
+#' the `occdat` class is just a thin wrapper around a named list, wher the top level names
+#' are the data sources:
+#' 
+#' - gbif
+#' - bison
+#' - inat
+#' - ebird
+#' - ecoengine
+#' - vertnet
+#' - idigbio
+#' - obis
+#' - ala
+#' 
+#' Note that you only get data back for sources that were specified in the `from` 
+#' parameter. All others are present, but empty.
+#' 
+#' Then within each data source is an object of class `occdatind` holding another 
+#' named list that contains:
+#' 
+#' - meta: metadata
+#'   - source: the data source name (e.g., "gbif")
+#'   - time: time the request was sent
+#'   - found: number of records found (number found across all queries)
+#'   - returned: number of records returned (number of rows in all data.frame's
+#'     in the `data` slot)
+#'   - type: query type, only "sci" for scientific
+#'   - opts: a named list with the options you sent to the data source
+#'   - errors: a character vector of errors returned, if any occurred
+#' - data: named list of data.frame's, named by the queries sent
 #'
 #' @details The \code{occ} function is an opinionated wrapper
 #' around the rgbif, rbison, rinat, rebird, ecoengine, rvertnet and

@@ -5,7 +5,7 @@
 \alias{inspect.data.frame}
 \alias{inspect.occdat}
 \alias{inspect.occkey}
-\title{Get more data on individual occurrences.}
+\title{Get more data on individual occurrences}
 \usage{
 inspect(x, from = "gbif")
 
@@ -27,7 +27,11 @@ A list, with each slot named for the data source, and then
 within data sources is a slot for each taxon, named by it's occurrence ID.
 }
 \description{
-Get more data on individual occurrences.
+Fetches the complete record, which may or may not be the same
+as requested through \code{\link[=occ]{occ()}}. Some data providers have different ways
+to retrieve many occurrence records vs. single occurrence records -
+and sometimes the results are more verbose when retrieving a
+single occurrence record.
 }
 \examples{
 \dontrun{

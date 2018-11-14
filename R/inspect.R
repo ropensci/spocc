@@ -1,7 +1,12 @@
-#' Get more data on individual occurrences.
+#' Get more data on individual occurrences
+#' 
+#' Fetches the complete record, which may or may not be the same
+#' as requested through [occ()]. Some data providers have different ways
+#' to retrieve many occurrence records vs. single occurrence records - 
+#' and sometimes the results are more verbose when retrieving a 
+#' single occurrence record.
 #'
 #' @export
-#'
 #' @param x The output from [occ()] call, output from call to
 #' [occ2df()], or an occurrence ID as a occkey class.
 #' @param from (character) The data provider. One of gbif, bison, inat,

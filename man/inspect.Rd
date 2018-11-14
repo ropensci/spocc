@@ -16,8 +16,8 @@ inspect(x, from = "gbif")
 \method{inspect}{occkey}(x, from = "gbif")
 }
 \arguments{
-\item{x}{The output from \code{\link{occ}} call, output from call to
-\code{\link{occ2df}}, or an occurrence ID as a occkey class.}
+\item{x}{The output from \code{\link[=occ]{occ()}} call, output from call to
+\code{\link[=occ2df]{occ2df()}}, or an occurrence ID as a occkey class.}
 
 \item{from}{(character) The data provider. One of gbif, bison, inat,
 ecoengine, or vertnet}

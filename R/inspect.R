@@ -2,9 +2,9 @@
 #'
 #' @export
 #'
-#' @param x The output from \code{\link{occ}} call, output from call to
-#' \code{\link{occ2df}}, or an occurrence ID as a occkey class.
-#' @param from  (character) The data provider. One of gbif, bison, inat,
+#' @param x The output from [occ()] call, output from call to
+#' [occ2df()], or an occurrence ID as a occkey class.
+#' @param from (character) The data provider. One of gbif, bison, inat,
 #' ecoengine, or vertnet
 #' @return A list, with each slot named for the data source, and then
 #' within data sources is a slot for each taxon, named by it's occurrence ID.

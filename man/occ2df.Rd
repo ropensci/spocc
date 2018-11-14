@@ -20,7 +20,6 @@ Combine results from occ calls to a single data.frame
 This function combines a subset of data from each data provider to a single
 data.frame, or metadata plus data if you request \code{what="all"}. The
 single data.frame contains the following columns:
-
 \itemize{
 \item name - scientific (or common) name
 \item longitude - decimal degree longitude

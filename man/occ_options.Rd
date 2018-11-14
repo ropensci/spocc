@@ -34,7 +34,6 @@ For some data sources we don't import the canonical package, but instead
 have our own internal helper functions and the package in question is
 not imported, but we do suggest seeing the help for the package on
 their parameters:
-
 \itemize{
 \item \strong{ecoengine}: \code{?ecoengine::ee_observations}
 }

@@ -12,14 +12,12 @@
 #' data.frame, or metadata plus data if you request `what="all"`. The
 #' single data.frame contains the following columns:
 #'
-#' \itemize{
-#'  \item name - scientific (or common) name
-#'  \item longitude - decimal degree longitude
-#'  \item latitude - decimal degree latitude
-#'  \item prov - data provider
-#'  \item date - occurrence record date
-#'  \item key - occurrence record key
-#' }
+#' - name - scientific (or common) name
+#' - longitude - decimal degree longitude
+#' - latitude - decimal degree latitude
+#' - prov - data provider
+#' - date - occurrence record date
+#' - key - occurrence record key
 #'
 #' @examples \dontrun{
 #' # combine results from output of an occ() call

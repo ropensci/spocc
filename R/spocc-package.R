@@ -12,13 +12,12 @@
 #' many species occurrence databases (see below for a list). 
 #' 
 #' Other functions include:
-#' \itemize{
-#'  \item [occ2df()] - Combine results from `occ` into a 
+#' 
+#' - [occ2df()] - Combine results from `occ` into a 
 #'  data.frame
-#'  \item [fixnames()] - Change names to be the same for each taxon
-#'  \item [wkt_vis()] - Visualize WKT strings (used to define 
+#' - [fixnames()] - Change names to be the same for each taxon
+#' - [wkt_vis()] - Visualize WKT strings (used to define 
 #'  geometry based searches for some data sources) in an interactive map
-#' }
 #' 
 #' @section Currently supported species occurrence data sources:
 #'

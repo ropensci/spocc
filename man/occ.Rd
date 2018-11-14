@@ -33,7 +33,7 @@ Details for how these parameters are used internally. Optional}
 \item{geometry}{(character or nmeric) One of a Well Known Text (WKT) object or a vector of
 length 4 specifying a bounding box. This parameter searches for occurrences inside a
 box given as a bounding box or polygon described in WKT format. A WKT shape written as
-'POLYGON((30.1 10.1, 20 40, 40 40, 30.1 10.1))' would be queried as is,
+\code{POLYGON((30.1 10.1, 20 40, 40 40, 30.1 10.1))} would be queried as is,
 i.e. http://bit.ly/HwUSif. See Details for more examples of WKT objects. The format of a
 bounding box is \code{min-longitude, min-latitude, max-longitude, max-latitude}. Geometry
 is not possible with vertnet right now, but should be soon. See Details for more info
@@ -52,29 +52,29 @@ YYY-MM-DD. These can be character of Date class. These are used to do a date ran
 Of course there are other types of date searches one may want to do but date range
 seems like the most common date search use case.}
 
-\item{callopts}{Options passed on to \code{\link[crul]{HttpClient}}, e.g.,
+\item{callopts}{Options passed on to \link[crul:HttpClient]{crul::HttpClient}, e.g.,
 for debugging curl calls, setting timeouts, etc. This parameter is ignored
 for sources: inat.}
 
-\item{gbifopts}{(list) List of named options to pass on to \code{\link[rgbif]{occ_search}}. See
-also \code{\link{occ_options}}.}
+\item{gbifopts}{(list) List of named options to pass on to \code{\link[rgbif:occ_search]{rgbif::occ_search()}}. See
+also \code{\link[=occ_options]{occ_options()}}}
 
-\item{bisonopts}{(list) List of named options to pass on to \code{\link[rbison]{bison}}. See
-also \code{\link{occ_options}}.}
+\item{bisonopts}{(list) List of named options to pass on to \code{\link[rbison:bison]{rbison::bison()}}. See
+also \code{\link[=occ_options]{occ_options()}}}
 
 \item{inatopts}{(list) List of named options to pass on to internal function \code{get_inat_obs}}
 
-\item{ebirdopts}{(list) List of named options to pass on to \code{\link[rebird]{ebirdregion}}
-or \code{\link[rebird]{ebirdgeo}}. See also \code{\link{occ_options}}.}
+\item{ebirdopts}{(list) List of named options to pass on to \code{\link[rebird:ebirdregion]{rebird::ebirdregion()}}
+or \code{\link[rebird:ebirdgeo]{rebird::ebirdgeo()}}. See also \code{\link[=occ_options]{occ_options()}}}
 
 \item{ecoengineopts}{(list) List of named options to pass on to
-\code{ee_observations}. See also \code{\link{occ_options}}.}
+\code{ee_observations}. See also \code{\link[=occ_options]{occ_options()}}.}
 
 \item{vertnetopts}{(list) List of named options to pass on to
-\code{\link[rvertnet]{searchbyterm}}. See also \code{\link{occ_options}}..}
+\code{\link[rvertnet:searchbyterm]{rvertnet::searchbyterm()}}. See also \code{\link[=occ_options]{occ_options()}}.}
 
 \item{idigbioopts}{(list) List of named options to pass on to
-\code{\link[ridigbio]{idig_search_records}}. See also \code{\link{occ_options}}.}
+\code{\link[ridigbio:idig_search_records]{ridigbio::idig_search_records()}}. See also \code{\link[=occ_options]{occ_options()}}.}
 
 \item{obisopts}{(list) List of named options to pass on to internal function. See
 \url{https://github.com/iobis/api-docs} for possible parameters}
@@ -140,7 +140,8 @@ All inputs to \code{occ} are one of:
 \item taxonomic id
 \item geometry as bounds, WKT, os Spatial classes
 }
-To search by common name, first use \code{\link{occ_names}} to find scientic names or
+
+To search by common name, first use \code{\link[=occ_names]{occ_names()}} to find scientic names or
 taxonomic IDs, then feed those to this function. Or use the \code{taxize} package
 to get names and/or IDs to use here.
 }
@@ -150,26 +151,27 @@ to get names and/or IDs to use here.
 When you use the \code{query} parameter, we pass your search terms on to parameters
 within functions that query data sources you specify. Those parameters are:
 \itemize{
-\item rgbif - \code{scientificName} in the \code{\link[rgbif]{occ_search}} function - API
+\item rgbif - \code{scientificName} in the \code{\link[rgbif:occ_search]{rgbif::occ_search()}} function - API
 parameter: same as the \code{occ} parameter
-\item rebird - \code{species} in the \code{\link[rebird]{ebirdregion}} or
-\code{\link[rebird]{ebirdgeo}} functions, depending on whether you set
+\item rebird - \code{species} in the \code{\link[rebird:ebirdregion]{rebird::ebirdregion()}} or
+\code{\link[rebird:ebirdgeo]{rebird::ebirdgeo()}} functions, depending on whether you set
 \code{method="ebirdregion"} or \code{method="ebirdgeo"} - API parameters: \code{sci} for both
-\code{\link[rebird]{ebirdregion}} and \code{\link[rebird]{ebirdgeo}}
+\code{\link[rebird:ebirdregion]{rebird::ebirdregion()}} and \code{\link[rebird:ebirdgeo]{rebird::ebirdgeo()}}
 \item ecoengine - \code{scientific_name} in the \code{ee_observations}
 function - API parameter: same as \code{occ} parameter
-\item rbison - \code{species} or \code{scientificName} in the \code{\link[rbison]{bison}} or
-\code{\link[rbison]{bison_solr}} functions, respectively. If you don't pass anything to
+\item rbison - \code{species} or \code{scientificName} in the \code{\link[rbison:bison]{rbison::bison()}} or
+\code{\link[rbison:bison_solr]{rbison::bison_solr()}} functions, respectively. If you don't pass anything to
 \code{geometry} parameter we use \code{bison_solr}, and if you do we use \code{bison} - API
 parameters: same as \code{occ} parameters
-\item rvertnet - \code{taxon} in the \code{\link[rvertnet]{vertsearch}} function - API
+\item rvertnet - \code{taxon} in the \code{\link[rvertnet:vertsearch]{rvertnet::vertsearch()}} function - API
 parameter: \code{q}
-\item ridigbio - \code{scientificname} in the \code{\link[ridigbio]{idig_search_records}}
+\item ridigbio - \code{scientificname} in the \code{\link[ridigbio:idig_search_records]{ridigbio::idig_search_records()}}
 function - API parameter: \code{scientificname}
 \item inat - internal function - API parameter: \code{q}
 \item obis - internal function - API parameter: \code{scientificName}
 \item ala - internal function - API parameter: \code{q}
 }
+
 If you have questions about how each of those parameters behaves with respect to
 the terms you pass to it, lookup documentation for those functions, or get in touch
 at the development repository \url{https://github.com/ropensci/spocc/issues}
@@ -195,7 +197,7 @@ Note however that this may hang your call if the request is simply too large.
 
 \section{limit parameter}{
 
-The \code{limit} parameter is set to a default of 25. This means that you will get \bold{up to}
+The \code{limit} parameter is set to a default of 25. This means that you will get \strong{up to}
 25 results back for each data source you ask for data from. If there are no results for a
 particular source, you'll get zero back; if there are 8 results for a particular source, you'll
 get 8 back. If there are 26 results for a particular source, you'll get 25 back. You can always
@@ -226,7 +228,6 @@ Only POLYGON objects are currently supported.
 
 Getting WKT polygons or bounding boxes. We will soon introduce a function to help you select
 a bounding box but for now, you can use a few sites on the web.
-
 \itemize{
 \item Bounding box - \url{http://boundingbox.klokantech.com/}
 \item Well known text - \url{http://arthur-e.github.io/Wicket/sandbox-gmaps3.html}
@@ -260,7 +261,7 @@ back a single group of data for each name.
 
 \section{Geometry options by data provider}{
 
-\bold{wkt & bbox allowed, see WKT section above}
+\strong{wkt & bbox allowed, see WKT section above}
 \itemize{
 \item gbif
 \item bison
@@ -268,14 +269,14 @@ back a single group of data for each name.
 \item ala
 }
 
-\bold{bbox only}
+\strong{bbox only}
 \itemize{
 \item ecoengine
 \item inat
 \item idigbio
 }
 
-\bold{No spatial search allowed}
+\strong{No spatial search allowed}
 \itemize{
 \item ebird
 \item vertnet
@@ -288,7 +289,6 @@ Date searches with the \code{date} parameter are allowed for all sources
 except ebird.
 
 Notes on some special cases
-
 \itemize{
 \item idigbio: We search on the \code{datecollected} field. Other date fields can be
 searched on, but we chose \code{datecollected} as it seemed most appropriate.
@@ -311,7 +311,6 @@ All data sources respond to the \code{limit} parameter passed to \code{occ}.
 Data sources, however, vary as to whether they respond to an offset. Here's
 the details on which data sources will respond to \code{start} and which
 to the \code{page} parameter:
-
 \itemize{
 \item gbif - Responds to \code{start}. Default: 0
 \item ecoengine - Responds to \code{page}. Default: 1
@@ -334,7 +333,7 @@ second request for you automatically.
 
 In cases where you request data from multiple providers, especially when
 including GBIF, there could be duplicate records since many providers' data eventually
-ends up with GBIF. See \code{\link[spocc]{spocc_duplicates}} for more.
+ends up with GBIF. See \code{\link[=spocc_duplicates]{spocc_duplicates()}} for more.
 }
 
 \examples{

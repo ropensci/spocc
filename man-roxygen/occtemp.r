@@ -10,14 +10,14 @@
 #' n = 10), that's 10 * 500 = 5000, which can take a while to collect. So, when you first query,
 #' set the limit to something smallish so that you can get a result quickly, then do more as
 #' needed.
-#' @param start,page (integer) Record to start at or page to start at. See \code{Paging} in
+#' @param start,page (integer) Record to start at or page to start at. See `Paging` in
 #' Details for how these parameters are used internally. Optional
 #' @param geometry (character or nmeric) One of a Well Known Text (WKT) object or a vector of
 #' length 4 specifying a bounding box. This parameter searches for occurrences inside a
 #' box given as a bounding box or polygon described in WKT format. A WKT shape written as
-#' 'POLYGON((30.1 10.1, 20 40, 40 40, 30.1 10.1))' would be queried as is,
+#' `POLYGON((30.1 10.1, 20 40, 40 40, 30.1 10.1))` would be queried as is,
 #' i.e. http://bit.ly/HwUSif. See Details for more examples of WKT objects. The format of a
-#' bounding box is \code{min-longitude, min-latitude, max-longitude, max-latitude}. Geometry
+#' bounding box is `min-longitude, min-latitude, max-longitude, max-latitude`. Geometry
 #' is not possible with vertnet right now, but should be soon. See Details for more info
 #' on geometry inputs.
 #' @param has_coords (logical) Only return occurrences that have lat/long data. This works
@@ -30,27 +30,27 @@
 #' YYY-MM-DD. These can be character of Date class. These are used to do a date range search.
 #' Of course there are other types of date searches one may want to do but date range 
 #' seems like the most common date search use case.
-#' @param callopts Options passed on to \code{\link[crul]{HttpClient}}, e.g., 
+#' @param callopts Options passed on to [crul::HttpClient], e.g., 
 #' for debugging curl calls, setting timeouts, etc. This parameter is ignored 
 #' for sources: inat.
-#' @param gbifopts (list) List of named options to pass on to \code{\link[rgbif]{occ_search}}. See
-#' also \code{\link{occ_options}}.
-#' @param bisonopts (list) List of named options to pass on to \code{\link[rbison]{bison}}. See
-#' also \code{\link{occ_options}}.
-#' @param inatopts (list) List of named options to pass on to internal function \code{get_inat_obs}
-#' @param ebirdopts (list) List of named options to pass on to \code{\link[rebird]{ebirdregion}}
-#' or \code{\link[rebird]{ebirdgeo}}. See also \code{\link{occ_options}}.
+#' @param gbifopts (list) List of named options to pass on to [rgbif::occ_search()]. See
+#' also [occ_options()]
+#' @param bisonopts (list) List of named options to pass on to [rbison::bison()]. See
+#' also [occ_options()]
+#' @param inatopts (list) List of named options to pass on to internal function `get_inat_obs`
+#' @param ebirdopts (list) List of named options to pass on to [rebird::ebirdregion()]
+#' or [rebird::ebirdgeo()]. See also [occ_options()]
 #' @param ecoengineopts (list) List of named options to pass on to
-#' \code{ee_observations}. See also \code{\link{occ_options}}.
+#' `ee_observations`. See also [occ_options()].
 #' @param vertnetopts (list) List of named options to pass on to
-#' \code{\link[rvertnet]{searchbyterm}}. See also \code{\link{occ_options}}..
+#' [rvertnet::searchbyterm()]. See also [occ_options()].
 #' @param idigbioopts (list) List of named options to pass on to
-#' \code{\link[ridigbio]{idig_search_records}}. See also \code{\link{occ_options}}.
+#' [ridigbio::idig_search_records()]. See also [occ_options()].
 #' @param obisopts (list) List of named options to pass on to internal function. See 
-#' \url{https://github.com/iobis/api-docs} for possible parameters
+#' <https://github.com/iobis/api-docs> for possible parameters
 #' @param alaopts (list) List of named options to pass on to internal function. 
-#' See \code{Occurrence search} part of the API docs at 
-#' \url{http://api.ala.org.au/#ws3} for possible parameters.
+#' See `Occurrence search` part of the API docs at 
+#' <http://api.ala.org.au/#ws3> for possible parameters.
 #' 
 #' @return an object of class `occdat`, with a print method to give a brief summary. 
 #' the `occdat` class is just a thin wrapper around a named list, wher the top level names
@@ -83,7 +83,7 @@
 #'   - errors: a character vector of errors returned, if any occurred
 #' - data: named list of data.frame's, named by the queries sent
 #'
-#' @details The \code{occ} function is an opinionated wrapper
+#' @details The `occ` function is an opinionated wrapper
 #' around the rgbif, rbison, rinat, rebird, ecoengine, rvertnet and
 #' ridigbio packages (as well as internal custom wrappers around some data
 #' sources) to allow data access from a single access point. We take
@@ -92,52 +92,52 @@
 #' packages via the gbifopts, bisonopts, inatopts, etc. parameters.
 #'
 #' @section Inputs:
-#' All inputs to \code{occ} are one of:
-#' \itemize{
-#'  \item scientific name
-#'  \item taxonomic id
-#'  \item geometry as bounds, WKT, os Spatial classes
-#' }
-#' To search by common name, first use \code{\link{occ_names}} to find scientic names or
-#' taxonomic IDs, then feed those to this function. Or use the \code{taxize} package
+#' All inputs to `occ` are one of:
+#' 
+#' - scientific name
+#' - taxonomic id
+#' - geometry as bounds, WKT, os Spatial classes
+#' 
+#' To search by common name, first use [occ_names()] to find scientic names or
+#' taxonomic IDs, then feed those to this function. Or use the `taxize` package
 #' to get names and/or IDs to use here.
 #'
 #' @section Using the query parameter:
-#' When you use the \code{query} parameter, we pass your search terms on to parameters
+#' When you use the `query` parameter, we pass your search terms on to parameters
 #' within functions that query data sources you specify. Those parameters are:
-#' \itemize{
-#'  \item rgbif - \code{scientificName} in the \code{\link[rgbif]{occ_search}} function - API
-#'  parameter: same as the \code{occ} parameter
-#'  \item rebird - \code{species} in the \code{\link[rebird]{ebirdregion}} or
-#'  \code{\link[rebird]{ebirdgeo}} functions, depending on whether you set
-#'  \code{method="ebirdregion"} or \code{method="ebirdgeo"} - API parameters: \code{sci} for both
-#'  \code{\link[rebird]{ebirdregion}} and \code{\link[rebird]{ebirdgeo}}
-#'  \item ecoengine - \code{scientific_name} in the \code{ee_observations}
-#'  function - API parameter: same as \code{occ} parameter
-#'  \item rbison - \code{species} or \code{scientificName} in the \code{\link[rbison]{bison}} or
-#'  \code{\link[rbison]{bison_solr}} functions, respectively. If you don't pass anything to
-#'  \code{geometry} parameter we use \code{bison_solr}, and if you do we use \code{bison} - API
-#'  parameters: same as \code{occ} parameters
-#'  \item rvertnet - \code{taxon} in the \code{\link[rvertnet]{vertsearch}} function - API
-#'  parameter: \code{q}
-#'  \item ridigbio - \code{scientificname} in the \code{\link[ridigbio]{idig_search_records}}
-#'  function - API parameter: \code{scientificname}
-#'  \item inat - internal function - API parameter: \code{q}
-#'  \item obis - internal function - API parameter: \code{scientificName}
-#'  \item ala - internal function - API parameter: \code{q}
-#' }
+#' 
+#' - rgbif - `scientificName` in the [rgbif::occ_search()] function - API
+#'  parameter: same as the `occ` parameter
+#' - rebird - `species` in the [rebird::ebirdregion()] or
+#'  [rebird::ebirdgeo()] functions, depending on whether you set
+#'  `method="ebirdregion"` or `method="ebirdgeo"` - API parameters: `sci` for both
+#'  [rebird::ebirdregion()] and [rebird::ebirdgeo()]
+#' - ecoengine - `scientific_name` in the `ee_observations`
+#'  function - API parameter: same as `occ` parameter
+#' - rbison - `species` or `scientificName` in the [rbison::bison()] or
+#'  [rbison::bison_solr()] functions, respectively. If you don't pass anything to
+#'  `geometry` parameter we use `bison_solr`, and if you do we use `bison` - API
+#'  parameters: same as `occ` parameters
+#' - rvertnet - `taxon` in the [rvertnet::vertsearch()] function - API
+#'  parameter: `q`
+#' - ridigbio - `scientificname` in the [ridigbio::idig_search_records()]
+#'  function - API parameter: `scientificname`
+#' - inat - internal function - API parameter: `q`
+#' - obis - internal function - API parameter: `scientificName`
+#' - ala - internal function - API parameter: `q`
+#' 
 #' If you have questions about how each of those parameters behaves with respect to
 #' the terms you pass to it, lookup documentation for those functions, or get in touch
-#' at the development repository \url{https://github.com/ropensci/spocc/issues}
+#' at the development repository <https://github.com/ropensci/spocc/issues>
 #'
 #' @section iDigBio notes:
-#' When searching iDigBio note that by deafult we set \code{fields = "all"}, so that we return
-#' a richer suite of fields than the \code{ridigbio} R client gives by default. But you can
-#' changes this by passing in a \code{fields} parameter to \code{idigbioopts} parameter with
+#' When searching iDigBio note that by deafult we set `fields = "all"`, so that we return
+#' a richer suite of fields than the `ridigbio` R client gives by default. But you can
+#' changes this by passing in a `fields` parameter to `idigbioopts` parameter with
 #' the specific fields you want.
 #' 
 #' Maximum of 100,000 results are allowed to be returned. See 
-#' \url{https://github.com/iDigBio/ridigbio/issues/33}
+#' <https://github.com/iDigBio/ridigbio/issues/33>
 #'
 #' @section Ecoengine notes:
 #' When searching ecoengine, you can leave the page argument blank to get a single page.
@@ -145,7 +145,7 @@
 #' Note however that this may hang your call if the request is simply too large.
 #'
 #' @section limit parameter:
-#' The \code{limit} parameter is set to a default of 25. This means that you will get \bold{up to}
+#' The `limit` parameter is set to a default of 25. This means that you will get **up to**
 #' 25 results back for each data source you ask for data from. If there are no results for a
 #' particular source, you'll get zero back; if there are 8 results for a particular source, you'll
 #' get 8 back. If there are 26 results for a particular source, you'll get 25 back. You can always
@@ -160,70 +160,63 @@
 #' latitude, the second the longitude.
 #'
 #' Examples of valid WKT objects:
-#' \itemize{
-#'  \item 'POLYGON((30.1 10.1, 10 20, 20 60, 60 60, 30.1 10.1))'
-#'  \item 'POINT((30.1 10.1))'
-#'  \item 'LINESTRING(3 4,10 50,20 25)'
-#'  \item 'MULTIPOINT((3.5 5.6),(4.8 10.5))")'
-#'  \item 'MULTILINESTRING((3 4,10 50,20 25),(-5 -8,-10 -8,-15 -4))'
-#'  \item 'MULTIPOLYGON(((1 1,5 1,5 5,1 5,1 1),(2 2,2 3,3 3,3 2,2 2)),((6 3,9 2,9 4,6 3)))'
-#'  \item 'GEOMETRYCOLLECTION(POINT(4 6),LINESTRING(4 6,7 10))'
-#' }
+#'
+#' - 'POLYGON((30.1 10.1, 10 20, 20 60, 60 60, 30.1 10.1))'
+#' - 'POINT((30.1 10.1))'
+#' - 'LINESTRING(3 4,10 50,20 25)'
+#' - 'MULTIPOINT((3.5 5.6),(4.8 10.5))")'
+#' - 'MULTILINESTRING((3 4,10 50,20 25),(-5 -8,-10 -8,-15 -4))'
+#' - 'MULTIPOLYGON(((1 1,5 1,5 5,1 5,1 1),(2 2,2 3,3 3,3 2,2 2)),((6 3,9 2,9 4,6 3)))'
+#' - 'GEOMETRYCOLLECTION(POINT(4 6),LINESTRING(4 6,7 10))'
 #'
 #' Only POLYGON objects are currently supported.
 #'
 #' Getting WKT polygons or bounding boxes. We will soon introduce a function to help you select
 #' a bounding box but for now, you can use a few sites on the web.
 #'
-#' \itemize{
-#'  \item Bounding box - \url{http://boundingbox.klokantech.com/}
-#'  \item Well known text - \url{http://arthur-e.github.io/Wicket/sandbox-gmaps3.html}
-#' }
+#' - Bounding box - <http://boundingbox.klokantech.com/>
+#' - Well known text - <http://arthur-e.github.io/Wicket/sandbox-gmaps3.html>
 #'
 #' @section geometry parameter:
-#' The behavior of the \code{occ} function with respect to the \code{geometry} parameter
-#' varies depending on the inputs to the \code{query} parameter. Here are the options:
-#' \itemize{
-#'  \item geometry (single), no query - If a single bounding box/WKT string passed in,
+#' The behavior of the `occ` function with respect to the `geometry` parameter
+#' varies depending on the inputs to the `query` parameter. Here are the options:
+#' 
+#' - geometry (single), no query - If a single bounding box/WKT string passed in,
 #'  and no query, a single query is made against each data source.
-#'  \item geometry (many), no query - If many bounding boxes/WKT strings are passed in,
+#' - geometry (many), no query - If many bounding boxes/WKT strings are passed in,
 #'  we do a separate query for each bounding box/WKT string against each data source.
-#'  \item geometry (single), query - If a single bounding box/WKT string passed in,
+#' - geometry (single), query - If a single bounding box/WKT string passed in,
 #'  and a single query, we do a single query against each data source.
-#'  \item geometry (many), query - If many bounding boxes/WKT strings are passed in,
+#' - geometry (many), query - If many bounding boxes/WKT strings are passed in,
 #'  and a single query, we do a separate query for each bounding box/WKT string with the
 #'  same queried name against each data source.
-#'  \item geometry (single), many query - If a single bounding box/WKT string passed in,
+#' - geometry (single), many query - If a single bounding box/WKT string passed in,
 #'  and many names to query, we do a separate query for each name, using the same geometry,
 #'  for each data source.
-#'  \item geometry (many), many query - If many bounding boxes/WKT strings are passed in,
+#' - geometry (many), many query - If many bounding boxes/WKT strings are passed in,
 #'  and many names to query, this poses a problem for all data sources, none of which
 #'  accept many bounding boxes of WKT strings. So, in this scenario, we loop over each
 #'  name and each geometry query, and then re-combine by queried name, so that you get
 #'  back a single group of data for each name.
-#' }
 #'
 #' @section Geometry options by data provider:
-#' \bold{wkt & bbox allowed, see WKT section above}
-#' \itemize{
-#'  \item gbif
-#'  \item bison
-#'  \item obis
-#'  \item ala
-#' }
+#' **wkt & bbox allowed, see WKT section above**
+#' 
+#' - gbif
+#' - bison
+#' - obis
+#' - ala
 #'
-#' \bold{bbox only}
-#' \itemize{
-#'  \item ecoengine
-#'  \item inat
-#'  \item idigbio
-#' }
+#' **bbox only**
+#' 
+#' - ecoengine
+#' - inat
+#' - idigbio
 #'
-#' \bold{No spatial search allowed}
-#' \itemize{
-#'  \item ebird
-#'  \item vertnet
-#' }
+#' **No spatial search allowed**
+#' 
+#' - ebird
+#' - vertnet
 #' 
 #' @section Notes on the date parameter:
 #' Date searches with the `date` parameter are allowed for all sources 
@@ -231,45 +224,41 @@
 #' 
 #' Notes on some special cases
 #' 
-#' \itemize{
-#'  \item idigbio: We search on the `datecollected` field. Other date fields can be 
+#' - idigbio: We search on the `datecollected` field. Other date fields can be 
 #' searched on, but we chose `datecollected` as it seemed most appropriate.
-#'  \item vertnet: If you want more flexible date searches, you can pass various 
+#' - vertnet: If you want more flexible date searches, you can pass various 
 #' types of date searches to `vertnetopts`. See [rvertnet::searchbyterm()]
 #' for more information
-#'  \item ala: There's some issues with the dates returned from ALA. They are 
+#' - ala: There's some issues with the dates returned from ALA. They are 
 #' returned as time stamps, and some seem to be malformed. So do beware 
 #' of using ALA dates for important things.
-#' }
 #' 
 #' Get in touch if you have other date search use cases you think 
 #' are widely useful
 #'
 #' @section Paging:
-#' All data sources respond to the \code{limit} parameter passed to \code{occ}.
+#' All data sources respond to the `limit` parameter passed to `occ`.
 #' 
 #' Data sources, however, vary as to whether they respond to an offset. Here's
-#' the details on which data sources will respond to \code{start} and which 
-#' to the \code{page} parameter:
+#' the details on which data sources will respond to `start` and which 
+#' to the `page` parameter:
 #' 
-#' \itemize{
-#'  \item gbif - Responds to \code{start}. Default: 0
-#'  \item ecoengine - Responds to \code{page}. Default: 1
-#'  \item bison - Responds to \code{start}. Default: 0
-#'  \item inat - Responds to \code{page}. Default: 1
-#'  \item ebird - No paging, both \code{start} and \code{page} ignored.
-#'  \item vertnet - No paging implemented here, both \code{start} and \code{page}
+#' - gbif - Responds to `start`. Default: 0
+#' - ecoengine - Responds to `page`. Default: 1
+#' - bison - Responds to `start`. Default: 0
+#' - inat - Responds to `page`. Default: 1
+#' - ebird - No paging, both `start` and `page` ignored.
+#' - vertnet - No paging implemented here, both `start` and `page`
 #'  ignored. VertNet does have a form of paging, but it uses a cursor, and can't
-#'  easily be included  here via parameters. However, \code{rvertnet} does paging
+#'  easily be included  here via parameters. However, `rvertnet` does paging
 #'  internally for you.  For example, the max records per request for VertNet is
 #'  1000; if you request 2000 records, we'll do the first request, and do the
 #'  second request for you automatically.
-#'  \item idigbio - Responds to \code{start}. Default: 0
-#'  \item obis - Responds to \code{start}. Default: 0
-#'  \item ala - Responds to \code{start}. Default: 0
-#' }
+#' - idigbio - Responds to `start`. Default: 0
+#' - obis - Responds to `start`. Default: 0
+#' - ala - Responds to `start`. Default: 0
 #'
 #' @section BEWARE:
 #' In cases where you request data from multiple providers, especially when
 #' including GBIF, there could be duplicate records since many providers' data eventually
-#' ends up with GBIF. See \code{\link[spocc]{spocc_duplicates}} for more.
+#' ends up with GBIF. See [spocc_duplicates()] for more.

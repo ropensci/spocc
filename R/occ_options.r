@@ -12,7 +12,7 @@
 #' @return Opens up the documentation for the function that is used internally 
 #' within the occ function for each source.
 #' @details Any of the parameters passed to e.g. [rgbif::occ_data()] from the
-#' \code{rgbif} package can be passed in the associated gbifopts list 
+#' `rgbif` package can be passed in the associated gbifopts list 
 #' in [occ()]
 #'
 #' Note that the from parameter is lowercased within the function and is 
@@ -24,9 +24,7 @@
 #' not imported, but we do suggest seeing the help for the package on 
 #' their parameters:
 #' 
-#' \itemize{
-#'  \item **ecoengine**: `?ecoengine::ee_observations`
-#' }
+#' - **ecoengine**: `?ecoengine::ee_observations`
 #' 
 #' @examples \dontrun{
 #' # opens up documentation for this function

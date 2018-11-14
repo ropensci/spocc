@@ -1,5 +1,6 @@
 #' @param query (character) One to many scientific names. See Details for what parameter
-#' in each data source we query.
+#' in each data source we query. Note: ebird now expects species codes instead of 
+#' scientific names - we pass you name through [rebird::species_code()] internally
 #' @param from (character) Data source to get data from, any combination of gbif, bison,
 #' inat, ebird, ecoengine and/or vertnet
 #' @param limit (numeric) Number of records to return. This is passed across all sources.

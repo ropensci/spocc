@@ -45,7 +45,7 @@
 #' # Restrict to records with coordinates
 #' occ(query = "Acer", from = "idigbio", limit = 5, has_coords = TRUE)
 #'
-#' occ(query = 'Setophaga caerulescens', from = 'ebird', ebirdopts = list(region='US'))
+#' occ(query = 'Setophaga caerulescens', from = 'ebird', ebirdopts = list(loc='US'))
 #' occ(query = 'Spinus tristis', from = 'ebird', ebirdopts =
 #'    list(method = 'ebirdgeo', lat = 42, lng = -76, dist = 50))
 #'
@@ -140,7 +140,7 @@
 #' occ(from = "gbif", geometry = wkt, limit = 10)
 #'
 #' # Specify many data sources, another example
-#' ebirdopts = list(region = 'US'); gbifopts  =  list(country = 'US')
+#' ebirdopts = list(loc = 'US'); gbifopts  =  list(country = 'US')
 #' out <- occ(query = 'Setophaga caerulescens', from = c('gbif','inat','bison','ebird'),
 #'     gbifopts = gbifopts, ebirdopts = ebirdopts, limit=20)
 #' occ2df(out)
@@ -211,10 +211,6 @@
 #'  callopts=list(verbose = TRUE))
 #' occ(query = 'Accipiter striatus', from = 'ecoengine', limit=10, 
 #'  callopts=list(verbose = TRUE))
-#' occ(query = 'Accipiter striatus', from = c('ebird','bison'), limit=10, 
-#'  callopts=list(verbose = TRUE))
-#' # occ(query = 'Accipiter striatus', from = 'ebird', limit=10, 
-#' # callopts=timeout(seconds = 0.1))
 #' occ(query = 'Accipiter striatus', from = 'inat', 
 #'  callopts=list(verbose = TRUE))
 #' occ(query = 'Mola mola', from = 'obis', limit = 200, 

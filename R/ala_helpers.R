@@ -17,7 +17,17 @@ ala_search <- function(taxon = NULL, limit = 500, offset = 0, fq = NULL,
     opts = list(...)
   )
   out <- cli$get(path = "ws/occurrences/search", query = args)
-  out$raise_for_status()
+  if (out$status_code > 201) {
+    txt <- out$parse("UTF-8")
+    if (grepl("html", out$response_headers$`content-type`)) {
+      out$raise_for_status()
+    } else {
+      tt <- tryCatch(jsonlite::fromJSON(txt, FALSE), error = function(e) e)
+    }
+    if (inherits(tt, "error")) out$raise_for_status()
+    mssg <- strsplit(tt$message, ";")[[1]]
+    stop(mssg[length(mssg)], call. = FALSE)
+  }
   jsonlite::fromJSON(out$parse("UTF-8"), flatten = TRUE)
 }
 

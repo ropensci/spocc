@@ -13,7 +13,10 @@ occ <- function(query = NULL, from = "gbif", limit = 500, start = NULL,
   gbifopts = list(), bisonopts = list(), inatopts = list(),
   ebirdopts = list(), ecoengineopts = list(),
   vertnetopts = list(), idigbioopts = list(), obisopts = list(), 
-  alaopts = list()) {
+  alaopts = list(), throw_errors = TRUE) {
+
+  assert(throw_errors, "logical")
+  Sys.setenv(SPOCC_THROW_ERRORS = throw_errors)
 
   type <- "sci"
 
@@ -235,19 +238,27 @@ occ <- function(query = NULL, from = "gbif", limit = 500, start = NULL,
     }
 
     if (any(grepl(srce, sources))) {
-      ggg <- list(meta = list(
-        source = srce,
-        time = time_null(pluck(tmp, c(srce, "time"))),
-        found = sum(unlist(pluck(tmp, c(srce, "found")))),
-        returned = sum(sapply(pluck(tmp, c(srce, "data")), NROW)),
-        type = type,
-        opts = optstmp),
-        data = tt)
+      ggg <- list(
+        meta = list(
+          source = srce,
+          time = time_null(pluck(tmp, c(srce, "time"))),
+          found = sum(unlist(pluck(tmp, c(srce, "found")))),
+          returned = sum(sapply(pluck(tmp, c(srce, "data")), NROW)),
+          type = type,
+          opts = optstmp,
+          errors = unlist(pluck(tmp, c(srce, "errors")))
+        ),
+        data = tt
+      )
       structure(ggg, class = "occdatind")
     } else {
-      ggg <- list(meta = list(source = srce, time = NULL, found = NULL, 
-                              returned = NULL,
-          type = NULL, opts = NULL), data = tt)
+      ggg <- list(
+        meta = list(
+          source = srce, time = NULL, found = NULL, returned = NULL,
+          type = NULL, opts = NULL, errors = NULL
+        ), 
+        data = tt
+      )
       structure(ggg, class = "occdatind")
     }
   }

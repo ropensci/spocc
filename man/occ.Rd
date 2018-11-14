@@ -9,7 +9,7 @@ occ(query = NULL, from = "gbif", limit = 500, start = NULL,
   date = NULL, callopts = list(), gbifopts = list(),
   bisonopts = list(), inatopts = list(), ebirdopts = list(),
   ecoengineopts = list(), vertnetopts = list(), idigbioopts = list(),
-  obisopts = list(), alaopts = list())
+  obisopts = list(), alaopts = list(), throw_errors = TRUE)
 }
 \arguments{
 \item{query}{(character) One to many scientific names. See Details for what parameter

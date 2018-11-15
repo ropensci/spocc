@@ -139,7 +139,7 @@ foo_ecoengine <- function(sources, query, limit, page, geometry, has_coords,
       ))
       throw_error("ecoengine", out_ee$message)
       emptylist(opts, out_ee$message)
-    } else{
+    } else {
       out <- out_ee$data
       fac_tors <- sapply(out, is.factor)
       out[fac_tors] <- lapply(out[fac_tors], as.character)

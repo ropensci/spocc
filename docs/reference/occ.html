@@ -62,7 +62,7 @@ or many data sources." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">spocc</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.8.1.9100</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.9.0</span>
       </span>
     </div>
 
@@ -130,7 +130,7 @@ or many data sources.</p>
   <span class='kw'>date</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>callopts</span> <span class='kw'>=</span> <span class='fu'>list</span>(), <span class='kw'>gbifopts</span> <span class='kw'>=</span> <span class='fu'>list</span>(),
   <span class='kw'>bisonopts</span> <span class='kw'>=</span> <span class='fu'>list</span>(), <span class='kw'>inatopts</span> <span class='kw'>=</span> <span class='fu'>list</span>(), <span class='kw'>ebirdopts</span> <span class='kw'>=</span> <span class='fu'>list</span>(),
   <span class='kw'>ecoengineopts</span> <span class='kw'>=</span> <span class='fu'>list</span>(), <span class='kw'>vertnetopts</span> <span class='kw'>=</span> <span class='fu'>list</span>(), <span class='kw'>idigbioopts</span> <span class='kw'>=</span> <span class='fu'>list</span>(),
-  <span class='kw'>obisopts</span> <span class='kw'>=</span> <span class='fu'>list</span>(), <span class='kw'>alaopts</span> <span class='kw'>=</span> <span class='fu'>list</span>())</pre>
+  <span class='kw'>obisopts</span> <span class='kw'>=</span> <span class='fu'>list</span>(), <span class='kw'>alaopts</span> <span class='kw'>=</span> <span class='fu'>list</span>(), <span class='kw'>throw_warnings</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -138,7 +138,8 @@ or many data sources.</p>
     <tr>
       <th>query</th>
       <td><p>(character) One to many scientific names. See Details for what parameter
-in each data source we query.</p></td>
+in each data source we query. Note: ebird now expects species codes instead of
+scientific names - we pass you name through <code><a href='http://www.rdocumentation.org/packages/rebird/topics/species_code'>rebird::species_code()</a></code> internally</p></td>
     </tr>
     <tr>
       <th>from</th>
@@ -165,7 +166,7 @@ Details for how these parameters are used internally. Optional</p></td>
       <td><p>(character or nmeric) One of a Well Known Text (WKT) object or a vector of
 length 4 specifying a bounding box. This parameter searches for occurrences inside a
 box given as a bounding box or polygon described in WKT format. A WKT shape written as
-'POLYGON((30.1 10.1, 20 40, 40 40, 30.1 10.1))' would be queried as is,
+<code>POLYGON((30.1 10.1, 20 40, 40 40, 30.1 10.1))</code> would be queried as is,
 i.e. http://bit.ly/HwUSif. See Details for more examples of WKT objects. The format of a
 bounding box is <code>min-longitude, min-latitude, max-longitude, max-latitude</code>. Geometry
 is not possible with vertnet right now, but should be soon. See Details for more info
@@ -192,19 +193,19 @@ seems like the most common date search use case.</p></td>
     </tr>
     <tr>
       <th>callopts</th>
-      <td><p>Options passed on to <code><a href='http://www.rdocumentation.org/packages/crul/topics/HttpClient'>HttpClient</a></code>, e.g.,
+      <td><p>Options passed on to <a href='http://www.rdocumentation.org/packages/crul/topics/HttpClient'>crul::HttpClient</a>, e.g.,
 for debugging curl calls, setting timeouts, etc. This parameter is ignored
 for sources: inat.</p></td>
     </tr>
     <tr>
       <th>gbifopts</th>
-      <td><p>(list) List of named options to pass on to <code><a href='http://www.rdocumentation.org/packages/rgbif/topics/occ_search'>occ_search</a></code>. See
-also <code><a href='occ_options.html'>occ_options</a></code>.</p></td>
+      <td><p>(list) List of named options to pass on to <code><a href='http://www.rdocumentation.org/packages/rgbif/topics/occ_search'>rgbif::occ_search()</a></code>. See
+also <code><a href='occ_options.html'>occ_options()</a></code></p></td>
     </tr>
     <tr>
       <th>bisonopts</th>
-      <td><p>(list) List of named options to pass on to <code><a href='http://www.rdocumentation.org/packages/rbison/topics/bison'>bison</a></code>. See
-also <code><a href='occ_options.html'>occ_options</a></code>.</p></td>
+      <td><p>(list) List of named options to pass on to <code><a href='http://www.rdocumentation.org/packages/rbison/topics/bison'>rbison::bison()</a></code>. See
+also <code><a href='occ_options.html'>occ_options()</a></code></p></td>
     </tr>
     <tr>
       <th>inatopts</th>
@@ -212,23 +213,23 @@ also <code><a href='occ_options.html'>occ_options</a></code>.</p></td>
     </tr>
     <tr>
       <th>ebirdopts</th>
-      <td><p>(list) List of named options to pass on to <code><a href='http://www.rdocumentation.org/packages/rebird/topics/ebirdregion'>ebirdregion</a></code>
-or <code><a href='http://www.rdocumentation.org/packages/rebird/topics/ebirdgeo'>ebirdgeo</a></code>. See also <code><a href='occ_options.html'>occ_options</a></code>.</p></td>
+      <td><p>(list) List of named options to pass on to <code><a href='http://www.rdocumentation.org/packages/rebird/topics/ebirdregion'>rebird::ebirdregion()</a></code>
+or <code><a href='http://www.rdocumentation.org/packages/rebird/topics/ebirdgeo'>rebird::ebirdgeo()</a></code>. See also <code><a href='occ_options.html'>occ_options()</a></code></p></td>
     </tr>
     <tr>
       <th>ecoengineopts</th>
       <td><p>(list) List of named options to pass on to
-<code>ee_observations</code>. See also <code><a href='occ_options.html'>occ_options</a></code>.</p></td>
+<code>ee_observations</code>. See also <code><a href='occ_options.html'>occ_options()</a></code>.</p></td>
     </tr>
     <tr>
       <th>vertnetopts</th>
       <td><p>(list) List of named options to pass on to
-<code><a href='http://www.rdocumentation.org/packages/rvertnet/topics/searchbyterm'>searchbyterm</a></code>. See also <code><a href='occ_options.html'>occ_options</a></code>..</p></td>
+<code><a href='http://www.rdocumentation.org/packages/rvertnet/topics/searchbyterm'>rvertnet::searchbyterm()</a></code>. See also <code><a href='occ_options.html'>occ_options()</a></code>.</p></td>
     </tr>
     <tr>
       <th>idigbioopts</th>
       <td><p>(list) List of named options to pass on to
-<code><a href='http://www.rdocumentation.org/packages/ridigbio/topics/idig_search_records'>idig_search_records</a></code>. See also <code><a href='occ_options.html'>occ_options</a></code>.</p></td>
+<code><a href='http://www.rdocumentation.org/packages/ridigbio/topics/idig_search_records'>ridigbio::idig_search_records()</a></code>. See also <code><a href='occ_options.html'>occ_options()</a></code>.</p></td>
     </tr>
     <tr>
       <th>obisopts</th>
@@ -241,7 +242,50 @@ or <code><a href='http://www.rdocumentation.org/packages/rebird/topics/ebirdgeo'
 See <code>Occurrence search</code> part of the API docs at
 <a href='http://api.ala.org.au/#ws3'>http://api.ala.org.au/#ws3</a> for possible parameters.</p></td>
     </tr>
+    <tr>
+      <th>throw_warnings</th>
+      <td><p>(logical) <code>occ()</code> collects errors returned from each
+data provider when they occur, and are accessible in the <code>$meta$errors</code> slot for
+each data provider. If you set <code>throw_warnings=TRUE</code>, we give these request errors as
+warnings with <code>warning()</code>. if <code>FALSE</code>, we don't give warnings, but you can still
+access them in the output.</p></td>
+    </tr>
     </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>an object of class <code>occdat</code>, with a print method to give a brief summary.
+The print method only shows results for those that have some results (those with no
+results are not shown). The <code>occdat</code> class is just a thin wrapper around a named
+list, wher the top level names are the data sources:</p><ul>
+<li><p>gbif</p></li>
+<li><p>bison</p></li>
+<li><p>inat</p></li>
+<li><p>ebird</p></li>
+<li><p>ecoengine</p></li>
+<li><p>vertnet</p></li>
+<li><p>idigbio</p></li>
+<li><p>obis</p></li>
+<li><p>ala</p></li>
+</ul>
+
+<p>Note that you only get data back for sources that were specified in the <code>from</code>
+parameter. All others are present, but empty.</p>
+<p>Then within each data source is an object of class <code>occdatind</code> holding another
+named list that contains:</p><ul>
+<li><p>meta: metadata</p><ul>
+<li><p>source: the data source name (e.g., "gbif")</p></li>
+<li><p>time: time the request was sent</p></li>
+<li><p>found: number of records found (number found across all queries)</p></li>
+<li><p>returned: number of records returned (number of rows in all data.frame's
+in the <code>data</code> slot)</p></li>
+<li><p>type: query type, only "sci" for scientific</p></li>
+<li><p>opts: a named list with the options you sent to the data source</p></li>
+<li><p>errors: a character vector of errors returned, if any occurred</p></li>
+</ul></li>
+<li><p>data: named list of data.frame's, named by the queries sent</p></li>
+</ul>
+
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
@@ -260,7 +304,8 @@ packages via the gbifopts, bisonopts, inatopts, etc. parameters.</p>
 <li><p>scientific name</p></li>
 <li><p>taxonomic id</p></li>
 <li><p>geometry as bounds, WKT, os Spatial classes</p></li>
-</ul><p>To search by common name, first use <code><a href='occ_names.html'>occ_names</a></code> to find scientic names or
+</ul>
+    <p>To search by common name, first use <code><a href='occ_names.html'>occ_names()</a></code> to find scientic names or
 taxonomic IDs, then feed those to this function. Or use the <code>taxize</code> package
 to get names and/or IDs to use here.</p>
     
@@ -269,26 +314,27 @@ to get names and/or IDs to use here.</p>
     
     <p>When you use the <code>query</code> parameter, we pass your search terms on to parameters
 within functions that query data sources you specify. Those parameters are:</p><ul>
-<li><p>rgbif - <code>scientificName</code> in the <code><a href='http://www.rdocumentation.org/packages/rgbif/topics/occ_search'>occ_search</a></code> function - API
+<li><p>rgbif - <code>scientificName</code> in the <code><a href='http://www.rdocumentation.org/packages/rgbif/topics/occ_search'>rgbif::occ_search()</a></code> function - API
 parameter: same as the <code>occ</code> parameter</p></li>
-<li><p>rebird - <code>species</code> in the <code><a href='http://www.rdocumentation.org/packages/rebird/topics/ebirdregion'>ebirdregion</a></code> or
-<code><a href='http://www.rdocumentation.org/packages/rebird/topics/ebirdgeo'>ebirdgeo</a></code> functions, depending on whether you set
+<li><p>rebird - <code>species</code> in the <code><a href='http://www.rdocumentation.org/packages/rebird/topics/ebirdregion'>rebird::ebirdregion()</a></code> or
+<code><a href='http://www.rdocumentation.org/packages/rebird/topics/ebirdgeo'>rebird::ebirdgeo()</a></code> functions, depending on whether you set
 <code>method="ebirdregion"</code> or <code>method="ebirdgeo"</code> - API parameters: <code>sci</code> for both
-<code><a href='http://www.rdocumentation.org/packages/rebird/topics/ebirdregion'>ebirdregion</a></code> and <code><a href='http://www.rdocumentation.org/packages/rebird/topics/ebirdgeo'>ebirdgeo</a></code></p></li>
+<code><a href='http://www.rdocumentation.org/packages/rebird/topics/ebirdregion'>rebird::ebirdregion()</a></code> and <code><a href='http://www.rdocumentation.org/packages/rebird/topics/ebirdgeo'>rebird::ebirdgeo()</a></code></p></li>
 <li><p>ecoengine - <code>scientific_name</code> in the <code>ee_observations</code>
 function - API parameter: same as <code>occ</code> parameter</p></li>
-<li><p>rbison - <code>species</code> or <code>scientificName</code> in the <code><a href='http://www.rdocumentation.org/packages/rbison/topics/bison'>bison</a></code> or
-<code><a href='http://www.rdocumentation.org/packages/rbison/topics/bison_solr'>bison_solr</a></code> functions, respectively. If you don't pass anything to
+<li><p>rbison - <code>species</code> or <code>scientificName</code> in the <code><a href='http://www.rdocumentation.org/packages/rbison/topics/bison'>rbison::bison()</a></code> or
+<code><a href='http://www.rdocumentation.org/packages/rbison/topics/bison_solr'>rbison::bison_solr()</a></code> functions, respectively. If you don't pass anything to
 <code>geometry</code> parameter we use <code>bison_solr</code>, and if you do we use <code>bison</code> - API
 parameters: same as <code>occ</code> parameters</p></li>
-<li><p>rvertnet - <code>taxon</code> in the <code><a href='http://www.rdocumentation.org/packages/rvertnet/topics/vertsearch'>vertsearch</a></code> function - API
+<li><p>rvertnet - <code>taxon</code> in the <code><a href='http://www.rdocumentation.org/packages/rvertnet/topics/vertsearch'>rvertnet::vertsearch()</a></code> function - API
 parameter: <code>q</code></p></li>
-<li><p>ridigbio - <code>scientificname</code> in the <code><a href='http://www.rdocumentation.org/packages/ridigbio/topics/idig_search_records'>idig_search_records</a></code>
+<li><p>ridigbio - <code>scientificname</code> in the <code><a href='http://www.rdocumentation.org/packages/ridigbio/topics/idig_search_records'>ridigbio::idig_search_records()</a></code>
 function - API parameter: <code>scientificname</code></p></li>
 <li><p>inat - internal function - API parameter: <code>q</code></p></li>
 <li><p>obis - internal function - API parameter: <code>scientificName</code></p></li>
 <li><p>ala - internal function - API parameter: <code>q</code></p></li>
-</ul><p>If you have questions about how each of those parameters behaves with respect to
+</ul>
+    <p>If you have questions about how each of those parameters behaves with respect to
 the terms you pass to it, lookup documentation for those functions, or get in touch
 at the development repository <a href='https://github.com/ropensci/spocc/issues'>https://github.com/ropensci/spocc/issues</a></p>
     
@@ -309,10 +355,18 @@ the specific fields you want.</p>
 Otherwise use page ranges or simply "all" to request all available pages.
 Note however that this may hang your call if the request is simply too large.</p>
     
+    <h2 class="hasAnchor" id="bison-notes"><a class="anchor" href="#bison-notes"></a>BISON notes</h2>
+
+    
+    <p>We use two different functions when you request data from <code>bison</code>. We use
+<code><a href='http://www.rdocumentation.org/packages/rbison/topics/bison_solr'>rbison::bison_solr()</a></code> by default as it's more flexible. If you pass a value to the
+<code>geometry</code> parameter we use <code><a href='http://www.rdocumentation.org/packages/rbison/topics/bison'>rbison::bison()</a></code>. We'd prefer to just use one function
+to simplify things, but <code><a href='http://www.rdocumentation.org/packages/rbison/topics/bison_solr'>rbison::bison_solr()</a></code> doesn't support geometry queries.</p>
+    
     <h2 class="hasAnchor" id="limit-parameter"><a class="anchor" href="#limit-parameter"></a>limit parameter</h2>
 
     
-    <p>The <code>limit</code> parameter is set to a default of 25. This means that you will get <b>up to</b>
+    <p>The <code>limit</code> parameter is set to a default of 25. This means that you will get <strong>up to</strong>
 25 results back for each data source you ask for data from. If there are no results for a
 particular source, you'll get zero back; if there are 8 results for a particular source, you'll
 get 8 back. If there are 26 results for a particular source, you'll get 25 back. You can always
@@ -338,8 +392,7 @@ latitude, the second the longitude.</p>
 </ul>
     <p>Only POLYGON objects are currently supported.</p>
 <p>Getting WKT polygons or bounding boxes. We will soon introduce a function to help you select
-a bounding box but for now, you can use a few sites on the web.</p>
-<ul>
+a bounding box but for now, you can use a few sites on the web.</p><ul>
 <li><p>Bounding box - <a href='http://boundingbox.klokantech.com/'>http://boundingbox.klokantech.com/</a></p></li>
 <li><p>Well known text - <a href='http://arthur-e.github.io/Wicket/sandbox-gmaps3.html'>http://arthur-e.github.io/Wicket/sandbox-gmaps3.html</a></p></li>
 </ul>
@@ -371,18 +424,18 @@ back a single group of data for each name.</p></li>
     <h2 class="hasAnchor" id="geometry-options-by-data-provider"><a class="anchor" href="#geometry-options-by-data-provider"></a>Geometry options by data provider</h2>
 
     
-    <p><b>wkt &amp; bbox allowed, see WKT section above</b></p><ul>
+    <p><strong>wkt &amp; bbox allowed, see WKT section above</strong></p><ul>
 <li><p>gbif</p></li>
 <li><p>bison</p></li>
 <li><p>obis</p></li>
 <li><p>ala</p></li>
 </ul>
-    <p><b>bbox only</b></p><ul>
+    <p><strong>bbox only</strong></p><ul>
 <li><p>ecoengine</p></li>
 <li><p>inat</p></li>
 <li><p>idigbio</p></li>
 </ul>
-    <p><b>No spatial search allowed</b></p><ul>
+    <p><strong>No spatial search allowed</strong></p><ul>
 <li><p>ebird</p></li>
 <li><p>vertnet</p></li>
 </ul>
@@ -392,8 +445,7 @@ back a single group of data for each name.</p></li>
     
     <p>Date searches with the <code>date</code> parameter are allowed for all sources
 except ebird.</p>
-<p>Notes on some special cases</p>
-<ul>
+<p>Notes on some special cases</p><ul>
 <li><p>idigbio: We search on the <code>datecollected</code> field. Other date fields can be
 searched on, but we chose <code>datecollected</code> as it seemed most appropriate.</p></li>
 <li><p>vertnet: If you want more flexible date searches, you can pass various
@@ -412,8 +464,7 @@ are widely useful</p>
     <p>All data sources respond to the <code>limit</code> parameter passed to <code>occ</code>.</p>
 <p>Data sources, however, vary as to whether they respond to an offset. Here's
 the details on which data sources will respond to <code>start</code> and which
-to the <code>page</code> parameter:</p>
-<ul>
+to the <code>page</code> parameter:</p><ul>
 <li><p>gbif - Responds to <code>start</code>. Default: 0</p></li>
 <li><p>ecoengine - Responds to <code>page</code>. Default: 1</p></li>
 <li><p>bison - Responds to <code>start</code>. Default: 0</p></li>
@@ -435,7 +486,7 @@ second request for you automatically.</p></li>
     
     <p>In cases where you request data from multiple providers, especially when
 including GBIF, there could be duplicate records since many providers' data eventually
-ends up with GBIF. See <code><a href='spocc_duplicates.html'>spocc_duplicates</a></code> for more.</p>
+ends up with GBIF. See <code><a href='spocc_duplicates.html'>spocc_duplicates()</a></code> for more.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -492,7 +543,7 @@ ends up with GBIF. See <code><a href='spocc_duplicates.html'>spocc_duplicates</a
 <span class='co'># Restrict to records with coordinates</span>
 <span class='fu'>occ</span>(<span class='kw'>query</span> <span class='kw'>=</span> <span class='st'>"Acer"</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='st'>"idigbio"</span>, <span class='kw'>limit</span> <span class='kw'>=</span> <span class='fl'>5</span>, <span class='kw'>has_coords</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
-<span class='fu'>occ</span>(<span class='kw'>query</span> <span class='kw'>=</span> <span class='st'>'Setophaga caerulescens'</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='st'>'ebird'</span>, <span class='kw'>ebirdopts</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='kw'>region</span><span class='kw'>=</span><span class='st'>'US'</span>))
+<span class='fu'>occ</span>(<span class='kw'>query</span> <span class='kw'>=</span> <span class='st'>'Setophaga caerulescens'</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='st'>'ebird'</span>, <span class='kw'>ebirdopts</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='kw'>loc</span><span class='kw'>=</span><span class='st'>'US'</span>))
 <span class='fu'>occ</span>(<span class='kw'>query</span> <span class='kw'>=</span> <span class='st'>'Spinus tristis'</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='st'>'ebird'</span>, <span class='kw'>ebirdopts</span> <span class='kw'>=</span>
    <span class='fu'>list</span>(<span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>'ebirdgeo'</span>, <span class='kw'>lat</span> <span class='kw'>=</span> <span class='fl'>42</span>, <span class='kw'>lng</span> <span class='kw'>=</span> -<span class='fl'>76</span>, <span class='kw'>dist</span> <span class='kw'>=</span> <span class='fl'>50</span>))
 
@@ -587,7 +638,7 @@ ends up with GBIF. See <code><a href='spocc_duplicates.html'>spocc_duplicates</a
 <span class='fu'>occ</span>(<span class='kw'>from</span> <span class='kw'>=</span> <span class='st'>"gbif"</span>, <span class='kw'>geometry</span> <span class='kw'>=</span> <span class='no'>wkt</span>, <span class='kw'>limit</span> <span class='kw'>=</span> <span class='fl'>10</span>)
 
 <span class='co'># Specify many data sources, another example</span>
-<span class='no'>ebirdopts</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='kw'>region</span> <span class='kw'>=</span> <span class='st'>'US'</span>); <span class='no'>gbifopts</span>  <span class='kw'>=</span>  <span class='fu'>list</span>(<span class='kw'>country</span> <span class='kw'>=</span> <span class='st'>'US'</span>)
+<span class='no'>ebirdopts</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='kw'>loc</span> <span class='kw'>=</span> <span class='st'>'US'</span>); <span class='no'>gbifopts</span>  <span class='kw'>=</span>  <span class='fu'>list</span>(<span class='kw'>country</span> <span class='kw'>=</span> <span class='st'>'US'</span>)
 <span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'>occ</span>(<span class='kw'>query</span> <span class='kw'>=</span> <span class='st'>'Setophaga caerulescens'</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>'gbif'</span>,<span class='st'>'inat'</span>,<span class='st'>'bison'</span>,<span class='st'>'ebird'</span>),
     <span class='kw'>gbifopts</span> <span class='kw'>=</span> <span class='no'>gbifopts</span>, <span class='kw'>ebirdopts</span> <span class='kw'>=</span> <span class='no'>ebirdopts</span>, <span class='kw'>limit</span><span class='kw'>=</span><span class='fl'>20</span>)
 <span class='fu'><a href='occ2df.html'>occ2df</a></span>(<span class='no'>out</span>)
@@ -658,10 +709,6 @@ ends up with GBIF. See <code><a href='spocc_duplicates.html'>spocc_duplicates</a
  <span class='kw'>callopts</span><span class='kw'>=</span><span class='fu'>list</span>(<span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>))
 <span class='fu'>occ</span>(<span class='kw'>query</span> <span class='kw'>=</span> <span class='st'>'Accipiter striatus'</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='st'>'ecoengine'</span>, <span class='kw'>limit</span><span class='kw'>=</span><span class='fl'>10</span>,
  <span class='kw'>callopts</span><span class='kw'>=</span><span class='fu'>list</span>(<span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>))
-<span class='fu'>occ</span>(<span class='kw'>query</span> <span class='kw'>=</span> <span class='st'>'Accipiter striatus'</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>'ebird'</span>,<span class='st'>'bison'</span>), <span class='kw'>limit</span><span class='kw'>=</span><span class='fl'>10</span>,
- <span class='kw'>callopts</span><span class='kw'>=</span><span class='fu'>list</span>(<span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>))
-<span class='co'># occ(query = 'Accipiter striatus', from = 'ebird', limit=10, </span>
-<span class='co'># callopts=timeout(seconds = 0.1))</span>
 <span class='fu'>occ</span>(<span class='kw'>query</span> <span class='kw'>=</span> <span class='st'>'Accipiter striatus'</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='st'>'inat'</span>,
  <span class='kw'>callopts</span><span class='kw'>=</span><span class='fu'>list</span>(<span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>))
 <span class='fu'>occ</span>(<span class='kw'>query</span> <span class='kw'>=</span> <span class='st'>'Mola mola'</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='st'>'obis'</span>, <span class='kw'>limit</span> <span class='kw'>=</span> <span class='fl'>200</span>,
@@ -760,6 +807,8 @@ ends up with GBIF. See <code><a href='spocc_duplicates.html'>spocc_duplicates</a
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
+      <li><a href="#value">Value</a></li>
+
       <li><a href="#details">Details</a></li>
 
       <li><a href="#inputs">Inputs</a></li>
@@ -769,6 +818,8 @@ ends up with GBIF. See <code><a href='spocc_duplicates.html'>spocc_duplicates</a
       <li><a href="#idigbio-notes">iDigBio notes</a></li>
 
       <li><a href="#ecoengine-notes">Ecoengine notes</a></li>
+
+      <li><a href="#bison-notes">BISON notes</a></li>
 
       <li><a href="#limit-parameter">limit parameter</a></li>
 

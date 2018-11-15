@@ -29,7 +29,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">spocc</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.8.1.9100</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.9.0</span>
       </span>
     </div>
 
@@ -105,7 +105,7 @@
 <div id="data-sources" class="section level3">
 <h3 class="hasAnchor">
 <a href="#data-sources" class="anchor"></a>Data Sources</h3>
-<p><code>spocc</code> currently interfaces with ten major biodiversity repositories</p>
+<p><code>spocc</code> currently interfaces with nine major biodiversity repositories</p>
 <ol style="list-style-type: decimal">
 <li><p><a href="http://www.gbif.org/">Global Biodiversity Information Facility (GBIF)</a> (via <code>rgbif</code>) GBIF is a government funded open data repository with several partner organizations with the express goal of providing access to data on Earth’s biodiversity. The data are made available by a network of member nodes, coordinating information from various participant organizations and government agencies.</p></li>
 <li><p><a href="https://ecoengine.berkeley.edu/">Berkeley Ecoengine</a> (via <code>ecoengine</code>) The ecoengine is an open API built by the <a href="http://globalchange.berkeley.edu/">Berkeley Initiative for Global Change Biology</a>. The repository provides access to over 3 million specimens from various Berkeley natural history museums. These data span more than a century and provide access to georeferenced specimens, species checklists, photographs, vegetation surveys and resurveys and a variety of measurements from environmental sensors located at reserves across University of California’s natural reserve system.</p></li>
@@ -122,11 +122,11 @@
 <div id="data-retrieval" class="section level3">
 <h3 class="hasAnchor">
 <a href="#data-retrieval" class="anchor"></a>Data retrieval</h3>
-<p>The most significant function in spocc is the <code>occ</code> (short for occurrence) function. <code>occ</code> takes a query, often a species name, and searches across all data sources specified in the <code>from</code> argument. For example, one can search for all occurrences of <a href="https://www.allaboutbirds.org/guide/sharp-shinned_hawk/id">Sharp-shinned Hawks</a> (<em>Accipiter striatus</em>) from the GBIF database with the following R call.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>(<span class="st">'spocc'</span>)</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">(df &lt;-<span class="st"> </span><span class="kw"><a href="../reference/occ.html">occ</a></span>(<span class="dt">query =</span> <span class="st">'Accipiter striatus'</span>, <span class="dt">from =</span> <span class="st">'gbif'</span>))</a></code></pre></div>
+<p>The most significant function in spocc is the <code>occ</code> (short for occurrence) function. <code>occ</code> takes a query, often a species name, and searches across all data sources specified in the <code>from</code> argument. For example, one can search for all occurrences of <a href="https://www.allaboutbirds.org/guide/sharp-shinned_hawk/id">Sharp-shinned Hawks</a> (_Accipiter striatus_) from the GBIF database with the following R call.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">library</span>(<span class="st">'spocc'</span>)</a>
+<a class="sourceLine" id="cb1-2" title="2">(df &lt;-<span class="st"> </span><span class="kw"><a href="../reference/occ.html">occ</a></span>(<span class="dt">query =</span> <span class="st">'Accipiter striatus'</span>, <span class="dt">from =</span> <span class="st">'gbif'</span>))</a></code></pre></div>
 <pre><code>#&gt; Searched: gbif
-#&gt; Occurrences - Found: 736,001, Returned: 500
+#&gt; Occurrences - Found: 737,289, Returned: 500
 #&gt; Search type: Scientific
 #&gt;   gbif: Accipiter striatus (500)</code></pre>
 <p>The data returned are part of a <code>S3</code> class called <code>occdat</code>. This class has slots for each of the data sources described above. One can easily switch the source by changing the <code>from</code> parameter in the function call above.</p>
@@ -144,11 +144,11 @@
 </code></pre>
 <p>If you only request data from gbif, like <code>from = 'gbif'</code>, then the other four source slots are present in the response object, but have no data.</p>
 <p>You can quickly get just the GBIF data by indexing to it, like</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">df<span class="op">$</span>gbif</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">df<span class="op">$</span>gbif</a></code></pre></div>
 <pre><code>#&gt; Species [Accipiter striatus (500)] 
 #&gt; First 10 rows of [Accipiter_striatus]
 #&gt; 
-#&gt; # A tibble: 500 x 117
+#&gt; # A tibble: 500 x 123
 #&gt;    name  longitude latitude prov  issues    key datasetKey publishingOrgKey
 #&gt;    &lt;chr&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;      &lt;chr&gt;           
 #&gt;  1 Acci…    -104.      20.7 gbif  cdrou… 1.81e9 50c9509d-… 28eb1a3f-1c15-4…
@@ -161,7 +161,7 @@
 #&gt;  8 Acci…    -122.      38.0 gbif  cdrou… 1.80e9 50c9509d-… 28eb1a3f-1c15-4…
 #&gt;  9 Acci…    -115.      36.2 gbif  cdrou… 1.81e9 50c9509d-… 28eb1a3f-1c15-4…
 #&gt; 10 Acci…    -122.      37.1 gbif  cdrou… 1.81e9 50c9509d-… 28eb1a3f-1c15-4…
-#&gt; # ... with 490 more rows, and 109 more variables: networkKeys &lt;list&gt;,
+#&gt; # ... with 490 more rows, and 115 more variables: networkKeys &lt;list&gt;,
 #&gt; #   installationKey &lt;chr&gt;, publishingCountry &lt;chr&gt;, protocol &lt;chr&gt;,
 #&gt; #   lastCrawled &lt;chr&gt;, lastParsed &lt;chr&gt;, crawlId &lt;int&gt;,
 #&gt; #   basisOfRecord &lt;chr&gt;, taxonKey &lt;int&gt;, kingdomKey &lt;int&gt;,
@@ -176,17 +176,17 @@
 #&gt; #   references &lt;chr&gt;, license &lt;chr&gt;, geodeticDatum &lt;chr&gt;, class &lt;chr&gt;,
 #&gt; #   countryCode &lt;chr&gt;, country &lt;chr&gt;, rightsHolder &lt;chr&gt;,
 #&gt; #   identifier &lt;chr&gt;, informationWithheld &lt;chr&gt;, verbatimEventDate &lt;chr&gt;,
-#&gt; #   datasetName &lt;chr&gt;, collectionCode &lt;chr&gt;, gbifID &lt;chr&gt;,
-#&gt; #   verbatimLocality &lt;chr&gt;, occurrenceID &lt;chr&gt;, taxonID &lt;chr&gt;,
+#&gt; #   datasetName &lt;chr&gt;, verbatimLocality &lt;chr&gt;, gbifID &lt;chr&gt;,
+#&gt; #   collectionCode &lt;chr&gt;, occurrenceID &lt;chr&gt;, taxonID &lt;chr&gt;,
 #&gt; #   catalogNumber &lt;chr&gt;, recordedBy &lt;chr&gt;,
 #&gt; #   `http://unknown.org/occurrenceDetails` &lt;chr&gt;, institutionCode &lt;chr&gt;,
 #&gt; #   rights &lt;chr&gt;, eventTime &lt;chr&gt;,
 #&gt; #   `http://unknown.org/http_//rs.gbif.org/terms/1.0/Multimedia` &lt;chr&gt;,
 #&gt; #   identificationID &lt;chr&gt;, occurrenceRemarks &lt;chr&gt;,
 #&gt; #   identificationRemarks &lt;chr&gt;, elevation &lt;dbl&gt;, elevationAccuracy &lt;dbl&gt;,
-#&gt; #   organismQuantity &lt;chr&gt;, eventID &lt;chr&gt;, dynamicProperties &lt;chr&gt;,
-#&gt; #   georeferenceProtocol &lt;chr&gt;, verbatimSRS &lt;chr&gt;, locality &lt;chr&gt;,
-#&gt; #   verbatimCoordinateSystem &lt;chr&gt;, county &lt;chr&gt;, eventRemarks &lt;chr&gt;,
+#&gt; #   eventID &lt;chr&gt;, organismQuantity &lt;chr&gt;, georeferenceProtocol &lt;chr&gt;,
+#&gt; #   dynamicProperties &lt;chr&gt;, verbatimSRS &lt;chr&gt;, county &lt;chr&gt;,
+#&gt; #   verbatimCoordinateSystem &lt;chr&gt;, locality &lt;chr&gt;, eventRemarks &lt;chr&gt;,
 #&gt; #   `http://unknown.org/http_//rs.tdwg.org/dwc/terms/MeasurementOrFact` &lt;chr&gt;,
 #&gt; #   vernacularName &lt;chr&gt;,
 #&gt; #   `http://unknown.org/http_//rs.tdwg.org/dwc/terms/ResourceRelationship` &lt;chr&gt;,
@@ -194,14 +194,14 @@
 #&gt; #   identifiedBy &lt;chr&gt;, recordNumber &lt;chr&gt;, habitat &lt;chr&gt;,
 #&gt; #   preparations &lt;chr&gt;, sex &lt;chr&gt;, infraspecificEpithet &lt;chr&gt;,
 #&gt; #   continent &lt;chr&gt;, institutionID &lt;chr&gt;, language &lt;chr&gt;, type &lt;chr&gt;,
-#&gt; #   verbatimElevation &lt;chr&gt;, nomenclaturalCode &lt;chr&gt;,
-#&gt; #   higherGeography &lt;chr&gt;, dataGeneralizations &lt;chr&gt;, organismID &lt;chr&gt;,
+#&gt; #   verbatimElevation &lt;chr&gt;, higherGeography &lt;chr&gt;,
+#&gt; #   nomenclaturalCode &lt;chr&gt;, dataGeneralizations &lt;chr&gt;, organismID &lt;chr&gt;,
 #&gt; #   ownerInstitutionCode &lt;chr&gt;, startDayOfYear &lt;chr&gt;, datasetID &lt;chr&gt;,
-#&gt; #   accessRights &lt;chr&gt;, collectionID &lt;chr&gt;, higherClassification &lt;chr&gt;,
-#&gt; #   establishmentMeans &lt;chr&gt;, …</code></pre>
+#&gt; #   accessRights &lt;chr&gt;, higherClassification &lt;chr&gt;, collectionID &lt;chr&gt;,
+#&gt; #   individualCount &lt;int&gt;, …</code></pre>
 <p>When you get data from multiple providers, the fields returned are slightly different, e.g.:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">df &lt;-<span class="st"> </span><span class="kw"><a href="../reference/occ.html">occ</a></span>(<span class="dt">query =</span> <span class="st">'Accipiter striatus'</span>, <span class="dt">from =</span> <span class="kw">c</span>(<span class="st">'gbif'</span>, <span class="st">'ecoengine'</span>), <span class="dt">limit =</span> <span class="dv">25</span>)</a>
-<a class="sourceLine" id="cb6-2" data-line-number="2">df<span class="op">$</span>gbif<span class="op">$</span>data<span class="op">$</span>Accipiter_striatus</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">df &lt;-<span class="st"> </span><span class="kw"><a href="../reference/occ.html">occ</a></span>(<span class="dt">query =</span> <span class="st">'Accipiter striatus'</span>, <span class="dt">from =</span> <span class="kw">c</span>(<span class="st">'gbif'</span>, <span class="st">'ecoengine'</span>), <span class="dt">limit =</span> <span class="dv">25</span>)</a>
+<a class="sourceLine" id="cb6-2" title="2">df<span class="op">$</span>gbif<span class="op">$</span>data<span class="op">$</span>Accipiter_striatus</a></code></pre></div>
 <pre><code>#&gt; # A tibble: 25 x 69
 #&gt;    name  longitude latitude issues prov     key datasetKey publishingOrgKey
 #&gt;    &lt;chr&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;int&gt; &lt;chr&gt;      &lt;chr&gt;           
@@ -230,34 +230,34 @@
 #&gt; #   references &lt;chr&gt;, license &lt;chr&gt;, geodeticDatum &lt;chr&gt;, class &lt;chr&gt;,
 #&gt; #   countryCode &lt;chr&gt;, country &lt;chr&gt;, rightsHolder &lt;chr&gt;,
 #&gt; #   identifier &lt;chr&gt;, informationWithheld &lt;chr&gt;, verbatimEventDate &lt;chr&gt;,
-#&gt; #   datasetName &lt;chr&gt;, collectionCode &lt;chr&gt;, gbifID &lt;chr&gt;,
-#&gt; #   verbatimLocality &lt;chr&gt;, occurrenceID &lt;chr&gt;, taxonID &lt;chr&gt;,
+#&gt; #   datasetName &lt;chr&gt;, verbatimLocality &lt;chr&gt;, gbifID &lt;chr&gt;,
+#&gt; #   collectionCode &lt;chr&gt;, occurrenceID &lt;chr&gt;, taxonID &lt;chr&gt;,
 #&gt; #   catalogNumber &lt;chr&gt;, recordedBy &lt;chr&gt;,
 #&gt; #   `http://unknown.org/occurrenceDetails` &lt;chr&gt;, institutionCode &lt;chr&gt;,
 #&gt; #   rights &lt;chr&gt;, eventTime &lt;chr&gt;,
 #&gt; #   `http://unknown.org/http_//rs.gbif.org/terms/1.0/Multimedia` &lt;chr&gt;,
 #&gt; #   identificationID &lt;chr&gt;, occurrenceRemarks &lt;chr&gt;</code></pre>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">df<span class="op">$</span>ecoengine<span class="op">$</span>data<span class="op">$</span>Accipiter_striatus</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1">df<span class="op">$</span>ecoengine<span class="op">$</span>data<span class="op">$</span>Accipiter_striatus</a></code></pre></div>
 <pre><code>#&gt; # A tibble: 25 x 17
 #&gt;    longitude latitude url   key   observation_type name  country
 #&gt;        &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;            &lt;chr&gt; &lt;chr&gt;  
-#&gt;  1     -115.     33.4 http… MVZ:… specimen         Acci… United…
-#&gt;  2     -117.     33.1 http… MVZ:… specimen         Acci… United…
-#&gt;  3     -119.     39.5 http… MVZ:… specimen         Acci… United…
-#&gt;  4     -116.     40.2 http… MVZ:… specimen         Acci… United…
-#&gt;  5     -117.     38.9 http… MVZ:… specimen         Acci… United…
-#&gt;  6     -118.     45.1 http… MVZ:… specimen         Acci… United…
-#&gt;  7     -123.     39.7 http… MVZ:… specimen         Acci… United…
-#&gt;  8     -123.     40.5 http… MVZ:… specimen         Acci… United…
-#&gt;  9     -124.     40.5 http… MVZ:… specimen         Acci… United…
-#&gt; 10     -120.     41.4 http… MVZ:… specimen         Acci… United…
+#&gt;  1     -123.     38.0 http… CAS:… specimen         Acci… United…
+#&gt;  2     -123.     38.0 http… CAS:… specimen         Acci… United…
+#&gt;  3     -123.     38.0 http… CAS:… specimen         Acci… United…
+#&gt;  4     -123.     38.0 http… CAS:… specimen         Acci… United…
+#&gt;  5     -123.     38.0 http… CAS:… specimen         Acci… United…
+#&gt;  6     -123.     38.0 http… CAS:… specimen         Acci… United…
+#&gt;  7     -123.     38.0 http… CAS:… specimen         Acci… United…
+#&gt;  8     -122.     37.6 http… CAS:… specimen         Acci… United…
+#&gt;  9       NA      NA   http… CAS:… specimen         Acci… United…
+#&gt; 10     -122.     37.7 http… CAS:… specimen         Acci… United…
 #&gt; # ... with 15 more rows, and 10 more variables: state_province &lt;chr&gt;,
 #&gt; #   begin_date &lt;date&gt;, end_date &lt;chr&gt;, source &lt;chr&gt;,
 #&gt; #   remote_resource &lt;chr&gt;, locality &lt;chr&gt;,
 #&gt; #   coordinate_uncertainty_in_meters &lt;int&gt;, recorded_by &lt;chr&gt;,
 #&gt; #   last_modified &lt;chr&gt;, prov &lt;chr&gt;</code></pre>
 <p>We provide a function <code>occ2df</code> that pulls out a few key columns needed for making maps:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw"><a href="../reference/occ2df.html">occ2df</a></span>(df)</a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1"><span class="kw"><a href="../reference/occ2df.html">occ2df</a></span>(df)</a></code></pre></div>
 <pre><code>#&gt; # A tibble: 50 x 6
 #&gt;    name               longitude latitude prov  date       key       
 #&gt;    &lt;chr&gt;                  &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt; &lt;date&gt;     &lt;chr&gt;     
@@ -277,8 +277,8 @@
 <h3 class="hasAnchor">
 <a href="#fix-names" class="anchor"></a>Fix names</h3>
 <p>One problem you often run in to is that there can be various names for the same taxon in any one source. For example:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1">df &lt;-<span class="st"> </span><span class="kw"><a href="../reference/occ.html">occ</a></span>(<span class="dt">query =</span> <span class="st">'Pinus contorta'</span>, <span class="dt">from =</span> <span class="kw">c</span>(<span class="st">'gbif'</span>, <span class="st">'ecoengine'</span>), <span class="dt">limit =</span> <span class="dv">50</span>)</a>
-<a class="sourceLine" id="cb12-2" data-line-number="2">df<span class="op">$</span>gbif<span class="op">$</span>data<span class="op">$</span>Pinus_contorta<span class="op">$</span>name</a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1">df &lt;-<span class="st"> </span><span class="kw"><a href="../reference/occ.html">occ</a></span>(<span class="dt">query =</span> <span class="st">'Pinus contorta'</span>, <span class="dt">from =</span> <span class="kw">c</span>(<span class="st">'gbif'</span>, <span class="st">'ecoengine'</span>), <span class="dt">limit =</span> <span class="dv">50</span>)</a>
+<a class="sourceLine" id="cb12-2" title="2">df<span class="op">$</span>gbif<span class="op">$</span>data<span class="op">$</span>Pinus_contorta<span class="op">$</span>name</a></code></pre></div>
 <pre><code>#&gt;  [1] "Pinus contorta" "Pinus contorta" "Pinus contorta" "Pinus contorta"
 #&gt;  [5] "Pinus contorta" "Pinus contorta" "Pinus contorta" "Pinus contorta"
 #&gt;  [9] "Pinus contorta" "Pinus contorta" "Pinus contorta" "Pinus contorta"
@@ -292,60 +292,35 @@
 #&gt; [41] "Pinus contorta" "Pinus contorta" "Pinus contorta" "Pinus contorta"
 #&gt; [45] "Pinus contorta" "Pinus contorta" "Pinus contorta" "Pinus contorta"
 #&gt; [49] "Pinus contorta" "Pinus contorta"</code></pre>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1">df<span class="op">$</span>ecoengine<span class="op">$</span>data<span class="op">$</span>Pinus_contorta<span class="op">$</span>name</a></code></pre></div>
-<pre><code>#&gt;  [1] "Pinus contorta subsp. contorta"         
-#&gt;  [2] "Pinus contorta"                         
-#&gt;  [3] "Pinus contorta subsp. murrayana"        
-#&gt;  [4] "Pinus contorta subsp. murrayana"        
-#&gt;  [5] "Pinus contorta subsp. murrayana"        
-#&gt;  [6] "Pinus contorta subsp. murrayana"        
-#&gt;  [7] "Pinus contorta subsp. murrayana"        
-#&gt;  [8] "Pinus contorta subsp. murrayana"        
-#&gt;  [9] "Pinus contorta subsp. murrayana"        
-#&gt; [10] "Pinus contorta subsp. murrayana"        
-#&gt; [11] "Pinus contorta subsp. murrayana"        
-#&gt; [12] "Pinus contorta"                         
-#&gt; [13] "Pinus contorta subsp. murrayana"        
-#&gt; [14] "Pinus contorta subsp. murrayana"        
-#&gt; [15] "Pinus contorta"                         
-#&gt; [16] "Pinus contorta subsp. murrayana"        
-#&gt; [17] "Pinus contorta"                         
-#&gt; [18] "Pinus contorta"                         
-#&gt; [19] "Pinus contorta subsp. murrayana"        
-#&gt; [20] "Pinus contorta subsp. murrayana"        
-#&gt; [21] "Pinus contorta var. latifolia"          
-#&gt; [22] "Pinus contorta subsp. murrayana"        
-#&gt; [23] "Pinus contorta"                         
-#&gt; [24] "Pinus contorta"                         
-#&gt; [25] "Pinus contorta subsp. murrayana"        
-#&gt; [26] "Pinus contorta"                         
-#&gt; [27] "Pinus contorta"                         
-#&gt; [28] "Pinus contorta subsp. murrayana"        
-#&gt; [29] "Pinus contorta subsp. murrayana"        
-#&gt; [30] "Pinus contorta subsp. murrayana"        
-#&gt; [31] "Pinus contorta subsp. murrayana"        
-#&gt; [32] "Pinus contorta subsp. murrayana"        
-#&gt; [33] "Pinus contorta subsp. murrayana"        
-#&gt; [34] "Pinus contorta subsp. murrayana"        
-#&gt; [35] "Pinus contorta subsp. murrayana"        
-#&gt; [36] "Pinus contorta subsp. murrayana"        
-#&gt; [37] "Pinus contorta subsp. murrayana"        
-#&gt; [38] "Pinus contorta"                         
-#&gt; [39] "Pinus contorta"                         
-#&gt; [40] "Pinus contorta subsp. murrayana"        
-#&gt; [41] "Pinus contorta subsp. murrayana"        
-#&gt; [42] "Pinus contorta subsp. murrayana (Balf.)"
-#&gt; [43] "Pinus contorta murrayana"               
-#&gt; [44] "Pinus contorta murrayana"               
-#&gt; [45] "Pinus contorta murrayana"               
-#&gt; [46] "Pinus contorta subsp. murrayana"        
-#&gt; [47] "Pinus contorta"                         
-#&gt; [48] "Pinus contorta var. contorta"           
-#&gt; [49] "Pinus contorta subsp. murrayana"        
-#&gt; [50] "Pinus contorta murrayana"</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1">df<span class="op">$</span>ecoengine<span class="op">$</span>data<span class="op">$</span>Pinus_contorta<span class="op">$</span>name</a></code></pre></div>
+<pre><code>#&gt;  [1] "Pinus contorta murrayana"        "Pinus contorta murrayana"       
+#&gt;  [3] "Pinus contorta murrayana"        "Pinus contorta murrayana"       
+#&gt;  [5] "Pinus contorta murrayana"        "Pinus contorta murrayana"       
+#&gt;  [7] "Pinus contorta murrayana"        "Pinus contorta murrayana"       
+#&gt;  [9] "Pinus contorta murrayana"        "Pinus contorta"                 
+#&gt; [11] "Pinus contorta murrayana"        "Pinus contorta var. murrayana"  
+#&gt; [13] "Pinus contorta subsp. murrayana" "Pinus contorta murrayana"       
+#&gt; [15] "Pinus contorta murrayana"        "Pinus contorta murrayana"       
+#&gt; [17] "Pinus contorta var. murrayana"   "Pinus contorta murrayana"       
+#&gt; [19] "Pinus contorta murrayana"        "Pinus contorta"                 
+#&gt; [21] "Pinus contorta var. murrayana"   "Pinus contorta subsp. murrayana"
+#&gt; [23] "Pinus contorta var. murrayana"   "Pinus contorta subsp. murrayana"
+#&gt; [25] "Pinus contorta subsp. murrayana" "Pinus contorta subsp. murrayana"
+#&gt; [27] "Pinus contorta murrayana"        "Pinus contorta murrayana"       
+#&gt; [29] "Pinus contorta subsp. murrayana" "Pinus contorta murrayana"       
+#&gt; [31] "Pinus contorta var. murrayana"   "Pinus contorta murrayana"       
+#&gt; [33] "Pinus contorta murrayana"        "Pinus contorta murrayana"       
+#&gt; [35] "Pinus contorta subsp. murrayana" "Pinus contorta subsp. bolanderi"
+#&gt; [37] "Pinus contorta subsp. contorta"  "Pinus contorta subsp. murrayana"
+#&gt; [39] "Pinus contorta murrayana"        "Pinus contorta murrayana"       
+#&gt; [41] "Pinus contorta murrayana"        "Pinus contorta murrayana"       
+#&gt; [43] "Pinus contorta murrayana"        "Pinus contorta murrayana"       
+#&gt; [45] "Pinus contorta murrayana"        "Pinus contorta murrayana"       
+#&gt; [47] "Pinus contorta murrayana"        "Pinus contorta murrayana"       
+#&gt; [49] "Pinus contorta var. contorta"    "Pinus contorta subsp. murrayana"</code></pre>
 <p>This is fine, but when trying to make a map in which points are colored for each taxon, you can have many colors for a single taxon, where instead one color per taxon is more appropriate. There is a function in <code>spocc</code> called <code>fixnames</code>, which has a few options in which you can take the shortest names (usually just the plain binomials like <em>Homo sapiens</em>), or the original name queried, or a vector of names supplied by the user.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1">df &lt;-<span class="st"> </span><span class="kw"><a href="../reference/fixnames.html">fixnames</a></span>(df, <span class="dt">how =</span> <span class="st">'query'</span>)</a>
-<a class="sourceLine" id="cb16-2" data-line-number="2">df<span class="op">$</span>gbif<span class="op">$</span>data<span class="op">$</span>Pinus_contorta<span class="op">$</span>name</a></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1">df &lt;-<span class="st"> </span><span class="kw"><a href="../reference/fixnames.html">fixnames</a></span>(df, <span class="dt">how =</span> <span class="st">'query'</span>)</a>
+<a class="sourceLine" id="cb16-2" title="2">df<span class="op">$</span>gbif<span class="op">$</span>data<span class="op">$</span>Pinus_contorta<span class="op">$</span>name</a></code></pre></div>
 <pre><code>#&gt;  [1] "Pinus contorta" "Pinus contorta" "Pinus contorta" "Pinus contorta"
 #&gt;  [5] "Pinus contorta" "Pinus contorta" "Pinus contorta" "Pinus contorta"
 #&gt;  [9] "Pinus contorta" "Pinus contorta" "Pinus contorta" "Pinus contorta"
@@ -359,7 +334,7 @@
 #&gt; [41] "Pinus contorta" "Pinus contorta" "Pinus contorta" "Pinus contorta"
 #&gt; [45] "Pinus contorta" "Pinus contorta" "Pinus contorta" "Pinus contorta"
 #&gt; [49] "Pinus contorta" "Pinus contorta"</code></pre>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1">df<span class="op">$</span>ecoengine<span class="op">$</span>data<span class="op">$</span>Pinus_contorta<span class="op">$</span>name</a></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1">df<span class="op">$</span>ecoengine<span class="op">$</span>data<span class="op">$</span>Pinus_contorta<span class="op">$</span>name</a></code></pre></div>
 <pre><code>#&gt;  [1] "Pinus contorta" "Pinus contorta" "Pinus contorta" "Pinus contorta"
 #&gt;  [5] "Pinus contorta" "Pinus contorta" "Pinus contorta" "Pinus contorta"
 #&gt;  [9] "Pinus contorta" "Pinus contorta" "Pinus contorta" "Pinus contorta"
@@ -373,8 +348,8 @@
 #&gt; [41] "Pinus contorta" "Pinus contorta" "Pinus contorta" "Pinus contorta"
 #&gt; [45] "Pinus contorta" "Pinus contorta" "Pinus contorta" "Pinus contorta"
 #&gt; [49] "Pinus contorta" "Pinus contorta"</code></pre>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1">df_comb &lt;-<span class="st"> </span><span class="kw"><a href="../reference/occ2df.html">occ2df</a></span>(df)</a>
-<a class="sourceLine" id="cb20-2" data-line-number="2"><span class="kw">head</span>(df_comb); <span class="kw">tail</span>(df_comb)</a></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1">df_comb &lt;-<span class="st"> </span><span class="kw"><a href="../reference/occ2df.html">occ2df</a></span>(df)</a>
+<a class="sourceLine" id="cb20-2" title="2"><span class="kw">head</span>(df_comb); <span class="kw">tail</span>(df_comb)</a></code></pre></div>
 <pre><code>#&gt; # A tibble: 6 x 6
 #&gt;   name           longitude latitude prov  date       key       
 #&gt;   &lt;chr&gt;              &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt; &lt;date&gt;     &lt;chr&gt;     
@@ -387,12 +362,12 @@
 <pre><code>#&gt; # A tibble: 6 x 6
 #&gt;   name           longitude latitude prov      date       key              
 #&gt;   &lt;chr&gt;              &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;     &lt;date&gt;     &lt;chr&gt;            
-#&gt; 1 Pinus contorta     -122.     37.5 ecoengine 1928-08-01 vtm:plot:82CC34:2
-#&gt; 2 Pinus contorta     -118.     34.3 ecoengine 1953-04-01 SD90152          
-#&gt; 3 Pinus contorta     -124.     40.8 ecoengine 1931-05-01 UCD134473        
-#&gt; 4 Pinus contorta     -124.     39.3 ecoengine 1953-05-30 RSA82866         
-#&gt; 5 Pinus contorta     -120.     38.8 ecoengine 2009-07-22 SD237235         
-#&gt; 6 Pinus contorta     -120.     37.9 ecoengine 1920-01-01 vtm:plot:77B415:2</code></pre>
+#&gt; 1 Pinus contorta     -119.     38.1 ecoengine 1935-09-12 vtm:plot:71E15:7 
+#&gt; 2 Pinus contorta     -119.     37.8 ecoengine 1935-09-22 vtm:plot:76B115:3
+#&gt; 3 Pinus contorta     -119.     37.8 ecoengine 1935-09-15 vtm:plot:76C24:3 
+#&gt; 4 Pinus contorta     -119.     37.7 ecoengine 1935-09-07 vtm:plot:76D27:4 
+#&gt; 5 Pinus contorta     -124.     39.4 ecoengine 1930-10-31 POM213040        
+#&gt; 6 Pinus contorta     -121.     40.4 ecoengine 1960-07-18 CAS:DS:40775</code></pre>
 </div>
 <div id="clean-data" class="section level2">
 <h2 class="hasAnchor">

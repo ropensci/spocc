@@ -1,3 +1,22 @@
+spocc 0.9.0
+===========
+
+### NEW FEATURES
+
+* xx (#xxx)
+* xx (#xxx)
+* xx (#xxx)
+* xx (#xxx)
+
+### BUG FIXES
+
+* xx (#xxx)
+* xx (#xxx)
+* xx (#xxx)
+* xx (#xxx)
+
+
+
 spocc 0.8.0
 ===========
 

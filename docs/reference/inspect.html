@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get more data on individual occurrences. — inspect • spocc</title>
+<title>Get more data on individual occurrences — inspect • spocc</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,13 @@
 
 
 
-<meta property="og:title" content="Get more data on individual occurrences. — inspect" />
+<meta property="og:title" content="Get more data on individual occurrences — inspect" />
 
-<meta property="og:description" content="Get more data on individual occurrences." />
+<meta property="og:description" content="Fetches the complete record, which may or may not be the same
+as requested through occ(). Some data providers have different ways
+to retrieve many occurrence records vs. single occurrence records -
+and sometimes the results are more verbose when retrieving a
+single occurrence record." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -61,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">spocc</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.8.1.9100</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.9.0</span>
       </span>
     </div>
 
@@ -112,14 +116,18 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get more data on individual occurrences.</h1>
+    <h1>Get more data on individual occurrences</h1>
     <small class="dont-index">Source: <a href='https://github.com/ropensci/spocc/blob/master/R/inspect.R'><code>R/inspect.R</code></a></small>
     <div class="hidden name"><code>inspect.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Get more data on individual occurrences.</p>
+    <p>Fetches the complete record, which may or may not be the same
+as requested through <code><a href='occ.html'>occ()</a></code>. Some data providers have different ways
+to retrieve many occurrence records vs. single occurrence records -
+and sometimes the results are more verbose when retrieving a
+single occurrence record.</p>
     
     </div>
 
@@ -139,8 +147,8 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>The output from <code><a href='occ.html'>occ</a></code> call, output from call to
-<code><a href='occ2df.html'>occ2df</a></code>, or an occurrence ID as a occkey class.</p></td>
+      <td><p>The output from <code><a href='occ.html'>occ()</a></code> call, output from call to
+<code><a href='occ2df.html'>occ2df()</a></code>, or an occurrence ID as a occkey class.</p></td>
     </tr>
     <tr>
       <th>from</th>

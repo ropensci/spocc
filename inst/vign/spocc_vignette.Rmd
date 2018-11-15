@@ -22,7 +22,7 @@ The rOpenSci projects aims to provide programmatic access to scientific data rep
 
 ### Data Sources
 
-`spocc` currently interfaces with ten major biodiversity repositories
+`spocc` currently interfaces with nine major biodiversity repositories
 
 1. [Global Biodiversity Information Facility (GBIF)](http://www.gbif.org/) (via `rgbif`)
 GBIF is a government funded open data repository with several partner organizations with the express goal of providing access to data on Earth's biodiversity. The data are made available by a network of member nodes, coordinating information from various participant organizations and government agencies.

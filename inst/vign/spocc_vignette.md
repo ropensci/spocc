@@ -15,7 +15,7 @@ The rOpenSci projects aims to provide programmatic access to scientific data rep
 
 ### Data Sources
 
-`spocc` currently interfaces with ten major biodiversity repositories
+`spocc` currently interfaces with nine major biodiversity repositories
 
 1. [Global Biodiversity Information Facility (GBIF)](http://www.gbif.org/) (via `rgbif`)
 GBIF is a government funded open data repository with several partner organizations with the express goal of providing access to data on Earth's biodiversity. The data are made available by a network of member nodes, coordinating information from various participant organizations and government agencies.
@@ -59,7 +59,7 @@ library('spocc')
 
 ```
 #> Searched: gbif
-#> Occurrences - Found: 736,001, Returned: 500
+#> Occurrences - Found: 737,289, Returned: 500
 #> Search type: Scientific
 #>   gbif: Accipiter striatus (500)
 ```
@@ -95,7 +95,7 @@ df$gbif
 #> Species [Accipiter striatus (500)] 
 #> First 10 rows of [Accipiter_striatus]
 #> 
-#> # A tibble: 500 x 117
+#> # A tibble: 500 x 123
 #>    name  longitude latitude prov  issues    key datasetKey publishingOrgKey
 #>    <chr>     <dbl>    <dbl> <chr> <chr>   <int> <chr>      <chr>           
 #>  1 Acci…    -104.      20.7 gbif  cdrou… 1.81e9 50c9509d-… 28eb1a3f-1c15-4…
@@ -108,7 +108,7 @@ df$gbif
 #>  8 Acci…    -122.      38.0 gbif  cdrou… 1.80e9 50c9509d-… 28eb1a3f-1c15-4…
 #>  9 Acci…    -115.      36.2 gbif  cdrou… 1.81e9 50c9509d-… 28eb1a3f-1c15-4…
 #> 10 Acci…    -122.      37.1 gbif  cdrou… 1.81e9 50c9509d-… 28eb1a3f-1c15-4…
-#> # ... with 490 more rows, and 109 more variables: networkKeys <list>,
+#> # ... with 490 more rows, and 115 more variables: networkKeys <list>,
 #> #   installationKey <chr>, publishingCountry <chr>, protocol <chr>,
 #> #   lastCrawled <chr>, lastParsed <chr>, crawlId <int>,
 #> #   basisOfRecord <chr>, taxonKey <int>, kingdomKey <int>,
@@ -123,17 +123,17 @@ df$gbif
 #> #   references <chr>, license <chr>, geodeticDatum <chr>, class <chr>,
 #> #   countryCode <chr>, country <chr>, rightsHolder <chr>,
 #> #   identifier <chr>, informationWithheld <chr>, verbatimEventDate <chr>,
-#> #   datasetName <chr>, collectionCode <chr>, gbifID <chr>,
-#> #   verbatimLocality <chr>, occurrenceID <chr>, taxonID <chr>,
+#> #   datasetName <chr>, verbatimLocality <chr>, gbifID <chr>,
+#> #   collectionCode <chr>, occurrenceID <chr>, taxonID <chr>,
 #> #   catalogNumber <chr>, recordedBy <chr>,
 #> #   `http://unknown.org/occurrenceDetails` <chr>, institutionCode <chr>,
 #> #   rights <chr>, eventTime <chr>,
 #> #   `http://unknown.org/http_//rs.gbif.org/terms/1.0/Multimedia` <chr>,
 #> #   identificationID <chr>, occurrenceRemarks <chr>,
 #> #   identificationRemarks <chr>, elevation <dbl>, elevationAccuracy <dbl>,
-#> #   organismQuantity <chr>, eventID <chr>, dynamicProperties <chr>,
-#> #   georeferenceProtocol <chr>, verbatimSRS <chr>, locality <chr>,
-#> #   verbatimCoordinateSystem <chr>, county <chr>, eventRemarks <chr>,
+#> #   eventID <chr>, organismQuantity <chr>, georeferenceProtocol <chr>,
+#> #   dynamicProperties <chr>, verbatimSRS <chr>, county <chr>,
+#> #   verbatimCoordinateSystem <chr>, locality <chr>, eventRemarks <chr>,
 #> #   `http://unknown.org/http_//rs.tdwg.org/dwc/terms/MeasurementOrFact` <chr>,
 #> #   vernacularName <chr>,
 #> #   `http://unknown.org/http_//rs.tdwg.org/dwc/terms/ResourceRelationship` <chr>,
@@ -141,11 +141,11 @@ df$gbif
 #> #   identifiedBy <chr>, recordNumber <chr>, habitat <chr>,
 #> #   preparations <chr>, sex <chr>, infraspecificEpithet <chr>,
 #> #   continent <chr>, institutionID <chr>, language <chr>, type <chr>,
-#> #   verbatimElevation <chr>, nomenclaturalCode <chr>,
-#> #   higherGeography <chr>, dataGeneralizations <chr>, organismID <chr>,
+#> #   verbatimElevation <chr>, higherGeography <chr>,
+#> #   nomenclaturalCode <chr>, dataGeneralizations <chr>, organismID <chr>,
 #> #   ownerInstitutionCode <chr>, startDayOfYear <chr>, datasetID <chr>,
-#> #   accessRights <chr>, collectionID <chr>, higherClassification <chr>,
-#> #   establishmentMeans <chr>, …
+#> #   accessRights <chr>, higherClassification <chr>, collectionID <chr>,
+#> #   individualCount <int>, …
 ```
 
 When you get data from multiple providers, the fields returned are slightly different, e.g.:
@@ -185,8 +185,8 @@ df$gbif$data$Accipiter_striatus
 #> #   references <chr>, license <chr>, geodeticDatum <chr>, class <chr>,
 #> #   countryCode <chr>, country <chr>, rightsHolder <chr>,
 #> #   identifier <chr>, informationWithheld <chr>, verbatimEventDate <chr>,
-#> #   datasetName <chr>, collectionCode <chr>, gbifID <chr>,
-#> #   verbatimLocality <chr>, occurrenceID <chr>, taxonID <chr>,
+#> #   datasetName <chr>, verbatimLocality <chr>, gbifID <chr>,
+#> #   collectionCode <chr>, occurrenceID <chr>, taxonID <chr>,
 #> #   catalogNumber <chr>, recordedBy <chr>,
 #> #   `http://unknown.org/occurrenceDetails` <chr>, institutionCode <chr>,
 #> #   rights <chr>, eventTime <chr>,
@@ -202,16 +202,16 @@ df$ecoengine$data$Accipiter_striatus
 #> # A tibble: 25 x 17
 #>    longitude latitude url   key   observation_type name  country
 #>        <dbl>    <dbl> <chr> <chr> <chr>            <chr> <chr>  
-#>  1     -115.     33.4 http… MVZ:… specimen         Acci… United…
-#>  2     -117.     33.1 http… MVZ:… specimen         Acci… United…
-#>  3     -119.     39.5 http… MVZ:… specimen         Acci… United…
-#>  4     -116.     40.2 http… MVZ:… specimen         Acci… United…
-#>  5     -117.     38.9 http… MVZ:… specimen         Acci… United…
-#>  6     -118.     45.1 http… MVZ:… specimen         Acci… United…
-#>  7     -123.     39.7 http… MVZ:… specimen         Acci… United…
-#>  8     -123.     40.5 http… MVZ:… specimen         Acci… United…
-#>  9     -124.     40.5 http… MVZ:… specimen         Acci… United…
-#> 10     -120.     41.4 http… MVZ:… specimen         Acci… United…
+#>  1     -123.     38.0 http… CAS:… specimen         Acci… United…
+#>  2     -123.     38.0 http… CAS:… specimen         Acci… United…
+#>  3     -123.     38.0 http… CAS:… specimen         Acci… United…
+#>  4     -123.     38.0 http… CAS:… specimen         Acci… United…
+#>  5     -123.     38.0 http… CAS:… specimen         Acci… United…
+#>  6     -123.     38.0 http… CAS:… specimen         Acci… United…
+#>  7     -123.     38.0 http… CAS:… specimen         Acci… United…
+#>  8     -122.     37.6 http… CAS:… specimen         Acci… United…
+#>  9       NA      NA   http… CAS:… specimen         Acci… United…
+#> 10     -122.     37.7 http… CAS:… specimen         Acci… United…
 #> # ... with 15 more rows, and 10 more variables: state_province <chr>,
 #> #   begin_date <date>, end_date <chr>, source <chr>,
 #> #   remote_resource <chr>, locality <chr>,
@@ -275,56 +275,31 @@ df$ecoengine$data$Pinus_contorta$name
 ```
 
 ```
-#>  [1] "Pinus contorta subsp. contorta"         
-#>  [2] "Pinus contorta"                         
-#>  [3] "Pinus contorta subsp. murrayana"        
-#>  [4] "Pinus contorta subsp. murrayana"        
-#>  [5] "Pinus contorta subsp. murrayana"        
-#>  [6] "Pinus contorta subsp. murrayana"        
-#>  [7] "Pinus contorta subsp. murrayana"        
-#>  [8] "Pinus contorta subsp. murrayana"        
-#>  [9] "Pinus contorta subsp. murrayana"        
-#> [10] "Pinus contorta subsp. murrayana"        
-#> [11] "Pinus contorta subsp. murrayana"        
-#> [12] "Pinus contorta"                         
-#> [13] "Pinus contorta subsp. murrayana"        
-#> [14] "Pinus contorta subsp. murrayana"        
-#> [15] "Pinus contorta"                         
-#> [16] "Pinus contorta subsp. murrayana"        
-#> [17] "Pinus contorta"                         
-#> [18] "Pinus contorta"                         
-#> [19] "Pinus contorta subsp. murrayana"        
-#> [20] "Pinus contorta subsp. murrayana"        
-#> [21] "Pinus contorta var. latifolia"          
-#> [22] "Pinus contorta subsp. murrayana"        
-#> [23] "Pinus contorta"                         
-#> [24] "Pinus contorta"                         
-#> [25] "Pinus contorta subsp. murrayana"        
-#> [26] "Pinus contorta"                         
-#> [27] "Pinus contorta"                         
-#> [28] "Pinus contorta subsp. murrayana"        
-#> [29] "Pinus contorta subsp. murrayana"        
-#> [30] "Pinus contorta subsp. murrayana"        
-#> [31] "Pinus contorta subsp. murrayana"        
-#> [32] "Pinus contorta subsp. murrayana"        
-#> [33] "Pinus contorta subsp. murrayana"        
-#> [34] "Pinus contorta subsp. murrayana"        
-#> [35] "Pinus contorta subsp. murrayana"        
-#> [36] "Pinus contorta subsp. murrayana"        
-#> [37] "Pinus contorta subsp. murrayana"        
-#> [38] "Pinus contorta"                         
-#> [39] "Pinus contorta"                         
-#> [40] "Pinus contorta subsp. murrayana"        
-#> [41] "Pinus contorta subsp. murrayana"        
-#> [42] "Pinus contorta subsp. murrayana (Balf.)"
-#> [43] "Pinus contorta murrayana"               
-#> [44] "Pinus contorta murrayana"               
-#> [45] "Pinus contorta murrayana"               
-#> [46] "Pinus contorta subsp. murrayana"        
-#> [47] "Pinus contorta"                         
-#> [48] "Pinus contorta var. contorta"           
-#> [49] "Pinus contorta subsp. murrayana"        
-#> [50] "Pinus contorta murrayana"
+#>  [1] "Pinus contorta murrayana"        "Pinus contorta murrayana"       
+#>  [3] "Pinus contorta murrayana"        "Pinus contorta murrayana"       
+#>  [5] "Pinus contorta murrayana"        "Pinus contorta murrayana"       
+#>  [7] "Pinus contorta murrayana"        "Pinus contorta murrayana"       
+#>  [9] "Pinus contorta murrayana"        "Pinus contorta"                 
+#> [11] "Pinus contorta murrayana"        "Pinus contorta var. murrayana"  
+#> [13] "Pinus contorta subsp. murrayana" "Pinus contorta murrayana"       
+#> [15] "Pinus contorta murrayana"        "Pinus contorta murrayana"       
+#> [17] "Pinus contorta var. murrayana"   "Pinus contorta murrayana"       
+#> [19] "Pinus contorta murrayana"        "Pinus contorta"                 
+#> [21] "Pinus contorta var. murrayana"   "Pinus contorta subsp. murrayana"
+#> [23] "Pinus contorta var. murrayana"   "Pinus contorta subsp. murrayana"
+#> [25] "Pinus contorta subsp. murrayana" "Pinus contorta subsp. murrayana"
+#> [27] "Pinus contorta murrayana"        "Pinus contorta murrayana"       
+#> [29] "Pinus contorta subsp. murrayana" "Pinus contorta murrayana"       
+#> [31] "Pinus contorta var. murrayana"   "Pinus contorta murrayana"       
+#> [33] "Pinus contorta murrayana"        "Pinus contorta murrayana"       
+#> [35] "Pinus contorta subsp. murrayana" "Pinus contorta subsp. bolanderi"
+#> [37] "Pinus contorta subsp. contorta"  "Pinus contorta subsp. murrayana"
+#> [39] "Pinus contorta murrayana"        "Pinus contorta murrayana"       
+#> [41] "Pinus contorta murrayana"        "Pinus contorta murrayana"       
+#> [43] "Pinus contorta murrayana"        "Pinus contorta murrayana"       
+#> [45] "Pinus contorta murrayana"        "Pinus contorta murrayana"       
+#> [47] "Pinus contorta murrayana"        "Pinus contorta murrayana"       
+#> [49] "Pinus contorta var. contorta"    "Pinus contorta subsp. murrayana"
 ```
 
 This is fine, but when trying to make a map in which points are colored for each taxon, you can have many colors for a single taxon, where instead one color per taxon is more appropriate. There is a function in `spocc` called `fixnames`, which has a few options in which you can take the shortest names (usually just the plain binomials like _Homo sapiens_), or the original name queried, or a vector of names supplied by the user.
@@ -392,12 +367,12 @@ head(df_comb); tail(df_comb)
 #> # A tibble: 6 x 6
 #>   name           longitude latitude prov      date       key              
 #>   <chr>              <dbl>    <dbl> <chr>     <date>     <chr>            
-#> 1 Pinus contorta     -122.     37.5 ecoengine 1928-08-01 vtm:plot:82CC34:2
-#> 2 Pinus contorta     -118.     34.3 ecoengine 1953-04-01 SD90152          
-#> 3 Pinus contorta     -124.     40.8 ecoengine 1931-05-01 UCD134473        
-#> 4 Pinus contorta     -124.     39.3 ecoengine 1953-05-30 RSA82866         
-#> 5 Pinus contorta     -120.     38.8 ecoengine 2009-07-22 SD237235         
-#> 6 Pinus contorta     -120.     37.9 ecoengine 1920-01-01 vtm:plot:77B415:2
+#> 1 Pinus contorta     -119.     38.1 ecoengine 1935-09-12 vtm:plot:71E15:7 
+#> 2 Pinus contorta     -119.     37.8 ecoengine 1935-09-22 vtm:plot:76B115:3
+#> 3 Pinus contorta     -119.     37.8 ecoengine 1935-09-15 vtm:plot:76C24:3 
+#> 4 Pinus contorta     -119.     37.7 ecoengine 1935-09-07 vtm:plot:76D27:4 
+#> 5 Pinus contorta     -124.     39.4 ecoengine 1930-10-31 POM213040        
+#> 6 Pinus contorta     -121.     40.4 ecoengine 1960-07-18 CAS:DS:40775
 ```
 
 ## Clean data

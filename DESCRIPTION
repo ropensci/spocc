@@ -47,7 +47,7 @@ Imports:
     tibble (>= 1.2),
     wicket (>= 0.3.0)
 Suggests:
-    roxygen2 (>= 6.0.1),
+    roxygen2 (>= 6.1.1),
     testthat,
     knitr,
     taxize (>= 0.8.4)

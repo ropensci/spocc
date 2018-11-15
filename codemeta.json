@@ -10,14 +10,14 @@
   "codeRepository": "https://github.com/ropensci/spocc",
   "issueTracker": "https://github.com/ropensci/spocc/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "0.8.2.9100",
+  "version": "0.9.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "version": "3.5.1",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 3.5.1 Patched (2018-08-12 r75119)",
+  "runtimePlatform": "R version 3.5.1 Patched (2018-11-02 r75543)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -59,7 +59,7 @@
       "@type": "SoftwareApplication",
       "identifier": "roxygen2",
       "name": "roxygen2",
-      "version": ">= 6.0.1",
+      "version": ">= 6.1.1",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -142,7 +142,7 @@
       "@type": "SoftwareApplication",
       "identifier": "rebird",
       "name": "rebird",
-      "version": ">= 0.3.0",
+      "version": ">= 1.0.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -272,7 +272,7 @@
   "contIntegration": "https://travis-ci.org/ropensci/spocc",
   "releaseNotes": "https://github.com/ropensci/spocc/blob/master/NEWS.md",
   "readme": "https://github.com/ropensci/spocc/blob/master/README.md",
-  "fileSize": "728.408KB",
+  "fileSize": "730.309KB",
   "funder": [
     {
       "@type": "Organization",

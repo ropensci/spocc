@@ -20,7 +20,7 @@ File 'LICENSE':
 
 --------
 
-This version xxxx
+This version removes a data source, adds a parameter to a function, and improves the documentation.
 
 Thanks!
 Scott Chamberlain

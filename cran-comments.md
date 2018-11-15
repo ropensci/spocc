@@ -16,8 +16,7 @@ File 'LICENSE':
 
 ## Reverse dependencies
 
-* I have run R CMD check on the 4 reverse dependencies. No problems were
-found; maintainers were notified. Summary at <https://github.com/ropensci/spocc/tree/master/revdep>
+* I have run R CMD check on the 4 reverse dependencies. No problems related to this package were found. Summary at <https://github.com/ropensci/spocc/tree/master/revdep>
 
 --------
 

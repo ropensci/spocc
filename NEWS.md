@@ -3,17 +3,24 @@ spocc 0.9.0
 
 ### NEW FEATURES
 
-* xx (#xxx)
-* xx (#xxx)
-* xx (#xxx)
-* xx (#xxx)
+* `occ()` now attempts to collect errors from requests that fail and puts these error messages (character strings) in the `$meta$errors` spot. We can not always collect errors, and some data providers do not error well: they do not provide a meaningful error message other than that there was an error. (#189) (#207)
+* `occ()` gains new parameter `throw_warnings` (logical). By default set to `TRUE` (matches previous behavior) and throws warnings about errors that occur and when no results found for a query. We now prefix each warning with the data provider so you can match up an error or warning with a data provider and (hopefully) query. If set to `FALSE`, warnings are suppressed  (#189) (#207)
+
+### DEFUNCT
+
+* AntWeb has been removed from `spocc`. The AntWeb API has been down for a while, and no response from maintainers (#202) (#203)
 
 ### BUG FIXES
 
-* xx (#xxx)
-* xx (#xxx)
-* xx (#xxx)
-* xx (#xxx)
+* fixes to ebird internals - a new version of `rebird` on CRAN requires a few changes in parameters used. Importantly, ebird now wants species codes instead of full scientific names, but we internally attempt to handle this, so users still just pass scientific names (#205)
+
+### DOCUMENTATION
+
+* make pkgdown docs better: organize functions into meaningful sets (#193) (#197) (#199)
+* in the `?spocc_duplicates` manual file for duplicate records, refer to `scrubr` and `CoordinateCleaner` packages (#198)
+* in `inspect()` manual file, clarify what the function does (#194)
+* now we document better when we use one or the other function for BISON data source (#204)
+* `occ()` gains a `return` block with detail about what's returned from the function (#208)
 
 
 

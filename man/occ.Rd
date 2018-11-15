@@ -9,7 +9,7 @@ occ(query = NULL, from = "gbif", limit = 500, start = NULL,
   date = NULL, callopts = list(), gbifopts = list(),
   bisonopts = list(), inatopts = list(), ebirdopts = list(),
   ecoengineopts = list(), vertnetopts = list(), idigbioopts = list(),
-  obisopts = list(), alaopts = list(), throw_errors = TRUE)
+  obisopts = list(), alaopts = list(), throw_warnings = TRUE)
 }
 \arguments{
 \item{query}{(character) One to many scientific names. See Details for what parameter
@@ -83,16 +83,17 @@ or \code{\link[rebird:ebirdgeo]{rebird::ebirdgeo()}}. See also \code{\link[=occ_
 See \code{Occurrence search} part of the API docs at
 \url{http://api.ala.org.au/#ws3} for possible parameters.}
 
-\item{throw_errors}{(logical) \code{occ()} collects errors returned from each
+\item{throw_warnings}{(logical) \code{occ()} collects errors returned from each
 data provider when they occur, and are accessible in the \code{$meta$errors} slot for
-each data provider. If you set \code{throw_errors=TRUE}, we give these request errors as
+each data provider. If you set \code{throw_warnings=TRUE}, we give these request errors as
 warnings with \code{\link[=warning]{warning()}}. if \code{FALSE}, we don't give warnings, but you can still
 access them in the output.}
 }
 \value{
 an object of class \code{occdat}, with a print method to give a brief summary.
-the \code{occdat} class is just a thin wrapper around a named list, wher the top level names
-are the data sources:
+The print method only shows results for those that have some results (those with no
+results are not shown). The \code{occdat} class is just a thin wrapper around a named
+list, wher the top level names are the data sources:
 \itemize{
 \item gbif
 \item bison

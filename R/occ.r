@@ -13,10 +13,10 @@ occ <- function(query = NULL, from = "gbif", limit = 500, start = NULL,
   gbifopts = list(), bisonopts = list(), inatopts = list(),
   ebirdopts = list(), ecoengineopts = list(),
   vertnetopts = list(), idigbioopts = list(), obisopts = list(), 
-  alaopts = list(), throw_errors = TRUE) {
+  alaopts = list(), throw_warnings = TRUE) {
 
-  assert(throw_errors, "logical")
-  Sys.setenv(SPOCC_THROW_ERRORS = throw_errors)
+  assert(throw_warnings, "logical")
+  Sys.setenv(SPOCC_THROW_ERRORS = throw_warnings)
 
   type <- "sci"
 

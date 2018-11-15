@@ -1,3 +1,9 @@
+throw_error <- function(src, x) {
+  if (as.logical(Sys.getenv("SPOCC_THROW_ERRORS", FALSE))) {
+    warning(src, ": ", x, call. = FALSE)
+  }
+}
+
 # Plugins for the occ function for each data source
 ## the plugins
 #' @noRd
@@ -49,9 +55,8 @@ foo_gbif <- function(sources, query, limit, start, geometry, has_coords,
       if (length(callopts) > 0) opts$curlopts <- callopts
       out <- tryCatch(do.call("occ_data", opts), error = function(e) e)
       if (inherits(out, "error")) {
-        warning(sprintf("No records returned in GBIF for %s", query),
-                call. = FALSE)
-        throw_error(out$message)
+        throw_error("gbif", sprintf("No records returned in GBIF for %s", query))
+        throw_error("gbif", out$message)
         emptylist(opts, out$message)
       } else {
         if (inherits(out, "character")) {
@@ -93,10 +98,6 @@ foo_gbif <- function(sources, query, limit, start, geometry, has_coords,
   }
 }
 
-throw_error <- function(x) {
-  if (as.logical(Sys.getenv("SPOCC_THROW_ERRORS", FALSE))) warning(x, call. = FALSE)
-}
-
 #' @noRd
 foo_ecoengine <- function(sources, query, limit, page, geometry, has_coords,
                           date, callopts, opts) {
@@ -133,11 +134,10 @@ foo_ecoengine <- function(sources, query, limit, page, geometry, has_coords,
     opts$foptions <- callopts
     out_ee <- tryCatch(do.call(ee_observations2, opts), error = function(e) e)
     if (out_ee$results == 0 || inherits(out_ee, "simpleError")) {
-      warning(sprintf("No records returned in Ecoengine for %s",
+      throw_error("ecoengine", sprintf("No records returned in Ecoengine for %s",
         if (is.null(query)) paste0(substr(geometry, 1, 20), ' ...') else query
-      ), call. = FALSE)
-      # emptylist(opts)
-      throw_error(out_ee$message)
+      ))
+      throw_error("ecoengine", out_ee$message)
       emptylist(opts, out_ee$message)
     } else{
       out <- out_ee$data
@@ -204,9 +204,9 @@ foo_bison <- function(sources, query, limit, start, geometry, date,
     out <- tryCatch(do.call(eval(parse(text = bisonfxn)), opts),
                     error = function(e) e)
     if (is.null(out$points) || inherits(out, "simpleError")) {
-      warning(
-        sprintf("No records returned in Bison for %s", query), call. = FALSE)
-      throw_error(out$message)
+      throw_error("bison", 
+        sprintf("No records returned in Bison for %s", query))
+      throw_error("bison", out$message)
       emptylist(opts, out$message)
     } else{
       dat <- out$points
@@ -258,8 +258,9 @@ foo_inat <- function(sources, query, limit, page, geometry, has_coords,
     opts$callopts <- callopts
     out <- tryCatch(do.call("spocc_inat_obs", opts), error = function(e) e)
     if (!is.data.frame(out$data) || inherits(out, "simpleError")) {
-      warning(sprintf("No records returned in INAT for %s", query), call. = FALSE)
-      throw_error(out$message)
+      throw_error("inat", 
+        sprintf("No records returned in INAT for %s", query))
+      throw_error("inat", out$message)
       emptylist(opts, out$message)
     } else{
       res <- out$data
@@ -303,8 +304,9 @@ foo_ebird <- function(sources, query, limit, callopts, opts) {
                       error = function(e) e, warning = function(w) w)
     }
     if (!is.data.frame(out) || inherits(out, "simpleError") || NROW(out) == 0) {
-      warning(sprintf("No records returned in eBird for %s", query), call. = FALSE)
-      throw_error(out$message)
+      throw_error("ebird", 
+        sprintf("No records returned in eBird for %s", query))
+      throw_error("ebird", out$message)
       emptylist(opts, out$message)
     } else {
       out$prov <- rep("ebird", nrow(out))
@@ -344,9 +346,9 @@ foo_vertnet <- function(sources, query, limit, has_coords, date, callopts, opts)
     out <- tryCatch(do.call(rvertnet::searchbyterm, opts),
                     error = function(e) e)
     if (!is.data.frame(out$data) || inherits(out, "simpleError")) {
-      warning(sprintf("No records returned in VertNet for %s", query),
-              call. = FALSE)
-      throw_error(out$message)
+      throw_error("vertnet", 
+        sprintf("No records returned in VertNet for %s", query))
+      throw_error("vertnet", out$message)
       emptylist(opts, out$message)
     } else{
       df <- out$data
@@ -420,11 +422,9 @@ foo_idigbio <- function(sources, query, limit, start, geometry, has_coords,
     out <- tryCatch(suppressWarnings(
       do.call(ridigbio::idig_search_records, opts)), error = function(e) e)
     if (inherits(out, "simpleError")) {
-      # check for meaningful/useful error messages
-      # warning(out$message)
-      warning(sprintf("No records returned in iDigBio for %s", query), 
-        call. = FALSE)
-      throw_error(out$message)
+      throw_error("idigbio", 
+        sprintf("No records returned in iDigBio for %s", query))
+      throw_error("idigbio", out$message)
       emptylist(opts, out$message)
     } else{
       out$prov <- rep("idigbio", nrow(out))
@@ -471,9 +471,9 @@ foo_obis <- function(sources, query, limit, start, geometry, has_coords,
 
     tmp <- tryCatch(do.call(obis_search, opts), error = function(e) e)
     if (inherits(tmp, "simpleError") || "message" %in% names(tmp)) {
-      warning(sprintf("No records returned in OBIS for %s", query), 
-        call. = FALSE)
-      throw_error(tmp$message)
+      throw_error("obis", 
+        sprintf("No records returned in OBIS for %s", query))
+      throw_error("obis", tmp$message)
       emptylist(opts, tmp$message)
     } else {
       if (!"results" %in% names(tmp)) {
@@ -523,9 +523,9 @@ foo_ala <- function(sources, query, limit, start, geometry, has_coords,
 
     tmp <- tryCatch(do.call(ala_search, opts), error = function(e) e)
     if (inherits(tmp, "error")) {
-      warning(sprintf("No records returned in ALA for %s", query),
-        call. = FALSE)
-      throw_error(tmp$message)
+      throw_error("ala", 
+        sprintf("No records returned in ALA for %s", query))
+      throw_error("ala", tmp$message)
       emptylist(opts, tmp$message)
     } else {
       if (!"occurrences" %in% names(tmp)) {

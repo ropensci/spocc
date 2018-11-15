@@ -51,15 +51,16 @@
 #' @param alaopts (list) List of named options to pass on to internal function. 
 #' See `Occurrence search` part of the API docs at 
 #' <http://api.ala.org.au/#ws3> for possible parameters.
-#' @param throw_errors (logical) `occ()` collects errors returned from each 
+#' @param throw_warnings (logical) `occ()` collects errors returned from each 
 #' data provider when they occur, and are accessible in the `$meta$errors` slot for 
-#' each data provider. If you set `throw_errors=TRUE`, we give these request errors as 
+#' each data provider. If you set `throw_warnings=TRUE`, we give these request errors as 
 #' warnings with [warning()]. if `FALSE`, we don't give warnings, but you can still 
 #' access them in the output.
 #' 
 #' @return an object of class `occdat`, with a print method to give a brief summary. 
-#' the `occdat` class is just a thin wrapper around a named list, wher the top level names
-#' are the data sources:
+#' The print method only shows results for those that have some results (those with no 
+#' results are not shown). The `occdat` class is just a thin wrapper around a named 
+#' list, wher the top level names are the data sources:
 #' 
 #' - gbif
 #' - bison

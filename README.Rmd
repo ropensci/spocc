@@ -47,7 +47,7 @@ knitr::opts_chunk$set(
 
 At rOpenSci, we have been writing R packages to interact with many sources of species occurrence data, including [GBIF][gbif], [Vertnet][vertnet], [BISON][bison], [iNaturalist][inat], the [Berkeley ecoengine][ecoengine], and [eBird][ebird]. Other databases are out there as well, which we can pull in. `spocc` is an R package to query and collect species occurrence data from many sources. The goal is to to create a seamless search experience across data sources, as well as creating unified outputs across data sources.
 
-`spocc` currently interfaces with ten major biodiversity repositories
+`spocc` currently interfaces with nine major biodiversity repositories
 
 1. [Global Biodiversity Information Facility (GBIF)][gbif] (via `rgbif`)
 GBIF is a government funded open data repository with several partner organizations with the express goal of providing access to data on Earth's biodiversity. The data are made available by a network of member nodes, coordinating information from various participant organizations and government agencies.
@@ -136,8 +136,10 @@ out$gbif
 Get data from many sources in a single call
 
 ```{r}
-ebirdopts = list(region = 'US'); gbifopts = list(country = 'US')
-out <- occ(query = 'Setophaga caerulescens', from = c('gbif','bison','inat','ebird'), gbifopts = gbifopts, ebirdopts = ebirdopts, limit = 50)
+ebirdopts <- list(loc = 'CA') # search in Canada only
+gbifopts <- list(country = 'US') # search in United States only
+out <- occ(query = 'Setophaga caerulescens', from = c('gbif','bison','inat','ebird'), 
+  gbifopts = gbifopts, ebirdopts = ebirdopts, limit = 50)
 dat <- occ2df(out)
 head(dat); tail(dat)
 ```

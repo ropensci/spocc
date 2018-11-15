@@ -15,7 +15,7 @@ spocc
 
 At rOpenSci, we have been writing R packages to interact with many sources of species occurrence data, including [GBIF][gbif], [Vertnet][vertnet], [BISON][bison], [iNaturalist][inat], the [Berkeley ecoengine][ecoengine], and [eBird][ebird]. Other databases are out there as well, which we can pull in. `spocc` is an R package to query and collect species occurrence data from many sources. The goal is to to create a seamless search experience across data sources, as well as creating unified outputs across data sources.
 
-`spocc` currently interfaces with ten major biodiversity repositories
+`spocc` currently interfaces with nine major biodiversity repositories
 
 1. [Global Biodiversity Information Facility (GBIF)][gbif] (via `rgbif`)
 GBIF is a government funded open data repository with several partner organizations with the express goal of providing access to data on Earth's biodiversity. The data are made available by a network of member nodes, coordinating information from various participant organizations and government agencies.
@@ -82,7 +82,7 @@ Get data from GBIF
 ```r
 (out <- occ(query = 'Accipiter striatus', from = 'gbif', limit = 100))
 #> Searched: gbif
-#> Occurrences - Found: 736,001, Returned: 100
+#> Occurrences - Found: 737,289, Returned: 100
 #> Search type: Scientific
 #>   gbif: Accipiter striatus (100)
 ```
@@ -113,7 +113,7 @@ Get fine-grained detail over each data source by passing on parameters to the pa
 ```r
 (out <- occ(query = 'Setophaga caerulescens', from = 'gbif', gbifopts = list(country = 'US')))
 #> Searched: gbif
-#> Occurrences - Found: 238,863, Returned: 500
+#> Occurrences - Found: 239,219, Returned: 500
 #> Search type: Scientific
 #>   gbif: Setophaga caerulescens (500)
 ```
@@ -126,7 +126,7 @@ out$gbif
 #> Species [Setophaga caerulescens (500)] 
 #> First 10 rows of [Setophaga_caerulescens]
 #> 
-#> # A tibble: 500 x 105
+#> # A tibble: 500 x 108
 #>    name  longitude latitude prov  issues    key datasetKey publishingOrgKey
 #>    <chr>     <dbl>    <dbl> <chr> <chr>   <int> <chr>      <chr>           
 #>  1 Seto…     -80.3     25.7 gbif  cdrou… 1.81e9 50c9509d-… 28eb1a3f-1c15-4…
@@ -139,7 +139,7 @@ out$gbif
 #>  8 Seto…     -97.2     26.1 gbif  cdrou… 1.84e9 50c9509d-… 28eb1a3f-1c15-4…
 #>  9 Seto…     -80.3     25.8 gbif  cdrou… 1.85e9 50c9509d-… 28eb1a3f-1c15-4…
 #> 10 Seto…     -77.1     38.9 gbif  cdrou… 1.84e9 50c9509d-… 28eb1a3f-1c15-4…
-#> # ... with 490 more rows, and 97 more variables: networkKeys <list>,
+#> # ... with 490 more rows, and 100 more variables: networkKeys <list>,
 #> #   installationKey <chr>, publishingCountry <chr>, protocol <chr>,
 #> #   lastCrawled <chr>, lastParsed <chr>, crawlId <int>,
 #> #   basisOfRecord <chr>, taxonKey <int>, kingdomKey <int>,
@@ -154,22 +154,23 @@ out$gbif
 #> #   references <chr>, license <chr>, geodeticDatum <chr>, class <chr>,
 #> #   countryCode <chr>, country <chr>, rightsHolder <chr>,
 #> #   identifier <chr>, verbatimEventDate <chr>, datasetName <chr>,
-#> #   collectionCode <chr>, gbifID <chr>, verbatimLocality <chr>,
+#> #   verbatimLocality <chr>, gbifID <chr>, collectionCode <chr>,
 #> #   occurrenceID <chr>, taxonID <chr>, catalogNumber <chr>,
 #> #   recordedBy <chr>, `http://unknown.org/occurrenceDetails` <chr>,
 #> #   institutionCode <chr>, rights <chr>, eventTime <chr>,
 #> #   occurrenceRemarks <chr>,
 #> #   `http://unknown.org/http_//rs.gbif.org/terms/1.0/Multimedia` <chr>,
-#> #   identificationID <chr>, informationWithheld <chr>, sex <chr>,
-#> #   lifeStage <chr>, establishmentMeans <chr>, infraspecificEpithet <chr>,
-#> #   continent <chr>, recordNumber <chr>, nomenclaturalCode <chr>,
-#> #   higherGeography <chr>, dynamicProperties <chr>, endDayOfYear <chr>,
-#> #   georeferenceVerificationStatus <chr>, locality <chr>, county <chr>,
-#> #   language <chr>, type <chr>, preparations <chr>,
+#> #   identificationID <chr>, informationWithheld <chr>,
+#> #   nomenclaturalCode <chr>, locality <chr>, vernacularName <chr>,
+#> #   fieldNotes <chr>, verbatimElevation <chr>, behavior <chr>,
+#> #   higherClassification <chr>, sex <chr>, lifeStage <chr>,
+#> #   establishmentMeans <chr>, infraspecificEpithet <chr>, continent <chr>,
+#> #   recordNumber <chr>, higherGeography <chr>, dynamicProperties <chr>,
+#> #   endDayOfYear <chr>, georeferenceVerificationStatus <chr>,
+#> #   county <chr>, language <chr>, type <chr>, preparations <chr>,
 #> #   occurrenceStatus <chr>, startDayOfYear <chr>,
-#> #   bibliographicCitation <chr>, accessRights <chr>,
-#> #   higherClassification <chr>, institutionID <chr>,
-#> #   verbatimElevation <chr>, dataGeneralizations <chr>, organismID <chr>,
+#> #   bibliographicCitation <chr>, accessRights <chr>, institutionID <chr>,
+#> #   dataGeneralizations <chr>, organismID <chr>,
 #> #   ownerInstitutionCode <chr>, datasetID <chr>, collectionID <chr>,
 #> #   habitat <chr>, georeferencedDate <chr>, georeferencedBy <chr>,
 #> #   georeferenceProtocol <chr>, otherCatalogNumbers <chr>,
@@ -183,8 +184,10 @@ Get data from many sources in a single call
 
 
 ```r
-ebirdopts = list(region = 'US'); gbifopts = list(country = 'US')
-out <- occ(query = 'Setophaga caerulescens', from = c('gbif','bison','inat','ebird'), gbifopts = gbifopts, ebirdopts = ebirdopts, limit = 50)
+ebirdopts <- list(loc = 'CA') # search in Canada only
+gbifopts <- list(country = 'US') # search in United States only
+out <- occ(query = 'Setophaga caerulescens', from = c('gbif','bison','inat','ebird'), 
+  gbifopts = gbifopts, ebirdopts = ebirdopts, limit = 50)
 dat <- occ2df(out)
 head(dat); tail(dat)
 #> # A tibble: 6 x 6
@@ -197,14 +200,14 @@ head(dat); tail(dat)
 #> 5 Setophaga caerulescens -77.254868 39.006651 gbif  2018-04-29 1841263350
 #> 6 Setophaga caerulescens -73.965355 40.782865 gbif  2018-04-29 1841260747
 #> # A tibble: 6 x 6
-#>   name                 longitude     latitude     prov  date       key    
-#>   <chr>                <chr>         <chr>        <chr> <date>     <chr>  
-#> 1 Setophaga caerulesc… -73.94453706… 40.77460859… inat  2018-10-17 176031…
-#> 2 Setophaga caerulesc… -76.88181081… 39.21472314… inat  2018-10-17 175909…
-#> 3 Setophaga caerulesc… -83.16792165… 41.61632902… inat  2016-05-11 175862…
-#> 4 Setophaga caerulesc… -79.48059082… 43.74208054… inat  2017-05-01 175756…
-#> 5 Setophaga caerulesc… -80.79570739… 35.18428139… inat  2018-10-12 175692…
-#> 6 Setophaga caerulesc… -80.35602594… 25.77058197… inat  2018-10-14 175490…
+#>   name                   longitude   latitude   prov  date       key  
+#>   <chr>                  <chr>       <chr>      <chr> <date>     <chr>
+#> 1 Setophaga caerulescens -63.4497222 44.5938889 ebird 2018-11-08 <NA> 
+#> 2 Setophaga caerulescens -97.22659   49.8759422 ebird 2018-11-07 <NA> 
+#> 3 Setophaga caerulescens -97.227492  49.876486  ebird 2018-11-07 <NA> 
+#> 4 Setophaga caerulescens -79.3765    43.6799722 ebird 2018-11-06 <NA> 
+#> 5 Setophaga caerulescens -79.6037    43.516773  ebird 2018-11-03 <NA> 
+#> 6 Setophaga caerulescens -84.3526679 46.5101339 ebird 2018-11-03 <NA>
 ```
 
 ## Clean data

@@ -1,4 +1,1 @@
-library("revdepcheck")
-revdep_check(num_workers = 4)
-revdep_email_draft()
-# revdep_email()
+revdepcheck::revdep_check(num_workers = 4)

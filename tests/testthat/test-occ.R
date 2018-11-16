@@ -3,17 +3,17 @@ context("Occurrence data is correctly retrieved")
 test_that("occ works for each data source", {
   skip_on_cran()
 
-  x1 <- occ(query = 'Accipiter striatus', from = 'gbif', limit = 30)
-  x2 <- occ(query = 'Accipiter striatus', from = 'ecoengine', limit = 30)
-  x3 <- occ(query = 'Danaus plexippus', from = 'inat', limit = 30)
-  x4 <- occ(query = 'Bison bison', from = 'bison', limit = 30)
-  x7 <- occ(query = 'Spinus tristis', from = 'idigbio', limit = 30)
+  x1 <- occ(query = 'Accipiter striatus', from = 'gbif', limit = 3)
+  x2 <- occ(query = 'Accipiter striatus', from = 'ecoengine', limit = 3)
+  x3 <- occ(query = 'Danaus plexippus', from = 'inat', limit = 3)
+  x4 <- occ(query = 'Bison bison', from = 'bison', limit = 3)
+  x7 <- occ(query = 'Spinus tristis', from = 'idigbio', limit = 3)
   
-  x8 <- occ(query = 'Spinus tristis', from = 'vertnet', limit = 30)
+  x8 <- occ(query = 'Spinus tristis', from = 'vertnet', limit = 3)
   
-  x9 <- occ(query = 'Mola mola', from = 'obis', limit = 30)
+  x9 <- occ(query = 'Mola mola', from = 'obis', limit = 3)
   
-  x10 <- occ(query = 'Macropus', from = 'ala', limit = 30)
+  x10 <- occ(query = 'Macropus', from = 'ala', limit = 3)
 
   # Make sure they are all occdats
   expect_is(x3, "occdat")
@@ -117,11 +117,11 @@ test_that("occ fails well", {
   skip_on_cran()
   
   # expect class character
-  expect_error(occ(mtcars, from = 'gbif', limit = 30), 
+  expect_error(occ(mtcars, from = 'gbif', limit = 3), 
                "'query' param. must be of class character")
-  expect_error(occ(list(4, 5), from = 'gbif', limit = 30), 
+  expect_error(occ(list(4, 5), from = 'gbif', limit = 3), 
                "'query' param. must be of class character")
-  expect_error(occ(45454545, from = 'gbif', limit = 30), 
+  expect_error(occ(45454545, from = 'gbif', limit = 3), 
                "'query' param. must be of class character")
   
   # expect range of from values

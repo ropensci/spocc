@@ -10,7 +10,7 @@ r_binary_packages:
   - covr
   - taxize
 
-r_check_args: "--as-cran --run-dontrun"
+r_check_args: "--as-cran"
 
 after_success:
   - Rscript -e 'covr::codecov()'

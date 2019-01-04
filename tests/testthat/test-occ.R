@@ -2,6 +2,7 @@ context("Occurrence data is correctly retrieved")
 
 test_that("occ works for each data source", {
   skip_on_cran()
+  skip_on_travis()
 
   x1 <- occ(query = 'Accipiter striatus', from = 'gbif', limit = 3)
   x2 <- occ(query = 'Accipiter striatus', from = 'ecoengine', limit = 3)
@@ -72,6 +73,7 @@ test_that("occ works for each data source", {
 
 test_that("occ works when only opts passed", {
   skip_on_cran()
+  skip_on_travis()
   
   dsets <- c("7b5d6a48-f762-11e1-a439-00145eb45e9a", "50c9509d-22c7-4a22-a47d-8c48425ef4a7")
   aa <- occ(limit = 20, from = "gbif", gbifopts = list(datasetKey = dsets))
@@ -99,6 +101,7 @@ test_that("occ works when only opts passed", {
 
 test_that("occ works when opts passed result in no results", {
   skip_on_cran()
+  skip_on_travis()
   
   aa <- occ(
     query = "Accipiter striatus",
@@ -115,6 +118,7 @@ test_that("occ works when opts passed result in no results", {
 
 test_that("occ fails well", {
   skip_on_cran()
+  skip_on_travis()
   
   # expect class character
   expect_error(occ(mtcars, from = 'gbif', limit = 3), 

@@ -17,13 +17,13 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Mon, 28 Jan 2019 19:47:17 GMT
+      date: Mon, 28 Jan 2019 21:35:34 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
       cache-control: public, max-age=600
-      x-varnish: 370171825 373858782
+      x-varnish: 428816345 427714470
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
@@ -87,7 +87,7 @@ http_interactions:
         States","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/19490361","taxonID":"5097","catalogNumber":"19490361","recordedBy":"Joshua
         Eastlake","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/19490361","institutionCode":"iNaturalist","rights":"©
         Joshua Eastlake some rights reserved","eventTime":"15:05:00Z","identificationID":"42706795"}],"facets":[]}'
-  recorded_at: 2019-01-28 19:47:40 GMT
+  recorded_at: 2019-01-28 21:36:08 GMT
   recorded_with: vcr/0.2.2, webmockr/0.3.0
 - request:
     method: get
@@ -106,13 +106,13 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Mon, 28 Jan 2019 19:47:18 GMT
+      date: Mon, 28 Jan 2019 21:35:45 GMT
       server: Apache/2.4.10 (Debian)
-      expires: Mon, 28 Jan 2019 21:27:27 GMT
+      expires: Mon, 28 Jan 2019 23:15:45 GMT
       vary: Accept,Cookie
       allow: GET, HEAD, OPTIONS
       cache-control: max-age=6000
-      last-modified: Mon, 28 Jan 2019 19:47:27 GMT
+      last-modified: Mon, 28 Jan 2019 21:35:45 GMT
       transfer-encoding: chunked
       content-type: application/vnd.geo+json
     body:
@@ -159,7 +159,7 @@ http_interactions:
         "http://arctos.database.museum/guid/MVZ:Bird:23448", "locality": "Rincon Valley,
         6 mi NE Santa Rosa", "coordinate_uncertainty_in_meters": 4828, "recorded_by":
         "Collector(s): Alfred C. Shelton", "last_modified": "2015-01-08T15:40:42.910168"}}]}'
-  recorded_at: 2019-01-28 19:47:40 GMT
+  recorded_at: 2019-01-28 21:36:08 GMT
   recorded_with: vcr/0.2.2, webmockr/0.3.0
 - request:
     method: get
@@ -178,20 +178,29 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Mon, 28 Jan 2019 19:47:27 GMT
+      date: Mon, 28 Jan 2019 21:35:53 GMT
       server: Apache/2.4.10 (Debian)
-      expires: Mon, 28 Jan 2019 20:15:06 GMT
+      expires: Mon, 28 Jan 2019 23:15:53 GMT
       vary: Accept,Cookie
       allow: GET, HEAD, OPTIONS
       cache-control: max-age=6000
-      last-modified: Mon, 28 Jan 2019 18:35:06 GMT
+      last-modified: Mon, 28 Jan 2019 21:35:53 GMT
       transfer-encoding: chunked
       content-type: application/vnd.geo+json
     body:
       encoding: UTF-8
       string: '{"count": 27, "crs": {"type": "name", "properties": {"name": "urn:ogc:def:crs:EPSG::4326"}},
         "previous": null, "type": "FeatureCollection", "next": "https://ecoengine.berkeley.edu/api/observations/?country=United+States&county=Sonoma&extra=last_modified&format=geojson&georeferenced=FALSE&page=2&page_size=5&scientific_name=Accipiter",
-        "features": [{"geometry": {}, "type": "Feature", "properties": {"url": "https://ecoengine.berkeley.edu/api/observations/CAS:ORN:98662/",
+        "features": [{"geometry": {"type":"Point","coordinates":[-122.6649,38.4637]},
+        "type": "Feature", "properties": {"url": "https://ecoengine.berkeley.edu/api/observations/MVZ:Bird:23448/",
+        "record": "MVZ:Bird:23448", "observation_type": "specimen", "scientific_name":
+        "Accipiter striatus velox", "country": "United States", "state_province":
+        "California", "begin_date": "1913-02-22T00:00:00", "end_date": "1913-02-22T00:00:00",
+        "source": "https://ecoengine.berkeley.edu/api/sources/1/", "remote_resource":
+        "http://arctos.database.museum/guid/MVZ:Bird:23448", "locality": "Rincon Valley,
+        6 mi NE Santa Rosa", "coordinate_uncertainty_in_meters": 4828, "recorded_by":
+        "Collector(s): Alfred C. Shelton", "last_modified": "2015-01-08T15:40:42.910168"}},{"geometry":
+        {}, "type": "Feature", "properties": {"url": "https://ecoengine.berkeley.edu/api/observations/CAS:ORN:98662/",
         "record": "CAS:ORN:98662", "observation_type": "specimen", "scientific_name":
         "Accipiter striatus", "country": "United States", "state_province": "California",
         "begin_date": "2000-03-06T00:00:00", "end_date": "2000-03-06T00:00:00", "source":
@@ -218,16 +227,8 @@ http_interactions:
         "begin_date": "1945-07-08T00:00:00", "end_date": "1945-07-08T00:00:00", "source":
         "https://ecoengine.berkeley.edu/api/sources/8/", "remote_resource": "", "locality":
         "Summerhome Park", "coordinate_uncertainty_in_meters": 1000, "recorded_by":
-        "William F. Taylor", "last_modified": "2016-09-29T11:29:01.304138"}},{"geometry":
-        {"type":"Point","coordinates":[-122.8308,38.3969]}, "type": "Feature", "properties":
-        {"url": "https://ecoengine.berkeley.edu/api/observations/CAS:ORN:98923/",
-        "record": "CAS:ORN:98923", "observation_type": "specimen", "scientific_name":
-        "Accipiter striatus", "country": "United States", "state_province": "California",
-        "begin_date": "2007-02-14T00:00:00", "end_date": "2007-02-14T00:00:00", "source":
-        "https://ecoengine.berkeley.edu/api/sources/8/", "remote_resource": "", "locality":
-        "Sebastopol", "coordinate_uncertainty_in_meters": 1000, "recorded_by": "Rich
-        Stallcup", "last_modified": "2016-09-29T11:29:04.462479"}}]}'
-  recorded_at: 2019-01-28 19:47:40 GMT
+        "William F. Taylor", "last_modified": "2016-09-29T11:29:01.304138"}}]}'
+  recorded_at: 2019-01-28 21:36:08 GMT
   recorded_with: vcr/0.2.2, webmockr/0.3.0
 - request:
     method: get
@@ -255,7 +256,7 @@ http_interactions:
       connection: keep-alive
       content-encoding: gzip
       content-type: application/json; charset=utf-8
-      date: Mon, 28 Jan 2019 19:47:28 GMT
+      date: Mon, 28 Jan 2019 21:35:55 GMT
       etag: W/"11350fb19a1fe0bc678525020d29eb47"
       server: nginx
       status:
@@ -268,8 +269,8 @@ http_interactions:
       x-frame-options: SAMEORIGIN
       x-page: '1'
       x-per-page: '1'
-      x-request-id: 5a569944-10af-40d3-bec6-889659049ea1
-      x-runtime: '0.384431'
+      x-request-id: e800cf19-b4ea-4d48-b119-e1d9d0501e7d
+      x-runtime: '0.209020'
       x-total-entries: '1934'
       x-xss-protection: 1; mode=block
     body:
@@ -283,7 +284,7 @@ http_interactions:
         License","license_url":"http://creativecommons.org/licenses/by-nc/4.0/","type":"LocalPhoto"},{"id":30605586,"user_id":588853,"native_photo_id":"30605586","square_url":"https://static.inaturalist.org/photos/30605586/square.jpeg?1548373654","thumb_url":"https://static.inaturalist.org/photos/30605586/thumb.jpeg?1548373654","small_url":"https://static.inaturalist.org/photos/30605586/small.jpeg?1548373654","medium_url":"https://static.inaturalist.org/photos/30605586/medium.jpeg?1548373654","large_url":"https://static.inaturalist.org/photos/30605586/large.jpeg?1548373654","created_at":"2019-01-24T23:47:36.799Z","updated_at":"2019-01-24T23:47:36.799Z","native_page_url":"https://www.inaturalist.org/photos/30605586","native_username":"mira_l_b","native_realname":"Mira","license":2,"subtype":null,"native_original_image_url":null,"license_code":"CC-BY-NC","attribution":"(c)
         Mira, some rights reserved (CC BY-NC)","license_name":"Creative Commons Attribution-NonCommercial
         License","license_url":"http://creativecommons.org/licenses/by-nc/4.0/","type":"LocalPhoto"}]}]'
-  recorded_at: 2019-01-28 19:47:40 GMT
+  recorded_at: 2019-01-28 21:36:08 GMT
   recorded_with: vcr/0.2.2, webmockr/0.3.0
 - request:
     method: get
@@ -311,7 +312,7 @@ http_interactions:
       connection: keep-alive
       content-encoding: gzip
       content-type: application/json; charset=utf-8
-      date: Mon, 28 Jan 2019 19:47:36 GMT
+      date: Mon, 28 Jan 2019 21:36:02 GMT
       etag: W/"41c6112022d05c79811413331542cec9"
       server: nginx
       status:
@@ -324,8 +325,8 @@ http_interactions:
       x-frame-options: SAMEORIGIN
       x-page: '1'
       x-per-page: '200'
-      x-request-id: 5ee4fa6b-710d-4de4-96c7-03fe55242841
-      x-runtime: '3.066266'
+      x-request-id: 0da81927-c060-465a-8f24-86167b955d63
+      x-runtime: '3.408912'
       x-total-entries: '1934'
       x-xss-protection: 1; mode=block
     body:
@@ -1951,7 +1952,7 @@ http_interactions:
         Viceroy","is_valid":true,"lexicon":"English"}},"iconic_taxon":{"id":47158,"name":"Insecta","rank":"class","rank_level":50.0,"ancestry":"48460/1/47120/372739"},"user":{"login":"fogartyf","user_icon_url":"https://static.inaturalist.org/attachments/users/icons/318515/thumb.jpg?1500229143"},"photos":[{"id":9106811,"user_id":318515,"native_photo_id":"15752113960","square_url":"https://static.inaturalist.org/photos/9106811/square.jpg?1500299732","thumb_url":"https://static.inaturalist.org/photos/9106811/thumb.jpg?1500299732","small_url":"https://static.inaturalist.org/photos/9106811/small.jpg?1500299732","medium_url":"https://static.inaturalist.org/photos/9106811/medium.jpg?1500299732","large_url":"https://static.inaturalist.org/photos/9106811/large.jpg?1500299732","created_at":"2017-07-17T13:53:53.654Z","updated_at":"2017-07-17T13:55:35.237Z","native_page_url":"https://www.flickr.com/photos/fogartyf/15752113960/","native_username":"fogartyf","native_realname":"Frank
         Fogarty","license":0,"subtype":"FlickrPhoto","native_original_image_url":"https://farm8.staticflickr.com/7478/15752113960_f63c0bdd53_o.jpg","license_code":"C","attribution":"(c)
         Frank Fogarty, all rights reserved","license_name":"Copyright","license_url":"http://en.wikipedia.org/wiki/Copyright","type":"LocalPhoto"}]}]'
-  recorded_at: 2019-01-28 19:47:40 GMT
+  recorded_at: 2019-01-28 21:36:08 GMT
   recorded_with: vcr/0.2.2, webmockr/0.3.0
 - request:
     method: get
@@ -1971,7 +1972,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 200
-      date: Mon, 28 Jan 2019 19:47:37 GMT
+      date: Mon, 28 Jan 2019 21:36:05 GMT
       server: Apache
       cache-control: no-cache, no-store, max-age=0, must-revalidate
       pragma: no-cache
@@ -1997,7 +1998,7 @@ http_interactions:
         Zachary Taylor Historic SP","obsDt":"2019-01-22 10:26","howMany":1,"lat":24.5463,"lng":-81.8106,"obsValid":true,"obsReviewed":false,"locationPrivate":false},{"speciesCode":"btbwar","comName":"Black-throated
         Blue Warbler","sciName":"Setophaga caerulescens","locId":"L2630894","locName":"Olympic
         Park","obsDt":"2019-01-21 16:52","howMany":1,"lat":25.6869966,"lng":-80.4414976,"obsValid":true,"obsReviewed":false,"locationPrivate":false}]'
-  recorded_at: 2019-01-28 19:47:40 GMT
+  recorded_at: 2019-01-28 21:36:08 GMT
   recorded_with: vcr/0.2.2, webmockr/0.3.0
 - request:
     method: get
@@ -2019,15 +2020,15 @@ http_interactions:
       cache-control: no-cache
       content-type: application/json
       charset: utf-8
-      x-cloud-trace-context: fd37135af9968b4b394573e7b8c7a192
-      date: Mon, 28 Jan 2019 19:47:39 GMT
+      x-cloud-trace-context: a36e536a0015528b4bd2f73e7674ed86
+      date: Mon, 28 Jan 2019 21:36:08 GMT
       server: Google Frontend
       content-length: '27073'
     body:
       encoding: UTF-8
-      string: '{"request_date": "2019-01-28T19:47:39.408894", "response_records":
+      string: '{"request_date": "2019-01-28T21:36:08.746692", "response_records":
         5, "submitted_query": "Mustela year:2010", "request_origin": "45.512231,-122.658718",
-        "limit": 5, "cursor": "False:CvUGCs4ECqAE9wAAABn_____jIGJmo2LkZqL0o-QjYuek96WkZuah9LNz87M0s_H0s_H_wAA_3RtoKCZi4ygoP8AAP9dno-PmpGYlpGa_wAA_3N0bZaRm5qH_wAA_12biJz_AAD_c3Rtm5CcoJab_wAA_12SiYXQkp6Skp6T0oyPmpyWkpqRjNCXi4uP0p6NnIuQjNKbnouenZ6MmtKSioyaipLSmIqWm9KSiYXSkp6SktLNzcnOzcjSjJqWm9LOy8jJyMbH_wAA_3N_komF0JKekpKek9KMj5qclpKakYzQl4uLj9KejZyLkIzSm56Lnp2ejJrSkoqMmoqS0piKlpvSkomF0pKekpLSzc3Jzs3I0oyalpvSzsvIycjGx_8AAP__AP7__oyBiZqNi5Gai9KPkI2LnpPelpGbmofSzc_OzNLPx9LPx_8AdG2goJmLjKCg_wBdno-PmpGYlpGa_wBzdG2WkZuah_8AXZuInP8Ac3Rtm5CcoJab_wBdkomF0JKekpKek9KMj5qclpKakYzQl4uLj9KejZyLkIzSm56Lnp2ejJrSkoqMmoqS0piKlpvSkomF0pKekpLSzc3Jzs3I0oyalpvSzsvIycjGx_8Ac3-SiYXQkp6Skp6T0oyPmpyWkpqRjNCXi4uP0p6NnIuQjNKbnouenZ6MmtKSioyaipLSmIqWm9KSiYXSkp6SktLNzcnOzcjSjJqWm9LOy8jJyMbH_wD__hAFIdteL9GbJNTJOQAAAADm____SAVQAFoLCY-b_d3Z0uTxEAJgtK2B9AESDURvY3VtZW50SW5kZXga8AEoQU5EIChJUyAiY3VzdG9tZXJfbmFtZSIgImFwcGVuZ2luZSIpIChJUyAiZ3JvdXBfbmFtZSIgInN-dmVydG5ldC1wb3J0YWwiKSAoSVMgIm5hbWVzcGFjZSIgImluZGV4LTIwMTMtMDgtMDgiKSAoSVMgImluZGV4X25hbWUiICJkd2MiKSAoQU5EIChPUiAoUVQgIk11c3RlbGEiKSAoSVMgIl9fZ2F0b21fXyIgIm11c3RlbGEiKSkgKE9SIChRVCAiMjAxMCIgInJ0ZXh0X3llYXIiKSAoRVEgMjAxMCAic25icl95ZWFyIikpKSk6GQoMKE4gb3JkZXJfaWQpEAEZAAAAAAAA8P9KBQgAQOgH",
+        "limit": 5, "cursor": "False:CvUGCs4ECqAE9wAAABn_____jIGJmo2LkZqL0o-QjYuek96WkZuah9LNz87M0s_H0s_H_wAA_3RtoKCZi4ygoP8AAP9dno-PmpGYlpGa_wAA_3N0bZaRm5qH_wAA_12biJz_AAD_c3Rtm5CcoJab_wAA_12SiYXQkp6Skp6T0oyPmpyWkpqRjNCXi4uP0p6NnIuQjNKbnouenZ6MmtKSioyaipLSmIqWm9KSiYXSkp6SktLNzcnOzcjSjJqWm9LOy8jJyMbH_wAA_3N_komF0JKekpKek9KMj5qclpKakYzQl4uLj9KejZyLkIzSm56Lnp2ejJrSkoqMmoqS0piKlpvSkomF0pKekpLSzc3Jzs3I0oyalpvSzsvIycjGx_8AAP__AP7__oyBiZqNi5Gai9KPkI2LnpPelpGbmofSzc_OzNLPx9LPx_8AdG2goJmLjKCg_wBdno-PmpGYlpGa_wBzdG2WkZuah_8AXZuInP8Ac3Rtm5CcoJab_wBdkomF0JKekpKek9KMj5qclpKakYzQl4uLj9KejZyLkIzSm56Lnp2ejJrSkoqMmoqS0piKlpvSkomF0pKekpLSzc3Jzs3I0oyalpvSzsvIycjGx_8Ac3-SiYXQkp6Skp6T0oyPmpyWkpqRjNCXi4uP0p6NnIuQjNKbnouenZ6MmtKSioyaipLSmIqWm9KSiYXSkp6SktLNzcnOzcjSjJqWm9LOy8jJyMbH_wD__hAFIdteL9GbJNTJOQAAAADm____SAVQAFoLCY-b_d3Z0uTxEAJgsonV9gcSDURvY3VtZW50SW5kZXga8AEoQU5EIChJUyAiY3VzdG9tZXJfbmFtZSIgImFwcGVuZ2luZSIpIChJUyAiZ3JvdXBfbmFtZSIgInN-dmVydG5ldC1wb3J0YWwiKSAoSVMgIm5hbWVzcGFjZSIgImluZGV4LTIwMTMtMDgtMDgiKSAoSVMgImluZGV4X25hbWUiICJkd2MiKSAoQU5EIChPUiAoUVQgIk11c3RlbGEiKSAoSVMgIl9fZ2F0b21fXyIgIm11c3RlbGEiKSkgKE9SIChRVCAiMjAxMCIgInJ0ZXh0X3llYXIiKSAoRVEgMjAxMCAic25icl95ZWFyIikpKSk6GQoMKE4gb3JkZXJfaWQpEAEZAAAAAAAA8P9KBQgAQOgH",
         "query_version": "search.py 2016-08-15T16:43+02:00", "recs": [{"haslifestage":
         "1", "month": "08", "decimallongitude": "-154.124", "isarch": "0", "startdayofyear":
         "234", "minimumelevationinmeters": "550", "networks": "Arctos,MaNIS,VertNet",
@@ -2339,39 +2340,5 @@ http_interactions:
         C. Rowe", "nomenclaturalcode": "ICZN", "contact": "Chris Conroy", "order":
         "Carnivora", "enddayofyear": "230"}], "matching_records": 40, "api_version":
         "api.py 2017-11-24T12:16-03:00"}'
-  recorded_at: 2019-01-28 19:47:40 GMT
-  recorded_with: vcr/0.2.2, webmockr/0.3.0
-- request:
-    method: get
-    uri: https://bison.usgs.gov/solr/occurrences/select/?q=year%3A%222003%22%20AND%20ITISscientificName%3A%22Helianthus%20annuus%22&wt=json&rows=5
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      User-Agent: libcurl/7.54.0 r-curl/3.3 crul/0.7.0.9100
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
-  response:
-    status:
-      status_code: '200'
-      message: OK
-      explanation: Request fulfilled, document follows
-    headers:
-      connection: keep-alive
-      content-type: text/plain;charset=utf-8
-      date: Mon, 28 Jan 2019 19:47:39 GMT
-      status: HTTP/1.1 200 OK
-      strict-transport-security:
-      - max-age=63072000; includeSubdomains; preload
-      - max-age=63072000; includeSubdomains; preload
-      - max-age=31536000
-      transfer-encoding: chunked
-      x-frame-options: SAMEORIGIN
-      x-node-name: not shown
-      x-upstream-member: not shown
-    body:
-      encoding: UTF-8
-      string: |
-        {"responseHeader":{"status":0,"QTime":0,"params":{"q":"year:\"2003\" AND ITISscientificName:\"Helianthus annuus\"","rows":"5","wt":"json"}},"response":{"numFound":43,"start":0,"docs":[{"establishmentMeans":["AK  HI"],"eventDate":"2003-08-25","providedScientificName":"Helianthus annuus L.","year":2003,"countryCode":"US","ambiguous":false,"generalComments":"sample effort id:364035; project name:; visit type:; revisit:No; area surveyed:1 ac; study type:Exhaustive species inventory; collection method:GPS; quad name: Anchorage; quad number: C-8; site code:232; location notes: Parks HWY and Hawk Ln. West side newly seeded with grass. Bike path; disturbance type: Fill Importation (e.g., Road or Railroad Grade); precision:0-30 ft; map source:; map scale:; map date:; presence:TRUE; usda name 2:; family:Asteraceae; rank code:; infested area:0.5 ac; stem count:; canopy cover:50; estimated years of disturbance:2; herbarium:Not Collected; control action:None; aggressiveness:; species notes:; project description:; project method:; project discussion:; data type:","verbatimLocality":"quad name: Anchorage; quad number: C-8; site code:232; location notes: Parks HWY and Hawk Ln. West side newly seeded with grass. Bike path; disturbance type: Fill Importation (e.g., Road or Railroad Grade)","latlon":"-149.74426,61.58616","computedCountyFips":"02170","occurrenceID":"61962172","decimalLongitude":-149.74426,"basisOfRecord":"observation","providedCommonName":"annual sunflower","collectionID":"https://bison.usgs.gov/ipt/resource?r=akepic","ownerInstitutionCollectionCode":"Alaska Exotic Plants Information Clearinghouse (AKEPIC)","scientificName":"Helianthus annuus","institutionID":"https://bison.usgs.gov/","computedStateFips":"02","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","TSNs":["36616"],"providedTSN":"HEAN3","providerID":440,"stateProvince":"Alaska","verbatimEventDate":"2003-08-25","decimalLatitude":61.58616,"recordedBy":"Lapina, I.; affiliation is AKNHP","geo":"-149.74426 61.58616","provider":"BISON","calculatedCounty":"Matanuska-Susitna","catalogNumber":"BISON-AKEPIC-21277","ITISscientificName":"Helianthus annuus","pointPath":"/-149.74426,61.58616/observation","kingdom":"Plantae","calculatedState":"Alaska","hierarchy_homonym_string":"-202422-954898-846494-954900-846496-846504-18063-846535-35419-35420-36611-36616-","ITIScommonName":"annual sunflower;common sunflower;sunflower;wild sunflower","resourceID":"440,100085","ITIStsn":"36616","associatedReferences":"[{\\url\\:\\http://accs.uaa.alaska.edu/invasive-species/non-native-plants\\,\\description\\:\\Alaska Exotic Plants Information Clearinghouse (AKEPIC)\\}]","_version_":1592410573773996039},{"establishmentMeans":["AK  HI"],"eventDate":"2003-07-25","providedScientificName":"Helianthus annuus L.","year":2003,"countryCode":"US","ambiguous":false,"generalComments":"sample effort id:350552; project name:; visit type:; revisit:No; area surveyed:1 ac; study type:Exhaustive species inventory; collection method:GPS; quad name: Anchorage; quad number: C-7; site code:46; viereck code:III.; location notes: Frontage Rd and Hyer Rd Animal Food Warehouse; disturbance type: Fill Importation (e.g., Road or Railroad Grade); precision:0-30 ft; map source:; map scale:; map date:; presence:TRUE; usda name 2:; family:Asteraceae; rank code:; infested area:1 ac; stem count:1-5; canopy cover:5; estimated years of disturbance:1; herbarium:None; control action:None; aggressiveness:; species notes:; project description:; project method:; project discussion:; data type:","verbatimLocality":"quad name: Anchorage; quad number: C-7; site code:46; viereck code:III.; location notes: Frontage Rd and Hyer Rd Animal Food Warehouse; disturbance type: Fill Importation (e.g., Road or Railroad Grade)","latlon":"-149.30939,61.57002","computedCountyFips":"02170","occurrenceID":"61912729","decimalLongitude":-149.30939,"basisOfRecord":"observation","providedCommonName":"annual sunflower","collectionID":"https://bison.usgs.gov/ipt/resource?r=akepic","ownerInstitutionCollectionCode":"Alaska Exotic Plants Information Clearinghouse (AKEPIC)","scientificName":"Helianthus annuus","institutionID":"https://bison.usgs.gov/","computedStateFips":"02","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","TSNs":["36616"],"providedTSN":"HEAN3","providerID":440,"stateProvince":"Alaska","verbatimEventDate":"2003-07-25","decimalLatitude":61.57002,"recordedBy":"Lapina, I.; affiliation is AKNHP","geo":"-149.30939 61.57002","provider":"BISON","calculatedCounty":"Matanuska-Susitna","catalogNumber":"BISON-AKEPIC-21275","ITISscientificName":"Helianthus annuus","pointPath":"/-149.30939,61.57002/observation","kingdom":"Plantae","calculatedState":"Alaska","hierarchy_homonym_string":"-202422-954898-846494-954900-846496-846504-18063-846535-35419-35420-36611-36616-","ITIScommonName":"annual sunflower;common sunflower;sunflower;wild sunflower","resourceID":"440,100085","ITIStsn":"36616","associatedReferences":"[{\\url\\:\\http://accs.uaa.alaska.edu/invasive-species/non-native-plants\\,\\description\\:\\Alaska Exotic Plants Information Clearinghouse (AKEPIC)\\}]","_version_":1592410564898848770},{"establishmentMeans":["AK  HI"],"eventDate":"2003-08-06","providedScientificName":"Helianthus annuus L.","year":2003,"countryCode":"US","ambiguous":false,"generalComments":"sample effort id:361192; project name:; visit type:; revisit:No; area surveyed:0.5 ac; study type:Exhaustive species inventory; collection method:GPS; quad name: Talkeetna; quad number: B-1; site code:103; location notes: Talkeetna Spur Rd and Talkeetna Moose Cabins Photos 35-38; disturbance type: Fill Importation (e.g., Road or Railroad Grade); precision:0-30 ft; map source:; map scale:; map date:; presence:TRUE; usda name 2:; family:Asteraceae; rank code:; infested area:0.5 ac; stem count:; canopy cover:5; estimated years of disturbance:0; herbarium:Not Collected; control action:None; aggressiveness:; species notes:; project description:; project method:; project discussion:; data type:","verbatimLocality":"quad name: Talkeetna; quad number: B-1; site code:103; location notes: Talkeetna Spur Rd and Talkeetna Moose Cabins Photos 35-38; disturbance type: Fill Importation (e.g., Road or Railroad Grade)","latlon":"-150.07596,62.27215","computedCountyFips":"02170","occurrenceID":"61936419","decimalLongitude":-150.07596,"basisOfRecord":"observation","providedCommonName":"annual sunflower","collectionID":"https://bison.usgs.gov/ipt/resource?r=akepic","ownerInstitutionCollectionCode":"Alaska Exotic Plants Information Clearinghouse (AKEPIC)","scientificName":"Helianthus annuus","institutionID":"https://bison.usgs.gov/","computedStateFips":"02","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","TSNs":["36616"],"providedTSN":"HEAN3","providerID":440,"stateProvince":"Alaska","verbatimEventDate":"2003-08-06","decimalLatitude":62.27215,"recordedBy":"Lapina, I.; affiliation is AKNHP","geo":"-150.07596 62.27215","provider":"BISON","calculatedCounty":"Matanuska-Susitna","catalogNumber":"BISON-AKEPIC-21276","ITISscientificName":"Helianthus annuus","pointPath":"/-150.07596,62.27215/observation","kingdom":"Plantae","calculatedState":"Alaska","hierarchy_homonym_string":"-202422-954898-846494-954900-846496-846504-18063-846535-35419-35420-36611-36616-","ITIScommonName":"annual sunflower;common sunflower;sunflower;wild sunflower","resourceID":"440,100085","ITIStsn":"36616","associatedReferences":"[{\\url\\:\\http://accs.uaa.alaska.edu/invasive-species/non-native-plants\\,\\description\\:\\Alaska Exotic Plants Information Clearinghouse (AKEPIC)\\}]","_version_":1592410568429404162},{"establishmentMeans":["AK  HI"],"eventDate":"2003-11-14T01:00Z","providedScientificName":"Helianthus annuus L.","year":2003,"countryCode":"US","providedCounty":"Maricopa County","ambiguous":false,"verbatimLocality":"","occurrenceID":"71636447","basisOfRecord":"specimen","providedCommonName":"","collectionID":"http://nhc.asu.edu","ownerInstitutionCollectionCode":"Arizona State University Vascular Plant Herbarium","scientificName":"Helianthus annuus","institutionID":"http://nhc.asu.edu","license":"CC_BY_4_0","TSNs":["36616"],"providerID":318,"stateProvince":"Arizona","higherGeographyID":"","verbatimEventDate":"","coordinatePrecision":"","verbatimElevation":"","recordedBy":"Jacqueline White","provider":"Arizona State University, Global Institute for Sustainability","verbatimDepth":"","catalogNumber":"246338","ITISscientificName":"Helianthus annuus","coordinateUncertaintyInMeters":"","pointPath":"/null,null/specimen","kingdom":"Plantae","hierarchy_homonym_string":"-202422-954898-846494-954900-846496-846504-18063-846535-35419-35420-36611-36616-","collectorNumber":"","ITIScommonName":"annual sunflower;common sunflower;sunflower;wild sunflower","resourceID":"318,676","ITIStsn":"36616","_version_":1592411852751503364},{"establishmentMeans":["AK  HI"],"eventDate":"2003-07-18T02:00Z","providedScientificName":"Helianthus annuus L.","year":2003,"countryCode":"US","providedCounty":"","ambiguous":false,"verbatimLocality":"","occurrenceID":"71636573","basisOfRecord":"observation","providedCommonName":"","collectionID":"http://collections.nmnh.si.edu","ownerInstitutionCollectionCode":"NMNH Extant Specimen and Observation Records","scientificName":"Helianthus annuus","institutionID":"http://www.nmnh.si.edu/","license":"CC0_1_0","TSNs":["36616"],"providerID":220,"stateProvince":"Colorado","higherGeographyID":"","verbatimEventDate":"","coordinatePrecision":"","verbatimElevation":"","recordedBy":"","provider":"National Museum of Natural History, Smithsonian Institution","verbatimDepth":"","catalogNumber":"","ITISscientificName":"Helianthus annuus","coordinateUncertaintyInMeters":"","pointPath":"/null,null/observation","kingdom":"Plantae","hierarchy_homonym_string":"-202422-954898-846494-954900-846496-846504-18063-846535-35419-35420-36611-36616-","collectorNumber":"","ITIScommonName":"annual sunflower;common sunflower;sunflower;wild sunflower","resourceID":"220,202612","ITIStsn":"36616","_version_":1592411852761989130}]}}
-  recorded_at: 2019-01-28 19:47:40 GMT
+  recorded_at: 2019-01-28 21:36:08 GMT
   recorded_with: vcr/0.2.2, webmockr/0.3.0

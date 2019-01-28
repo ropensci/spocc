@@ -12,8 +12,6 @@ test_that("passing in options to occ works", {
                  ebirdopts = list(hotspot = TRUE), limit = 5)
     opts6 <- occ(query = "Mustela", from = "vertnet",
                  vertnetopts = list(year = 2010), limit = 5)
-    opts7 <- occ(query = "Helianthus annuus", from = "bison",
-                 bisonopts = list(year = 2003), limit = 5)
   })
 
   expect_is(opts1, "occdat")
@@ -21,7 +19,6 @@ test_that("passing in options to occ works", {
   expect_is(opts3, "occdat")
   expect_is(opts5, "occdat")
   expect_is(opts6, "occdat")
-  expect_is(opts7, "occdat")
 
   expect_false(anyNA(opts1$gbif$data$Accipiter_striatus$longitude))
 
@@ -40,10 +37,20 @@ test_that("passing in options to occ works", {
   }
 
   expect_true(all(as.numeric(opts6$vertnet$data$Mustela$year) == 2010))
+})
+  
+test_that("passing in options to occ works: bison", {
+  vcr::use_cassette("occ_options_bison", {
+    opts7 <- occ(query = "Helianthus annuus", from = "bison",
+               bisonopts = list(year = 2003), limit = 5)
+  }, preserve_exact_body_bytes = TRUE)
 
+  expect_is(opts7, "occdat")
   expect_equal(opts7$bison$data$Helianthus_annuus$year[1], 2003)
   expect_is(opts7$bison$data$Helianthus_annuus$year[1], "integer")
+})
 
+test_that("passing in options to occ works: idigbio", {
   skip_on_cran()
   opts8 <- occ("Acer", from = 'idigbio',
                idigbioopts = list(rq = list(hasImage = "true")), limit = 5)

@@ -11,7 +11,7 @@ test_that("geometry searches work", {
       geometry=c(-125.0,38.4,-121.8,40.9), limit = 3)
     geo3 <- occ(query="Accipiter striatus", from="ecoengine", limit=10, 
       geometry=c(-125.0,38.4,-121.8,40.9))
-  })
+  }, preserve_exact_body_bytes = TRUE)
   
   expect_is(geo1, "occdat")
   expect_is(geo2, "occdat")

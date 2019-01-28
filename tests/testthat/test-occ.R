@@ -74,7 +74,7 @@ test_that("occ works when only opts passed", {
       "50c9509d-22c7-4a22-a47d-8c48425ef4a7")
     aa <- occ(limit = 20, from = "gbif", gbifopts = list(datasetKey = dsets))
     cc <- occ(from = "ecoengine", ecoengineopts = list(limit = 3))
-  })
+  }, preserve_exact_body_bytes = TRUE)
 
   expect_is(aa, "occdat")
   expect_is(cc, "occdat")

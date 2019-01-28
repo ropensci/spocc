@@ -29,7 +29,7 @@ test_that("has_coords works with all data sources as planned", {
       has_coords = TRUE)
     hh <- occ('Accipiter striatus', from = 'bison', limit = 5,
       has_coords = TRUE)
-  })
+  }, preserve_exact_body_bytes = TRUE)
 
 
   expect_is(bb, "occdat")

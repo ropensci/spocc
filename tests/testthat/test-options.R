@@ -40,6 +40,7 @@ test_that("passing in options to occ works", {
 })
   
 test_that("passing in options to occ works: bison", {
+  skip_on_os("windows")
   vcr::use_cassette("occ_options_bison", {
     opts7 <- occ(query = "Helianthus annuus", from = "bison",
                bisonopts = list(year = 2003), limit = 5)

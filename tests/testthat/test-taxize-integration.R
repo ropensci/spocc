@@ -4,6 +4,8 @@ library("taxize")
 
 test_that("taxize based searches works with > 1 get_ids,
           but indexed to 1 input", {
+  skip_on_os("windows")
+
   # ids5 <- get_ids(names=c("Chironomus riparius","Pinus contorta"),
   #                db = c('itis',"gbif"), verbose = FALSE, rows = 1)
   # save(ids5, file = "tests/testthat/ids5.rda")
@@ -22,6 +24,8 @@ test_that("taxize based searches works with > 1 get_ids,
 })
 
 test_that("taxize based searches works with > 1 get_ids input", {
+  skip_on_os("windows")
+  
   # ids6 <- get_ids(names=c("Chironomus riparius","Pinus contorta"),
   #                db = c('itis',"gbif"), verbose = FALSE, rows = 1)
   # save(ids6, file = "tests/testthat/ids6.rda")
@@ -75,6 +79,8 @@ test_that("taxize based searches works with get_gbifid input", {
 })
 
 test_that("taxize based searches works with get_tsn input", {
+  skip_on_os("windows")
+
   # ids9 <- get_tsn('Accipiter striatus', verbose = FALSE, rows = 1)
   # save(ids9, file = "tests/testthat/ids9.rda")
   load("ids9.rda")

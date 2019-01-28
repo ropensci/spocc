@@ -59,6 +59,8 @@ test_that("occ works for each data source", {
 
 test_that("occ works for each data source", {
   skip_on_cran()
+  skip_if_idigbio_down()
+
   x7 <- occ(query = "Spinus tristis", from = "idigbio", limit = 3)
   expect_is(x7, "occdat")
   expect_is(x7$idigbio, "occdatind")
@@ -90,6 +92,7 @@ test_that("occ works when only opts passed", {
   expect_equal(NROW(cc$ecoengine$data$custom_query), 3)
 
   skip_on_cran()
+  skip_if_idigbio_down()
   bb <- occ(limit = 20, from = "idigbio",
     idigbioopts = list(rq = list(class = "arachnida")))
   expect_is(bb, "occdat")

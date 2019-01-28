@@ -238,10 +238,10 @@ foo_inat <- function(sources, query, limit, page, geometry, has_coords,
     opts$geo <- has_coords
     time <- now()
     opts$query <- query
-    if (!'maxresults' %in% names(opts)) opts$maxresults <- limit
-    if (!'page' %in% names(opts)) opts$page <- page
+    if (!"maxresults" %in% names(opts)) opts$maxresults <- limit
+    if (!"page" %in% names(opts)) opts$page <- page
     if (!is.null(geometry)) {
-      opts$bounds <- if (grepl('POLYGON', paste(as.character(geometry),
+      opts$bounds <- if (grepl("POLYGON", paste(as.character(geometry),
                                                 collapse = " "))) {
         # flip lat  and long spots in the bounds vector for inat
         temp <- wkt2bbox(geometry)
@@ -258,14 +258,14 @@ foo_inat <- function(sources, query, limit, page, geometry, has_coords,
     opts$callopts <- callopts
     out <- tryCatch(do.call("spocc_inat_obs", opts), error = function(e) e)
     if (!is.data.frame(out$data) || inherits(out, "simpleError")) {
-      throw_error("inat", 
+      throw_error("inat",
         sprintf("No records returned in INAT for %s", query))
       throw_error("inat", out$message)
       emptylist(opts, out$message)
     } else{
       res <- out$data
       res$prov <- rep("inat", nrow(res))
-      res <- rename(res, c('taxon.name' = 'name'))
+      res <- rename(res, c("taxon.name" = "name"))
       res <- stand_latlon(res)
       res <- add_latlong_if_missing(res)
       res <- stand_dates(res, "inat")

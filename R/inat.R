@@ -87,9 +87,9 @@ spocc_inat_obs <- function(query=NULL, taxon = NULL, quality=NULL, geo=TRUE,
     
     if (total_res < maxresults) maxresults <- total_res
     if (maxresults > 200) {
-      for (i in 2:ceiling(maxresults/200)) {
+      for (i in 2:ceiling(maxresults / 200)) {
         page_query <- c(args, per_page = 200, page = i)
-        data <- cli$get(path = q_path, query = page_query)
+        data <- cli$get(path = ping_path, query = page_query)
         data <- spocc_inat_handle(data)
         data_out2 <- jsonlite::fromJSON(data, flatten = TRUE)
         data_out2$photos <- NULL
@@ -102,23 +102,24 @@ spocc_inat_obs <- function(query=NULL, taxon = NULL, quality=NULL, geo=TRUE,
     
     if (is.data.frame(data_out)) {
       if (maxresults < dim(data_out)[1]) {
-        data_out <- data_out[1:maxresults,]
+        data_out <- data_out[1:maxresults, ]
       }
     }
   }
   
-  list(meta = list(found = total_res, returned = NROW(data_out)), 
+  list(meta = list(found = total_res, returned = NROW(data_out)),
        data = data_out)
 }
 
 spocc_inat_handle <- function(x){
   res <- x$parse("UTF-8")
-  if (!x$response_headers$`content-type` == 'application/json; charset=utf-8' || 
-      x$status_code > 202 || 
-      nchar(res) == 0 
-    ) {
-    if (!x$response_headers$`content-type` == 
-        'application/json; charset=utf-8') {
+  if (
+    !x$response_headers$`content-type` == "application/json; charset=utf-8" ||
+    x$status_code > 202 ||
+    nchar(res) == 0
+  ) {
+    if (!x$response_headers$`content-type` ==
+        "application/json; charset=utf-8") {
       warning(
         "Conent type incorrect, should be 'application/json; charset=utf-8'")
       NA
@@ -131,8 +132,8 @@ spocc_inat_handle <- function(x){
       warning("No data found")
       NA
     }
-  } else { 
-    res 
+  } else {
+    res
   }
 }
 
@@ -144,4 +145,4 @@ spocc_get_inat_obs_id <- function(id, callopts = list()) {
   jsonlite::fromJSON(res$parse("UTF-8"))
 }
 
-inat_base_url <- function() "http://www.inaturalist.org/"
+inat_base_url <- function() "https://www.inaturalist.org/"

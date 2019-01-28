@@ -50,7 +50,8 @@ Suggests:
     roxygen2 (>= 6.1.1),
     testthat,
     knitr,
-    taxize (>= 0.8.4)
+    taxize (>= 0.8.4),
+    vcr
 RoxygenNote: 6.1.1
 X-schema.org-applicationCategory: Biodiversity
 X-schema.org-keywords: specimens, API, web-services, occurrences, species, taxonomy, GBIF, INAT, BISON, Vertnet, eBird, Ecoengine, iDigBio, OBIS, ALA

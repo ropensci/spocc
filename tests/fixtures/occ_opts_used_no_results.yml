@@ -1,0 +1,71 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/search?limit=20&offset=0&scientificName=Accipiter%20striatus&datasetKey=f934f8e2-32ca-46a7-b2f8-b032a4740454
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/3.3 crul/0.7.0.9100 rOpenSci(rgbif/1.1.0.9113)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0.9100 rOpenSci(rgbif/1.1.0.9113)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Mon, 28 Jan 2019 18:59:24 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
+      server: Jetty(9.3.z-SNAPSHOT)
+      cache-control: public, max-age=600
+      x-varnish: 346926423 350716785
+      age: '0'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '78'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"offset":0,"limit":20,"endOfRecords":true,"count":0,"results":[],"facets":[]}'
+  recorded_at: 2019-01-28 18:59:25 GMT
+  recorded_with: vcr/0.2.2, webmockr/0.3.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/search?limit=20&offset=0&scientificName=Accipiter%20striatus&datasetKey=6ce7290f-47f6-4046-8356-371f5b6749df
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/3.3 crul/0.7.0.9100 rOpenSci(rgbif/1.1.0.9113)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0.9100 rOpenSci(rgbif/1.1.0.9113)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Mon, 28 Jan 2019 18:59:24 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
+      server: Jetty(9.3.z-SNAPSHOT)
+      cache-control: public, max-age=600
+      x-varnish: 349733424 324991487
+      age: '0'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '78'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"offset":0,"limit":20,"endOfRecords":true,"count":0,"results":[],"facets":[]}'
+  recorded_at: 2019-01-28 18:59:25 GMT
+  recorded_with: vcr/0.2.2, webmockr/0.3.0

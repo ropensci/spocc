@@ -1,0 +1,148 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/search?limit=3&offset=0&scientificName=Accipiter
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/3.3 crul/0.7.0.9100 rOpenSci(rgbif/1.1.0.9113)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0.9100 rOpenSci(rgbif/1.1.0.9113)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Mon, 28 Jan 2019 19:03:02 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
+      server: Jetty(9.3.z-SNAPSHOT)
+      cache-control: public, max-age=600
+      x-varnish: 354323129 328579331
+      age: '0'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '9077'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"offset":0,"limit":3,"endOfRecords":false,"count":3735176,"results":[{"key":1986615536,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-01-28T00:21:07.748+0000","lastParsed":"2019-01-13T23:39:08.749+0000","crawlId":147,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":2480621,"kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":7191147,"familyKey":2877,"genusKey":9405810,"speciesKey":2480621,"acceptedTaxonKey":2480621,"scientificName":"Accipiter
+        cooperi (Bonaparte, 1828)","acceptedScientificName":"Accipiter cooperi (Bonaparte,
+        1828)","kingdom":"Animalia","phylum":"Chordata","order":"Accipitriformes","family":"Accipitridae","genus":"Accipiter","species":"Accipiter
+        cooperi","genericName":"Accipiter","specificEpithet":"cooperi","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2019-01-08T21:04:58","decimalLongitude":-102.068444,"decimalLatitude":32.038643,"coordinateUncertaintyInMeters":15.0,"stateProvince":"Texas","year":2019,"month":1,"day":8,"eventDate":"2019-01-08T11:52:00","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84","TAXON_MATCH_FUZZY"],"modified":"2019-01-08T21:44:43.000+0000","lastInterpreted":"2019-01-13T23:39:30.263+0000","references":"https://www.inaturalist.org/observations/19518623","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Aves","countryCode":"US","country":"United
+        States of America","rightsHolder":"ibaline","identifier":"19518623","verbatimEventDate":"2019/01/08
+        11:52 AM CST","datasetName":"iNaturalist research-grade observations","gbifID":"1986615536","verbatimLocality":"Midland,
+        TX, USA","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/19518623","taxonID":"5112","catalogNumber":"19518623","recordedBy":"ibaline","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/19518623","institutionCode":"iNaturalist","rights":"©
+        ibaline some rights reserved","eventTime":"17:52:00Z","identificationID":"42794207"},{"key":1986627721,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-01-28T00:21:10.701+0000","lastParsed":"2019-01-13T23:39:14.388+0000","crawlId":147,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":2480621,"kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":7191147,"familyKey":2877,"genusKey":9405810,"speciesKey":2480621,"acceptedTaxonKey":2480621,"scientificName":"Accipiter
+        cooperi (Bonaparte, 1828)","acceptedScientificName":"Accipiter cooperi (Bonaparte,
+        1828)","kingdom":"Animalia","phylum":"Chordata","order":"Accipitriformes","family":"Accipitridae","genus":"Accipiter","species":"Accipiter
+        cooperi","genericName":"Accipiter","specificEpithet":"cooperi","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2019-01-10T15:53:32","decimalLongitude":-82.075962,"decimalLatitude":41.026092,"coordinateUncertaintyInMeters":27847.0,"stateProvince":"Ohio","year":2019,"month":1,"day":10,"eventDate":"2019-01-10T10:43:41","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84","TAXON_MATCH_FUZZY"],"modified":"2019-01-10T16:51:17.000+0000","lastInterpreted":"2019-01-13T23:39:37.999+0000","references":"https://www.inaturalist.org/observations/19553347","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/30095581/original.jpg?1547135621","references":"https://www.inaturalist.org/photos/30095581","created":"2019-01-10T15:43:41.000+0000","creator":"carolr","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"carolr"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/30095585/original.jpg?1547135631","references":"https://www.inaturalist.org/photos/30095585","created":"2019-01-10T15:43:41.000+0000","creator":"carolr","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"carolr"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/30095588/original.jpg?1547135640","references":"https://www.inaturalist.org/photos/30095588","created":"2019-01-10T15:43:41.000+0000","creator":"carolr","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"carolr"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Aves","countryCode":"US","country":"United
+        States of America","rightsHolder":"carolr","identifier":"19553347","informationWithheld":"Coordinate
+        uncertainty increased to 27847m to protect threatened taxon","verbatimEventDate":"Thu
+        Jan 10 2019 10:43:41 GMT-0500 (EST)","datasetName":"iNaturalist research-grade
+        observations","gbifID":"1986627721","verbatimLocality":"Ohio, US","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/19553347","taxonID":"5112","catalogNumber":"19553347","recordedBy":"carolr","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/19553347","institutionCode":"iNaturalist","rights":"©
+        carolr some rights reserved","eventTime":"15:43:41Z","occurrenceRemarks":"Eating
+        breakfast not sure what kind of hawk this is.","identificationID":"42901300"},{"key":1986566382,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-01-28T00:20:57.917+0000","lastParsed":"2019-01-13T23:38:43.461+0000","crawlId":147,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":2480621,"kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":7191147,"familyKey":2877,"genusKey":9405810,"speciesKey":2480621,"acceptedTaxonKey":2480621,"scientificName":"Accipiter
+        cooperi (Bonaparte, 1828)","acceptedScientificName":"Accipiter cooperi (Bonaparte,
+        1828)","kingdom":"Animalia","phylum":"Chordata","order":"Accipitriformes","family":"Accipitridae","genus":"Accipiter","species":"Accipiter
+        cooperi","genericName":"Accipiter","specificEpithet":"cooperi","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2019-01-02T20:03:15","decimalLongitude":-79.875259,"decimalLatitude":43.298028,"coordinateUncertaintyInMeters":244.0,"stateProvince":"Ontario","year":2019,"month":1,"day":2,"eventDate":"2019-01-02T10:14:00","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84","TAXON_MATCH_FUZZY"],"modified":"2019-01-02T20:07:37.000+0000","lastInterpreted":"2019-01-13T23:38:58.436+0000","references":"https://www.inaturalist.org/observations/19381437","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/29807320/original.jpeg?1546458803","references":"https://www.inaturalist.org/photos/29807320","created":"2019-01-02T18:14:34.000+0000","creator":"bkinder832","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"bkinder832"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/29807644/original.jpeg?1546459632","references":"https://www.inaturalist.org/photos/29807644","created":"2019-01-02T19:09:09.000+0000","creator":"bkinder832","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"bkinder832"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/29807649/original.jpeg?1546459653","references":"https://www.inaturalist.org/photos/29807649","created":"2019-01-02T18:15:22.000+0000","creator":"bkinder832","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"bkinder832"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Aves","countryCode":"CA","country":"Canada","rightsHolder":"bkinder832","identifier":"19381437","verbatimEventDate":"2019/01/02
+        10:14 AM EST","datasetName":"iNaturalist research-grade observations","gbifID":"1986566382","verbatimLocality":"Aldershot,
+        Burlington, ON, Canada","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/19381437","taxonID":"5112","catalogNumber":"19381437","recordedBy":"bkinder832","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/19381437","institutionCode":"iNaturalist","rights":"©
+        bkinder832 some rights reserved","eventTime":"15:14:00Z","identificationID":"42391070"}],"facets":[]}'
+  recorded_at: 2019-01-28 19:03:05 GMT
+  recorded_with: vcr/0.2.2, webmockr/0.3.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/search?limit=5&offset=0&scientificName=Accipiter%20striatus
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/3.3 crul/0.7.0.9100 rOpenSci(rgbif/1.1.0.9113)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0.9100 rOpenSci(rgbif/1.1.0.9113)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Mon, 28 Jan 2019 19:03:04 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
+      server: Jetty(9.3.z-SNAPSHOT)
+      cache-control: public, max-age=600
+      x-varnish: 332537687 334477000
+      age: '0'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '17358'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"offset":0,"limit":5,"endOfRecords":false,"count":737439,"results":[{"key":1986597531,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-01-28T00:21:04.188+0000","lastParsed":"2019-01-13T23:39:01.074+0000","crawlId":147,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":9740253,"kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":7191147,"familyKey":2877,"genusKey":9405810,"speciesKey":9740253,"acceptedTaxonKey":9740253,"scientificName":"Accipiter
+        striatus Vieillot, 1808","acceptedScientificName":"Accipiter striatus Vieillot,
+        1808","kingdom":"Animalia","phylum":"Chordata","order":"Accipitriformes","family":"Accipitridae","genus":"Accipiter","species":"Accipiter
+        striatus","genericName":"Accipiter","specificEpithet":"striatus","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2019-01-07T12:18:42","decimalLongitude":-75.995461,"decimalLatitude":41.163283,"coordinateUncertaintyInMeters":15.0,"stateProvince":"Pennsylvania","year":2019,"month":1,"day":6,"eventDate":"2019-01-06T12:50:00","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2019-01-07T12:18:42.000+0000","lastInterpreted":"2019-01-13T23:39:18.595+0000","references":"https://www.inaturalist.org/observations/19470337","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/29956159/original.jpeg?1546797512","references":"https://www.inaturalist.org/photos/29956159","created":"2019-01-06T20:50:09.000+0000","creator":"bernicez","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"bernicez"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/29956389/original.jpeg?1546797859","references":"https://www.inaturalist.org/photos/29956389","created":"2019-01-06T20:49:34.000+0000","creator":"bernicez","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"bernicez"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Aves","countryCode":"US","country":"United
+        States of America","rightsHolder":"bernicez","identifier":"19470337","verbatimEventDate":"2019/01/06
+        12:50 PM EST","datasetName":"iNaturalist research-grade observations","gbifID":"1986597531","verbatimLocality":"Mountain
+        Top, PA 18707, USA","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/19470337","taxonID":"5097","catalogNumber":"19470337","recordedBy":"bernicez","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/19470337","institutionCode":"iNaturalist","rights":"©
+        bernicez some rights reserved","eventTime":"17:50:00Z","identificationID":"42703521"},{"key":1986599614,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-01-28T00:21:04.510+0000","lastParsed":"2019-01-13T23:39:02.007+0000","crawlId":147,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":9740253,"kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":7191147,"familyKey":2877,"genusKey":9405810,"speciesKey":9740253,"acceptedTaxonKey":9740253,"scientificName":"Accipiter
+        striatus Vieillot, 1808","acceptedScientificName":"Accipiter striatus Vieillot,
+        1808","kingdom":"Animalia","phylum":"Chordata","order":"Accipitriformes","family":"Accipitridae","genus":"Accipiter","species":"Accipiter
+        striatus","genericName":"Accipiter","specificEpithet":"striatus","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2019-01-06T21:43:40","decimalLongitude":-72.496481,"decimalLatitude":42.770194,"coordinateUncertaintyInMeters":122.0,"stateProvince":"Vermont","year":2019,"month":1,"day":6,"eventDate":"2019-01-06T11:16:00","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2019-01-08T17:45:52.000+0000","lastInterpreted":"2019-01-13T23:39:19.863+0000","references":"https://www.inaturalist.org/observations/19475574","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/29964804/original.jpeg?1546810727","references":"https://www.inaturalist.org/photos/29964804","created":"2019-01-06T19:16:48.000+0000","creator":"catabbott","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"catabbott"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/29965236/original.jpeg?1546811272","references":"https://www.inaturalist.org/photos/29965236","created":"2019-01-06T19:14:51.000+0000","creator":"catabbott","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"catabbott"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/29965238/original.jpeg?1546811273","references":"https://www.inaturalist.org/photos/29965238","created":"2019-01-06T19:16:26.000+0000","creator":"catabbott","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"catabbott"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Aves","countryCode":"US","country":"United
+        States of America","rightsHolder":"catabbott","identifier":"19475574","verbatimEventDate":"2019/01/06
+        11:16 AM EST","datasetName":"iNaturalist research-grade observations","gbifID":"1986599614","verbatimLocality":"Vernon,
+        VT, USA","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/19475574","taxonID":"5097","catalogNumber":"19475574","recordedBy":"catabbott","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/19475574","institutionCode":"iNaturalist","rights":"©
+        catabbott some rights reserved","eventTime":"16:16:00Z","identificationID":"42662391"},{"key":1986597545,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-01-28T00:21:04.189+0000","lastParsed":"2019-01-13T23:39:01.039+0000","crawlId":147,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":9740253,"kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":7191147,"familyKey":2877,"genusKey":9405810,"speciesKey":9740253,"acceptedTaxonKey":9740253,"scientificName":"Accipiter
+        striatus Vieillot, 1808","acceptedScientificName":"Accipiter striatus Vieillot,
+        1808","kingdom":"Animalia","phylum":"Chordata","order":"Accipitriformes","family":"Accipitridae","genus":"Accipiter","species":"Accipiter
+        striatus","genericName":"Accipiter","specificEpithet":"striatus","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2019-01-06T23:45:08","decimalLongitude":-101.889691,"decimalLatitude":33.576912,"coordinateUncertaintyInMeters":28957.0,"stateProvince":"Texas","year":2019,"month":1,"day":5,"eventDate":"2019-01-05T13:06:00","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2019-01-09T20:41:29.000+0000","lastInterpreted":"2019-01-13T23:39:18.656+0000","references":"https://www.inaturalist.org/observations/19470356","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/29956151/original.jpg?1546797501","references":"https://www.inaturalist.org/photos/29956151","created":"2019-01-05T21:06:39.000+0000","creator":"Lena
+        Zappia","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Lena
+        Zappia"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/29956153/original.jpg?1546797506","references":"https://www.inaturalist.org/photos/29956153","created":"2019-01-05T21:06:40.000+0000","creator":"Lena
+        Zappia","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Lena
+        Zappia"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/29956158/original.jpg?1546797510","references":"https://www.inaturalist.org/photos/29956158","created":"2019-01-05T21:06:41.000+0000","creator":"Lena
+        Zappia","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Lena
+        Zappia"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/29956161/original.jpg?1546797515","references":"https://www.inaturalist.org/photos/29956161","created":"2019-01-05T21:06:48.000+0000","creator":"Lena
+        Zappia","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Lena
+        Zappia"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Aves","countryCode":"US","country":"United
+        States of America","rightsHolder":"Lena Zappia","identifier":"19470356","informationWithheld":"Coordinate
+        uncertainty increased to 28957m to protect threatened taxon","verbatimEventDate":"2019/01/05
+        1:06 PM CST","datasetName":"iNaturalist research-grade observations","gbifID":"1986597545","verbatimLocality":"Texas,
+        US","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/19470356","taxonID":"5097","catalogNumber":"19470356","recordedBy":"Lena
+        Zappia","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/19470356","institutionCode":"iNaturalist","rights":"©
+        Lena Zappia some rights reserved","eventTime":"19:06:00Z","occurrenceRemarks":"Coopers?
+        Stalked me as I walked through the park and around the playa.","identificationID":"42671236"},{"key":1986627232,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-01-28T00:21:10.474+0000","lastParsed":"2019-01-13T23:39:14.119+0000","crawlId":147,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":9740253,"kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":7191147,"familyKey":2877,"genusKey":9405810,"speciesKey":9740253,"acceptedTaxonKey":9740253,"scientificName":"Accipiter
+        striatus Vieillot, 1808","acceptedScientificName":"Accipiter striatus Vieillot,
+        1808","kingdom":"Animalia","phylum":"Chordata","order":"Accipitriformes","family":"Accipitridae","genus":"Accipiter","species":"Accipiter
+        striatus","genericName":"Accipiter","specificEpithet":"striatus","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2019-01-10T13:12:32","decimalLongitude":-63.452299,"decimalLatitude":44.640026,"coordinateUncertaintyInMeters":27285.0,"stateProvince":"Nova
+        Scotia","year":2019,"month":1,"day":10,"eventDate":"2019-01-10T09:08:00","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2019-01-10T19:42:09.000+0000","lastInterpreted":"2019-01-13T23:39:37.875+0000","references":"https://www.inaturalist.org/observations/19551681","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/30092936/original.jpeg?1547125897","references":"https://www.inaturalist.org/photos/30092936","created":"2019-01-10T17:08:37.000+0000","creator":"mkkennedy","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"mkkennedy"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/30092974/original.jpeg?1547125997","references":"https://www.inaturalist.org/photos/30092974","created":"2019-01-10T17:08:26.000+0000","creator":"mkkennedy","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"mkkennedy"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/30092977/original.jpeg?1547126000","references":"https://www.inaturalist.org/photos/30092977","created":"2019-01-10T17:08:32.000+0000","creator":"mkkennedy","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"mkkennedy"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/30092978/original.jpeg?1547126002","references":"https://www.inaturalist.org/photos/30092978","created":"2019-01-10T17:08:43.000+0000","creator":"mkkennedy","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"mkkennedy"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Aves","countryCode":"CA","country":"Canada","rightsHolder":"mkkennedy","identifier":"19551681","informationWithheld":"Coordinate
+        uncertainty increased to 27285m to protect threatened taxon","verbatimEventDate":"2019/01/10
+        9:08 AM AST","datasetName":"iNaturalist research-grade observations","gbifID":"1986627232","verbatimLocality":"Halifax,
+        CA-NS, CA","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/19551681","taxonID":"5097","catalogNumber":"19551681","recordedBy":"mkkennedy","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/19551681","institutionCode":"iNaturalist","rights":"©
+        mkkennedy some rights reserved","eventTime":"13:08:00Z","identificationID":"42895363"},{"key":1986607933,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-01-28T00:21:05.669+0000","lastParsed":"2019-01-13T23:39:05.686+0000","crawlId":147,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":9740253,"kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":7191147,"familyKey":2877,"genusKey":9405810,"speciesKey":9740253,"acceptedTaxonKey":9740253,"scientificName":"Accipiter
+        striatus Vieillot, 1808","acceptedScientificName":"Accipiter striatus Vieillot,
+        1808","kingdom":"Animalia","phylum":"Chordata","order":"Accipitriformes","family":"Accipitridae","genus":"Accipiter","species":"Accipiter
+        striatus","genericName":"Accipiter","specificEpithet":"striatus","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2019-01-07T13:39:46","decimalLongitude":-84.606553,"decimalLatitude":39.289164,"coordinateUncertaintyInMeters":28121.0,"stateProvince":"Ohio","year":2019,"month":1,"day":6,"eventDate":"2019-01-06T10:05:00","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2019-01-07T15:10:22.000+0000","lastInterpreted":"2019-01-13T23:39:25.538+0000","references":"https://www.inaturalist.org/observations/19490361","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/29990259/original.jpeg?1546868308","references":"https://www.inaturalist.org/photos/29990259","created":"2019-01-06T18:05:24.000+0000","creator":"Joshua
+        Eastlake","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Joshua
+        Eastlake"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/29990486/original.jpeg?1546868925","references":"https://www.inaturalist.org/photos/29990486","created":"2019-01-06T18:03:12.000+0000","creator":"Joshua
+        Eastlake","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Joshua
+        Eastlake"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/29990487/original.jpeg?1546868925","references":"https://www.inaturalist.org/photos/29990487","created":"2019-01-06T18:03:14.000+0000","creator":"Joshua
+        Eastlake","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Joshua
+        Eastlake"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Aves","countryCode":"US","country":"United
+        States of America","rightsHolder":"Joshua Eastlake","identifier":"19490361","informationWithheld":"Coordinate
+        uncertainty increased to 28121m to protect threatened taxon","verbatimEventDate":"2019/01/06
+        10:05 AM EST","datasetName":"iNaturalist research-grade observations","gbifID":"1986607933","verbatimLocality":"United
+        States","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/19490361","taxonID":"5097","catalogNumber":"19490361","recordedBy":"Joshua
+        Eastlake","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/19490361","institutionCode":"iNaturalist","rights":"©
+        Joshua Eastlake some rights reserved","eventTime":"15:05:00Z","identificationID":"42706795"}],"facets":[]}'
+  recorded_at: 2019-01-28 19:03:05 GMT
+  recorded_with: vcr/0.2.2, webmockr/0.3.0

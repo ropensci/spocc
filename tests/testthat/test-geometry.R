@@ -1,30 +1,30 @@
 context("Testing geometry searches")
 
 test_that("geometry searches work", {
-  skip_on_cran()
+  vcr::use_cassette("occ_geometry_searches", {
+    geo1 <- occ(query="Accipiter", from="gbif", limit = 3,
+      geometry='POLYGON((30.1 10.1, 10 20, 20 60, 60 60, 30.1 10.1))')
+    geo11 <- occ(query="Accipiter striatus", from="gbif", limit = 3,
+      geometry='POLYGON((-120.7 46.8,-103.1 46.4,-88.0 36.9,-109.5 32.6,-123.9 42.3,-120.7 46.8))')
   
-  # no results
-  system.time(geo1 <- occ(query='Accipiter', from='gbif', limit = 3,
-              geometry='POLYGON((30.1 10.1, 10 20, 20 60, 60 60, 30.1 10.1))'))
-  system.time(geo11 <- occ(query='Accipiter striatus', from='gbif', limit = 3,
-               geometry=
-                 'POLYGON((-120.7 46.8,-103.1 46.4,-88.0 36.9,-109.5 32.6,-123.9 42.3,-120.7 46.8))'))
-  
-  system.time(geo2 <- occ(query='Accipiter striatus', from='gbif', geometry=c(-125.0,38.4,-121.8,40.9), limit = 3))
-  system.time(geo3 <- occ(query='Accipiter striatus', from='ecoengine', limit=10, geometry=c(-125.0,38.4,-121.8,40.9)))
+    geo2 <- occ(query="Accipiter striatus", from="gbif", 
+      geometry=c(-125.0,38.4,-121.8,40.9), limit = 3)
+    geo3 <- occ(query="Accipiter striatus", from="ecoengine", limit=10, 
+      geometry=c(-125.0,38.4,-121.8,40.9))
+  })
   
   expect_is(geo1, "occdat")
   expect_is(geo2, "occdat")
   expect_is(geo3, "occdat")
-  expect_match(names(geo2$gbif$data), 'Accipiter_striatus')
+  expect_match(names(geo2$gbif$data), "Accipiter_striatus")
 })
 
 test_that("occ works for geometry (single) - query (none)", {
   skip_on_cran()
-  
+
   bounds <- c(-120, 40, -100, 45)
   aa <- occ(from = "idigbio", geometry = bounds, limit = 2)
-  
+
   expect_is(aa, "occdat")
   expect_is(aa$idigbio, "occdatind")
   expect_is(aa$idigbio$meta$type, "character")
@@ -33,10 +33,10 @@ test_that("occ works for geometry (single) - query (none)", {
 })
 
 test_that("occ works for geometry (many) - query (none)", {
-  skip_on_cran()
-  
   bounds <- list(c(165,-53,180,-29), c(-180,-53,-175,-29))
-  aa <- occ(from = "gbif", geometry = bounds, limit = 2)
+  vcr::use_cassette("occ_geometry_many_query_none", {
+    aa <- occ(from = "gbif", geometry = bounds, limit = 2)
+  })
   
   expect_is(aa, "occdat")
   expect_is(aa$gbif, "occdatind")
@@ -46,10 +46,11 @@ test_that("occ works for geometry (many) - query (none)", {
 })
 
 test_that("occ works for geometry (single) - query (single)", {
-  skip_on_cran()
-  
   bounds <- c(-120, 40, -100, 45)
-  aa <- occ(query = "Accipiter striatus", from = "gbif", geometry = bounds, limit = 2)
+  vcr::use_cassette("occ_geometry_single_query_single", {
+    aa <- occ(query = "Accipiter striatus", from = "gbif", 
+      geometry = bounds, limit = 2)
+  })
   
   expect_is(aa, "occdat")
   expect_is(aa$gbif, "occdatind")
@@ -60,10 +61,11 @@ test_that("occ works for geometry (single) - query (single)", {
 })
 
 test_that("occ works for geometry (many) - query (single)", {
-  skip_on_cran()
-  
   bounds <- list(c(165,-53,180,-29), c(-180,-53,-175,-29))
-  aa <- occ(query = "Poa annua", from = "gbif", geometry = bounds, limit = 2)
+  vcr::use_cassette("occ_geometry_many_query_single", {
+    aa <- occ(query = "Poa annua", from = "gbif", 
+      geometry = bounds, limit = 2)
+  })
   
   expect_is(aa, "occdat")
   expect_is(aa$gbif, "occdatind")
@@ -74,10 +76,11 @@ test_that("occ works for geometry (many) - query (single)", {
 })
 
 test_that("occ works for geometry (single) - query (many)", {
-  skip_on_cran()
-  
   bounds <- c(-120, 40, -100, 45)
-  aa <- occ(query = c("Poa", "Quercus"), from = "gbif", geometry = bounds, limit = 2)
+  vcr::use_cassette("occ_geometry_single_query_many", {
+    aa <- occ(query = c("Poa", "Quercus"), from = "gbif", 
+      geometry = bounds, limit = 2)
+  })
   
   expect_is(aa, "occdat")
   expect_is(aa$gbif, "occdatind")
@@ -90,10 +93,11 @@ test_that("occ works for geometry (single) - query (many)", {
 })
 
 test_that("occ works for geometry (many) - query (many)", {
-  skip_on_cran()
-  
   bounds <- list(c(165,-53,180,-29), c(-180,-53,-175,-29))
-  aa <- occ(query = c("Poa", "Quercus"), from = "gbif", geometry = bounds, limit = 2)
+  vcr::use_cassette("occ_geometry_many_query_many", {
+    aa <- occ(query = c("Poa", "Quercus"), from = "gbif", 
+      geometry = bounds, limit = 2)
+  })
   
   expect_is(aa, "occdat")
   expect_is(aa$gbif, "occdatind")
@@ -107,19 +111,21 @@ test_that("occ works for geometry (many) - query (many)", {
 
 ## there was at one point a problem with ecoengine queries, testing for that
 test_that("occ works for geometry for ecoengine", {
-  skip_on_cran()
-  
   x <- "POLYGON((-113.527516 20.929036 ,-113.357516 20.929036 ,-113.357516 21.099036 ,-113.527516 21.099036 ,-113.527516 20.929036))"
-  aa <- suppressWarnings(occ(geometry = x, from = "ecoengine", limit = 2))
-  expect_warning(occ(geometry = x, from = "ecoengine", limit = 2))
-  expect_is(aa, "occdat")
-  expect_equal(NROW(aa$ecoengine$data[[1]]), 0)
-  
   y <- "POLYGON((-110.527516 20.929036, -120.357516 20.929036, -120.357516 31.099036, -110.527516 31.099036, -110.527516 20.929036))"
-  aa <- suppressWarnings(occ(geometry = y, from = "ecoengine", limit = 2))
-  expect_is(aa, "occdat")
-  expect_is(aa$gbif, "occdatind")
-  expect_gt(NROW(aa$ecoengine$data[[1]]), 0)
-  expect_equal(aa$ecoengine$meta$opts$bbox, "-120.357516,20.929036,-110.527516,31.099036")
-})
+  
+  vcr::use_cassette("occ_geometry_ecoengine", {
+    # FIXME: not sure what's going on with this test
+    # aa <- suppressWarnings(occ(geometry = x, from = "ecoengine", limit = 2))
+    bb <- occ(geometry = y, from = "ecoengine", limit = 2)
+  })
 
+  # expect_is(aa, "occdat")
+  # expect_equal(NROW(aa$ecoengine$data[[1]]), 0)
+  
+  expect_is(bb, "occdat")
+  expect_is(bb$gbif, "occdatind")
+  expect_gt(NROW(bb$ecoengine$data[[1]]), 0)
+  expect_equal(bb$ecoengine$meta$opts$bbox, 
+    "-120.357516,20.929036,-110.527516,31.099036")
+})

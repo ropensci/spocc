@@ -1,0 +1,420 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/search?limit=3&offset=0&scientificName=Accipiter&geometry=POLYGON%28%2830.1%2010.1%2C%2010%2020%2C%2020%2060%2C%2060%2060%2C%2030.1%2010.1%29%29
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/3.3 crul/0.7.0.9100 rOpenSci(rgbif/1.1.0.9113)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0.9100 rOpenSci(rgbif/1.1.0.9113)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Mon, 28 Jan 2019 19:10:10 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
+      server: Jetty(9.3.z-SNAPSHOT)
+      cache-control: public, max-age=600
+      x-varnish: 334064278 346771352
+      age: '6'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '8958'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"offset":0,"limit":3,"endOfRecords":false,"count":60542,"results":[{"key":1986596180,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-01-28T00:21:03.951+0000","lastParsed":"2019-01-13T23:39:00.393+0000","crawlId":147,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":2480637,"kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":7191147,"familyKey":2877,"genusKey":9405810,"speciesKey":2480637,"acceptedTaxonKey":2480637,"scientificName":"Accipiter
+        nisus Linnaeus, 1758","acceptedScientificName":"Accipiter nisus Linnaeus,
+        1758","kingdom":"Animalia","phylum":"Chordata","order":"Accipitriformes","family":"Accipitridae","genus":"Accipiter","species":"Accipiter
+        nisus","genericName":"Accipiter","specificEpithet":"nisus","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2019-01-06T15:14:32","decimalLongitude":37.780291,"decimalLatitude":55.782133,"coordinateUncertaintyInMeters":4.0,"stateProvince":"Moscow
+        City","year":2019,"month":1,"day":6,"eventDate":"2019-01-06T13:46:00","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2019-01-07T17:17:48.000+0000","lastInterpreted":"2019-01-13T23:39:17.887+0000","references":"https://www.inaturalist.org/observations/19466656","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/29950614/original.jpg?1546787250","references":"https://www.inaturalist.org/photos/29950614","created":"2019-01-06T21:46:16.000+0000","creator":"Mikhail","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Mikhail"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/29950834/original.jpg?1546787738","references":"https://www.inaturalist.org/photos/29950834","created":"2019-01-06T21:46:22.000+0000","creator":"Mikhail","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Mikhail"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/29950837/original.jpg?1546787742","references":"https://www.inaturalist.org/photos/29950837","created":"2019-01-06T21:46:22.000+0000","creator":"Mikhail","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Mikhail"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/29950839/original.jpg?1546787746","references":"https://www.inaturalist.org/photos/29950839","created":"2019-01-06T21:46:23.000+0000","creator":"Mikhail","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Mikhail"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Aves","countryCode":"RU","country":"Russian
+        Federation","rightsHolder":"Mikhail","identifier":"19466656","verbatimEventDate":"2019/01/06
+        1:46 PM HST","datasetName":"iNaturalist research-grade observations","gbifID":"1986596180","verbatimLocality":"Восточный
+        административный округ, Москва, Россия","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/19466656","taxonID":"5106","catalogNumber":"19466656","recordedBy":"Mikhail","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/19466656","institutionCode":"iNaturalist","rights":"©
+        Mikhail some rights reserved","eventTime":"23:46:00Z","identificationID":"42639842"},{"key":1986587489,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-01-28T00:21:02.186+0000","lastParsed":"2019-01-13T23:38:55.137+0000","crawlId":147,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":2480637,"kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":7191147,"familyKey":2877,"genusKey":9405810,"speciesKey":2480637,"acceptedTaxonKey":2480637,"scientificName":"Accipiter
+        nisus Linnaeus, 1758","acceptedScientificName":"Accipiter nisus Linnaeus,
+        1758","kingdom":"Animalia","phylum":"Chordata","order":"Accipitriformes","family":"Accipitridae","genus":"Accipiter","species":"Accipiter
+        nisus","genericName":"Accipiter","specificEpithet":"nisus","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2019-01-05T13:25:26","decimalLongitude":44.229058,"decimalLatitude":56.058782,"coordinateUncertaintyInMeters":61.0,"stateProvince":"Nizhegorod","year":2019,"month":1,"day":5,"eventDate":"2019-01-05T11:07:00","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2019-01-05T17:52:24.000+0000","lastInterpreted":"2019-01-13T23:39:12.462+0000","references":"https://www.inaturalist.org/observations/19440817","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/29907786/original.jpg?1546694633","references":"https://www.inaturalist.org/photos/29907786","created":"2019-01-05T19:07:53.000+0000","creator":"Вячеслав
+        Юсупов","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Вячеслав
+        Юсупов"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Aves","countryCode":"RU","country":"Russian
+        Federation","rightsHolder":"Вячеслав Юсупов","identifier":"19440817","verbatimEventDate":"2019/01/05
+        11:07 AM MSK","datasetName":"iNaturalist research-grade observations","gbifID":"1986587489","verbatimLocality":"Вередеево","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/19440817","taxonID":"5106","catalogNumber":"19440817","recordedBy":"Вячеслав
+        Юсупов","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/19440817","institutionCode":"iNaturalist","rights":"©
+        Вячеслав Юсупов some rights reserved","eventTime":"08:07:00Z","identificationID":"42572937"},{"key":1882550436,"datasetKey":"169fa761-2fb9-4022-93bd-e22b7a062efd","publishingOrgKey":"0870a77b-587c-4369-a8ed-bc3d347b8e1c","networkKeys":[],"installationKey":"5f02b486-8869-418b-88ba-1819001f1da7","publishingCountry":"EE","protocol":"DWC_ARCHIVE","lastCrawled":"2018-07-30T06:25:59.636+0000","lastParsed":"2018-07-30T06:25:59.979+0000","crawlId":73,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","individualCount":1,"taxonKey":2480637,"kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":7191147,"familyKey":2877,"genusKey":9405810,"speciesKey":2480637,"acceptedTaxonKey":2480637,"scientificName":"Accipiter
+        nisus Linnaeus, 1758","acceptedScientificName":"Accipiter nisus Linnaeus,
+        1758","kingdom":"Animalia","phylum":"Chordata","order":"Accipitriformes","family":"Accipitridae","genus":"Accipiter","species":"Accipiter
+        nisus","genericName":"Accipiter","specificEpithet":"nisus","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","decimalLongitude":24.847034,"decimalLatitude":59.441717,"year":2018,"month":1,"day":28,"eventDate":"2018-01-28T08:00:00","issues":["COORDINATE_ROUNDED"],"lastInterpreted":"2018-12-10T02:09:35.232+0000","references":"https://plutof.ut.ee/#/observation/view/2106937","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://files.plutof.ut.ee/public/large/37/EB/37EB7E2465AEB976111D9E4FA45A6CEE98A4A0D5923B63A30B66324E9BCB6B25.jpg","references":"https://plutof.ut.ee/#/filerepository/view/2655333","title":"02
+        (2 of 48).JPG","creator":"Arvo Lokk","license":"http://creativecommons.org/licenses/by/4.0/","rightsHolder":"Arvo
+        Lokk"},{"references":"http://elurikkus.ut.ee/obs_info.php?st_id=2106937"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Aves","countryCode":"EE","country":"Estonia","rightsHolder":"Arvo
+        Lokk","identifier":"2106937","eventID":"2285673","verbatimEventDate":"2018-01-28T08:00:00Z/2018-01-28T09:00:00Z","datasetName":"Vaatlus:
+        lind","county":"Harju maakond","municipality":"Tallinn","locality":"Lasnamäe
+        linnaosa","language":"en","gbifID":"1882550436","occurrenceID":"2106937","type":"Event","taxonID":"30485","recordedBy":"Arvo
+        Lokk","vernacularName":"raudkull; Eurasian Sparrowhawk; Spurvehauk; Varpushaukka;
+        Zvirbuļu vanags; Spurvehøg; Sparvhök; Paukštvanagis","locationID":"2007482","datasetID":"13","higherClassification":"Metazoa;
+        Craniata; Aves; Accipitriformes; Accipitridae; Accipiter","verbatimTaxonRank":"Species","identificationID":"3517420"}],"facets":[]}'
+  recorded_at: 2019-01-28 19:10:20 GMT
+  recorded_with: vcr/0.2.2, webmockr/0.3.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/search?limit=3&offset=0&scientificName=Accipiter%20striatus&geometry=POLYGON%28%28-120.7%2046.8%2C-103.1%2046.4%2C-88.0%2036.9%2C-109.5%2032.6%2C-123.9%2042.3%2C-120.7%2046.8%29%29
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/3.3 crul/0.7.0.9100 rOpenSci(rgbif/1.1.0.9113)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0.9100 rOpenSci(rgbif/1.1.0.9113)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Mon, 28 Jan 2019 19:10:12 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
+      server: Jetty(9.3.z-SNAPSHOT)
+      cache-control: public, max-age=600
+      x-varnish: 354555304 334419062
+      age: '4'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '8082'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"offset":0,"limit":3,"endOfRecords":false,"count":59042,"results":[{"key":1890045103,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-01-28T00:16:38.332+0000","lastParsed":"2018-10-08T14:59:51.159+0000","crawlId":147,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":9740253,"kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":7191147,"familyKey":2877,"genusKey":9405810,"speciesKey":9740253,"acceptedTaxonKey":9740253,"scientificName":"Accipiter
+        striatus Vieillot, 1808","acceptedScientificName":"Accipiter striatus Vieillot,
+        1808","kingdom":"Animalia","phylum":"Chordata","order":"Accipitriformes","family":"Accipitridae","genus":"Accipiter","species":"Accipiter
+        striatus","genericName":"Accipiter","specificEpithet":"striatus","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2018-07-27T22:24:22","decimalLongitude":-104.716839,"decimalLatitude":38.342634,"coordinateUncertaintyInMeters":28270.0,"stateProvince":"Colorado","year":2018,"month":1,"day":27,"eventDate":"2018-01-27T12:32:00","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2018-07-29T01:31:55.000+0000","lastInterpreted":"2018-12-23T11:43:01.505+0000","references":"https://www.inaturalist.org/observations/14803627","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/22098237/original.jpg?1532730235","references":"https://www.inaturalist.org/photos/22098237","created":"2018-01-27T20:32:19.000+0000","creator":"Van
+        Truan","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Van
+        Truan"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Aves","countryCode":"US","country":"United
+        States of America","rightsHolder":"Van Truan","identifier":"14803627","informationWithheld":"Coordinate
+        uncertainty increased to 28270m to protect threatened taxon","verbatimEventDate":"2018/01/27
+        12:32 PM MST","datasetName":"iNaturalist research-grade observations","gbifID":"1890045103","verbatimLocality":"Pueblo
+        County, US-CO, US","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/14803627","taxonID":"5097","catalogNumber":"14803627","recordedBy":"Van
+        Truan","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/14803627","institutionCode":"iNaturalist","rights":"©
+        Van Truan some rights reserved","eventTime":"19:32:00Z","identificationID":"32060927"},{"key":1831194866,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-01-28T00:30:55.653+0000","lastParsed":"2018-10-08T17:08:39.808+0000","crawlId":147,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":9740253,"kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":7191147,"familyKey":2877,"genusKey":9405810,"speciesKey":9740253,"acceptedTaxonKey":9740253,"scientificName":"Accipiter
+        striatus Vieillot, 1808","acceptedScientificName":"Accipiter striatus Vieillot,
+        1808","kingdom":"Animalia","phylum":"Chordata","order":"Accipitriformes","family":"Accipitridae","genus":"Accipiter","species":"Accipiter
+        striatus","genericName":"Accipiter","specificEpithet":"striatus","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2018-02-21T03:42:54","decimalLongitude":-105.107485,"decimalLatitude":40.020169,"coordinateUncertaintyInMeters":28000.0,"stateProvince":"Colorado","year":2018,"month":2,"day":15,"eventDate":"2018-02-15T09:40:00","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2018-02-21T03:42:54.000+0000","lastInterpreted":"2018-12-07T05:37:48.021+0000","references":"https://www.inaturalist.org/observations/9880935","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/13543360/original.jpg?1518802095","references":"https://www.inaturalist.org/photos/13543360","created":"2018-02-15T17:40:47.000+0000","creator":"willem9","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"willem9"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Aves","countryCode":"US","country":"United
+        States of America","rightsHolder":"willem9","identifier":"9880935","informationWithheld":"Coordinate
+        uncertainty increased to 28000m to protect threatened taxon","verbatimEventDate":"2018/02/15
+        9:40 AM MST","datasetName":"iNaturalist research-grade observations","gbifID":"1831194866","verbatimLocality":"Colorado,
+        US","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/9880935","taxonID":"5097","catalogNumber":"9880935","recordedBy":"willem9","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/9880935","institutionCode":"iNaturalist","rights":"©
+        willem9 some rights reserved","eventTime":"16:40:00Z","identificationID":"21964514"},{"key":1831213398,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-01-28T00:30:59.756+0000","lastParsed":"2018-10-08T17:08:57.958+0000","crawlId":147,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":9740253,"kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":7191147,"familyKey":2877,"genusKey":9405810,"speciesKey":9740253,"acceptedTaxonKey":9740253,"scientificName":"Accipiter
+        striatus Vieillot, 1808","acceptedScientificName":"Accipiter striatus Vieillot,
+        1808","kingdom":"Animalia","phylum":"Chordata","order":"Accipitriformes","family":"Accipitridae","genus":"Accipiter","species":"Accipiter
+        striatus","genericName":"Accipiter","specificEpithet":"striatus","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2018-02-20T02:24:12","decimalLongitude":-104.133447,"decimalLatitude":40.263139,"coordinateUncertaintyInMeters":27969.0,"stateProvince":"Colorado","year":2018,"month":2,"day":13,"eventDate":"2018-02-13T10:01:00","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2018-04-20T14:22:16.000+0000","lastInterpreted":"2018-12-07T05:38:08.867+0000","references":"https://www.inaturalist.org/observations/9928289","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/13622901/original.jpg?1519093410","references":"https://www.inaturalist.org/photos/13622901","created":"2018-02-13T18:01:08.000+0000","creator":"Steven
+        Mlodinow","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Steven
+        Mlodinow"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Aves","countryCode":"US","country":"United
+        States of America","rightsHolder":"Steven Mlodinow","identifier":"9928289","informationWithheld":"Coordinate
+        uncertainty increased to 27969m to protect threatened taxon","verbatimEventDate":"2018/02/13
+        10:01 AM MST","datasetName":"iNaturalist research-grade observations","gbifID":"1831213398","verbatimLocality":"Colorado,
+        US","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/9928289","taxonID":"5097","catalogNumber":"9928289","recordedBy":"Steven
+        Mlodinow","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/9928289","institutionCode":"iNaturalist","rights":"©
+        Steven Mlodinow some rights reserved","eventTime":"17:01:00Z","identificationID":"21928317"}],"facets":[]}'
+  recorded_at: 2019-01-28 19:10:20 GMT
+  recorded_with: vcr/0.2.2, webmockr/0.3.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/search?limit=3&offset=0&scientificName=Accipiter%20striatus&geometry=POLYGON%28%28-125%2038.4%2C-121.8%2038.4%2C-121.8%2040.9%2C-125%2040.9%2C-125%2038.4%29%29
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/3.3 crul/0.7.0.9100 rOpenSci(rgbif/1.1.0.9113)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0.9100 rOpenSci(rgbif/1.1.0.9113)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Mon, 28 Jan 2019 19:10:14 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
+      server: Jetty(9.3.z-SNAPSHOT)
+      cache-control: public, max-age=600
+      x-varnish: 333575061 336196038
+      age: '4'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '10629'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"offset":0,"limit":3,"endOfRecords":false,"count":5331,"results":[{"key":1806372392,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-01-28T00:30:37.973+0000","lastParsed":"2018-10-08T17:07:49.348+0000","crawlId":147,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":9740253,"kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":7191147,"familyKey":2877,"genusKey":9405810,"speciesKey":9740253,"acceptedTaxonKey":9740253,"scientificName":"Accipiter
+        striatus Vieillot, 1808","acceptedScientificName":"Accipiter striatus Vieillot,
+        1808","kingdom":"Animalia","phylum":"Chordata","order":"Accipitriformes","family":"Accipitridae","genus":"Accipiter","species":"Accipiter
+        striatus","genericName":"Accipiter","specificEpithet":"striatus","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2018-01-29T00:19:50","decimalLongitude":-122.696563,"decimalLatitude":38.596688,"coordinateUncertaintyInMeters":28240.0,"stateProvince":"California","year":2018,"month":1,"day":28,"eventDate":"2018-01-28T17:09:00","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2018-02-01T02:52:49.000+0000","lastInterpreted":"2018-12-23T04:04:56.973+0000","references":"https://www.inaturalist.org/observations/9649463","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/13180762/original.jpeg?1517184965","references":"https://www.inaturalist.org/photos/13180762","created":"2018-01-29T01:09:29.000+0000","creator":"Beatrice
+        Pezzolo","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Beatrice
+        Pezzolo"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/13180922/original.jpeg?1517185330","references":"https://www.inaturalist.org/photos/13180922","created":"2018-01-29T01:09:28.000+0000","creator":"Beatrice
+        Pezzolo","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Beatrice
+        Pezzolo"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Aves","countryCode":"US","country":"United
+        States of America","rightsHolder":"Beatrice Pezzolo","identifier":"9649463","informationWithheld":"Coordinate
+        uncertainty increased to 28240m to protect threatened taxon","verbatimEventDate":"2018/01/28
+        5:09 PM PST","datasetName":"iNaturalist research-grade observations","gbifID":"1806372392","verbatimLocality":"Sonoma
+        County, US-CA, US","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/9649463","taxonID":"5097","catalogNumber":"9649463","recordedBy":"Beatrice
+        Pezzolo","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/9649463","institutionCode":"iNaturalist","rights":"©
+        Beatrice Pezzolo some rights reserved","eventTime":"01:09:00Z","occurrenceRemarks":"This
+        one is so elusive I almost never get him. I named it Viggo Grimborn, and the
+        first time a saw it it took down a collard dove. He disappears now and then
+        and suddenly shows up, like the merlin I have yet to snap a photo of.","identificationID":"21199477"},{"key":1806371730,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-01-28T00:30:37.822+0000","lastParsed":"2018-10-08T17:07:48.923+0000","crawlId":147,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":9740253,"kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":7191147,"familyKey":2877,"genusKey":9405810,"speciesKey":9740253,"acceptedTaxonKey":9740253,"scientificName":"Accipiter
+        striatus Vieillot, 1808","acceptedScientificName":"Accipiter striatus Vieillot,
+        1808","kingdom":"Animalia","phylum":"Chordata","order":"Accipitriformes","family":"Accipitridae","genus":"Accipiter","species":"Accipiter
+        striatus","genericName":"Accipiter","specificEpithet":"striatus","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2018-01-28T23:31:11","decimalLongitude":-122.21248,"decimalLatitude":39.156836,"coordinateUncertaintyInMeters":28151.0,"stateProvince":"California","year":2018,"month":1,"day":28,"eventDate":"2018-01-28T12:46:00","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2018-02-04T17:38:15.000+0000","lastInterpreted":"2018-12-23T04:04:56.862+0000","references":"https://www.inaturalist.org/observations/9647799","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/13177941/original.jpeg?1517178470","references":"https://www.inaturalist.org/photos/13177941","created":"2018-01-28T21:46:46.000+0000","creator":"makayla530","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"makayla530"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/13177970/original.jpeg?1517178553","references":"https://www.inaturalist.org/photos/13177970","created":"2018-01-28T21:47:41.000+0000","creator":"makayla530","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"makayla530"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/13178036/original.jpeg?1517178767","references":"https://www.inaturalist.org/photos/13178036","created":"2018-01-28T21:46:52.000+0000","creator":"makayla530","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"makayla530"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Aves","countryCode":"US","country":"United
+        States of America","rightsHolder":"makayla530","identifier":"9647799","informationWithheld":"Coordinate
+        uncertainty increased to 28151m at the request of the observer","verbatimEventDate":"2018/01/28
+        12:46 PM PST","datasetName":"iNaturalist research-grade observations","gbifID":"1806371730","verbatimLocality":"Colusa
+        County, US-CA, US","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/9647799","taxonID":"5097","catalogNumber":"9647799","recordedBy":"makayla530","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/9647799","institutionCode":"iNaturalist","rights":"©
+        makayla530 some rights reserved","eventTime":"20:46:00Z","occurrenceRemarks":"I
+        adjusted the quality of the third photo to get a better view of the breast.","identificationID":"21198282"},{"key":1831089884,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-01-28T00:11:45.637+0000","lastParsed":"2018-10-08T14:18:40.536+0000","crawlId":147,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":9740253,"kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":7191147,"familyKey":2877,"genusKey":9405810,"speciesKey":9740253,"acceptedTaxonKey":9740253,"scientificName":"Accipiter
+        striatus Vieillot, 1808","acceptedScientificName":"Accipiter striatus Vieillot,
+        1808","kingdom":"Animalia","phylum":"Chordata","order":"Accipitriformes","family":"Accipitridae","genus":"Accipiter","species":"Accipiter
+        striatus","genericName":"Accipiter","specificEpithet":"striatus","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2018-02-27T05:08:45","decimalLongitude":-123.751062,"decimalLatitude":39.208477,"coordinateUncertaintyInMeters":28121.0,"stateProvince":"California","year":2018,"month":1,"day":17,"eventDate":"2018-01-17T02:01:00","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2018-06-25T21:29:17.000+0000","lastInterpreted":"2018-12-07T05:35:25.346+0000","references":"https://www.inaturalist.org/observations/10014403","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/13772600/original.jpg?1519708109","references":"https://www.inaturalist.org/photos/13772600","created":"2018-01-17T10:01:44.000+0000","creator":"Sam","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Sam"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/13773602/original.jpeg?1519713457","references":"https://www.inaturalist.org/photos/13773602","created":"2018-01-17T10:01:00.000+0000","creator":"Sam","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Sam"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/13773605/original.jpeg?1519713459","references":"https://www.inaturalist.org/photos/13773605","created":"2018-01-17T10:01:00.000+0000","creator":"Sam","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Sam"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/13773681/original.jpeg?1519713638","references":"https://www.inaturalist.org/photos/13773681","created":"2018-01-17T10:01:00.000+0000","creator":"Sam","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Sam"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Aves","countryCode":"US","country":"United
+        States of America","rightsHolder":"Sam","identifier":"10014403","informationWithheld":"Coordinate
+        uncertainty increased to 28121m to protect threatened taxon","verbatimEventDate":"2018/01/17
+        2:01 AM PST","datasetName":"iNaturalist research-grade observations","gbifID":"1831089884","verbatimLocality":"Mendocino
+        County, US-CA, US","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/10014403","taxonID":"5097","catalogNumber":"10014403","recordedBy":"Sam","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/10014403","institutionCode":"iNaturalist","rights":"©
+        Sam some rights reserved","eventTime":"10:01:00Z","identificationID":"22152615"}],"facets":[]}'
+  recorded_at: 2019-01-28 19:10:20 GMT
+  recorded_with: vcr/0.2.2, webmockr/0.3.0
+- request:
+    method: get
+    uri: https://ecoengine.berkeley.edu/api/observations/?country=United%20States&scientific_name=Accipiter%20striatus&bbox1=-125&bbox2=38.4&bbox3=-121.8&bbox4=40.9&extra=last_modified&georeferenced=FALSE&page_size=10&format=geojson
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      User-Agent: libcurl/7.54.0 r-curl/3.3 crul/0.7.0.9100
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Mon, 28 Jan 2019 19:10:20 GMT
+      server: Apache/2.4.10 (Debian)
+      expires: Mon, 28 Jan 2019 20:12:53 GMT
+      vary: Accept,Cookie
+      allow: GET, HEAD, OPTIONS
+      cache-control: max-age=6000
+      last-modified: Mon, 28 Jan 2019 18:32:53 GMT
+      transfer-encoding: chunked
+      content-type: application/vnd.geo+json
+    body:
+      encoding: UTF-8
+      string: '{"count": 771, "crs": {"type": "name", "properties": {"name": "urn:ogc:def:crs:EPSG::4326"}},
+        "previous": null, "type": "FeatureCollection", "next": "https://ecoengine.berkeley.edu/api/observations/?bbox1=-125&bbox2=38.4&bbox3=-121.8&bbox4=40.9&country=United+States&extra=last_modified&format=geojson&georeferenced=FALSE&page=2&page_size=10&scientific_name=Accipiter+striatus",
+        "features": [{"geometry": {"type":"Point","coordinates":[-122.9438,38.4816]},
+        "type": "Feature", "properties": {"url": "https://ecoengine.berkeley.edu/api/observations/CAS:ORN:12964/",
+        "record": "CAS:ORN:12964", "observation_type": "specimen", "scientific_name":
+        "Accipiter striatus velox", "country": "United States", "state_province":
+        "California", "begin_date": "1898-12-27T00:00:00", "end_date": "1898-12-27T00:00:00",
+        "source": "https://ecoengine.berkeley.edu/api/sources/8/", "remote_resource":
+        "", "locality": "unspecified", "coordinate_uncertainty_in_meters": 1000, "recorded_by":
+        "H. O. Cazadero", "last_modified": "2014-06-02T11:09:55.899274"}},{"geometry":
+        {"type":"Point","coordinates":[-122.4825,37.7695]}, "type": "Feature", "properties":
+        {"url": "https://ecoengine.berkeley.edu/api/observations/CAS:ORN:19070/",
+        "record": "CAS:ORN:19070", "observation_type": "specimen", "scientific_name":
+        "Accipiter striatus velox", "country": "United States", "state_province":
+        "California", "begin_date": "1917-04-05T00:00:00", "end_date": "1917-04-05T00:00:00",
+        "source": "https://ecoengine.berkeley.edu/api/sources/8/", "remote_resource":
+        "", "locality": "San Francisco; Golden Gate Park", "coordinate_uncertainty_in_meters":
+        1000, "recorded_by": "A. L. Reed", "last_modified": "2014-06-02T11:12:53.033527"}},{"geometry":
+        {"type":"Point","coordinates":[-122.4825,37.7695]}, "type": "Feature", "properties":
+        {"url": "https://ecoengine.berkeley.edu/api/observations/CAS:ORN:25898/",
+        "record": "CAS:ORN:25898", "observation_type": "specimen", "scientific_name":
+        "Accipiter striatus velox", "country": "United States", "state_province":
+        "California", "begin_date": "1923-01-29T00:00:00", "end_date": "1923-01-29T00:00:00",
+        "source": "https://ecoengine.berkeley.edu/api/sources/8/", "remote_resource":
+        "", "locality": "San Francisco; Golden Gate Park", "coordinate_uncertainty_in_meters":
+        1000, "recorded_by": "Phillips", "last_modified": "2014-06-02T11:16:19.024323"}},{"geometry":
+        {"type":"Point","coordinates":[-110.7562,31.525]}, "type": "Feature", "properties":
+        {"url": "https://ecoengine.berkeley.edu/api/observations/CAS:ORN:29854/",
+        "record": "CAS:ORN:29854", "observation_type": "specimen", "scientific_name":
+        "Accipiter striatus suttoni", "country": "United States", "state_province":
+        "Arizona", "begin_date": "1927-09-28T00:00:00", "end_date": "1927-09-28T00:00:00",
+        "source": "https://ecoengine.berkeley.edu/api/sources/8/", "remote_resource":
+        "", "locality": "Patagonia; 1 mi S of", "coordinate_uncertainty_in_meters":
+        1000, "recorded_by": "J. Mailliard", "last_modified": "2014-06-02T11:18:05.365358"}},{"geometry":
+        {"type":"Point","coordinates":[-87.5995,41.7795]}, "type": "Feature", "properties":
+        {"url": "https://ecoengine.berkeley.edu/api/observations/CAS:ORN:34922/",
+        "record": "CAS:ORN:34922", "observation_type": "specimen", "scientific_name":
+        "Accipiter striatus velox", "country": "United States", "state_province":
+        "Illinois", "begin_date": "1887-04-23T00:00:00", "end_date": "1887-04-23T00:00:00",
+        "source": "https://ecoengine.berkeley.edu/api/sources/8/", "remote_resource":
+        "", "locality": "Woodlawn", "coordinate_uncertainty_in_meters": 1000, "recorded_by":
+        "J. L. Hancock", "last_modified": "2014-06-02T11:20:24.737448"}},{"geometry":
+        {"type":"Point","coordinates":[-118.2869,33.7363]}, "type": "Feature", "properties":
+        {"url": "https://ecoengine.berkeley.edu/api/observations/CAS:ORN:39123/",
+        "record": "CAS:ORN:39123", "observation_type": "specimen", "scientific_name":
+        "Accipiter striatus velox", "country": "United States", "state_province":
+        "California", "begin_date": "1899-12-05T00:00:00", "end_date": "1899-12-05T00:00:00",
+        "source": "https://ecoengine.berkeley.edu/api/sources/8/", "remote_resource":
+        "", "locality": "San Pedro", "coordinate_uncertainty_in_meters": 1000, "recorded_by":
+        "H. S. Swarth", "last_modified": "2014-06-02T11:22:30.739632"}},{"geometry":
+        {"type":"Point","coordinates":[-118.3016,34.032]}, "type": "Feature", "properties":
+        {"url": "https://ecoengine.berkeley.edu/api/observations/CAS:ORN:39124/",
+        "record": "CAS:ORN:39124", "observation_type": "specimen", "scientific_name":
+        "Accipiter striatus velox", "country": "United States", "state_province":
+        "California", "begin_date": "1900-01-26T00:00:00", "end_date": "1900-01-26T00:00:00",
+        "source": "https://ecoengine.berkeley.edu/api/sources/8/", "remote_resource":
+        "", "locality": "Los Angeles", "coordinate_uncertainty_in_meters": 1000, "recorded_by":
+        "H. S. Swarth", "last_modified": "2014-06-02T11:22:30.764367"}},{"geometry":
+        {"type":"Point","coordinates":[-122.67,38.0141]}, "type": "Feature", "properties":
+        {"url": "https://ecoengine.berkeley.edu/api/observations/CAS:ORN:44526/",
+        "record": "CAS:ORN:44526", "observation_type": "specimen", "scientific_name":
+        "Accipiter striatus velox", "country": "United States", "state_province":
+        "California", "begin_date": "1893-11-22T00:00:00", "end_date": "1893-11-22T00:00:00",
+        "source": "https://ecoengine.berkeley.edu/api/sources/8/", "remote_resource":
+        "", "locality": "San Geronimo", "coordinate_uncertainty_in_meters": 1000,
+        "recorded_by": "J. Mailliard; J. W. Mailliard", "last_modified": "2014-06-02T11:25:06.985055"}},{"geometry":
+        {"type":"Point","coordinates":[-122.67,38.0141]}, "type": "Feature", "properties":
+        {"url": "https://ecoengine.berkeley.edu/api/observations/CAS:ORN:44530/",
+        "record": "CAS:ORN:44530", "observation_type": "specimen", "scientific_name":
+        "Accipiter striatus velox", "country": "United States", "state_province":
+        "California", "begin_date": "1895-01-29T00:00:00", "end_date": "1895-01-29T00:00:00",
+        "source": "https://ecoengine.berkeley.edu/api/sources/8/", "remote_resource":
+        "", "locality": "San Geronimo", "coordinate_uncertainty_in_meters": 1000,
+        "recorded_by": "J. Mailliard; J. W. Mailliard", "last_modified": "2014-06-02T11:25:07.102785"}},{"geometry":
+        {"type":"Point","coordinates":[-122.67,38.0141]}, "type": "Feature", "properties":
+        {"url": "https://ecoengine.berkeley.edu/api/observations/CAS:ORN:44531/",
+        "record": "CAS:ORN:44531", "observation_type": "specimen", "scientific_name":
+        "Accipiter striatus velox", "country": "United States", "state_province":
+        "California", "begin_date": "1898-11-12T00:00:00", "end_date": "1898-11-12T00:00:00",
+        "source": "https://ecoengine.berkeley.edu/api/sources/8/", "remote_resource":
+        "", "locality": "San Geronimo", "coordinate_uncertainty_in_meters": 1000,
+        "recorded_by": "J. Mailliard; J. W. Mailliard", "last_modified": "2014-06-02T11:25:07.126717"}}]}'
+  recorded_at: 2019-01-28 19:10:20 GMT
+  recorded_with: vcr/0.2.2, webmockr/0.3.0
+- request:
+    method: get
+    uri: https://ecoengine.berkeley.edu/api/observations/?country=United%20States&scientific_name=Accipiter%20striatus&bbox1=-125&bbox2=38.4&bbox3=-121.8&bbox4=40.9&extra=last_modified&georeferenced=FALSE&page_size=10&page=1&format=geojson
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      User-Agent: libcurl/7.54.0 r-curl/3.3 crul/0.7.0.9100
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Mon, 28 Jan 2019 19:10:20 GMT
+      server: Apache/2.4.10 (Debian)
+      expires: Mon, 28 Jan 2019 20:13:03 GMT
+      vary: Accept,Cookie
+      allow: GET, HEAD, OPTIONS
+      cache-control: max-age=6000
+      last-modified: Mon, 28 Jan 2019 18:33:03 GMT
+      transfer-encoding: chunked
+      content-type: application/vnd.geo+json
+    body:
+      encoding: UTF-8
+      string: '{"count": 771, "crs": {"type": "name", "properties": {"name": "urn:ogc:def:crs:EPSG::4326"}},
+        "previous": null, "type": "FeatureCollection", "next": "https://ecoengine.berkeley.edu/api/observations/?bbox1=-125&bbox2=38.4&bbox3=-121.8&bbox4=40.9&country=United+States&extra=last_modified&format=geojson&georeferenced=FALSE&page=2&page_size=10&scientific_name=Accipiter+striatus",
+        "features": [{"geometry": {"type":"Point","coordinates":[-122.67,38.0141]},
+        "type": "Feature", "properties": {"url": "https://ecoengine.berkeley.edu/api/observations/CAS:ORN:44526/",
+        "record": "CAS:ORN:44526", "observation_type": "specimen", "scientific_name":
+        "Accipiter striatus velox", "country": "United States", "state_province":
+        "California", "begin_date": "1893-11-22T00:00:00", "end_date": "1893-11-22T00:00:00",
+        "source": "https://ecoengine.berkeley.edu/api/sources/8/", "remote_resource":
+        "", "locality": "San Geronimo", "coordinate_uncertainty_in_meters": 1000,
+        "recorded_by": "J. Mailliard; J. W. Mailliard", "last_modified": "2014-06-02T11:25:06.985055"}},{"geometry":
+        {"type":"Point","coordinates":[-122.67,38.0141]}, "type": "Feature", "properties":
+        {"url": "https://ecoengine.berkeley.edu/api/observations/CAS:ORN:44530/",
+        "record": "CAS:ORN:44530", "observation_type": "specimen", "scientific_name":
+        "Accipiter striatus velox", "country": "United States", "state_province":
+        "California", "begin_date": "1895-01-29T00:00:00", "end_date": "1895-01-29T00:00:00",
+        "source": "https://ecoengine.berkeley.edu/api/sources/8/", "remote_resource":
+        "", "locality": "San Geronimo", "coordinate_uncertainty_in_meters": 1000,
+        "recorded_by": "J. Mailliard; J. W. Mailliard", "last_modified": "2014-06-02T11:25:07.102785"}},{"geometry":
+        {"type":"Point","coordinates":[-122.67,38.0141]}, "type": "Feature", "properties":
+        {"url": "https://ecoengine.berkeley.edu/api/observations/CAS:ORN:44531/",
+        "record": "CAS:ORN:44531", "observation_type": "specimen", "scientific_name":
+        "Accipiter striatus velox", "country": "United States", "state_province":
+        "California", "begin_date": "1898-11-12T00:00:00", "end_date": "1898-11-12T00:00:00",
+        "source": "https://ecoengine.berkeley.edu/api/sources/8/", "remote_resource":
+        "", "locality": "San Geronimo", "coordinate_uncertainty_in_meters": 1000,
+        "recorded_by": "J. Mailliard; J. W. Mailliard", "last_modified": "2014-06-02T11:25:07.126717"}},{"geometry":
+        {"type":"Point","coordinates":[-122.67,38.0141]}, "type": "Feature", "properties":
+        {"url": "https://ecoengine.berkeley.edu/api/observations/CAS:ORN:44539/",
+        "record": "CAS:ORN:44539", "observation_type": "specimen", "scientific_name":
+        "Accipiter striatus velox", "country": "United States", "state_province":
+        "California", "begin_date": "1893-03-21T00:00:00", "end_date": "1893-03-21T00:00:00",
+        "source": "https://ecoengine.berkeley.edu/api/sources/8/", "remote_resource":
+        "", "locality": "San Geronimo", "coordinate_uncertainty_in_meters": 1000,
+        "recorded_by": "J. Mailliard; J. W. Mailliard", "last_modified": "2014-06-02T11:25:07.361101"}},{"geometry":
+        {"type":"Point","coordinates":[-122.67,38.0141]}, "type": "Feature", "properties":
+        {"url": "https://ecoengine.berkeley.edu/api/observations/CAS:ORN:44540/",
+        "record": "CAS:ORN:44540", "observation_type": "specimen", "scientific_name":
+        "Accipiter striatus velox", "country": "United States", "state_province":
+        "California", "begin_date": "1894-02-02T00:00:00", "end_date": "1894-02-02T00:00:00",
+        "source": "https://ecoengine.berkeley.edu/api/sources/8/", "remote_resource":
+        "", "locality": "San Geronimo", "coordinate_uncertainty_in_meters": 1000,
+        "recorded_by": "J. Mailliard; J. W. Mailliard", "last_modified": "2014-06-02T11:25:07.387347"}},{"geometry":
+        {"type":"Point","coordinates":[-122.67,38.0141]}, "type": "Feature", "properties":
+        {"url": "https://ecoengine.berkeley.edu/api/observations/CAS:ORN:44551/",
+        "record": "CAS:ORN:44551", "observation_type": "specimen", "scientific_name":
+        "Accipiter striatus velox", "country": "United States", "state_province":
+        "California", "begin_date": "1897-12-13T00:00:00", "end_date": "1897-12-13T00:00:00",
+        "source": "https://ecoengine.berkeley.edu/api/sources/8/", "remote_resource":
+        "", "locality": "San Geronimo", "coordinate_uncertainty_in_meters": 1000,
+        "recorded_by": "J. Mailliard; J. W. Mailliard", "last_modified": "2014-06-02T11:25:07.714136"}},{"geometry":
+        {"type":"Point","coordinates":[-122.67,38.0141]}, "type": "Feature", "properties":
+        {"url": "https://ecoengine.berkeley.edu/api/observations/CAS:ORN:44555/",
+        "record": "CAS:ORN:44555", "observation_type": "specimen", "scientific_name":
+        "Accipiter striatus velox", "country": "United States", "state_province":
+        "California", "begin_date": "1896-12-06T00:00:00", "end_date": "1896-12-06T00:00:00",
+        "source": "https://ecoengine.berkeley.edu/api/sources/8/", "remote_resource":
+        "", "locality": "San Geronimo", "coordinate_uncertainty_in_meters": 1000,
+        "recorded_by": "J. Mailliard; J. W. Mailliard", "last_modified": "2014-06-02T11:25:07.814082"}},{"geometry":
+        {"type":"Point","coordinates":[-122.0882,37.6347]}, "type": "Feature", "properties":
+        {"url": "https://ecoengine.berkeley.edu/api/observations/CAS:ORN:44556/",
+        "record": "CAS:ORN:44556", "observation_type": "specimen", "scientific_name":
+        "Accipiter striatus velox", "country": "United States", "state_province":
+        "California", "begin_date": "1882-10-30T00:00:00", "end_date": "1882-10-30T00:00:00",
+        "source": "https://ecoengine.berkeley.edu/api/sources/8/", "remote_resource":
+        "", "locality": "Hayward", "coordinate_uncertainty_in_meters": 1000, "recorded_by":
+        "W. O. Emerson", "last_modified": "2014-06-02T11:25:07.839561"}},{"geometry":
+        {}, "type": "Feature", "properties": {"url": "https://ecoengine.berkeley.edu/api/observations/CAS:ORN:58524/",
+        "record": "CAS:ORN:58524", "observation_type": "specimen", "scientific_name":
+        "Accipiter striatus velox", "country": "United States", "state_province":
+        "California", "begin_date": "1944-11-10T00:00:00", "end_date": "1944-11-10T00:00:00",
+        "source": "https://ecoengine.berkeley.edu/api/sources/8/", "remote_resource":
+        "", "locality": "Concord", "coordinate_uncertainty_in_meters": null, "recorded_by":
+        "J. W. Steinbeck", "last_modified": "2014-06-02T11:32:03.824226"}},{"geometry":
+        {"type":"Point","coordinates":[-121.9029,37.6803]}, "type": "Feature", "properties":
+        {"url": "https://ecoengine.berkeley.edu/api/observations/CAS:ORN:58696/",
+        "record": "CAS:ORN:58696", "observation_type": "specimen", "scientific_name":
+        "Accipiter striatus velox", "country": "United States", "state_province":
+        "California", "begin_date": "1943-01-28T00:00:00", "end_date": "1943-01-28T00:00:00",
+        "source": "https://ecoengine.berkeley.edu/api/sources/8/", "remote_resource":
+        "", "locality": "Eden Township Mystery Ranch", "coordinate_uncertainty_in_meters":
+        1000, "recorded_by": "D.A.? Cohen", "last_modified": "2014-06-02T11:32:08.123611"}}]}'
+  recorded_at: 2019-01-28 19:10:20 GMT
+  recorded_with: vcr/0.2.2, webmockr/0.3.0

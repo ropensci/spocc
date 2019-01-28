@@ -1,9 +1,10 @@
 context("occ2df")
 
 test_that("occ2df basic functionality works", {
-  skip_on_cran()
+  vcr::use_cassette("occ2df", {
+    aa <- occ(query = 'Accipiter striatus', from = "gbif", limit = 10)
+  })
   
-  aa <- occ(query = 'Accipiter striatus', from = 'gbif', limit = 10)
   expect_is(aa, "occdat")
 
   aadf <- occ2df(aa)
@@ -16,7 +17,7 @@ test_that("occ2df basic functionality works", {
 # test_that("occ2df works when no eventDate given back from gbif", {
 #   skip_on_cran()
 #   
-#   res <- occ(query = 'Culex modestus', geometry = c(-11, 49.5, 2.5, 61), from = 'gbif', limit = 5)
+#   res <- occ(query = 'Culex modestus', geometry = c(-11, 49.5, 2.5, 61), from = "gbif", limit = 5)
 #   bb <- occ2df(res)
 #   
 #   expect_is(bb, "data.frame")
@@ -25,9 +26,10 @@ test_that("occ2df basic functionality works", {
 # })
 
 test_that("occ2df works when eventDate gone - another eg", {
-  skip_on_cran()
-  
-  out <- occ(query = 'Pinus contorta', from = c('gbif','bison','vertnet'), limit = 10)
+  vcr::use_cassette("occ2df_with_eventdate_gone", {
+    out <- occ(query = "Pinus contorta", from = c("gbif","bison","vertnet"),
+      limit = 10)
+  })
   
   # make date field null
   out$gbif$data$Pinus_contorta$eventDate <- NULL

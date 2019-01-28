@@ -1,0 +1,103 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/search?limit=2&offset=0&scientificName=Poa%20annua&geometry=POLYGON%28%28165%20-53%2C180%20-53%2C180%20-29%2C165%20-29%2C165%20-53%29%29
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/3.3 crul/0.7.0.9100 rOpenSci(rgbif/1.1.0.9113)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0.9100 rOpenSci(rgbif/1.1.0.9113)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Mon, 28 Jan 2019 19:10:18 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
+      server: Jetty(9.3.z-SNAPSHOT)
+      cache-control: public, max-age=600
+      x-varnish: 341530219 352655042
+      age: '5'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '5538'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"offset":0,"limit":2,"endOfRecords":false,"count":293,"results":[{"key":1897843665,"datasetKey":"83ae84cf-88e4-4b5c-80b2-271a15a3e0fc","publishingOrgKey":"32e82a64-c9b4-4b2f-9fbd-d446309b973f","networkKeys":[],"installationKey":"58f76e14-f21d-4c3b-9c20-e14c006b7d3f","publishingCountry":"NZ","protocol":"DWC_ARCHIVE","lastCrawled":"2018-11-20T22:24:20.907+0000","lastParsed":"2018-08-22T23:22:57.352+0000","crawlId":101,"extensions":{},"basisOfRecord":"PRESERVED_SPECIMEN","taxonKey":2704179,"kingdomKey":6,"phylumKey":7707728,"classKey":196,"orderKey":1369,"familyKey":3073,"genusKey":2704173,"speciesKey":2704179,"acceptedTaxonKey":2704179,"scientificName":"Poa
+        annua L.","acceptedScientificName":"Poa annua L.","kingdom":"Plantae","phylum":"Tracheophyta","order":"Poales","family":"Poaceae","genus":"Poa","species":"Poa
+        annua","genericName":"Poa","specificEpithet":"annua","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","decimalLongitude":175.058611,"decimalLatitude":-36.221667,"year":2018,"month":2,"day":14,"eventDate":"2018-02-14T00:00:00","issues":["COORDINATE_ROUNDED"],"modified":"2018-07-03T00:00:00.000+0000","lastInterpreted":"2018-12-22T06:12:43.753+0000","references":"http://www.aucklandmuseum.com/collections-research/collections/record/am_naturalsciences-object-866199","license":"http://creativecommons.org/licenses/by/4.0/legalcode","identifiers":[],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Liliopsida","countryCode":"NZ","country":"New
+        Zealand","catalogNumber":"AK370998","recordedBy":"E K Cameron","higherGeography":"Little
+        Barrier Ecological District/Coromandel Ecological Region/North Island Ecological
+        Region/NZ Eco Region/New Zealand","institutionCode":"AK","fieldNumber":"17272","language":"en","gbifID":"1897843665","verbatimLocality":"Little
+        Barrier Ecological District","collectionCode":"AK","verbatimElevation":"8m","type":"PhysicalObject"},{"key":1841196701,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-01-28T00:13:25.057+0000","lastParsed":"2018-10-08T14:23:24.468+0000","crawlId":147,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":2704179,"kingdomKey":6,"phylumKey":7707728,"classKey":196,"orderKey":1369,"familyKey":3073,"genusKey":2704173,"speciesKey":2704179,"acceptedTaxonKey":2704179,"scientificName":"Poa
+        annua L.","acceptedScientificName":"Poa annua L.","kingdom":"Plantae","phylum":"Tracheophyta","order":"Poales","family":"Poaceae","genus":"Poa","species":"Poa
+        annua","genericName":"Poa","specificEpithet":"annua","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2018-04-27T06:03:27","decimalLongitude":174.757828,"decimalLatitude":-36.845885,"coordinateUncertaintyInMeters":5.0,"stateProvince":"Auckland","year":2018,"month":4,"day":27,"eventDate":"2018-04-27T00:00:00","issues":["GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2018-04-29T05:32:39.000+0000","lastInterpreted":"2018-12-10T07:15:30.783+0000","references":"https://www.inaturalist.org/observations/11477515","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/16380900/original.jpeg?1524809003","references":"https://www.inaturalist.org/photos/16380900","created":"2016-10-22T10:52:21.000+0000","creator":"Stephen
+        Thorpe","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Stephen
+        Thorpe"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/16380915/original.jpeg?1524809032","references":"https://www.inaturalist.org/photos/16380915","created":"2016-10-22T10:52:29.000+0000","creator":"Stephen
+        Thorpe","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Stephen
+        Thorpe"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/16380922/original.jpeg?1524809049","references":"https://www.inaturalist.org/photos/16380922","created":"2016-10-22T10:53:01.000+0000","creator":"Stephen
+        Thorpe","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Stephen
+        Thorpe"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/16380932/original.jpeg?1524809063","references":"https://www.inaturalist.org/photos/16380932","created":"2016-10-22T10:53:16.000+0000","creator":"Stephen
+        Thorpe","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Stephen
+        Thorpe"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Liliopsida","countryCode":"NZ","country":"New
+        Zealand","rightsHolder":"Stephen Thorpe","identifier":"11477515","verbatimEventDate":"2018-04-27","datasetName":"iNaturalist
+        research-grade observations","gbifID":"1841196701","verbatimLocality":"Auckland
+        Central","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/11477515","taxonID":"52808","catalogNumber":"11477515","recordedBy":"Stephen
+        Thorpe","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/11477515","institutionCode":"iNaturalist","rights":"©
+        Stephen Thorpe some rights reserved","occurrenceRemarks":"Fanshawe St, near
+        Bouzaid Way.","identificationID":"25475791"}],"facets":[]}'
+  recorded_at: 2019-01-28 19:10:24 GMT
+  recorded_with: vcr/0.2.2, webmockr/0.3.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/search?limit=2&offset=0&scientificName=Poa%20annua&geometry=POLYGON%28%28-180%20-53%2C-175%20-53%2C-175%20-29%2C-180%20-29%2C-180%20-53%29%29
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/3.3 crul/0.7.0.9100 rOpenSci(rgbif/1.1.0.9113)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0.9100 rOpenSci(rgbif/1.1.0.9113)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Mon, 28 Jan 2019 19:10:18 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
+      server: Jetty(9.3.z-SNAPSHOT)
+      cache-control: public, max-age=600
+      x-varnish: 338754905 355767436
+      age: '5'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '3824'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"offset":0,"limit":2,"endOfRecords":false,"count":6,"results":[{"key":1843473781,"datasetKey":"83ae84cf-88e4-4b5c-80b2-271a15a3e0fc","publishingOrgKey":"32e82a64-c9b4-4b2f-9fbd-d446309b973f","networkKeys":[],"installationKey":"58f76e14-f21d-4c3b-9c20-e14c006b7d3f","publishingCountry":"NZ","protocol":"DWC_ARCHIVE","lastCrawled":"2018-11-20T22:24:15.569+0000","lastParsed":"2018-08-22T23:22:46.915+0000","crawlId":101,"extensions":{},"basisOfRecord":"PRESERVED_SPECIMEN","taxonKey":2704179,"kingdomKey":6,"phylumKey":7707728,"classKey":196,"orderKey":1369,"familyKey":3073,"genusKey":2704173,"speciesKey":2704179,"acceptedTaxonKey":2704179,"scientificName":"Poa
+        annua L.","acceptedScientificName":"Poa annua L.","kingdom":"Plantae","phylum":"Tracheophyta","order":"Poales","family":"Poaceae","genus":"Poa","species":"Poa
+        annua","genericName":"Poa","specificEpithet":"annua","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","decimalLongitude":-176.171528,"decimalLatitude":-44.34575,"year":2015,"month":7,"day":26,"eventDate":"2015-07-26T00:00:00","issues":["COORDINATE_ROUNDED"],"modified":"2017-05-16T00:00:00.000+0000","lastInterpreted":"2018-12-09T18:46:06.608+0000","references":"http://www.aucklandmuseum.com/collections-research/collections/record/am_naturalsciences-object-790511","license":"http://creativecommons.org/licenses/by/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"http://api.aucklandmuseum.com/id/media/v/378633?rendering=original.jpg"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Liliopsida","countryCode":"NZ","country":"New
+        Zealand","catalogNumber":"AK358332","recordedBy":"P J de Lange|D M Houston","higherGeography":"Chathams
+        Ecological Region and District/NZ Eco Region/New Zealand","institutionCode":"AK","fieldNumber":"CH2670","language":"en","gbifID":"1843473781","verbatimLocality":"Chathams
+        Ecological Region and District","collectionCode":"AK","verbatimElevation":"87m","type":"PhysicalObject"},{"key":1897784515,"datasetKey":"83ae84cf-88e4-4b5c-80b2-271a15a3e0fc","publishingOrgKey":"32e82a64-c9b4-4b2f-9fbd-d446309b973f","networkKeys":[],"installationKey":"58f76e14-f21d-4c3b-9c20-e14c006b7d3f","publishingCountry":"NZ","protocol":"DWC_ARCHIVE","lastCrawled":"2018-11-20T22:23:57.443+0000","lastParsed":"2018-08-22T23:22:12.163+0000","crawlId":101,"extensions":{},"basisOfRecord":"PRESERVED_SPECIMEN","taxonKey":2704179,"kingdomKey":6,"phylumKey":7707728,"classKey":196,"orderKey":1369,"familyKey":3073,"genusKey":2704173,"speciesKey":2704179,"acceptedTaxonKey":2704179,"scientificName":"Poa
+        annua L.","acceptedScientificName":"Poa annua L.","kingdom":"Plantae","phylum":"Tracheophyta","order":"Poales","family":"Poaceae","genus":"Poa","species":"Poa
+        annua","genericName":"Poa","specificEpithet":"annua","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","decimalLongitude":-176.783765,"decimalLatitude":-43.834081,"year":2006,"month":2,"day":10,"eventDate":"2006-02-10T00:00:00","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2017-05-16T00:00:00.000+0000","lastInterpreted":"2018-12-22T06:12:23.105+0000","references":"http://www.aucklandmuseum.com/collections-research/collections/record/am_naturalsciences-object-653137","license":"http://creativecommons.org/licenses/by/4.0/legalcode","identifiers":[],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Liliopsida","countryCode":"NZ","country":"New
+        Zealand","catalogNumber":"AK296432","recordedBy":"P J de Lange","higherGeography":"Chathams
+        Ecological Region and District/NZ Eco Region/New Zealand","institutionCode":"AK","fieldNumber":"CH628","verbatimLocality":"Chathams
+        Ecological Region and District","language":"en","gbifID":"1897784515","collectionCode":"AK","verbatimElevation":"88m","type":"PhysicalObject"}],"facets":[]}'
+  recorded_at: 2019-01-28 19:10:24 GMT
+  recorded_with: vcr/0.2.2, webmockr/0.3.0

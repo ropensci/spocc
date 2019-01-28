@@ -1,0 +1,168 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/search?limit=5&offset=0&geometry=POLYGON%28%28-120%2040%2C-100%2040%2C-100%2045%2C-120%2045%2C-120%2040%29%29
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/3.3 crul/0.7.0.9100 rOpenSci(rgbif/1.1.0.9113)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0.9100 rOpenSci(rgbif/1.1.0.9113)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Mon, 28 Jan 2019 19:03:06 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
+      server: Jetty(9.3.z-SNAPSHOT)
+      cache-control: public, max-age=600
+      x-varnish: 338356969 351476308
+      age: '0'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '13322'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"offset":0,"limit":5,"endOfRecords":false,"count":8029359,"results":[{"key":1986617306,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-01-28T00:21:08.116+0000","lastParsed":"2019-01-13T23:39:09.588+0000","crawlId":147,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":2490849,"kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":729,"familyKey":5290,"genusKey":2490834,"speciesKey":2490849,"acceptedTaxonKey":2490849,"scientificName":"Myadestes
+        townsendi (Audubon, 1838)","acceptedScientificName":"Myadestes townsendi (Audubon,
+        1838)","kingdom":"Animalia","phylum":"Chordata","order":"Passeriformes","family":"Turdidae","genus":"Myadestes","species":"Myadestes
+        townsendi","genericName":"Myadestes","specificEpithet":"townsendi","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2019-01-09T03:04:29","decimalLongitude":-105.053679,"decimalLatitude":40.627567,"coordinateUncertaintyInMeters":31.0,"stateProvince":"Colorado","year":2019,"month":1,"day":7,"eventDate":"2019-01-07T15:10:00","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2019-01-09T19:58:59.000+0000","lastInterpreted":"2019-01-13T23:39:31.492+0000","references":"https://www.inaturalist.org/observations/19525121","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/30047682/original.jpg?1547003024","references":"https://www.inaturalist.org/photos/30047682","created":"2019-01-07T22:10:00.000+0000","creator":"Joshua
+        Smith","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Joshua
+        Smith"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Aves","countryCode":"US","country":"United
+        States of America","rightsHolder":"Joshua Smith","identifier":"19525121","verbatimEventDate":"2019/01/07
+        3:10 pm","datasetName":"iNaturalist research-grade observations","gbifID":"1986617306","verbatimLocality":"Larimer
+        County, CO, USA","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/19525121","taxonID":"12951","catalogNumber":"19525121","recordedBy":"Joshua
+        Smith","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/19525121","institutionCode":"iNaturalist","rights":"©
+        Joshua Smith some rights reserved","eventTime":"22:10:00Z","identificationID":"42814858"},{"key":1986559134,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-01-28T00:20:56.728+0000","lastParsed":"2019-01-13T23:38:40.077+0000","crawlId":147,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":9537647,"kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":1108,"familyKey":2986,"genusKey":2498368,"speciesKey":9537647,"acceptedTaxonKey":9537647,"scientificName":"Mergus
+        merganser Linnaeus, 1758","acceptedScientificName":"Mergus merganser Linnaeus,
+        1758","kingdom":"Animalia","phylum":"Chordata","order":"Anseriformes","family":"Anatidae","genus":"Mergus","species":"Mergus
+        merganser","genericName":"Mergus","specificEpithet":"merganser","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2019-01-02T00:53:55","decimalLongitude":-105.175887,"decimalLatitude":40.185492,"coordinateUncertaintyInMeters":63.0,"stateProvince":"Colorado","year":2019,"month":1,"day":1,"eventDate":"2019-01-01T16:04:00","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2019-01-02T13:59:07.000+0000","lastInterpreted":"2019-01-13T23:38:51.083+0000","references":"https://www.inaturalist.org/observations/19365009","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/29780268/original.jpeg?1546390249","references":"https://www.inaturalist.org/photos/29780268","created":"2019-01-02T00:04:32.000+0000","creator":"roomthily","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"roomthily"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Aves","countryCode":"US","country":"United
+        States of America","rightsHolder":"roomthily","identifier":"19365009","verbatimEventDate":"2019/01/01
+        4:04 PM MST","datasetName":"iNaturalist research-grade observations","gbifID":"1986559134","verbatimLocality":"Boulder
+        County, CO, USA","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/19365009","taxonID":"7004","catalogNumber":"19365009","recordedBy":"roomthily","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/19365009","institutionCode":"iNaturalist","rights":"©
+        roomthily some rights reserved","eventTime":"23:04:00Z","identificationID":"42340357"},{"key":1986603200,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-01-28T00:21:05.192+0000","lastParsed":"2019-01-13T23:39:03.644+0000","crawlId":147,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":2498329,"kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":1108,"familyKey":2986,"genusKey":2498324,"speciesKey":2498329,"acceptedTaxonKey":2498329,"scientificName":"Bucephala
+        albeola (Linnaeus, 1758)","acceptedScientificName":"Bucephala albeola (Linnaeus,
+        1758)","kingdom":"Animalia","phylum":"Chordata","order":"Anseriformes","family":"Anatidae","genus":"Bucephala","species":"Bucephala
+        albeola","genericName":"Bucephala","specificEpithet":"albeola","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2019-01-07T05:20:40","decimalLongitude":-116.197277,"decimalLatitude":43.607139,"coordinateUncertaintyInMeters":25.0,"stateProvince":"Idaho","year":2019,"month":1,"day":1,"eventDate":"2019-01-01T12:37:00","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2019-01-07T05:27:53.000+0000","lastInterpreted":"2019-01-13T23:39:22.214+0000","references":"https://www.inaturalist.org/observations/19485040","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/29980966/original.jpeg?1546838073","references":"https://www.inaturalist.org/photos/29980966","created":"2019-01-01T20:37:35.000+0000","creator":"Creed
+        Clayton","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc-nd/4.0/","rightsHolder":"Creed
+        Clayton"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/29981283/original.jpeg?1546838869","references":"https://www.inaturalist.org/photos/29981283","created":"2019-01-01T20:37:28.000+0000","creator":"Creed
+        Clayton","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc-nd/4.0/","rightsHolder":"Creed
+        Clayton"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Aves","countryCode":"US","country":"United
+        States of America","rightsHolder":"Creed Clayton","identifier":"19485040","verbatimEventDate":"2019/01/01
+        12:37 PM MST","datasetName":"iNaturalist research-grade observations","gbifID":"1986603200","verbatimLocality":"Downtown,
+        Boise, ID, USA","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/19485040","taxonID":"6993","catalogNumber":"19485040","recordedBy":"Creed
+        Clayton","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/19485040","institutionCode":"iNaturalist","rights":"©
+        Creed Clayton some rights reserved","eventTime":"19:37:00Z","occurrenceRemarks":"@
+        Julia Davis Park","identificationID":"42690350"},{"key":1986616212,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-01-28T00:21:07.872+0000","lastParsed":"2019-01-13T23:39:09.095+0000","crawlId":147,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":2437282,"kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":1459,"familyKey":9456,"genusKey":2437279,"speciesKey":2437282,"acceptedTaxonKey":2437282,"scientificName":"Tamiasciurus
+        hudsonicus (Erxleben, 1777)","acceptedScientificName":"Tamiasciurus hudsonicus
+        (Erxleben, 1777)","kingdom":"Animalia","phylum":"Chordata","order":"Rodentia","family":"Sciuridae","genus":"Tamiasciurus","species":"Tamiasciurus
+        hudsonicus","genericName":"Tamiasciurus","specificEpithet":"hudsonicus","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2019-01-08T23:05:31","decimalLongitude":-111.874725,"decimalLatitude":40.743057,"stateProvince":"Utah","year":2019,"month":1,"day":8,"eventDate":"2019-01-08T15:21:51","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2019-01-09T01:17:58.000+0000","lastInterpreted":"2019-01-13T23:39:30.659+0000","references":"https://www.inaturalist.org/observations/19521053","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/30040973/original.jpeg?1546988740","references":"https://www.inaturalist.org/photos/30040973","created":"2019-01-08T23:21:51.000+0000","creator":"liza_c","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"liza_c"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Mammalia","countryCode":"US","country":"United
+        States of America","rightsHolder":"liza_c","identifier":"19521053","verbatimEventDate":"2019-01-08
+        3:21:51 PM MST","datasetName":"iNaturalist research-grade observations","gbifID":"1986616212","verbatimLocality":"589
+        1300 S, Salt Lake City, UT 84105, USA","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/19521053","taxonID":"46260","catalogNumber":"19521053","recordedBy":"liza_c","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/19521053","institutionCode":"iNaturalist","rights":"©
+        liza_c some rights reserved","eventTime":"22:21:51Z","identificationID":"42801768"},{"key":1986617621,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-01-28T00:21:07.955+0000","lastParsed":"2019-01-13T23:39:09.794+0000","crawlId":147,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":9537647,"kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":1108,"familyKey":2986,"genusKey":2498368,"speciesKey":9537647,"acceptedTaxonKey":9537647,"scientificName":"Mergus
+        merganser Linnaeus, 1758","acceptedScientificName":"Mergus merganser Linnaeus,
+        1758","kingdom":"Animalia","phylum":"Chordata","order":"Anseriformes","family":"Anatidae","genus":"Mergus","species":"Mergus
+        merganser","genericName":"Mergus","specificEpithet":"merganser","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2019-01-09T00:42:48","decimalLongitude":-105.197934,"decimalLatitude":40.041217,"coordinateUncertaintyInMeters":149.0,"stateProvince":"Colorado","year":2019,"month":1,"day":8,"eventDate":"2019-01-08T16:02:00","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2019-01-09T16:27:28.000+0000","lastInterpreted":"2019-01-13T23:39:31.764+0000","references":"https://www.inaturalist.org/observations/19522711","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/30043455/original.jpeg?1546994043","references":"https://www.inaturalist.org/photos/30043455","created":"2019-01-09T00:02:58.000+0000","creator":"roomthily","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"roomthily"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Aves","countryCode":"US","country":"United
+        States of America","rightsHolder":"roomthily","identifier":"19522711","verbatimEventDate":"2019/01/08
+        4:02 PM MST","datasetName":"iNaturalist research-grade observations","gbifID":"1986617621","verbatimLocality":"Boulder
+        County, CO, USA","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/19522711","taxonID":"7004","catalogNumber":"19522711","recordedBy":"roomthily","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/19522711","institutionCode":"iNaturalist","rights":"©
+        roomthily some rights reserved","eventTime":"23:02:00Z","identificationID":"42806864"}],"facets":[]}'
+  recorded_at: 2019-01-28 19:03:07 GMT
+  recorded_with: vcr/0.2.2, webmockr/0.3.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/search?limit=5&offset=0&geometry=POLYGON%28%28-120%2040%2C-115%2040%2C-115%2042%2C-120%2042%2C-120%2040%29%29
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/3.3 crul/0.7.0.9100 rOpenSci(rgbif/1.1.0.9113)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0.9100 rOpenSci(rgbif/1.1.0.9113)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Mon, 28 Jan 2019 19:03:07 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
+      server: Jetty(9.3.z-SNAPSHOT)
+      cache-control: public, max-age=600
+      x-varnish: 351438933 347753263
+      age: '0'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '13268'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"offset":0,"limit":5,"endOfRecords":false,"count":149544,"results":[{"key":1807320598,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-01-28T00:30:47.204+0000","lastParsed":"2018-10-08T17:08:13.724+0000","crawlId":147,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":9630752,"kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":7190953,"familyKey":3685,"genusKey":2480922,"speciesKey":9630752,"acceptedTaxonKey":9630752,"scientificName":"Ardea
+        herodias Linnaeus, 1758","acceptedScientificName":"Ardea herodias Linnaeus,
+        1758","kingdom":"Animalia","phylum":"Chordata","order":"Pelecaniformes","family":"Ardeidae","genus":"Ardea","species":"Ardea
+        herodias","genericName":"Ardea","specificEpithet":"herodias","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2018-02-07T15:04:49","decimalLongitude":-119.628921,"decimalLatitude":40.014443,"coordinateUncertaintyInMeters":5.0,"stateProvince":"Nevada","year":2018,"month":2,"day":3,"eventDate":"2018-02-03T08:35:15","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2018-02-10T14:41:32.000+0000","lastInterpreted":"2018-12-10T04:50:38.427+0000","references":"https://www.inaturalist.org/observations/9762033","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/13368637/original.jpg?1518015899","references":"https://www.inaturalist.org/photos/13368637","created":"2018-02-03T16:35:15.000+0000","creator":"Dylan
+        Kuhn","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Dylan
+        Kuhn"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/13368639/original.jpg?1518015907","references":"https://www.inaturalist.org/photos/13368639","created":"2018-02-03T16:35:15.000+0000","creator":"Dylan
+        Kuhn","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Dylan
+        Kuhn"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/13368644/original.jpg?1518015913","references":"https://www.inaturalist.org/photos/13368644","created":"2018-02-03T16:35:15.000+0000","creator":"Dylan
+        Kuhn","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Dylan
+        Kuhn"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Aves","countryCode":"US","country":"United
+        States of America","rightsHolder":"Dylan Kuhn","identifier":"9762033","verbatimEventDate":"Sat
+        Feb 03 2018 08:35:15 GMT-0800 (PST)","datasetName":"iNaturalist research-grade
+        observations","gbifID":"1807320598","verbatimLocality":"Washoe County, US-NV,
+        US","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/9762033","taxonID":"4956","catalogNumber":"9762033","recordedBy":"Dylan
+        Kuhn","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/9762033","institutionCode":"iNaturalist","rights":"©
+        Dylan Kuhn some rights reserved","eventTime":"16:35:15Z","occurrenceRemarks":"This
+        was the first time I''ve seen a heron perched on a high point away from the
+        water. The shore of Pyramid lake is maybe a quarter mile away.","identificationID":"21512282"},{"key":1837092157,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-01-28T00:12:20.471+0000","lastParsed":"2018-10-08T14:20:29.366+0000","crawlId":147,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":2429791,"kingdomKey":1,"phylumKey":44,"classKey":131,"orderKey":952,"familyKey":3098,"genusKey":2429782,"speciesKey":2429791,"acceptedTaxonKey":2429791,"scientificName":"Spea
+        intermontana (Cope, 1883)","acceptedScientificName":"Spea intermontana (Cope,
+        1883)","kingdom":"Animalia","phylum":"Chordata","order":"Anura","family":"Scaphiopodidae","genus":"Spea","species":"Spea
+        intermontana","genericName":"Spea","specificEpithet":"intermontana","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2018-03-29T16:34:03","decimalLongitude":-119.75799,"decimalLatitude":40.182837,"coordinateUncertaintyInMeters":28000.0,"stateProvince":"Nevada","year":2018,"month":2,"day":27,"eventDate":"2018-02-27T14:44:38","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2018-03-29T18:49:58.000+0000","lastInterpreted":"2018-12-09T13:28:45.966+0000","references":"https://www.inaturalist.org/observations/10490947","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/14588940/original.jpg?1522341246","references":"https://www.inaturalist.org/photos/14588940","created":"2018-02-27T19:44:38.000+0000","creator":"herpin_around","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"herpin_around"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Amphibia","countryCode":"US","country":"United
+        States of America","rightsHolder":"herpin_around","identifier":"10490947","informationWithheld":"Coordinate
+        uncertainty increased to 28000m at the request of the observer","verbatimEventDate":"Tue
+        Feb 27 2018 14:44:38 GMT-0500 (EST)","datasetName":"iNaturalist research-grade
+        observations","gbifID":"1837092157","verbatimLocality":"Washoe County, US-NV,
+        US","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/10490947","taxonID":"26704","catalogNumber":"10490947","recordedBy":"herpin_around","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/10490947","institutionCode":"iNaturalist","rights":"©
+        herpin_around some rights reserved","eventTime":"19:44:38Z","occurrenceRemarks":"Multiple
+        adults along with Anaxyrus breeding in springs adjacent to lake.","identificationID":"23312039"},{"key":1837753407,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-01-28T00:12:24.666+0000","lastParsed":"2018-10-08T14:20:44.930+0000","crawlId":147,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":2480542,"kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":7191147,"familyKey":2877,"genusKey":2480517,"speciesKey":2480542,"acceptedTaxonKey":2480542,"scientificName":"Buteo
+        jamaicensis (Gmelin, 1788)","acceptedScientificName":"Buteo jamaicensis (Gmelin,
+        1788)","kingdom":"Animalia","phylum":"Chordata","order":"Accipitriformes","family":"Accipitridae","genus":"Buteo","species":"Buteo
+        jamaicensis","genericName":"Buteo","specificEpithet":"jamaicensis","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2018-04-01T21:42:11","decimalLongitude":-117.558889,"decimalLatitude":41.0,"coordinateUncertaintyInMeters":100.0,"stateProvince":"Nevada","year":2018,"month":3,"day":25,"eventDate":"2018-03-25T00:00:00","issues":["GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2018-04-01T22:08:30.000+0000","lastInterpreted":"2018-12-08T03:43:05.941+0000","references":"https://www.inaturalist.org/observations/10554808","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Aves","countryCode":"US","country":"United
+        States of America","rightsHolder":"Eric Carlson","identifier":"10554808","verbatimEventDate":"2018/03/25
+        7:27 AM UTC","datasetName":"iNaturalist research-grade observations","gbifID":"1837753407","verbatimLocality":"Humboldt
+        County, US-NV, US","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/10554808","taxonID":"5212","catalogNumber":"10554808","recordedBy":"Eric
+        Carlson","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/10554808","institutionCode":"iNaturalist","rights":"©
+        Eric Carlson some rights reserved","identificationID":"23451224"},{"key":1837749649,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-01-28T00:12:23.866+0000","lastParsed":"2018-10-08T14:20:41.474+0000","crawlId":147,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":2440902,"kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":731,"familyKey":5715,"genusKey":2440901,"speciesKey":2440902,"acceptedTaxonKey":2440902,"scientificName":"Antilocapra
+        americana (Ord, 1815)","acceptedScientificName":"Antilocapra americana (Ord,
+        1815)","kingdom":"Animalia","phylum":"Chordata","order":"Artiodactyla","family":"Antilocapridae","genus":"Antilocapra","species":"Antilocapra
+        americana","genericName":"Antilocapra","specificEpithet":"americana","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2018-04-01T04:51:53","decimalLongitude":-117.012778,"decimalLatitude":40.58,"coordinateUncertaintyInMeters":20.0,"stateProvince":"Nevada","year":2018,"month":3,"day":25,"eventDate":"2018-03-25T00:00:00","issues":["GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2018-08-13T14:32:49.000+0000","lastInterpreted":"2018-12-08T03:43:02.592+0000","references":"https://www.inaturalist.org/observations/10541848","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Mammalia","countryCode":"US","country":"United
+        States of America","rightsHolder":"Eric Carlson","identifier":"10541848","verbatimEventDate":"2018/03/25
+        8:09 AM UTC","datasetName":"iNaturalist research-grade observations","gbifID":"1837749649","verbatimLocality":"Lander
+        County, NV, USA","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/10541848","taxonID":"42429","catalogNumber":"10541848","recordedBy":"Eric
+        Carlson","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/10541848","institutionCode":"iNaturalist","rights":"©
+        Eric Carlson some rights reserved","identificationID":"23421617"},{"key":1935583670,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-01-28T00:19:06.014+0000","lastParsed":"2018-11-12T21:39:52.028+0000","crawlId":147,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":2436854,"kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":785,"familyKey":9379,"genusKey":2436839,"speciesKey":2436854,"acceptedTaxonKey":2436854,"scientificName":"Sylvilagus
+        nuttallii (Bachman, 1837)","acceptedScientificName":"Sylvilagus nuttallii
+        (Bachman, 1837)","kingdom":"Animalia","phylum":"Chordata","order":"Lagomorpha","family":"Leporidae","genus":"Sylvilagus","species":"Sylvilagus
+        nuttallii","genericName":"Sylvilagus","specificEpithet":"nuttallii","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2018-10-18T16:31:09","decimalLongitude":-119.654186,"decimalLatitude":40.038424,"coordinateUncertaintyInMeters":500.0,"stateProvince":"Nevada","year":2018,"month":4,"day":21,"eventDate":"2018-04-21T15:22:00","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2018-11-09T21:06:42.000+0000","lastInterpreted":"2018-12-07T01:26:33.974+0000","references":"https://www.inaturalist.org/observations/17623377","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/26841321/original.jpg?1539880189","references":"https://www.inaturalist.org/photos/26841321","created":"2018-04-21T22:22:34.000+0000","creator":"Ryan
+        Elliott","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by/4.0/","rightsHolder":"Ryan
+        Elliott"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Mammalia","countryCode":"US","country":"United
+        States of America","rightsHolder":"Ryan Elliott","identifier":"17623377","verbatimEventDate":"2018/04/21
+        3:22 PM HST","datasetName":"iNaturalist research-grade observations","gbifID":"1935583670","verbatimLocality":"West
+        side of Pyramid Lake near Warrior Point, Washoe County, NV, USA","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/17623377","taxonID":"43109","catalogNumber":"17623377","recordedBy":"Ryan
+        Elliott","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/17623377","institutionCode":"iNaturalist","rights":"By
+        Ryan Elliott no rights reserved","eventTime":"01:22:00Z","identificationID":"37766275"}],"facets":[]}'
+  recorded_at: 2019-01-28 19:03:07 GMT
+  recorded_with: vcr/0.2.2, webmockr/0.3.0

@@ -1,0 +1,101 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://ecoengine.berkeley.edu/api/observations/?country=United%20States&bbox=-120.357516%2C20.929036%2C-110.527516%2C31.099036&extra=last_modified&georeferenced=FALSE&page_size=2&format=geojson
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      User-Agent: libcurl/7.54.0 r-curl/3.3 crul/0.7.0.9100
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Mon, 28 Jan 2019 19:27:48 GMT
+      server: Apache/2.4.10 (Debian)
+      expires: Mon, 28 Jan 2019 20:13:13 GMT
+      vary: Accept,Cookie
+      allow: GET, HEAD, OPTIONS
+      cache-control: max-age=6000
+      last-modified: Mon, 28 Jan 2019 18:33:13 GMT
+      transfer-encoding: chunked
+      content-type: application/vnd.geo+json
+    body:
+      encoding: UTF-8
+      string: '{"count": 808, "crs": {"type": "name", "properties": {"name": "urn:ogc:def:crs:EPSG::4326"}},
+        "previous": null, "type": "FeatureCollection", "next": "https://ecoengine.berkeley.edu/api/observations/?bbox=-120.357516%2C20.929036%2C-110.527516%2C31.099036&country=United+States&extra=last_modified&format=geojson&georeferenced=FALSE&page=2&page_size=2",
+        "features": [{"geometry": {"type":"Point","coordinates":[-119.5667,30.9167]},
+        "type": "Feature", "properties": {"url": "https://ecoengine.berkeley.edu/api/observations/LACM:Fish:9262-10/",
+        "record": "LACM:Fish:9262-10", "observation_type": "specimen", "scientific_name":
+        "Ceratoscopelus townsendi", "country": "United States", "state_province":
+        "California", "begin_date": "1966-10-19T00:00:00", "end_date": "1966-10-19T00:00:00",
+        "source": "https://ecoengine.berkeley.edu/api/sources/2/", "remote_resource":
+        "", "locality": "Offshore, area of San Juan Seamount 100 miles, 191 T from
+        Bishop Rock, Cortes Bank", "coordinate_uncertainty_in_meters": 1000, "recorded_by":
+        "R/V Velero IV", "last_modified": "2014-05-29T12:31:19.693035"}},{"geometry":
+        {"type":"Point","coordinates":[-119.5667,30.9167]}, "type": "Feature", "properties":
+        {"url": "https://ecoengine.berkeley.edu/api/observations/LACM:Fish:9262-11/",
+        "record": "LACM:Fish:9262-11", "observation_type": "specimen", "scientific_name":
+        "Cyclothone signata", "country": "United States", "state_province": "California",
+        "begin_date": "1966-10-19T00:00:00", "end_date": "1966-10-19T00:00:00", "source":
+        "https://ecoengine.berkeley.edu/api/sources/2/", "remote_resource": "", "locality":
+        "Offshore, area of San Juan Seamount 100 miles, 191 T from Bishop Rock, Cortes
+        Bank", "coordinate_uncertainty_in_meters": 1000, "recorded_by": "R/V Velero
+        IV", "last_modified": "2014-05-29T12:31:19.727259"}}]}'
+  recorded_at: 2019-01-28 19:27:48 GMT
+  recorded_with: vcr/0.2.2, webmockr/0.3.0
+- request:
+    method: get
+    uri: https://ecoengine.berkeley.edu/api/observations/?country=United%20States&bbox=-120.357516%2C20.929036%2C-110.527516%2C31.099036&extra=last_modified&georeferenced=FALSE&page_size=2&page=1&format=geojson
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      User-Agent: libcurl/7.54.0 r-curl/3.3 crul/0.7.0.9100
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Mon, 28 Jan 2019 19:27:48 GMT
+      server: Apache/2.4.10 (Debian)
+      expires: Mon, 28 Jan 2019 20:13:13 GMT
+      vary: Accept,Cookie
+      allow: GET, HEAD, OPTIONS
+      cache-control: max-age=6000
+      last-modified: Mon, 28 Jan 2019 18:33:13 GMT
+      transfer-encoding: chunked
+      content-type: application/vnd.geo+json
+    body:
+      encoding: UTF-8
+      string: '{"count": 808, "crs": {"type": "name", "properties": {"name": "urn:ogc:def:crs:EPSG::4326"}},
+        "previous": null, "type": "FeatureCollection", "next": "https://ecoengine.berkeley.edu/api/observations/?bbox=-120.357516%2C20.929036%2C-110.527516%2C31.099036&country=United+States&extra=last_modified&format=geojson&georeferenced=FALSE&page=2&page_size=2",
+        "features": [{"geometry": {"type":"Point","coordinates":[-119.5667,30.9167]},
+        "type": "Feature", "properties": {"url": "https://ecoengine.berkeley.edu/api/observations/LACM:Fish:9262-10/",
+        "record": "LACM:Fish:9262-10", "observation_type": "specimen", "scientific_name":
+        "Ceratoscopelus townsendi", "country": "United States", "state_province":
+        "California", "begin_date": "1966-10-19T00:00:00", "end_date": "1966-10-19T00:00:00",
+        "source": "https://ecoengine.berkeley.edu/api/sources/2/", "remote_resource":
+        "", "locality": "Offshore, area of San Juan Seamount 100 miles, 191 T from
+        Bishop Rock, Cortes Bank", "coordinate_uncertainty_in_meters": 1000, "recorded_by":
+        "R/V Velero IV", "last_modified": "2014-05-29T12:31:19.693035"}},{"geometry":
+        {"type":"Point","coordinates":[-119.5667,30.9167]}, "type": "Feature", "properties":
+        {"url": "https://ecoengine.berkeley.edu/api/observations/LACM:Fish:9262-11/",
+        "record": "LACM:Fish:9262-11", "observation_type": "specimen", "scientific_name":
+        "Cyclothone signata", "country": "United States", "state_province": "California",
+        "begin_date": "1966-10-19T00:00:00", "end_date": "1966-10-19T00:00:00", "source":
+        "https://ecoengine.berkeley.edu/api/sources/2/", "remote_resource": "", "locality":
+        "Offshore, area of San Juan Seamount 100 miles, 191 T from Bishop Rock, Cortes
+        Bank", "coordinate_uncertainty_in_meters": 1000, "recorded_by": "R/V Velero
+        IV", "last_modified": "2014-05-29T12:31:19.727259"}}]}'
+  recorded_at: 2019-01-28 19:27:48 GMT
+  recorded_with: vcr/0.2.2, webmockr/0.3.0

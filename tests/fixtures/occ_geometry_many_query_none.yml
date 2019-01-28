@@ -1,0 +1,118 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/search?limit=2&offset=0&geometry=POLYGON%28%28165%20-53%2C180%20-53%2C180%20-29%2C165%20-29%2C165%20-53%29%29
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/3.3 crul/0.7.0.9100 rOpenSci(rgbif/1.1.0.9113)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0.9100 rOpenSci(rgbif/1.1.0.9113)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Mon, 28 Jan 2019 19:10:17 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
+      server: Jetty(9.3.z-SNAPSHOT)
+      cache-control: public, max-age=600
+      x-varnish: 345591384 351544842
+      age: '4'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '5391'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"offset":0,"limit":2,"endOfRecords":false,"count":4934409,"results":[{"key":1986613297,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-01-28T00:21:07.009+0000","lastParsed":"2019-01-13T23:39:07.940+0000","crawlId":147,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":5391048,"kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":414,"familyKey":3065,"genusKey":5390965,"speciesKey":5391048,"acceptedTaxonKey":5391048,"scientificName":"Celmisia
+        sessiliflora Hook.f.","acceptedScientificName":"Celmisia sessiliflora Hook.f.","kingdom":"Plantae","phylum":"Tracheophyta","order":"Asterales","family":"Asteraceae","genus":"Celmisia","species":"Celmisia
+        sessiliflora","genericName":"Celmisia","specificEpithet":"sessiliflora","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2019-01-08T09:16:44","decimalLongitude":171.00115,"decimalLatitude":-43.584007,"coordinateUncertaintyInMeters":288.0,"stateProvince":"Canterbury","year":2019,"month":1,"day":6,"eventDate":"2019-01-06T09:36:00","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2019-01-09T07:35:28.000+0000","lastInterpreted":"2019-01-13T23:39:28.931+0000","references":"https://www.inaturalist.org/observations/19509070","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/30022047/original.jpg?1546938739","references":"https://www.inaturalist.org/photos/30022047","created":"2019-01-06T17:36:16.000+0000","creator":"John
+        Barkla","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"John
+        Barkla"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Magnoliopsida","countryCode":"NZ","country":"New
+        Zealand","rightsHolder":"John Barkla","identifier":"19509070","verbatimEventDate":"2019/01/06
+        9:36 AM NZDT","datasetName":"iNaturalist research-grade observations","gbifID":"1986613297","verbatimLocality":"Ashburton
+        Lakes 7771, New Zealand","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/19509070","taxonID":"400598","catalogNumber":"19509070","recordedBy":"John
+        Barkla","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/19509070","institutionCode":"iNaturalist","rights":"©
+        John Barkla some rights reserved","eventTime":"20:36:00Z","occurrenceRemarks":"Occasional
+        in montane basin herbfields and grasslands","identificationID":"42764611"},{"key":1986616826,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-01-28T00:21:07.932+0000","lastParsed":"2019-01-13T23:39:09.505+0000","crawlId":147,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":4019603,"kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":412,"familyKey":2502,"genusKey":6388644,"speciesKey":7289308,"acceptedTaxonKey":4019119,"scientificName":"Geniostoma
+        ligustrifolium A.Cunn.","acceptedScientificName":"Geniostoma rupestre var.
+        ligustrifolium (A.Cunn.) B.J.Conn","kingdom":"Plantae","phylum":"Tracheophyta","order":"Gentianales","family":"Loganiaceae","genus":"Geniostoma","species":"Geniostoma
+        rupestre","genericName":"Geniostoma","specificEpithet":"ligustrifolium","taxonRank":"SPECIES","taxonomicStatus":"SYNONYM","dateIdentified":"2019-01-09T00:35:50","decimalLongitude":174.756789,"decimalLatitude":-41.266814,"coordinateUncertaintyInMeters":5.0,"stateProvince":"Wellington","year":2019,"month":1,"day":9,"eventDate":"2019-01-09T12:08:00","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2019-01-10T07:10:42.000+0000","lastInterpreted":"2019-01-13T23:39:31.094+0000","references":"https://www.inaturalist.org/observations/19522570","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/30042852/original.jpeg?1546992915","references":"https://www.inaturalist.org/photos/30042852","created":"2019-01-09T20:08:59.000+0000","creator":"mitchellcayford","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"mitchellcayford"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Magnoliopsida","countryCode":"NZ","country":"New
+        Zealand","rightsHolder":"mitchellcayford","identifier":"19522570","verbatimEventDate":"2019/01/09
+        12:08 PM NZDT","datasetName":"iNaturalist research-grade observations","gbifID":"1986616826","verbatimLocality":"Wellington,
+        Wellington, New Zealand","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/19522570","taxonID":"401998","catalogNumber":"19522570","recordedBy":"mitchellcayford","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/19522570","institutionCode":"iNaturalist","rights":"©
+        mitchellcayford some rights reserved","eventTime":"23:08:00Z","identificationID":"42806263"}],"facets":[]}'
+  recorded_at: 2019-01-28 19:10:23 GMT
+  recorded_with: vcr/0.2.2, webmockr/0.3.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/search?limit=2&offset=0&geometry=POLYGON%28%28-180%20-53%2C-175%20-53%2C-175%20-29%2C-180%20-29%2C-180%20-53%29%29
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/3.3 crul/0.7.0.9100 rOpenSci(rgbif/1.1.0.9113)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0.9100 rOpenSci(rgbif/1.1.0.9113)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Mon, 28 Jan 2019 19:10:18 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
+      server: Jetty(9.3.z-SNAPSHOT)
+      cache-control: public, max-age=600
+      x-varnish: 339796297 354196601
+      age: '5'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '6442'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"offset":0,"limit":2,"endOfRecords":false,"count":168107,"results":[{"key":1807289227,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-01-28T00:30:40.321+0000","lastParsed":"2018-10-08T17:07:55.699+0000","crawlId":147,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":8307604,"kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":422,"familyKey":6752,"genusKey":3084849,"speciesKey":8307604,"acceptedTaxonKey":8307604,"scientificName":"Disphyma
+        papillatum Chinnock","acceptedScientificName":"Disphyma papillatum Chinnock","kingdom":"Plantae","phylum":"Tracheophyta","order":"Caryophyllales","family":"Aizoaceae","genus":"Disphyma","species":"Disphyma
+        papillatum","genericName":"Disphyma","specificEpithet":"papillatum","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2018-01-31T03:55:37","decimalLongitude":-176.141695,"decimalLatitude":-43.642057,"coordinateUncertaintyInMeters":27443.0,"stateProvince":"Chatham
+        Islands","year":2018,"month":1,"day":27,"eventDate":"2018-01-27T10:14:00","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2018-01-31T06:22:17.000+0000","lastInterpreted":"2018-12-10T04:50:09.776+0000","references":"https://www.inaturalist.org/observations/9676915","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/13225996/original.jpg?1517370927","references":"https://www.inaturalist.org/photos/13225996","created":"2018-01-27T20:34:51.000+0000","creator":"Peter
+        de Lange","publisher":"iNaturalist","license":"http://creativecommons.org/publicdomain/zero/1.0/","rightsHolder":"Peter
+        de Lange"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/13225997/original.jpg?1517370931","references":"https://www.inaturalist.org/photos/13225997","created":"2018-01-27T20:34:51.000+0000","creator":"Peter
+        de Lange","publisher":"iNaturalist","license":"http://creativecommons.org/publicdomain/zero/1.0/","rightsHolder":"Peter
+        de Lange"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Magnoliopsida","countryCode":"NZ","country":"New
+        Zealand","rightsHolder":"Peter de Lange","identifier":"9676915","informationWithheld":"Coordinate
+        uncertainty increased to 27443m to protect threatened taxon","verbatimEventDate":"2018/01/27
+        10:14 AM NZDT","datasetName":"iNaturalist research-grade observations","gbifID":"1807289227","verbatimLocality":"Waitangi,
+        NZ-CI, NZ","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/9676915","taxonID":"401485","catalogNumber":"9676915","recordedBy":"Peter
+        de Lange","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/9676915","institutionCode":"iNaturalist","rights":"©
+        Peter de Lange some rights reserved","eventTime":"21:14:00Z","occurrenceRemarks":"Abundant
+        in coastal turf and on schist outcrops (often where seals rest). Occasionally
+        present in saltmarsh","identificationID":"21273182"},{"key":1807311176,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-01-28T00:30:44.855+0000","lastParsed":"2018-10-08T17:08:08.331+0000","crawlId":147,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":2930439,"kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":1176,"familyKey":7717,"genusKey":2928997,"speciesKey":2930439,"acceptedTaxonKey":2930439,"scientificName":"Solanum
+        laciniatum Aiton","acceptedScientificName":"Solanum laciniatum Aiton","kingdom":"Plantae","phylum":"Tracheophyta","order":"Solanales","family":"Solanaceae","genus":"Solanum","species":"Solanum
+        laciniatum","genericName":"Solanum","specificEpithet":"laciniatum","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2018-02-05T04:40:29","decimalLongitude":-176.795678,"decimalLatitude":-43.758665,"stateProvince":"Chatham
+        Islands","year":2018,"month":1,"day":28,"eventDate":"2018-01-28T10:43:00","issues":["GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2018-05-01T21:04:50.000+0000","lastInterpreted":"2018-12-10T04:50:29.826+0000","references":"https://www.inaturalist.org/observations/9737419","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/13326184/original.jpg?1517805624","references":"https://www.inaturalist.org/photos/13326184","created":"2018-01-28T18:51:53.000+0000","creator":"Peter
+        de Lange","publisher":"iNaturalist","license":"http://creativecommons.org/publicdomain/zero/1.0/","rightsHolder":"Peter
+        de Lange"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/13326359/original.jpg?1517806169","references":"https://www.inaturalist.org/photos/13326359","created":"2018-01-28T18:51:37.000+0000","creator":"Peter
+        de Lange","publisher":"iNaturalist","license":"http://creativecommons.org/publicdomain/zero/1.0/","rightsHolder":"Peter
+        de Lange"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Magnoliopsida","countryCode":"NZ","country":"New
+        Zealand","rightsHolder":"Peter de Lange","identifier":"9737419","verbatimEventDate":"2018/01/28
+        10:43 AM NZDT","datasetName":"iNaturalist research-grade observations","gbifID":"1807311176","verbatimLocality":"Chatham
+        Islands, Rekohu (Chatham Island), Cape Pattisson Dune Forest","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/9737419","taxonID":"328092","catalogNumber":"9737419","recordedBy":"Peter
+        de Lange","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/9737419","institutionCode":"iNaturalist","rights":"©
+        Peter de Lange some rights reserved","eventTime":"21:43:00Z","occurrenceRemarks":"Common
+        understorey shrub in ailing dune forest - usually in dune swales - and for
+        some reason most commonly noted growing under ngaio (Myoporum laetum, M. semotum)
+        and kopi (Corynocarpus laevigatus)","identificationID":"21441227"}],"facets":[]}'
+  recorded_at: 2019-01-28 19:10:23 GMT
+  recorded_with: vcr/0.2.2, webmockr/0.3.0

@@ -1,0 +1,823 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/search?limit=10&offset=0&scientificName=Pinus%20contorta
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/3.3 crul/0.7.0.9100 rOpenSci(rgbif/1.1.0.9113)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0.9100 rOpenSci(rgbif/1.1.0.9113)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Mon, 28 Jan 2019 19:36:18 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
+      server: Jetty(9.3.z-SNAPSHOT)
+      cache-control: public, max-age=600
+      x-varnish: 343599595 365863839
+      age: '0'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '27654'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"offset":0,"limit":10,"endOfRecords":false,"count":10349,"results":[{"key":1986593119,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-01-28T00:21:03.277+0000","lastParsed":"2019-01-13T23:38:58.977+0000","crawlId":147,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":7230686,"kingdomKey":6,"phylumKey":7707728,"classKey":194,"orderKey":640,"familyKey":3925,"genusKey":2684241,"speciesKey":5285750,"acceptedTaxonKey":7230686,"scientificName":"Pinus
+        contorta var. contorta","acceptedScientificName":"Pinus contorta var. contorta","kingdom":"Plantae","phylum":"Tracheophyta","order":"Pinales","family":"Pinaceae","genus":"Pinus","species":"Pinus
+        contorta","genericName":"Pinus","specificEpithet":"contorta","infraspecificEpithet":"contorta","taxonRank":"VARIETY","taxonomicStatus":"ACCEPTED","dateIdentified":"2019-01-06T03:20:07","decimalLongitude":-122.650306,"decimalLatitude":49.347542,"coordinateUncertaintyInMeters":10.0,"stateProvince":"British
+        Columbia","year":2019,"month":1,"day":5,"eventDate":"2019-01-05T10:17:00","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2019-01-06T05:16:17.000+0000","lastInterpreted":"2019-01-13T23:39:16.307+0000","references":"https://www.inaturalist.org/observations/19456850","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/29934777/original.jpg?1546744121","references":"https://www.inaturalist.org/photos/29934777","created":"2019-01-05T18:17:32.000+0000","creator":"John
+        D Reynolds","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"John
+        D Reynolds"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Pinopsida","countryCode":"CA","country":"Canada","rightsHolder":"John
+        D Reynolds","identifier":"19456850","verbatimEventDate":"2019/01/05 10:17
+        AM PST","datasetName":"iNaturalist research-grade observations","gbifID":"1986593119","verbatimLocality":"Coquitlam,
+        BC, Canada","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/19456850","taxonID":"80130","catalogNumber":"19456850","recordedBy":"John
+        D Reynolds","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/19456850","institutionCode":"iNaturalist","rights":"©
+        John D Reynolds some rights reserved","eventTime":"18:17:00Z","identificationID":"42617786"},{"key":1802781699,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-01-28T00:30:17.300+0000","lastParsed":"2018-10-08T17:06:37.145+0000","crawlId":147,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":5285750,"kingdomKey":6,"phylumKey":7707728,"classKey":194,"orderKey":640,"familyKey":3925,"genusKey":2684241,"speciesKey":5285750,"acceptedTaxonKey":5285750,"scientificName":"Pinus
+        contorta Douglas ex Loudon","acceptedScientificName":"Pinus contorta Douglas
+        ex Loudon","kingdom":"Plantae","phylum":"Tracheophyta","order":"Pinales","family":"Pinaceae","genus":"Pinus","species":"Pinus
+        contorta","genericName":"Pinus","specificEpithet":"contorta","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2018-01-06T19:59:42","decimalLongitude":-113.465184,"decimalLatitude":47.190086,"coordinateUncertaintyInMeters":5.0,"stateProvince":"Montana","year":2018,"month":1,"day":6,"eventDate":"2018-01-06T12:59:16","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2018-01-09T17:03:11.000+0000","lastInterpreted":"2018-12-08T07:11:58.673+0000","references":"https://www.inaturalist.org/observations/9384374","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/12748301/original.jpg?1515269045","references":"https://www.inaturalist.org/photos/12748301","created":"2018-01-06T19:59:16.000+0000","creator":"Nicholas
+        Sly","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Nicholas
+        Sly"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/12748311/original.jpg?1515269064","references":"https://www.inaturalist.org/photos/12748311","created":"2018-01-06T19:59:16.000+0000","creator":"Nicholas
+        Sly","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Nicholas
+        Sly"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Pinopsida","countryCode":"US","country":"United
+        States of America","rightsHolder":"Nicholas Sly","identifier":"9384374","verbatimEventDate":"Sat
+        Jan 06 2018 12:59:16 GMT-0700 (MST)","datasetName":"iNaturalist research-grade
+        observations","gbifID":"1802781699","verbatimLocality":"Lolo National Forest,
+        Ovando, MT, US","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/9384374","taxonID":"48934","catalogNumber":"9384374","recordedBy":"Nicholas
+        Sly","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/9384374","institutionCode":"iNaturalist","rights":"©
+        Nicholas Sly some rights reserved","eventTime":"19:59:16Z","identificationID":"20458833"},{"key":1802784638,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-01-28T00:30:17.734+0000","lastParsed":"2018-10-08T17:06:56.548+0000","crawlId":147,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":7230686,"kingdomKey":6,"phylumKey":7707728,"classKey":194,"orderKey":640,"familyKey":3925,"genusKey":2684241,"speciesKey":5285750,"acceptedTaxonKey":7230686,"scientificName":"Pinus
+        contorta var. contorta","acceptedScientificName":"Pinus contorta var. contorta","kingdom":"Plantae","phylum":"Tracheophyta","order":"Pinales","family":"Pinaceae","genus":"Pinus","species":"Pinus
+        contorta","genericName":"Pinus","specificEpithet":"contorta","infraspecificEpithet":"contorta","taxonRank":"VARIETY","taxonomicStatus":"ACCEPTED","dateIdentified":"2018-01-07T07:37:10","decimalLongitude":-135.204545,"decimalLatitude":57.059386,"coordinateUncertaintyInMeters":15.0,"stateProvince":"Alaska","year":2018,"month":1,"day":6,"eventDate":"2018-01-06T13:31:00","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2018-04-23T02:19:55.000+0000","lastInterpreted":"2018-12-08T07:12:01.239+0000","references":"https://www.inaturalist.org/observations/9391024","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/12760174/original.jpg?1515310129","references":"https://www.inaturalist.org/photos/12760174","created":"2018-01-06T21:31:25.000+0000","creator":"Paul
+        Norwood","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Paul
+        Norwood"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Pinopsida","countryCode":"US","country":"United
+        States of America","rightsHolder":"Paul Norwood","identifier":"9391024","verbatimEventDate":"2018/01/06
+        1:31 PM AKST","datasetName":"iNaturalist research-grade observations","gbifID":"1802784638","verbatimLocality":"Sitka,
+        AK, USA","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/9391024","taxonID":"80130","catalogNumber":"9391024","recordedBy":"Paul
+        Norwood","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/9391024","institutionCode":"iNaturalist","rights":"©
+        Paul Norwood some rights reserved","eventTime":"22:31:00Z","identificationID":"20480219"},{"key":1805394609,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-01-28T00:30:23.832+0000","lastParsed":"2018-10-08T17:07:11.626+0000","crawlId":147,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":7230686,"kingdomKey":6,"phylumKey":7707728,"classKey":194,"orderKey":640,"familyKey":3925,"genusKey":2684241,"speciesKey":5285750,"acceptedTaxonKey":7230686,"scientificName":"Pinus
+        contorta var. contorta","acceptedScientificName":"Pinus contorta var. contorta","kingdom":"Plantae","phylum":"Tracheophyta","order":"Pinales","family":"Pinaceae","genus":"Pinus","species":"Pinus
+        contorta","genericName":"Pinus","specificEpithet":"contorta","infraspecificEpithet":"contorta","taxonRank":"VARIETY","taxonomicStatus":"ACCEPTED","dateIdentified":"2018-01-14T02:39:29","decimalLongitude":-135.3704,"decimalLatitude":57.128686,"coordinateUncertaintyInMeters":9.0,"stateProvince":"Alaska","year":2018,"month":1,"day":13,"eventDate":"2018-01-13T15:29:01","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2018-01-14T19:04:23.000+0000","lastInterpreted":"2018-12-23T09:29:10.257+0000","references":"https://www.inaturalist.org/observations/9464758","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/12877581/original.jpeg?1515896651","references":"https://www.inaturalist.org/photos/12877581","created":"2018-01-13T23:29:21.000+0000","creator":"Paul
+        Norwood","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Paul
+        Norwood"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Pinopsida","countryCode":"US","country":"United
+        States of America","rightsHolder":"Paul Norwood","identifier":"9464758","verbatimEventDate":"2018-01-13
+        3:29:01 PM AKST","datasetName":"iNaturalist research-grade observations","gbifID":"1805394609","verbatimLocality":"5304
+        F-99, Sitka, AK 99835, USA","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/9464758","taxonID":"80130","catalogNumber":"9464758","recordedBy":"Paul
+        Norwood","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/9464758","institutionCode":"iNaturalist","rights":"©
+        Paul Norwood some rights reserved","eventTime":"00:29:01Z","identificationID":"20696409"},{"key":1821251800,"datasetKey":"38b4c89f-584c-41bb-bd8f-cd1def33e92f","publishingOrgKey":"b8323864-602a-4a7d-9127-bb903054e97d","networkKeys":[],"installationKey":"4346b227-ca68-4d54-8a77-909148492e0b","publishingCountry":"SE","protocol":"DWC_ARCHIVE","lastCrawled":"2019-01-26T09:51:28.733+0000","lastParsed":"2018-02-22T16:03:25.096+0000","crawlId":182,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","individualCount":0,"taxonKey":5285750,"kingdomKey":6,"phylumKey":7707728,"classKey":194,"orderKey":640,"familyKey":3925,"genusKey":2684241,"speciesKey":5285750,"acceptedTaxonKey":5285750,"scientificName":"Pinus
+        contorta Douglas ex Loudon","acceptedScientificName":"Pinus contorta Douglas
+        ex Loudon","kingdom":"Plantae","phylum":"Tracheophyta","order":"Pinales","family":"Pinaceae","genus":"Pinus","species":"Pinus
+        contorta","genericName":"Pinus","specificEpithet":"contorta","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","decimalLongitude":17.56537,"decimalLatitude":59.844556,"coordinateUncertaintyInMeters":50.0,"continent":"EUROPE","year":2018,"month":1,"day":3,"eventDate":"2018-01-03T00:00:00","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2018-01-04T15:32:47.000+0000","lastInterpreted":"2018-12-26T02:41:44.870+0000","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","identifiers":[],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Pinopsida","countryCode":"SE","country":"Sweden","rightsHolder":"Åke
+        Berg","county":"Uppland","municipality":"Uppsala","identificationVerificationStatus":"Unvalidated","language":"Swedish","gbifID":"1821251800","type":"Occurrence","taxonID":"urn:lsid:dyntaxa.se:Taxon:222159","occurrenceStatus":"Present","catalogNumber":"109388849","vernacularName":"contortatall","institutionCode":"ArtDatabanken","taxonConceptID":"urn:lsid:dyntaxa.se:Taxon:222159","eventTime":"00:00:00
+        - 00:00:00","identifier":"urn:lsid:artportalen.se:Sighting:68886213","informationWithheld":"More
+        information can be obtained from the Data Provider.","endDayOfYear":"3","locality":"Kvarnbo
+        S P-platsen","collectionCode":"Artportalen","occurrenceID":"urn:lsid:artportalen.se:Sighting:68886213","recordedBy":"Åke
+        Berg","startDayOfYear":"3","datasetID":"urn:lsid:swedishlifewatch.se:DataProvider:1","accessRights":"Free
+        usage","higherClassification":"Biota;Plantae;Viridiplantae;Streptophyta;Embryophyta;Tracheophyta;Euphyllophytina;Spermatophytae;Gymnospermae;Pinopsida;Pinales;Pinaceae"},{"key":1805394685,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-01-28T00:30:23.831+0000","lastParsed":"2018-10-08T17:07:11.596+0000","crawlId":147,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":7230686,"kingdomKey":6,"phylumKey":7707728,"classKey":194,"orderKey":640,"familyKey":3925,"genusKey":2684241,"speciesKey":5285750,"acceptedTaxonKey":7230686,"scientificName":"Pinus
+        contorta var. contorta","acceptedScientificName":"Pinus contorta var. contorta","kingdom":"Plantae","phylum":"Tracheophyta","order":"Pinales","family":"Pinaceae","genus":"Pinus","species":"Pinus
+        contorta","genericName":"Pinus","specificEpithet":"contorta","infraspecificEpithet":"contorta","taxonRank":"VARIETY","taxonomicStatus":"ACCEPTED","dateIdentified":"2018-01-14T02:39:18","decimalLongitude":-135.368486,"decimalLatitude":57.128636,"coordinateUncertaintyInMeters":4.0,"stateProvince":"Alaska","year":2018,"month":1,"day":13,"eventDate":"2018-01-13T15:29:56","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2018-01-14T19:04:20.000+0000","lastInterpreted":"2018-12-23T09:29:10.263+0000","references":"https://www.inaturalist.org/observations/9464762","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/12877586/original.jpeg?1515896662","references":"https://www.inaturalist.org/photos/12877586","created":"2018-01-13T23:31:03.000+0000","creator":"Paul
+        Norwood","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Paul
+        Norwood"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Pinopsida","countryCode":"US","country":"United
+        States of America","rightsHolder":"Paul Norwood","identifier":"9464762","verbatimEventDate":"2018-01-13
+        3:29:56 PM AKST","datasetName":"iNaturalist research-grade observations","gbifID":"1805394685","verbatimLocality":"Sitka,
+        AK, USA","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/9464762","taxonID":"80130","catalogNumber":"9464762","recordedBy":"Paul
+        Norwood","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/9464762","institutionCode":"iNaturalist","rights":"©
+        Paul Norwood some rights reserved","eventTime":"00:29:56Z","identificationID":"20696404"},{"key":1804363278,"datasetKey":"df582950-3b58-11dc-8c19-b8a03c50a862","publishingOrgKey":"6b2f029b-7823-4b84-9c30-31ff364238fe","networkKeys":[],"installationKey":"3bf47c76-78fb-46b6-a8ea-e54887815764","publishingCountry":"NZ","protocol":"DWC_ARCHIVE","lastCrawled":"2019-01-22T01:23:39.509+0000","lastParsed":"2018-01-22T22:15:54.170+0000","crawlId":180,"extensions":{},"basisOfRecord":"PRESERVED_SPECIMEN","taxonKey":5285750,"kingdomKey":6,"phylumKey":7707728,"classKey":194,"orderKey":640,"familyKey":3925,"genusKey":2684241,"speciesKey":5285750,"acceptedTaxonKey":5285750,"scientificName":"Pinus
+        contorta Douglas ex Loudon","acceptedScientificName":"Pinus contorta Douglas
+        ex Loudon","kingdom":"Plantae","phylum":"Tracheophyta","order":"Pinales","family":"Pinaceae","genus":"Pinus","species":"Pinus
+        contorta","genericName":"Pinus","specificEpithet":"contorta","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2018-01-12T00:00:00","stateProvince":"Nelson
+        Land District","year":2018,"month":1,"day":11,"eventDate":"2018-01-11T00:00:00","issues":[],"modified":"2018-01-15T02:44:05.043+0000","lastInterpreted":"2018-12-08T08:34:07.219+0000","references":"https://scd.landcareresearch.co.nz/Specimen/CHR_644141","license":"http://creativecommons.org/licenses/by/4.0/legalcode","identifiers":[],"facts":[],"relations":[],"class":"Pinopsida","countryCode":"NZ","country":"New
+        Zealand","rightsHolder":"Landcare Research NZ Ltd.","identifier":"A543CF35-F628-4AC6-A323-3607A94AC545","habitat":"Abundantly
+        naturalised","verbatimEventDate":"11 Jan 2018","language":"en","gbifID":"1804363278","verbatimLocality":"Golden
+        Downs","collectionCode":"CHR","occurrenceID":"A543CF35-F628-4AC6-A323-3607A94AC545","type":"PhysicalObject","catalogNumber":"CHR
+        644141","recordedBy":"Clayson Howell;","institutionCode":"CHR","identifiedBy":"H.
+        Maule","identificationID":"412219"},{"key":1805419329,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-01-28T00:30:29.105+0000","lastParsed":"2018-10-08T17:07:25.565+0000","crawlId":147,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":5285750,"kingdomKey":6,"phylumKey":7707728,"classKey":194,"orderKey":640,"familyKey":3925,"genusKey":2684241,"speciesKey":5285750,"acceptedTaxonKey":5285750,"scientificName":"Pinus
+        contorta Douglas ex Loudon","acceptedScientificName":"Pinus contorta Douglas
+        ex Loudon","kingdom":"Plantae","phylum":"Tracheophyta","order":"Pinales","family":"Pinaceae","genus":"Pinus","species":"Pinus
+        contorta","genericName":"Pinus","specificEpithet":"contorta","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2018-01-19T16:08:46","decimalLongitude":-110.117683,"decimalLatitude":44.903746,"coordinateUncertaintyInMeters":53.0,"stateProvince":"Wyoming","year":2018,"month":1,"day":18,"eventDate":"2018-01-18T09:19:00","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2018-01-19T17:07:19.000+0000","lastInterpreted":"2018-12-23T09:29:17.731+0000","references":"https://www.inaturalist.org/observations/9528737","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/12993473/original.jpeg?1516378015","references":"https://www.inaturalist.org/photos/12993473","created":"2018-01-18T17:19:04.000+0000","creator":"Nicholas
+        Sly","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Nicholas
+        Sly"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/12993475/original.jpeg?1516378035","references":"https://www.inaturalist.org/photos/12993475","created":"2018-01-18T17:18:45.000+0000","creator":"Nicholas
+        Sly","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Nicholas
+        Sly"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/12993479/original.jpeg?1516378043","references":"https://www.inaturalist.org/photos/12993479","created":"2018-01-18T17:19:01.000+0000","creator":"Nicholas
+        Sly","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Nicholas
+        Sly"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/12993482/original.jpeg?1516378044","references":"https://www.inaturalist.org/photos/12993482","created":"2018-01-18T17:19:08.000+0000","creator":"Nicholas
+        Sly","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Nicholas
+        Sly"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Pinopsida","countryCode":"US","country":"United
+        States of America","rightsHolder":"Nicholas Sly","identifier":"9528737","verbatimEventDate":"2018/01/18
+        9:19 AM MST","datasetName":"iNaturalist research-grade observations","gbifID":"1805419329","verbatimLocality":"Soda
+        Butte Creek, Yellowstone National Park, WY, USA","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/9528737","taxonID":"48934","catalogNumber":"9528737","recordedBy":"Nicholas
+        Sly","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/9528737","institutionCode":"iNaturalist","rights":"©
+        Nicholas Sly some rights reserved","eventTime":"16:19:00Z","identificationID":"20889100"},{"key":1821183578,"datasetKey":"38b4c89f-584c-41bb-bd8f-cd1def33e92f","publishingOrgKey":"b8323864-602a-4a7d-9127-bb903054e97d","networkKeys":[],"installationKey":"4346b227-ca68-4d54-8a77-909148492e0b","publishingCountry":"SE","protocol":"DWC_ARCHIVE","lastCrawled":"2019-01-26T09:51:16.417+0000","lastParsed":"2018-02-22T16:02:17.009+0000","crawlId":182,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","individualCount":0,"taxonKey":5285750,"kingdomKey":6,"phylumKey":7707728,"classKey":194,"orderKey":640,"familyKey":3925,"genusKey":2684241,"speciesKey":5285750,"acceptedTaxonKey":5285750,"scientificName":"Pinus
+        contorta Douglas ex Loudon","acceptedScientificName":"Pinus contorta Douglas
+        ex Loudon","kingdom":"Plantae","phylum":"Tracheophyta","order":"Pinales","family":"Pinaceae","genus":"Pinus","species":"Pinus
+        contorta","genericName":"Pinus","specificEpithet":"contorta","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","decimalLongitude":17.564669,"decimalLatitude":59.844931,"coordinateUncertaintyInMeters":75.0,"continent":"EUROPE","year":2018,"month":1,"day":1,"eventDate":"2018-01-01T00:00:00","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2018-01-01T18:18:29.000+0000","lastInterpreted":"2018-12-26T02:41:18.867+0000","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","identifiers":[],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Pinopsida","countryCode":"SE","country":"Sweden","rightsHolder":"Tor
+        Jonzon","county":"Uppland","municipality":"Uppsala","identificationVerificationStatus":"Unvalidated","language":"Swedish","gbifID":"1821183578","type":"Occurrence","taxonID":"urn:lsid:dyntaxa.se:Taxon:222159","occurrenceStatus":"Present","catalogNumber":"109319355","vernacularName":"contortatall","institutionCode":"ArtDatabanken","taxonConceptID":"urn:lsid:dyntaxa.se:Taxon:222159","eventTime":"00:00:00
+        - 00:00:00","identifier":"urn:lsid:artportalen.se:Sighting:68828550","informationWithheld":"More
+        information can be obtained from the Data Provider.","endDayOfYear":"1","locality":"Kvarnbo,
+        parkeringen","collectionCode":"Artportalen","occurrenceID":"urn:lsid:artportalen.se:Sighting:68828550","recordedBy":"Tor
+        Jonzon","startDayOfYear":"1","datasetID":"urn:lsid:swedishlifewatch.se:DataProvider:1","accessRights":"Free
+        usage","higherClassification":"Biota;Plantae;Viridiplantae;Streptophyta;Embryophyta;Tracheophyta;Euphyllophytina;Spermatophytae;Gymnospermae;Pinopsida;Pinales;Pinaceae"},{"key":1805419531,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-01-28T00:30:29.123+0000","lastParsed":"2018-10-08T17:07:25.730+0000","crawlId":147,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":5285750,"kingdomKey":6,"phylumKey":7707728,"classKey":194,"orderKey":640,"familyKey":3925,"genusKey":2684241,"speciesKey":5285750,"acceptedTaxonKey":5285750,"scientificName":"Pinus
+        contorta Douglas ex Loudon","acceptedScientificName":"Pinus contorta Douglas
+        ex Loudon","kingdom":"Plantae","phylum":"Tracheophyta","order":"Pinales","family":"Pinaceae","genus":"Pinus","species":"Pinus
+        contorta","genericName":"Pinus","specificEpithet":"contorta","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2018-01-19T16:37:38","decimalLongitude":-110.113006,"decimalLatitude":44.914671,"coordinateUncertaintyInMeters":31.0,"stateProvince":"Wyoming","year":2018,"month":1,"day":18,"eventDate":"2018-01-18T10:28:00","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2018-01-19T17:06:04.000+0000","lastInterpreted":"2018-12-23T09:29:17.639+0000","references":"https://www.inaturalist.org/observations/9528968","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/12993824/original.jpeg?1516379746","references":"https://www.inaturalist.org/photos/12993824","created":"2018-01-18T18:28:22.000+0000","creator":"Nicholas
+        Sly","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Nicholas
+        Sly"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/12993830/original.jpeg?1516379772","references":"https://www.inaturalist.org/photos/12993830","created":"2018-01-18T18:25:12.000+0000","creator":"Nicholas
+        Sly","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Nicholas
+        Sly"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/12993831/original.jpeg?1516379780","references":"https://www.inaturalist.org/photos/12993831","created":"2018-01-18T18:25:19.000+0000","creator":"Nicholas
+        Sly","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Nicholas
+        Sly"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/12993832/original.jpeg?1516379789","references":"https://www.inaturalist.org/photos/12993832","created":"2018-01-18T18:25:25.000+0000","creator":"Nicholas
+        Sly","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Nicholas
+        Sly"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Pinopsida","countryCode":"US","country":"United
+        States of America","rightsHolder":"Nicholas Sly","identifier":"9528968","verbatimEventDate":"2018/01/18
+        10:28 AM MST","datasetName":"iNaturalist research-grade observations","gbifID":"1805419531","verbatimLocality":"Pebble
+        Creek, Yellowstone National Park, WY, USA","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/9528968","taxonID":"48934","catalogNumber":"9528968","recordedBy":"Nicholas
+        Sly","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/9528968","institutionCode":"iNaturalist","rights":"©
+        Nicholas Sly some rights reserved","eventTime":"17:28:00Z","identificationID":"20889846"}],"facets":[]}'
+  recorded_at: 2019-01-28 19:36:21 GMT
+  recorded_with: vcr/0.2.2, webmockr/0.3.0
+- request:
+    method: get
+    uri: https://bison.usgs.gov/solr/occurrences/select/?q=ITISscientificName%3A%22Pinus%20contorta%22&wt=json&rows=10
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      User-Agent: libcurl/7.54.0 r-curl/3.3 crul/0.7.0.9100
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      connection: keep-alive
+      content-type: text/plain;charset=utf-8
+      date: Mon, 28 Jan 2019 19:36:19 GMT
+      status: HTTP/1.1 200 OK
+      strict-transport-security:
+      - max-age=63072000; includeSubdomains; preload
+      - max-age=63072000; includeSubdomains; preload
+      - max-age=31536000
+      transfer-encoding: chunked
+      x-frame-options: SAMEORIGIN
+      x-node-name: not shown
+      x-upstream-member: not shown
+    body:
+      encoding: UTF-8
+      string: |
+        {"responseHeader":{"status":0,"QTime":0,"params":{"q":"ITISscientificName:\"Pinus contorta\"","rows":"10","wt":"json"}},"response":{"numFound":309111,"start":0,"docs":[{"providedScientificName":"Pinus contorta Douglas ex Loudon","countryCode":"US","providedCounty":"Esmeralda","ambiguous":false,"latlon":"-117.6323824,37.7789658","computedCountyFips":"32009","occurrenceID":"63007780","decimalLongitude":-117.632385,"basisOfRecord":"specimen","collectionID":"http://plants.usda.gov/java/citePlants","ownerInstitutionCollectionCode":"USDA - PLANTS Database","scientificName":"Pinus contorta","institutionID":"https://bison.usgs.gov","computedStateFips":"32","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","TSNs":["183327"],"providerID":440,"stateProvince":"Nevada","higherGeographyID":"32009","decimalLatitude":37.778965,"geo":"-117.6323824 37.7789658","provider":"BISON","calculatedCounty":"Esmeralda","ITISscientificName":"Pinus contorta","pointPath":"/-117.6323824,37.7789658/specimen","kingdom":"Plantae","calculatedState":"Nevada","hierarchy_homonym_string":"-202422-954898-846494-954900-846496-846504-500009-954916-500028-18030-18035-183327-","ITIScommonName":"lodgepole pine;scrub pine;shore pine;tamarack pine","resourceID":"440,1066","ITIStsn":"183327","_version_":1592410706269962246},{"eventDate":"1999-06-05T02:00Z","providedScientificName":"Pinus contorta Douglas ex Loudon","year":1999,"countryCode":"US","providedCounty":"","calculatedWaterbody":"Alaska EEZ","ambiguous":false,"verbatimLocality":"Kodiak Archipelago, Kodiak I., Olga Bay, Cannery Cove, Olga Bay Cannery","latlon":"-154.225,57.15833","computedCountyFips":"02150","occurrenceID":"63018924","decimalLongitude":-154.225,"basisOfRecord":"specimen","providedCommonName":"","collectionID":"http://www.uaf.edu/museum/collections/herb/","ownerInstitutionCollectionCode":"UAM Herbarium (ALA), Vascular Plant Collection (Arctos)","scientificName":"Pinus contorta","institutionID":"http://www.uaf.edu/museum/","computedStateFips":"02","license":"CC_BY_4_0","TSNs":["183327"],"providerID":522,"stateProvince":"Alaska","higherGeographyID":"","verbatimEventDate":"05-Jun-1999","decimalLatitude":57.15833,"coordinatePrecision":"","verbatimElevation":"","recordedBy":"Collector(s): Franzi Koenig","geo":"-154.225 57.15833","provider":"University of Alaska Museum of the North","calculatedCounty":"Kodiak Island","calculatedMrgid":8463,"verbatimDepth":"","catalogNumber":"142373","ITISscientificName":"Pinus contorta","coordinateUncertaintyInMeters":"","pointPath":"/-154.225,57.15833/specimen","kingdom":"Plantae","calculatedState":"Alaska","hierarchy_homonym_string":"-202422-954898-846494-954900-846496-846504-500009-954916-500028-18030-18035-183327-","collectorNumber":"","ITIScommonName":"lodgepole pine;scrub pine;shore pine;tamarack pine","resourceID":"522,202047","ITIStsn":"183327","_version_":1592410707488407558},{"eventDate":"1966-06-12T01:00Z","providedScientificName":"Pinus contorta Douglas ex Loudon","year":1966,"countryCode":"US","providedCounty":"","calculatedWaterbody":"Alaska EEZ","ambiguous":false,"verbatimLocality":"Yakutat Forelands, Situk R. 16 km E of Yakutat along road, 18 km E of Yakutat, 1.6 km E of Situk R.","latlon":"-139.66,59.58","computedCountyFips":"02282","occurrenceID":"63019011","decimalLongitude":-139.66,"basisOfRecord":"specimen","providedCommonName":"","collectionID":"http://www.uaf.edu/museum/collections/herb/","ownerInstitutionCollectionCode":"UAM Herbarium (ALA), Vascular Plant Collection (Arctos)","scientificName":"Pinus contorta","institutionID":"http://www.uaf.edu/museum/","computedStateFips":"02","license":"CC_BY_4_0","TSNs":["183327"],"providerID":522,"stateProvince":"Alaska","higherGeographyID":"","verbatimEventDate":"1966/06/12","decimalLatitude":59.58,"coordinatePrecision":"","verbatimElevation":"","recordedBy":"Collector(s): Vernon L. Harms","geo":"-139.66 59.58","provider":"University of Alaska Museum of the North","calculatedCounty":"Yakutat","calculatedMrgid":8463,"verbatimDepth":"","catalogNumber":"50972","ITISscientificName":"Pinus contorta","coordinateUncertaintyInMeters":"3615.0","pointPath":"/-139.66,59.58/specimen","kingdom":"Plantae","calculatedState":"Alaska","hierarchy_homonym_string":"-202422-954898-846494-954900-846496-846504-500009-954916-500028-18030-18035-183327-","collectorNumber":"","ITIScommonName":"lodgepole pine;scrub pine;shore pine;tamarack pine","resourceID":"522,202047","ITIStsn":"183327","_version_":1592410707498893314},{"eventDate":"1961-05-04T01:00Z","providedScientificName":"Pinus contorta Douglas ex Loudon","year":1961,"countryCode":"US","providedCounty":"","calculatedWaterbody":"Alaska EEZ","ambiguous":false,"verbatimLocality":"Alexander Archipelago, Cat I., Kasaan Bay, 2 km S of Hollis","latlon":"-132.66,55.46","computedCountyFips":"02198","occurrenceID":"63019134","decimalLongitude":-132.66,"basisOfRecord":"specimen","providedCommonName":"","collectionID":"http://www.uaf.edu/museum/collections/herb/","ownerInstitutionCollectionCode":"UAM Herbarium (ALA), Vascular Plant Collection (Arctos)","scientificName":"Pinus contorta","institutionID":"http://www.uaf.edu/museum/","computedStateFips":"02","license":"CC_BY_4_0","TSNs":["183327"],"providerID":522,"stateProvince":"Alaska","higherGeographyID":"","verbatimEventDate":"1961/05/04","decimalLatitude":55.46,"coordinatePrecision":"","verbatimElevation":"","recordedBy":"Collector(s): Elbert L. Little, Jr.","geo":"-132.66 55.46","provider":"University of Alaska Museum of the North","calculatedCounty":"Prince of Wales-Hyder","calculatedMrgid":8463,"verbatimDepth":"","catalogNumber":"41880","ITISscientificName":"Pinus contorta","coordinateUncertaintyInMeters":"3615.0","pointPath":"/-132.66,55.46/specimen","kingdom":"Plantae","calculatedState":"Alaska","hierarchy_homonym_string":"-202422-954898-846494-954900-846496-846504-500009-954916-500028-18030-18035-183327-","collectorNumber":"","ITIScommonName":"lodgepole pine;scrub pine;shore pine;tamarack pine","resourceID":"522,202047","ITIStsn":"183327","_version_":1592410707511476230},{"eventDate":"1961-05-06T01:00Z","providedScientificName":"Pinus contorta Douglas ex Loudon","year":1961,"countryCode":"US","providedCounty":"","calculatedWaterbody":"Alaska EEZ","ambiguous":false,"verbatimLocality":"Coast Mts., Weasel Cove, Boca De Quadra","latlon":"-130.83,55.13","computedCountyFips":"02130","occurrenceID":"63019146","decimalLongitude":-130.83,"basisOfRecord":"specimen","providedCommonName":"","collectionID":"http://www.uaf.edu/museum/collections/herb/","ownerInstitutionCollectionCode":"UAM Herbarium (ALA), Vascular Plant Collection (Arctos)","scientificName":"Pinus contorta","institutionID":"http://www.uaf.edu/museum/","computedStateFips":"02","license":"CC_BY_4_0","TSNs":["183327"],"providerID":522,"stateProvince":"Alaska","higherGeographyID":"","verbatimEventDate":"1961/05/06","decimalLatitude":55.13,"coordinatePrecision":"","verbatimElevation":"","recordedBy":"Collector(s): Elbert L. Little, Jr.","geo":"-130.83 55.13","provider":"University of Alaska Museum of the North","calculatedCounty":"Ketchikan Gateway","calculatedMrgid":8463,"verbatimDepth":"","catalogNumber":"41441","ITISscientificName":"Pinus contorta","coordinateUncertaintyInMeters":"3615.0","pointPath":"/-130.83,55.13/specimen","kingdom":"Plantae","calculatedState":"Alaska","hierarchy_homonym_string":"-202422-954898-846494-954900-846496-846504-500009-954916-500028-18030-18035-183327-","collectorNumber":"","ITIScommonName":"lodgepole pine;scrub pine;shore pine;tamarack pine","resourceID":"522,202047","ITIStsn":"183327","_version_":1592410707512524809},{"eventDate":"1938-05-06T01:00Z","providedScientificName":"Pinus contorta Dougl.","year":1938,"countryCode":"CA","providedCounty":"","ambiguous":false,"verbatimLocality":"","computedCountyFips":"","occurrenceID":"62929238","basisOfRecord":"unknown","providedCommonName":"","collectionID":"http://digir.unibio.unam.mx","ownerInstitutionCollectionCode":"MEXU/Pinaceae","scientificName":"Pinus contorta","institutionID":"http://digir.unibio.unam.mx","license":"CC_BY_NC_4_0","TSNs":["183327"],"providerID":173,"stateProvince":"British Columbian","higherGeographyID":"","verbatimEventDate":"","coordinatePrecision":"","verbatimElevation":"","recordedBy":"McCabe T. T.","provider":"UNIBIO, IBUNAM","calculatedCounty":"","verbatimDepth":"","catalogNumber":"sn431","ITISscientificName":"Pinus contorta","coordinateUncertaintyInMeters":"","pointPath":"/null,null/unknown","kingdom":"Plantae","calculatedState":"","hierarchy_homonym_string":"-202422-954898-846494-954900-846496-846504-500009-954916-500028-18030-18035-183327-","collectorNumber":"","ITIScommonName":"lodgepole pine;scrub pine;shore pine;tamarack pine","resourceID":"173,8393","ITIStsn":"183327","_version_":1592410695234748422},{"providedScientificName":"Pinus contorta Douglas ex Loudon","countryCode":"US","providedCounty":"Union","ambiguous":false,"latlon":"-117.9991356,45.3040466","computedCountyFips":"41061","occurrenceID":"62862575","decimalLongitude":-117.99914,"basisOfRecord":"specimen","collectionID":"http://plants.usda.gov/java/citePlants","ownerInstitutionCollectionCode":"USDA - PLANTS Database","scientificName":"Pinus contorta","institutionID":"https://bison.usgs.gov","computedStateFips":"41","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","TSNs":["183327"],"providerID":440,"stateProvince":"Oregon","higherGeographyID":"41061","decimalLatitude":45.304047,"geo":"-117.9991356 45.3040466","provider":"BISON","calculatedCounty":"Union","ITISscientificName":"Pinus contorta","pointPath":"/-117.9991356,45.3040466/specimen","kingdom":"Plantae","calculatedState":"Oregon","hierarchy_homonym_string":"-202422-954898-846494-954900-846496-846504-500009-954916-500028-18030-18035-183327-","ITIScommonName":"lodgepole pine;scrub pine;shore pine;tamarack pine","resourceID":"440,1066","ITIStsn":"183327","_version_":1592410686216994816},{"eventDate":"","providedScientificName":"Pinus contorta Douglas ex Loudon","countryCode":"US","providedCounty":"","ambiguous":false,"verbatimLocality":"","computedCountyFips":"","occurrenceID":"63269290","basisOfRecord":"unknown","providedCommonName":"","ownerInstitutionCollectionCode":"United States National Plant Germplasm System Collection","scientificName":"Pinus contorta","institutionID":"http://www.ars-grin.gov","license":"CC_BY_4_0","TSNs":["183327"],"providerID":199,"stateProvince":"","higherGeographyID":"","verbatimEventDate":"","coordinatePrecision":"","verbatimElevation":"","recordedBy":"","provider":"US National Plant Germplasm System","calculatedCounty":"","verbatimDepth":"","catalogNumber":"1780203","ITISscientificName":"Pinus contorta","coordinateUncertaintyInMeters":"","pointPath":"/null,null/unknown","kingdom":"Plantae","calculatedState":"","hierarchy_homonym_string":"-202422-954898-846494-954900-846496-846504-500009-954916-500028-18030-18035-183327-","collectorNumber":"","ITIScommonName":"lodgepole pine;scrub pine;shore pine;tamarack pine","resourceID":"199,1429","ITIStsn":"183327","_version_":1592410752250019844},{"providedScientificName":"Pinus contorta Douglas ex Loudon","countryCode":"US","providedCounty":"Payette","ambiguous":false,"latlon":"-116.7486549,44.0027397","computedCountyFips":"16075","occurrenceID":"63127984","decimalLongitude":-116.74866,"basisOfRecord":"specimen","collectionID":"http://plants.usda.gov/java/citePlants","ownerInstitutionCollectionCode":"USDA - PLANTS Database","scientificName":"Pinus contorta","institutionID":"https://bison.usgs.gov","computedStateFips":"16","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","TSNs":["183327"],"providerID":440,"stateProvince":"Idaho","higherGeographyID":"16075","decimalLatitude":44.00274,"geo":"-116.7486549 44.0027397","provider":"BISON","calculatedCounty":"Payette","ITISscientificName":"Pinus contorta","pointPath":"/-116.7486549,44.0027397/specimen","kingdom":"Plantae","calculatedState":"Idaho","hierarchy_homonym_string":"-202422-954898-846494-954900-846496-846504-500009-954916-500028-18030-18035-183327-","ITIScommonName":"lodgepole pine;scrub pine;shore pine;tamarack pine","resourceID":"440,1066","ITIStsn":"183327","_version_":1592410721004552196},{"providedScientificName":"Pinus contorta Douglas ex Loudon","countryCode":"US","providedCounty":"Kootenai","ambiguous":false,"latlon":"-116.6949184,47.6771129","computedCountyFips":"16055","occurrenceID":"63132872","decimalLongitude":-116.694916,"basisOfRecord":"specimen","collectionID":"http://plants.usda.gov/java/citePlants","ownerInstitutionCollectionCode":"USDA - PLANTS Database","scientificName":"Pinus contorta","institutionID":"https://bison.usgs.gov","computedStateFips":"16","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","TSNs":["183327"],"providerID":440,"stateProvince":"Idaho","higherGeographyID":"16055","decimalLatitude":47.677113,"geo":"-116.6949184 47.6771129","provider":"BISON","calculatedCounty":"Kootenai","ITISscientificName":"Pinus contorta","pointPath":"/-116.6949184,47.6771129/specimen","kingdom":"Plantae","calculatedState":"Idaho","hierarchy_homonym_string":"-202422-954898-846494-954900-846496-846504-500009-954916-500028-18030-18035-183327-","ITIScommonName":"lodgepole pine;scrub pine;shore pine;tamarack pine","resourceID":"440,1066","ITIStsn":"183327","_version_":1592410721497382918}]}}
+  recorded_at: 2019-01-28 19:36:21 GMT
+  recorded_with: vcr/0.2.2, webmockr/0.3.0
+- request:
+    method: get
+    uri: http://api.vertnet-portal.appspot.com/api/search?q=%7B%22q%22%3A%22Pinus%20contorta%22%2C%22l%22%3A10%7D
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      User-Agent: libcurl/7.54.0 r-curl/3.3 crul/0.7.0.9100
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      cache-control: no-cache
+      content-type: application/json
+      charset: utf-8
+      x-cloud-trace-context: 53ca1eb540a4e1445a0d56f7f93daa23
+      date: Mon, 28 Jan 2019 19:36:21 GMT
+      server: Google Frontend
+      content-length: '52025'
+    body:
+      encoding: UTF-8
+      string: '{"request_date": "2019-01-28T19:36:21.033708", "response_records":
+        10, "submitted_query": "Pinus contorta", "request_origin": "45.512231,-122.658718",
+        "limit": 10, "cursor": "False:CowHCsUECpgE9wAAABj_____jIGJmo2LkZqL0o-QjYuek96WkZuah9LNz87M0s_H0s_H_wAA_3RtoKCZi4ygoP8AAP9dno-PmpGYlpGa_wAA_3N0bZaRm5qH_wAA_12biJz_AAD_c3Rtm5CcoJab_wAA_12SiYXQnZaNm9KMj5qclpKakYzQl4uLj9KejZyLkIzSm56Lnp2ejJrSkoqMmoqS0piKlpvSkomF0p2WjZvSzsbOzsjP0oyalpvSy87PyMzHz_8AAP9zf5KJhdCdlo2b0oyPmpyWkpqRjNCXi4uP0p6NnIuQjNKbnouenZ6MmtKSioyaipLSmIqWm9KSiYXSnZaNm9LOxs7OyM_SjJqWm9LLzs_IzMfP_wAA__8A_v_-jIGJmo2LkZqL0o-QjYuek96WkZuah9LNz87M0s_H0s_H_wB0baCgmYuMoKD_AF2ej4-akZiWkZr_AHN0bZaRm5qH_wBdm4ic_wBzdG2bkJyglpv_AF2SiYXQnZaNm9KMj5qclpKakYzQl4uLj9KejZyLkIzSm56Lnp2ejJrSkoqMmoqS0piKlpvSkomF0p2WjZvSzsbOzsjP0oyalpvSy87PyMzHz_8Ac3-SiYXQnZaNm9KMj5qclpKakYzQl4uLj9KejZyLkIzSm56Lnp2ejJrSkoqMmoqS0piKlpvSkomF0p2WjZvSzsbOzsjP0oyalpvSy87PyMzHz_8A__4QCiHbXi_RmyTUyTkAAAAA5____0gFUABaCwkJrDvfcZ_xhxACYN7kli4SDURvY3VtZW50SW5kZXgakAIoQU5EIChJUyAiY3VzdG9tZXJfbmFtZSIgImFwcGVuZ2luZSIpIChJUyAiZ3JvdXBfbmFtZSIgInN-dmVydG5ldC1wb3J0YWwiKSAoSVMgIm5hbWVzcGFjZSIgImluZGV4LTIwMTMtMDgtMDgiKSAoSVMgImluZGV4X25hbWUiICJkd2MiKSAoT1IgKEFORCAoT1IgKFFUICJQaW51cyIpIChJUyAiX19nYXRvbV9fIiAicGludXMiKSkgKE9SIChRVCAiY29udG9ydGEiKSAoSVMgIl9fZ2F0b21fXyIgImNvbnRvcnRhIikpKSAoSVMgIl9fZ2F0b21fXyIgInBpbnVzIGNvbnRvcnRhIikpKToZCgwoTiBvcmRlcl9pZCkQARkAAAAAAADw_0oFCABA6Ac",
+        "query_version": "search.py 2016-08-15T16:43+02:00", "recs": [{"haslifestage":
+        "1", "month": "07", "decimallongitude": "-118.841484", "isarch": "0", "startdayofyear":
+        "190", "networks": "Arctos,ORNIS,VertNet", "vntype": "specimen", "title":
+        "MVZ Bird Collection (Arctos)", "accessrights": "http://www.vertnet.org/resources/norms.html",
+        "kingdom": "Animalia", "verbatimcoordinatesystem": "decimal degrees", "dctype":
+        "PhysicalObject", "iptrecordid": "http://arctos.database.museum/guid/MVZ:Bird:150791?seid=1614571",
+        "day": "09", "identificationverificationstatus": "legacy", "occurrenceid":
+        "http://arctos.database.museum/guid/MVZ:Bird:150791?seid=1614571", "identificationqualifier":
+        "A", "georeferenceddate": "2001-03-19", "verbatimeventdate": "9 Jul 1963",
+        "coordinateuncertaintyinmeters": "1610", "higherclassification": "Animalia;
+        Chordata; Aves; Strigiformes; Strigidae;", "pubdate": "2018-10-31", "lifestage":
+        "u ad.", "modified": "2018-09-18 15:54:43.0", "year": "1963", "wasinvasive":
+        "0", "specificepithet": "acadicus", "basisofrecord": "PreservedSpecimen",
+        "geodeticdatum": "North American Datum 1927", "occurrenceremarks": "COLLECTED
+        11:30 P.M.; FROM PINUS CONTORTA. MOUSE REMAINS IN STOMACH.", "highergeography":
+        "North America, United States, California, Mono County", "continent": "North
+        America", "email": "ccicero@berkeley.edu", "orgcountry": "United States",
+        "source_url": "http://ipt.vertnet.org:8080/ipt/resource.do?r=mvz_bird", "scientificname":
+        "Aegolius acadicus acadicus", "hashid": "3463", "hassex": "1", "catalognumber":
+        "150791", "language": "en", "institutionid": "urn:lsid:biocol.org:col:34777",
+        "country": "United States", "hastissue": "0", "underivedsex": "male", "genus":
+        "Aegolius", "georeferenceprotocol": "not recorded", "family": "Strigidae",
+        "stateprovince": "California", "rank": 12, "county": "Mono County", "phylum":
+        "Chordata", "references": "http://arctos.database.museum/guid/MVZ:Bird:150791",
+        "georeferencedby": "Matt Krebs", "taxonrank": "subspecies", "hasmedia": "0",
+        "verbatimlocality": "Crooked Meadow, Inyo National Forest", "institutioncode":
+        "MVZ", "orgstateprovince": "California", "organismid": "http://arctos.database.museum/guid/MVZ:Bird:150791",
+        "hastypestatus": "0", "preparations": "skin, study", "recordedby": "Collector(s):
+        Steven G. Herman", "sex": "male", "isfossil": "0", "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+        "dynamicproperties": "sex=male ; reproductive data=testes 11x7mm; 10x6mm;
+        pale pink ; age=u ad. ; stomach contents=contents recorded", "georeferenceverificationstatus":
+        "unverified", "infraspecificepithet": "acadicus", "haslicense": "1", "eventdate":
+        "1963-07-09", "haslength": "0", "individualcount": "1", "bibliographiccitation":
+        "Museum of Vertebrate Zoology, UC Berkeley. MVZ Bird Collection (Arctos).
+        Record ID: http://arctos.database.museum/guid/MVZ:Bird:150791?seid=1614571.
+        Source: http://ipt.vertnet.org:8080/ipt/resource.do?r=mvz_bird (source published
+        on 2018-10-31)", "citation": "Museum of Vertebrate Zoology, UC Berkeley. MVZ
+        Bird Collection (Arctos). Source: http://ipt.vertnet.org:8080/ipt/resource.do?r=mvz_bird
+        (source published on 2018-10-31)", "georeferencesources": "TopoScout 2.04
+        USGS 1:24000", "lastindexed": "2018-11-05", "dateidentified": "1999-01-27",
+        "wascaptive": "0", "emlrights": "http://creativecommons.org/publicdomain/zero/1.0
+        and http://vertnet.org/resources/norms.html", "hasmass": "0", "gbifdatasetid":
+        "e3b959d6-fcbe-4a28-a166-e4a807c340a0", "locality": "Crooked Meadow, Inyo
+        National Forest", "orgname": "Museum of Vertebrate Zoology, UC Berkeley",
+        "contact": "Carla Cicero", "migrator": "no migrator", "collectioncode": "Bird
+        specimens", "collectionid": "urn:lsid:biocol.org:col:34952", "icode": "MVZ",
+        "gbifpublisherid": "8edbbde0-055e-11d8-b850-b8a03c50a862", "class": "Aves",
+        "previousidentifications": "<i>Aegolius acadicus acadicus</i> (accepted ID)
+        identified by Museum of Vertebrate Zoology, University of California, Berkeley
+        on 1999-01-27; method: legacy", "decimallatitude": "37.823624", "mappable":
+        "1", "locationaccordingto": "Matt Krebs", "verbatimcoordinates": "37.823624/-118.841484",
+        "identifiedby": "Museum of Vertebrate Zoology, University of California, Berkeley",
+        "nomenclaturalcode": "ICZN", "keyname": "mvz/bird-specimens/http-arctos-database-museum-guid-mvz-bird-150791-seid-1614571",
+        "order": "Strigiformes", "enddayofyear": "190"}, {"haslifestage": "1", "month":
+        "06", "decimallongitude": "-118.33772", "isarch": "0", "startdayofyear": "178",
+        "minimumelevationinmeters": "2377.44", "networks": "Arctos,ORNIS,VertNet",
+        "vntype": "specimen", "title": "MVZ Bird Collection (Arctos)", "massing":
+        "107", "accessrights": "http://www.vertnet.org/resources/norms.html", "kingdom":
+        "Animalia", "verbatimcoordinatesystem": "decimal degrees", "dctype": "PhysicalObject",
+        "iptrecordid": "http://arctos.database.museum/guid/MVZ:Bird:191167?seid=4107377",
+        "day": "27", "keyname": "mvz/bird-specimens/http-arctos-database-museum-guid-mvz-bird-191167-seid-4107377",
+        "identificationverificationstatus": "geographic distribution", "occurrenceid":
+        "http://arctos.database.museum/guid/MVZ:Bird:191167?seid=4107377", "identificationqualifier":
+        "A", "georeferenceddate": "2009-06-27", "verbatimeventdate": "27 Jun 2009",
+        "gbifdatasetid": "e3b959d6-fcbe-4a28-a166-e4a807c340a0", "higherclassification":
+        "Animalia; Chordata; Aves; Passeriformes; Corvidae;", "pubdate": "2018-10-31",
+        "lifestage": "skull", "modified": "2018-10-15 13:39:12.0", "year": "2009",
+        "wasinvasive": "0", "specificepithet": "stelleri", "basisofrecord": "PreservedSpecimen",
+        "geodeticdatum": "World Geodetic System 1984", "highergeography": "North America,
+        United States, California, Tulare County", "continent": "North America", "email":
+        "ccicero@berkeley.edu", "orgcountry": "United States", "source_url": "http://ipt.vertnet.org:8080/ipt/resource.do?r=mvz_bird",
+        "scientificname": "Cyanocitta stelleri frontalis", "hashid": "584", "hassex":
+        "1", "catalognumber": "191167", "language": "en", "institutionid": "urn:lsid:biocol.org:col:34777",
+        "country": "United States", "hastissue": "1", "underivedsex": "male", "genus":
+        "Cyanocitta", "georeferenceprotocol": "MaNIS georeferencing guidelines", "family":
+        "Corvidae", "stateprovince": "California", "rank": 12, "county": "Tulare County",
+        "phylum": "Chordata", "references": "http://arctos.database.museum/guid/MVZ:Bird:191167",
+        "georeferencedby": "Carla Cicero", "taxonrank": "subspecies", "hasmedia":
+        "0", "verbatimlocality": "Big Meadow, 7800 ft, Sequoia Nat''l. Forest, Tulare
+        Co., Calif. (GPS: 35.89632 N, 118.33772 W, error 16 ft, datum WGS84; extent
+        0.67 mi S in meadow and along eastern and western edges/slopes)", "habitat":
+        "Pinus jeffreyi, Pinus contorta, Abies concolor, meadow, patches of Ribes,
+        Ceanothus, and Manzanita", "institutioncode": "MVZ", "orgstateprovince": "California",
+        "organismid": "http://arctos.database.museum/guid/MVZ:Bird:191167", "maximumelevationinmeters":
+        "2377.44", "hastypestatus": "0", "preparations": "tissue (frozen); skin, study",
+        "coordinateuncertaintyinmeters": "545", "recordedby": "Collector(s): Carla
+        Cicero", "sex": "male", "isfossil": "0", "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+        "dynamicproperties": "sex=male ; age=skull 100% ossified ; reproductive data=testis
+        5 x 2 mm ; fat deposition=no fat ; molt condition=primaries 1-4 and central
+        rectrices in sheath ; weight=107 g; verbatim preservation date=9 Jul 2009",
+        "georeferenceverificationstatus": "unverified", "infraspecificepithet": "frontalis",
+        "haslicense": "1", "samplingprotocol": "shotgun", "eventdate": "2009-06-27",
+        "haslength": "0", "individualcount": "1", "bibliographiccitation": "Museum
+        of Vertebrate Zoology, UC Berkeley. MVZ Bird Collection (Arctos). Record ID:
+        http://arctos.database.museum/guid/MVZ:Bird:191167?seid=4107377. Source: http://ipt.vertnet.org:8080/ipt/resource.do?r=mvz_bird
+        (source published on 2018-10-31)", "verbatimcoordinates": "35.89632/-118.33772",
+        "citation": "Museum of Vertebrate Zoology, UC Berkeley. MVZ Bird Collection
+        (Arctos). Source: http://ipt.vertnet.org:8080/ipt/resource.do?r=mvz_bird (source
+        published on 2018-10-31)", "georeferencesources": "Garmin GPS 60CSx, Google
+        Earth Pro 5.0, TeleAtlas, eye alt. 17604 ft", "lastindexed": "2018-11-05",
+        "dateidentified": "2018-08-16", "wascaptive": "0", "emlrights": "http://creativecommons.org/publicdomain/zero/1.0
+        and http://vertnet.org/resources/norms.html", "hasmass": "1", "locality":
+        "Big Meadow, Sequoia National Forest", "orgname": "Museum of Vertebrate Zoology,
+        UC Berkeley", "locationremarks": "I used geopy [version 1.11.0] (https://github.com/geopy/geopy)
+        to calculate the coordinates of a point 0.67 mi distant to the south from
+        the given starting coordinates. I then found the coordinates of the centroid
+        of the two points and calculated the distance from this centroid to each of
+        the points. The maximum error is the larger of these distances plus the error
+        in the starting GPS point. I have given the coordinates of the centroid.",
+        "migrator": "no migrator", "recordnumber": "3705", "collectioncode": "Bird
+        specimens", "collectionid": "urn:lsid:biocol.org:col:34952", "massunitsinferred":
+        "0", "icode": "MVZ", "gbifpublisherid": "8edbbde0-055e-11d8-b850-b8a03c50a862",
+        "class": "Aves", "previousidentifications": "<i>Cyanocitta stelleri frontalis</i>
+        (accepted ID) identified by Carla Cicero on 2018-08-16; method: geographic
+        distribution", "decimallatitude": "35.89146109", "mappable": "1", "locationaccordingto":
+        "Carla Cicero", "othercatalognumbers": "collector number=3705", "identifiedby":
+        "Carla Cicero", "nomenclaturalcode": "ICZN", "contact": "Carla Cicero", "order":
+        "Passeriformes", "enddayofyear": "178"}, {"haslifestage": "1", "month": "06",
+        "decimallongitude": "-118.33772", "isarch": "0", "startdayofyear": "178",
+        "minimumelevationinmeters": "2377.44", "networks": "Arctos,ORNIS,VertNet",
+        "vntype": "specimen", "title": "MVZ Bird Collection (Arctos)", "massing":
+        "108", "accessrights": "http://www.vertnet.org/resources/norms.html", "kingdom":
+        "Animalia", "verbatimcoordinatesystem": "decimal degrees", "dctype": "PhysicalObject",
+        "iptrecordid": "http://arctos.database.museum/guid/MVZ:Bird:191168?seid=4107378",
+        "day": "27", "keyname": "mvz/bird-specimens/http-arctos-database-museum-guid-mvz-bird-191168-seid-4107378",
+        "identificationverificationstatus": "geographic distribution", "occurrenceid":
+        "http://arctos.database.museum/guid/MVZ:Bird:191168?seid=4107378", "identificationqualifier":
+        "A", "georeferenceddate": "2009-06-27", "verbatimeventdate": "27 Jun 2009",
+        "gbifdatasetid": "e3b959d6-fcbe-4a28-a166-e4a807c340a0", "higherclassification":
+        "Animalia; Chordata; Aves; Passeriformes; Corvidae;", "pubdate": "2018-10-31",
+        "lifestage": "skull", "modified": "2018-10-15 13:39:12.0", "year": "2009",
+        "wasinvasive": "0", "specificepithet": "stelleri", "basisofrecord": "PreservedSpecimen",
+        "geodeticdatum": "World Geodetic System 1984", "highergeography": "North America,
+        United States, California, Tulare County", "continent": "North America", "email":
+        "ccicero@berkeley.edu", "orgcountry": "United States", "source_url": "http://ipt.vertnet.org:8080/ipt/resource.do?r=mvz_bird",
+        "scientificname": "Cyanocitta stelleri frontalis", "hashid": "9591", "hassex":
+        "1", "catalognumber": "191168", "language": "en", "institutionid": "urn:lsid:biocol.org:col:34777",
+        "country": "United States", "hastissue": "1", "underivedsex": "male", "genus":
+        "Cyanocitta", "georeferenceprotocol": "MaNIS georeferencing guidelines", "family":
+        "Corvidae", "stateprovince": "California", "rank": 12, "county": "Tulare County",
+        "phylum": "Chordata", "references": "http://arctos.database.museum/guid/MVZ:Bird:191168",
+        "georeferencedby": "Carla Cicero", "taxonrank": "subspecies", "hasmedia":
+        "0", "verbatimlocality": "Big Meadow, 7800 ft, Sequoia Nat''l. Forest, Tulare
+        Co., Calif. (GPS: 35.89632 N, 118.33772 W, error 16 ft, datum WGS84; extent
+        0.67 mi S in meadow and along eastern and western edges/slopes)", "habitat":
+        "Pinus jeffreyi, Pinus contorta, Abies concolor, meadow, patches of Ribes,
+        Ceanothus, and Manzanita", "institutioncode": "MVZ", "orgstateprovince": "California",
+        "organismid": "http://arctos.database.museum/guid/MVZ:Bird:191168", "maximumelevationinmeters":
+        "2377.44", "hastypestatus": "0", "preparations": "tissue (frozen); skin, study",
+        "coordinateuncertaintyinmeters": "545", "recordedby": "Collector(s): Carla
+        Cicero", "sex": "male", "isfossil": "0", "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+        "dynamicproperties": "sex=male ; age=skull 100% ossified ; reproductive data=testis
+        5 x 3 mm ; fat deposition=no fat ; molt condition=slight body molt, primaries
+        1-3 in sheath, primary 4 missing, central rectrices missing ; weight=108 g;
+        verbatim preservation date=9 Jul 2009", "georeferenceverificationstatus":
+        "unverified", "infraspecificepithet": "frontalis", "haslicense": "1", "samplingprotocol":
+        "shotgun", "eventdate": "2009-06-27", "haslength": "0", "individualcount":
+        "1", "bibliographiccitation": "Museum of Vertebrate Zoology, UC Berkeley.
+        MVZ Bird Collection (Arctos). Record ID: http://arctos.database.museum/guid/MVZ:Bird:191168?seid=4107378.
+        Source: http://ipt.vertnet.org:8080/ipt/resource.do?r=mvz_bird (source published
+        on 2018-10-31)", "verbatimcoordinates": "35.89632/-118.33772", "citation":
+        "Museum of Vertebrate Zoology, UC Berkeley. MVZ Bird Collection (Arctos).
+        Source: http://ipt.vertnet.org:8080/ipt/resource.do?r=mvz_bird (source published
+        on 2018-10-31)", "georeferencesources": "Garmin GPS 60CSx, Google Earth Pro
+        5.0, TeleAtlas, eye alt. 17604 ft", "lastindexed": "2018-11-05", "dateidentified":
+        "2018-08-16", "wascaptive": "0", "emlrights": "http://creativecommons.org/publicdomain/zero/1.0
+        and http://vertnet.org/resources/norms.html", "hasmass": "1", "locality":
+        "Big Meadow, Sequoia National Forest", "orgname": "Museum of Vertebrate Zoology,
+        UC Berkeley", "locationremarks": "I used geopy [version 1.11.0] (https://github.com/geopy/geopy)
+        to calculate the coordinates of a point 0.67 mi distant to the south from
+        the given starting coordinates. I then found the coordinates of the centroid
+        of the two points and calculated the distance from this centroid to each of
+        the points. The maximum error is the larger of these distances plus the error
+        in the starting GPS point. I have given the coordinates of the centroid.",
+        "migrator": "no migrator", "recordnumber": "3706", "collectioncode": "Bird
+        specimens", "collectionid": "urn:lsid:biocol.org:col:34952", "massunitsinferred":
+        "0", "icode": "MVZ", "gbifpublisherid": "8edbbde0-055e-11d8-b850-b8a03c50a862",
+        "class": "Aves", "previousidentifications": "<i>Cyanocitta stelleri frontalis</i>
+        (accepted ID) identified by Carla Cicero on 2018-08-16; method: geographic
+        distribution", "decimallatitude": "35.89146109", "mappable": "1", "locationaccordingto":
+        "Carla Cicero", "othercatalognumbers": "collector number=3706", "identifiedby":
+        "Carla Cicero", "nomenclaturalcode": "ICZN", "contact": "Carla Cicero", "order":
+        "Passeriformes", "enddayofyear": "178"}, {"haslifestage": "1", "month": "06",
+        "decimallongitude": "-118.33772", "isarch": "0", "startdayofyear": "178",
+        "minimumelevationinmeters": "2377.44", "networks": "Arctos,ORNIS,VertNet",
+        "vntype": "specimen", "title": "MVZ Bird Collection (Arctos)", "massing":
+        "101", "accessrights": "http://www.vertnet.org/resources/norms.html", "kingdom":
+        "Animalia", "verbatimcoordinatesystem": "decimal degrees", "dctype": "PhysicalObject",
+        "iptrecordid": "http://arctos.database.museum/guid/MVZ:Bird:191172?seid=4107382",
+        "day": "27", "keyname": "mvz/bird-specimens/http-arctos-database-museum-guid-mvz-bird-191172-seid-4107382",
+        "identificationverificationstatus": "geographic distribution", "occurrenceid":
+        "http://arctos.database.museum/guid/MVZ:Bird:191172?seid=4107382", "identificationqualifier":
+        "A", "georeferenceddate": "2009-06-27", "verbatimeventdate": "27 Jun 2009",
+        "gbifdatasetid": "e3b959d6-fcbe-4a28-a166-e4a807c340a0", "higherclassification":
+        "Animalia; Chordata; Aves; Passeriformes; Corvidae;", "pubdate": "2018-10-31",
+        "lifestage": "skull", "modified": "2018-10-15 13:39:12.0", "year": "2009",
+        "wasinvasive": "0", "specificepithet": "stelleri", "basisofrecord": "PreservedSpecimen",
+        "geodeticdatum": "World Geodetic System 1984", "highergeography": "North America,
+        United States, California, Tulare County", "continent": "North America", "email":
+        "ccicero@berkeley.edu", "orgcountry": "United States", "source_url": "http://ipt.vertnet.org:8080/ipt/resource.do?r=mvz_bird",
+        "scientificname": "Cyanocitta stelleri frontalis", "hashid": "8263", "hassex":
+        "1", "catalognumber": "191172", "language": "en", "institutionid": "urn:lsid:biocol.org:col:34777",
+        "country": "United States", "hastissue": "1", "underivedsex": "female", "genus":
+        "Cyanocitta", "georeferenceprotocol": "MaNIS georeferencing guidelines", "family":
+        "Corvidae", "stateprovince": "California", "rank": 12, "county": "Tulare County",
+        "phylum": "Chordata", "references": "http://arctos.database.museum/guid/MVZ:Bird:191172",
+        "georeferencedby": "Carla Cicero", "taxonrank": "subspecies", "hasmedia":
+        "0", "verbatimlocality": "Big Meadow, 7800 ft, Sequoia Nat''l. Forest, Tulare
+        Co., Calif. (GPS: 35.89632 N, 118.33772 W, error 16 ft, datum WGS84; extent
+        0.67 mi S in meadow and along eastern and western edges/slopes)", "habitat":
+        "Pinus jeffreyi, Pinus contorta, Abies concolor, meadow, patches of Ribes,
+        Ceanothus, and Manzanita", "institutioncode": "MVZ", "orgstateprovince": "California",
+        "organismid": "http://arctos.database.museum/guid/MVZ:Bird:191172", "maximumelevationinmeters":
+        "2377.44", "hastypestatus": "0", "preparations": "tissue (frozen); skin, study",
+        "coordinateuncertaintyinmeters": "545", "recordedby": "Collector(s): Carla
+        Cicero", "sex": "female", "isfossil": "0", "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+        "dynamicproperties": "sex=female ; age=skull 100% ossified ; reproductive
+        data=ovary granular, ova minute ; fat deposition=no fat ; molt condition=primaries
+        1-4 and central rectrices in sheath ; weight=101 g", "georeferenceverificationstatus":
+        "unverified", "infraspecificepithet": "frontalis", "haslicense": "1", "samplingprotocol":
+        "shotgun", "eventdate": "2009-06-27", "haslength": "0", "individualcount":
+        "1", "bibliographiccitation": "Museum of Vertebrate Zoology, UC Berkeley.
+        MVZ Bird Collection (Arctos). Record ID: http://arctos.database.museum/guid/MVZ:Bird:191172?seid=4107382.
+        Source: http://ipt.vertnet.org:8080/ipt/resource.do?r=mvz_bird (source published
+        on 2018-10-31)", "verbatimcoordinates": "35.89632/-118.33772", "citation":
+        "Museum of Vertebrate Zoology, UC Berkeley. MVZ Bird Collection (Arctos).
+        Source: http://ipt.vertnet.org:8080/ipt/resource.do?r=mvz_bird (source published
+        on 2018-10-31)", "georeferencesources": "Garmin GPS 60CSx, Google Earth Pro
+        5.0, TeleAtlas, eye alt. 17604 ft", "lastindexed": "2018-11-05", "dateidentified":
+        "2018-08-16", "wascaptive": "0", "emlrights": "http://creativecommons.org/publicdomain/zero/1.0
+        and http://vertnet.org/resources/norms.html", "hasmass": "1", "locality":
+        "Big Meadow, Sequoia National Forest", "orgname": "Museum of Vertebrate Zoology,
+        UC Berkeley", "locationremarks": "I used geopy [version 1.11.0] (https://github.com/geopy/geopy)
+        to calculate the coordinates of a point 0.67 mi distant to the south from
+        the given starting coordinates. I then found the coordinates of the centroid
+        of the two points and calculated the distance from this centroid to each of
+        the points. The maximum error is the larger of these distances plus the error
+        in the starting GPS point. I have given the coordinates of the centroid.",
+        "migrator": "no migrator", "recordnumber": "3718", "collectioncode": "Bird
+        specimens", "collectionid": "urn:lsid:biocol.org:col:34952", "massunitsinferred":
+        "0", "icode": "MVZ", "gbifpublisherid": "8edbbde0-055e-11d8-b850-b8a03c50a862",
+        "class": "Aves", "previousidentifications": "<i>Cyanocitta stelleri frontalis</i>
+        (accepted ID) identified by Carla Cicero on 2018-08-16; method: geographic
+        distribution", "decimallatitude": "35.89146109", "mappable": "1", "locationaccordingto":
+        "Carla Cicero", "othercatalognumbers": "collector number=3718", "identifiedby":
+        "Carla Cicero", "nomenclaturalcode": "ICZN", "contact": "Carla Cicero", "order":
+        "Passeriformes", "enddayofyear": "178"}, {"haslifestage": "0", "month": "06",
+        "decimallongitude": "-80.80071", "isarch": "0", "startdayofyear": "181", "networks":
+        "Arctos,MaNIS,VertNet", "vntype": "specimen", "title": "UWBM Mammalogy Collection",
+        "accessrights": "http://vertnet.org/resources/norms.html", "kingdom": "Animalia",
+        "verbatimcoordinatesystem": "decimal degrees", "dctype": "PhysicalObject",
+        "iptrecordid": "http://arctos.database.museum/guid/UWBM:Mamm:50981?seid=3633088",
+        "day": "30", "keyname": "uwbm/mammal-specimens/http-arctos-database-museum-guid-uwbm-mamm-50981-seid-3633088",
+        "identificationverificationstatus": "legacy", "occurrenceid": "http://arctos.database.museum/guid/UWBM:Mamm:50981?seid=3633088",
+        "identificationqualifier": "A", "georeferenceddate": "2017-07-11", "verbatimeventdate":
+        "before 2017-07-11", "coordinateuncertaintyinmeters": "3212", "higherclassification":
+        "Animalia; Chordata; Mammalia; Soricomorpha; Soricidae; Soricinae; Blarinini;",
+        "pubdate": "2018-11-02", "sex": "male", "year": "1967", "wasinvasive": "0",
+        "specificepithet": "brevicauda", "basisofrecord": "PreservedSpecimen", "geodeticdatum":
+        "North American Datum 1983", "highergeography": "North America, Canada, Ontario,
+        Grey County", "continent": "North America", "email": "jebrad@uw.edu", "orgcountry":
+        "United States", "source_url": "http://ipt.vertnet.org:8080/ipt/resource.do?r=uwbm_mammals",
+        "scientificname": "Blarina brevicauda", "hashid": "2358", "hassex": "1", "language":
+        "en", "institutionid": "http://biocol.org/urn:lsid:biocol.org:col:34878",
+        "country": "Canada", "hastissue": "0", "lengthunitsinferred": "0", "underivedsex":
+        "male", "genus": "Blarina", "georeferenceprotocol": "not recorded", "family":
+        "Soricidae", "stateprovince": "Ontario", "rank": 12, "county": "Grey County",
+        "phylum": "Chordata", "references": "http://arctos.database.museum/guid/UWBM:Mamm:50981",
+        "georeferencedby": "unknown", "taxonrank": "species", "hasmedia": "0", "verbatimlocality":
+        "CAN | Ontario | Grey | Massie", "habitat": "pinus contorta, birches", "institutioncode":
+        "UWBM", "eventremarks": "native; No molt. Stomach: black insect bits? Tunnel
+        in humus", "orgstateprovince": "Washington", "lengthinmm": "133", "organismid":
+        "http://arctos.database.museum/guid/UWBM:Mamm:50981", "hastypestatus": "0",
+        "preparations": "skull; skin, study", "isfossil": "0", "license": "http://arctosdb.org/home/data/",
+        "wascaptive": "0", "dynamicproperties": "ear from notch=18 mm; hind foot with
+        claw=16 mm; tail length=31 mm; total length=133 mm; verbatim collector=H.
+        E. Broadbooks, W. Broadbooks ; verbatim collector=H. E. Broadbooks 4772 ;
+        sex=male", "georeferenceverificationstatus": "unverified", "modified": "2018-09-21
+        09:28:43.0", "haslicense": "1", "eventdate": "1967-06-30", "haslength": "1",
+        "individualcount": "1", "bibliographiccitation": "University of Washington
+        Burke Museum. UWBM Mammalogy Collection. Record ID: http://arctos.database.museum/guid/UWBM:Mamm:50981?seid=3633088.
+        Source: http://ipt.vertnet.org:8080/ipt/resource.do?r=uwbm_mammals (source
+        published on 2018-11-02)", "citation": "University of Washington Burke Museum.
+        UWBM Mammalogy Collection. Source: http://ipt.vertnet.org:8080/ipt/resource.do?r=uwbm_mammals
+        (source published on 2018-11-02)", "georeferencesources": "unknown", "lastindexed":
+        "2018-11-06", "dateidentified": "2017-07-11", "catalognumber": "50981", "emlrights":
+        "https://creativecommons.org/publicdomain/zero/1.0 and http://vertnet.org/resources/norms.html",
+        "hasmass": "0", "gbifdatasetid": "830eb5d0-f762-11e1-a439-00145eb45e9a", "locality":
+        "Massie", "orgname": "University of Washington Burke Museum", "contact": "Jeff
+        Bradley", "migrator": "no migrator", "lengthtype": "total length", "collectioncode":
+        "Mammal specimens", "icode": "UWBM", "gbifpublisherid": "06fcbbf0-0562-11d8-b851-b8a03c50a862",
+        "class": "Mammalia", "previousidentifications": "<i>Blarina brevicauda</i>
+        (accepted ID) identified by unknown on 2017-07-11; method: legacy", "decimallatitude":
+        "44.46939", "mappable": "1", "locationaccordingto": "unknown", "verbatimcoordinates":
+        "44.46939/-80.80071", "identifiedby": "unknown", "nomenclaturalcode": "ICZN",
+        "locationremarks": "; VERBATIMCOORDINATESYSTEM: decimal degrees; GEOREFERENCEDBY:
+        Brad G. Millen (ROM); GEOREFERENCEDDATE: 4 Nov 2003; GEOREFERENCESOURCES:
+        Energy, Mines and Resources Canada, Series A751, Markdale, 41A07, 1:50,000,
+        Edition 4, 1993; GEOREFERENCEVERIFICATIONSTATUS: requires verification", "order":
+        "Soricomorpha", "enddayofyear": "181"}, {"haslifestage": "1", "month": "06",
+        "decimallongitude": "-118.099737", "isarch": "0", "startdayofyear": "159",
+        "minimumelevationinmeters": "2499.36", "networks": "Arctos,ORNIS,VertNet",
+        "vntype": "specimen", "title": "MVZ Bird Collection (Arctos)", "massing":
+        "73.3", "accessrights": "http://www.vertnet.org/resources/norms.html", "kingdom":
+        "Animalia", "verbatimcoordinatesystem": "decimal degrees", "dctype": "PhysicalObject",
+        "iptrecordid": "http://arctos.database.museum/guid/MVZ:Bird:132222?seid=1478165",
+        "day": "08", "identificationverificationstatus": "legacy", "occurrenceid":
+        "http://arctos.database.museum/guid/MVZ:Bird:132222?seid=1478165", "identificationqualifier":
+        "A", "georeferenceddate": "2000-01-02", "verbatimeventdate": "8 Jun 1954",
+        "coordinateuncertaintyinmeters": "30", "higherclassification": "Animalia;
+        Chordata; Aves; Strigiformes; Strigidae;", "pubdate": "2018-10-31", "lifestage":
+        "u juv.", "modified": "2018-10-14 15:20:04.0", "year": "1954", "wasinvasive":
+        "0", "specificepithet": "acadicus", "basisofrecord": "PreservedSpecimen",
+        "geodeticdatum": "North American Datum 1927", "occurrenceremarks": "COLLECTED
+        11:30 P.M.; FROM PINUS CONTORTA. MOUSE REMAINS IN STOMACH.", "highergeography":
+        "North America, United States, California, Inyo County", "continent": "North
+        America", "email": "ccicero@berkeley.edu", "orgcountry": "United States",
+        "source_url": "http://ipt.vertnet.org:8080/ipt/resource.do?r=mvz_bird", "scientificname":
+        "Aegolius acadicus acadicus", "hashid": "2368", "hassex": "1", "catalognumber":
+        "132222", "language": "en", "institutionid": "urn:lsid:biocol.org:col:34777",
+        "country": "United States", "hastissue": "0", "underivedsex": "male", "genus":
+        "Aegolius", "georeferenceprotocol": "not recorded", "family": "Strigidae",
+        "stateprovince": "California", "rank": 12, "county": "Inyo County", "phylum":
+        "Chordata", "references": "http://arctos.database.museum/guid/MVZ:Bird:132222",
+        "georeferencedby": "Matt Krebs", "taxonrank": "subspecies", "hasmedia": "0",
+        "verbatimlocality": "Roberts Ranch, Wyman Creek, White Mts.", "institutioncode":
+        "MVZ", "orgstateprovince": "California", "organismid": "http://arctos.database.museum/guid/MVZ:Bird:132222",
+        "maximumelevationinmeters": "2499.36", "hastypestatus": "0", "preparations":
+        "skin, study", "recordedby": "Collector(s): Joseph G. Hall", "sex": "male",
+        "isfossil": "0", "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+        "dynamicproperties": "weight=73.30 g; sex=male ; age=u juv.", "georeferenceverificationstatus":
+        "unverified", "infraspecificepithet": "acadicus", "haslicense": "1", "eventdate":
+        "1954-06-08", "haslength": "0", "individualcount": "1", "bibliographiccitation":
+        "Museum of Vertebrate Zoology, UC Berkeley. MVZ Bird Collection (Arctos).
+        Record ID: http://arctos.database.museum/guid/MVZ:Bird:132222?seid=1478165.
+        Source: http://ipt.vertnet.org:8080/ipt/resource.do?r=mvz_bird (source published
+        on 2018-10-31)", "verbatimcoordinates": "37.432159/-118.099737", "citation":
+        "Museum of Vertebrate Zoology, UC Berkeley. MVZ Bird Collection (Arctos).
+        Source: http://ipt.vertnet.org:8080/ipt/resource.do?r=mvz_bird (source published
+        on 2018-10-31)", "georeferencesources": "TopoScout 2.04 USGS 1:100000", "lastindexed":
+        "2018-11-05", "dateidentified": "1999-01-27", "wascaptive": "0", "emlrights":
+        "http://creativecommons.org/publicdomain/zero/1.0 and http://vertnet.org/resources/norms.html",
+        "hasmass": "1", "gbifdatasetid": "e3b959d6-fcbe-4a28-a166-e4a807c340a0", "locality":
+        "Roberts Ranch, Wyman Creek, White Mts.", "orgname": "Museum of Vertebrate
+        Zoology, UC Berkeley", "keyname": "mvz/bird-specimens/http-arctos-database-museum-guid-mvz-bird-132222-seid-1478165",
+        "migrator": "no migrator", "recordnumber": "35", "collectioncode": "Bird specimens",
+        "collectionid": "urn:lsid:biocol.org:col:34952", "massunitsinferred": "0",
+        "icode": "MVZ", "gbifpublisherid": "8edbbde0-055e-11d8-b850-b8a03c50a862",
+        "class": "Aves", "previousidentifications": "<i>Aegolius acadicus acadicus</i>
+        (accepted ID) identified by Museum of Vertebrate Zoology, University of California,
+        Berkeley on 1999-01-27; method: legacy", "decimallatitude": "37.432159", "mappable":
+        "1", "locationaccordingto": "Matt Krebs", "othercatalognumbers": "collector
+        number=35", "identifiedby": "Museum of Vertebrate Zoology, University of California,
+        Berkeley", "nomenclaturalcode": "ICZN", "contact": "Carla Cicero", "order":
+        "Strigiformes", "enddayofyear": "159"}, {"haslifestage": "1", "month": "06",
+        "decimallongitude": "-118.33772", "isarch": "0", "startdayofyear": "178",
+        "minimumelevationinmeters": "2377.44", "networks": "Arctos,ORNIS,VertNet",
+        "vntype": "specimen", "title": "MVZ Bird Collection (Arctos)", "massing":
+        "109", "accessrights": "http://www.vertnet.org/resources/norms.html", "kingdom":
+        "Animalia", "verbatimcoordinatesystem": "decimal degrees", "dctype": "PhysicalObject",
+        "iptrecordid": "http://arctos.database.museum/guid/MVZ:Bird:191165?seid=4107375",
+        "day": "27", "keyname": "mvz/bird-specimens/http-arctos-database-museum-guid-mvz-bird-191165-seid-4107375",
+        "identificationverificationstatus": "geographic distribution", "occurrenceid":
+        "http://arctos.database.museum/guid/MVZ:Bird:191165?seid=4107375", "identificationqualifier":
+        "A", "georeferenceddate": "2009-06-27", "verbatimeventdate": "27 Jun 2009",
+        "gbifdatasetid": "e3b959d6-fcbe-4a28-a166-e4a807c340a0", "higherclassification":
+        "Animalia; Chordata; Aves; Passeriformes; Corvidae;", "pubdate": "2018-10-31",
+        "lifestage": "skull", "modified": "2018-10-15 13:39:12.0", "year": "2009",
+        "wasinvasive": "0", "specificepithet": "stelleri", "basisofrecord": "PreservedSpecimen",
+        "geodeticdatum": "World Geodetic System 1984", "highergeography": "North America,
+        United States, California, Tulare County", "continent": "North America", "email":
+        "ccicero@berkeley.edu", "orgcountry": "United States", "source_url": "http://ipt.vertnet.org:8080/ipt/resource.do?r=mvz_bird",
+        "scientificname": "Cyanocitta stelleri frontalis", "hashid": "1132", "hassex":
+        "1", "catalognumber": "191165", "language": "en", "institutionid": "urn:lsid:biocol.org:col:34777",
+        "country": "United States", "hastissue": "1", "underivedsex": "male", "genus":
+        "Cyanocitta", "georeferenceprotocol": "MaNIS georeferencing guidelines", "family":
+        "Corvidae", "stateprovince": "California", "rank": 12, "county": "Tulare County",
+        "phylum": "Chordata", "references": "http://arctos.database.museum/guid/MVZ:Bird:191165",
+        "georeferencedby": "Carla Cicero", "taxonrank": "subspecies", "hasmedia":
+        "0", "verbatimlocality": "Big Meadow, 7800 ft, Sequoia Nat''l. Forest, Tulare
+        Co., Calif. (GPS: 35.89632 N, 118.33772 W, error 16 ft, datum WGS84; extent
+        0.67 mi S in meadow and along eastern and western edges/slopes)", "habitat":
+        "Pinus jeffreyi, Pinus contorta, Abies concolor, meadow, patches of Ribes,
+        Ceanothus, and Manzanita", "institutioncode": "MVZ", "orgstateprovince": "California",
+        "organismid": "http://arctos.database.museum/guid/MVZ:Bird:191165", "maximumelevationinmeters":
+        "2377.44", "hastypestatus": "0", "preparations": "tissue (frozen); skin, study",
+        "coordinateuncertaintyinmeters": "545", "recordedby": "Collector(s): Carla
+        Cicero", "sex": "male", "isfossil": "0", "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+        "dynamicproperties": "sex=male ; age=skull 0% ossified ; reproductive data=testes
+        2 x 1 mm ; fat deposition=slight fat ; molt condition=heavy body molt ; weight=109
+        g; verbatim preservation date=9 Jul 2009", "georeferenceverificationstatus":
+        "unverified", "infraspecificepithet": "frontalis", "haslicense": "1", "samplingprotocol":
+        "shotgun", "eventdate": "2009-06-27", "haslength": "0", "individualcount":
+        "1", "bibliographiccitation": "Museum of Vertebrate Zoology, UC Berkeley.
+        MVZ Bird Collection (Arctos). Record ID: http://arctos.database.museum/guid/MVZ:Bird:191165?seid=4107375.
+        Source: http://ipt.vertnet.org:8080/ipt/resource.do?r=mvz_bird (source published
+        on 2018-10-31)", "verbatimcoordinates": "35.89632/-118.33772", "citation":
+        "Museum of Vertebrate Zoology, UC Berkeley. MVZ Bird Collection (Arctos).
+        Source: http://ipt.vertnet.org:8080/ipt/resource.do?r=mvz_bird (source published
+        on 2018-10-31)", "georeferencesources": "Garmin GPS 60CSx, Google Earth Pro
+        5.0, TeleAtlas, eye alt. 17604 ft", "lastindexed": "2018-11-05", "dateidentified":
+        "2018-08-16", "wascaptive": "0", "emlrights": "http://creativecommons.org/publicdomain/zero/1.0
+        and http://vertnet.org/resources/norms.html", "hasmass": "1", "locality":
+        "Big Meadow, Sequoia National Forest", "orgname": "Museum of Vertebrate Zoology,
+        UC Berkeley", "locationremarks": "I used geopy [version 1.11.0] (https://github.com/geopy/geopy)
+        to calculate the coordinates of a point 0.67 mi distant to the south from
+        the given starting coordinates. I then found the coordinates of the centroid
+        of the two points and calculated the distance from this centroid to each of
+        the points. The maximum error is the larger of these distances plus the error
+        in the starting GPS point. I have given the coordinates of the centroid.",
+        "migrator": "no migrator", "recordnumber": "3703", "collectioncode": "Bird
+        specimens", "collectionid": "urn:lsid:biocol.org:col:34952", "massunitsinferred":
+        "0", "icode": "MVZ", "gbifpublisherid": "8edbbde0-055e-11d8-b850-b8a03c50a862",
+        "class": "Aves", "previousidentifications": "<i>Cyanocitta stelleri frontalis</i>
+        (accepted ID) identified by Carla Cicero on 2018-08-16; method: geographic
+        distribution", "decimallatitude": "35.89146109", "mappable": "1", "locationaccordingto":
+        "Carla Cicero", "othercatalognumbers": "collector number=3703", "identifiedby":
+        "Carla Cicero", "nomenclaturalcode": "ICZN", "contact": "Carla Cicero", "order":
+        "Passeriformes", "enddayofyear": "178"}, {"haslifestage": "1", "month": "06",
+        "decimallongitude": "-118.33772", "isarch": "0", "startdayofyear": "178",
+        "minimumelevationinmeters": "2377.44", "networks": "Arctos,ORNIS,VertNet",
+        "vntype": "specimen", "title": "MVZ Bird Collection (Arctos)", "massing":
+        "110", "accessrights": "http://www.vertnet.org/resources/norms.html", "kingdom":
+        "Animalia", "verbatimcoordinatesystem": "decimal degrees", "dctype": "PhysicalObject",
+        "iptrecordid": "http://arctos.database.museum/guid/MVZ:Bird:191166?seid=4107376",
+        "day": "27", "keyname": "mvz/bird-specimens/http-arctos-database-museum-guid-mvz-bird-191166-seid-4107376",
+        "identificationverificationstatus": "geographic distribution", "occurrenceid":
+        "http://arctos.database.museum/guid/MVZ:Bird:191166?seid=4107376", "identificationqualifier":
+        "A", "georeferenceddate": "2009-06-27", "verbatimeventdate": "27 Jun 2009",
+        "gbifdatasetid": "e3b959d6-fcbe-4a28-a166-e4a807c340a0", "higherclassification":
+        "Animalia; Chordata; Aves; Passeriformes; Corvidae;", "pubdate": "2018-10-31",
+        "lifestage": "skull", "modified": "2018-10-15 13:39:12.0", "year": "2009",
+        "wasinvasive": "0", "specificepithet": "stelleri", "basisofrecord": "PreservedSpecimen",
+        "geodeticdatum": "World Geodetic System 1984", "highergeography": "North America,
+        United States, California, Tulare County", "continent": "North America", "email":
+        "ccicero@berkeley.edu", "orgcountry": "United States", "source_url": "http://ipt.vertnet.org:8080/ipt/resource.do?r=mvz_bird",
+        "scientificname": "Cyanocitta stelleri frontalis", "hashid": "8662", "hassex":
+        "1", "catalognumber": "191166", "language": "en", "institutionid": "urn:lsid:biocol.org:col:34777",
+        "country": "United States", "hastissue": "1", "underivedsex": "male", "genus":
+        "Cyanocitta", "georeferenceprotocol": "MaNIS georeferencing guidelines", "family":
+        "Corvidae", "stateprovince": "California", "rank": 12, "county": "Tulare County",
+        "phylum": "Chordata", "references": "http://arctos.database.museum/guid/MVZ:Bird:191166",
+        "georeferencedby": "Carla Cicero", "taxonrank": "subspecies", "hasmedia":
+        "0", "verbatimlocality": "Big Meadow, 7800 ft, Sequoia Nat''l. Forest, Tulare
+        Co., Calif. (GPS: 35.89632 N, 118.33772 W, error 16 ft, datum WGS84; extent
+        0.67 mi S in meadow and along eastern and western edges/slopes)", "habitat":
+        "Pinus jeffreyi, Pinus contorta, Abies concolor, meadow, patches of Ribes,
+        Ceanothus, and Manzanita", "institutioncode": "MVZ", "orgstateprovince": "California",
+        "organismid": "http://arctos.database.museum/guid/MVZ:Bird:191166", "maximumelevationinmeters":
+        "2377.44", "hastypestatus": "0", "preparations": "tissue (frozen); skin, study",
+        "coordinateuncertaintyinmeters": "545", "recordedby": "Collector(s): Carla
+        Cicero", "sex": "male", "isfossil": "0", "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+        "dynamicproperties": "sex=male ; age=skull 0% ossified ; reproductive data=testes
+        2 x 1 mm ; fat deposition=no fat ; molt condition=heavy body molt ; weight=110
+        g; verbatim preservation date=9 Jul 2009", "georeferenceverificationstatus":
+        "unverified", "infraspecificepithet": "frontalis", "haslicense": "1", "samplingprotocol":
+        "shotgun", "eventdate": "2009-06-27", "haslength": "0", "individualcount":
+        "1", "bibliographiccitation": "Museum of Vertebrate Zoology, UC Berkeley.
+        MVZ Bird Collection (Arctos). Record ID: http://arctos.database.museum/guid/MVZ:Bird:191166?seid=4107376.
+        Source: http://ipt.vertnet.org:8080/ipt/resource.do?r=mvz_bird (source published
+        on 2018-10-31)", "verbatimcoordinates": "35.89632/-118.33772", "citation":
+        "Museum of Vertebrate Zoology, UC Berkeley. MVZ Bird Collection (Arctos).
+        Source: http://ipt.vertnet.org:8080/ipt/resource.do?r=mvz_bird (source published
+        on 2018-10-31)", "georeferencesources": "Garmin GPS 60CSx, Google Earth Pro
+        5.0, TeleAtlas, eye alt. 17604 ft", "lastindexed": "2018-11-05", "dateidentified":
+        "2018-08-16", "wascaptive": "0", "emlrights": "http://creativecommons.org/publicdomain/zero/1.0
+        and http://vertnet.org/resources/norms.html", "hasmass": "1", "locality":
+        "Big Meadow, Sequoia National Forest", "orgname": "Museum of Vertebrate Zoology,
+        UC Berkeley", "locationremarks": "I used geopy [version 1.11.0] (https://github.com/geopy/geopy)
+        to calculate the coordinates of a point 0.67 mi distant to the south from
+        the given starting coordinates. I then found the coordinates of the centroid
+        of the two points and calculated the distance from this centroid to each of
+        the points. The maximum error is the larger of these distances plus the error
+        in the starting GPS point. I have given the coordinates of the centroid.",
+        "migrator": "no migrator", "recordnumber": "3704", "collectioncode": "Bird
+        specimens", "collectionid": "urn:lsid:biocol.org:col:34952", "massunitsinferred":
+        "0", "icode": "MVZ", "gbifpublisherid": "8edbbde0-055e-11d8-b850-b8a03c50a862",
+        "class": "Aves", "previousidentifications": "<i>Cyanocitta stelleri frontalis</i>
+        (accepted ID) identified by Carla Cicero on 2018-08-16; method: geographic
+        distribution", "decimallatitude": "35.89146109", "mappable": "1", "locationaccordingto":
+        "Carla Cicero", "othercatalognumbers": "collector number=3704", "identifiedby":
+        "Carla Cicero", "nomenclaturalcode": "ICZN", "contact": "Carla Cicero", "order":
+        "Passeriformes", "enddayofyear": "178"}, {"haslifestage": "1", "month": "06",
+        "decimallongitude": "-118.33772", "isarch": "0", "startdayofyear": "178",
+        "minimumelevationinmeters": "2377.44", "networks": "Arctos,ORNIS,VertNet",
+        "vntype": "specimen", "title": "MVZ Bird Collection (Arctos)", "massing":
+        "108", "accessrights": "http://www.vertnet.org/resources/norms.html", "kingdom":
+        "Animalia", "verbatimcoordinatesystem": "decimal degrees", "dctype": "PhysicalObject",
+        "iptrecordid": "http://arctos.database.museum/guid/MVZ:Bird:191169?seid=4107379",
+        "day": "27", "keyname": "mvz/bird-specimens/http-arctos-database-museum-guid-mvz-bird-191169-seid-4107379",
+        "identificationverificationstatus": "geographic distribution", "occurrenceid":
+        "http://arctos.database.museum/guid/MVZ:Bird:191169?seid=4107379", "identificationqualifier":
+        "A", "georeferenceddate": "2009-06-27", "verbatimeventdate": "27 Jun 2009",
+        "gbifdatasetid": "e3b959d6-fcbe-4a28-a166-e4a807c340a0", "higherclassification":
+        "Animalia; Chordata; Aves; Passeriformes; Corvidae;", "pubdate": "2018-10-31",
+        "lifestage": "skull", "modified": "2018-10-15 13:39:12.0", "year": "2009",
+        "wasinvasive": "0", "specificepithet": "stelleri", "basisofrecord": "PreservedSpecimen",
+        "geodeticdatum": "World Geodetic System 1984", "highergeography": "North America,
+        United States, California, Tulare County", "continent": "North America", "email":
+        "ccicero@berkeley.edu", "orgcountry": "United States", "source_url": "http://ipt.vertnet.org:8080/ipt/resource.do?r=mvz_bird",
+        "scientificname": "Cyanocitta stelleri frontalis", "hashid": "800", "hassex":
+        "1", "catalognumber": "191169", "language": "en", "institutionid": "urn:lsid:biocol.org:col:34777",
+        "country": "United States", "hastissue": "1", "underivedsex": "female", "genus":
+        "Cyanocitta", "georeferenceprotocol": "MaNIS georeferencing guidelines", "family":
+        "Corvidae", "stateprovince": "California", "rank": 12, "county": "Tulare County",
+        "phylum": "Chordata", "references": "http://arctos.database.museum/guid/MVZ:Bird:191169",
+        "georeferencedby": "Carla Cicero", "taxonrank": "subspecies", "hasmedia":
+        "0", "verbatimlocality": "Big Meadow, 7800 ft, Sequoia Nat''l. Forest, Tulare
+        Co., Calif. (GPS: 35.89632 N, 118.33772 W, error 16 ft, datum WGS84; extent
+        0.67 mi S in meadow and along eastern and western edges/slopes)", "habitat":
+        "Pinus jeffreyi, Pinus contorta, Abies concolor, meadow, patches of Ribes,
+        Ceanothus, and Manzanita", "institutioncode": "MVZ", "orgstateprovince": "California",
+        "organismid": "http://arctos.database.museum/guid/MVZ:Bird:191169", "maximumelevationinmeters":
+        "2377.44", "hastypestatus": "0", "preparations": "tissue (frozen); skin, study",
+        "coordinateuncertaintyinmeters": "545", "recordedby": "Collector(s): Carla
+        Cicero", "sex": "female", "isfossil": "0", "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+        "dynamicproperties": "sex=female ; age=skull 100% ossified ; reproductive
+        data=ovary granular, ova minute ; fat deposition=no fat ; molt condition=primaries
+        1-3 in sheath, primary 4 missing, central rectrices in sheath ; weight=108
+        g; verbatim preservation date=9 Jul 2009", "georeferenceverificationstatus":
+        "unverified", "infraspecificepithet": "frontalis", "haslicense": "1", "samplingprotocol":
+        "shotgun", "eventdate": "2009-06-27", "haslength": "0", "individualcount":
+        "1", "bibliographiccitation": "Museum of Vertebrate Zoology, UC Berkeley.
+        MVZ Bird Collection (Arctos). Record ID: http://arctos.database.museum/guid/MVZ:Bird:191169?seid=4107379.
+        Source: http://ipt.vertnet.org:8080/ipt/resource.do?r=mvz_bird (source published
+        on 2018-10-31)", "verbatimcoordinates": "35.89632/-118.33772", "citation":
+        "Museum of Vertebrate Zoology, UC Berkeley. MVZ Bird Collection (Arctos).
+        Source: http://ipt.vertnet.org:8080/ipt/resource.do?r=mvz_bird (source published
+        on 2018-10-31)", "georeferencesources": "Garmin GPS 60CSx, Google Earth Pro
+        5.0, TeleAtlas, eye alt. 17604 ft", "lastindexed": "2018-11-05", "dateidentified":
+        "2018-08-16", "wascaptive": "0", "emlrights": "http://creativecommons.org/publicdomain/zero/1.0
+        and http://vertnet.org/resources/norms.html", "hasmass": "1", "locality":
+        "Big Meadow, Sequoia National Forest", "orgname": "Museum of Vertebrate Zoology,
+        UC Berkeley", "locationremarks": "I used geopy [version 1.11.0] (https://github.com/geopy/geopy)
+        to calculate the coordinates of a point 0.67 mi distant to the south from
+        the given starting coordinates. I then found the coordinates of the centroid
+        of the two points and calculated the distance from this centroid to each of
+        the points. The maximum error is the larger of these distances plus the error
+        in the starting GPS point. I have given the coordinates of the centroid.",
+        "migrator": "no migrator", "recordnumber": "3715", "collectioncode": "Bird
+        specimens", "collectionid": "urn:lsid:biocol.org:col:34952", "massunitsinferred":
+        "0", "icode": "MVZ", "gbifpublisherid": "8edbbde0-055e-11d8-b850-b8a03c50a862",
+        "class": "Aves", "previousidentifications": "<i>Cyanocitta stelleri frontalis</i>
+        (accepted ID) identified by Carla Cicero on 2018-08-16; method: geographic
+        distribution", "decimallatitude": "35.89146109", "mappable": "1", "locationaccordingto":
+        "Carla Cicero", "othercatalognumbers": "collector number=3715", "identifiedby":
+        "Carla Cicero", "nomenclaturalcode": "ICZN", "contact": "Carla Cicero", "order":
+        "Passeriformes", "enddayofyear": "178"}, {"haslifestage": "1", "month": "06",
+        "decimallongitude": "-118.33772", "isarch": "0", "startdayofyear": "178",
+        "minimumelevationinmeters": "2377.44", "networks": "Arctos,ORNIS,VertNet",
+        "vntype": "specimen", "title": "MVZ Bird Collection (Arctos)", "massing":
+        "103", "accessrights": "http://www.vertnet.org/resources/norms.html", "kingdom":
+        "Animalia", "verbatimcoordinatesystem": "decimal degrees", "dctype": "PhysicalObject",
+        "iptrecordid": "http://arctos.database.museum/guid/MVZ:Bird:191170?seid=4107380",
+        "day": "27", "keyname": "mvz/bird-specimens/http-arctos-database-museum-guid-mvz-bird-191170-seid-4107380",
+        "identificationverificationstatus": "geographic distribution", "occurrenceid":
+        "http://arctos.database.museum/guid/MVZ:Bird:191170?seid=4107380", "identificationqualifier":
+        "A", "georeferenceddate": "2009-06-27", "verbatimeventdate": "27 Jun 2009",
+        "gbifdatasetid": "e3b959d6-fcbe-4a28-a166-e4a807c340a0", "higherclassification":
+        "Animalia; Chordata; Aves; Passeriformes; Corvidae;", "pubdate": "2018-10-31",
+        "lifestage": "skull", "modified": "2018-10-15 13:39:12.0", "year": "2009",
+        "wasinvasive": "0", "specificepithet": "stelleri", "basisofrecord": "PreservedSpecimen",
+        "geodeticdatum": "World Geodetic System 1984", "highergeography": "North America,
+        United States, California, Tulare County", "continent": "North America", "email":
+        "ccicero@berkeley.edu", "orgcountry": "United States", "source_url": "http://ipt.vertnet.org:8080/ipt/resource.do?r=mvz_bird",
+        "scientificname": "Cyanocitta stelleri frontalis", "hashid": "8879", "hassex":
+        "1", "catalognumber": "191170", "language": "en", "institutionid": "urn:lsid:biocol.org:col:34777",
+        "country": "United States", "hastissue": "1", "underivedsex": "recorded as
+        unknown", "genus": "Cyanocitta", "georeferenceprotocol": "MaNIS georeferencing
+        guidelines", "family": "Corvidae", "stateprovince": "California", "rank":
+        12, "county": "Tulare County", "phylum": "Chordata", "references": "http://arctos.database.museum/guid/MVZ:Bird:191170",
+        "georeferencedby": "Carla Cicero", "taxonrank": "subspecies", "hasmedia":
+        "0", "verbatimlocality": "Big Meadow, 7800 ft, Sequoia Nat''l. Forest, Tulare
+        Co., Calif. (GPS: 35.89632 N, 118.33772 W, error 16 ft, datum WGS84; extent
+        0.67 mi S in meadow and along eastern and western edges/slopes)", "habitat":
+        "Pinus jeffreyi, Pinus contorta, Abies concolor, meadow, patches of Ribes,
+        Ceanothus, and Manzanita", "institutioncode": "MVZ", "orgstateprovince": "California",
+        "organismid": "http://arctos.database.museum/guid/MVZ:Bird:191170", "maximumelevationinmeters":
+        "2377.44", "hastypestatus": "0", "preparations": "tissue (frozen); skin, study",
+        "coordinateuncertaintyinmeters": "545", "recordedby": "Collector(s): Carla
+        Cicero", "sex": "undetermined", "isfossil": "0", "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+        "dynamicproperties": "age=skull 0% ossified ; reproductive data=gonads not
+        seen ; fat deposition=slight fat ; molt condition=heavy body molt ; weight=103
+        g; verbatim preservation date=16 Jul 2009 ; sex=recorded as unknown", "georeferenceverificationstatus":
+        "unverified", "infraspecificepithet": "frontalis", "haslicense": "1", "samplingprotocol":
+        "shotgun", "eventdate": "2009-06-27", "haslength": "0", "individualcount":
+        "1", "bibliographiccitation": "Museum of Vertebrate Zoology, UC Berkeley.
+        MVZ Bird Collection (Arctos). Record ID: http://arctos.database.museum/guid/MVZ:Bird:191170?seid=4107380.
+        Source: http://ipt.vertnet.org:8080/ipt/resource.do?r=mvz_bird (source published
+        on 2018-10-31)", "verbatimcoordinates": "35.89632/-118.33772", "citation":
+        "Museum of Vertebrate Zoology, UC Berkeley. MVZ Bird Collection (Arctos).
+        Source: http://ipt.vertnet.org:8080/ipt/resource.do?r=mvz_bird (source published
+        on 2018-10-31)", "georeferencesources": "Garmin GPS 60CSx, Google Earth Pro
+        5.0, TeleAtlas, eye alt. 17604 ft", "lastindexed": "2018-11-05", "dateidentified":
+        "2018-08-16", "wascaptive": "0", "emlrights": "http://creativecommons.org/publicdomain/zero/1.0
+        and http://vertnet.org/resources/norms.html", "hasmass": "1", "locality":
+        "Big Meadow, Sequoia National Forest", "orgname": "Museum of Vertebrate Zoology,
+        UC Berkeley", "locationremarks": "I used geopy [version 1.11.0] (https://github.com/geopy/geopy)
+        to calculate the coordinates of a point 0.67 mi distant to the south from
+        the given starting coordinates. I then found the coordinates of the centroid
+        of the two points and calculated the distance from this centroid to each of
+        the points. The maximum error is the larger of these distances plus the error
+        in the starting GPS point. I have given the coordinates of the centroid.",
+        "migrator": "no migrator", "recordnumber": "3716", "collectioncode": "Bird
+        specimens", "collectionid": "urn:lsid:biocol.org:col:34952", "massunitsinferred":
+        "0", "icode": "MVZ", "gbifpublisherid": "8edbbde0-055e-11d8-b850-b8a03c50a862",
+        "class": "Aves", "previousidentifications": "<i>Cyanocitta stelleri frontalis</i>
+        (accepted ID) identified by Carla Cicero on 2018-08-16; method: geographic
+        distribution", "decimallatitude": "35.89146109", "mappable": "1", "locationaccordingto":
+        "Carla Cicero", "othercatalognumbers": "collector number=3716", "identifiedby":
+        "Carla Cicero", "nomenclaturalcode": "ICZN", "contact": "Carla Cicero", "order":
+        "Passeriformes", "enddayofyear": "178"}], "matching_records": 19, "api_version":
+        "api.py 2017-11-24T12:16-03:00"}'
+  recorded_at: 2019-01-28 19:36:21 GMT
+  recorded_with: vcr/0.2.2, webmockr/0.3.0

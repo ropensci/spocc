@@ -8,6 +8,8 @@
 #' res$ebird
 #' (res <- occ(query = 'Danaus plexippus', from = 'inat', limit = 50))
 #' res$inat
+#' res$inat$data
+#' data.table::rbindlist(res$inat$data$Danaus_plexippus$photos)
 #' (res <- occ(query = 'Bison bison', from = 'bison', limit = 50))
 #' res$bison
 #' (res <- occ(query = 'Bison bison', from = 'vertnet', limit = 5))
@@ -20,7 +22,6 @@
 #' two <- occ(query = 'Accipiter striatus', from = 'gbif', limit = 5, start = 5)
 #' one$gbif
 #' two$gbif
-#' 
 #' 
 #' # Date range searches across data sources
 #' ## Not possible for ebird

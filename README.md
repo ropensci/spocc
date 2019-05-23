@@ -11,6 +11,7 @@ spocc
 [![cran version](https://www.r-pkg.org/badges/version/spocc)](https://cran.r-project.org/package=spocc)
 
 
+
 **`spocc` = SPecies OCCurrence data**
 
 At rOpenSci, we have been writing R packages to interact with many sources of species occurrence data, including [GBIF][gbif], [Vertnet][vertnet], [BISON][bison], [iNaturalist][inat], the [Berkeley ecoengine][ecoengine], and [eBird][ebird]. Other databases are out there as well, which we can pull in. `spocc` is an R package to query and collect species occurrence data from many sources. The goal is to to create a seamless search experience across data sources, as well as creating unified outputs across data sources.

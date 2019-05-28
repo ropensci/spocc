@@ -1,7 +1,6 @@
 spocc_inat_obs <- function(query=NULL, taxon = NULL, quality=NULL, geo=TRUE, 
-                           year=NULL, month=NULL, day=NULL, bounds=NULL, 
-                           date_start = NULL, date_end = NULL,
-                           maxresults=100, page=NULL, callopts) {
+  year=NULL, month=NULL, day=NULL, bounds=NULL, date_start = NULL,
+  date_end = NULL, maxresults=100, page=NULL, callopts) {
   
   # input parameter checks
   if (!is.null(quality)) quality <- match.arg(quality, c("casual","research"))
@@ -80,7 +79,6 @@ spocc_inat_obs <- function(query=NULL, taxon = NULL, quality=NULL, geo=TRUE,
     data <- cli$get(path = ping_path, query = page_query)
     data <- spocc_inat_handle(data)
     data_out <- jsonlite::fromJSON(data, flatten = TRUE)
-    data_out$photos <- NULL
     data_out$tag_list <- sapply(data_out$tag_list, function(x) {
       if (length(x) == 0) "" else paste0(x, collapse = ", ")
     })
@@ -92,7 +90,6 @@ spocc_inat_obs <- function(query=NULL, taxon = NULL, quality=NULL, geo=TRUE,
         data <- cli$get(path = ping_path, query = page_query)
         data <- spocc_inat_handle(data)
         data_out2 <- jsonlite::fromJSON(data, flatten = TRUE)
-        data_out2$photos <- NULL
         data_out2$tag_list <- sapply(data_out2$tag_list, function(x) {
           if (length(x) == 0) "" else paste0(x, collapse = ", ")
         })

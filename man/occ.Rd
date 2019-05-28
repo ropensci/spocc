@@ -344,6 +344,13 @@ second request for you automatically.
 }
 }
 
+\section{Photographs}{
+
+The iNaturalist data source provides photographs of the records returned,
+if available. For example, the following will give photos from inat:
+\code{occ(query = 'Danaus', from = 'inat')$inat$data$Danaus_plexippus$photos}
+}
+
 \section{BEWARE}{
 
 In cases where you request data from multiple providers, especially when
@@ -362,6 +369,8 @@ res$ecoengine
 res$ebird
 (res <- occ(query = 'Danaus plexippus', from = 'inat', limit = 50))
 res$inat
+res$inat$data
+data.table::rbindlist(res$inat$data$Danaus_plexippus$photos)
 (res <- occ(query = 'Bison bison', from = 'bison', limit = 50))
 res$bison
 (res <- occ(query = 'Bison bison', from = 'vertnet', limit = 5))
@@ -374,7 +383,6 @@ one <- occ(query = 'Accipiter striatus', from = 'gbif', limit = 5)
 two <- occ(query = 'Accipiter striatus', from = 'gbif', limit = 5, start = 5)
 one$gbif
 two$gbif
-
 
 # Date range searches across data sources
 ## Not possible for ebird

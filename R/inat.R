@@ -96,7 +96,7 @@ spocc_inat_obs <- function(query=NULL, taxon = NULL, quality=NULL, geo=TRUE,
         data_out2$tag_list <- sapply(data_out2$tag_list, function(x) {
           if (length(x) == 0) "" else paste0(x, collapse = ", ")
         })
-        data_out <- rbind(data_out, data_out2)
+        data_out <- rbindl(list(data_out, data_out2))
       }
     }
     

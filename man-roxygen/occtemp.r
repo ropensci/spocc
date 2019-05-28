@@ -269,6 +269,11 @@
 #' - idigbio - Responds to `start`. Default: 0
 #' - obis - Responds to `start`. Default: 0
 #' - ala - Responds to `start`. Default: 0
+#' 
+#' @section Photographs:
+#' The iNaturalist data source provides photographs of the records returned,
+#' if available. For example, the following will give photos from inat:
+#' `occ(query = 'Danaus', from = 'inat')$inat$data$Danaus_plexippus$photos`
 #'
 #' @section BEWARE:
 #' In cases where you request data from multiple providers, especially when

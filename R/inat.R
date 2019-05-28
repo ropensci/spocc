@@ -75,12 +75,10 @@ spocc_inat_obs <- function(query=NULL, taxon = NULL, quality=NULL, geo=TRUE,
            call. = FALSE)
     }
     
-    # photos_con <- list()
     page_query <- c(args, per_page = 200, page = 1)
     data <- cli$get(path = ping_path, query = page_query)
     data <- spocc_inat_handle(data)
     data_out <- jsonlite::fromJSON(data, flatten = TRUE)
-    # data_out$photos <- NULL
     data_out$tag_list <- sapply(data_out$tag_list, function(x) {
       if (length(x) == 0) "" else paste0(x, collapse = ", ")
     })
@@ -92,7 +90,6 @@ spocc_inat_obs <- function(query=NULL, taxon = NULL, quality=NULL, geo=TRUE,
         data <- cli$get(path = ping_path, query = page_query)
         data <- spocc_inat_handle(data)
         data_out2 <- jsonlite::fromJSON(data, flatten = TRUE)
-        # data_out2$photos <- NULL
         data_out2$tag_list <- sapply(data_out2$tag_list, function(x) {
           if (length(x) == 0) "" else paste0(x, collapse = ", ")
         })

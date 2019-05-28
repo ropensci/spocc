@@ -344,6 +344,13 @@ second request for you automatically.
 }
 }
 
+\section{Photographs}{
+
+The iNaturalist data source provides photographs of the records returned,
+if available. For example, the following will give photos from inat:
+\code{occ(query = 'Danaus', from = 'inat')$inat$data$Danaus_plexippus$photos}
+}
+
 \section{BEWARE}{
 
 In cases where you request data from multiple providers, especially when

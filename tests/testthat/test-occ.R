@@ -146,4 +146,13 @@ test_that("occ fails well", {
                "'has_coords' must be logical")
   expect_error(occ("Helianthus", from = "gbif", has_coords = mtcars), 
                "'has_coords' must be logical")
+
+  # inat doesn't allow more than 10K
+  vcr::use_cassette("occ_inat_no_more_than_10K", {
+    expect_warning(
+      occ(query="Helianthus", from = "inat",
+        inatopts=list(maxresults = 200, page = 51)),
+      "Result window is too large"
+    )
+  })
 })

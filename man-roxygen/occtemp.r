@@ -155,6 +155,28 @@
 #' [rbison::bison_solr()] by default as it's more flexible. If you pass a value to the 
 #' `geometry` parameter we use [rbison::bison()]. We'd prefer to just use one function 
 #' to simplify things, but [rbison::bison_solr()] doesn't support geometry queries.
+#' 
+#' @section iNaturalist notes:
+#' We're using the iNaturalist API, docs at 
+#' https://api.inaturalist.org/v1/docs/#!/Observations/get_observations
+#' 
+#' API rate limits: max of 100 requests per minute, though they ask that you try to keep it
+#' to 60 requests per minute or lower. If they notice usage that has serious impact on their 
+#' performance they may institute blocks without notification.
+#' 
+#' There is a hard limit 0f 10,000 observations with the iNaturalist API. We do paging 
+#' internally so you may not see this aspect, but for example, if you request 12,000
+#' records, you won't be able to get that many. The API will error at anything more than
+#' 10,000. We now error if you request more than 10,000 from iNaturalist. There are 
+#' some alternatives:
+#' 
+#' - Consider exporting data while logged in
+#' to your iNaturalist account, or the iNaturalist research grade observations within 
+#' GBIF - see https://www.gbif.org/dataset/50c9509d-22c7-4a22-a47d-8c48425ef4a7 - at
+#' time of this writing it has 8.5 million observations.
+#' - Search for iNaturalist data within GBIF. e.g., the following searches for iNaturalist
+#' data within GBIF and allows more than 10,000 records:
+#' ``
 #'
 #' @section limit parameter:
 #' The `limit` parameter is set to a default of 25. This means that you will get **up to**

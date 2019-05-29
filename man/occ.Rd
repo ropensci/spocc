@@ -210,6 +210,31 @@ We use two different functions when you request data from \code{bison}. We use
 to simplify things, but \code{\link[rbison:bison_solr]{rbison::bison_solr()}} doesn't support geometry queries.
 }
 
+\section{iNaturalist notes}{
+
+We're using the iNaturalist API, docs at
+https://api.inaturalist.org/v1/docs/#!/Observations/get_observations
+
+API rate limits: max of 100 requests per minute, though they ask that you try to keep it
+to 60 requests per minute or lower. If they notice usage that has serious impact on their
+performance they may institute blocks without notification.
+
+There is a hard limit 0f 10,000 observations with the iNaturalist API. We do paging
+internally so you may not see this aspect, but for example, if you request 12,000
+records, you won't be able to get that many. The API will error at anything more than
+10,000. We now error if you request more than 10,000 from iNaturalist. There are
+some alternatives:
+\itemize{
+\item Consider exporting data while logged in
+to your iNaturalist account, or the iNaturalist research grade observations within
+GBIF - see https://www.gbif.org/dataset/50c9509d-22c7-4a22-a47d-8c48425ef4a7 - at
+time of this writing it has 8.5 million observations.
+\item Search for iNaturalist data within GBIF. e.g., the following searches for iNaturalist
+data within GBIF and allows more than 10,000 records:
+``
+}
+}
+
 \section{limit parameter}{
 
 The \code{limit} parameter is set to a default of 25. This means that you will get \strong{up to}
@@ -383,6 +408,13 @@ one <- occ(query = 'Accipiter striatus', from = 'gbif', limit = 5)
 two <- occ(query = 'Accipiter striatus', from = 'gbif', limit = 5, start = 5)
 one$gbif
 two$gbif
+
+# iNaturalist limits: they allow at most 10,000; query through GBIF to get
+# more than 10,000
+# See https://www.gbif.org/dataset/50c9509d-22c7-4a22-a47d-8c48425ef4a7
+# x <- occ(query = 'Danaus plexippus', from = 'gbif', limit = 10100, 
+#   gbifopts = list(datasetKey = "50c9509d-22c7-4a22-a47d-8c48425ef4a7"))
+# x$gbif
 
 # Date range searches across data sources
 ## Not possible for ebird

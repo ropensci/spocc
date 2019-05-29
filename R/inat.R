@@ -1,15 +1,17 @@
-spocc_inat_obs <- function(query=NULL, taxon = NULL, quality=NULL, geo=TRUE, 
+# API docs: https://api.inaturalist.org/v1/docs/#!/Observations/get_observations
+spocc_inat_obs <- function(taxon_name=NULL, quality=NULL, geo=TRUE, 
   year=NULL, month=NULL, day=NULL, bounds=NULL, date_start = NULL,
   date_end = NULL, maxresults=100, page=NULL, callopts) {
   
   # input parameter checks
-  if (!is.null(quality)) quality <- match.arg(quality, c("casual","research"))
+  if (!is.null(quality)) quality <- match.arg(quality, c("casual","research","needs_id"))
   if (!is.null(year)) {
     if (length(year) > 1) {
       stop("can only filter results by 1 year; enter only 1 value for year", 
            call. = FALSE)
     }
   }
+  assert(geo, "logical")
   if (!is.null(month)) {
     month <- as.numeric(month)
     if (is.na(month)) {
@@ -37,62 +39,63 @@ spocc_inat_obs <- function(query=NULL, taxon = NULL, quality=NULL, geo=TRUE,
     if (day < 1 || day > 31) stop("Please enter a valid day between 1 and 31", 
                                   call. = FALSE)
   }
+  
+  args <- sc(list(taxon_name = taxon_name, quality_grade = quality,
+                  geo = geo, year = year, month = month, day = day, 
+                  d1 = date_start, d2 = date_end))
+  
   if (!is.null(bounds)) {
     if (length(bounds) != 4) {
       stop("bounding box specifications must have 4 coordinates", call. = FALSE)
     }
+    bounds <- list(swlat = bounds[1], swlng = bounds[2], nelat = bounds[3], 
+                   nelng = bounds[4])
+    args <- sc(c(args, bounds))
   }
-  
-  args <- sc(list(q = query, quality_grade = quality, taxon_name = taxon, 
-                  `has[]` = if (!is.null(geo) && geo) "geo" else NULL, 
-                  year = year, month = month, day = day, 
-                  d1 = date_start, d2 = date_end))
-  bounds <- list(swlat = bounds[1], swlng = bounds[2], nelat = bounds[3], 
-                 nelng = bounds[4])
-  args <- sc(c(args, bounds))
-
-  q_path <- "observations.csv"
-  ping_path <- "observations.json"
   
   if (!is.null(page)) {
     page_query <- c(args, per_page = maxresults, page = page)
-    cli <- crul::HttpClient$new(url = inat_base_url(), opts = callopts)
-    res <- cli$get(path = q_path, query = page_query)
+    cli <- crul::HttpClient$new(url = inat_base_url, opts = callopts)
+    res <- cli$get(path = inat_path, query = page_query)
     
-    total_res <- as.numeric(res$headers$`x-total-entries`)
     res <- spocc_inat_handle(res)
-    data_out <- if (is.na(res)) NA else utils::read.csv(textConnection(res), 
-                                                 stringsAsFactors = FALSE)
+    tmp <- jsonlite::fromJSON(res, flatten = TRUE)
+    data_out <- tmp$results
+    total_res <- tmp$total_results
   } else {
     ping_query <- c(args, page = 1, per_page = 1)
-    cli <- crul::HttpClient$new(url = inat_base_url(), opts = callopts)
-    out <- cli$get(path = ping_path, query = ping_query)
+    cli <- crul::HttpClient$new(url = inat_base_url, opts = callopts)
+    out <- cli$get(path = inat_path, query = ping_query)
     out$raise_for_status()
-    total_res <- as.numeric(out$response_headers$`x-total-entries`)
-    
+
+    total_res <- jsonlite::fromJSON(spocc_inat_handle(out), 
+      flatten = TRUE)$total_results
     if (total_res == 0) {
       stop("no results; either no records or entered an invalid search", 
            call. = FALSE)
     }
     
     page_query <- c(args, per_page = 200, page = 1)
-    data <- cli$get(path = ping_path, query = page_query)
+    data <- cli$get(path = inat_path, query = page_query)
     data <- spocc_inat_handle(data)
-    data_out <- jsonlite::fromJSON(data, flatten = TRUE)
-    data_out$tag_list <- sapply(data_out$tag_list, function(x) {
+    data_out <- jsonlite::fromJSON(data, flatten = TRUE)$results
+    data_out$tags <- sapply(data_out$tags, function(x) {
       if (length(x) == 0) "" else paste0(x, collapse = ", ")
     })
     
     if (total_res < maxresults) maxresults <- total_res
     if (maxresults > 200) {
+      testing_out <- list()
       for (i in 2:ceiling(maxresults / 200)) {
+        cat(i, "\n")
         page_query <- c(args, per_page = 200, page = i)
-        data <- cli$get(path = ping_path, query = page_query)
+        data <- cli$get(path = inat_path, query = page_query)
         data <- spocc_inat_handle(data)
-        data_out2 <- jsonlite::fromJSON(data, flatten = TRUE)
-        data_out2$tag_list <- sapply(data_out2$tag_list, function(x) {
+        data_out2 <- jsonlite::fromJSON(data, flatten = TRUE)$results
+        data_out2$tags <- sapply(data_out2$tags, function(x) {
           if (length(x) == 0) "" else paste0(x, collapse = ", ")
         })
+        testing_out[[i]] <- data_out2
         data_out <- rbindl(list(data_out, data_out2))
       }
     }
@@ -118,12 +121,13 @@ spocc_inat_handle <- function(x){
     if (!x$response_headers$`content-type` ==
         "application/json; charset=utf-8") {
       warning(
-        "Conent type incorrect, should be 'application/json; charset=utf-8'")
+        "Content type incorrect, should be 'application/json; charset=utf-8'")
       NA
     }
     if (x$status_code > 202) {
-      warning(sprintf("Error: HTTP Status %s", data$status_code))
-      NA
+      parsed <- jsonlite::fromJSON(x$parse("UTF-8"))
+      if ("error" %in% names(parsed)) stop(parsed$error)
+      x$raise_for_status()
     }
     if (nchar(res) == 0) {
       warning("No data found")
@@ -136,10 +140,11 @@ spocc_inat_handle <- function(x){
 
 spocc_get_inat_obs_id <- function(id, callopts = list()) {
   q_path <- paste("observations/", as.character(id), ".json", sep = "")
-  cli <- crul::HttpClient$new(url = inat_base_url(), opts = callopts)
+  cli <- crul::HttpClient$new(url = inat_base_url, opts = callopts)
   res <- cli$get(path = q_path)
   res$raise_for_status()
   jsonlite::fromJSON(res$parse("UTF-8"))
 }
 
-inat_base_url <- function() "https://www.inaturalist.org/"
+inat_base_url <- "https://api.inaturalist.org"
+inat_path <- "v1/observations"

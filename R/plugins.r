@@ -237,7 +237,7 @@ foo_inat <- function(sources, query, limit, page, geometry, has_coords,
     opts <- limit_alias(opts, "inat")
     opts$geo <- has_coords
     time <- now()
-    opts$query <- query
+    opts$taxon_name <- query
     if (!"maxresults" %in% names(opts)) opts$maxresults <- limit
     if (!"page" %in% names(opts)) opts$page <- page
     if (!is.null(geometry)) {

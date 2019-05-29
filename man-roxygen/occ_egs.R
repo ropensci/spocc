@@ -23,6 +23,13 @@
 #' one$gbif
 #' two$gbif
 #' 
+#' # iNaturalist limits: they allow at most 10,000; query through GBIF to get
+#' # more than 10,000
+#' # See https://www.gbif.org/dataset/50c9509d-22c7-4a22-a47d-8c48425ef4a7
+#' # x <- occ(query = 'Danaus plexippus', from = 'gbif', limit = 10100, 
+#' #   gbifopts = list(datasetKey = "50c9509d-22c7-4a22-a47d-8c48425ef4a7"))
+#' # x$gbif
+#' 
 #' # Date range searches across data sources
 #' ## Not possible for ebird
 #' ## bison

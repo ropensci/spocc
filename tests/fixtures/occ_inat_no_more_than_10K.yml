@@ -1,0 +1,38 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.inaturalist.org/v1/observations?taxon_name=Helianthus&geo=TRUE&per_page=200&page=51
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      User-Agent: libcurl/7.54.0 r-curl/3.3 crul/0.7.4
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '403'
+      message: Forbidden
+      explanation: Request forbidden -- authorization will not help
+    headers:
+      status: HTTP/1.1 403 Forbidden
+      server: nginx
+      date: Wed, 29 May 2019 22:42:06 GMT
+      content-type: application/json; charset=utf-8
+      content-length: '104'
+      connection: keep-alive
+      access-control-allow-origin: '*'
+      access-control-allow-headers: Origin, X-Requested-With, Content-Type, Accept,
+        Authorization, Access-Control-Allow-Methods
+      access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+      x-content-type-options: nosniff
+      etag: W/"68-AJCbbQK0ja3u3AHB/UybGfEwD6A"
+      vary: Accept-Encoding
+      age: '0'
+      x-cache: MISS
+    body:
+      encoding: UTF-8
+      string: '{"error":"Result window is too large, page * per_page must be less
+        than or equal to 10000","status":403}'
+  recorded_at: 2019-05-29 22:42:06 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4.9100

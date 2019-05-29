@@ -266,6 +266,14 @@ foo_inat <- function(sources, query, limit, page, geometry, has_coords,
       res <- out$data
       res$prov <- rep("inat", nrow(res))
       res <- rename(res, c("taxon.name" = "name"))
+      # pull out lon/lat from geojson field
+      cds <- res$geojson.coordinates
+      lons <- sapply(cds, "[[", 1)
+      lons[vapply(lons, is.null, logical(1))] <- NA_character_
+      res$longitude <- unlist(lons)
+      lats <- sapply(cds, "[[", 2)
+      lats[vapply(lats, is.null, logical(1))] <- NA_character_
+      res$latitude <- unlist(lats)
       res <- stand_latlon(res)
       res <- add_latlong_if_missing(res)
       res <- stand_dates(res, "inat")

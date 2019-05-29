@@ -6,7 +6,8 @@
 #' res$ecoengine
 #' (res <- occ(query = 'Accipiter striatus', from = 'ebird', limit = 50))
 #' res$ebird
-#' (res <- occ(query = 'Danaus plexippus', from = 'inat', limit = 50))
+#' (res <- occ(query = 'Danaus plexippus', from = 'inat', limit = 50,
+#'   has_coords = TRUE))
 #' res$inat
 #' res$inat$data
 #' data.table::rbindlist(res$inat$data$Danaus_plexippus$photos)

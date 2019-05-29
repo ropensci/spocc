@@ -32,12 +32,6 @@ as.inat(as.list(res$key[1:2]))
 as.inat(tt[[1]])
 as.inat(uu[[1]])
 as.inat(tt[1:2])
-
-library("dplyr")
-bind_rows(lapply(tt, function(x) {
-  data.frame(x$taxon[c('id','name','rank','unique_name')],
-             stringsAsFactors = FALSE)
-}))
 }
 }
 \seealso{

@@ -139,9 +139,8 @@ spocc_inat_handle <- function(x){
 }
 
 spocc_get_inat_obs_id <- function(id, callopts = list()) {
-  q_path <- paste("observations/", as.character(id), ".json", sep = "")
   cli <- crul::HttpClient$new(url = inat_base_url, opts = callopts)
-  res <- cli$get(path = q_path)
+  res <- cli$get(path = file.path(inat_path, as.character(id)))
   res$raise_for_status()
   jsonlite::fromJSON(res$parse("UTF-8"))
 }

@@ -51,7 +51,7 @@ __BEWARE:__ In cases where you request data from multiple providers, especially 
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md)
+See [CONTRIBUTING.md](.github/CONTRIBUTING.md)
 
 ## Installation
 

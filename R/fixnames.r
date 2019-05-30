@@ -5,8 +5,11 @@
 #' collapses them to the same string - making data easier to deal with for 
 #' making maps, etc. 
 #' 
-#' @export
+#' This function is being moved to `scrubr::fix_names`; `fixnames` will 
+#' be removed in the next version of this package.
 #' 
+#' @export
+#' @rdname fixnames-deprecated
 #' @param obj An object of class occdat
 #' @param how One of a few different methods: 
 #' \itemize{
@@ -38,8 +41,9 @@
 #' fixnames(dat, how="supplied", 
 #'  namevec = c("Danaus","Accipiter","Pinus"))$ecoengine$data$Danaus_plexippus
 #' }
-
-fixnames <- function(obj, how="shortest", namevec = NULL){
+fixnames <- function(obj, how="shortest", namevec = NULL) {
+  .Deprecated("scrubr::fix_names", 
+    msg = "fixnames will be removed in the next version; see scrubr::fix_names")
   how <- match.arg(how, choices = c("shortest", "query", "supplied"))
   foo <- function(z){
     if(how=="shortest"){ # shortest

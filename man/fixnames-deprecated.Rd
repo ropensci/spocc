@@ -32,6 +32,10 @@ for whatever reason (e.g., some names have authorities on them), and
 collapses them to the same string - making data easier to deal with for
 making maps, etc.
 }
+\details{
+This function is being moved to \code{scrubr::fix_names}; \code{fixnames} will
+be removed in the next version of this package.
+}
 \examples{
 \dontrun{
 spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta')

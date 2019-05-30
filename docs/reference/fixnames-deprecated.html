@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Coerce occurrence keys to vertnetkey/occkey objects — as.vertnet • spocc</title>
+<title>Change names to be the same for each taxon. — fixnames • spocc</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,9 +32,12 @@
 
 
 
-<meta property="og:title" content="Coerce occurrence keys to vertnetkey/occkey objects — as.vertnet" />
+<meta property="og:title" content="Change names to be the same for each taxon. — fixnames" />
 
-<meta property="og:description" content="Coerce occurrence keys to vertnetkey/occkey objects" />
+<meta property="og:description" content="That is, this function attempts to take all the names that are synonyms,
+for whatever reason (e.g., some names have authorities on them), and
+collapses them to the same string - making data easier to deal with for
+making maps, etc." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -107,61 +110,74 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Coerce occurrence keys to vertnetkey/occkey objects</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ropensci/spocc/blob/master/R/as.vertnet.R'><code>R/as.vertnet.R</code></a></small>
-    <div class="hidden name"><code>as.vertnet.Rd</code></div>
+    <h1>Change names to be the same for each taxon.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/ropensci/spocc/blob/master/R/fixnames.r'><code>R/fixnames.r</code></a></small>
+    <div class="hidden name"><code>fixnames-deprecated.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Coerce occurrence keys to vertnetkey/occkey objects</p>
+    <p>That is, this function attempts to take all the names that are synonyms,
+for whatever reason (e.g., some names have authorities on them), and
+collapses them to the same string - making data easier to deal with for
+making maps, etc.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>as.vertnet</span>(<span class='no'>x</span>)</pre>
+    <pre class="usage"><span class='fu'>fixnames</span>(<span class='no'>obj</span>, <span class='kw'>how</span> <span class='kw'>=</span> <span class='st'>"shortest"</span>, <span class='kw'>namevec</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>Various inputs, including the output from a call to <code><a href='occ.html'>occ()</a></code>
-(class occdat), <code><a href='occ2df.html'>occ2df()</a></code> (class data.frame), or a list, numeric,
-character, vertnetkey, or occkey.</p></td>
+      <th>obj</th>
+      <td><p>An object of class occdat</p></td>
+    </tr>
+    <tr>
+      <th>how</th>
+      <td><p>One of a few different methods:</p><ul>
+<li><p>shortest Takes the shortest name string that is likely to be the
+prettiest to display name, and replaces alll names with that one, better
+for maps, etc.</p></li>
+<li><p>query This method takes the names you orginally queried on (in the
+occdat object), and replaces names in the occurrence data with them.</p></li>
+<li><p>supplied If this method, supply a vector of names to replace the
+names with</p></li>
+</ul></td>
+    </tr>
+    <tr>
+      <th>namevec</th>
+      <td><p>A vector of names to replace names in the occurrence
+data.frames with. Only used if how="supplied"</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>One or more in a list of both class vertnetkey and occkey</p>
+    <p>An object of class occdat.</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Internally, we use <code><a href='https://rdrr.io/pkg/rvertnet/man/vert_id.html'>rvertnet::vert_id()</a></code>, whereas <code><a href='occ.html'>occ()</a></code>
-uses <code><a href='https://rdrr.io/pkg/rvertnet/man/vertsearch.html'>rvertnet::vertsearch()</a></code>.</p>
-    
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p>Other coercion: <code><a href='as.ala.html'>as.ala</a></code>,
-  <code><a href='as.bison.html'>as.bison</a></code>, <code><a href='as.ecoengine.html'>as.ecoengine</a></code>,
-  <code><a href='as.gbif.html'>as.gbif</a></code>, <code><a href='as.idigbio.html'>as.idigbio</a></code>,
-  <code><a href='as.inat.html'>as.inat</a></code>, <code><a href='as.obis.html'>as.obis</a></code></p></div>
+    <p>This function is being moved to <code><a href='https://rdrr.io/pkg/scrubr/man/fix_names.html'>scrubr::fix_names</a></code>; <code>fixnames</code> will
+be removed in the next version of this package.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='co'># NOT RUN {</span>
-<span class='no'>spnames</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>'Accipiter striatus'</span>, <span class='st'>'Setophaga caerulescens'</span>,
-  <span class='st'>'Spinus tristis'</span>)
-<span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='occ.html'>occ</a></span>(<span class='kw'>query</span><span class='kw'>=</span><span class='no'>spnames</span>, <span class='kw'>from</span><span class='kw'>=</span><span class='st'>'vertnet'</span>, <span class='kw'>has_coords</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>limit</span><span class='kw'>=</span><span class='fl'>2</span>)
-<span class='no'>res</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='occ2df.html'>occ2df</a></span>(<span class='no'>out</span>)
-(<span class='no'>tt</span> <span class='kw'>&lt;-</span> <span class='fu'>as.vertnet</span>(<span class='no'>out</span>))
-(<span class='no'>uu</span> <span class='kw'>&lt;-</span> <span class='fu'>as.vertnet</span>(<span class='no'>res</span>))
-<span class='no'>keys</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/funprog.html'>Filter</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/funprog.html'>Negate</a></span>(<span class='no'>is.na</span>), <span class='no'>res</span>$<span class='no'>key</span>)
-<span class='fu'>as.vertnet</span>(<span class='no'>keys</span>[<span class='fl'>1</span>])
-<span class='fu'>as.vertnet</span>(<span class='fu'><a href='https://rdrr.io/r/base/list.html'>as.list</a></span>(<span class='no'>keys</span>[<span class='fl'>1</span>:<span class='fl'>2</span>]))
-<span class='fu'>as.vertnet</span>(<span class='no'>tt</span><span class='kw'>[[</span><span class='fl'>1</span>]])
-<span class='fu'>as.vertnet</span>(<span class='no'>uu</span><span class='kw'>[[</span><span class='fl'>1</span>]])
-<span class='fu'>as.vertnet</span>(<span class='no'>tt</span>[<span class='fl'>1</span>:<span class='fl'>2</span>])
+<span class='no'>spp</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>'Danaus plexippus'</span>,<span class='st'>'Accipiter striatus'</span>,<span class='st'>'Pinus contorta'</span>)
+<span class='no'>dat</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='occ.html'>occ</a></span>(<span class='no'>spp</span>, <span class='kw'>from</span><span class='kw'>=</span><span class='st'>'gbif'</span>, <span class='kw'>gbifopts</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>hasCoordinate</span><span class='kw'>=</span><span class='fl'>TRUE</span>), <span class='kw'>limit</span><span class='kw'>=</span><span class='fl'>50</span>)
+<span class='fu'>fixnames</span>(<span class='no'>dat</span>, <span class='kw'>how</span><span class='kw'>=</span><span class='st'>"shortest"</span>)$<span class='no'>gbif</span>
+<span class='fu'>fixnames</span>(<span class='no'>dat</span>, <span class='kw'>how</span><span class='kw'>=</span><span class='st'>"query"</span>)$<span class='no'>gbif</span>
+<span class='fu'>fixnames</span>(<span class='no'>dat</span>, <span class='kw'>how</span><span class='kw'>=</span><span class='st'>"supplied"</span>, <span class='kw'>namevec</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>'abc'</span>, <span class='st'>'def'</span>, <span class='st'>'ghi'</span>))$<span class='no'>gbif</span>
+
+<span class='no'>dat</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='occ.html'>occ</a></span>(<span class='no'>spp</span>, <span class='kw'>from</span><span class='kw'>=</span><span class='st'>'ecoengine'</span>, <span class='kw'>limit</span><span class='kw'>=</span><span class='fl'>50</span>)
+<span class='co'>## doesn't changes things</span>
+<span class='fu'>fixnames</span>(<span class='no'>dat</span>, <span class='kw'>how</span><span class='kw'>=</span><span class='st'>"shortest"</span>)$<span class='no'>ecoengine</span>$<span class='no'>data</span>$<span class='no'>Danaus_plexippus</span>
+<span class='co'>## this is better</span>
+<span class='fu'>fixnames</span>(<span class='no'>dat</span>, <span class='kw'>how</span><span class='kw'>=</span><span class='st'>"query"</span>)$<span class='no'>ecoengine</span>$<span class='no'>data</span>$<span class='no'>Danaus_plexippus</span>
+<span class='co'>## or this</span>
+<span class='fu'>fixnames</span>(<span class='no'>dat</span>, <span class='kw'>how</span><span class='kw'>=</span><span class='st'>"supplied"</span>,
+ <span class='kw'>namevec</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Danaus"</span>,<span class='st'>"Accipiter"</span>,<span class='st'>"Pinus"</span>))$<span class='no'>ecoengine</span>$<span class='no'>data</span>$<span class='no'>Danaus_plexippus</span>
 <span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -172,8 +188,6 @@ uses <code><a href='https://rdrr.io/pkg/rvertnet/man/vertsearch.html'>rvertnet::
       <li><a href="#value">Value</a></li>
 
       <li><a href="#details">Details</a></li>
-
-      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

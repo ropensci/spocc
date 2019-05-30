@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Visualize well-known text area's on a map. — wkt_vis • spocc</title>
+<title>OBIS search — obis_search • spocc</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,10 +32,9 @@
 
 
 
-<meta property="og:title" content="Visualize well-known text area's on a map. — wkt_vis" />
+<meta property="og:title" content="OBIS search — obis_search" />
 
-<meta property="og:description" content="This can be helpful in visualizing the area in which you are searching for
-occurrences with the occ() function." />
+<meta property="og:description" content="OBIS search" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -108,81 +107,98 @@ occurrences with the occ() function." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Visualize well-known text area's on a map.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ropensci/spocc/blob/master/R/wkt_vis.r'><code>R/wkt_vis.r</code></a></small>
-    <div class="hidden name"><code>wkt_vis.Rd</code></div>
+    <h1>OBIS search</h1>
+    <small class="dont-index">Source: <a href='https://github.com/ropensci/spocc/blob/master/R/obis_helpers.R'><code>R/obis_helpers.R</code></a></small>
+    <div class="hidden name"><code>obis_search.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>This can be helpful in visualizing the area in which you are searching for
-occurrences with the <code><a href='occ.html'>occ()</a></code> function.</p>
+    <p>OBIS search</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>wkt_vis</span>(<span class='no'>x</span>, <span class='kw'>zoom</span> <span class='kw'>=</span> <span class='fl'>6</span>, <span class='kw'>maptype</span> <span class='kw'>=</span> <span class='st'>"terrain"</span>, <span class='kw'>browse</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>obis_search</span>(<span class='kw'>scientificName</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>500</span>, <span class='kw'>after</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>taxonid</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>aphiaid</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>areaid</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>datasetid</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>instituteid</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nodeid</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>startdate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>enddate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>startdepth</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>enddepth</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>geometry</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>exclude</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>fields</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>Input well-known text area (character)</p></td>
+      <th>size</th>
+      <td><p>(integer) number of results to fetch</p></td>
     </tr>
     <tr>
-      <th>zoom</th>
-      <td><p>Zoom level, defaults to 6 (numeric)</p></td>
+      <th>after</th>
+      <td><p>(character) Occurrence UUID up to which to skip.</p></td>
     </tr>
     <tr>
-      <th>maptype</th>
-      <td><p>Map type, default is terrain (character)</p></td>
+      <th>taxonid</th>
+      <td><p>(character) Taxon AphiaID.</p></td>
     </tr>
     <tr>
-      <th>browse</th>
-      <td><p>Open in browser or not. If not, gives back
-path to html file. Default: <code>TRUE</code> (logical)</p></td>
+      <th>areaid</th>
+      <td><p>(character) Area ID.</p></td>
+    </tr>
+    <tr>
+      <th>datasetid</th>
+      <td><p>(character) Dataset UUID.</p></td>
+    </tr>
+    <tr>
+      <th>instituteid</th>
+      <td><p>(character) Institute ID.</p></td>
+    </tr>
+    <tr>
+      <th>nodeid</th>
+      <td><p>(character) Node UUID.</p></td>
+    </tr>
+    <tr>
+      <th>startdate</th>
+      <td><p>(character) Start date formatted as YYYY-MM-DD.</p></td>
+    </tr>
+    <tr>
+      <th>enddate</th>
+      <td><p>(character) End date formatted as YYYY-MM-DD.</p></td>
+    </tr>
+    <tr>
+      <th>startdepth</th>
+      <td><p>(integer) Start depth, in meters.</p></td>
+    </tr>
+    <tr>
+      <th>enddepth</th>
+      <td><p>(integer) End depth, in meters.</p></td>
+    </tr>
+    <tr>
+      <th>geometry</th>
+      <td><p>(character) Geometry, formatted as WKT.</p></td>
+    </tr>
+    <tr>
+      <th>exclude</th>
+      <td><p>(character) set of quality flags to be excluded.
+one or more in a vector</p></td>
+    </tr>
+    <tr>
+      <th>fields</th>
+      <td><p>(character) Field to be included in the result set.
+one or more in a vector</p></td>
+    </tr>
+    <tr>
+      <th>scientificname</th>
+      <td><p>(character) Scientific name. Leave empty to
+include all taxa. This is what we pass your name query to</p></td>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Uses Mapbox's map layers, openes in your default browser</p>
-    
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p>Other bbox: <code><a href='bbox2wkt.html'>bbox2wkt</a></code></p></div>
-    
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'># NOT RUN {</span>
-<span class='no'>poly</span> <span class='kw'>&lt;-</span> <span class='st'>'POLYGON((-111.06 38.84, -110.80 39.37, -110.20 39.17, -110.20 38.90,
-     -110.63 38.67, -111.06 38.84))'</span>
-<span class='fu'>wkt_vis</span>(<span class='no'>poly</span>)
-
-<span class='no'>poly2</span> <span class='kw'>&lt;-</span> <span class='st'>'POLYGON((-125 38.4,-125 40.9,-121.8 40.9,-121.8 38.4,-125 38.4))'</span>
-<span class='fu'>wkt_vis</span>(<span class='no'>poly2</span>)
-
-<span class='co'># Multiple polygons</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='st'>"POLYGON((-125 38.4, -121.8 38.4, -121.8 40.9, -125 40.9, -125 38.4), 
-(-115 22.4, -111.8 22.4, -111.8 30.9, -115 30.9, -115 22.4))"</span>
-<span class='fu'>wkt_vis</span>(<span class='no'>x</span>)
-
-<span class='co'># don't open in browser</span>
-<span class='no'>poly2</span> <span class='kw'>&lt;-</span> <span class='st'>'POLYGON((-125 38.4,-125 40.9,-121.8 40.9,-121.8 38.4,-125 38.4))'</span>
-<span class='fu'>wkt_vis</span>(<span class='no'>poly2</span>, <span class='kw'>browse</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
-<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#details">Details</a></li>
-
-      <li><a href="#see-also">See also</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+                </ul>
 
   </div>
 </div>

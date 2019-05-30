@@ -31,36 +31,38 @@
 #' Of course there are other types of date searches one may want to do but date range 
 #' seems like the most common date search use case.
 #' @param callopts Options passed on to [crul::HttpClient], e.g., 
-#' for debugging curl calls, setting timeouts, etc. This parameter is ignored 
-#' for sources: inat.
-#' @param gbifopts (list) List of named options to pass on to [rgbif::occ_search()]. See
-#' also [occ_options()]
-#' @param bisonopts (list) List of named options to pass on to [rbison::bison()]. See
-#' also [occ_options()]
-#' @param inatopts (list) List of named options to pass on to internal function `get_inat_obs`
-#' @param ebirdopts (list) List of named options to pass on to [rebird::ebirdregion()]
-#' or [rebird::ebirdgeo()]. See also [occ_options()]
+#' for debugging curl calls, setting timeouts, etc.
+#' @param gbifopts (list) List of named options to pass on to
+#' [rgbif::occ_search()]. See also [occ_options()]
+#' @param bisonopts (list) List of named options to pass on to [rbison::bison()].
+#' See also [occ_options()]
+#' @param inatopts (list) List of named options to pass on to internal function
+#' `get_inat_obs`
+#' @param ebirdopts (list) List of named options to pass on to
+#' [rebird::ebirdregion()] or [rebird::ebirdgeo()]. See also [occ_options()]
 #' @param ecoengineopts (list) List of named options to pass on to
 #' `ee_observations`. See also [occ_options()].
 #' @param vertnetopts (list) List of named options to pass on to
 #' [rvertnet::searchbyterm()]. See also [occ_options()].
 #' @param idigbioopts (list) List of named options to pass on to
 #' [ridigbio::idig_search_records()]. See also [occ_options()].
-#' @param obisopts (list) List of named options to pass on to internal function. See 
-#' <https://github.com/iobis/api-docs> for possible parameters
-#' @param alaopts (list) List of named options to pass on to internal function. 
+#' @param obisopts (list) List of named options to pass on to internal function.
+#' See  https://api.obis.org/#/Occurrence/get_occurrence and [obis_search] for
+#' what parameters can be used.
+#' @param alaopts (list) List of named options to pass on to internal function.
 #' See `Occurrence search` part of the API docs at 
 #' <http://api.ala.org.au/#ws3> for possible parameters.
 #' @param throw_warnings (logical) `occ()` collects errors returned from each 
-#' data provider when they occur, and are accessible in the `$meta$errors` slot for 
-#' each data provider. If you set `throw_warnings=TRUE`, we give these request errors as 
-#' warnings with [warning()]. if `FALSE`, we don't give warnings, but you can still 
-#' access them in the output.
+#' data provider when they occur, and are accessible in the `$meta$errors` slot
+#' for each data provider. If you set `throw_warnings=TRUE`, we give these
+#' request errors as warnings with [warning()]. if `FALSE`, we don't give warnings,
+#' but you can still access them in the output.
 #' 
-#' @return an object of class `occdat`, with a print method to give a brief summary. 
-#' The print method only shows results for those that have some results (those with no 
-#' results are not shown). The `occdat` class is just a thin wrapper around a named 
-#' list, wher the top level names are the data sources:
+#' @return an object of class `occdat`, with a print method to give a brief
+#' summary. The print method only shows results for those that have some
+#' results (those with no results are not shown). The `occdat` class is just
+#' a thin wrapper around a named list, wher the top level names are the
+#' data sources:
 #' 
 #' - gbif
 #' - bison
@@ -289,7 +291,12 @@
 #'  1000; if you request 2000 records, we'll do the first request, and do the
 #'  second request for you automatically.
 #' - idigbio - Responds to `start`. Default: 0
-#' - obis - Responds to `start`. Default: 0
+#' - obis - Does not respond to `start`. They only allow a starting occurrence
+#' UUID up to which to skip. So order of results matters a great deal of course.
+#' To paginate with OBIS, do e.g.
+#' `obisopts = list(after = "017b7818-5b2c-4c88-9d76-f4471afe5584")`; `after` can
+#' be combined with the `limit` value you pass in to the main `occ()` function 
+#' call. See [obis_search] for what parameters can be used.
 #' - ala - Responds to `start`. Default: 0
 #' 
 #' @section Photographs:

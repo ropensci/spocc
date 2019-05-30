@@ -42,7 +42,7 @@ as.obis.occdat <- function(x, ...) {
 as.obis.data.frame <- function(x, ...) make_obis_df(x, ...)
 
 #' @export
-as.obis.numeric <- function(x, ...) make_obis(x, ...)
+as.obis.character <- function(x, ...) make_obis(x, ...)
 
 #' @export
 as.obis.list <- function(x, ...) {

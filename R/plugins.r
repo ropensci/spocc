@@ -472,17 +472,17 @@ foo_obis <- function(sources, query, limit, start, geometry, has_coords,
       opts$enddate <- date[2]
     }
 
-    if (!"limit" %in% names(opts)) opts$limit <- limit
+    if (!"limit" %in% names(opts)) opts$size <- limit
     if (!'offset' %in% names(opts)) opts$offset <- start
 
     opts <- c(opts, callopts)
 
     tmp <- tryCatch(do.call(obis_search, opts), error = function(e) e)
-    if (inherits(tmp, "simpleError") || "message" %in% names(tmp)) {
+    if (inherits(tmp, "simpleError") || "error" %in% names(tmp)) {
       throw_error("obis", 
         sprintf("No records returned in OBIS for %s", query))
-      throw_error("obis", tmp$message)
-      emptylist(opts, tmp$message)
+      throw_error("obis", tmp$error)
+      emptylist(opts, tmp$error)
     } else {
       if (!"results" %in% names(tmp)) {
         warning(sprintf("No records returned in OBIS for %s", query))

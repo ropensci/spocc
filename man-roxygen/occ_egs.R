@@ -290,13 +290,16 @@
 #' (res <- occ(from = 'obis', geometry = sppoly, limit = 50))
 #' ## Do paging
 #' (res1 <- occ(query = 'Mola mola', from = 'obis', limit = 10))
-#' (res2 <- occ(query = 'Mola mola', from = 'obis', limit = 10, start = 20))
+#' occ_ids <- res1$obis$data$Mola_mola$id
+#' (res2 <- occ(query = 'Mola mola', from = 'obis',
+#'   limit = 10, obisopts = list(after = occ_ids[length(occ_ids)])))
 #' res1$obis
 #' res2$obis
-#' ## Pass in any occurrence route parameters to obisopts as a list
+#' ## Pass in any parameters to obisopts as a list
 #' (res <- occ(query = 'Mola mola', from = 'obis', 
-#'    obisopts = list(year = 2005)))
-#' unique(res$obis$data$Mola_mola$yearcollected)
+#'    obisopts = list(startdepth = 40, enddepth = 50)))
+#' min(res$obis$data$Mola_mola$minimumDepthInMeters, na.rm=TRUE)
+#' max(res$obis$data$Mola_mola$maximumDepthInMeters, na.rm=TRUE)
 #' 
 #' 
 #' # ALA examples

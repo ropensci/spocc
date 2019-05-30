@@ -53,19 +53,19 @@ Of course there are other types of date searches one may want to do but date ran
 seems like the most common date search use case.}
 
 \item{callopts}{Options passed on to \link[crul:HttpClient]{crul::HttpClient}, e.g.,
-for debugging curl calls, setting timeouts, etc. This parameter is ignored
-for sources: inat.}
+for debugging curl calls, setting timeouts, etc.}
 
-\item{gbifopts}{(list) List of named options to pass on to \code{\link[rgbif:occ_search]{rgbif::occ_search()}}. See
-also \code{\link[=occ_options]{occ_options()}}}
+\item{gbifopts}{(list) List of named options to pass on to
+\code{\link[rgbif:occ_search]{rgbif::occ_search()}}. See also \code{\link[=occ_options]{occ_options()}}}
 
-\item{bisonopts}{(list) List of named options to pass on to \code{\link[rbison:bison]{rbison::bison()}}. See
-also \code{\link[=occ_options]{occ_options()}}}
+\item{bisonopts}{(list) List of named options to pass on to \code{\link[rbison:bison]{rbison::bison()}}.
+See also \code{\link[=occ_options]{occ_options()}}}
 
-\item{inatopts}{(list) List of named options to pass on to internal function \code{get_inat_obs}}
+\item{inatopts}{(list) List of named options to pass on to internal function
+\code{get_inat_obs}}
 
-\item{ebirdopts}{(list) List of named options to pass on to \code{\link[rebird:ebirdregion]{rebird::ebirdregion()}}
-or \code{\link[rebird:ebirdgeo]{rebird::ebirdgeo()}}. See also \code{\link[=occ_options]{occ_options()}}}
+\item{ebirdopts}{(list) List of named options to pass on to
+\code{\link[rebird:ebirdregion]{rebird::ebirdregion()}} or \code{\link[rebird:ebirdgeo]{rebird::ebirdgeo()}}. See also \code{\link[=occ_options]{occ_options()}}}
 
 \item{ecoengineopts}{(list) List of named options to pass on to
 \code{ee_observations}. See also \code{\link[=occ_options]{occ_options()}}.}
@@ -76,24 +76,26 @@ or \code{\link[rebird:ebirdgeo]{rebird::ebirdgeo()}}. See also \code{\link[=occ_
 \item{idigbioopts}{(list) List of named options to pass on to
 \code{\link[ridigbio:idig_search_records]{ridigbio::idig_search_records()}}. See also \code{\link[=occ_options]{occ_options()}}.}
 
-\item{obisopts}{(list) List of named options to pass on to internal function. See
-\url{https://github.com/iobis/api-docs} for possible parameters}
+\item{obisopts}{(list) List of named options to pass on to internal function.
+See  https://api.obis.org/#/Occurrence/get_occurrence and \link{obis_search} for
+what parameters can be used.}
 
 \item{alaopts}{(list) List of named options to pass on to internal function.
 See \code{Occurrence search} part of the API docs at
 \url{http://api.ala.org.au/#ws3} for possible parameters.}
 
 \item{throw_warnings}{(logical) \code{occ()} collects errors returned from each
-data provider when they occur, and are accessible in the \code{$meta$errors} slot for
-each data provider. If you set \code{throw_warnings=TRUE}, we give these request errors as
-warnings with \code{\link[=warning]{warning()}}. if \code{FALSE}, we don't give warnings, but you can still
-access them in the output.}
+data provider when they occur, and are accessible in the \code{$meta$errors} slot
+for each data provider. If you set \code{throw_warnings=TRUE}, we give these
+request errors as warnings with \code{\link[=warning]{warning()}}. if \code{FALSE}, we don't give warnings,
+but you can still access them in the output.}
 }
 \value{
-an object of class \code{occdat}, with a print method to give a brief summary.
-The print method only shows results for those that have some results (those with no
-results are not shown). The \code{occdat} class is just a thin wrapper around a named
-list, wher the top level names are the data sources:
+an object of class \code{occdat}, with a print method to give a brief
+summary. The print method only shows results for those that have some
+results (those with no results are not shown). The \code{occdat} class is just
+a thin wrapper around a named list, wher the top level names are the
+data sources:
 \itemize{
 \item gbif
 \item bison
@@ -364,7 +366,12 @@ internally for you.  For example, the max records per request for VertNet is
 1000; if you request 2000 records, we'll do the first request, and do the
 second request for you automatically.
 \item idigbio - Responds to \code{start}. Default: 0
-\item obis - Responds to \code{start}. Default: 0
+\item obis - Does not respond to \code{start}. They only allow a starting occurrence
+UUID up to which to skip. So order of results matters a great deal of course.
+To paginate with OBIS, do e.g.
+\code{obisopts = list(after = "017b7818-5b2c-4c88-9d76-f4471afe5584")}; \code{after} can
+be combined with the \code{limit} value you pass in to the main \code{occ()} function
+call. See \link{obis_search} for what parameters can be used.
 \item ala - Responds to \code{start}. Default: 0
 }
 }
@@ -676,13 +683,16 @@ sppoly = SpatialPolygons(list(spone), as.integer(1))
 (res <- occ(from = 'obis', geometry = sppoly, limit = 50))
 ## Do paging
 (res1 <- occ(query = 'Mola mola', from = 'obis', limit = 10))
-(res2 <- occ(query = 'Mola mola', from = 'obis', limit = 10, start = 20))
+occ_ids <- res1$obis$data$Mola_mola$id
+(res2 <- occ(query = 'Mola mola', from = 'obis',
+  limit = 10, obisopts = list(after = occ_ids[length(occ_ids)])))
 res1$obis
 res2$obis
-## Pass in any occurrence route parameters to obisopts as a list
+## Pass in any parameters to obisopts as a list
 (res <- occ(query = 'Mola mola', from = 'obis', 
-   obisopts = list(year = 2005)))
-unique(res$obis$data$Mola_mola$yearcollected)
+   obisopts = list(startdepth = 40, enddepth = 50)))
+min(res$obis$data$Mola_mola$minimumDepthInMeters, na.rm=TRUE)
+max(res$obis$data$Mola_mola$maximumDepthInMeters, na.rm=TRUE)
 
 
 # ALA examples

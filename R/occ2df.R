@@ -30,10 +30,11 @@
 #'
 #' out <- occ(
 #'   query='Accipiter striatus',
-#'   from=c('gbif','bison','ecoengine','ebird','inat','vertnet'),
+#'   from=c('gbif','bison','ecoengine','ebird','inat'),
 #'   gbifopts=list(hasCoordinate=TRUE), limit=2)
 #' occ2df(out)
-#' occ2df(out$vertnet)
+#' occ2df(out$bison)
+#' occ2df(out$ecoengine)
 #'
 #' # or combine many results from a single data source
 #' spnames <- c('Accipiter striatus', 'Spinus tristis')
@@ -50,7 +51,7 @@ occ2df <- function(obj, what = "data") {
 
 #' @export
 occ2df.occdatind <- function(obj, what = "data") {
-  as_data_frame(rbind_fill(obj$data))
+  as_tibble(rbind_fill(obj$data))
 }
 
 foolist <- function(x) {
@@ -77,7 +78,7 @@ occ2df.occdat <- function(obj, what = "data") {
     Map(
       function(x, y){
         if (NROW(x) == 0) {
-          data_frame()
+          tibble()
         } else {
           dat <- x[ , c('name', 'longitude', 'latitude', 'prov',
                         pluck_fill(x, datemap[[y]]),
@@ -102,7 +103,7 @@ occ2df.occdat <- function(obj, what = "data") {
                 obj$id$meta, obj$ob$meta, obj$ala$meta),
     data = tmp
   )
-  if (what %in% "data") as_data_frame(tmpout$data) else tmpout
+  if (what %in% "data") as_tibble(tmpout$data) else tmpout
 }
 
 datemap <- list(gbif = 'eventDate', bison = 'date', inat = 'observed_on',

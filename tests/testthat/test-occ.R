@@ -6,9 +6,12 @@ test_that("occ works for each data source", {
     x2 <- occ(query = "Accipiter striatus", from = "ecoengine", limit = 3)
     x3 <- occ(query = "Danaus plexippus", from = "inat", limit = 3)
     x4 <- occ(query = "Bison bison", from = "bison", limit = 3)
-    x8 <- occ(query = "Spinus tristis", from = "vertnet", limit = 3)
     x9 <- occ(query = "Mola mola", from = "obis", limit = 3)
     x10 <- occ(query = "Macropus", from = "ala", limit = 3)
+  })
+
+  vcr::use_cassette("occ_vertnet", {
+    x8 <- occ(query = "Accipiter striatus", from = "vertnet", limit = 3)
   })
 
   # Make sure they are all occdats

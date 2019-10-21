@@ -41,10 +41,11 @@ occ2df(out$gbif)
 
 out <- occ(
   query='Accipiter striatus',
-  from=c('gbif','bison','ecoengine','ebird','inat','vertnet'),
+  from=c('gbif','bison','ecoengine','ebird','inat'),
   gbifopts=list(hasCoordinate=TRUE), limit=2)
 occ2df(out)
-occ2df(out$vertnet)
+occ2df(out$bison)
+occ2df(out$ecoengine)
 
 # or combine many results from a single data source
 spnames <- c('Accipiter striatus', 'Spinus tristis')

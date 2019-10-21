@@ -88,7 +88,7 @@ foo_gbif <- function(sources, query, limit, start, geometry, has_coords,
             dat <- add_latlong_if_missing(dat)
             dat <- stand_dates(dat, "gbif")
             list(time = time, found = out$meta$count,
-                 data = as_data_frame(dat), opts = opts)
+                 data = as_tibble(dat), opts = opts)
           }
         }
       }
@@ -148,7 +148,7 @@ foo_ecoengine <- function(sources, query, limit, page, geometry, has_coords,
       names(out)[names(out) == 'scientific_name'] <- "name"
       out <- add_latlong_if_missing(out)
       out <- stand_dates(out, "ecoengine")
-      list(time = time, found = out_ee$results, data = as_data_frame(out),
+      list(time = time, found = out_ee$results, data = as_tibble(out),
            opts = opts)
     }
   } else {
@@ -222,7 +222,7 @@ foo_bison <- function(sources, query, limit, start, geometry, date,
       } else {
         out$summary$total
       }
-      list(time = time, found = found, data = as_data_frame(dat), opts = opts)
+      list(time = time, found = found, data = as_tibble(dat), opts = opts)
     }
   } else {
     emptylist(opts)
@@ -277,7 +277,7 @@ foo_inat <- function(sources, query, limit, page, geometry, has_coords,
       res <- stand_latlon(res)
       res <- add_latlong_if_missing(res)
       res <- stand_dates(res, "inat")
-      list(time = time, found = out$meta$found, data = as_data_frame(res),
+      list(time = time, found = out$meta$found, data = as_tibble(res),
            opts = opts)
     }
   } else {
@@ -322,7 +322,7 @@ foo_ebird <- function(sources, query, limit, callopts, opts) {
       out <- stand_latlon(out)
       out <- add_latlong_if_missing(out)
       out <- stand_dates(out, "ebird")
-      list(time = time, found = NULL, data = as_data_frame(out), opts = opts)
+      list(time = time, found = NULL, data = as_tibble(out), opts = opts)
     }
   } else {
     emptylist(opts)
@@ -371,7 +371,7 @@ foo_vertnet <- function(sources, query, limit, has_coords, date, callopts, opts)
       names(df) <- tolower(names(df))
       list(time = time,
            found = as.numeric(gsub(">|<", "", out$meta$matching_records)),
-           data = as_data_frame(df), opts = opts)
+           data = as_tibble(df), opts = opts)
     }
   } else {
     emptylist(opts)
@@ -442,7 +442,7 @@ foo_idigbio <- function(sources, query, limit, start, geometry, has_coords,
       out <- add_latlong_if_missing(out)
       out <- stand_dates(out, "idigbio")
       list(time = time, found = attr(out, "itemCount"),
-           data = as_data_frame(out), opts = opts)
+           data = as_tibble(out), opts = opts)
     }
   } else {
     emptylist(opts)

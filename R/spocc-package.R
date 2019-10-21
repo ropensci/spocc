@@ -56,7 +56,7 @@
 #' @importFrom utils browseURL head read.csv data setTxtProgressBar 
 #' txtProgressBar
 #' @importFrom data.table rbindlist setDF
-#' @importFrom tibble as_data_frame data_frame
+#' @importFrom tibble tibble as_tibble
 #' @importFrom lubridate now ymd_hms ymd_hm ydm_hm ymd as_date
 #' @importFrom rgbif occ_data occ_get name_lookup
 #' @importFrom rebird ebirdregion ebirdgeo

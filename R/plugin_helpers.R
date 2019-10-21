@@ -5,7 +5,7 @@ move_cols <- function(x, y)
 
 emptylist <- function(x, err = NULL) {
   list(
-    time = NULL, found = NULL, data = data_frame(), opts = x, errors = err
+    time = NULL, found = NULL, data = tibble(), opts = x, errors = err
   )
 }
 
@@ -28,10 +28,11 @@ add_latlong_if_missing <- function(x) {
 }
 
 stand_dates <- function(dat, from){
-  datevars <- list(gbif = 'eventDate', bison = c('eventDate', 'year'), 
-                   inat = 'observed_on', ebird = 'obsDt', 
-                   ecoengine = 'begin_date', vertnet = 'eventdate',
-                   idigbio = 'datecollected', ala = 'eventDate')
+  datevars <- list(gbif = 'eventDate', obis = 'eventDate',
+    bison = c('eventDate', 'year'), 
+    inat = 'observed_on', ebird = 'obsDt', 
+    ecoengine = 'begin_date', vertnet = 'eventdate',
+    idigbio = 'datecollected', ala = 'eventDate')
   var <- datevars[[from]]
   if (from == "bison") {
     var <- if ( is_null(dat$eventDate) ) "year" else "eventDate"

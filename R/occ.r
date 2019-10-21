@@ -82,20 +82,20 @@ occ <- function(query = NULL, from = "gbif", limit = 500, start = NULL,
            call. = FALSE)
     if (class(x) == 'gbifid') {
       gbif_res <- foo_gbif(sources, x, y, s, z, hc, d, w, gbifopts)
-      bison_res <- list(time = NULL, data = data_frame())
+      bison_res <- list(time = NULL, data = tibble())
     } else if (class(x) == 'tsn') {
       bison_res <- foo_bison(sources, x, y, s, z, d, w, bisonopts)
-      gbif_res <- list(time = NULL, data = data_frame())
+      gbif_res <- list(time = NULL, data = tibble())
     }
     list(gbif = gbif_res,
          bison = bison_res,
-         inat = list(time = NULL, data = data_frame()),
-         ebird = list(time = NULL, data = data_frame()),
-         ecoengine = list(time = NULL, data = data_frame()),
-         vertnet = list(time = NULL, data = data_frame()),
-         idigbio = list(time = NULL, data = data_frame()),
-         obis = list(time = NULL, data = data_frame()),
-         ala = list(time = NULL, data = data_frame())
+         inat = list(time = NULL, data = tibble()),
+         ebird = list(time = NULL, data = tibble()),
+         ecoengine = list(time = NULL, data = tibble()),
+         vertnet = list(time = NULL, data = tibble()),
+         idigbio = list(time = NULL, data = tibble()),
+         obis = list(time = NULL, data = tibble()),
+         ala = list(time = NULL, data = tibble())
     )
   }
 

@@ -154,7 +154,7 @@ occinddf <- function(obj) {
   
   cat(sprintf("First 10 rows of [%s]\n\n", nms))
   
-  if (NROW(z) == 0) return(data_frame())
+  if (NROW(z) == 0) return(tibble())
   df <- data.frame(name = z$name, longitude = z$longitude,
                    latitude = z$latitude, prov = z$prov, 
                    stringsAsFactors = FALSE)
@@ -163,5 +163,5 @@ occinddf <- function(obj) {
                           'decimalLatitude','decimallatitude','Latitude','lat',
                           'latitude','decimal_latitude','prov',
                           'geopoint.lat','geopoint.lon')]
-  as_data_frame(do.call(cbind, list(df, z)))
+  as_tibble(do.call(cbind, list(df, z)))
 }

@@ -11,7 +11,6 @@ spocc
 [![cran version](https://www.r-pkg.org/badges/version/spocc)](https://cran.r-project.org/package=spocc)
 
 
-
 **`spocc` = SPecies OCCurrence data**
 
 At rOpenSci, we have been writing R packages to interact with many sources of species occurrence data, including [GBIF][gbif], [Vertnet][vertnet], [BISON][bison], [iNaturalist][inat], the [Berkeley ecoengine][ecoengine], and [eBird][ebird]. Other databases are out there as well, which we can pull in. `spocc` is an R package to query and collect species occurrence data from many sources. The goal is to to create a seamless search experience across data sources, as well as creating unified outputs across data sources.
@@ -83,7 +82,7 @@ Get data from GBIF
 ```r
 (out <- occ(query = 'Accipiter striatus', from = 'gbif', limit = 100))
 #> Searched: gbif
-#> Occurrences - Found: 737,289, Returned: 100
+#> Occurrences - Found: 963,463, Returned: 100
 #> Search type: Scientific
 #>   gbif: Accipiter striatus (100)
 ```
@@ -96,13 +95,13 @@ out$gbif
 #> Species [Accipiter striatus (100)] 
 #> First 10 rows of [Accipiter_striatus]
 #> 
-#> # A tibble: 100 x 87
-#>    name  longitude latitude prov  issues    key datasetKey publishingOrgKey
-#>    <chr>     <dbl>    <dbl> <chr> <chr>   <int> <chr>      <chr>           
-#>  1 Acci…    -104.      20.7 gbif  cdrou… 1.81e9 50c9509d-… 28eb1a3f-1c15-4…
-#>  2 Acci…     -98.6     33.8 gbif  cdrou… 1.81e9 50c9509d-… 28eb1a3f-1c15-4…
-#>  3 Acci…     -74.1     40.1 gbif  cdrou… 1.81e9 50c9509d-… 28eb1a3f-1c15-4…
-#>  4 Acci…    -122.      38.0 gbif  cdrou… 1.80e9 50c9509d-… 28eb1a3f-1c15-4…
+#> # A tibble: 100 x 72
+#>    name  longitude latitude prov  issues key   scientificName datasetKey
+#>    <chr>     <dbl>    <dbl> <chr> <chr>  <chr> <chr>          <chr>     
+#>  1 Acci…    -107.      24.0 gbif  cdrou… 1990… Accipiter str… 50c9509d-…
+#>  2 Acci…     -97.3     37.7 gbif  cdrou… 1990… Accipiter str… 50c9509d-…
+#>  3 Acci…     -98.4     30.3 gbif  cdrou… 1993… Accipiter str… 50c9509d-…
+#>  4 Acci…     -86.6     39.2 gbif  cdrou… 2012… Accipiter str… 50c9509d-…
 ...
 ```
 
@@ -114,7 +113,7 @@ Get fine-grained detail over each data source by passing on parameters to the pa
 ```r
 (out <- occ(query = 'Setophaga caerulescens', from = 'gbif', gbifopts = list(country = 'US')))
 #> Searched: gbif
-#> Occurrences - Found: 239,219, Returned: 500
+#> Occurrences - Found: 335,951, Returned: 500
 #> Search type: Scientific
 #>   gbif: Setophaga caerulescens (500)
 ```
@@ -127,56 +126,49 @@ out$gbif
 #> Species [Setophaga caerulescens (500)] 
 #> First 10 rows of [Setophaga_caerulescens]
 #> 
-#> # A tibble: 500 x 108
-#>    name  longitude latitude prov  issues    key datasetKey publishingOrgKey
-#>    <chr>     <dbl>    <dbl> <chr> <chr>   <int> <chr>      <chr>           
-#>  1 Seto…     -80.3     25.7 gbif  cdrou… 1.81e9 50c9509d-… 28eb1a3f-1c15-4…
-#>  2 Seto…     -80.3     25.8 gbif  cdrou… 1.81e9 50c9509d-… 28eb1a3f-1c15-4…
-#>  3 Seto…     -81.4     28.6 gbif  cdrou… 1.84e9 50c9509d-… 28eb1a3f-1c15-4…
-#>  4 Seto…     -77.3     39.0 gbif  cdrou… 1.84e9 50c9509d-… 28eb1a3f-1c15-4…
-#>  5 Seto…     -83.2     41.6 gbif  cdrou… 1.88e9 50c9509d-… 28eb1a3f-1c15-4…
-#>  6 Seto…     -74.0     40.8 gbif  cdrou… 1.84e9 50c9509d-… 28eb1a3f-1c15-4…
-#>  7 Seto…     -80.8     35.5 gbif  cdrou… 1.85e9 50c9509d-… 28eb1a3f-1c15-4…
-#>  8 Seto…     -97.2     26.1 gbif  cdrou… 1.84e9 50c9509d-… 28eb1a3f-1c15-4…
-#>  9 Seto…     -80.3     25.8 gbif  cdrou… 1.85e9 50c9509d-… 28eb1a3f-1c15-4…
-#> 10 Seto…     -77.1     38.9 gbif  cdrou… 1.84e9 50c9509d-… 28eb1a3f-1c15-4…
-#> # ... with 490 more rows, and 100 more variables: networkKeys <list>,
-#> #   installationKey <chr>, publishingCountry <chr>, protocol <chr>,
-#> #   lastCrawled <chr>, lastParsed <chr>, crawlId <int>,
+#> # A tibble: 500 x 95
+#>    name  longitude latitude prov  issues key   scientificName datasetKey
+#>    <chr>     <dbl>    <dbl> <chr> <chr>  <chr> <chr>          <chr>     
+#>  1 Seto…     -80.3     25.8 gbif  cdrou… 2006… Setophaga cae… 50c9509d-…
+#>  2 Seto…     -80.2     25.4 gbif  gass84 2006… Setophaga cae… 50c9509d-…
+#>  3 Seto…     -80.2     25.8 gbif  cdrou… 2013… Setophaga cae… 50c9509d-…
+#>  4 Seto…     -80.4     25.2 gbif  cdrou… 2235… Setophaga cae… 50c9509d-…
+#>  5 Seto…     -80.3     25.7 gbif  cdrou… 2028… Setophaga cae… 50c9509d-…
+#>  6 Seto…     -80.2     25.8 gbif  gass84 2013… Setophaga cae… 50c9509d-…
+#>  7 Seto…     -79.1     35.9 gbif  cdrou… 2237… Setophaga cae… 50c9509d-…
+#>  8 Seto…     -80.6     28.1 gbif  cdrou… 2238… Setophaga cae… 50c9509d-…
+#>  9 Seto…     -80.2     26.5 gbif  cdrou… 2238… Setophaga cae… 50c9509d-…
+#> 10 Seto…     -78.5     38.0 gbif  cdrou… 2242… Setophaga cae… 50c9509d-…
+#> # … with 490 more rows, and 87 more variables: publishingOrgKey <chr>,
+#> #   networkKeys <list>, installationKey <chr>, publishingCountry <chr>,
+#> #   protocol <chr>, lastCrawled <chr>, lastParsed <chr>, crawlId <int>,
 #> #   basisOfRecord <chr>, taxonKey <int>, kingdomKey <int>,
 #> #   phylumKey <int>, classKey <int>, orderKey <int>, familyKey <int>,
-#> #   genusKey <int>, acceptedTaxonKey <int>, scientificName <chr>,
+#> #   genusKey <int>, speciesKey <int>, acceptedTaxonKey <int>,
 #> #   acceptedScientificName <chr>, kingdom <chr>, phylum <chr>,
-#> #   order <chr>, family <chr>, genus <chr>, genericName <chr>,
-#> #   specificEpithet <chr>, taxonRank <chr>, taxonomicStatus <chr>,
-#> #   dateIdentified <chr>, coordinateUncertaintyInMeters <dbl>,
-#> #   stateProvince <chr>, year <int>, month <int>, day <int>,
-#> #   eventDate <date>, modified <chr>, lastInterpreted <chr>,
-#> #   references <chr>, license <chr>, geodeticDatum <chr>, class <chr>,
-#> #   countryCode <chr>, country <chr>, rightsHolder <chr>,
-#> #   identifier <chr>, verbatimEventDate <chr>, datasetName <chr>,
-#> #   verbatimLocality <chr>, gbifID <chr>, collectionCode <chr>,
-#> #   occurrenceID <chr>, taxonID <chr>, catalogNumber <chr>,
-#> #   recordedBy <chr>, `http://unknown.org/occurrenceDetails` <chr>,
-#> #   institutionCode <chr>, rights <chr>, eventTime <chr>,
-#> #   occurrenceRemarks <chr>,
-#> #   `http://unknown.org/http_//rs.gbif.org/terms/1.0/Multimedia` <chr>,
-#> #   identificationID <chr>, informationWithheld <chr>,
-#> #   nomenclaturalCode <chr>, locality <chr>, vernacularName <chr>,
-#> #   fieldNotes <chr>, verbatimElevation <chr>, behavior <chr>,
-#> #   higherClassification <chr>, sex <chr>, lifeStage <chr>,
-#> #   establishmentMeans <chr>, infraspecificEpithet <chr>, continent <chr>,
-#> #   recordNumber <chr>, higherGeography <chr>, dynamicProperties <chr>,
-#> #   endDayOfYear <chr>, georeferenceVerificationStatus <chr>,
+#> #   order <chr>, family <chr>, genus <chr>, species <chr>,
+#> #   genericName <chr>, specificEpithet <chr>, taxonRank <chr>,
+#> #   taxonomicStatus <chr>, dateIdentified <chr>,
+#> #   coordinateUncertaintyInMeters <dbl>, stateProvince <chr>, year <int>,
+#> #   month <int>, day <int>, eventDate <date>, modified <chr>,
+#> #   lastInterpreted <chr>, references <chr>, license <chr>,
+#> #   geodeticDatum <chr>, class <chr>, countryCode <chr>, country <chr>,
+#> #   rightsHolder <chr>, identifier <chr>, `http://unknown.org/nick` <chr>,
+#> #   verbatimEventDate <chr>, datasetName <chr>, verbatimLocality <chr>,
+#> #   gbifID <chr>, collectionCode <chr>, occurrenceID <chr>, taxonID <chr>,
+#> #   catalogNumber <chr>, recordedBy <chr>,
+#> #   `http://unknown.org/occurrenceDetails` <chr>, institutionCode <chr>,
+#> #   rights <chr>, eventTime <chr>, identificationID <chr>,
+#> #   occurrenceRemarks <chr>, informationWithheld <chr>, sex <chr>,
+#> #   infraspecificEpithet <chr>, continent <chr>, institutionID <chr>,
 #> #   county <chr>, language <chr>, type <chr>, preparations <chr>,
-#> #   occurrenceStatus <chr>, startDayOfYear <chr>,
-#> #   bibliographicCitation <chr>, accessRights <chr>, institutionID <chr>,
-#> #   dataGeneralizations <chr>, organismID <chr>,
-#> #   ownerInstitutionCode <chr>, datasetID <chr>, collectionID <chr>,
-#> #   habitat <chr>, georeferencedDate <chr>, georeferencedBy <chr>,
-#> #   georeferenceProtocol <chr>, otherCatalogNumbers <chr>,
-#> #   georeferenceSources <chr>, identificationRemarks <chr>,
-#> #   individualCount <int>
+#> #   verbatimElevation <chr>, recordNumber <chr>, higherGeography <chr>,
+#> #   nomenclaturalCode <chr>, dataGeneralizations <chr>, locality <chr>,
+#> #   organismID <chr>, startDayOfYear <chr>, ownerInstitutionCode <chr>,
+#> #   datasetID <chr>, accessRights <chr>, collectionID <chr>,
+#> #   higherClassification <chr>,
+#> #   `http://unknown.org/recordedByOrcid` <chr>,
+#> #   identificationRemarks <chr>, individualCount <int>
 ```
 
 ## Many data sources at once
@@ -192,23 +184,23 @@ out <- occ(query = 'Setophaga caerulescens', from = c('gbif','bison','inat','ebi
 dat <- occ2df(out)
 head(dat); tail(dat)
 #> # A tibble: 6 x 6
-#>   name                   longitude  latitude  prov  date       key       
-#>   <chr>                  <chr>      <chr>     <chr> <date>     <chr>     
-#> 1 Setophaga caerulescens -80.347459 25.743763 gbif  2018-01-20 1806338790
-#> 2 Setophaga caerulescens -80.342233 25.77536  gbif  2018-01-19 1805421161
-#> 3 Setophaga caerulescens -81.355815 28.569623 gbif  2018-03-14 1837766480
-#> 4 Setophaga caerulescens -83.192381 41.627135 gbif  2018-04-28 1880571743
-#> 5 Setophaga caerulescens -77.254868 39.006651 gbif  2018-04-29 1841263350
-#> 6 Setophaga caerulescens -73.965355 40.782865 gbif  2018-04-29 1841260747
+#>   name                        longitude  latitude prov  date       key     
+#>   <chr>                       <chr>      <chr>    <chr> <date>     <chr>   
+#> 1 Setophaga caerulescens (J.… -80.268066 25.7576… gbif  2019-02-24 2006085…
+#> 2 Setophaga caerulescens (J.… -80.234612 25.3983… gbif  2019-02-16 2006046…
+#> 3 Setophaga caerulescens (J.… -80.224234 25.7841… gbif  2019-03-06 2013734…
+#> 4 Setophaga caerulescens (J.… -80.356468 25.1917… gbif  2019-03-29 2235488…
+#> 5 Setophaga caerulescens (J.… -80.286566 25.7383… gbif  2019-03-14 2028451…
+#> 6 Setophaga caerulescens (J.… -80.224159 25.7849… gbif  2019-03-05 2013007…
 #> # A tibble: 6 x 6
 #>   name                   longitude   latitude   prov  date       key  
 #>   <chr>                  <chr>       <chr>      <chr> <date>     <chr>
-#> 1 Setophaga caerulescens -63.4497222 44.5938889 ebird 2018-11-08 <NA> 
-#> 2 Setophaga caerulescens -97.22659   49.8759422 ebird 2018-11-07 <NA> 
-#> 3 Setophaga caerulescens -97.227492  49.876486  ebird 2018-11-07 <NA> 
-#> 4 Setophaga caerulescens -79.3765    43.6799722 ebird 2018-11-06 <NA> 
-#> 5 Setophaga caerulescens -79.6037    43.516773  ebird 2018-11-03 <NA> 
-#> 6 Setophaga caerulescens -84.3526679 46.5101339 ebird 2018-11-03 <NA>
+#> 1 Setophaga caerulescens -73.4877201 45.3927348 ebird 2019-10-09 <NA> 
+#> 2 Setophaga caerulescens -83.001796  42.291624  ebird 2019-10-09 <NA> 
+#> 3 Setophaga caerulescens -63.6847315 44.7705847 ebird 2019-10-09 <NA> 
+#> 4 Setophaga caerulescens -73.5529532 45.4546332 ebird 2019-10-09 <NA> 
+#> 5 Setophaga caerulescens -106.637247 52.1023823 ebird 2019-10-09 <NA> 
+#> 6 Setophaga caerulescens -80.3983998 42.5829243 ebird 2019-10-09 <NA>
 ```
 
 ## Clean data
@@ -224,7 +216,8 @@ All mapping functionality is now in a separate package [mapr](https://github.com
 * Please [report any issues or bugs](https://github.com/ropensci/spocc/issues).
 * License: MIT
 * Get citation information for `spocc` in R doing `citation(package = 'spocc')`
-* Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
+* Please note that this project is released with a [Contributor Code of Conduct][coc].
+By participating in this project you agree to abide by its terms.
 
 [![ropensci_footer](https://ropensci.org/public_images/github_footer.png)](https://ropensci.org)
 
@@ -238,3 +231,4 @@ All mapping functionality is now in a separate package [mapr](https://github.com
 [obis]: http://www.iobis.org/
 [ebird]: http://ebird.org/content/ebird/
 [ala]: http://www.ala.org.au/
+[coc]: https://github.com/ropensci/spocc/blob/master/CODE_OF_CONDUCT.md

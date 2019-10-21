@@ -67,7 +67,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">spocc</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.1.9319</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0</span>
       </span>
     </div>
 
@@ -113,13 +113,55 @@
       <small>Source: <a href='https://github.com/ropensci/spocc/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="spocc-0-9-0" class="section level1">
+    <div id="spocc-1-0-0" class="section level1">
 <h1 class="page-header">
-<a href="#spocc-0-9-0" class="anchor"></a>spocc 0.9.0<small> 2018-11-15 </small>
+<a href="#spocc-1-0-0" class="anchor"></a>spocc 1.0.0<small> Unreleased </small>
 </h1>
 <div id="new-features" class="section level3">
 <h3 class="hasAnchor">
 <a href="#new-features" class="anchor"></a>NEW FEATURES</h3>
+<ul>
+<li>
+<code>source = "inat"</code> can now return photos. do a query as normal for inat data, and index to the <code>photos</code> slot in the data.frame, that will give a nested list of data.frames for each record with links/metadata for the photos (<a href='https://github.com/ropensci/spocc/issues/214'>#214</a>) (<a href='https://github.com/ropensci/spocc/issues/217'>#217</a>)</li>
+</ul>
+</div>
+<div id="minor-improvements" class="section level3">
+<h3 class="hasAnchor">
+<a href="#minor-improvements" class="anchor"></a>MINOR IMPROVEMENTS</h3>
+<ul>
+<li>tests now using vcr (<a href='https://github.com/ropensci/spocc/issues/209'>#209</a>)</li>
+<li>add notes in section <code>iNaturalist notes</code> in the <code><a href="../reference/occ.html">?occ</a></code> manual page for help with iNaturalist pagination and rate limiting (<a href='https://github.com/ropensci/spocc/issues/215'>#215</a>)</li>
+<li>vignette title fix for docs pages (<a href='https://github.com/ropensci/spocc/issues/200'>#200</a>)</li>
+<li>
+<code><a href="https://tibble.tidyverse.org/reference/deprecated.html">tibble::data_frame</a></code>/<code><a href="https://tibble.tidyverse.org/reference/deprecated.html">tibble::as_data_frame</a></code> replaced by <code><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble::tibble</a></code>/<code><a href="https://tibble.tidyverse.org/reference/as_tibble.html">tibble::as_tibble</a></code> throughout package</li>
+</ul>
+</div>
+<div id="deprecated" class="section level3">
+<h3 class="hasAnchor">
+<a href="#deprecated" class="anchor"></a>DEPRECATED</h3>
+<ul>
+<li>
+<code><a href="../reference/fixnames-deprecated.html">fixnames()</a></code> is now deprecated; still useable here until the next version released; please move to using <code><a href="https://docs.ropensci.org/scrubr/reference/fix_names.html">scrubr::fix_names</a></code> (<a href='https://github.com/ropensci/spocc/issues/196'>#196</a>)</li>
+</ul>
+</div>
+<div id="bug-fixes" class="section level3">
+<h3 class="hasAnchor">
+<a href="#bug-fixes" class="anchor"></a>BUG FIXES</h3>
+<ul>
+<li>fix inat data source for <code><a href="../reference/occ.html">occ()</a></code> queries: change from http to https for the inat base url (<a href='https://github.com/ropensci/spocc/issues/213'>#213</a>)</li>
+<li>inat fixes: use rbind fill approach for combining rows of data to fill missing columns safely; work with newer version of their API; unnest lat/lon results into tidy column in resulting data.frame (<a href='https://github.com/ropensci/spocc/issues/215'>#215</a>)</li>
+<li>OBIS API changed; changed internals for OBIS data in line with the new API; note that pagination for OBIS has changed (see <code><a href="../reference/occ.html">?occ</a></code> for details); <code>as.obis.numeric</code> is gone and replaced with <code>as.obis.character</code> (<a href='https://github.com/ropensci/spocc/issues/218'>#218</a>)</li>
+<li>fix to <code><a href="../reference/fixnames-deprecated.html">fixnames()</a></code>, coerce taxon name to character in case the name is factor class (<a href='https://github.com/ropensci/spocc/issues/211'>#211</a>)</li>
+</ul>
+</div>
+</div>
+    <div id="spocc-0-9-0" class="section level1">
+<h1 class="page-header">
+<a href="#spocc-0-9-0" class="anchor"></a>spocc 0.9.0<small> 2018-11-15 </small>
+</h1>
+<div id="new-features-1" class="section level3">
+<h3 class="hasAnchor">
+<a href="#new-features-1" class="anchor"></a>NEW FEATURES</h3>
 <ul>
 <li>
 <code><a href="../reference/occ.html">occ()</a></code> now attempts to collect errors from requests that fail and puts these error messages (character strings) in the <code>$meta$errors</code> spot. We can not always collect errors, and some data providers do not error well: they do not provide a meaningful error message other than that there was an error. (<a href='https://github.com/ropensci/spocc/issues/189'>#189</a>) (<a href='https://github.com/ropensci/spocc/issues/207'>#207</a>)</li>
@@ -134,9 +176,9 @@
 <li>AntWeb has been removed from <code>spocc</code>. The AntWeb API has been down for a while, and no response from maintainers (<a href='https://github.com/ropensci/spocc/issues/202'>#202</a>) (<a href='https://github.com/ropensci/spocc/issues/203'>#203</a>)</li>
 </ul>
 </div>
-<div id="bug-fixes" class="section level3">
+<div id="bug-fixes-1" class="section level3">
 <h3 class="hasAnchor">
-<a href="#bug-fixes" class="anchor"></a>BUG FIXES</h3>
+<a href="#bug-fixes-1" class="anchor"></a>BUG FIXES</h3>
 <ul>
 <li>fixes to ebird internals - a new version of <code>rebird</code> on CRAN requires a few changes in parameters used. Importantly, ebird now wants species codes instead of full scientific names, but we internally attempt to handle this, so users still just pass scientific names (<a href='https://github.com/ropensci/spocc/issues/205'>#205</a>)</li>
 </ul>
@@ -158,17 +200,17 @@
 <h1 class="page-header">
 <a href="#spocc-0-8-0" class="anchor"></a>spocc 0.8.0<small> 2018-07-05 </small>
 </h1>
-<div id="new-features-1" class="section level3">
+<div id="new-features-2" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-features-1" class="anchor"></a>NEW FEATURES</h3>
+<a href="#new-features-2" class="anchor"></a>NEW FEATURES</h3>
 <ul>
 <li>
 <code><a href="../reference/occ.html">occ()</a></code> gains new parameter <code>date</code> to do date range based searches across data sources without having to know the vagaries of each data source (<a href='https://github.com/ropensci/spocc/issues/181'>#181</a>)</li>
 </ul>
 </div>
-<div id="bug-fixes-1" class="section level3">
+<div id="bug-fixes-2" class="section level3">
 <h3 class="hasAnchor">
-<a href="#bug-fixes-1" class="anchor"></a>BUG FIXES</h3>
+<a href="#bug-fixes-2" class="anchor"></a>BUG FIXES</h3>
 <ul>
 <li>fix to idigbio geometry queries (<a href='https://github.com/ropensci/spocc/issues/180'>#180</a>)</li>
 <li>fix <code>print.occdatind</code> so that empty data.frame’s don’t throw tibble warnings (<a href='https://github.com/ropensci/spocc/issues/184'>#184</a>)</li>
@@ -183,16 +225,16 @@
 <h1 class="page-header">
 <a href="#spocc-0-7-0" class="anchor"></a>spocc 0.7.0<small> 2017-04-21 </small>
 </h1>
-<div id="new-features-2" class="section level3">
+<div id="new-features-3" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-features-2" class="anchor"></a>NEW FEATURES</h3>
+<a href="#new-features-3" class="anchor"></a>NEW FEATURES</h3>
 <ul>
 <li>Removed javascript and V8 package import and using <code>wicket</code> C++ based package instead. So you no longer need V8 which should make installation easier on some platforms. (<a href='https://github.com/ropensci/spocc/issues/172'>#172</a>)</li>
 </ul>
 </div>
-<div id="minor-improvements" class="section level3">
+<div id="minor-improvements-1" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-improvements" class="anchor"></a>MINOR IMPROVEMENTS</h3>
+<a href="#minor-improvements-1" class="anchor"></a>MINOR IMPROVEMENTS</h3>
 <ul>
 <li>
 <code>httr</code> replaced with <code>crul</code> for HTTP reqeusts (<a href='https://github.com/ropensci/spocc/issues/174'>#174</a>)</li>
@@ -201,9 +243,9 @@
 <li>Bumped minimum versions for a number of dependencies</li>
 </ul>
 </div>
-<div id="bug-fixes-2" class="section level3">
+<div id="bug-fixes-3" class="section level3">
 <h3 class="hasAnchor">
-<a href="#bug-fixes-2" class="anchor"></a>BUG FIXES</h3>
+<a href="#bug-fixes-3" class="anchor"></a>BUG FIXES</h3>
 <ul>
 <li>Fix to <code>foo_ala()</code> - the internal plugin for <code><a href="../reference/occ.html">occ()</a></code> that handles ALA queries: changed query from full text query using <code>q=foo bar</code> to <code>q=taxon_name="foo bar"</code> - in addition, improved error handling as sometimes <code>occurrences</code> slot is returned in results but is empty, whereas before it seemd to always be absent if no results (<a href='https://github.com/ropensci/spocc/issues/178'>#178</a>)</li>
 </ul>
@@ -213,24 +255,24 @@
 <h1 class="page-header">
 <a href="#spocc-0-6-0" class="anchor"></a>spocc 0.6.0<small> 2016-12-07 </small>
 </h1>
-<div id="new-features-3" class="section level3">
+<div id="new-features-4" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-features-3" class="anchor"></a>NEW FEATURES</h3>
+<a href="#new-features-4" class="anchor"></a>NEW FEATURES</h3>
 <ul>
 <li>Added a new data source: Atlas of Living Australia (ALA), under the abbreviation <code>ala</code> (<a href='https://github.com/ropensci/spocc/issues/98'>#98</a>)</li>
 <li>Added a new data source: Ocean Biogeographic Information System (OBIS), under the abbreviation <code>obis</code> (<a href='https://github.com/ropensci/spocc/issues/155'>#155</a>)</li>
 </ul>
 </div>
-<div id="minor-improvements-1" class="section level3">
+<div id="minor-improvements-2" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-improvements-1" class="anchor"></a>MINOR IMPROVEMENTS</h3>
+<a href="#minor-improvements-2" class="anchor"></a>MINOR IMPROVEMENTS</h3>
 <ul>
 <li>Added note to docs and minor tweak to internal methods to account for max results from iDigBio of 100,000. Now when you request more than 100K, you should get a warning saying as much (<a href='https://github.com/ropensci/spocc/issues/169'>#169</a>)</li>
 </ul>
 </div>
-<div id="bug-fixes-3" class="section level3">
+<div id="bug-fixes-4" class="section level3">
 <h3 class="hasAnchor">
-<a href="#bug-fixes-3" class="anchor"></a>BUG FIXES</h3>
+<a href="#bug-fixes-4" class="anchor"></a>BUG FIXES</h3>
 <ul>
 <li>Made <code><a href="../reference/occ2df.html">occ2df()</a></code> more robust to varied inputs - allowing for users that may on purpose or not have a subset of the data source slots normally in the <code>occdat</code> class object (<a href='https://github.com/ropensci/spocc/issues/171'>#171</a>)</li>
 </ul>
@@ -240,9 +282,9 @@
 <h1 class="page-header">
 <a href="#spocc-0-5-4" class="anchor"></a>spocc 0.5.4<small> 2016-10-08 </small>
 </h1>
-<div id="minor-improvements-2" class="section level3">
+<div id="minor-improvements-3" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-improvements-2" class="anchor"></a>MINOR IMPROVEMENTS</h3>
+<a href="#minor-improvements-3" class="anchor"></a>MINOR IMPROVEMENTS</h3>
 <ul>
 <li>
 <code>rvertnet</code>, a dependency dealing with data from Vertnet, was failing on certain searches. <code>rvertnet</code> was fixed and a new version on CRAN now. No changes here other than requiring the new version of <code>rvertnet</code> (<a href='https://github.com/ropensci/spocc/issues/168'>#168</a>)</li>
@@ -254,9 +296,9 @@
 </li>
 </ul>
 </div>
-<div id="bug-fixes-4" class="section level3">
+<div id="bug-fixes-5" class="section level3">
 <h3 class="hasAnchor">
-<a href="#bug-fixes-4" class="anchor"></a>BUG FIXES</h3>
+<a href="#bug-fixes-5" class="anchor"></a>BUG FIXES</h3>
 <ul>
 <li>Fixes to iDigBio internal plugin - we were dropping scientificname if geometry was passed by the user. Fixed now. (<a href='https://github.com/ropensci/spocc/issues/167'>#167</a>)</li>
 <li>Fixed bug in GBIF internal plugin - when more than 1 result given back (e.g., multiple searches were done, resulting in a list of objects) we weren’t parsing the output correctly. Fixed now. (<a href='https://github.com/ropensci/spocc/issues/166'>#166</a>)</li>
@@ -267,26 +309,26 @@
 <h1 class="page-header">
 <a href="#spocc-0-5-0" class="anchor"></a>spocc 0.5.0<small> 2016-04-23 </small>
 </h1>
-<div id="new-features-4" class="section level3">
+<div id="new-features-5" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-features-4" class="anchor"></a>NEW FEATURES</h3>
+<a href="#new-features-5" class="anchor"></a>NEW FEATURES</h3>
 <ul>
 <li>
 <code><a href="../reference/occ.html">occ()</a></code> now allows queries that only pass <code>from</code> and one of the data source opts params (e.g., <code>gbifopts</code>) - allows specifying any options passed down to the internal functions used to do data queries without having to use the other params in <code>occ</code> (<a href='https://github.com/ropensci/spocc/issues/163'>#163</a>)</li>
 </ul>
 </div>
-<div id="minor-improvements-3" class="section level3">
+<div id="minor-improvements-4" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-improvements-3" class="anchor"></a>MINOR IMPROVEMENTS</h3>
+<a href="#minor-improvements-4" class="anchor"></a>MINOR IMPROVEMENTS</h3>
 <ul>
 <li>Now using <code>tibble</code> for representing data.frames (<a href='https://github.com/ropensci/spocc/issues/164'>#164</a>)</li>
 <li>Now using explicit <code>encoding="UTF-8"</code> in <code><a href="https://httr.r-lib.org/reference/content.html">httr::content()</a></code> calls to parse raw data from web requests (<a href='https://github.com/ropensci/spocc/issues/160'>#160</a>)</li>
 <li>Now using <code>ridigbio</code> as its on CRAN - was using internal fxns prior to this (<a href='https://github.com/ropensci/spocc/issues/154'>#154</a>)</li>
 </ul>
 </div>
-<div id="bug-fixes-5" class="section level3">
+<div id="bug-fixes-6" class="section level3">
 <h3 class="hasAnchor">
-<a href="#bug-fixes-5" class="anchor"></a>BUG FIXES</h3>
+<a href="#bug-fixes-6" class="anchor"></a>BUG FIXES</h3>
 <ul>
 <li>There was a problem in the ebird parser where it wasn’t processing results from ebird with no data. A problem with <code>has_coords</code> also fixed. (<a href='https://github.com/ropensci/spocc/issues/161'>#161</a>)</li>
 </ul>
@@ -296,9 +338,9 @@
 <h1 class="page-header">
 <a href="#spocc-0-4-5" class="anchor"></a>spocc 0.4.5<small> 2016-01-27 </small>
 </h1>
-<div id="minor-improvements-4" class="section level3">
+<div id="minor-improvements-5" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-improvements-4" class="anchor"></a>MINOR IMPROVEMENTS</h3>
+<a href="#minor-improvements-5" class="anchor"></a>MINOR IMPROVEMENTS</h3>
 <ul>
 <li>Using <code><a href="https://Rdatatable.gitlab.io/data.table/reference/setDF.html">data.table::setDF()</a></code> instead of <code><a href="https://rdrr.io/r/base/data.frame.html">data.frame()</a></code> to set a <code>data.table</code> style table to a <code>data.frame</code>
 </li>
@@ -307,9 +349,9 @@
 </li>
 </ul>
 </div>
-<div id="bug-fixes-6" class="section level3">
+<div id="bug-fixes-7" class="section level3">
 <h3 class="hasAnchor">
-<a href="#bug-fixes-6" class="anchor"></a>BUG FIXES</h3>
+<a href="#bug-fixes-7" class="anchor"></a>BUG FIXES</h3>
 <ul>
 <li>Fix to <code><a href="../reference/spocc_objects.html">print.occdatind()</a></code> - which in last version introduced a bug in this print method - wasn’t fatal as only applied to empty slots in the output of a call to <code><a href="../reference/occ.html">occ()</a></code>, but nonetheless, not good (<a href='https://github.com/ropensci/spocc/issues/159'>#159</a>)</li>
 </ul>
@@ -319,16 +361,16 @@
 <h1 class="page-header">
 <a href="#spocc-0-4-4" class="anchor"></a>spocc 0.4.4<small> 2016-01-23 </small>
 </h1>
-<div id="minor-improvements-5" class="section level3">
+<div id="minor-improvements-6" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-improvements-5" class="anchor"></a>MINOR IMPROVEMENTS</h3>
+<a href="#minor-improvements-6" class="anchor"></a>MINOR IMPROVEMENTS</h3>
 <ul>
 <li>New import <code>data.table</code> for fast list to data.frame</li>
 </ul>
 </div>
-<div id="bug-fixes-7" class="section level3">
+<div id="bug-fixes-8" class="section level3">
 <h3 class="hasAnchor">
-<a href="#bug-fixes-7" class="anchor"></a>BUG FIXES</h3>
+<a href="#bug-fixes-8" class="anchor"></a>BUG FIXES</h3>
 <ul>
 <li>Fix to ecoengine spatial search - internally we were not making the bounding box correctly - fixed now (<a href='https://github.com/ropensci/spocc/issues/158'>#158</a>)</li>
 </ul>
@@ -338,25 +380,25 @@
 <h1 class="page-header">
 <a href="#spocc-0-4-0" class="anchor"></a>spocc 0.4.0<small> 2015-10-02 </small>
 </h1>
-<div id="new-features-5" class="section level3">
+<div id="new-features-6" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-features-5" class="anchor"></a>NEW FEATURES</h3>
+<a href="#new-features-6" class="anchor"></a>NEW FEATURES</h3>
 <ul>
 <li>New function <code><a href="../reference/as.vertnet.html">as.vertnet()</a></code> to coerce various inputs (e.g., result from <code><a href="../reference/occ.html">occ()</a></code>, <code><a href="../reference/occ2df.html">occ2df()</a></code>, or a key itself) to occurrence data objects (<a href='https://github.com/ropensci/spocc/issues/142'>#142</a>)</li>
 <li>
 <code><a href="../reference/occ.html">occ()</a></code> gains two parameters <code>start</code> and <code>page</code> to facilitate paging through results across data sources, instead of having to page individually for each data source. Some sources use the <code>start</code> parameter, while others use the <code>page</code> parameter. See <strong>Paging</strong> section in <code><a href="../reference/occ.html">?occ</a></code> for details on Paging (<a href='https://github.com/ropensci/spocc/issues/140'>#140</a>)</li>
 </ul>
 </div>
-<div id="minor-improvements-6" class="section level3">
+<div id="minor-improvements-7" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-improvements-6" class="anchor"></a>MINOR IMPROVEMENTS</h3>
+<a href="#minor-improvements-7" class="anchor"></a>MINOR IMPROVEMENTS</h3>
 <ul>
 <li>Added Code of Conduct</li>
 </ul>
 </div>
-<div id="bug-fixes-8" class="section level3">
+<div id="bug-fixes-9" class="section level3">
 <h3 class="hasAnchor">
-<a href="#bug-fixes-8" class="anchor"></a>BUG FIXES</h3>
+<a href="#bug-fixes-9" class="anchor"></a>BUG FIXES</h3>
 <ul>
 <li>
 <code><a href="../reference/wkt_vis.html">wkt_vis()</a></code> now works with WKT polygons with multipe polygons, e.g., <code><a href="../reference/wkt_vis.html">spocc::wkt_vis("POLYGON((-125 38.4, -121.8 38.4, -121.8 40.9, -125 40.9, -125 38.4), (-115 22.4, -111.8 22.4, -111.8 30.9, -115 30.9, -115 22.4))")</a></code> (<a href='https://github.com/ropensci/spocc/issues/147'>#147</a>)</li>
@@ -372,23 +414,23 @@
 <h1 class="page-header">
 <a href="#spocc-0-3-2" class="anchor"></a>spocc 0.3.2<small> 2015-09-12 </small>
 </h1>
-<div id="new-features-6" class="section level3">
+<div id="new-features-7" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-features-6" class="anchor"></a>NEW FEATURES</h3>
+<a href="#new-features-7" class="anchor"></a>NEW FEATURES</h3>
 <ul>
 <li>Added iDigBio as a new data source in <code>spocc</code> (<a href='https://github.com/ropensci/spocc/issues/136'>#136</a>) (<a href='https://github.com/ropensci/spocc/issues/124'>#124</a>)</li>
 </ul>
 </div>
-<div id="minor-improvements-7" class="section level3">
+<div id="minor-improvements-8" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-improvements-7" class="anchor"></a>MINOR IMPROVEMENTS</h3>
+<a href="#minor-improvements-8" class="anchor"></a>MINOR IMPROVEMENTS</h3>
 <ul>
 <li>Added much more detail on what parameters in child packages are being used inside of the <code><a href="../reference/occ.html">occ()</a></code> function. Each data source is taken care of in a separate package or set of wrapper functions, and the man file now details what API parameters are being queried (<a href='https://github.com/ropensci/spocc/issues/138'>#138</a>)</li>
 </ul>
 </div>
-<div id="bug-fixes-9" class="section level3">
+<div id="bug-fixes-10" class="section level3">
 <h3 class="hasAnchor">
-<a href="#bug-fixes-9" class="anchor"></a>BUG FIXES</h3>
+<a href="#bug-fixes-10" class="anchor"></a>BUG FIXES</h3>
 <ul>
 <li>Fixed bug where when latitude/longitude columns missing, caused problems downstream in printing outputs, etc. Now we put in NA’s when those columns missing (<a href='https://github.com/ropensci/spocc/issues/139'>#139</a>)</li>
 <li>Fixed bug in inat data source - <code>Datetime</code> variable changed to <code>datetime</code>
@@ -402,9 +444,9 @@
 <h1 class="page-header">
 <a href="#spocc-0-3-0" class="anchor"></a>spocc 0.3.0<small> 2015-07-04 </small>
 </h1>
-<div id="new-features-7" class="section level3">
+<div id="new-features-8" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-features-7" class="anchor"></a>NEW FEATURES</h3>
+<a href="#new-features-8" class="anchor"></a>NEW FEATURES</h3>
 <ul>
 <li>Mapping functions all gone, and put into a new package <code>spoccutils</code> (<a href="https://github.com/ropensci/spoccutils" class="uri">https://github.com/ropensci/spoccutils</a>) (<a href='https://github.com/ropensci/spocc/issues/132'>#132</a>)</li>
 <li>
@@ -420,9 +462,9 @@
 <li>New function <code><a href="../reference/inspect.html">inspect()</a></code> - takes output from <code><a href="../reference/occ.html">occ()</a></code> or individual occurrence keys and gets detailed occurrence data.</li>
 </ul>
 </div>
-<div id="minor-improvements-8" class="section level3">
+<div id="minor-improvements-9" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-improvements-8" class="anchor"></a>MINOR IMPROVEMENTS</h3>
+<a href="#minor-improvements-9" class="anchor"></a>MINOR IMPROVEMENTS</h3>
 <ul>
 <li>Now importing packages: <code>jsonlite</code>, <code>V8</code>, <code>utils</code>, and <code>methods</code>. No longer importing: <code>ggmap</code>, <code>maptools</code>, <code>rworldmap</code>, <code>sp</code>, <code>rgeos</code>, <code>RColorBrewer</code>, <code>rgdal</code>, and <code>leafletR</code>. Pkgs removed mostly due to splitting off some functionality into <code>spoccutils</code>. related issues: (<a href='https://github.com/ropensci/spocc/issues/131'>#131</a>) (<a href='https://github.com/ropensci/spocc/issues/132'>#132</a>)</li>
 <li>Now importing explicitly all non-base R functions that we use: now importing <code>methods</code>, <code>utils</code> (<a href='https://github.com/ropensci/spocc/issues/120'>#120</a>)</li>
@@ -431,9 +473,9 @@
 <code><a href="../reference/wkt_vis.html">wkt_vis()</a></code> now only has an option to view a WKT shape in the browser.</li>
 </ul>
 </div>
-<div id="bug-fixes-10" class="section level3">
+<div id="bug-fixes-11" class="section level3">
 <h3 class="hasAnchor">
-<a href="#bug-fixes-10" class="anchor"></a>BUG FIXES</h3>
+<a href="#bug-fixes-11" class="anchor"></a>BUG FIXES</h3>
 <ul>
 <li>Fixes to being able to pass curl options on to each data source’s functions (<a href='https://github.com/ropensci/spocc/issues/107'>#107</a>)</li>
 </ul>
@@ -443,9 +485,9 @@
 <h1 class="page-header">
 <a href="#spocc-0-2-4" class="anchor"></a>spocc 0.2.4<small> 2015-01-22 </small>
 </h1>
-<div id="minor-improvements-9" class="section level3">
+<div id="minor-improvements-10" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-improvements-9" class="anchor"></a>MINOR IMPROVEMENTS</h3>
+<a href="#minor-improvements-10" class="anchor"></a>MINOR IMPROVEMENTS</h3>
 <ul>
 <li>Improved documentation for bounding boxes, their expected format, etc. (<a href='https://github.com/ropensci/spocc/issues/96'>#96</a>)</li>
 <li>Remove dependency on the following packages: <code>assertthat</code>, <code>plyr</code>, <code>data.table</code>, and <code>XML</code> (<a href='https://github.com/ropensci/spocc/issues/102'>#102</a>)</li>
@@ -455,9 +497,9 @@
 <li>Removed the startup message.</li>
 </ul>
 </div>
-<div id="bug-fixes-11" class="section level3">
+<div id="bug-fixes-12" class="section level3">
 <h3 class="hasAnchor">
-<a href="#bug-fixes-11" class="anchor"></a>BUG FIXES</h3>
+<a href="#bug-fixes-12" class="anchor"></a>BUG FIXES</h3>
 <ul>
 <li>Duplicate, but not working correctly, function <code>occ2sp()</code> removed. The function <code>occ_to_sp()</code> function is the working version. (<a href='https://github.com/ropensci/spocc/issues/97'>#97</a>)</li>
 <li>Fixed bug where some records returned form GBIF did not have lat/long column headers, and we internally rearranged columns, which caused complete stop when that happened. Fixed now. (<a href='https://github.com/ropensci/spocc/issues/101'>#101</a>)</li>
@@ -469,9 +511,9 @@
 <h1 class="page-header">
 <a href="#spocc-0-2-2" class="anchor"></a>spocc 0.2.2<small> 2014-10-24 </small>
 </h1>
-<div id="new-features-8" class="section level3">
+<div id="new-features-9" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-features-8" class="anchor"></a>NEW FEATURES</h3>
+<a href="#new-features-9" class="anchor"></a>NEW FEATURES</h3>
 <ul>
 <li>Added new function <code><a href="../reference/occ_names.html">occ_names()</a></code> to search only for taxonomic names. The goal here is to use ths function if there is some question about what names you want to use to search for occurrences with. (<a href='https://github.com/ropensci/spocc/issues/84'>#84</a>). Suggested by <a href='https://github.com/jarioksa'>@jarioksa</a></li>
 <li>New function <code><a href="../reference/occ_names_options.html">occ_names_options()</a></code> to quickly get parameter options to pass to <code><a href="../reference/occ_names.html">occ_names()</a></code>.</li>
@@ -479,9 +521,9 @@
 <li>In many places in <code>spocc</code> (README, vignette, <code><a href="../reference/occ.html">occ()</a></code> documentation file, at package startup), we make it clear that there could be duplicate records returned in certain scenarios. And a new documentation page detailing what to watch out for: <code><a href="../reference/spocc_duplicates.html">?spocc_duplicates</a></code>. (<a href='https://github.com/ropensci/spocc/issues/77'>#77</a>)</li>
 </ul>
 </div>
-<div id="minor-improvements-10" class="section level3">
+<div id="minor-improvements-11" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-improvements-10" class="anchor"></a>MINOR IMPROVEMENTS</h3>
+<a href="#minor-improvements-11" class="anchor"></a>MINOR IMPROVEMENTS</h3>
 <ul>
 <li>All latitude/longitude column headers are now changed to latitude and longitude, whereas they use to vary from <code>latitude</code>, <code>decimalLatitude</code>, <code>Latitude</code>, <code>lat</code>, and <code>decimal_latitude</code>. (<a href='https://github.com/ropensci/spocc/issues/91'>#91</a>)</li>
 <li>Default is 500 now for the <code>limit</code> parameter in <code><a href="../reference/occ.html">occ()</a></code> (<a href='https://github.com/ropensci/spocc/issues/78'>#78</a>)</li>
@@ -496,9 +538,9 @@
 <h1 class="page-header">
 <a href="#spocc-0-2-0" class="anchor"></a>spocc 0.2.0<small> 2014-08-06 </small>
 </h1>
-<div id="new-features-9" class="section level3">
+<div id="new-features-10" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-features-9" class="anchor"></a>NEW FEATURES</h3>
+<a href="#new-features-10" class="anchor"></a>NEW FEATURES</h3>
 <ul>
 <li>
 <code><a href="../reference/occ.html">occ()</a></code> gains new parameter <code>callopts</code> to pass on curl debugging options to <code><a href="https://httr.r-lib.org/reference/GET.html">httr::GET()</a></code> (<a href='https://github.com/ropensci/spocc/issues/35'>#35</a>)</li>
@@ -509,18 +551,18 @@
 <code><a href="../reference/occ.html">occ()</a></code> now uses a print method for the <code>occdatind</code> class, adopted from <code>dplyr</code> that prints a brief <code>data.frame</code>, with columns wrapped to fit the width of your console, and additional columns not printed given at bottom with their class type. Note that the print behavior for the resulting object of an <code><a href="../reference/occ.html">occ()</a></code> call remains the same. (<a href='https://github.com/ropensci/spocc/issues/69'>#69</a>) (<a href='https://github.com/ropensci/spocc/issues/74'>#74</a>)</li>
 </ul>
 </div>
-<div id="minor-improvements-11" class="section level3">
+<div id="minor-improvements-12" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-improvements-11" class="anchor"></a>MINOR IMPROVEMENTS</h3>
+<a href="#minor-improvements-12" class="anchor"></a>MINOR IMPROVEMENTS</h3>
 <ul>
 <li>Added <code>whisker</code> as a package import to use in the <code><a href="../reference/wkt_vis.html">wkt_vis()</a></code> function. (<a href='https://github.com/ropensci/spocc/issues/70'>#70</a>)</li>
 <li>Mapping functions now all accept the same input. Previously <code>mapggplot()</code> accepted the output of <code><a href="../reference/occ.html">occ()</a></code>, of class <code>occdat</code>, while the other two functions for mapping, <code>mapleaflet()</code> and <code>mapgist()</code> accepted a <code>data.frame</code>. Now all three functions accept the output of <code><a href="../reference/occ.html">occ()</a></code>, an object of class <code>occdat</code>. (<a href='https://github.com/ropensci/spocc/issues/75'>#75</a>)</li>
 <li>The <code>meta</code> slot in each returned object (indexed by <code>object$meta</code>) contains spots for <code>returned</code> and <code>found</code>, to designate number of records returned, and number of records found. (<a href='https://github.com/ropensci/spocc/issues/64'>#64</a>)</li>
 </ul>
 </div>
-<div id="bug-fixes-12" class="section level3">
+<div id="bug-fixes-13" class="section level3">
 <h3 class="hasAnchor">
-<a href="#bug-fixes-12" class="anchor"></a>BUG FIXES</h3>
+<a href="#bug-fixes-13" class="anchor"></a>BUG FIXES</h3>
 <ul>
 <li>Fixed bug in AntWeb output, where there was supposed to be a column titled <code>name</code>. (<a href='https://github.com/ropensci/spocc/issues/71'>#71</a>)</li>
 </ul>
@@ -530,9 +572,9 @@
 <h1 class="page-header">
 <a href="#spocc-0-1-4" class="anchor"></a>spocc 0.1.4<small> 2014-06-25 </small>
 </h1>
-<div id="new-features-10" class="section level3">
+<div id="new-features-11" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-features-10" class="anchor"></a>NEW FEATURES</h3>
+<a href="#new-features-11" class="anchor"></a>NEW FEATURES</h3>
 <ul>
 <li>Can now do geometry only queries. See examples in <code><a href="../reference/occ.html">occ()</a></code>.</li>
 <li>In addition, you can pass in sp objects of SpatialPolygons or SpatialPolygonsDataFrame classes.</li>
@@ -543,9 +585,9 @@
 <h1 class="page-header">
 <a href="#spocc-0-1-2" class="anchor"></a>spocc 0.1.2<small> 2014-05-02 </small>
 </h1>
-<div id="new-features-11" class="section level3">
+<div id="new-features-12" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-features-11" class="anchor"></a>NEW FEATURES</h3>
+<a href="#new-features-12" class="anchor"></a>NEW FEATURES</h3>
 <ul>
 <li>There were quite a few changes in one of the key packages that <code>spocc</code> depends on: <code>rgbif</code>. A number of input and output parameter names changed. A new version of <code>rgbif</code> was pushed to CRAN. (<a href='https://github.com/ropensci/spocc/issues/56'>#56</a>)</li>
 <li>New function <code>clean_spocc()</code> started (not finished yet) to attempt to clean data. For example, one use case is removing impossible lat/long values (i.e., longitue values greater than absolute 180). Another, not implemented yet, is to remove points that are not in the country or habitat your points are supposed to be in. (<a href='https://github.com/ropensci/spocc/issues/44'>#44</a>)</li>
@@ -553,9 +595,9 @@
 <li>New function <code><a href="../reference/wkt_vis.html">wkt_vis()</a></code> to visualize a WKT (well-known text) area on a map. Uses <code>ggmap</code> to pull down a Google map so that the visualization has some geographic and natural earth context. We’ll soon introduce an interactive version of this function that will bring up a small Shiny app to draw a WKT area, then return those coordinates to your R session. (<a href='https://github.com/ropensci/spocc/issues/34'>#34</a>)</li>
 </ul>
 </div>
-<div id="minor-improvements-12" class="section level3">
+<div id="minor-improvements-13" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-improvements-12" class="anchor"></a>MINOR IMPROVEMENTS</h3>
+<a href="#minor-improvements-13" class="anchor"></a>MINOR IMPROVEMENTS</h3>
 <ul>
 <li>Added a CONTRIBUTING.md file to the github repo to help guide contributions (<a href='https://github.com/ropensci/spocc/issues/61'>#61</a>)</li>
 <li>Packages that require a certain version are forced to be X version or greater. Thes are rinat (&gt;= 0.1.1), rbison (&gt;= 0.3.2), rgbif (&gt;= 0.6.2), ecoengine (&gt;= 1.3), rebird (&gt;= 0.1.1), AntWeb (&gt;= 0.6.1), and leafletR (&gt;= 0.2-0). This should help avoid problems.</li>
@@ -577,6 +619,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#spocc-1-0-0">1.0.0</a></li>
         <li><a href="#spocc-0-9-0">0.9.0</a></li>
         <li><a href="#spocc-0-8-0">0.8.0</a></li>
         <li><a href="#spocc-0-7-0">0.7.0</a></li>

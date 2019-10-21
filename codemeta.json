@@ -10,14 +10,14 @@
   "codeRepository": "https://github.com/ropensci/spocc",
   "issueTracker": "https://github.com/ropensci/spocc/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "0.9.0.9310",
+  "version": "1.0.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
-    "version": "3.5.2",
+    "version": "3.6.1",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 3.5.2 Patched (2018-12-31 r75943)",
+  "runtimePlatform": "R version 3.6.1 Patched (2019-09-05 r77154)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -104,6 +104,18 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=taxize"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "vcr",
+      "name": "vcr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=vcr"
     }
   ],
   "softwareRequirements": [
@@ -272,7 +284,7 @@
   "contIntegration": "https://travis-ci.org/ropensci/spocc",
   "releaseNotes": "https://github.com/ropensci/spocc/blob/master/NEWS.md",
   "readme": "https://github.com/ropensci/spocc/blob/master/README.md",
-  "fileSize": "730.456KB",
+  "fileSize": "5863.76KB",
   "funder": [
     {
       "@type": "Organization",
@@ -281,5 +293,7 @@
   ],
   "keywords": ["specimens", "API", "web-services", "occurrences", "species", "taxonomy", "GBIF", "INAT", "BISON", "Vertnet", "eBird", "Ecoengine", "iDigBio", "OBIS", "ALA", "gbif", "vertnet", "ecoengine", "antweb", "ebird", "data", "api", "rstats", "r", "inaturalist", "idigbio", "obis", "bison", "species-occurrence", "occurrence", "spocc", "r-package"],
   "applicationCategory": "Biodiversity",
-  "isPartOf": "https://ropensci.org"
+  "isPartOf": "https://ropensci.org",
+  "relatedLink": "https://ropensci.github.io/spocc/",
+  "copyrightHolder": {}
 }

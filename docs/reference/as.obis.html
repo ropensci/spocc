@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">spocc</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.1.9319</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0</span>
       </span>
     </div>
 
@@ -161,7 +161,8 @@ or a list, numeric, obiskey, or occkey.</p></td>
 <span class='fu'>as.obis</span>(<span class='no'>tt</span>[<span class='fl'>1</span>:<span class='fl'>2</span>])
 
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='st'>"data.table"</span>)
-<span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/rbindlist.html'>rbindlist</a></span>(<span class='no'>tt</span>, <span class='kw'>use.names</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>fill</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/rbindlist.html'>rbindlist</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span>(<span class='no'>tt</span>, <span class='st'>"[["</span>, <span class='st'>"results"</span>),
+  <span class='kw'>use.names</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>fill</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 }</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

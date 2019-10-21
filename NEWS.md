@@ -1,3 +1,29 @@
+spocc 1.0.0
+===========
+
+### NEW FEATURES
+
+* `source = "inat"` can now return photos. do a query as normal for inat data, and index to the `photos` slot in the data.frame, that will give a nested list of data.frames for each record with links/metadata for the photos (#214) (#217)
+
+### MINOR IMPROVEMENTS
+
+* tests now using vcr (#209)
+* add notes in section `iNaturalist notes` in the `?occ` manual page for help with iNaturalist pagination and rate limiting (#215)
+* vignette title fix for docs pages (#200)
+* `tibble::data_frame`/`tibble::as_data_frame` replaced by `tibble::tibble`/`tibble::as_tibble` throughout package
+
+### DEPRECATED
+
+* `fixnames()` is now deprecated; still useable here until the next version released; please move to using `scrubr::fix_names` (#196)
+
+### BUG FIXES
+
+* fix inat data source for `occ()` queries: change from http to https for the inat base url (#213)
+* inat fixes: use rbind fill approach for combining rows of data to fill missing columns safely; work with newer version of their API; unnest lat/lon results into tidy column in resulting data.frame (#215)
+* OBIS API changed; changed internals for OBIS data in line with the new API; note that pagination for OBIS has changed (see `?occ` for details); `as.obis.numeric` is gone and replaced with `as.obis.character` (#218)
+* fix to `fixnames()`, coerce taxon name to character in case the name is factor class (#211)
+
+
 spocc 0.9.0
 ===========
 

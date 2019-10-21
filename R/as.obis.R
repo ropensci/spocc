@@ -22,7 +22,8 @@
 #' as.obis(tt[1:2])
 #'
 #' library("data.table")
-#' rbindlist(tt, use.names = TRUE, fill = TRUE)
+#' rbindlist(lapply(tt, "[[", "results"),
+#'   use.names = TRUE, fill = TRUE)
 #' }
 as.obis <- function(x, ...) UseMethod("as.obis")
 

@@ -29,7 +29,7 @@ iNaturalist provides access to crowd sourced citizen science data on species obs
 4. [VertNet](http://vertnet.org/) (via `rvertnet`)
 Similar to `rgbif`, ecoengine, and `rbison` (see below), VertNet provides access to more than 80 million vertebrate records spanning a large number of institutions and museums primarly covering four major disciplines (mammology, herpetology, ornithology, and icthyology). __Note that we don't currenlty support VertNet data in this package, but we should soon__
 
-5. [Biodiversity Information Serving Our Nation](https://bison.usgs.gov/) (via `rbison`)
+5. Biodiversity Information Serving Our Nation (https://bison.usgs.gov/) (via `rbison`)
 Built by the US Geological Survey's core science analytic team, BISON is a portal that provides access to species occurrence data from several participating institutions.
 
 6. [eBird](http://ebird.org/content/ebird/) (via `rebird`)

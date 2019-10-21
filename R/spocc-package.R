@@ -24,7 +24,7 @@
 #' \tabular{ll}{
 #' Provider \tab Web \cr
 #' GBIF \tab <http://www.gbif.org/> \cr
-#' BISON \tab <https://bison.usgs.gov/> \cr
+#' BISON \tab https://bison.usgs.gov/ \cr
 #' eBird \tab <http://ebird.org/content/ebird/> \cr
 #' iNaturalist \tab <http://www.inaturalist.org/> \cr
 #' Berkeley ecoengine \tab <https://ecoengine.berkeley.edu/> \cr

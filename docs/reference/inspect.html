@@ -8,11 +8,13 @@
 
 <title>Get more data on individual occurrences — inspect • spocc</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -32,14 +34,15 @@
 
 
 
-<meta property="og:title" content="Get more data on individual occurrences — inspect" />
 
+<meta property="og:title" content="Get more data on individual occurrences — inspect" />
 <meta property="og:description" content="Fetches the complete record, which may or may not be the same
 as requested through occ(). Some data providers have different ways
 to retrieve many occurrence records vs. single occurrence records -
 and sometimes the results are more verbose when retrieving a
 single occurrence record." />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -51,6 +54,7 @@ single occurrence record." />
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
 
 
   </head>
@@ -69,7 +73,7 @@ single occurrence record." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">spocc</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.1.9314</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.1.9319</span>
       </span>
     </div>
 
@@ -91,7 +95,6 @@ single occurrence record." />
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/ropensci/spocc">
@@ -106,6 +109,7 @@ single occurrence record." />
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -117,13 +121,11 @@ single occurrence record." />
     </div>
 
     <div class="ref-description">
-    
     <p>Fetches the complete record, which may or may not be the same
 as requested through <code><a href='occ.html'>occ()</a></code>. Some data providers have different ways
 to retrieve many occurrence records vs. single occurrence records -
 and sometimes the results are more verbose when retrieving a
 single occurrence record.</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>inspect</span>(<span class='no'>x</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='st'>"gbif"</span>)
@@ -136,7 +138,7 @@ single occurrence record.</p>
 
 <span class='co'># S3 method for occkey</span>
 <span class='fu'>inspect</span>(<span class='no'>x</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='st'>"gbif"</span>)</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -151,15 +153,14 @@ single occurrence record.</p>
 ecoengine, or vertnet</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A list, with each slot named for the data source, and then
 within data sources is a slot for each taxon, named by it's occurrence ID.</p>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'># NOT RUN {</span>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='no'>spnames</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>'Accipiter striatus'</span>, <span class='st'>'Spinus tristis'</span>)
 <span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='occ.html'>occ</a></span>(<span class='kw'>query</span><span class='kw'>=</span><span class='no'>spnames</span>, <span class='kw'>from</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>'gbif'</span>,<span class='st'>'bison'</span>,<span class='st'>'ecoengine'</span>),
    <span class='kw'>gbifopts</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>hasCoordinate</span><span class='kw'>=</span><span class='fl'>TRUE</span>), <span class='kw'>limit</span><span class='kw'>=</span><span class='fl'>2</span>)
@@ -179,20 +180,19 @@ within data sources is a slot for each taxon, named by it's occurrence ID.</p>
 <span class='no'>spnames</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>'Accipiter striatus'</span>, <span class='st'>'Spinus tristis'</span>)
 <span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='occ.html'>occ</a></span>(<span class='kw'>query</span><span class='kw'>=</span><span class='no'>spnames</span>, <span class='kw'>from</span><span class='kw'>=</span><span class='st'>'idigbio'</span>, <span class='kw'>limit</span><span class='kw'>=</span><span class='fl'>20</span>)
 <span class='fu'>inspect</span>(<span class='no'>out</span>)
-<span class='co'># }</span></pre>
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#value">Value</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>
 </div>
+
 
       <footer>
       <div class="copyright">
@@ -200,13 +200,16 @@ within data sources is a slot for each taxon, named by it's occurrence ID.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9100.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

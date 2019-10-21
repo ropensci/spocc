@@ -11,7 +11,7 @@ reference:
   contents:
   - has_concept("queries")
   - spocc_objects
-- title: Queries helpers - Bounding boxes
+- title: Query helpers - Bounding boxes
   contents:
   - has_concept("bbox")
 - title: Output enrichment and cleaning

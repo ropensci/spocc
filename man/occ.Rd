@@ -380,7 +380,7 @@ call. See \link{obis_search} for what parameters can be used.
 
 The iNaturalist data source provides photographs of the records returned,
 if available. For example, the following will give photos from inat:
-\code{occ(query = 'Danaus', from = 'inat')$inat$data$Danaus_plexippus$photos}
+\code{occ(query = 'Danaus plexippus', from = 'inat')$inat$data$Danaus_plexippus$photos}
 }
 
 \section{BEWARE}{

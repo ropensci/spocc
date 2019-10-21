@@ -12,7 +12,7 @@ test_that("passing in options to occ works", {
                  ebirdopts = list(hotspot = TRUE), limit = 5)
     opts6 <- occ(query = "Mustela", from = "vertnet",
                  vertnetopts = list(year = 2010), limit = 5)
-  })
+  }, preserve_exact_body_bytes = TRUE)
 
   expect_is(opts1, "occdat")
   expect_is(opts2, "occdat")

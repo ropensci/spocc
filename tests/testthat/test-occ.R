@@ -8,7 +8,7 @@ test_that("occ works for each data source", {
     x4 <- occ(query = "Bison bison", from = "bison", limit = 3)
     x9 <- occ(query = "Mola mola", from = "obis", limit = 3)
     x10 <- occ(query = "Macropus", from = "ala", limit = 3)
-  })
+  }, preserve_exact_body_bytes = TRUE)
 
   vcr::use_cassette("occ_vertnet", {
     x8 <- occ(query = "Accipiter striatus", from = "vertnet", limit = 3)

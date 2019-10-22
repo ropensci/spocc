@@ -82,7 +82,7 @@ __BEWARE:__ In cases where you request data from multiple providers, especially 
 
 ## Contributing
 
-See [CONTRIBUTING.md](.github/CONTRIBUTING.md)
+See [CONTRIBUTING.md](https://github.com/ropensci/spocc/blob/master/.github/CONTRIBUTING.md)
 
 ## Installation
 

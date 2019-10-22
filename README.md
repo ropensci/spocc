@@ -50,7 +50,7 @@ __BEWARE:__ In cases where you request data from multiple providers, especially 
 
 ## Contributing
 
-See [CONTRIBUTING.md](.github/CONTRIBUTING.md)
+See [CONTRIBUTING.md](https://github.com/ropensci/spocc/blob/master/.github/CONTRIBUTING.md)
 
 ## Installation
 
@@ -195,12 +195,12 @@ head(dat); tail(dat)
 #> # A tibble: 6 x 6
 #>   name                   longitude   latitude   prov  date       key  
 #>   <chr>                  <chr>       <chr>      <chr> <date>     <chr>
-#> 1 Setophaga caerulescens -73.4877201 45.3927348 ebird 2019-10-09 <NA> 
-#> 2 Setophaga caerulescens -83.001796  42.291624  ebird 2019-10-09 <NA> 
-#> 3 Setophaga caerulescens -63.6847315 44.7705847 ebird 2019-10-09 <NA> 
-#> 4 Setophaga caerulescens -73.5529532 45.4546332 ebird 2019-10-09 <NA> 
-#> 5 Setophaga caerulescens -106.637247 52.1023823 ebird 2019-10-09 <NA> 
-#> 6 Setophaga caerulescens -80.3983998 42.5829243 ebird 2019-10-09 <NA>
+#> 1 Setophaga caerulescens -76.8611455 43.9391343 ebird 2019-10-10 <NA> 
+#> 2 Setophaga caerulescens -72.5728884 46.325367  ebird 2019-10-10 <NA> 
+#> 3 Setophaga caerulescens -79.2552365 43.6957638 ebird 2019-10-09 <NA> 
+#> 4 Setophaga caerulescens -64.618726  46.389222  ebird 2019-10-09 <NA> 
+#> 5 Setophaga caerulescens -73.4877201 45.3927348 ebird 2019-10-09 <NA> 
+#> 6 Setophaga caerulescens -83.001796  42.291624  ebird 2019-10-09 <NA>
 ```
 
 ## Clean data

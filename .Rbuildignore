@@ -24,3 +24,6 @@ README.Rmd
 docs
 ^codemeta\.json$
 test.csv
+tests/fixtures/occ.yml
+tests/fixtures/occ_options.yml
+tests/fixtures/has_coords_other_data_sources.yml

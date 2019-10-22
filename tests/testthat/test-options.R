@@ -1,6 +1,8 @@
 context("Occ options work")
 
 test_that("passing in options to occ works", {
+  skip_on_cran()
+  
   vcr::use_cassette("occ_options", {
     opts1 <- occ(query = "Accipiter striatus", from = "gbif",
                  gbifopts = list(hasCoordinate = TRUE), limit = 5)

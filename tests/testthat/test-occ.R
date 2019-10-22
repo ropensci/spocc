@@ -1,6 +1,8 @@
 context("Occurrence data is correctly retrieved")
 
 test_that("occ works for each data source", {
+  skip_on_cran()
+  
   vcr::use_cassette("occ", {
     x1 <- occ(query = "Accipiter striatus", from = "gbif", limit = 3)
     x2 <- occ(query = "Accipiter striatus", from = "ecoengine", limit = 3)

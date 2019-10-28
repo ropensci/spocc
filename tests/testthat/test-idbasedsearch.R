@@ -13,7 +13,7 @@ test_that("Taxon identifier searches work", {
     byid3 <- occ(ids = ids2, from = "gbif", limit = 5)
     byid4 <- occ(ids = ids3, from = "gbif", limit = 5)
     byid5 <- occ(ids = ids4, from = "bison", limit = 5)
-  })
+  }, preserve_exact_body_bytes = TRUE)
 
   expect_is(byid1, "occdat")
   expect_is(byid2, "occdat")

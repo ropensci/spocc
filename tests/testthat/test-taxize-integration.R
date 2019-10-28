@@ -33,7 +33,7 @@ test_that("taxize based searches works with > 1 get_ids input", {
 	
   vcr::use_cassette("taxize_integration_morethan1id", {
     bb <- occ(ids = ids6, from=c("bison", "gbif"), limit=20)
-  })
+  }, preserve_exact_body_bytes = TRUE)
 
 	expect_is(bb, "occdat")
 	expect_is(bb$gbif, "occdatind")
@@ -53,7 +53,7 @@ test_that("taxize based searches works with single get_ids input", {
 	
   vcr::use_cassette("taxize_integration_1id", {
     cc <- occ(ids = ids7, from = "gbif", limit = 20)
-  })
+  }, preserve_exact_body_bytes = TRUE)
 
 	expect_is(cc, "occdat")
 	expect_is(cc$gbif, "occdatind")
@@ -69,7 +69,7 @@ test_that("taxize based searches works with get_gbifid input", {
   
   vcr::use_cassette("taxize_integration_get_gbifid", {
     dd <- occ(ids = ids8, from = "gbif", limit = 20)
-  })
+  }, preserve_exact_body_bytes = TRUE)
 
   expect_is(dd, "occdat")
   expect_is(dd$gbif, "occdatind")
@@ -87,7 +87,7 @@ test_that("taxize based searches works with get_tsn input", {
 
   vcr::use_cassette("taxize_integration_get_tsn", {
     ee <- occ(ids = ids9, from = "bison", limit = 20)
-  })
+  }, preserve_exact_body_bytes = TRUE)
 
   expect_is(ee, "occdat")
   expect_is(ee$bison, "occdatind")

@@ -48,6 +48,11 @@ The inspiration for this comes from users requesting a more seamless experience 
 
 __BEWARE:__ In cases where you request data from multiple providers, especially when including GBIF, there could be duplicate records since many providers' data eventually ends up with GBIF. See `?spocc_duplicates`, after installation, for more.
 
+## Learn more
+
+- spocc documentation: <https://ropensci.github.io/spocc/>
+- occurrence manual <https://ropenscilabs.github.io/occurrence-manual/> a book in development on working with occurrence data in R
+
 ## Contributing
 
 See [CONTRIBUTING.md](https://github.com/ropensci/spocc/blob/master/.github/CONTRIBUTING.md)
@@ -82,7 +87,7 @@ Get data from GBIF
 ```r
 (out <- occ(query = 'Accipiter striatus', from = 'gbif', limit = 100))
 #> Searched: gbif
-#> Occurrences - Found: 963,463, Returned: 100
+#> Occurrences - Found: 963,561, Returned: 100
 #> Search type: Scientific
 #>   gbif: Accipiter striatus (100)
 ```
@@ -113,7 +118,7 @@ Get fine-grained detail over each data source by passing on parameters to the pa
 ```r
 (out <- occ(query = 'Setophaga caerulescens', from = 'gbif', gbifopts = list(country = 'US')))
 #> Searched: gbif
-#> Occurrences - Found: 335,951, Returned: 500
+#> Occurrences - Found: 336,028, Returned: 500
 #> Search type: Scientific
 #>   gbif: Setophaga caerulescens (500)
 ```
@@ -126,7 +131,7 @@ out$gbif
 #> Species [Setophaga caerulescens (500)] 
 #> First 10 rows of [Setophaga_caerulescens]
 #> 
-#> # A tibble: 500 x 95
+#> # A tibble: 500 x 99
 #>    name  longitude latitude prov  issues key   scientificName datasetKey
 #>    <chr>     <dbl>    <dbl> <chr> <chr>  <chr> <chr>          <chr>     
 #>  1 Seto…     -80.3     25.8 gbif  cdrou… 2006… Setophaga cae… 50c9509d-…
@@ -139,7 +144,7 @@ out$gbif
 #>  8 Seto…     -80.6     28.1 gbif  cdrou… 2238… Setophaga cae… 50c9509d-…
 #>  9 Seto…     -80.2     26.5 gbif  cdrou… 2238… Setophaga cae… 50c9509d-…
 #> 10 Seto…     -78.5     38.0 gbif  cdrou… 2242… Setophaga cae… 50c9509d-…
-#> # … with 490 more rows, and 87 more variables: publishingOrgKey <chr>,
+#> # … with 490 more rows, and 91 more variables: publishingOrgKey <chr>,
 #> #   networkKeys <list>, installationKey <chr>, publishingCountry <chr>,
 #> #   protocol <chr>, lastCrawled <chr>, lastParsed <chr>, crawlId <int>,
 #> #   basisOfRecord <chr>, taxonKey <int>, kingdomKey <int>,
@@ -154,9 +159,9 @@ out$gbif
 #> #   lastInterpreted <chr>, references <chr>, license <chr>,
 #> #   geodeticDatum <chr>, class <chr>, countryCode <chr>, country <chr>,
 #> #   rightsHolder <chr>, identifier <chr>, `http://unknown.org/nick` <chr>,
-#> #   verbatimEventDate <chr>, datasetName <chr>, verbatimLocality <chr>,
-#> #   gbifID <chr>, collectionCode <chr>, occurrenceID <chr>, taxonID <chr>,
-#> #   catalogNumber <chr>, recordedBy <chr>,
+#> #   verbatimEventDate <chr>, datasetName <chr>, collectionCode <chr>,
+#> #   gbifID <chr>, verbatimLocality <chr>, occurrenceID <chr>,
+#> #   taxonID <chr>, catalogNumber <chr>, recordedBy <chr>,
 #> #   `http://unknown.org/occurrenceDetails` <chr>, institutionCode <chr>,
 #> #   rights <chr>, eventTime <chr>, identificationID <chr>,
 #> #   occurrenceRemarks <chr>, informationWithheld <chr>, sex <chr>,
@@ -167,7 +172,8 @@ out$gbif
 #> #   organismID <chr>, startDayOfYear <chr>, ownerInstitutionCode <chr>,
 #> #   datasetID <chr>, accessRights <chr>, collectionID <chr>,
 #> #   higherClassification <chr>,
-#> #   `http://unknown.org/recordedByOrcid` <chr>,
+#> #   `http://unknown.org/recordedByOrcid` <chr>, vernacularName <chr>,
+#> #   fieldNotes <chr>, behavior <chr>, associatedTaxa <chr>,
 #> #   identificationRemarks <chr>, individualCount <int>
 ```
 
@@ -195,12 +201,12 @@ head(dat); tail(dat)
 #> # A tibble: 6 x 6
 #>   name                   longitude   latitude   prov  date       key  
 #>   <chr>                  <chr>       <chr>      <chr> <date>     <chr>
-#> 1 Setophaga caerulescens -76.8611455 43.9391343 ebird 2019-10-10 <NA> 
-#> 2 Setophaga caerulescens -72.5728884 46.325367  ebird 2019-10-10 <NA> 
-#> 3 Setophaga caerulescens -79.2552365 43.6957638 ebird 2019-10-09 <NA> 
-#> 4 Setophaga caerulescens -64.618726  46.389222  ebird 2019-10-09 <NA> 
-#> 5 Setophaga caerulescens -73.4877201 45.3927348 ebird 2019-10-09 <NA> 
-#> 6 Setophaga caerulescens -83.001796  42.291624  ebird 2019-10-09 <NA>
+#> 1 Setophaga caerulescens -76.7719    44.107757  ebird 2019-10-19 <NA> 
+#> 2 Setophaga caerulescens -66.1522698 43.7996334 ebird 2019-10-19 <NA> 
+#> 3 Setophaga caerulescens -79.3466091 42.8578308 ebird 2019-10-19 <NA> 
+#> 4 Setophaga caerulescens -66.6904063 44.6285592 ebird 2019-10-19 <NA> 
+#> 5 Setophaga caerulescens -79.3315839 43.6276706 ebird 2019-10-19 <NA> 
+#> 6 Setophaga caerulescens -80.3857613 42.5806413 ebird 2019-10-19 <NA>
 ```
 
 ## Clean data

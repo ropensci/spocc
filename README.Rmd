@@ -80,6 +80,11 @@ The inspiration for this comes from users requesting a more seamless experience 
 
 __BEWARE:__ In cases where you request data from multiple providers, especially when including GBIF, there could be duplicate records since many providers' data eventually ends up with GBIF. See `?spocc_duplicates`, after installation, for more.
 
+## Learn more
+
+- spocc documentation: <https://ropensci.github.io/spocc/>
+- occurrence manual <https://ropenscilabs.github.io/occurrence-manual/> a book in development on working with occurrence data in R
+
 ## Contributing
 
 See [CONTRIBUTING.md](https://github.com/ropensci/spocc/blob/master/.github/CONTRIBUTING.md)

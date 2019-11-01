@@ -1,3 +1,11 @@
+spocc 1.0.2
+===========
+
+### BUG FIXES
+
+* preserve exact bytes for some tests that are failing on cran checks, taxize integration tests, and identifier based search tests (#221)
+
+
 spocc 1.0.0
 ===========
 

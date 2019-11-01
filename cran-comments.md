@@ -14,7 +14,7 @@
 
 --------
 
-This version fixes a few bugs, marks a function as deprecated, and adds additional functionality.
+This version fixes a test that's failing on one of the cran checks.
 
 Thanks!
 Scott Chamberlain

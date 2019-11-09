@@ -37,8 +37,11 @@ occ <- function(query = NULL, from = "gbif", limit = 500, start = NULL,
                                     call. = FALSE)
 
   if (!is.null(geometry)) {
-    if (class(geometry) %in% c('SpatialPolygons', 'SpatialPolygonsDataFrame')) {
+    if (inherits(geometry, c('SpatialPolygons', 'SpatialPolygonsDataFrame'))) {
       geometry <- as.list(handle_sp(geometry))
+    }
+    if (inherits(geometry, c('sf', 'sfc', 'POLYGON', 'MULTIPOLYGON'))) {
+      geometry <- as.list(handle_sf(geometry))
     }
   }
   sources <- match.arg(from, choices = c("gbif", "bison", "inat", "ebird",

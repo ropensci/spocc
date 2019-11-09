@@ -605,6 +605,46 @@ sppoly_df <- SpatialPolygonsDataFrame(sppoly,
 out <- occ(geometry = sppoly_df, limit=50)
 out$gbif$data
 
+## sf classes
+library("sp")
+library("sf")
+one <- Polygon(cbind(c(91,90,90,91), c(30,30,32,30)))
+spone = Polygons(list(one), "s1")
+sppoly = SpatialPolygons(list(spone), as.integer(1))
+
+## single polygon in a sf class
+x <- st_as_sf(sppoly)
+out <- occ(geometry = x, limit=50)
+out$gbif$data
+mapr::map_leaflet(out)
+
+## single polygon in a sfc class
+x <- st_as_sf(sppoly)
+out <- occ(geometry = x[[1]], limit=50)
+out$gbif$data
+
+## single polygon in a sf POLYGON class
+x <- st_as_sf(sppoly)
+x <- unclass(x[[1]])[[1]]
+class(x)
+out <- occ(geometry = x, limit=50)
+out$gbif$data
+
+## two polygons in an sf class
+one <- Polygon(cbind(c(-121.0,-117.9,-121.0,-121.0), c(39.4, 37.1, 35.1, 39.4)))
+two <- Polygon(cbind(c(-123.0,-121.2,-122.3,-124.5,-123.5,-124.1,-123.0),
+                     c(44.8,42.9,41.9,42.6,43.3,44.3,44.8)))
+spone = Polygons(list(one), "s1")
+sptwo = Polygons(list(two), "s2")
+sppoly = SpatialPolygons(list(spone, sptwo), 1:2)
+sppoly_df <- SpatialPolygonsDataFrame(sppoly, 
+   data.frame(a=c(1,2), b=c("a","b"), c=c(TRUE,FALSE),
+   row.names=row.names(sppoly)))
+x <- st_as_sf(sppoly_df)
+out <- occ(geometry = x, limit=50)
+out$gbif$data
+
+
 # curl debugging
 library('httr')
 occ(query = 'Accipiter striatus', from = 'gbif', limit=10, 
@@ -675,6 +715,7 @@ res$obis
 geometry <- "POLYGON((8.98 48.05,15.66 48.05,15.66 45.40,8.98 45.40,8.98 48.05))"
 (res <- occ(from = 'obis', geometry = geometry, limit = 50))
 res$obis
+
 ## Pass in spatial classes
 library("sp")
 one <- Polygon(cbind(c(45,30,30,45), c(35,35,30,30)))

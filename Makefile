@@ -33,3 +33,6 @@ check:
 
 test:
 	${RSCRIPT} -e 'devtools::test()'
+
+testspsf:
+	${RSCRIPT} -e 'testthat::test_dir("tests/testother")'

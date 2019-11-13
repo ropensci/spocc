@@ -92,3 +92,33 @@ handle_sf.MULTIPOLYGON <- function(x, ...) {
     collapse = ", ")),
   "MULTIPOLYGON")
 }
+
+# handle_sf(sfzoo$polygon)
+# #> [1] "POLYGON ((0 0, 1 0, 3 2, 2 4, 1 4, 0 0), (1 1, 1 2, 2 2, 1 1))"
+# handle_sf(sfzoo$polygon) == st_as_text(sfzoo$polygon)
+# #> [1] TRUE
+# handle_sf(st_sfc(sfzoo$multipolygon, sfzoo$multipolygon + 10))
+# #> Error in UseMethod("wkt"): no applicable method for 'wkt' applied to an object of class "c('XY', 'MULTIPOLYGON', 'sfg')"
+# handle_sf(st_sf(a = 1, g = st_sfc(sfzoo$multipolygon)))
+# #> Error in UseMethod("wkt"): no applicable method for 'wkt' applied to an object of class "c('XY', 'MULTIPOLYGON', 'sfg')"
+# handle_sf(sfzoo$multilinestring)
+# #> [1] "MULTILINESTRING ((0 3, 0 4, 1 5, 2 5), (0.2 3, 0.2 4, 1 4.8, 2 4.8), (0 4.4, 0.6 5))"
+# handle_sf(sfzoo$multilinestring) == st_as_text(sfzoo$multilinestring)
+# #> [1] TRUE
+# handle_sf(sfzoo$linestring)
+# #> [1] "LINESTRING (0 3, 0 4, 1 5, 2 5)"
+# handle_sf(sfzoo$linestring) == st_as_text(sfzoo$linestring)
+# #> [1] TRUE
+# handle_sf(sfzoo$multipoint)
+# #> [1] "MULTIPOINT (3.2 4, 3 4.6, 3.8 4.4, 3.5 3.8, 3.4 3.6, 3.9 4.5)"
+# handle_sf(sfzoo$multipoint) == st_as_text(sfzoo$multipoint)
+# #> [1] TRUE
+# handle_sf(sfzoo$point)
+# #> [1] "POINT (1 2)"
+# handle_sf(sfzoo$point) == st_as_text(sfzoo$point)
+# #> [1] TRUE
+
+# handle_sf(sfzoo$multipolygon)
+# #> [1] "MULTIPOLYGON (((0 0, 1 0, 3 2, 2 4, 1 4, 0 0), (1 1, 1 2, 2 2, 1 1)), ((3 0, 4 0, 4 1, 3 1, 3 0), (3.3 0.3, 3.3 0.8, 3.8 0.8, 3.8 0.3, 3.3 0.3)), ((3 3, 4 2, 4 3, 3 3)))"
+# handle_sf(sfzoo$multipolygon) == st_as_text(sfzoo$multipolygon)
+# #> [1] TRUE

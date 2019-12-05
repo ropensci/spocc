@@ -294,6 +294,6 @@
   "keywords": ["specimens", "API", "web-services", "occurrences", "species", "taxonomy", "GBIF", "INAT", "BISON", "Vertnet", "eBird", "Ecoengine", "iDigBio", "OBIS", "ALA", "gbif", "vertnet", "ecoengine", "antweb", "ebird", "data", "api", "rstats", "r", "inaturalist", "idigbio", "obis", "bison", "species-occurrence", "occurrence", "spocc", "r-package"],
   "applicationCategory": "Biodiversity",
   "isPartOf": "https://ropensci.org",
-  "relatedLink": "https://ropensci.github.io/spocc/",
+  "relatedLink": "https://docs.ropensci.org/spocc/",
   "copyrightHolder": {}
 }

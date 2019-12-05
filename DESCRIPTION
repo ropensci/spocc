@@ -26,7 +26,7 @@ Authors@R:
              role = "fnd",
              comment = "https://ropensci.org/"))
 URL: https://github.com/ropensci/spocc (devel),
-    https://ropensci.github.io/spocc/ (user manual)
+    https://docs.ropensci.org/spocc/ (user manual)
 BugReports: https://github.com/ropensci/spocc/issues
 LazyData: true
 VignetteBuilder: knitr

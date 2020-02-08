@@ -1,7 +1,5 @@
 language: r
-sudo: false
 cache: packages
-dist: trusty
 
 bioc_packages:
   - sangerseqR
@@ -22,7 +20,12 @@ matrix:
         - R_CODECOV=true
         - _R_CHECK_LENGTH_1_CONDITION_=verbose
         - _R_CHECK_LENGTH_1_LOGIC2_=verbose
-        - R_CHECK_ARGS="--no-build-vignettes --no-manual --timings --as-cran"
+    - os: linux
+      r: devel
+      env:
+        - R_CODECOV=true
+        - _R_CHECK_LENGTH_1_CONDITION_=verbose
+        - _R_CHECK_LENGTH_1_LOGIC2_=verbose
 
 after_success:
   - if [[ "${R_CODECOV}" ]]; then R -e 'covr::codecov()'; fi

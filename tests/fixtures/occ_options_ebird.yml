@@ -1,0 +1,38 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://ebird.org/ws2.0/data/obs/US/recent/btbwar?maxResults=5&hotspot=true
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      User-Agent: libcurl/7.54.0 r-curl/4.3 crul/0.9.0
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      X-eBirdApiToken: <<ebird_api_key>>
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Sat, 08 Feb 2020 15:14:59 GMT
+      server: Apache
+      cache-control: no-cache, no-store, max-age=0, must-revalidate
+      content-encoding: gzip
+      content-type: application/json;charset=utf-8
+      expires: '0'
+      pragma: no-cache
+      strict-transport-security: max-age=31536000 ; includeSubDomains
+      vary: Accept-Encoding,Origin,Access-Control-Request-Method,Access-Control-Request-Headers
+      x-content-type-options: nosniff
+      x-frame-options: DENY
+      x-xss-protection: 1; mode=block
+      content-length: '437'
+    body:
+      encoding: ASCII-8BIT
+      file: no
+      string: W3sic3BlY2llc0NvZGUiOiJidGJ3YXIiLCJjb21OYW1lIjoiQmxhY2stdGhyb2F0ZWQgQmx1ZSBXYXJibGVyIiwic2NpTmFtZSI6IlNldG9waGFnYSBjYWVydWxlc2NlbnMiLCJsb2NJZCI6IkwyNjAzNzgwIiwibG9jTmFtZSI6Ik5hcGxlcyBCb3RhbmljYWwgR2FyZGVuIiwib2JzRHQiOiIyMDIwLTAyLTA3IDExOjE1IiwiaG93TWFueSI6MSwibGF0IjoyNi4xMDg0Nzc0LCJsbmciOi04MS43NzEzOTE1LCJvYnNWYWxpZCI6dHJ1ZSwib2JzUmV2aWV3ZWQiOmZhbHNlLCJsb2NhdGlvblByaXZhdGUiOmZhbHNlLCJzdWJJZCI6IlM2NDIyMDE4NiJ9LHsic3BlY2llc0NvZGUiOiJidGJ3YXIiLCJjb21OYW1lIjoiQmxhY2stdGhyb2F0ZWQgQmx1ZSBXYXJibGVyIiwic2NpTmFtZSI6IlNldG9waGFnYSBjYWVydWxlc2NlbnMiLCJsb2NJZCI6IkwxODIzOTc0IiwibG9jTmFtZSI6IlRyb3BpY2FsIFBhcmsiLCJvYnNEdCI6IjIwMjAtMDItMDUgMTY6MDAiLCJob3dNYW55IjoxLCJsYXQiOjI1LjcyNzkwNywibG5nIjotODAuMzIzNTEyNiwib2JzVmFsaWQiOnRydWUsIm9ic1Jldmlld2VkIjpmYWxzZSwibG9jYXRpb25Qcml2YXRlIjpmYWxzZSwic3ViSWQiOiJTNjQxNjcwMTYifSx7InNwZWNpZXNDb2RlIjoiYnRid2FyIiwiY29tTmFtZSI6IkJsYWNrLXRocm9hdGVkIEJsdWUgV2FyYmxlciIsInNjaU5hbWUiOiJTZXRvcGhhZ2EgY2FlcnVsZXNjZW5zIiwibG9jSWQiOiJMOTc5MzgxMSIsImxvY05hbWUiOiJSaXZlciBQYXJrIE1hcmluYSIsIm9ic0R0IjoiMjAyMC0wMi0wNCAxMzowMCIsImhvd01hbnkiOjEsImxhdCI6MjcuMzIzNTQ4LCJsbmciOi04MC4zMzI4MDIsIm9ic1ZhbGlkIjp0cnVlLCJvYnNSZXZpZXdlZCI6ZmFsc2UsImxvY2F0aW9uUHJpdmF0ZSI6ZmFsc2UsInN1YklkIjoiUzY0MTM0OTQwIn0seyJzcGVjaWVzQ29kZSI6ImJ0YndhciIsImNvbU5hbWUiOiJCbGFjay10aHJvYXRlZCBCbHVlIFdhcmJsZXIiLCJzY2lOYW1lIjoiU2V0b3BoYWdhIGNhZXJ1bGVzY2VucyIsImxvY0lkIjoiTDQ1ODc5MiIsImxvY05hbWUiOiJLZW5kYWxsIEluZGlhbiBIYW1tb2NrcyBQYXJrIiwib2JzRHQiOiIyMDIwLTAyLTA0IDA5OjAwIiwiaG93TWFueSI6MSwibGF0IjoyNS42OTUzLCJsbmciOi04MC4zNzM0LCJvYnNWYWxpZCI6dHJ1ZSwib2JzUmV2aWV3ZWQiOmZhbHNlLCJsb2NhdGlvblByaXZhdGUiOmZhbHNlLCJzdWJJZCI6IlM2NDEyMTcxOSJ9LHsic3BlY2llc0NvZGUiOiJidGJ3YXIiLCJjb21OYW1lIjoiQmxhY2stdGhyb2F0ZWQgQmx1ZSBXYXJibGVyIiwic2NpTmFtZSI6IlNldG9waGFnYSBjYWVydWxlc2NlbnMiLCJsb2NJZCI6IkwxMjc0MjEiLCJsb2NOYW1lIjoiR3JleW5vbGRzIFBhcmsiLCJvYnNEdCI6IjIwMjAtMDItMDQgMDg6MDAiLCJob3dNYW55IjoyLCJsYXQiOjI1Ljk0MTksImxuZyI6LTgwLjE1NDMsIm9ic1ZhbGlkIjp0cnVlLCJvYnNSZXZpZXdlZCI6ZmFsc2UsImxvY2F0aW9uUHJpdmF0ZSI6ZmFsc2UsInN1YklkIjoiUzY0MTIxOTQ1In1d
+  recorded_at: 2020-02-08 15:15:00 GMT
+  recorded_with: vcr/0.4.0, webmockr/0.5.0

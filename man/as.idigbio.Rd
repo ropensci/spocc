@@ -42,9 +42,13 @@ bind_rows(lapply(tt, function(x) data.frame(unclass(x)$data)))
 }
 }
 \seealso{
-Other coercion: \code{\link{as.ala}},
-  \code{\link{as.bison}}, \code{\link{as.ecoengine}},
-  \code{\link{as.gbif}}, \code{\link{as.inat}},
-  \code{\link{as.obis}}, \code{\link{as.vertnet}}
+Other coercion: 
+\code{\link{as.ala}()},
+\code{\link{as.bison}()},
+\code{\link{as.ecoengine}()},
+\code{\link{as.gbif}()},
+\code{\link{as.inat}()},
+\code{\link{as.obis}()},
+\code{\link{as.vertnet}()}
 }
 \concept{coercion}

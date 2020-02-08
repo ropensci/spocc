@@ -46,8 +46,10 @@ occ_names_options('bison', 'html')
 }
 }
 \seealso{
-Other queries: \code{\link{occ_names}},
-  \code{\link{occ_options}}, \code{\link{occ}},
-  \code{\link{spocc_objects}}
+Other queries: 
+\code{\link{occ_names}()},
+\code{\link{occ_options}()},
+\code{\link{occ}()},
+\code{\link{spocc_objects}}
 }
 \concept{queries}

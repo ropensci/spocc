@@ -4,12 +4,28 @@
 \alias{occ}
 \title{Search for species occurrence data across many data sources.}
 \usage{
-occ(query = NULL, from = "gbif", limit = 500, start = NULL,
-  page = NULL, geometry = NULL, has_coords = NULL, ids = NULL,
-  date = NULL, callopts = list(), gbifopts = list(),
-  bisonopts = list(), inatopts = list(), ebirdopts = list(),
-  ecoengineopts = list(), vertnetopts = list(), idigbioopts = list(),
-  obisopts = list(), alaopts = list(), throw_warnings = TRUE)
+occ(
+  query = NULL,
+  from = "gbif",
+  limit = 500,
+  start = NULL,
+  page = NULL,
+  geometry = NULL,
+  has_coords = NULL,
+  ids = NULL,
+  date = NULL,
+  callopts = list(),
+  gbifopts = list(),
+  bisonopts = list(),
+  inatopts = list(),
+  ebirdopts = list(),
+  ecoengineopts = list(),
+  vertnetopts = list(),
+  idigbioopts = list(),
+  obisopts = list(),
+  alaopts = list(),
+  throw_warnings = TRUE
+)
 }
 \arguments{
 \item{query}{(character) One to many scientific names. See Details for what parameter
@@ -33,9 +49,9 @@ Details for how these parameters are used internally. Optional}
 \item{geometry}{(character or nmeric) One of a Well Known Text (WKT) object or a vector of
 length 4 specifying a bounding box. This parameter searches for occurrences inside a
 box given as a bounding box or polygon described in WKT format. A WKT shape written as
-\code{POLYGON((30.1 10.1, 20 40, 40 40, 30.1 10.1))} would be queried as is,
+\verb{POLYGON((30.1 10.1, 20 40, 40 40, 30.1 10.1))} would be queried as is,
 i.e. http://bit.ly/HwUSif. See Details for more examples of WKT objects. The format of a
-bounding box is \code{min-longitude, min-latitude, max-longitude, max-latitude}. Geometry
+bounding box is \verb{min-longitude, min-latitude, max-longitude, max-latitude}. Geometry
 is not possible with vertnet right now, but should be soon. See Details for more info
 on geometry inputs.}
 
@@ -81,11 +97,11 @@ See  https://api.obis.org/#/Occurrence/get_occurrence and \link{obis_search} for
 what parameters can be used.}
 
 \item{alaopts}{(list) List of named options to pass on to internal function.
-See \code{Occurrence search} part of the API docs at
+See \verb{Occurrence search} part of the API docs at
 \url{http://api.ala.org.au/#ws3} for possible parameters.}
 
 \item{throw_warnings}{(logical) \code{occ()} collects errors returned from each
-data provider when they occur, and are accessible in the \code{$meta$errors} slot
+data provider when they occur, and are accessible in the \verb{$meta$errors} slot
 for each data provider. If you set \code{throw_warnings=TRUE}, we give these
 request errors as warnings with \code{\link[=warning]{warning()}}. if \code{FALSE}, we don't give warnings,
 but you can still access them in the output.}
@@ -710,8 +726,10 @@ occ2df(x)
 }
 }
 \seealso{
-Other queries: \code{\link{occ_names_options}},
-  \code{\link{occ_names}}, \code{\link{occ_options}},
-  \code{\link{spocc_objects}}
+Other queries: 
+\code{\link{occ_names_options}()},
+\code{\link{occ_names}()},
+\code{\link{occ_options}()},
+\code{\link{spocc_objects}}
 }
 \concept{queries}

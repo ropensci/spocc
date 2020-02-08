@@ -4,9 +4,16 @@
 \alias{occ_names}
 \title{Search for species names across many data sources.}
 \usage{
-occ_names(query = NULL, from = "gbif", limit = 100,
-  rank = "species", callopts = list(), gbifopts = list(),
-  bisonopts = list(), ecoengineopts = list())
+occ_names(
+  query = NULL,
+  from = "gbif",
+  limit = 100,
+  rank = "species",
+  callopts = list(),
+  gbifopts = list(),
+  bisonopts = list(),
+  ecoengineopts = list()
+)
 }
 \arguments{
 \item{query}{(character) One to many names. Either a scientific name or a
@@ -65,8 +72,10 @@ head(res$ecoengine$data[[1]])
 }
 }
 \seealso{
-Other queries: \code{\link{occ_names_options}},
-  \code{\link{occ_options}}, \code{\link{occ}},
-  \code{\link{spocc_objects}}
+Other queries: 
+\code{\link{occ_names_options}()},
+\code{\link{occ_options}()},
+\code{\link{occ}()},
+\code{\link{spocc_objects}}
 }
 \concept{queries}

@@ -4,11 +4,25 @@
 \alias{obis_search}
 \title{OBIS search}
 \usage{
-obis_search(scientificName = NULL, size = 500, after = NULL,
-  taxonid = NULL, aphiaid = NULL, areaid = NULL, datasetid = NULL,
-  instituteid = NULL, nodeid = NULL, startdate = NULL,
-  enddate = NULL, startdepth = NULL, enddepth = NULL,
-  geometry = NULL, exclude = NULL, fields = NULL, ...)
+obis_search(
+  scientificName = NULL,
+  size = 500,
+  after = NULL,
+  taxonid = NULL,
+  aphiaid = NULL,
+  areaid = NULL,
+  datasetid = NULL,
+  instituteid = NULL,
+  nodeid = NULL,
+  startdate = NULL,
+  enddate = NULL,
+  startdepth = NULL,
+  enddepth = NULL,
+  geometry = NULL,
+  exclude = NULL,
+  fields = NULL,
+  ...
+)
 }
 \arguments{
 \item{size}{(integer) number of results to fetch}

@@ -63,9 +63,11 @@ res$idigbio
 }
 }
 \seealso{
-Other queries: \code{\link{occ_names_options}},
-  \code{\link{occ_names}}, \code{\link{occ_options}},
-  \code{\link{occ}}
+Other queries: 
+\code{\link{occ_names_options}()},
+\code{\link{occ_names}()},
+\code{\link{occ_options}()},
+\code{\link{occ}()}
 }
 \concept{queries}
 \keyword{internal}

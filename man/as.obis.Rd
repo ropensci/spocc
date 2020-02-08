@@ -38,9 +38,13 @@ rbindlist(lapply(tt, "[[", "results"),
 }
 }
 \seealso{
-Other coercion: \code{\link{as.ala}},
-  \code{\link{as.bison}}, \code{\link{as.ecoengine}},
-  \code{\link{as.gbif}}, \code{\link{as.idigbio}},
-  \code{\link{as.inat}}, \code{\link{as.vertnet}}
+Other coercion: 
+\code{\link{as.ala}()},
+\code{\link{as.bison}()},
+\code{\link{as.ecoengine}()},
+\code{\link{as.gbif}()},
+\code{\link{as.idigbio}()},
+\code{\link{as.inat}()},
+\code{\link{as.vertnet}()}
 }
 \concept{coercion}

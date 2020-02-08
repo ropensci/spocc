@@ -21,7 +21,7 @@ At rOpenSci, we have been writing R packages to interact with many sources of sp
 GBIF is a government funded open data repository with several partner organizations with the express goal of providing access to data on Earth's biodiversity. The data are made available by a network of member nodes, coordinating information from various participant organizations and government agencies.
 
 2. [Berkeley Ecoengine][ecoengine] (via `ecoengine`)
-The ecoengine is an open API built by the [Berkeley Initiative for Global Change Biology](http://globalchange.berkeley.edu/). The repository provides access to over 3 million specimens from various Berkeley natural history museums. These data span more than a century and provide access to georeferenced specimens, species checklists, photographs, vegetation surveys and resurveys and a variety of measurements from environmental sensors located at reserves across University of California's natural reserve system.
+The ecoengine is an open API built by the [Berkeley Initiative for Global Change Biology](https://globalchange.berkeley.edu/). The repository provides access to over 3 million specimens from various Berkeley natural history museums. These data span more than a century and provide access to georeferenced specimens, species checklists, photographs, vegetation surveys and resurveys and a variety of measurements from environmental sensors located at reserves across University of California's natural reserve system.
 
 3. [iNaturalist][inat]
 iNaturalist provides access to crowd sourced citizen science data on species observations.
@@ -87,7 +87,7 @@ Get data from GBIF
 ```r
 (out <- occ(query = 'Accipiter striatus', from = 'gbif', limit = 100))
 #> Searched: gbif
-#> Occurrences - Found: 963,561, Returned: 100
+#> Occurrences - Found: 964,225, Returned: 100
 #> Search type: Scientific
 #>   gbif: Accipiter striatus (100)
 ```
@@ -100,13 +100,13 @@ out$gbif
 #> Species [Accipiter striatus (100)] 
 #> First 10 rows of [Accipiter_striatus]
 #> 
-#> # A tibble: 100 x 72
+#> # A tibble: 100 x 73
 #>    name  longitude latitude prov  issues key   scientificName datasetKey
 #>    <chr>     <dbl>    <dbl> <chr> <chr>  <chr> <chr>          <chr>     
-#>  1 Acci…    -107.      24.0 gbif  cdrou… 1990… Accipiter str… 50c9509d-…
-#>  2 Acci…     -97.3     37.7 gbif  cdrou… 1990… Accipiter str… 50c9509d-…
-#>  3 Acci…     -98.4     30.3 gbif  cdrou… 1993… Accipiter str… 50c9509d-…
-#>  4 Acci…     -86.6     39.2 gbif  cdrou… 2012… Accipiter str… 50c9509d-…
+#>  1 Acci…    -107.      35.1 gbif  cdrou… 2542… Accipiter str… 50c9509d-…
+#>  2 Acci…     -90.0     37.1 gbif  cdrou… 2543… Accipiter str… 50c9509d-…
+#>  3 Acci…     -99.3     36.5 gbif  cdrou… 2543… Accipiter str… 50c9509d-…
+#>  4 Acci…     -76.0     39.6 gbif  cdrou… 2543… Accipiter str… 50c9509d-…
 ...
 ```
 
@@ -118,7 +118,7 @@ Get fine-grained detail over each data source by passing on parameters to the pa
 ```r
 (out <- occ(query = 'Setophaga caerulescens', from = 'gbif', gbifopts = list(country = 'US')))
 #> Searched: gbif
-#> Occurrences - Found: 336,028, Returned: 500
+#> Occurrences - Found: 336,904, Returned: 500
 #> Search type: Scientific
 #>   gbif: Setophaga caerulescens (500)
 ```
@@ -131,50 +131,48 @@ out$gbif
 #> Species [Setophaga caerulescens (500)] 
 #> First 10 rows of [Setophaga_caerulescens]
 #> 
-#> # A tibble: 500 x 99
+#> # A tibble: 500 x 98
 #>    name  longitude latitude prov  issues key   scientificName datasetKey
 #>    <chr>     <dbl>    <dbl> <chr> <chr>  <chr> <chr>          <chr>     
-#>  1 Seto…     -80.3     25.8 gbif  cdrou… 2006… Setophaga cae… 50c9509d-…
-#>  2 Seto…     -80.2     25.4 gbif  gass84 2006… Setophaga cae… 50c9509d-…
-#>  3 Seto…     -80.2     25.8 gbif  cdrou… 2013… Setophaga cae… 50c9509d-…
-#>  4 Seto…     -80.4     25.2 gbif  cdrou… 2235… Setophaga cae… 50c9509d-…
-#>  5 Seto…     -80.3     25.7 gbif  cdrou… 2028… Setophaga cae… 50c9509d-…
-#>  6 Seto…     -80.2     25.8 gbif  gass84 2013… Setophaga cae… 50c9509d-…
-#>  7 Seto…     -79.1     35.9 gbif  cdrou… 2237… Setophaga cae… 50c9509d-…
-#>  8 Seto…     -80.6     28.1 gbif  cdrou… 2238… Setophaga cae… 50c9509d-…
-#>  9 Seto…     -80.2     26.5 gbif  cdrou… 2238… Setophaga cae… 50c9509d-…
-#> 10 Seto…     -78.5     38.0 gbif  cdrou… 2242… Setophaga cae… 50c9509d-…
-#> # … with 490 more rows, and 91 more variables: publishingOrgKey <chr>,
-#> #   networkKeys <list>, installationKey <chr>, publishingCountry <chr>,
-#> #   protocol <chr>, lastCrawled <chr>, lastParsed <chr>, crawlId <int>,
-#> #   basisOfRecord <chr>, taxonKey <int>, kingdomKey <int>,
-#> #   phylumKey <int>, classKey <int>, orderKey <int>, familyKey <int>,
-#> #   genusKey <int>, speciesKey <int>, acceptedTaxonKey <int>,
-#> #   acceptedScientificName <chr>, kingdom <chr>, phylum <chr>,
-#> #   order <chr>, family <chr>, genus <chr>, species <chr>,
+#>  1 Seto…     -96.7     32.9 gbif  cdrou… 2550… Setophaga cae… 50c9509d-…
+#>  2 Seto…     -96.7     32.9 gbif  gass84 2557… Setophaga cae… 50c9509d-…
+#>  3 Seto…     -96.7     32.9 gbif  gass84 2563… Setophaga cae… 50c9509d-…
+#>  4 Seto…     -96.6     33.0 gbif  cdrou… 2563… Setophaga cae… 50c9509d-…
+#>  5 Seto…     -96.7     32.9 gbif  cdrou… 2563… Setophaga cae… 50c9509d-…
+#>  6 Seto…     -80.2     25.4 gbif  gass84 2006… Setophaga cae… 50c9509d-…
+#>  7 Seto…     -80.3     25.8 gbif  cdrou… 2006… Setophaga cae… 50c9509d-…
+#>  8 Seto…     -80.2     25.8 gbif  gass84 2013… Setophaga cae… 50c9509d-…
+#>  9 Seto…     -80.2     25.8 gbif  cdrou… 2013… Setophaga cae… 50c9509d-…
+#> 10 Seto…     -80.3     25.7 gbif  cdrou… 2028… Setophaga cae… 50c9509d-…
+#> # … with 490 more rows, and 90 more variables: publishingOrgKey <chr>,
+#> #   installationKey <chr>, publishingCountry <chr>, protocol <chr>,
+#> #   lastCrawled <chr>, lastParsed <chr>, crawlId <int>, basisOfRecord <chr>,
+#> #   taxonKey <int>, kingdomKey <int>, phylumKey <int>, classKey <int>,
+#> #   orderKey <int>, familyKey <int>, genusKey <int>, speciesKey <int>,
+#> #   acceptedTaxonKey <int>, acceptedScientificName <chr>, kingdom <chr>,
+#> #   phylum <chr>, order <chr>, family <chr>, genus <chr>, species <chr>,
 #> #   genericName <chr>, specificEpithet <chr>, taxonRank <chr>,
-#> #   taxonomicStatus <chr>, dateIdentified <chr>,
-#> #   coordinateUncertaintyInMeters <dbl>, stateProvince <chr>, year <int>,
-#> #   month <int>, day <int>, eventDate <date>, modified <chr>,
+#> #   taxonomicStatus <chr>, dateIdentified <chr>, stateProvince <chr>,
+#> #   year <int>, month <int>, day <int>, eventDate <date>, modified <chr>,
 #> #   lastInterpreted <chr>, references <chr>, license <chr>,
 #> #   geodeticDatum <chr>, class <chr>, countryCode <chr>, country <chr>,
 #> #   rightsHolder <chr>, identifier <chr>, `http://unknown.org/nick` <chr>,
-#> #   verbatimEventDate <chr>, datasetName <chr>, collectionCode <chr>,
-#> #   gbifID <chr>, verbatimLocality <chr>, occurrenceID <chr>,
+#> #   verbatimEventDate <chr>, datasetName <chr>, gbifID <chr>,
+#> #   collectionCode <chr>, verbatimLocality <chr>, occurrenceID <chr>,
 #> #   taxonID <chr>, catalogNumber <chr>, recordedBy <chr>,
 #> #   `http://unknown.org/occurrenceDetails` <chr>, institutionCode <chr>,
 #> #   rights <chr>, eventTime <chr>, identificationID <chr>,
-#> #   occurrenceRemarks <chr>, informationWithheld <chr>, sex <chr>,
-#> #   infraspecificEpithet <chr>, continent <chr>, institutionID <chr>,
-#> #   county <chr>, language <chr>, type <chr>, preparations <chr>,
-#> #   verbatimElevation <chr>, recordNumber <chr>, higherGeography <chr>,
-#> #   nomenclaturalCode <chr>, dataGeneralizations <chr>, locality <chr>,
-#> #   organismID <chr>, startDayOfYear <chr>, ownerInstitutionCode <chr>,
-#> #   datasetID <chr>, accessRights <chr>, collectionID <chr>,
-#> #   higherClassification <chr>,
-#> #   `http://unknown.org/recordedByOrcid` <chr>, vernacularName <chr>,
-#> #   fieldNotes <chr>, behavior <chr>, associatedTaxa <chr>,
-#> #   identificationRemarks <chr>, individualCount <int>
+#> #   coordinateUncertaintyInMeters <dbl>, occurrenceRemarks <chr>,
+#> #   informationWithheld <chr>, `http://unknown.org/recordedByOrcid` <chr>,
+#> #   sex <chr>, infraspecificEpithet <chr>, continent <chr>,
+#> #   institutionID <chr>, county <chr>, language <chr>, type <chr>,
+#> #   preparations <chr>, verbatimElevation <chr>, recordNumber <chr>,
+#> #   higherGeography <chr>, nomenclaturalCode <chr>, dataGeneralizations <chr>,
+#> #   locality <chr>, organismID <chr>, startDayOfYear <chr>,
+#> #   ownerInstitutionCode <chr>, datasetID <chr>, accessRights <chr>,
+#> #   higherClassification <chr>, collectionID <chr>,
+#> #   identificationRemarks <chr>, vernacularName <chr>, fieldNotes <chr>,
+#> #   behavior <chr>, associatedTaxa <chr>, individualCount <int>
 ```
 
 ## Many data sources at once
@@ -190,23 +188,23 @@ out <- occ(query = 'Setophaga caerulescens', from = c('gbif','bison','inat','ebi
 dat <- occ2df(out)
 head(dat); tail(dat)
 #> # A tibble: 6 x 6
-#>   name                        longitude  latitude prov  date       key     
-#>   <chr>                       <chr>      <chr>    <chr> <date>     <chr>   
-#> 1 Setophaga caerulescens (J.… -80.268066 25.7576… gbif  2019-02-24 2006085…
-#> 2 Setophaga caerulescens (J.… -80.234612 25.3983… gbif  2019-02-16 2006046…
-#> 3 Setophaga caerulescens (J.… -80.224234 25.7841… gbif  2019-03-06 2013734…
-#> 4 Setophaga caerulescens (J.… -80.356468 25.1917… gbif  2019-03-29 2235488…
-#> 5 Setophaga caerulescens (J.… -80.286566 25.7383… gbif  2019-03-14 2028451…
-#> 6 Setophaga caerulescens (J.… -80.224159 25.7849… gbif  2019-03-05 2013007…
+#>   name                            longitude  latitude  prov  date       key     
+#>   <chr>                           <chr>      <chr>     <chr> <date>     <chr>   
+#> 1 Setophaga caerulescens (J.F.Gm… -96.745132 32.886913 gbif  2020-01-06 2550022…
+#> 2 Setophaga caerulescens (J.F.Gm… -96.745205 32.886382 gbif  2020-01-14 2557796…
+#> 3 Setophaga caerulescens (J.F.Gm… -96.745267 32.886457 gbif  2020-01-18 2563510…
+#> 4 Setophaga caerulescens (J.F.Gm… -96.630926 32.986361 gbif  2020-01-18 2563520…
+#> 5 Setophaga caerulescens (J.F.Gm… -96.745338 32.886095 gbif  2020-01-20 2563537…
+#> 6 Setophaga caerulescens (J.F.Gm… -80.234612 25.398317 gbif  2019-02-16 2006046…
 #> # A tibble: 6 x 6
-#>   name                   longitude   latitude   prov  date       key  
-#>   <chr>                  <chr>       <chr>      <chr> <date>     <chr>
-#> 1 Setophaga caerulescens -76.7719    44.107757  ebird 2019-10-19 <NA> 
-#> 2 Setophaga caerulescens -66.1522698 43.7996334 ebird 2019-10-19 <NA> 
-#> 3 Setophaga caerulescens -79.3466091 42.8578308 ebird 2019-10-19 <NA> 
-#> 4 Setophaga caerulescens -66.6904063 44.6285592 ebird 2019-10-19 <NA> 
-#> 5 Setophaga caerulescens -79.3315839 43.6276706 ebird 2019-10-19 <NA> 
-#> 6 Setophaga caerulescens -80.3857613 42.5806413 ebird 2019-10-19 <NA>
+#>   name                   longitude      latitude      prov  date       key     
+#>   <chr>                  <chr>          <chr>         <chr> <date>     <chr>   
+#> 1 Setophaga caerulescens -96.745155     32.88639167   inat  2020-01-08 37403962
+#> 2 Setophaga caerulescens -96.7451324463 32.8869132996 inat  2020-01-06 37375771
+#> 3 Setophaga caerulescens -70.7911467253 42.7337687735 inat  2017-05-17 37349924
+#> 4 Setophaga caerulescens -77.8893836543 24.797648184  inat  2019-12-26 37346047
+#> 5 Setophaga caerulescens -77.8905785744 24.7979890688 inat  2019-12-26 37346036
+#> 6 Setophaga caerulescens -90.8332658    47.5830972    inat  2011-09-03 37331776
 ```
 
 ## Clean data
@@ -235,6 +233,6 @@ By participating in this project you agree to abide by its terms.
 [ecoengine]: https://github.com/ropensci/ecoengine
 [idigbio]: https://www.idigbio.org/
 [obis]: http://www.iobis.org/
-[ebird]: http://ebird.org/content/ebird/
-[ala]: http://www.ala.org.au/
+[ebird]: https://ebird.org/home
+[ala]: https://www.ala.org.au/
 [coc]: https://github.com/ropensci/spocc/blob/master/CODE_OF_CONDUCT.md

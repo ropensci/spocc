@@ -1,3 +1,12 @@
+spocc 1.0.8
+===========
+
+### BUG FIXES
+
+* fix tests that are failing on cran checks (#225)
+* fix ecoengine data option: an `if` statement was failing because we were trying to access an element of a list that is not there sometimes, leading to `NULL` which caused the `if` statement to fail
+
+
 spocc 1.0.2
 ===========
 

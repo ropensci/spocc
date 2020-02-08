@@ -423,7 +423,7 @@ foo_idigbio <- function(sources, query, limit, start, geometry, has_coords,
 
     if (!"limit" %in% names(opts)) opts$limit <- limit
     if (!'offset' %in% names(opts)) opts$offset <- start
-    opts$fields <- "all"
+    if (is.null(opts$fields)) opts$fields <- "all"
 
     opts$config <- callopts
 

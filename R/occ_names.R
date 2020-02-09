@@ -111,7 +111,7 @@ names_gbif <- function(sources, query, limit, callopts, opts){
       if (!'limit' %in% names(opts)) opts$limit <- limit
       opts$curlopts <- callopts
       out <- do.call(name_lookup, opts)
-      if (class(out) == "character" || class(out$data) == "character") {
+      if (is.character(out) || is.character(out$data)) {
         emptylist(opts)
       } else {
         dat <- out$data
@@ -135,7 +135,7 @@ names_bison <- function(sources, query, limit, callopts, opts){
       if (!'limit' %in% names(opts)) opts$rows <- limit
       opts$callopts <- callopts
       out <- do.call(bison_tax, opts)
-      if (class(out) == "character" || class(out$data) == "character") {
+      if (is.character(out) || is.character(out$data)) {
         emptylist(opts)
       } else {
         dat <- out$names
@@ -158,7 +158,7 @@ names_ecoengine <- function(sources, query, limit, callopts, opts){
       opts$query <- query
       opts$foptions <- callopts
       out <- do.call(eee_search, opts)
-      if (class(out) == "character") {
+      if (is.character(out)) {
         emptylist(opts)
       } else {
         out$prov <- rep("ecoengine", nrow(out))

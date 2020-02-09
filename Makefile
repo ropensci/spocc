@@ -4,8 +4,7 @@ RSCRIPT = Rscript --no-init-file
 all: move rmd2md
 
 move:
-		cp inst/vign/spocc.md vignettes;\
-		cp -r inst/vign/img/ vignettes/img/
+		cp inst/vign/spocc.md vignettes
 
 rmd2md:
 		cd vignettes;\

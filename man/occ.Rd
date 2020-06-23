@@ -582,11 +582,11 @@ occ(from = "ecoengine", ecoengineopts = list(limit = 3))
 # taxize integration
 ## You can pass in taxonomic identifiers
 library("taxize")
-(ids <- get_ids(names=c("Chironomus riparius","Pinus contorta"), db = c('itis','gbif')))
+(ids <- get_ids(c("Chironomus riparius","Pinus contorta"), db = c('itis','gbif')))
 occ(ids = ids[[1]], from='bison', limit=20)
 occ(ids = ids, from=c('bison','gbif'), limit=20)
 
-(ids <- get_ids(names="Chironomus riparius", db = 'gbif'))
+(ids <- get_ids("Chironomus riparius", db = 'gbif'))
 occ(ids = ids, from='gbif', limit=20)
 
 (ids <- get_gbifid("Chironomus riparius"))

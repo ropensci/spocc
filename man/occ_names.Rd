@@ -34,13 +34,13 @@ but not used in BISON.}
 debugging curl calls, setting timeouts, etc.}
 
 \item{gbifopts}{(list) List of named options to pass on to
-\code{\link[rgbif:name_lookup]{rgbif::name_lookup()}}. See also \code{\link[spocc:occ_names_options]{spocc::occ_names_options()}}}
+\code{\link[rgbif:name_lookup]{rgbif::name_lookup()}}. See also \code{\link[=occ_names_options]{occ_names_options()}}}
 
 \item{bisonopts}{(list) List of named options to pass on to
-\code{\link[rbison:bison_tax]{rbison::bison_tax()}}. See also \code{\link[spocc:occ_names_options]{spocc::occ_names_options()}}}
+\code{\link[rbison:bison_tax]{rbison::bison_tax()}}. See also \code{\link[=occ_names_options]{occ_names_options()}}}
 
 \item{ecoengineopts}{(list) List of named options to pass on to
-\code{ee_search}. See also \code{\link[spocc:occ_names_options]{spocc::occ_names_options()}}}
+\code{ee_search}. See also \code{\link[=occ_names_options]{occ_names_options()}}}
 }
 \description{
 Search for species names across many data sources.

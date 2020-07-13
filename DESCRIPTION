@@ -52,7 +52,7 @@ Suggests:
     knitr,
     taxize (>= 0.8.4),
     vcr
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
 X-schema.org-applicationCategory: Biodiversity
 X-schema.org-keywords: specimens, API, web-services, occurrences, species, taxonomy, GBIF, INAT, BISON, Vertnet, eBird, Ecoengine, iDigBio, OBIS, ALA
 X-schema.org-isPartOf: https://ropensci.org

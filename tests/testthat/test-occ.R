@@ -126,11 +126,11 @@ test_that("occ fails well", {
   
   # expect class character
   expect_error(occ(mtcars, from = "gbif", limit = 3), 
-               "'query' param. must be of class character")
+               "query must be")
   expect_error(occ(list(4, 5), from = "gbif", limit = 3), 
-               "'query' param. must be of class character")
+               "query must be")
   expect_error(occ(45454545, from = "gbif", limit = 3), 
-               "'query' param. must be of class character")
+               "query must be")
   
   # expect range of from values
   expect_error(occ("Helianthus", from = 'tree'), 
@@ -138,19 +138,19 @@ test_that("occ fails well", {
   
   # expect integer limit, start and page values
   expect_error(occ("Helianthus", from = "gbif", limit = "ASdfadsf"), 
-               "'limit' must be an integer")
+               "limit must be")
   expect_error(occ("Helianthus", from = "gbif", start = "ASdfadsf"), 
-               "'start' must be an integer")
+               "start must be")
   expect_error(occ("Helianthus", from = "gbif", page = "ASdfadsf"), 
-               "'page' must be an integer")
+               "page must be")
   
   # expect boolean has_coords value
   expect_error(occ("Helianthus", from = "gbif", has_coords = 'asfasf'), 
-               "'has_coords' must be logical")
+               "has_coords must be")
   expect_error(occ("Helianthus", from = "gbif", has_coords = 5), 
-               "'has_coords' must be logical")
+               "has_coords must be")
   expect_error(occ("Helianthus", from = "gbif", has_coords = mtcars), 
-               "'has_coords' must be logical")
+               "has_coords must be")
 
   # inat doesn't allow more than 10K
   vcr::use_cassette("occ_inat_no_more_than_10K", {

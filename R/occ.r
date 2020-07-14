@@ -15,93 +15,29 @@ occ <- function(query = NULL, from = "gbif", limit = 500, start = NULL,
   vertnetopts = list(), idigbioopts = list(), obisopts = list(), 
   alaopts = list(), throw_warnings = TRUE) {
 
+  assert(query, "character")
+  assert(limit, c("numeric", "integer"))
+  assert(start, c("numeric", "integer"))
+  assert(page, c("numeric", "integer"))
+  assert(has_coords, "logical")
+  assert(date, c('character', 'Date'))
   assert(throw_warnings, "logical")
   Sys.setenv(SPOCC_THROW_ERRORS = throw_warnings)
-
+  
+  # type: the type of query. by default "sci" for scientific name
+  #   below 'type' can be reset to "geometry" if its a geometry
+  #   based query
   type <- "sci"
 
-  # if query not NULL, has to be character
-  if (!is.null(query)) {
-    if (!inherits(query, "character")) {
-      stop("'query' param. must be of class character", call. = FALSE)
-    }
-  }
-
-  # limit, start, and page must be an integer
-  if (!is_numeric(limit)) stop("'limit' must be an integer", call. = FALSE)
-  if (!is_numeric(start)) stop("'start' must be an integer", call. = FALSE)
-  if (!is_numeric(page)) stop("'page' must be an integer", call. = FALSE)
-
-  # has_coords must be a boolean
-  if (!is_logical(has_coords)) stop("'has_coords' must be logical (TRUE/FALSE)", 
-                                    call. = FALSE)
-
-  if (!is.null(geometry)) {
-    if (class(geometry) %in% c('SpatialPolygons', 'SpatialPolygonsDataFrame')) {
-      geometry <- as.list(handle_sp(geometry))
-    }
-  }
+  geometry <- occ_geom(geometry)
   sources <- match.arg(from, choices = c("gbif", "bison", "inat", "ebird",
-            "ecoengine", "vertnet", "idigbio", "obis", "ala"),
-                       several.ok = TRUE)
-  if (!all(from %in% sources)) {
-    stop(
-      sprintf(
-        "Woops, the following are not supported or spelled incorrectly: %s",
-        from[!from %in% sources]), 
-      call. = FALSE)
-  }
+    "ecoengine", "vertnet", "idigbio", "obis", "ala"),
+    several.ok = TRUE)
 
-  if (!is.null(date)) {
-    if (!inherits(date, c('character', 'Date'))) {
-      stop("'date' must be of class character or Date", call. = FALSE)
-    }
-  }
-
-  loopfun <- function(x, y, s, p, z, hc, d, w) {
-    # x = query; y = limit; s = start; p = page;
-    # z = geometry; hc = has_coords; d = date; w = callopts
-    gbif_res <- foo_gbif(sources, x, y, s, z, hc, d, w, gbifopts)
-    bison_res <- foo_bison(sources, x, y, s, z, d, w, bisonopts)
-    inat_res <- foo_inat(sources, x, y, p, z, hc, d, w, inatopts)
-    ebird_res <- foo_ebird(sources, x, y, w, ebirdopts)
-    ecoengine_res <- foo_ecoengine(sources, x, y, p, z, hc, d, w, ecoengineopts)
-    vertnet_res <- foo_vertnet(sources, x, y, hc, d, w, vertnetopts)
-    idigbio_res <- foo_idigbio(sources, x, y, s, z, hc, d, w, idigbioopts)
-    obis_res <- foo_obis(sources, x, y, s, z, hc, d, w, obisopts)
-    ala_res <- foo_ala(sources, x, y, s, z, hc, d, w, alaopts)
-    list(gbif = gbif_res, bison = bison_res, inat = inat_res, ebird = ebird_res,
-         ecoengine = ecoengine_res, vertnet = vertnet_res,
-         idigbio = idigbio_res, obis = obis_res, ala = ala_res)
-  }
-
-  loopids <- function(x, y, s, p, z, hc, d, w) {
-    classes <- class(x)
-    if (!all(classes %in% c("gbifid", "tsn")))
-      stop("Currently, taxon identifiers have to be of class gbifid or tsn",
-           call. = FALSE)
-    if (class(x) == 'gbifid') {
-      gbif_res <- foo_gbif(sources, x, y, s, z, hc, d, w, gbifopts)
-      bison_res <- list(time = NULL, data = tibble())
-    } else if (class(x) == 'tsn') {
-      bison_res <- foo_bison(sources, x, y, s, z, d, w, bisonopts)
-      gbif_res <- list(time = NULL, data = tibble())
-    }
-    list(gbif = gbif_res,
-         bison = bison_res,
-         inat = list(time = NULL, data = tibble()),
-         ebird = list(time = NULL, data = tibble()),
-         ecoengine = list(time = NULL, data = tibble()),
-         vertnet = list(time = NULL, data = tibble()),
-         idigbio = list(time = NULL, data = tibble()),
-         obis = list(time = NULL, data = tibble()),
-         ala = list(time = NULL, data = tibble())
-    )
-  }
-
-  # check that one of query or ids is non-NULL
-  # if (!any(!is.null(query), !is.null(ids), !is.null(geometry)))
-  #   stop("One of query, ids, or geometry parameters must be non-NULL")
+  # collect all data sources opts into named list to index to later
+  ds <- list(gbif=gbifopts, bison=bisonopts, inat=inatopts,
+    ebird=ebirdopts, ecoengine=ecoengineopts, vertnet=vertnetopts,
+    idigbio=idigbioopts, obis=obisopts, ala=alaopts)
 
   if (is.null(ids) && !is.null(query)) {
     # If query not null (taxonomic names passed in)
@@ -110,14 +46,9 @@ occ <- function(query = NULL, from = "gbif", limit = 500, start = NULL,
       tmp <- list()
       for (i in seq_along(query)) {
         tmpres <- lapply(geometry, function(b) {
-          loopfun(z = b,
-                  y = limit,
-                  s = start,
-                  p = page,
-                  x = query[[i]],
-                  hc = has_coords,
-                  d = date,
-                  w = callopts)
+          occ_loopfun(z = b, y = limit, s = start, p = page,
+            x = query[[i]], hc = has_coords, d = date, w = callopts,
+            sources = sources, ds = ds)
         })
 
         collsinglefrom <- list()
@@ -143,135 +74,54 @@ occ <- function(query = NULL, from = "gbif", limit = 500, start = NULL,
         tmp[[i]] <- collsinglefrom
       }
     } else {
-      tmp <- lapply(query, loopfun, y = limit, s = start, p = page,
-                    z = geometry, hc = has_coords, d = date, w = callopts)
+      tmp <- lapply(query, occ_loopfun, y = limit, s = start, p = page,
+        z = geometry, hc = has_coords, d = date, w = callopts,
+        sources = sources, ds = ds)
     }
   } else if (is.null(query) && is.null(geometry) && !is.null(ids)) {
-    unlistids <- function(x) {
-      if (length(x) == 1) {
-        if (is.null(names(x))) {
-          list(x)
-        } else {
-          if (!names(x) %in% c("gbif", "itis")) {
-            list(x)
-          } else {
-            list(x[[1]])
-          }
-        }
-      } else {
-        gg <- as.list(unlist(x, use.names = FALSE))
-        hh <- as.vector(rep(vapply(x, class, ""), vapply(x, length, 
-                                                         numeric(1))))
-        if (all(hh == "character"))
-          hh <- rep(class(x), length(x))
-        for (i in seq_along(gg)) {
-          class(gg[[i]]) <- hh[[i]]
-        }
-        return( gg )
-      }
-    }
-    ids <- unlistids(ids)
+    ids <- occ_unlistids(ids)
     # if ids is not null (taxon identifiers passed in)
     # ids can only be passed to gbif and bison for now
     # so don't pass anything on to ecoengine, inat, or ebird
-    tmp <- lapply(ids, loopids, y = limit, s = start, p = page,
-                  z = geometry, hc = has_coords, d = date, w = callopts)
+    tmp <- lapply(ids, occ_loopids, y = limit, s = start, p = page,
+      z = geometry, hc = has_coords, d = date, w = callopts,
+      sources = sources, ds = ds)
   } else if (is.null(query) && is.null(geometry) && is.null(ids)) {
-    tmp <- list(loopfun(x = query, y = limit, s = start, p = page,
-                  z = geometry, hc = has_coords, d = date, w = callopts))
+    tmp <- list(occ_loopfun(x = query, y = limit, s = start, p = page,
+      z = geometry, hc = has_coords, d = date, w = callopts,
+      sources = sources, ds = ds))
   } else {
     type <- 'geometry'
     if (is.numeric(geometry) || is.character(geometry)) {
-      tmp <- list(loopfun(z = geometry, y = limit, s = start, p = page,
-                          x = query, hc = has_coords, d = date, w = callopts))
+      tmp <- list(occ_loopfun(z = geometry, y = limit, s = start, p = page,
+        x = query, hc = has_coords, d = date, w = callopts,
+        sources = sources, ds = ds))
     } else if (is.list(geometry)) {
       tmp <- lapply(geometry, function(b) {
-        loopfun(z = b, y = limit, s = start, p = page,
-                x = query, hc = has_coords, d = date, w = callopts)
+        occ_loopfun(z = b, y = limit, s = start, p = page,
+          x = query, hc = has_coords, d = date, w = callopts,
+          sources = sources, ds = ds)
       })
     }
   }
-  
-  getsplist <- function(srce, opts) {
-    tt <- lapply(tmp, function(x) x[[srce]]$data)
-    if (!is.null(query) && is.null(geometry)) { # query
-      names(tt) <- gsub("\\s", "_", query)
-      optstmp <- tmp[[1]][[srce]]$opts
-    } else if (is.null(query) && !is.null(geometry)) {
-      # geometry
-      tt <- tt
-      optstmp <- tmp[[1]][[srce]]$opts
-    } else if (!is.null(query) && !is.null(geometry)) {
-      # query & geometry
-      names(tt) <- gsub("\\s", "_", query)
-      optstmp <- tmp[[1]][[srce]]$opts
-      optstmp$scientificName <- unique(names(tt))
-    } else if (is.null(query) && is.null(geometry) && !is.null(ids)) {
-      # neither query or geometry
-      # names(tt) <- sapply(tmp, function(x) unclass(x[[srce]]$opts[[1]]))
-      if (srce == "gbif") {
-        names(tt) <- sapply(tmp, function(x) unname(unlist(x[[srce]]$opts$taxonKey)))
-      } else {
-        names(tt) <- sapply(tmp, function(x) unname(unlist(x[[srce]]$opts$TSNs)))
-      }
-      tt <- tt[!vapply(tt, nrow, 1) == 0]
-      opts <- sc(lapply(tmp, function(x) x[[srce]]$opts))
-      optstmp <- unlist(opts)
-      simplist <- function(b){
-        splitup <- unique(names(b))
-        sapply(splitup, function(d){
-          tmp <- b[names(b) %in% d]
-          if (length(unique(unname(unlist(tmp)))) == 1) {
-            as.list(tmp[1])
-          } else {
-            outout <- list(unname(unlist(tmp)))
-            names(outout) <- names(tmp)[1]
-            outout
-          }
-        }, USE.NAMES = FALSE)
-      }
-      optstmp <- simplist(optstmp)
-    } else if (is.null(query) && is.null(geometry) && is.null(ids)) { 
-      # nothing passed except opts
-      names(tt) <- rep("custom_query", length(tt))
-      optstmp <- tmp[[1]][[srce]]$opts
-    }
 
-    if (any(grepl(srce, sources))) {
-      ggg <- list(
-        meta = list(
-          source = srce,
-          time = time_null(pluck(tmp, c(srce, "time"))),
-          found = sum(unlist(pluck(tmp, c(srce, "found")))),
-          returned = sum(sapply(pluck(tmp, c(srce, "data")), NROW)),
-          type = type,
-          opts = optstmp,
-          errors = unlist(pluck(tmp, c(srce, "errors")))
-        ),
-        data = tt
-      )
-      structure(ggg, class = "occdatind")
-    } else {
-      ggg <- list(
-        meta = list(
-          source = srce, time = NULL, found = NULL, returned = NULL,
-          type = NULL, opts = NULL, errors = NULL
-        ), 
-        data = tt
-      )
-      structure(ggg, class = "occdatind")
-    }
-  }
-
-  gbif_sp <- getsplist("gbif", gbifopts)
-  bison_sp <- getsplist("bison", bisonopts)
-  inat_sp <- getsplist("inat", inatopts)
-  ebird_sp <- getsplist("ebird", ebirdopts)
-  ecoengine_sp <- getsplist("ecoengine", ecoengineopts)
-  vertnet_sp <- getsplist("vertnet", vertnetopts)
-  idigbio_sp <- getsplist("idigbio", idigbioopts)
-  obis_sp <- getsplist("obis", obisopts)
-  ala_sp <- getsplist("ala", alaopts)
+  gbif_sp <- occ_getsplist(tmp, "gbif", sources, type, ds$gbif, query, geometry,
+    ids)
+  bison_sp <- occ_getsplist(tmp, "bison", sources, type, ds$bison, query, geometry,
+    ids)
+  inat_sp <- occ_getsplist(tmp, "inat", sources, type, ds$inat, query, geometry,
+    ids)
+  ebird_sp <- occ_getsplist(tmp, "ebird", sources, type, ds$ebird, query, geometry,
+    ids)
+  ecoengine_sp <- occ_getsplist(tmp, "ecoengine", sources, type, ds$ecoengine,
+    query, geometry, ids)
+  vertnet_sp <- occ_getsplist(tmp, "vertnet", sources, type, ds$vertnet, query,
+    geometry, ids)
+  idigbio_sp <- occ_getsplist(tmp, "idigbio", sources, type, ds$idigbio, query,
+    geometry, ids)
+  obis_sp <- occ_getsplist(tmp, "obis", sources, type, ds$obis, query, geometry,
+    ids)
+  ala_sp <- occ_getsplist(tmp, "ala", sources, type, ds$ala, query, geometry, ids)
   p <- list(gbif = gbif_sp, bison = bison_sp, inat = inat_sp, ebird = ebird_sp,
             ecoengine = ecoengine_sp, vertnet = vertnet_sp,
             idigbio = idigbio_sp, obis = obis_sp, ala = ala_sp)

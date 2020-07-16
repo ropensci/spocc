@@ -12,6 +12,8 @@ spocc
 
 # spocc (SPecies OCCurrence) <img src="man/figures/logo.png" align="right" alt="" width="120">
 
+Docs: <https://docs.ropensci.org/spocc/>
+
 At rOpenSci, we have been writing R packages to interact with many sources of species occurrence data, including [GBIF][gbif], [Vertnet][vertnet], [BISON][bison], [iNaturalist][inat], the [Berkeley ecoengine][ecoengine], and [eBird][ebird]. Other databases are out there as well, which we can pull in. `spocc` is an R package to query and collect species occurrence data from many sources. The goal is to to create a seamless search experience across data sources, as well as creating unified outputs across data sources.
 
 `spocc` currently interfaces with nine major biodiversity repositories
@@ -76,127 +78,6 @@ remotes::install_github("ropensci/spocc")
 
 ```r
 library("spocc")
-```
-
-## Basic use
-
-Get data from GBIF
-
-
-```r
-(out <- occ(query = 'Accipiter striatus', from = 'gbif', limit = 100))
-#> Searched: gbif
-#> Occurrences - Found: 1,092,632, Returned: 100
-#> Search type: Scientific
-#>   gbif: Accipiter striatus (100)
-```
-
-Just gbif data
-
-
-```r
-out$gbif
-#> Species [Accipiter striatus (100)] 
-#> First 10 rows of [Accipiter_striatus]
-#> 
-#> # A tibble: 100 x 75
-#>    name  longitude latitude prov  issues key   scientificName datasetKey
-#>    <chr>     <dbl>    <dbl> <chr> <chr>  <chr> <chr>          <chr>     
-#>  1 Acci…    -107.      35.1 gbif  cdrou… 2542… Accipiter str… 50c9509d-…
-#>  2 Acci…     -90.0     37.1 gbif  cdrou… 2543… Accipiter str… 50c9509d-…
-#>  3 Acci…     -99.3     36.5 gbif  cdrou… 2543… Accipiter str… 50c9509d-…
-#>  4 Acci…     -76.0     39.6 gbif  cdrou… 2543… Accipiter str… 50c9509d-…
-...
-```
-
-## Pass options to each data source
-
-Get fine-grained detail over each data source by passing on parameters to the packge rebird in this example.
-
-
-```r
-(out <- occ(query = 'Setophaga caerulescens', from = 'gbif', gbifopts = list(country = 'US')))
-#> Searched: gbif
-#> Occurrences - Found: 414,872, Returned: 500
-#> Search type: Scientific
-#>   gbif: Setophaga caerulescens (500)
-```
-
-Get just gbif data
-
-
-```r
-out$gbif
-#> Species [Setophaga caerulescens (500)] 
-#> First 10 rows of [Setophaga_caerulescens]
-#> 
-#> # A tibble: 500 x 79
-#>    name  longitude latitude prov  issues key   scientificName datasetKey
-#>    <chr>     <dbl>    <dbl> <chr> <chr>  <chr> <chr>          <chr>     
-#>  1 Seto…     -96.7     32.9 gbif  cdrou… 2550… Setophaga cae… 50c9509d-…
-#>  2 Seto…     -96.7     32.9 gbif  gass84 2557… Setophaga cae… 50c9509d-…
-#>  3 Seto…     -96.7     32.9 gbif  gass84 2563… Setophaga cae… 50c9509d-…
-#>  4 Seto…     -96.6     33.0 gbif  cdrou… 2563… Setophaga cae… 50c9509d-…
-#>  5 Seto…     -96.7     32.9 gbif  cdrou… 2563… Setophaga cae… 50c9509d-…
-#>  6 Seto…     -82.7     36.0 gbif  cdrou… 2802… Setophaga cae… 50c9509d-…
-#>  7 Seto…     -96.7     32.9 gbif  cdrou… 2573… Setophaga cae… 50c9509d-…
-#>  8 Seto…     -96.7     32.9 gbif  cdrou… 2574… Setophaga cae… 50c9509d-…
-#>  9 Seto…     -80.3     25.7 gbif  cdrou… 2574… Setophaga cae… 50c9509d-…
-#> 10 Seto…     -81.4     28.6 gbif  cdrou… 2603… Setophaga cae… 50c9509d-…
-#> # … with 490 more rows, and 71 more variables: publishingOrgKey <chr>,
-#> #   installationKey <chr>, publishingCountry <chr>, protocol <chr>,
-#> #   lastCrawled <chr>, lastParsed <chr>, crawlId <int>, basisOfRecord <chr>,
-#> #   taxonKey <int>, kingdomKey <int>, phylumKey <int>, classKey <int>,
-#> #   orderKey <int>, familyKey <int>, genusKey <int>, speciesKey <int>,
-#> #   acceptedTaxonKey <int>, acceptedScientificName <chr>, kingdom <chr>,
-#> #   phylum <chr>, order <chr>, family <chr>, genus <chr>, species <chr>,
-#> #   genericName <chr>, specificEpithet <chr>, taxonRank <chr>,
-#> #   taxonomicStatus <chr>, dateIdentified <chr>, stateProvince <chr>,
-#> #   year <int>, month <int>, day <int>, eventDate <date>, modified <chr>,
-#> #   lastInterpreted <chr>, references <chr>, license <chr>,
-#> #   geodeticDatum <chr>, class <chr>, countryCode <chr>, recordedByIDs <list>,
-#> #   identifiedByIDs <list>, country <chr>, rightsHolder <chr>,
-#> #   identifier <chr>, `http://unknown.org/nick` <chr>, verbatimEventDate <chr>,
-#> #   datasetName <chr>, collectionCode <chr>, verbatimLocality <chr>,
-#> #   gbifID <chr>, occurrenceID <chr>, taxonID <chr>, catalogNumber <chr>,
-#> #   recordedBy <chr>, `http://unknown.org/occurrenceDetails` <chr>,
-#> #   institutionCode <chr>, rights <chr>, eventTime <chr>, identifiedBy <chr>,
-#> #   identificationID <chr>, coordinateUncertaintyInMeters <dbl>,
-#> #   occurrenceRemarks <chr>, informationWithheld <chr>,
-#> #   identificationRemarks <chr>, infraspecificEpithet <chr>,
-#> #   individualCount <int>, vernacularName <chr>, county <chr>, locality <chr>
-```
-
-## Many data sources at once
-
-Get data from many sources in a single call
-
-
-```r
-ebirdopts <- list(loc = 'CA') # search in Canada only
-gbifopts <- list(country = 'US') # search in United States only
-out <- occ(query = 'Setophaga caerulescens', from = c('gbif','bison','inat','ebird'), 
-  gbifopts = gbifopts, ebirdopts = ebirdopts, limit = 50)
-dat <- occ2df(out)
-head(dat); tail(dat)
-#> # A tibble: 6 x 6
-#>   name                            longitude  latitude  prov  date       key     
-#>   <chr>                           <chr>      <chr>     <chr> <date>     <chr>   
-#> 1 Setophaga caerulescens (J.F.Gm… -96.745132 32.886913 gbif  2020-01-06 2550022…
-#> 2 Setophaga caerulescens (J.F.Gm… -96.745205 32.886382 gbif  2020-01-14 2557796…
-#> 3 Setophaga caerulescens (J.F.Gm… -96.745267 32.886457 gbif  2020-01-18 2563510…
-#> 4 Setophaga caerulescens (J.F.Gm… -96.630926 32.986361 gbif  2020-01-18 2563520…
-#> 5 Setophaga caerulescens (J.F.Gm… -96.745338 32.886095 gbif  2020-01-20 2563537…
-#> 6 Setophaga caerulescens (J.F.Gm… -82.696372 36.00562  gbif  2020-01-02 2802699…
-#> # A tibble: 6 x 6
-#>   name                   longitude   latitude   prov  date       key  
-#>   <chr>                  <chr>       <chr>      <chr> <date>     <chr>
-#> 1 Setophaga caerulescens -71.3971987 46.9587829 ebird 2020-07-14 <NA> 
-#> 2 Setophaga caerulescens -71.9751866 46.7779731 ebird 2020-07-14 <NA> 
-#> 3 Setophaga caerulescens -71.64521   46.1561781 ebird 2020-07-14 <NA> 
-#> 4 Setophaga caerulescens -72.9190063 46.7660295 ebird 2020-07-14 <NA> 
-#> 5 Setophaga caerulescens -79.2349676 44.9846052 ebird 2020-07-14 <NA> 
-#> 6 Setophaga caerulescens -74.0789223 45.8817334 ebird 2020-07-14 <NA>
 ```
 
 ## Clean data

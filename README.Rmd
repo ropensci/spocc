@@ -1,6 +1,3 @@
-spocc
-========
-
 ```{r echo=FALSE}
 library("knitr")
 hook_output <- knitr::knit_hooks$get("output")

@@ -1,6 +1,3 @@
-spocc
-========
-
 
 
 [![Build Status](https://travis-ci.org/ropensci/spocc.svg?branch=master)](https://travis-ci.org/ropensci/spocc)

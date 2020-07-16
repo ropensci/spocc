@@ -10,8 +10,7 @@ spocc
 [![rstudio mirror downloads](https://cranlogs.r-pkg.org/badges/spocc?color=FAB657)](https://github.com/metacran/cranlogs.app)
 [![cran version](https://www.r-pkg.org/badges/version/spocc)](https://cran.r-project.org/package=spocc)
 
-
-**`spocc` = SPecies OCCurrence data**
+# spocc (SPecies OCCurrence) <img src="man/figures/logo.png" align="right" alt="" width="120">
 
 At rOpenSci, we have been writing R packages to interact with many sources of species occurrence data, including [GBIF][gbif], [Vertnet][vertnet], [BISON][bison], [iNaturalist][inat], the [Berkeley ecoengine][ecoengine], and [eBird][ebird]. Other databases are out there as well, which we can pull in. `spocc` is an R package to query and collect species occurrence data from many sources. The goal is to to create a seamless search experience across data sources, as well as creating unified outputs across data sources.
 
@@ -70,8 +69,8 @@ Or the development version from GitHub
 
 
 ```r
-install.packages("devtools")
-devtools::install_github("ropensci/spocc")
+install.packages("remotes")
+remotes::install_github("ropensci/spocc")
 ```
 
 
@@ -158,15 +157,14 @@ out$gbif
 #> #   geodeticDatum <chr>, class <chr>, countryCode <chr>, recordedByIDs <list>,
 #> #   identifiedByIDs <list>, country <chr>, rightsHolder <chr>,
 #> #   identifier <chr>, `http://unknown.org/nick` <chr>, verbatimEventDate <chr>,
-#> #   datasetName <chr>, collectionCode <chr>, gbifID <chr>,
-#> #   verbatimLocality <chr>, occurrenceID <chr>, taxonID <chr>,
-#> #   catalogNumber <chr>, recordedBy <chr>,
-#> #   `http://unknown.org/occurrenceDetails` <chr>, institutionCode <chr>,
-#> #   rights <chr>, eventTime <chr>, identifiedBy <chr>, identificationID <chr>,
-#> #   coordinateUncertaintyInMeters <dbl>, occurrenceRemarks <chr>,
-#> #   informationWithheld <chr>, identificationRemarks <chr>,
-#> #   infraspecificEpithet <chr>, individualCount <int>, vernacularName <chr>,
-#> #   county <chr>, locality <chr>
+#> #   datasetName <chr>, collectionCode <chr>, verbatimLocality <chr>,
+#> #   gbifID <chr>, occurrenceID <chr>, taxonID <chr>, catalogNumber <chr>,
+#> #   recordedBy <chr>, `http://unknown.org/occurrenceDetails` <chr>,
+#> #   institutionCode <chr>, rights <chr>, eventTime <chr>, identifiedBy <chr>,
+#> #   identificationID <chr>, coordinateUncertaintyInMeters <dbl>,
+#> #   occurrenceRemarks <chr>, informationWithheld <chr>,
+#> #   identificationRemarks <chr>, infraspecificEpithet <chr>,
+#> #   individualCount <int>, vernacularName <chr>, county <chr>, locality <chr>
 ```
 
 ## Many data sources at once
@@ -193,12 +191,12 @@ head(dat); tail(dat)
 #> # A tibble: 6 x 6
 #>   name                   longitude   latitude   prov  date       key  
 #>   <chr>                  <chr>       <chr>      <chr> <date>     <chr>
-#> 1 Setophaga caerulescens -77.8268909 44.5806407 ebird 2020-07-12 <NA> 
-#> 2 Setophaga caerulescens -79.34495   48.44793   ebird 2020-07-12 <NA> 
-#> 3 Setophaga caerulescens -79.3431759 48.4476498 ebird 2020-07-12 <NA> 
-#> 4 Setophaga caerulescens -79.302269  44.9264214 ebird 2020-07-12 <NA> 
-#> 5 Setophaga caerulescens -64.05856   45.3941441 ebird 2020-07-12 <NA> 
-#> 6 Setophaga caerulescens -64.39282   44.795556  ebird 2020-07-11 <NA>
+#> 1 Setophaga caerulescens -71.3971987 46.9587829 ebird 2020-07-14 <NA> 
+#> 2 Setophaga caerulescens -71.9751866 46.7779731 ebird 2020-07-14 <NA> 
+#> 3 Setophaga caerulescens -71.64521   46.1561781 ebird 2020-07-14 <NA> 
+#> 4 Setophaga caerulescens -72.9190063 46.7660295 ebird 2020-07-14 <NA> 
+#> 5 Setophaga caerulescens -79.2349676 44.9846052 ebird 2020-07-14 <NA> 
+#> 6 Setophaga caerulescens -74.0789223 45.8817334 ebird 2020-07-14 <NA>
 ```
 
 ## Clean data

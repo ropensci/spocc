@@ -1,4 +1,4 @@
-
+# spocc (SPecies OCCurrence) <img src="man/figures/logo.png" align="right" alt="" width="120">
 
 [![Build Status](https://travis-ci.org/ropensci/spocc.svg?branch=master)](https://travis-ci.org/ropensci/spocc)
 [![Build status](https://ci.appveyor.com/api/projects/status/lrscgpxs0n925t83?svg=true)](https://ci.appveyor.com/project/sckott/spocc)
@@ -6,8 +6,6 @@
 [![cran checks](https://cranchecks.info/badges/worst/spocc)](https://cranchecks.info/pkgs/spocc)
 [![rstudio mirror downloads](https://cranlogs.r-pkg.org/badges/spocc?color=FAB657)](https://github.com/metacran/cranlogs.app)
 [![cran version](https://www.r-pkg.org/badges/version/spocc)](https://cran.r-project.org/package=spocc)
-
-# spocc (SPecies OCCurrence) <img src="man/figures/logo.png" align="right" alt="" width="120">
 
 Docs: <https://docs.ropensci.org/spocc/>
 

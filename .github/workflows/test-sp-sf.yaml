@@ -65,7 +65,7 @@ jobs:
       - name: Install dependencies
         run: |
           remotes::install_deps(dependencies = TRUE)
-          remotes::install_cran(c("rcmdcheck", "data.table", "taxize"))
+          remotes::install_cran(c("rcmdcheck", "data.table", "taxize", "silicate", "sp", "sf"))
           remotes::install_bioc("sangerseqR")
         shell: Rscript {0}
 

@@ -1,4 +1,5 @@
-devtools::load_all("../../")
+# devtools::load_all("../../")
+library(spocc)
 library(testthat)
 library(sp)
 library(sf)
@@ -13,11 +14,11 @@ test_that("handle_sf", {
   sppoly = SpatialPolygons(list(spone), as.integer(1))
   poly <- sf::st_as_sf(sppoly)
   ## class: sf
-  single_sf <- handle_sf(poly)
+  single_sf <- spocc:::handle_sf(poly)
   ## class: sfc/sfc_POLYGON
-  single_sfc <- handle_sf(poly[[1]])
+  single_sfc <- spocc:::handle_sf(poly[[1]])
   ## class: sfg/POLYGON
-  single_polygon <- handle_sf(unclass(poly[[1]])[[1]])
+  single_polygon <- spocc:::handle_sf(unclass(poly[[1]])[[1]])
 
   poly_str <- "POLYGON \\(\\(91 30, 90 30, 90 32, 91 30\\)\\)"
   expect_is(single_sf, "character")
@@ -37,11 +38,11 @@ test_that("handle_sf", {
   sppoly = SpatialPolygons(list(spone, sptwo), as.integer(1:2))
   sppoly <- sf::st_as_sf(sppoly)
   ## class: sf
-  two_sf <- handle_sf(sppoly)
+  two_sf <- spocc:::handle_sf(sppoly)
   ## class: sfc/sfc_POLYGON
-  two_sfc <- handle_sf(sppoly[[1]])
+  two_sfc <- spocc:::handle_sf(sppoly[[1]])
   ## class: sfg/POLYGON
-  two_polygon <- handle_sf(unclass(sppoly[[1]])[[1]])
+  two_polygon <- spocc:::handle_sf(unclass(sppoly[[1]])[[1]])
 
   mpoly_str <- "MULTIPOLYGON \\(\\(\\(91 30, 90 30, 90 32, 91 30\\)\\), \\(\\(94 40, 92 40, 92 42, 94 40\\)\\)\\)"
   expect_is(two_sf, "character")
@@ -61,12 +62,12 @@ test_that("handle_sf", {
   # Srs3 = Polygons(list(Sr4), "s4")
   # sps = SpatialPolygons(list(Srs1, Srs3), 1:2)
   # sps_sf <- sf::st_as_sf(sps)
-  # aa <- handle_sf(sps_sf)
+  # aa <- spocc:::handle_sf(sps_sf)
 
   # multipolygon
   # class(sfzoo$multipolygon)
   # plot(sfzoo$multipolygon)
-  bb <- handle_sf(sfzoo$multipolygon)
+  bb <- spocc:::handle_sf(sfzoo$multipolygon)
   expect_is(bb, "character")
   expect_match(bb, "MULTIPOLYGON")
 })

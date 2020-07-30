@@ -1,4 +1,5 @@
-devtools::load_all("../../")
+# devtools::load_all("../../")
+library(spocc)
 library(testthat)
 library(sp)
 
@@ -8,7 +9,7 @@ test_that("handle_sp", {
   one <- Polygon(cbind(c(91,90,90,91), c(30,30,32,30)))
   spone = Polygons(list(one), "s1")
   sppoly = SpatialPolygons(list(spone), as.integer(1))
-  aa <- handle_sp(spobj = sppoly)
+  aa <- spocc:::handle_sp(spobj = sppoly)
 
   expect_is(aa, "character")
   expect_match(aa, "POLYGON\\(\\(91 30,90 30,90 32,91 30\\)\\)")
@@ -19,7 +20,7 @@ test_that("handle_sp", {
   spone = Polygons(list(one), "s1")
   sptwo = Polygons(list(two), "s2")
   sppoly = SpatialPolygons(list(spone, sptwo), as.integer(1:2))
-  bb <- handle_sp(spobj = sppoly)
+  bb <- spocc:::handle_sp(spobj = sppoly)
 
   expect_is(bb, "character")
   expect_match(bb, "MULTIPOLYGON\\(\\(\\(91 30,90 30,90 32,91 30\\)\\),\\(\\(94 40,92 40,92 42,94 40\\)\\)\\)")
@@ -32,7 +33,7 @@ test_that("handle_sp", {
   spone = Polygons(list(one), "s1")
   sptwo = Polygons(list(two), "s2")
   sppoly = SpatialPolygons(list(spone, sptwo), 1:2)
-  cc <- handle_sp(spobj=sppoly)
+  cc <- spocc:::handle_sp(spobj=sppoly)
 
   expect_is(cc, "character")
   expect_match(cc, "MULTIPOLYGON")

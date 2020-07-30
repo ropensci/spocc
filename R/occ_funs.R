@@ -137,12 +137,18 @@ occ_unlistids <- function(x) {
   }
 }
 
+strip_classes <- function(x, z) {
+  class(x) <- class(x)[!class(x) %in% z]
+  return(x)
+}
+
 occ_geom <- function(x) {
   if (!is.null(x)) {
     if (inherits(x, c('SpatialPolygons', 'SpatialPolygonsDataFrame'))) {
       x <- as.list(handle_sp(x))
     }
-    if (inherits(x, c('sf', 'sfc', 'POLYGON', 'MULTIPOLYGON'))) {
+    if (inherits(x, c('sf', 'sfc', 'sfg', 'POLYGON', 'MULTIPOLYGON'))) {
+      x <- strip_classes(x, c("XY", "data.frame", "sfc_POLYGON"))
       x <- as.list(handle_sf(x))
     }
   }

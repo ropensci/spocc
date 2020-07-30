@@ -1,10 +1,11 @@
 language: r
 cache: packages
+os: linux
 
 bioc_packages:
   - sangerseqR
 
-r_binary_packages:
+r_packages:
   - covr
   - taxize
   - data.table
@@ -29,6 +30,7 @@ matrix:
     #     - _R_CHECK_LENGTH_1_LOGIC2_=verbose
 
 after_success:
+  - make testspsf
   - if [[ "${R_CODECOV}" ]]; then R -e 'covr::codecov()'; fi
 
 env:
@@ -42,5 +44,4 @@ notifications:
   email:
     on_success: never
     on_failure: never
-  slack:
-    secure: JgCatgv7Eeh6qHmi3TwWLdKHkCjnr5KHcBzVwy2F4IPafqPMEEhnSFxqP2Td8f7YcPqvdiv/blTGdgIOAi3V64O4fp3NZLLpzINNiL0i9iBZqkT71uw8ovcfrAeIHA9D9gapLtx3D4hdUF9jIyLIW2kMzIvaIA5PiDJ+oZitHow=
+  

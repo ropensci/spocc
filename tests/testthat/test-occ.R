@@ -13,7 +13,7 @@ test_that("occ works for each data source", {
   }, preserve_exact_body_bytes = TRUE)
 
   vcr::use_cassette("occ_vertnet", {
-    x8 <- occ(query = "Accipiter striatus", from = "vertnet", limit = 3)
+    x8 <- suppressWarnings(occ(query = "Accipiter striatus", from = "vertnet", limit = 3))
   })
 
   # Make sure they are all occdats

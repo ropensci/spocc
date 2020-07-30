@@ -4,9 +4,16 @@
 \alias{occ_names}
 \title{Search for species names across many data sources.}
 \usage{
-occ_names(query = NULL, from = "gbif", limit = 100,
-  rank = "species", callopts = list(), gbifopts = list(),
-  bisonopts = list(), ecoengineopts = list())
+occ_names(
+  query = NULL,
+  from = "gbif",
+  limit = 100,
+  rank = "species",
+  callopts = list(),
+  gbifopts = list(),
+  bisonopts = list(),
+  ecoengineopts = list()
+)
 }
 \arguments{
 \item{query}{(character) One to many names. Either a scientific name or a
@@ -27,13 +34,13 @@ but not used in BISON.}
 debugging curl calls, setting timeouts, etc.}
 
 \item{gbifopts}{(list) List of named options to pass on to
-\code{\link[rgbif:name_lookup]{rgbif::name_lookup()}}. See also \code{\link[spocc:occ_names_options]{spocc::occ_names_options()}}}
+\code{\link[rgbif:name_lookup]{rgbif::name_lookup()}}. See also \code{\link[=occ_names_options]{occ_names_options()}}}
 
 \item{bisonopts}{(list) List of named options to pass on to
-\code{\link[rbison:bison_tax]{rbison::bison_tax()}}. See also \code{\link[spocc:occ_names_options]{spocc::occ_names_options()}}}
+\code{\link[rbison:bison_tax]{rbison::bison_tax()}}. See also \code{\link[=occ_names_options]{occ_names_options()}}}
 
 \item{ecoengineopts}{(list) List of named options to pass on to
-\code{ee_search}. See also \code{\link[spocc:occ_names_options]{spocc::occ_names_options()}}}
+\code{ee_search}. See also \code{\link[=occ_names_options]{occ_names_options()}}}
 }
 \description{
 Search for species names across many data sources.
@@ -65,8 +72,10 @@ head(res$ecoengine$data[[1]])
 }
 }
 \seealso{
-Other queries: \code{\link{occ_names_options}},
-  \code{\link{occ_options}}, \code{\link{occ}},
-  \code{\link{spocc_objects}}
+Other queries: 
+\code{\link{occ_names_options}()},
+\code{\link{occ_options}()},
+\code{\link{occ}()},
+\code{\link{spocc_objects}}
 }
 \concept{queries}

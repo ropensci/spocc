@@ -10,14 +10,14 @@
   "codeRepository": "https://github.com/ropensci/spocc",
   "issueTracker": "https://github.com/ropensci/spocc/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "1.0.0",
+  "version": "1.0.8",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
-    "version": "3.6.1",
+    "version": "3.6.2",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 3.6.1 Patched (2019-09-05 r77154)",
+  "runtimePlatform": "R version 3.6.2 Patched (2020-02-04 r77774)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -55,19 +55,6 @@
     }
   ],
   "softwareSuggestions": [
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "roxygen2",
-      "name": "roxygen2",
-      "version": ">= 6.1.1",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=roxygen2"
-    },
     {
       "@type": "SoftwareApplication",
       "identifier": "testthat",
@@ -281,10 +268,10 @@
       "sameAs": "https://CRAN.R-project.org/package=wicket"
     }
   ],
-  "contIntegration": "https://travis-ci.org/ropensci/spocc",
+  "contIntegration": ["https://travis-ci.org/ropensci/spocc", "https://ci.appveyor.com/project/sckott/spocc", "https://codecov.io/github/ropensci/spocc?branch=master"],
   "releaseNotes": "https://github.com/ropensci/spocc/blob/master/NEWS.md",
   "readme": "https://github.com/ropensci/spocc/blob/master/README.md",
-  "fileSize": "5863.76KB",
+  "fileSize": "245.11KB",
   "funder": [
     {
       "@type": "Organization",
@@ -294,6 +281,6 @@
   "keywords": ["specimens", "API", "web-services", "occurrences", "species", "taxonomy", "GBIF", "INAT", "BISON", "Vertnet", "eBird", "Ecoengine", "iDigBio", "OBIS", "ALA", "gbif", "vertnet", "ecoengine", "antweb", "ebird", "data", "api", "rstats", "r", "inaturalist", "idigbio", "obis", "bison", "species-occurrence", "occurrence", "spocc", "r-package"],
   "applicationCategory": "Biodiversity",
   "isPartOf": "https://ropensci.org",
-  "relatedLink": "https://ropensci.github.io/spocc/",
+  "relatedLink": "https://docs.ropensci.org/spocc/",
   "copyrightHolder": {}
 }

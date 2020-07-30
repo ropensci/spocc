@@ -98,6 +98,8 @@ foo_gbif <- function(sources, query, limit, start, geometry, has_coords,
   }
 }
 
+scotts_env <- new.env()
+
 #' @noRd
 foo_ecoengine <- function(sources, query, limit, page, geometry, has_coords,
                           date, callopts, opts) {
@@ -133,7 +135,8 @@ foo_ecoengine <- function(sources, query, limit, page, geometry, has_coords,
     opts$progress <- FALSE
     opts$foptions <- callopts
     out_ee <- tryCatch(do.call(ee_observations2, opts), error = function(e) e)
-    if (out_ee$results == 0 || inherits(out_ee, "simpleError")) {
+    scotts_env$out_ee <- out_ee
+    if (out_ee$results == 0 %||% TRUE || inherits(out_ee, "error")) {
       throw_error("ecoengine", sprintf("No records returned in Ecoengine for %s",
         if (is.null(query)) paste0(substr(geometry, 1, 20), ' ...') else query
       ))
@@ -423,7 +426,7 @@ foo_idigbio <- function(sources, query, limit, start, geometry, has_coords,
 
     if (!"limit" %in% names(opts)) opts$limit <- limit
     if (!'offset' %in% names(opts)) opts$offset <- start
-    opts$fields <- "all"
+    if (is.null(opts$fields)) opts$fields <- "all"
 
     opts$config <- callopts
 

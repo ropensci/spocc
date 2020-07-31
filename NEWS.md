@@ -1,3 +1,12 @@
+spocc 1.1.0
+===========
+
+### BUG FIXES
+
+* Fix for ALA data source in `occ()`: total records found count was always 0 because ALA changed the records found field to `totalRecords`
+* Fix for Vertnet data source in `occ()`: was using an old parameter `query` passed to `rvertnet::searchbyterm()` - changed to `scientificname` instead
+
+
 spocc 1.0.8
 ===========
 

@@ -1,8 +1,8 @@
 ## Test environments
 
-* local OS X install, R 3.6.2 Patched
-* ubuntu 16.04 (on travis-ci), R 3.6.2
-* win-builder (devel)
+* local OS X install, R 4.0.2 Patched
+* ubuntu 16.04 (on travis-ci), R 4.0.2
+* win-builder (release/devel)
 
 ## R CMD check results
 
@@ -14,7 +14,7 @@
 
 --------
 
-This version fixes tests that were failing on cran checks, and fixes a bug in one of the functions.
+This version fixes some bugs, and makes a function defunct.
 
 Thanks!
 Scott Chamberlain

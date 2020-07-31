@@ -339,7 +339,7 @@ foo_vertnet <- function(sources, query, limit, has_coords, date, callopts, opts)
     if (!is.null(has_coords)) {
       opts$mappable <- has_coords
     }
-    opts$query <- query
+    opts$scientificname <- query
     opts$messages <- FALSE
     if (!is.null(date)) {
       if (length(date) != 2) stop("'date' for Vertnet must be length 2")

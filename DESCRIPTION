@@ -44,6 +44,7 @@ Imports:
 Suggests:
     testthat,
     knitr,
+    rmarkdown,
     taxize (>= 0.8.4),
     vcr
 RoxygenNote: 7.1.1

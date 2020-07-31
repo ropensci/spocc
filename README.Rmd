@@ -108,7 +108,7 @@ library("spocc")
 
 ## Clean data
 
-All data cleaning functionality is in a new package [scrubr](https://github.com/ropenscilabs/scrubr). `scrubr` [on CRAN](https://cran.r-project.org/package=scrubr).
+All data cleaning functionality is in a new package [scrubr](https://github.com/ropensci/scrubr). `scrubr` [on CRAN](https://cran.r-project.org/package=scrubr).
 
 ## Make maps
 
@@ -124,13 +124,13 @@ All mapping functionality is now in a separate package [mapr](https://github.com
 
 [![ropensci_footer](https://ropensci.org/public_images/github_footer.png)](https://ropensci.org)
 
-[gbif]: https://github.com/ropensci/rgbif
+[gbif]: https://www.gbif.org/
 [vertnet]: https://github.com/ropensci/rvertnet
-[bison]: https://github.com/ropensci/rbison
-[inat]: https://github.com/ropensci/rinat
+[bison]: https://bison.usgs.gov/
+[inat]: https://www.inaturalist.org/
 [taxize]: https://github.com/ropensci/taxize
-[ecoengine]: https://github.com/ropensci/ecoengine
+[ecoengine]: https://ecoengine.berkeley.edu/
 [idigbio]: https://www.idigbio.org/
-[obis]: http://www.iobis.org/
+[obis]: https://obis.org/
 [ebird]: https://ebird.org/home
 [ala]: https://www.ala.org.au/

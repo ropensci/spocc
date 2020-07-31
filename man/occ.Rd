@@ -46,9 +46,10 @@ needed.}
 \item{start, page}{(integer) Record to start at or page to start at. See \code{Paging} in
 Details for how these parameters are used internally. Optional}
 
-\item{geometry}{(character or nmeric) One of a Well Known Text (WKT) object or a vector of
-length 4 specifying a bounding box. This parameter searches for occurrences inside a
-box given as a bounding box or polygon described in WKT format. A WKT shape written as
+\item{geometry}{(character or nmeric) One of a Well Known Text (WKT) object, a vector of
+length 4 specifying a bounding box, an sp object (SpatialPolygons or SpatialPolygonsDataFrame),
+or an sf object (sfg, sfc, or sf). This parameter searches for occurrences inside a
+polygon - converted to a polygon from whatever user input is given. A WKT shape written as
 \verb{POLYGON((30.1 10.1, 20 40, 40 40, 30.1 10.1))} would be queried as is,
 i.e. http://bit.ly/HwUSif. See Details for more examples of WKT objects. The format of a
 bounding box is \verb{min-longitude, min-latitude, max-longitude, max-latitude}. Geometry
@@ -662,7 +663,6 @@ out$gbif$data
 
 
 # curl debugging
-library('httr')
 occ(query = 'Accipiter striatus', from = 'gbif', limit=10, 
  callopts=list(verbose = TRUE))
 occ(query = 'Accipiter striatus', from = 'bison', limit=10, 

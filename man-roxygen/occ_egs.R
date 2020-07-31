@@ -253,7 +253,6 @@
 #' 
 #'
 #' # curl debugging
-#' library('httr')
 #' occ(query = 'Accipiter striatus', from = 'gbif', limit=10, 
 #'  callopts=list(verbose = TRUE))
 #' occ(query = 'Accipiter striatus', from = 'bison', limit=10, 

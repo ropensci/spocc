@@ -1,4 +1,5 @@
 test_that("as.bison", {
+  skip_on_os("windows")
   vcr::use_cassette("as_bison_prep", {
     spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Spinus tristis')
     out <- occ(query=spnames, from='bison', limit=2)

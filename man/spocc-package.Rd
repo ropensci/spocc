@@ -22,7 +22,6 @@ Other functions include:
 \itemize{
 \item \code{\link[=occ2df]{occ2df()}} - Combine results from \code{occ} into a
 data.frame
-\item \code{\link[=fixnames]{fixnames()}} - Change names to be the same for each taxon
 \item \code{\link[=wkt_vis]{wkt_vis()}} - Visualize WKT strings (used to define
 geometry based searches for some data sources) in an interactive map
 }

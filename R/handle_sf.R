@@ -1,4 +1,4 @@
-matrix_tuple <- function(x) {
+matrix_tuple <- function(x) { # nocov start
   paste(unlist(lapply(split(t(x), rep(seq_len(dim(x)[1L]), each = dim(x)[2L])),
     paste0, collapse = " ")),
   collapse = ", ")
@@ -54,4 +54,4 @@ handle_sf <- function(x) {
   } else if (inherits(x, "sf")) {
     handle_sf(x[[attr(x, "sf_column")]])
   }
-}
+} # nocov end

@@ -1,12 +1,12 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.vertnet-portal.appspot.com/api/search?q=%7B%22q%22%3A%22%22%2C%22l%22%3A3%7D
+    uri: http://api.vertnet-portal.appspot.com/api/search?q=%7B%22q%22%3A%22scientificname%3AAccipiter%20striatus%22%2C%22l%22%3A3%7D
     body:
       encoding: ''
       string: ''
     headers:
-      User-Agent: libcurl/7.54.0 r-curl/4.3 crul/0.9.0
+      User-Agent: libcurl/7.71.1 r-curl/4.3 crul/1.0.0
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
   response:
@@ -19,131 +19,134 @@ http_interactions:
       cache-control: no-cache
       content-type: application/json
       charset: utf-8
-      x-cloud-trace-context: 3e70b136c3daefda0806e59ad051dfe2
-      date: Sat, 08 Feb 2020 15:06:43 GMT
+      set-cookie: _eauth=eyJ1c2VyX2lkIjpudWxsLCJzZXNzaW9uX2lkIjoiTG5oTFRNaHAzb1lpNVMyUlRveEp3diJ9|1596214944|013ff0ced6889159cddc80e716ff6d62331d7836;
+        Path=/
+      x-cloud-trace-context: 16ccc670b2ab4f732fe5b0727a330ad0;o=1
+      date: Fri, 31 Jul 2020 17:02:24 GMT
       server: Google Frontend
-      content-length: '10936'
+      content-length: '10769'
+      expires: Fri, 31 Jul 2020 17:02:24 GMT
     body:
       encoding: UTF-8
       file: no
-      string: '{"request_date": "2020-02-08T15:06:43.140805", "response_records":
-        3, "submitted_query": "", "request_origin": "45.505106,-122.675026", "limit":
-        3, "cursor": "False:CpcFCtIDCqQD9wAAABn_____jIGJmo2LkZqL0o-QjYuek96WkZuah9LNz87M0s_H0s_H_wAA_3RtoKCZi4ygoP8AAP9dno-PmpGYlpGa_wAA_3N0bZaRm5qH_wAA_12biJz_AAD_c3Rtm5CcoJab_wAA_12ektCXmo2PmouQk5CYhtDPz8_PmcibntKayZvI0subnMjSnp7Ky9Kby5rIzMians3Jx8v_AAD_c3-ektCXmo2PmouQk5CYhtDPz8_PmcibntKayZvI0subnMjSnp7Ky9Kby5rIzMians3Jx8v_AAD__wD-__6MgYmajYuRmovSj5CNi56T3paRm5qH0s3PzszSz8fSz8f_AHRtoKCZi4ygoP8AXZ6Pj5qRmJaRmv8Ac3RtlpGbmof_AF2biJz_AHN0bZuQnKCWm_8AXZ6S0JeajY-ai5CTkJiG0M_Pz8-ZyJue0prJm8jSy5ucyNKensrL0pvLmsjMyJqezcnHy_8Ac3-ektCXmo2PmouQk5CYhtDPz8_PmcibntKayZvI0subnMjSnp7Ky9Kby5rIzMians3Jx8v_AP_-EAMhBN0EkB08Gxk5AAAAAOb___9IA1AAWgsJLDyfxiJ5Z0oQA2Ck3N3oAxINRG9jdW1lbnRJbmRleBqOAShBTkQgKElTICJjdXN0b21lcl9uYW1lIiAiYXBwZW5naW5lIikgKElTICJncm91cF9uYW1lIiAic352ZXJ0bmV0LXBvcnRhbCIpIChJUyAibmFtZXNwYWNlIiAiaW5kZXgtMjAxMy0wOC0wOCIpIChJUyAiaW5kZXhfbmFtZSIgImR3YyIpIChUUlVFKSk6GQoMKE4gb3JkZXJfaWQpEAEZAAAAAAAA8P9KBQgAQOgH",
+      string: '{"request_date": "2020-07-31T17:02:24.450086", "response_records":
+        3, "submitted_query": "scientificname:Accipiter striatus", "request_origin":
+        "45.505106,-122.675026", "limit": 3, "cursor": "False:CqcFCooDCtwC9wAAABn_____jIGJmo2LkZqL0o-QjYuek96WkZuah9LNz87M0s_H0s_H_wAA_3RtoKCZi4ygoP8AAP9dno-PmpGYlpGa_wAA_3N0bZaRm5qH_wAA_12biJz_AAD_c3Rtm5CcoJab_wAA_12cnozQkI2R0IqNkdKcnouek5CY0pyejNKQjZHSzs7My8j_AAD_c3-cnozQkI2R0IqNkdKcnouek5CY0pyejNKQjZHSzs7My8j_AAD__wD-__6MgYmajYuRmovSj5CNi56T3paRm5qH0s3PzszSz8fSz8f_AHRtoKCZi4ygoP8AXZ6Pj5qRmJaRmv8Ac3RtlpGbmof_AF2biJz_AHN0bZuQnKCWm_8AXZyejNCQjZHQio2R0pyei56TkJjSnJ6M0pCNkdLOzszLyP8Ac3-cnozQkI2R0IqNkdKcnouek5CY0pyejNKQjZHSzs7My8j_AP_-EAMhBN0EkB08Gxk5AAAAAOb___9IA1AAWgsJVdKAkNqdzxkQA2DSytfTBBINRG9jdW1lbnRJbmRleBrmAShBTkQgKElTICJjdXN0b21lcl9uYW1lIiAiYXBwZW5naW5lIikgKElTICJncm91cF9uYW1lIiAic352ZXJ0bmV0LXBvcnRhbCIpIChJUyAibmFtZXNwYWNlIiAiaW5kZXgtMjAxMy0wOC0wOCIpIChJUyAiaW5kZXhfbmFtZSIgImR3YyIpIChBTkQgKFFUICJBY2NpcGl0ZXIiICJydGV4dF9zY2llbnRpZmljbmFtZSIpIChPUiAoUVQgInN0cmlhdHVzIikgKElTICJfX2dhdG9tX18iICJzdHJpYXR1cyIpKSkpOhkKDChOIG9yZGVyX2lkKRABGQAAAAAAAPD_SgUIAEDoBw",
         "query_version": "search.py 2016-08-15T16:43+02:00", "recs": [{"haslifestage":
-        "0", "kingdom": "Animalia", "recordedby": "Parmenter & Webb", "higherclassification":
-        "Animalia | Chordata |  |  | Myobatrachidae | Limnodynastes", "pubdate": "2015-01-07",
-        "wasinvasive": "0", "stateprovince": "New South Wales", "hastypestatus": "0",
-        "basisofrecord": "PreservedSpecimen", "rank": 12, "month": "2", "decimallongitude":
-        "151.86361", "phylum": "Chordata", "references": "http://portal.vertnet.org/o/am/herpetology?id=0000004c-b04e-4a52-aed4-a5c90e2dbe38",
-        "haslength": "0", "year": "1973", "startdayofyear": "42", "wascaptive": "0",
-        "taxonrank": "species", "specificepithet": "tasmaniensis", "networks": "MaNIS,ORNIS,HerpNET,VertNet,OZCAM",
-        "emlrights": "http://creativecommons.org/licenses/by/3.0/au/", "bibliographiccitation":
-        "Australian Museum. Australian Museum provider for OZCAM. Record ID: 0000004c-b04e-4a52-aed4-a5c90e2dbe38.
-        Source: http://collections.ala.org.au/public/show/dr340 (source published
-        on 2015-01-07)", "vntype": "specimen", "family": "Myobatrachidae", "countrycode":
-        "AU", "title": "Australian Museum provider for OZCAM", "orgname": "Australian
-        Museum", "hasmedia": "0", "geodeticdatum": "not recorded (forced WGS84)",
-        "coordinateuncertaintyinmeters": "10000", "orgstateprovince": "New South Wales",
-        "highergeography": "| Australia | New South Wales |  |  |  |  |", "accessrights":
-        "http://vertnet.org/resources/norms.html", "hassex": "0", "contact": "OZCAM
-        Webmaster", "verbatimlocality": "Australia | New South Wales", "migrator":
-        "2015-01-05", "verbatimeventdate": "1973-02-11", "hasmass": "0", "email":
-        "OZCAM.CHAFC@gmail.com", "day": "11", "eventid": "urn:australianmuseum.net.au:Events:2021531",
-        "citation": "Australian Museum. Australian Museum provider for OZCAM. Source:
-        http://collections.ala.org.au/public/show/dr340 (source published on 2015-01-07)",
-        "occurrencestatus": "present", "locationremarks": "\"ecatalogue.LocCollectionEventLocal:
-        \"Australia, New South Wales, 12 miles West of Tenterfield (29\u00b0 01''
-        46\" S, 151\u00b0 51'' 49\" E) 11/02/1973 - 11/02/1973, Parmenter & Webb(Collector),
-        Field Collected - Terrestrial\";\"", "coordinateprecision": "0.00001", "orgcountry":
-        "Australia", "source_url": "http://collections.ala.org.au/public/show/dr340",
-        "institutioncode": "AM", "dctype": "PhysicalObject", "iptrecordid": "0000004c-b04e-4a52-aed4-a5c90e2dbe38",
-        "icode": "AM", "scientificname": "Limnodynastes tasmaniensis", "gbifpublisherid":
-        "770c30d2-c2a8-4bb2-8056-6167297cddae", "hashid": "2572", "haslicense": "1",
-        "class": "Amphibia", "vernacularname": "Spotted Grass Frog", "isfossil": "0",
-        "decimallatitude": "-29.02943", "occurrenceid": "0000004c-b04e-4a52-aed4-a5c90e2dbe38",
-        "language": "en", "license": "CCBY", "country": "Australia", "mappable": "1",
-        "georeferenceverificationstatus": "requires verification", "collectioncode":
-        "Herpetology", "modified": "2015-01-07", "eventdate": "1973-02-11", "identifiedby":
-        "Sadlier, Dr Ross Allen - Australian Museum - Herpetology", "nomenclaturalcode":
-        "ICZN", "keyname": "am/herpetology/0000004c-b04e-4a52-aed4-a5c90e2dbe38",
-        "hastissue": "0", "continent": "Australasia", "dateidentified": "2000", "lastindexed":
-        "2016-07-22", "genus": "Limnodynastes", "gbifdatasetid": "dce8feb0-6c89-11de-8225-b8a03c50a862",
-        "order": "Anura", "catalognumber": "R.36833", "enddayofyear": "42"}, {"haslifestage":
-        "0", "kingdom": "Animalia", "recordedby": "Whaley, R", "higherclassification":
-        "Animalia | Chordata |  |  | Elapidae | Furina", "pubdate": "2015-01-07",
-        "wasinvasive": "0", "stateprovince": "New South Wales", "hastypestatus": "0",
-        "basisofrecord": "PreservedSpecimen", "rank": 12, "month": "7", "decimallongitude":
-        "150.7", "phylum": "Chordata", "references": "http://portal.vertnet.org/o/am/herpetology?id=0000ccff-be0f-4ea0-8d8a-b382e7e1f834",
-        "haslength": "0", "year": "1979", "startdayofyear": "210", "wascaptive": "0",
-        "taxonrank": "species", "specificepithet": "diadema", "networks": "MaNIS,ORNIS,HerpNET,VertNet,OZCAM",
-        "emlrights": "http://creativecommons.org/licenses/by/3.0/au/", "bibliographiccitation":
-        "Australian Museum. Australian Museum provider for OZCAM. Record ID: 0000ccff-be0f-4ea0-8d8a-b382e7e1f834.
-        Source: http://collections.ala.org.au/public/show/dr340 (source published
-        on 2015-01-07)", "vntype": "specimen", "family": "Elapidae", "countrycode":
-        "AU", "title": "Australian Museum provider for OZCAM", "orgname": "Australian
-        Museum", "hasmedia": "0", "geodeticdatum": "not recorded (forced WGS84)",
-        "coordinateuncertaintyinmeters": "10000", "orgstateprovince": "New South Wales",
-        "highergeography": "| Australia | New South Wales |  |  |  |  |", "accessrights":
-        "http://vertnet.org/resources/norms.html", "hassex": "0", "contact": "OZCAM
-        Webmaster", "verbatimlocality": "Australia | New South Wales", "migrator":
-        "2015-01-05", "verbatimeventdate": "1979-07-29", "hasmass": "0", "email":
-        "OZCAM.CHAFC@gmail.com", "day": "29", "eventid": "urn:australianmuseum.net.au:Events:2030263",
-        "citation": "Australian Museum. Australian Museum provider for OZCAM. Source:
-        http://collections.ala.org.au/public/show/dr340 (source published on 2015-01-07)",
-        "occurrencestatus": "present", "locationremarks": "\"ecatalogue.LocCollectionEventLocal:
-        \"Australia, New South Wales, Penrith, Sydney (33\u00b0 45'' S, 150\u00b0
-        42'' E) 29/07/1979 - 29/07/1979, Whaley, R(Collector), Field Collected - Terrestrial\";\"",
-        "coordinateprecision": "0.001", "orgcountry": "Australia", "source_url": "http://collections.ala.org.au/public/show/dr340",
-        "institutioncode": "AM", "dctype": "PhysicalObject", "iptrecordid": "0000ccff-be0f-4ea0-8d8a-b382e7e1f834",
-        "icode": "AM", "scientificname": "Furina diadema", "gbifpublisherid": "770c30d2-c2a8-4bb2-8056-6167297cddae",
-        "hashid": "8537", "haslicense": "1", "class": "Reptilia", "vernacularname":
-        "Red-naped Snake", "isfossil": "0", "decimallatitude": "-33.75", "occurrenceid":
-        "0000ccff-be0f-4ea0-8d8a-b382e7e1f834", "language": "en", "license": "CCBY",
-        "country": "Australia", "mappable": "1", "georeferenceverificationstatus":
-        "requires verification", "collectioncode": "Herpetology", "modified": "2015-01-07",
-        "eventdate": "1979-07-29", "identifiedby": "Lambeck, R", "nomenclaturalcode":
-        "ICZN", "keyname": "am/herpetology/0000ccff-be0f-4ea0-8d8a-b382e7e1f834",
-        "hastissue": "0", "continent": "Australasia", "dateidentified": "1989", "lastindexed":
-        "2016-07-22", "genus": "Furina", "gbifdatasetid": "dce8feb0-6c89-11de-8225-b8a03c50a862",
-        "order": "Squamata", "catalognumber": "R.88488", "enddayofyear": "210"}, {"haslifestage":
-        "0", "kingdom": "Animalia", "recordedby": "H. Ehmann & M. Anstis", "higherclassification":
-        "Animalia | Chordata |  |  | Elapidae | Hemiaspis", "pubdate": "2015-01-07",
-        "wasinvasive": "0", "stateprovince": "New South Wales", "hastypestatus": "0",
-        "basisofrecord": "PreservedSpecimen", "rank": 12, "month": "3", "decimallongitude":
-        "151.50638", "phylum": "Chordata", "references": "http://portal.vertnet.org/o/am/herpetology?id=0000f7da-e6d7-4dc7-aa54-d4e737ea2684",
-        "haslength": "0", "year": "1975", "startdayofyear": "88", "wascaptive": "0",
-        "taxonrank": "species", "specificepithet": "signata", "networks": "MaNIS,ORNIS,HerpNET,VertNet,OZCAM",
-        "emlrights": "http://creativecommons.org/licenses/by/3.0/au/", "bibliographiccitation":
-        "Australian Museum. Australian Museum provider for OZCAM. Record ID: 0000f7da-e6d7-4dc7-aa54-d4e737ea2684.
-        Source: http://collections.ala.org.au/public/show/dr340 (source published
-        on 2015-01-07)", "vntype": "specimen", "family": "Elapidae", "countrycode":
-        "AU", "title": "Australian Museum provider for OZCAM", "orgname": "Australian
-        Museum", "hasmedia": "0", "geodeticdatum": "not recorded (forced WGS84)",
-        "coordinateuncertaintyinmeters": "10000", "orgstateprovince": "New South Wales",
-        "highergeography": "| Australia | New South Wales |  |  |  |  |", "accessrights":
-        "http://vertnet.org/resources/norms.html", "hassex": "0", "contact": "OZCAM
-        Webmaster", "verbatimlocality": "Australia | New South Wales", "migrator":
-        "2015-01-05", "verbatimeventdate": "1975-03-29", "hasmass": "0", "email":
-        "OZCAM.CHAFC@gmail.com", "day": "29", "eventid": "urn:australianmuseum.net.au:Events:2023720",
-        "citation": "Australian Museum. Australian Museum provider for OZCAM. Source:
-        http://collections.ala.org.au/public/show/dr340 (source published on 2015-01-07)",
-        "occurrencestatus": "present", "locationremarks": "\"ecatalogue.LocCollectionEventLocal:
-        \"Australia, New South Wales, 2 Km North of Eccelston near Gresford (32\u00b0
-        14'' 58\" S, 151\u00b0 30'' 23\" E) 29/03/1975 - 29/03/1975, H. Ehmann & M.
-        Anstis(Collector), Field Collected - Terrestrial\";\"", "coordinateprecision":
-        "0.00001", "orgcountry": "Australia", "source_url": "http://collections.ala.org.au/public/show/dr340",
-        "institutioncode": "AM", "dctype": "PhysicalObject", "iptrecordid": "0000f7da-e6d7-4dc7-aa54-d4e737ea2684",
-        "icode": "AM", "scientificname": "Hemiaspis signata", "gbifpublisherid": "770c30d2-c2a8-4bb2-8056-6167297cddae",
-        "hashid": "1825", "haslicense": "1", "class": "Reptilia", "vernacularname":
-        "Black-bellied Swamp Snake", "isfossil": "0", "decimallatitude": "-32.24944",
-        "occurrenceid": "0000f7da-e6d7-4dc7-aa54-d4e737ea2684", "language": "en",
-        "license": "CCBY", "country": "Australia", "mappable": "1", "georeferenceverificationstatus":
-        "requires verification", "collectioncode": "Herpetology", "modified": "2015-01-07",
-        "eventdate": "1975-03-29", "identifiedby": "Lambeck, R", "nomenclaturalcode":
-        "ICZN", "keyname": "am/herpetology/0000f7da-e6d7-4dc7-aa54-d4e737ea2684",
-        "hastissue": "0", "continent": "Australasia", "dateidentified": "1989", "lastindexed":
-        "2016-07-22", "genus": "Hemiaspis", "gbifdatasetid": "dce8feb0-6c89-11de-8225-b8a03c50a862",
-        "order": "Squamata", "catalognumber": "R.49098", "enddayofyear": "88"}], "matching_records":
-        ">10000", "api_version": "api.py 2017-11-24T12:16-03:00"}'
-  recorded_at: 2020-02-08 15:06:43 GMT
-  recorded_with: vcr/0.4.0, webmockr/0.5.0
+        "1", "month": "7", "decimallongitude": "-74.686217", "verbatimlongitude":
+        "074 41 10.38 W", "startdayofyear": "192", "minimumelevationinmeters": "638",
+        "networks": "ORNIS,VertNet", "vntype": "specimen", "title": "AMNH Bird Collection",
+        "kingdom": "Animalia", "dctype": "PhysicalObject", "iptrecordid": "urn:catalog:AMNH:Birds:DOT-16751",
+        "day": "11", "collectioncode": "Birds", "verbatimeventdate": "2009-07-11",
+        "coordinateuncertaintyinmeters": "1000", "higherclassification": "Animalia;Chordata;Aves;Accipitriformes;Accipitridae;Accipiter",
+        "pubdate": "2013-10-30", "lifestage": "immature", "sex": "female", "year":
+        "2009", "wasinvasive": "0", "specificepithet": "striatus", "basisofrecord":
+        "PreservedSpecimen", "geodeticdatum": "WGS84", "occurrenceremarks": "Found
+        dead on the road", "highergeography": "North and Central America;USA;New York;Sullivan
+        Co.;;;;", "continent": "North America", "email": "trombone@amnh.org", "orgcountry":
+        "United States", "source_url": "http://ipt.vertnet.org:8080/ipt/resource.do?r=amnh_birds",
+        "scientificname": "Accipiter striatus", "disposition": "Found", "hashid":
+        "6869", "hassex": "1", "language": "en", "institutionid": "urn:lsid:biocol.org:col:34925",
+        "country": "United States", "hastissue": "1", "underivedsex": "female", "genus":
+        "Accipiter", "family": "Accipitridae", "stateprovince": "New York", "rank":
+        12, "county": "Sullivan", "phylum": "Chordata", "references": "http://portal.vertnet.org/o/amnh/birds?id=dot-16751",
+        "taxonrank": "species", "hasmedia": "0", "verbatimlocality": "North and Central
+        America; USA; New York; Sullivan Co.; ; ; ; ; ; ; Parksville, Cooley Road",
+        "countrycode": "US", "institutioncode": "AMNH", "orgstateprovince": "New York",
+        "occurrencestatus": "present", "hastypestatus": "0", "preparations": "Tissue,
+        Skin", "recordedby": "Jeffrey G. Groth", "isfossil": "0", "wascaptive": "0",
+        "georeferenceverificationstatus": "requires verification", "modified": "2013-08-20",
+        "verbatimlatitude": "41 53 53.44 N", "haslicense": "0", "samplingprotocol":
+        "Found dead", "eventdate": "2009-07-11", "individualcount": "1", "verbatimelevation":
+        "638 m", "bibliographiccitation": "American Museum of Natural History. AMNH
+        Bird Collection. Record ID: DOT-16751. Source: http://ipt.vertnet.org:8080/ipt/resource.do?r=amnh_birds
+        (source published on 2013-10-30)", "citation": "American Museum of Natural
+        History. AMNH Bird Collection. Source: http://ipt.vertnet.org:8080/ipt/resource.do?r=amnh_birds
+        (source published on 2013-10-30)", "georeferencesources": "Google Earth",
+        "lastindexed": "2016-08-10", "haslength": "0", "catalognumber": "DOT-16751",
+        "emlrights": "The terms and conditions of use of AMNH data are given in the
+        document found at http://research.amnh.org/vertzoo/TandC.pdf", "hasmass":
+        "0", "gbifdatasetid": "96c93a1e-f762-11e1-a439-00145eb45e9a", "locality":
+        "Parksville, Cooley Road", "orgname": "American Museum of Natural History",
+        "contact": "Tom Trombone", "migrator": "2013-08-21", "recordnumber": "JGG
+        1633", "collectionid": "urn:lsid:biocol.org:col:34926", "icode": "AMNH", "underivedlifestage":
+        "immature", "gbifpublisherid": "ccd1ddc0-6c21-11de-8224-b8a03c50a862", "class":
+        "Aves", "decimallatitude": "41.898178", "mappable": "1", "nomenclaturalcode":
+        "ICZN", "keyname": "amnh/birds/dot-16751", "order": "Accipitriformes", "enddayofyear":
+        "192"}, {"haslifestage": "1", "month": "7", "decimallongitude": "-74.686217",
+        "verbatimlongitude": "074 41 10.38 W", "startdayofyear": "192", "minimumelevationinmeters":
+        "638", "networks": "ORNIS,VertNet", "vntype": "specimen", "title": "AMNH Bird
+        Collection", "kingdom": "Animalia", "dctype": "PhysicalObject", "iptrecordid":
+        "urn:catalog:AMNH:Birds:SKIN-836988", "day": "11", "collectioncode": "Birds",
+        "verbatimeventdate": "2009-07-11", "coordinateuncertaintyinmeters": "1000",
+        "higherclassification": "Animalia;Chordata;Aves;Accipitriformes;Accipitridae;Accipiter",
+        "pubdate": "2013-10-30", "lifestage": "immature", "sex": "female", "year":
+        "2009", "wasinvasive": "0", "specificepithet": "striatus", "basisofrecord":
+        "PreservedSpecimen", "geodeticdatum": "WGS84", "occurrenceremarks": "Found
+        dead on the road", "highergeography": "North and Central America;USA;New York;Sullivan
+        Co.;;;;", "continent": "North America", "email": "trombone@amnh.org", "orgcountry":
+        "United States", "source_url": "http://ipt.vertnet.org:8080/ipt/resource.do?r=amnh_birds",
+        "scientificname": "Accipiter striatus", "disposition": "Found", "hashid":
+        "5624", "hassex": "1", "language": "en", "institutionid": "urn:lsid:biocol.org:col:34925",
+        "country": "United States", "hastissue": "1", "underivedsex": "female", "genus":
+        "Accipiter", "family": "Accipitridae", "stateprovince": "New York", "rank":
+        12, "county": "Sullivan", "phylum": "Chordata", "references": "http://portal.vertnet.org/o/amnh/birds?id=skin-836988",
+        "taxonrank": "species", "hasmedia": "0", "verbatimlocality": "North and Central
+        America; USA; New York; Sullivan Co.; ; ; ; ; ; ; Parksville, Cooley Road",
+        "countrycode": "US", "institutioncode": "AMNH", "orgstateprovince": "New York",
+        "occurrencestatus": "present", "hastypestatus": "0", "preparations": "skin,
+        tissue", "recordedby": "Jeffrey G. Groth", "isfossil": "0", "wascaptive":
+        "0", "georeferenceverificationstatus": "requires verification", "modified":
+        "2013-08-20", "verbatimlatitude": "41 53 53.44 N", "haslicense": "0", "samplingprotocol":
+        "Found dead", "eventdate": "2009-07-11", "individualcount": "1", "verbatimelevation":
+        "638 m", "bibliographiccitation": "American Museum of Natural History. AMNH
+        Bird Collection. Record ID: SKIN-836988. Source: http://ipt.vertnet.org:8080/ipt/resource.do?r=amnh_birds
+        (source published on 2013-10-30)", "citation": "American Museum of Natural
+        History. AMNH Bird Collection. Source: http://ipt.vertnet.org:8080/ipt/resource.do?r=amnh_birds
+        (source published on 2013-10-30)", "georeferencesources": "Google Earth",
+        "lastindexed": "2016-08-10", "haslength": "0", "catalognumber": "SKIN-836988",
+        "emlrights": "The terms and conditions of use of AMNH data are given in the
+        document found at http://research.amnh.org/vertzoo/TandC.pdf", "hasmass":
+        "0", "gbifdatasetid": "96c93a1e-f762-11e1-a439-00145eb45e9a", "locality":
+        "Parksville, Cooley Road", "orgname": "American Museum of Natural History",
+        "contact": "Tom Trombone", "migrator": "2013-08-21", "recordnumber": "JGG
+        1633", "collectionid": "urn:lsid:biocol.org:col:34926", "icode": "AMNH", "underivedlifestage":
+        "immature", "gbifpublisherid": "ccd1ddc0-6c21-11de-8224-b8a03c50a862", "class":
+        "Aves", "decimallatitude": "41.898178", "mappable": "1", "nomenclaturalcode":
+        "ICZN", "keyname": "amnh/birds/skin-836988", "order": "Accipitriformes", "enddayofyear":
+        "192"}, {"haslifestage": "1", "georeferenceprotocol": "MaNIS/HerpNet/ORNIS
+        Georeferencing Guidelines, GBIF Best Practic", "higherclassification": "Animalia;
+        Chordata; Aves; Accipitriformes; Accipitridae", "pubdate": "2019-07-15", "wasinvasive":
+        "0", "stateprovince": "California", "hastypestatus": "0", "lifestage": "Ad.",
+        "rank": 12, "month": "3", "decimallongitude": "-122.92380", "phylum": "Chordata",
+        "references": "http://portal.vertnet.org/o/cas/orn?id=urn-catalog-cas-orn-11347",
+        "haslength": "0", "isarch": "0", "year": "1908", "wascaptive": "0", "specificepithet":
+        "striatus", "networks": "ORNIS,VertNet", "recordedby": "C. M. Harris", "bibliographiccitation":
+        "California Academy of Sciences. CAS Ornithology (ORN). Record ID: urn:catalog:CAS:ORN:11347.
+        Source: http://ipt.calacademy.org:8080/ipt/resource.do?r=orn (source published
+        on 2019-07-15)", "vntype": "specimen", "family": "Accipitridae", "locality":
+        "Lakeport", "orgname": "California Academy of Sciences", "hasmedia": "0",
+        "geodeticdatum": "WGS84", "occurrenceremarks": "GIFT OF CALIFORNIA FISH COMMISSION.",
+        "coordinateuncertaintyinmeters": "5672", "orgstateprovince": "California",
+        "highergeography": "North America; USA; California; Lake Co.", "continent":
+        "North America", "contact": "Maureen Flannery", "lastindexed": "2019-08-04",
+        "migrator": "no migrator", "hastissue": "1", "hasmass": "0", "email": "mflannery@calacademy.org",
+        "day": "4", "kingdom": "Animalia", "infraspecificepithet": "velox", "citation":
+        "California Academy of Sciences. CAS Ornithology (ORN). Source: http://ipt.calacademy.org:8080/ipt/resource.do?r=orn
+        (source published on 2019-07-15)", "georeferencesources": "Google Earth",
+        "hassex": "1", "orgcountry": "United States", "source_url": "http://ipt.calacademy.org:8080/ipt/resource.do?r=orn",
+        "institutioncode": "CAS", "dctype": "PhysicalObject", "iptrecordid": "urn:catalog:CAS:ORN:11347",
+        "icode": "CAS", "scientificname": "Accipiter striatus velox", "preparations":
+        "Skin Study; toepad; Feather", "gbifpublisherid": "66522820-055c-11d8-b84e-b8a03c50a862",
+        "hashid": "6565", "sex": "male", "class": "Aves", "keyname": "cas/orn/urn-catalog-cas-orn-11347",
+        "isfossil": "0", "county": "Lake Co.", "decimallatitude": "39.04350", "occurrenceid":
+        "urn:catalog:CAS:ORN:11347", "language": "en", "license": "CC0", "basisofrecord":
+        "PreservedSpecimen", "country": "USA", "mappable": "1", "title": "CAS Ornithology
+        (ORN)", "modified": "2010-02-12T19:02:02Z", "verbatimlatitude": "39.0435\u00b0",
+        "eventdate": "4 March 1908", "haslicense": "1", "underivedlifestage": "Ad.",
+        "verbatimeventdate": "4 March 1908", "underivedsex": "M", "verbatimlongitude":
+        "-122.9238\u00b0", "genus": "Accipiter", "gbifdatasetid": "4f29b6ab-20c0-4479-8795-4915bedcebd1",
+        "order": "Accipitriformes", "catalognumber": "11347", "collectioncode": "ORN"}],
+        "matching_records": 9421, "api_version": "api.py 2017-11-24T12:16-03:00"}'
+  recorded_at: 2020-07-31 17:02:24 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.6.2

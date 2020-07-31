@@ -79,5 +79,5 @@ jobs:
       - name: Run sp/sf tests
         run: |
           remotes::install_local()
-          testthat::test_dir("tests/testother", reporter = testthat::check_reporter())
+          testthat::test_dir("tests/testother")
         shell: Rscript {0}

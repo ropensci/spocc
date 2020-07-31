@@ -10,3 +10,4 @@ revdep/data.sqlite
 revdep/library.noindex
 tests/fixtures/has_coords_other_data_sources.yml
 docs/
+vignettes/cache/

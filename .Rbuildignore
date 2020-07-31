@@ -12,6 +12,7 @@ inst/shiny
 inst/vign
 inst/logo
 inst/ignore
+vignettes/cache/
 CONTRIBUTING.md
 appveyor.yml
 README.Rmd

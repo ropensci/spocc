@@ -124,7 +124,7 @@ However, not all parameters across data sources are able to be standardized, so 
 
 ## Clean up taxonomic names
 
-See the vignette [cleaning names](https://docs.ropensci.org/spocc/fixnames)
+See the vignette [cleaning names](https://docs.ropensci.org/spocc/articles/fixnames)
 
 ## Clean data
 

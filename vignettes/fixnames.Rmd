@@ -1,0 +1,69 @@
+---
+title: cleaning names
+author: Scott Chamberlain
+date: "2020-07-31"
+output: rmarkdown::html_vignette
+vignette: >
+    %\VignetteIndexEntry{cleaning names}
+    %\VignetteEngine{knitr::rmarkdown}
+    %\VignetteEncoding{UTF-8}
+---
+
+
+
+One problem you often run in to is that there can be various names for the same taxon in any one source. For example:
+
+
+```r
+library(spocc)
+df <- occ(query = 'Pinus contorta', from = c('gbif', 'ecoengine'), limit = 50)
+unique(df$gbif$data$Pinus_contorta$name)
+#> [1] "Pinus contorta Douglas ex Loudon"             
+#> [2] "Pinus contorta var. contorta"                 
+#> [3] "Pinus contorta var. murrayana (Balf.) Engelm."
+unique(df$ecoengine$data$Pinus_contorta$name)
+#> [1] "Pinus contorta var. latifolia"   "Pinus contorta"                 
+#> [3] "Pinus contorta subsp. murrayana" "Pinus contorta var. contorta"   
+#> [5] "Pinus contorta var. murrayana"   "Pinus contorta subsp. contorta" 
+#> [7] "Pinus contorta murrayana"
+```
+
+This is fine, but when trying to make a map in which points are colored for each taxon, you can have many colors for a single taxon, where instead one color per taxon is more appropriate. There is a function in `scrubr` called `fix_names()`, which has a few options in which you can take the shortest names (usually just the plain binomials like _Homo sapiens_), or the original name queried, or a vector of names supplied by the user.
+
+
+```r
+install.packages("scrubr")
+```
+
+
+```r
+library(scrubr)
+df$gbif$data$Pinus_contorta <- fix_names(df$gbif$data$Pinus_contorta, how = 'shortest')
+df$ecoengine$data$Pinus_contorta <- fix_names(df$ecoengine$data$Pinus_contorta, how = 'shortest')
+unique(df$gbif$data$Pinus_contorta$name)
+#> [1] "Pinus contorta var. contorta"
+unique(df$ecoengine$data$Pinus_contorta$name)
+#> [1] "Pinus contorta"
+df_comb <- occ2df(df)
+head(df_comb); tail(df_comb)
+#> # A tibble: 6 x 6
+#>   name                         longitude latitude prov  date       key       
+#>   <chr>                            <dbl>    <dbl> <chr> <date>     <chr>     
+#> 1 Pinus contorta var. contorta    -115.      50.9 gbif  2020-01-01 2543085192
+#> 2 Pinus contorta var. contorta      17.6     59.8 gbif  2020-01-01 2548826490
+#> 3 Pinus contorta var. contorta      19.2     64.0 gbif  2020-01-06 2549045731
+#> 4 Pinus contorta var. contorta      19.3     64.0 gbif  2020-01-06 2549053727
+#> 5 Pinus contorta var. contorta    -123.      49.3 gbif  2020-01-04 2550016817
+#> 6 Pinus contorta var. contorta    -106.      39.8 gbif  2020-01-07 2557738499
+#> # A tibble: 6 x 6
+#>   name           longitude latitude prov      date       key               
+#>   <chr>              <dbl>    <dbl> <chr>     <date>     <chr>             
+#> 1 Pinus contorta     -120.     38.2 ecoengine 1936-08-07 vtm:plot:70D31:2  
+#> 2 Pinus contorta     -120.     38.2 ecoengine 1935-08-17 vtm:plot:70E54:2  
+#> 3 Pinus contorta     -120.     38.1 ecoengine 1935-08-18 vtm:plot:70E56:2  
+#> 4 Pinus contorta     -122.     37.0 ecoengine 1929-09-05 vtm:plot:85DC116:2
+#> 5 Pinus contorta     -117.     33.8 ecoengine 2006-07-11 UCR185119         
+#> 6 Pinus contorta     -120.     38.5 ecoengine 1934-10-10 vtm:plot:54F37:1
+```
+
+Now with one taxon name for each taxon we can more easily make a plot.

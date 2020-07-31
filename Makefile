@@ -6,6 +6,11 @@ vign:
 	${RSCRIPT} -e "Sys.setenv(NOT_CRAN='true'); knitr::knit('spocc.Rmd.og', output = 'spocc.Rmd')";\
 	cd ..
 
+vign_fixnames:
+	cd vignettes;\
+	${RSCRIPT} -e "Sys.setenv(NOT_CRAN='true'); knitr::knit('fixnames.Rmd.og', output = 'fixnames.Rmd')";\
+	cd ..
+
 install: doc build
 	R CMD INSTALL . && rm *.tar.gz
 

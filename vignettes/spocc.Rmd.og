@@ -20,7 +20,7 @@ knitr::opts_chunk$set(
 
 The rOpenSci projects aims to provide programmatic access to scientific data repositories on the web. A vast majority of the packages in our current suite retrieve some form of biodiversity or taxonomic data. Since several of these datasets have been georeferenced, it provides numerous opportunities for visualizing species distributions, building species distribution maps, and for using it analyses such as species distribution models. In an effort to streamline access to these data, we have developed a package called `spocc`, which provides a unified API to all the biodiversity sources that we provide. The obvious advantage is that a user can interact with a common API and not worry about the nuances in syntax that differ between packages. As more data sources come online, users can access even more data without significant changes to their code. However, it is important to note that spocc will never replicate the full functionality that exists within specific packages. Therefore users with a strong interest in one of the specific data sources listed below would benefit from familiarising themselves with the inner working of the appropriate packages.
 
-### Data Sources
+## Data Sources
 
 `spocc` currently interfaces with nine major biodiversity repositories
 
@@ -34,7 +34,7 @@ The ecoengine is an open API built by the [Berkeley Initiative for Global Change
 iNaturalist provides access to crowd sourced citizen science data on species observations.
 
 4. [VertNet](http://vertnet.org/) (via `rvertnet`)
-Similar to `rgbif`, ecoengine, and `rbison` (see below), VertNet provides access to more than 80 million vertebrate records spanning a large number of institutions and museums primarly covering four major disciplines (mammology, herpetology, ornithology, and icthyology). __Note that we don't currenlty support VertNet data in this package, but we should soon__
+Similar to `rgbif`, ecoengine, and `rbison` (see below), VertNet provides access to more than 80 million vertebrate records spanning a large number of institutions and museums primarly covering four major disciplines (mammology, herpetology, ornithology, and icthyology).
 
 5. Biodiversity Information Serving Our Nation (https://bison.usgs.gov/) (via `rbison`)
 Built by the US Geological Survey's core science analytic team, BISON is a portal that provides access to species occurrence data from several participating institutions.
@@ -54,7 +54,7 @@ ALA (Atlas of Living Australia) contains information on all the known species in
 __Important Note:__ It's important to keep in mind that several data providers interface with many of the above mentioned repositories. This means that occurence data obtained from BISON may be duplicates of data that are also available through GBIF. We do not have a way to resolve these duplicates or overlaps at this time but it is an issue we are hoping to resolve in future versions of the package. See `?spocc_duplicates`, after installation, for more.
 
 
-### Data retrieval
+## Data retrieval
 
 The most significant function in spocc is the `occ` (short for occurrence) function. `occ` takes a query, often a species name, and searches across all data sources specified in the `from` argument. For example, one can search for all occurrences of [Sharp-shinned Hawks](https://www.allaboutbirds.org/guide/sharp-shinned_hawk/id) (_Accipiter striatus_) from the GBIF database with the following R call.
 
@@ -89,7 +89,7 @@ You can quickly get just the GBIF data by indexing to it, like
 df$gbif
 ```
 
-When you get data from multiple providers, the fields returned are slightly different, e.g.:
+When you get data from multiple providers, the fields returned are slightly different because each data provider uses different formats for their data; different arrangements of data and different variable names for the same thing (e.g., one data provider may call latitude "latitude", while another may call it "lat"). For example:
 
 ```{r difffields}
 df <- occ(query = 'Accipiter striatus', from = c('gbif', 'ecoengine'), limit = 25)
@@ -103,26 +103,28 @@ We provide a function `occ2df` that pulls out a few key columns needed for makin
 occ2df(df)
 ```
 
+`occ2df()` not only combines data into a single data.frame, but it also standardizes the key columns (name, longitude, latitude, prov (provider), date, and key (occurrence key)). Note that you can look up the exact occurrence with the data provider using the `key` value.
 
-### Fix names
+### Standardized parameters
 
-One problem you often run in to is that there can be various names for the same taxon in any one source. For example:
+Each data source has a variety of different ways, or parameters, to use to search its data. Some of the parameters are the same across data sources. In `occ()` we've attempted to surface those similar parameters so you can have a single way to define a parameter and it gets applied to every data source. This way you don't have to know the vagaries of each data source, what formatting they expect, etc.
 
-```{r fixnames1}
-df <- occ(query = 'Pinus contorta', from = c('gbif', 'ecoengine'), limit = 50)
-df$gbif$data$Pinus_contorta$name
-df$ecoengine$data$Pinus_contorta$name
-```
+The standardized parameters in `occ()` are:
 
-This is fine, but when trying to make a map in which points are colored for each taxon, you can have many colors for a single taxon, where instead one color per taxon is more appropriate. There is a function in `spocc` called `fixnames`, which has a few options in which you can take the shortest names (usually just the plain binomials like _Homo sapiens_), or the original name queried, or a vector of names supplied by the user.
+- query: a scientific taxon name
+- limit: number of records to retrieve
+- start: page number to start at
+- page: page number to retrieve
+- geometry: a "spatial filter" - bounding box, well known text, or an sp or sf polygon or multipolygon
+- has_coords: exclude records without latitude/longitude data
+- date: a date range
 
-```{r fixnames2}
-df <- fixnames(df, how = 'query')
-df$gbif$data$Pinus_contorta$name
-df$ecoengine$data$Pinus_contorta$name
-df_comb <- occ2df(df)
-head(df_comb); tail(df_comb)
-```
+However, not all parameters across data sources are able to be standardized, so you can pass data source specific parameters to their matching parameter name, e.g., pass GBIF parameters to `gbifopts` and ALA parameters to `alaopts`. 
+
+
+## Clean up taxonomic names
+
+See the vignette [cleaning names](https://docs.ropensci.org/spocc/fixnames)
 
 ## Clean data
 

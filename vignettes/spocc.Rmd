@@ -1,7 +1,7 @@
 ---
 title: spocc introduction
 author: Scott Chamberlain
-date: "2020-07-30"
+date: "2020-07-31"
 output: rmarkdown::html_vignette
 vignette: >
     %\VignetteIndexEntry{spocc introduction}
@@ -13,7 +13,7 @@ vignette: >
 
 The rOpenSci projects aims to provide programmatic access to scientific data repositories on the web. A vast majority of the packages in our current suite retrieve some form of biodiversity or taxonomic data. Since several of these datasets have been georeferenced, it provides numerous opportunities for visualizing species distributions, building species distribution maps, and for using it analyses such as species distribution models. In an effort to streamline access to these data, we have developed a package called `spocc`, which provides a unified API to all the biodiversity sources that we provide. The obvious advantage is that a user can interact with a common API and not worry about the nuances in syntax that differ between packages. As more data sources come online, users can access even more data without significant changes to their code. However, it is important to note that spocc will never replicate the full functionality that exists within specific packages. Therefore users with a strong interest in one of the specific data sources listed below would benefit from familiarising themselves with the inner working of the appropriate packages.
 
-### Data Sources
+## Data Sources
 
 `spocc` currently interfaces with nine major biodiversity repositories
 
@@ -27,7 +27,7 @@ The ecoengine is an open API built by the [Berkeley Initiative for Global Change
 iNaturalist provides access to crowd sourced citizen science data on species observations.
 
 4. [VertNet](http://vertnet.org/) (via `rvertnet`)
-Similar to `rgbif`, ecoengine, and `rbison` (see below), VertNet provides access to more than 80 million vertebrate records spanning a large number of institutions and museums primarly covering four major disciplines (mammology, herpetology, ornithology, and icthyology). __Note that we don't currenlty support VertNet data in this package, but we should soon__
+Similar to `rgbif`, ecoengine, and `rbison` (see below), VertNet provides access to more than 80 million vertebrate records spanning a large number of institutions and museums primarly covering four major disciplines (mammology, herpetology, ornithology, and icthyology).
 
 5. Biodiversity Information Serving Our Nation (https://bison.usgs.gov/) (via `rbison`)
 Built by the US Geological Survey's core science analytic team, BISON is a portal that provides access to species occurrence data from several participating institutions.
@@ -47,7 +47,7 @@ ALA (Atlas of Living Australia) contains information on all the known species in
 __Important Note:__ It's important to keep in mind that several data providers interface with many of the above mentioned repositories. This means that occurence data obtained from BISON may be duplicates of data that are also available through GBIF. We do not have a way to resolve these duplicates or overlaps at this time but it is an issue we are hoping to resolve in future versions of the package. See `?spocc_duplicates`, after installation, for more.
 
 
-### Data retrieval
+## Data retrieval
 
 The most significant function in spocc is the `occ` (short for occurrence) function. `occ` takes a query, often a species name, and searches across all data sources specified in the `from` argument. For example, one can search for all occurrences of [Sharp-shinned Hawks](https://www.allaboutbirds.org/guide/sharp-shinned_hawk/id) (_Accipiter striatus_) from the GBIF database with the following R call.
 
@@ -126,7 +126,7 @@ df$gbif
 #> #   individualCount <int>, vernacularName <chr>, locality <chr>, county <chr>
 ```
 
-When you get data from multiple providers, the fields returned are slightly different, e.g.:
+When you get data from multiple providers, the fields returned are slightly different because each data provider uses different formats for their data; different arrangements of data and different variable names for the same thing (e.g., one data provider may call latitude "latitude", while another may call it "lat"). For example:
 
 
 ```r
@@ -169,16 +169,16 @@ df$ecoengine$data$Accipiter_striatus
 #> # A tibble: 25 x 17
 #>    longitude latitude url   key   observation_type name  country state_province
 #>        <dbl>    <dbl> <chr> <chr> <chr>            <chr> <chr>   <chr>         
-#>  1    -114.      38.9 http… MVZ:… specimen         Acci… United… Nevada        
-#>  2    -121.      40.5 http… MVZ:… specimen         Acci… United… California    
-#>  3    -123.      39.7 http… MVZ:… specimen         Acci… United… California    
-#>  4    -122.      37.6 http… MVZ:… specimen         Acci… United… California    
-#>  5    -109.      34.1 http… MVZ:… specimen         Acci… United… Arizona       
-#>  6     -81.5     41.1 http… MVZ:… specimen         Acci… United… Ohio          
-#>  7    -135.      57.5 http… MVZ:… specimen         Acci… United… Alaska        
-#>  8     -71.2     42.2 http… MVZ:… specimen         Acci… United… Massachusetts 
-#>  9    -134.      58.5 http… MVZ:… specimen         Acci… United… Alaska        
-#> 10     -72.5     43.6 http… MVZ:… specimen         Acci… United… Vermont       
+#>  1     -115.     33.4 http… MVZ:… specimen         Acci… United… California    
+#>  2     -117.     34.5 http… MVZ:… specimen         Acci… United… California    
+#>  3     -116.     33.9 http… MVZ:… specimen         Acci… United… California    
+#>  4     -115.     33.4 http… MVZ:… specimen         Acci… United… California    
+#>  5     -114.     34.5 http… MVZ:… specimen         Acci… United… California    
+#>  6     -119.     41.7 http… MVZ:… specimen         Acci… United… Nevada        
+#>  7     -119.     39.4 http… MVZ:… specimen         Acci… United… Nevada        
+#>  8     -119.     39.4 http… MVZ:… specimen         Acci… United… Nevada        
+#>  9     -116.     40.1 http… MVZ:… specimen         Acci… United… Nevada        
+#> 10     -116.     40.1 http… MVZ:… specimen         Acci… United… Nevada        
 #> # … with 15 more rows, and 9 more variables: begin_date <date>, end_date <chr>,
 #> #   source <chr>, remote_resource <chr>, locality <chr>,
 #> #   coordinate_uncertainty_in_meters <int>, recorded_by <chr>,
@@ -206,172 +206,28 @@ occ2df(df)
 #> # … with 40 more rows
 ```
 
+`occ2df()` not only combines data into a single data.frame, but it also standardizes the key columns (name, longitude, latitude, prov (provider), date, and key (occurrence key)). Note that you can look up the exact occurrence with the data provider using the `key` value.
 
-### Fix names
+### Standardized parameters
 
-One problem you often run in to is that there can be various names for the same taxon in any one source. For example:
+Each data source has a variety of different ways, or parameters, to use to search its data. Some of the parameters are the same across data sources. In `occ()` we've attempted to surface those similar parameters so you can have a single way to define a parameter and it gets applied to every data source. This way you don't have to know the vagaries of each data source, what formatting they expect, etc.
 
+The standardized parameters in `occ()` are:
 
-```r
-df <- occ(query = 'Pinus contorta', from = c('gbif', 'ecoengine'), limit = 50)
-df$gbif$data$Pinus_contorta$name
-#>  [1] "Pinus contorta Douglas ex Loudon"             
-#>  [2] "Pinus contorta Douglas ex Loudon"             
-#>  [3] "Pinus contorta Douglas ex Loudon"             
-#>  [4] "Pinus contorta Douglas ex Loudon"             
-#>  [5] "Pinus contorta var. contorta"                 
-#>  [6] "Pinus contorta Douglas ex Loudon"             
-#>  [7] "Pinus contorta var. contorta"                 
-#>  [8] "Pinus contorta var. contorta"                 
-#>  [9] "Pinus contorta Douglas ex Loudon"             
-#> [10] "Pinus contorta Douglas ex Loudon"             
-#> [11] "Pinus contorta Douglas ex Loudon"             
-#> [12] "Pinus contorta var. contorta"                 
-#> [13] "Pinus contorta Douglas ex Loudon"             
-#> [14] "Pinus contorta Douglas ex Loudon"             
-#> [15] "Pinus contorta Douglas ex Loudon"             
-#> [16] "Pinus contorta Douglas ex Loudon"             
-#> [17] "Pinus contorta Douglas ex Loudon"             
-#> [18] "Pinus contorta Douglas ex Loudon"             
-#> [19] "Pinus contorta Douglas ex Loudon"             
-#> [20] "Pinus contorta Douglas ex Loudon"             
-#> [21] "Pinus contorta Douglas ex Loudon"             
-#> [22] "Pinus contorta Douglas ex Loudon"             
-#> [23] "Pinus contorta Douglas ex Loudon"             
-#> [24] "Pinus contorta Douglas ex Loudon"             
-#> [25] "Pinus contorta Douglas ex Loudon"             
-#> [26] "Pinus contorta Douglas ex Loudon"             
-#> [27] "Pinus contorta Douglas ex Loudon"             
-#> [28] "Pinus contorta Douglas ex Loudon"             
-#> [29] "Pinus contorta Douglas ex Loudon"             
-#> [30] "Pinus contorta Douglas ex Loudon"             
-#> [31] "Pinus contorta Douglas ex Loudon"             
-#> [32] "Pinus contorta var. contorta"                 
-#> [33] "Pinus contorta Douglas ex Loudon"             
-#> [34] "Pinus contorta Douglas ex Loudon"             
-#> [35] "Pinus contorta Douglas ex Loudon"             
-#> [36] "Pinus contorta Douglas ex Loudon"             
-#> [37] "Pinus contorta Douglas ex Loudon"             
-#> [38] "Pinus contorta Douglas ex Loudon"             
-#> [39] "Pinus contorta var. contorta"                 
-#> [40] "Pinus contorta Douglas ex Loudon"             
-#> [41] "Pinus contorta Douglas ex Loudon"             
-#> [42] "Pinus contorta Douglas ex Loudon"             
-#> [43] "Pinus contorta Douglas ex Loudon"             
-#> [44] "Pinus contorta var. contorta"                 
-#> [45] "Pinus contorta Douglas ex Loudon"             
-#> [46] "Pinus contorta Douglas ex Loudon"             
-#> [47] "Pinus contorta var. murrayana (Balf.) Engelm."
-#> [48] "Pinus contorta Douglas ex Loudon"             
-#> [49] "Pinus contorta var. contorta"                 
-#> [50] "Pinus contorta Douglas ex Loudon"
-df$ecoengine$data$Pinus_contorta$name
-#>  [1] "Pinus contorta subsp. contorta"         
-#>  [2] "Pinus contorta"                         
-#>  [3] "Pinus contorta subsp. murrayana"        
-#>  [4] "Pinus contorta subsp. murrayana"        
-#>  [5] "Pinus contorta subsp. murrayana"        
-#>  [6] "Pinus contorta subsp. murrayana"        
-#>  [7] "Pinus contorta subsp. murrayana"        
-#>  [8] "Pinus contorta subsp. murrayana"        
-#>  [9] "Pinus contorta subsp. murrayana"        
-#> [10] "Pinus contorta subsp. murrayana"        
-#> [11] "Pinus contorta subsp. murrayana"        
-#> [12] "Pinus contorta"                         
-#> [13] "Pinus contorta subsp. murrayana"        
-#> [14] "Pinus contorta subsp. murrayana"        
-#> [15] "Pinus contorta"                         
-#> [16] "Pinus contorta subsp. murrayana"        
-#> [17] "Pinus contorta"                         
-#> [18] "Pinus contorta"                         
-#> [19] "Pinus contorta subsp. murrayana"        
-#> [20] "Pinus contorta subsp. murrayana"        
-#> [21] "Pinus contorta var. latifolia"          
-#> [22] "Pinus contorta subsp. murrayana"        
-#> [23] "Pinus contorta"                         
-#> [24] "Pinus contorta"                         
-#> [25] "Pinus contorta subsp. murrayana"        
-#> [26] "Pinus contorta"                         
-#> [27] "Pinus contorta"                         
-#> [28] "Pinus contorta subsp. murrayana"        
-#> [29] "Pinus contorta subsp. murrayana"        
-#> [30] "Pinus contorta subsp. murrayana"        
-#> [31] "Pinus contorta subsp. murrayana"        
-#> [32] "Pinus contorta subsp. murrayana"        
-#> [33] "Pinus contorta subsp. murrayana"        
-#> [34] "Pinus contorta subsp. murrayana"        
-#> [35] "Pinus contorta subsp. murrayana"        
-#> [36] "Pinus contorta subsp. murrayana"        
-#> [37] "Pinus contorta subsp. murrayana"        
-#> [38] "Pinus contorta"                         
-#> [39] "Pinus contorta"                         
-#> [40] "Pinus contorta subsp. murrayana"        
-#> [41] "Pinus contorta subsp. murrayana"        
-#> [42] "Pinus contorta subsp. murrayana (Balf.)"
-#> [43] "Pinus contorta murrayana"               
-#> [44] "Pinus contorta murrayana"               
-#> [45] "Pinus contorta murrayana"               
-#> [46] "Pinus contorta subsp. murrayana"        
-#> [47] "Pinus contorta"                         
-#> [48] "Pinus contorta var. contorta"           
-#> [49] "Pinus contorta subsp. murrayana"        
-#> [50] "Pinus contorta murrayana"
-```
+- query: a scientific taxon name
+- limit: number of records to retrieve
+- start: page number to start at
+- page: page number to retrieve
+- geometry: a "spatial filter" - bounding box, well known text, or an sp or sf polygon or multipolygon
+- has_coords: exclude records without latitude/longitude data
+- date: a date range
 
-This is fine, but when trying to make a map in which points are colored for each taxon, you can have many colors for a single taxon, where instead one color per taxon is more appropriate. There is a function in `spocc` called `fixnames`, which has a few options in which you can take the shortest names (usually just the plain binomials like _Homo sapiens_), or the original name queried, or a vector of names supplied by the user.
+However, not all parameters across data sources are able to be standardized, so you can pass data source specific parameters to their matching parameter name, e.g., pass GBIF parameters to `gbifopts` and ALA parameters to `alaopts`. 
 
 
-```r
-df <- fixnames(df, how = 'query')
-df$gbif$data$Pinus_contorta$name
-#>  [1] "Pinus contorta" "Pinus contorta" "Pinus contorta" "Pinus contorta"
-#>  [5] "Pinus contorta" "Pinus contorta" "Pinus contorta" "Pinus contorta"
-#>  [9] "Pinus contorta" "Pinus contorta" "Pinus contorta" "Pinus contorta"
-#> [13] "Pinus contorta" "Pinus contorta" "Pinus contorta" "Pinus contorta"
-#> [17] "Pinus contorta" "Pinus contorta" "Pinus contorta" "Pinus contorta"
-#> [21] "Pinus contorta" "Pinus contorta" "Pinus contorta" "Pinus contorta"
-#> [25] "Pinus contorta" "Pinus contorta" "Pinus contorta" "Pinus contorta"
-#> [29] "Pinus contorta" "Pinus contorta" "Pinus contorta" "Pinus contorta"
-#> [33] "Pinus contorta" "Pinus contorta" "Pinus contorta" "Pinus contorta"
-#> [37] "Pinus contorta" "Pinus contorta" "Pinus contorta" "Pinus contorta"
-#> [41] "Pinus contorta" "Pinus contorta" "Pinus contorta" "Pinus contorta"
-#> [45] "Pinus contorta" "Pinus contorta" "Pinus contorta" "Pinus contorta"
-#> [49] "Pinus contorta" "Pinus contorta"
-df$ecoengine$data$Pinus_contorta$name
-#>  [1] "Pinus contorta" "Pinus contorta" "Pinus contorta" "Pinus contorta"
-#>  [5] "Pinus contorta" "Pinus contorta" "Pinus contorta" "Pinus contorta"
-#>  [9] "Pinus contorta" "Pinus contorta" "Pinus contorta" "Pinus contorta"
-#> [13] "Pinus contorta" "Pinus contorta" "Pinus contorta" "Pinus contorta"
-#> [17] "Pinus contorta" "Pinus contorta" "Pinus contorta" "Pinus contorta"
-#> [21] "Pinus contorta" "Pinus contorta" "Pinus contorta" "Pinus contorta"
-#> [25] "Pinus contorta" "Pinus contorta" "Pinus contorta" "Pinus contorta"
-#> [29] "Pinus contorta" "Pinus contorta" "Pinus contorta" "Pinus contorta"
-#> [33] "Pinus contorta" "Pinus contorta" "Pinus contorta" "Pinus contorta"
-#> [37] "Pinus contorta" "Pinus contorta" "Pinus contorta" "Pinus contorta"
-#> [41] "Pinus contorta" "Pinus contorta" "Pinus contorta" "Pinus contorta"
-#> [45] "Pinus contorta" "Pinus contorta" "Pinus contorta" "Pinus contorta"
-#> [49] "Pinus contorta" "Pinus contorta"
-df_comb <- occ2df(df)
-head(df_comb); tail(df_comb)
-#> # A tibble: 6 x 6
-#>   name           longitude latitude prov  date       key       
-#>   <chr>              <dbl>    <dbl> <chr> <date>     <chr>     
-#> 1 Pinus contorta    -115.      50.9 gbif  2020-01-01 2543085192
-#> 2 Pinus contorta      17.6     59.8 gbif  2020-01-01 2548826490
-#> 3 Pinus contorta      19.2     64.0 gbif  2020-01-06 2549045731
-#> 4 Pinus contorta      19.3     64.0 gbif  2020-01-06 2549053727
-#> 5 Pinus contorta    -123.      49.3 gbif  2020-01-04 2550016817
-#> 6 Pinus contorta    -106.      39.8 gbif  2020-01-07 2557738499
-#> # A tibble: 6 x 6
-#>   name           longitude latitude prov      date       key              
-#>   <chr>              <dbl>    <dbl> <chr>     <date>     <chr>            
-#> 1 Pinus contorta     -122.     37.5 ecoengine 1928-08-01 vtm:plot:82CC34:2
-#> 2 Pinus contorta     -118.     34.3 ecoengine 1953-04-01 SD90152          
-#> 3 Pinus contorta     -124.     40.8 ecoengine 1931-05-01 UCD134473        
-#> 4 Pinus contorta     -124.     39.3 ecoengine 1953-05-30 RSA82866         
-#> 5 Pinus contorta     -120.     38.8 ecoengine 2009-07-22 SD237235         
-#> 6 Pinus contorta     -120.     37.9 ecoengine 1920-01-01 vtm:plot:77B415:2
-```
+## Clean up taxonomic names
+
+See the vignette [cleaning names](https://docs.ropensci.org/spocc/fixnames)
 
 ## Clean data
 

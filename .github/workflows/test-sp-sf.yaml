@@ -77,10 +77,5 @@ jobs:
         shell: Rscript {0}
 
       - name: Run sp/sf tests
-        run: testthat::test_dir("tests/testother")
+        run: testthat::test_dir("tests/testother", reporter = testthat::check_reporter())
         shell: Rscript {0}
-
-      - name: Show testthat output
-        if: always()
-        run: find check -name 'testthat.Rout*' -exec cat '{}' \; || true
-        shell: bash

@@ -1,0 +1,129 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://ecoengine.berkeley.edu/api/observations/MVZ:Bird:30835?format=json
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      User-Agent: libcurl/7.71.1 r-curl/4.3 crul/1.0.0
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Fri, 31 Jul 2020 16:03:55 GMT
+      server: Apache/2.4.10 (Debian)
+      expires: Fri, 31 Jul 2020 17:42:08 GMT
+      vary: Accept,Cookie
+      allow: GET, HEAD, OPTIONS
+      cache-control: max-age=6000
+      last-modified: Fri, 31 Jul 2020 16:02:08 GMT
+      transfer-encoding: chunked
+      content-type: application/json
+    body:
+      encoding: ASCII-8BIT
+      file: no
+      string: eyJ1cmwiOiJodHRwczovL2Vjb2VuZ2luZS5iZXJrZWxleS5lZHUvYXBpL29ic2VydmF0aW9ucy9NVlo6QmlyZDozMDgzNS8iLCJvYnNlcnZhdGlvbl90eXBlIjoic3BlY2ltZW4iLCJzY2llbnRpZmljX25hbWUiOiJBY2NpcGl0ZXIgc3RyaWF0dXMgdmVsb3giLCJjb2xsZWN0aW9uX2NvZGUiOiJCaXJkIHNwZWNpbWVucyIsImluc3RpdHV0aW9uX2NvZGUiOiJNVloiLCJjb3VudHJ5IjoiVW5pdGVkIFN0YXRlcyIsInN0YXRlX3Byb3ZpbmNlIjoiQ2FsaWZvcm5pYSIsImNvdW50eSI6Ik1lbmRvY2lubyBDb3VudHkiLCJsb2NhbGl0eSI6IkxheXRvbnZpbGxlIiwiY29vcmRpbmF0ZV91bmNlcnRhaW50eV9pbl9tZXRlcnMiOjE2MDksImJlZ2luX2RhdGUiOiIxOTE5LTA3LTIyVDAwOjAwOjAwIiwiZW5kX2RhdGUiOiIxOTE5LTA3LTIyVDAwOjAwOjAwIiwia2luZ2RvbSI6Imh0dHBzOi8vZWNvZW5naW5lLmJlcmtlbGV5LmVkdS9hcGkva2luZ2RvbS9hbmltYWxpYS8iLCJwaHlsdW0iOiJodHRwczovL2Vjb2VuZ2luZS5iZXJrZWxleS5lZHUvYXBpL3BoeWx1bS9jaG9yZGF0YS8iLCJjbHNzIjoiaHR0cHM6Ly9lY29lbmdpbmUuYmVya2VsZXkuZWR1L2FwaS9jbGFzcy9hdmVzLyIsIm9yZGVyIjoiaHR0cHM6Ly9lY29lbmdpbmUuYmVya2VsZXkuZWR1L2FwaS9vcmRlci9mYWxjb25pZm9ybWVzLyIsImZhbWlseSI6Imh0dHBzOi8vZWNvZW5naW5lLmJlcmtlbGV5LmVkdS9hcGkvZmFtaWx5L2FjY2lwaXRyaWRhZS8iLCJnZW51cyI6Imh0dHBzOi8vZWNvZW5naW5lLmJlcmtlbGV5LmVkdS9hcGkvZ2VudXMvYWNjaXBpdGVyLyIsInNwZWNpZmljX2VwaXRoZXQiOiJzdHJpYXR1cyIsImluZnJhc3BlY2lmaWNfZXBpdGhldCI6InZlbG94Iiwic291cmNlIjoiaHR0cHM6Ly9lY29lbmdpbmUuYmVya2VsZXkuZWR1L2FwaS9zb3VyY2VzLzEvIiwicmVtb3RlX3Jlc291cmNlIjoiaHR0cDovL2FyY3Rvcy5kYXRhYmFzZS5tdXNldW0vZ3VpZC9NVlo6QmlyZDozMDgzNSIsImVhcmxpZXN0X3BlcmlvZF9vcl9sb3dlc3Rfc3lzdGVtIjoiIiwibGF0ZXN0X3BlcmlvZF9vcl9oaWdoZXN0X3N5c3RlbSI6IiIsImdlb21ldHJ5Ijp7InR5cGUiOiJQb2ludCIsImNvb3JkaW5hdGVzIjpbLTEyMy40ODYzMjEyNzExMjA0NSwzOS42ODYyMTU0NjY4MTc5NTZdfX0=
+  recorded_at: 2020-07-31 16:03:56 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.6.2
+- request:
+    method: get
+    uri: https://ecoengine.berkeley.edu/api/observations/MVZ:Bird:7575?format=json
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      User-Agent: libcurl/7.71.1 r-curl/4.3 crul/1.0.0
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Fri, 31 Jul 2020 16:03:55 GMT
+      server: Apache/2.4.10 (Debian)
+      expires: Fri, 31 Jul 2020 17:42:08 GMT
+      vary: Accept,Cookie
+      allow: GET, HEAD, OPTIONS
+      cache-control: max-age=6000
+      last-modified: Fri, 31 Jul 2020 16:02:08 GMT
+      content-length: '1147'
+      content-type: application/json
+    body:
+      encoding: ASCII-8BIT
+      file: no
+      string: eyJ1cmwiOiJodHRwczovL2Vjb2VuZ2luZS5iZXJrZWxleS5lZHUvYXBpL29ic2VydmF0aW9ucy9NVlo6QmlyZDo3NTc1LyIsIm9ic2VydmF0aW9uX3R5cGUiOiJzcGVjaW1lbiIsInNjaWVudGlmaWNfbmFtZSI6IkFjY2lwaXRlciBzdHJpYXR1cyB2ZWxveCIsImNvbGxlY3Rpb25fY29kZSI6IkJpcmQgc3BlY2ltZW5zIiwiaW5zdGl0dXRpb25fY29kZSI6Ik1WWiIsImNvdW50cnkiOiJVbml0ZWQgU3RhdGVzIiwic3RhdGVfcHJvdmluY2UiOiJDYWxpZm9ybmlhIiwiY291bnR5IjoiU2FuIE1hdGVvIENvdW50eSIsImxvY2FsaXR5IjoiTWVubG8gUGFyayIsImNvb3JkaW5hdGVfdW5jZXJ0YWludHlfaW5fbWV0ZXJzIjoyNDE0LCJiZWdpbl9kYXRlIjoiMTgxOC0wNi0yMFQwMDowMDowMCIsImVuZF9kYXRlIjoiMTk5OS0wMi0wNFQwMDowMDowMCIsImtpbmdkb20iOiJodHRwczovL2Vjb2VuZ2luZS5iZXJrZWxleS5lZHUvYXBpL2tpbmdkb20vYW5pbWFsaWEvIiwicGh5bHVtIjoiaHR0cHM6Ly9lY29lbmdpbmUuYmVya2VsZXkuZWR1L2FwaS9waHlsdW0vY2hvcmRhdGEvIiwiY2xzcyI6Imh0dHBzOi8vZWNvZW5naW5lLmJlcmtlbGV5LmVkdS9hcGkvY2xhc3MvYXZlcy8iLCJvcmRlciI6Imh0dHBzOi8vZWNvZW5naW5lLmJlcmtlbGV5LmVkdS9hcGkvb3JkZXIvZmFsY29uaWZvcm1lcy8iLCJmYW1pbHkiOiJodHRwczovL2Vjb2VuZ2luZS5iZXJrZWxleS5lZHUvYXBpL2ZhbWlseS9hY2NpcGl0cmlkYWUvIiwiZ2VudXMiOiJodHRwczovL2Vjb2VuZ2luZS5iZXJrZWxleS5lZHUvYXBpL2dlbnVzL2FjY2lwaXRlci8iLCJzcGVjaWZpY19lcGl0aGV0Ijoic3RyaWF0dXMiLCJpbmZyYXNwZWNpZmljX2VwaXRoZXQiOiJ2ZWxveCIsInNvdXJjZSI6Imh0dHBzOi8vZWNvZW5naW5lLmJlcmtlbGV5LmVkdS9hcGkvc291cmNlcy8xLyIsInJlbW90ZV9yZXNvdXJjZSI6Imh0dHA6Ly9hcmN0b3MuZGF0YWJhc2UubXVzZXVtL2d1aWQvTVZaOkJpcmQ6NzU3NSIsImVhcmxpZXN0X3BlcmlvZF9vcl9sb3dlc3Rfc3lzdGVtIjoiIiwibGF0ZXN0X3BlcmlvZF9vcl9oaWdoZXN0X3N5c3RlbSI6IiIsImdlb21ldHJ5Ijp7InR5cGUiOiJQb2ludCIsImNvb3JkaW5hdGVzIjpbLTEyMi4xODc1NTQxMDUyOTgzNSwzNy40NTU4MDg0NDc0MzA3NV19fQ==
+  recorded_at: 2020-07-31 16:03:56 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.6.2
+- request:
+    method: get
+    uri: https://ecoengine.berkeley.edu/api/observations/MVZ:Bird:188800?format=json
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      User-Agent: libcurl/7.71.1 r-curl/4.3 crul/1.0.0
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Fri, 31 Jul 2020 16:03:55 GMT
+      server: Apache/2.4.10 (Debian)
+      expires: Fri, 31 Jul 2020 17:42:08 GMT
+      vary: Accept,Cookie
+      allow: GET, HEAD, OPTIONS
+      cache-control: max-age=6000
+      last-modified: Fri, 31 Jul 2020 16:02:08 GMT
+      transfer-encoding: chunked
+      content-type: application/json
+    body:
+      encoding: ASCII-8BIT
+      file: no
+      string: eyJ1cmwiOiJodHRwczovL2Vjb2VuZ2luZS5iZXJrZWxleS5lZHUvYXBpL29ic2VydmF0aW9ucy9NVlo6QmlyZDoxODg4MDAvIiwib2JzZXJ2YXRpb25fdHlwZSI6InNwZWNpbWVuIiwic2NpZW50aWZpY19uYW1lIjoiU3BpbnVzIHRyaXN0aXMgc2FsaWNhbWFucyIsImNvbGxlY3Rpb25fY29kZSI6IkJpcmQgc3BlY2ltZW5zIiwiaW5zdGl0dXRpb25fY29kZSI6Ik1WWiIsImNvdW50cnkiOiJVbml0ZWQgU3RhdGVzIiwic3RhdGVfcHJvdmluY2UiOiJDYWxpZm9ybmlhIiwiY291bnR5IjoiTWFyaW4gQ291bnR5IiwibG9jYWxpdHkiOiJQYWxvbWFyaW4gRmllbGQgU3RhdGlvbiwgUG9pbnQgUmV5ZXMgQmlyZCBPYnNlcnZhdG9yeSIsImNvb3JkaW5hdGVfdW5jZXJ0YWludHlfaW5fbWV0ZXJzIjoxNzcsImJlZ2luX2RhdGUiOiIyMDA0LTA2LTE3VDAwOjAwOjAwIiwiZW5kX2RhdGUiOiIyMDA0LTA2LTE3VDAwOjAwOjAwIiwia2luZ2RvbSI6Imh0dHBzOi8vZWNvZW5naW5lLmJlcmtlbGV5LmVkdS9hcGkva2luZ2RvbS9hbmltYWxpYS8iLCJwaHlsdW0iOiJodHRwczovL2Vjb2VuZ2luZS5iZXJrZWxleS5lZHUvYXBpL3BoeWx1bS9jaG9yZGF0YS8iLCJjbHNzIjoiaHR0cHM6Ly9lY29lbmdpbmUuYmVya2VsZXkuZWR1L2FwaS9jbGFzcy9hdmVzLyIsIm9yZGVyIjoiaHR0cHM6Ly9lY29lbmdpbmUuYmVya2VsZXkuZWR1L2FwaS9vcmRlci9wYXNzZXJpZm9ybWVzLyIsImZhbWlseSI6Imh0dHBzOi8vZWNvZW5naW5lLmJlcmtlbGV5LmVkdS9hcGkvZmFtaWx5L2ZyaW5naWxsaWRhZS8iLCJnZW51cyI6Imh0dHBzOi8vZWNvZW5naW5lLmJlcmtlbGV5LmVkdS9hcGkvZ2VudXMvc3BpbnVzLyIsInNwZWNpZmljX2VwaXRoZXQiOiJ0cmlzdGlzIiwiaW5mcmFzcGVjaWZpY19lcGl0aGV0Ijoic2FsaWNhbWFucyIsInNvdXJjZSI6Imh0dHBzOi8vZWNvZW5naW5lLmJlcmtlbGV5LmVkdS9hcGkvc291cmNlcy8xLyIsInJlbW90ZV9yZXNvdXJjZSI6Imh0dHA6Ly9hcmN0b3MuZGF0YWJhc2UubXVzZXVtL2d1aWQvTVZaOkJpcmQ6MTg4ODAwIiwiZWFybGllc3RfcGVyaW9kX29yX2xvd2VzdF9zeXN0ZW0iOiIiLCJsYXRlc3RfcGVyaW9kX29yX2hpZ2hlc3Rfc3lzdGVtIjoiIiwiZ2VvbWV0cnkiOnsidHlwZSI6IlBvaW50IiwiY29vcmRpbmF0ZXMiOlstMTIyLjczNDAyNTksMzcuOTI4Njc2NF19fQ==
+  recorded_at: 2020-07-31 16:03:56 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.6.2
+- request:
+    method: get
+    uri: https://ecoengine.berkeley.edu/api/observations/MVZ:Bird:188799?format=json
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      User-Agent: libcurl/7.71.1 r-curl/4.3 crul/1.0.0
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Fri, 31 Jul 2020 16:03:56 GMT
+      server: Apache/2.4.10 (Debian)
+      expires: Fri, 31 Jul 2020 17:42:08 GMT
+      vary: Accept,Cookie
+      allow: GET, HEAD, OPTIONS
+      cache-control: max-age=6000
+      last-modified: Fri, 31 Jul 2020 16:02:08 GMT
+      transfer-encoding: chunked
+      content-type: application/json
+    body:
+      encoding: ASCII-8BIT
+      file: no
+      string: eyJ1cmwiOiJodHRwczovL2Vjb2VuZ2luZS5iZXJrZWxleS5lZHUvYXBpL29ic2VydmF0aW9ucy9NVlo6QmlyZDoxODg3OTkvIiwib2JzZXJ2YXRpb25fdHlwZSI6InNwZWNpbWVuIiwic2NpZW50aWZpY19uYW1lIjoiU3BpbnVzIHRyaXN0aXMgc2FsaWNhbWFucyIsImNvbGxlY3Rpb25fY29kZSI6IkJpcmQgc3BlY2ltZW5zIiwiaW5zdGl0dXRpb25fY29kZSI6Ik1WWiIsImNvdW50cnkiOiJVbml0ZWQgU3RhdGVzIiwic3RhdGVfcHJvdmluY2UiOiJDYWxpZm9ybmlhIiwiY291bnR5IjoiTWFyaW4gQ291bnR5IiwibG9jYWxpdHkiOiJQYWxvbWFyaW4gRmllbGQgU3RhdGlvbiwgUG9pbnQgUmV5ZXMgQmlyZCBPYnNlcnZhdG9yeSIsImNvb3JkaW5hdGVfdW5jZXJ0YWludHlfaW5fbWV0ZXJzIjoxNzcsImJlZ2luX2RhdGUiOiIyMDAyLTA2LTI0VDAwOjAwOjAwIiwiZW5kX2RhdGUiOiIyMDAyLTA2LTI0VDAwOjAwOjAwIiwia2luZ2RvbSI6Imh0dHBzOi8vZWNvZW5naW5lLmJlcmtlbGV5LmVkdS9hcGkva2luZ2RvbS9hbmltYWxpYS8iLCJwaHlsdW0iOiJodHRwczovL2Vjb2VuZ2luZS5iZXJrZWxleS5lZHUvYXBpL3BoeWx1bS9jaG9yZGF0YS8iLCJjbHNzIjoiaHR0cHM6Ly9lY29lbmdpbmUuYmVya2VsZXkuZWR1L2FwaS9jbGFzcy9hdmVzLyIsIm9yZGVyIjoiaHR0cHM6Ly9lY29lbmdpbmUuYmVya2VsZXkuZWR1L2FwaS9vcmRlci9wYXNzZXJpZm9ybWVzLyIsImZhbWlseSI6Imh0dHBzOi8vZWNvZW5naW5lLmJlcmtlbGV5LmVkdS9hcGkvZmFtaWx5L2ZyaW5naWxsaWRhZS8iLCJnZW51cyI6Imh0dHBzOi8vZWNvZW5naW5lLmJlcmtlbGV5LmVkdS9hcGkvZ2VudXMvc3BpbnVzLyIsInNwZWNpZmljX2VwaXRoZXQiOiJ0cmlzdGlzIiwiaW5mcmFzcGVjaWZpY19lcGl0aGV0Ijoic2FsaWNhbWFucyIsInNvdXJjZSI6Imh0dHBzOi8vZWNvZW5naW5lLmJlcmtlbGV5LmVkdS9hcGkvc291cmNlcy8xLyIsInJlbW90ZV9yZXNvdXJjZSI6Imh0dHA6Ly9hcmN0b3MuZGF0YWJhc2UubXVzZXVtL2d1aWQvTVZaOkJpcmQ6MTg4Nzk5IiwiZWFybGllc3RfcGVyaW9kX29yX2xvd2VzdF9zeXN0ZW0iOiIiLCJsYXRlc3RfcGVyaW9kX29yX2hpZ2hlc3Rfc3lzdGVtIjoiIiwiZ2VvbWV0cnkiOnsidHlwZSI6IlBvaW50IiwiY29vcmRpbmF0ZXMiOlstMTIyLjczNDAyNTksMzcuOTI4Njc2NF19fQ==
+  recorded_at: 2020-07-31 16:03:56 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.6.2

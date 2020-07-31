@@ -1,0 +1,133 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.obis.org/v3/occurrence/0000642b-51de-4042-a152-71797fe34b17
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      User-Agent: libcurl/7.71.1 r-curl/4.3 crul/1.0.0
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      server: nginx/1.14.0 (Ubuntu)
+      date: Fri, 31 Jul 2020 16:27:01 GMT
+      content-type: application/json; charset=utf-8
+      transfer-encoding: chunked
+      connection: keep-alive
+      x-powered-by: Express
+      access-control-allow-origin: '*'
+      etag: W/"9f8-R+5BkE392Ao34So249o6uN7oJck"
+      vary: Accept-Encoding
+      content-encoding: gzip
+    body:
+      encoding: ASCII-8BIT
+      file: no
+      string: eyJ0b3RhbCI6MSwicmVzdWx0cyI6W3sidHlwZSI6IkV2ZW50IiwiY2xhc3MiOiJBY3Rpbm9wdGVyeWdpaSIsImdlbnVzIjoiTW9sYSIsIm9yZGVyIjoiVGV0cmFvZG9udGlmb3JtZXMiLCJmYW1pbHkiOiJNb2xpZGFlIiwicGh5bHVtIjoiQ2hvcmRhdGEiLCJraW5nZG9tIjoiQW5pbWFsaWEiLCJsaWNlbnNlIjoiaHR0cDovL2NyZWF0aXZlY29tbW9ucy5vcmcvbGljZW5zZXMvYnktbmMvNC4wLyIsIm1vZGlmaWVkIjoiMjAxOS0wNC0xNSAxNzowMDozNSIsImRhdGFzZXRJRCI6IjE0MDQiLCJldmVudERhdGUiOiIyMDEyLTA1LTI1IiwidGF4b25SYW5rIjoiU3BlY2llcyIsIndhdGVyQm9keSI6Ikdsb2JhbCIsImRhdGFzZXROYW1lIjoiT2JzZXJ2YXRvaXJlIFBlbGFnaXMgYWVyaWFsIHN1cnZleXMgMjAwMi0yMDE4IiwiZm9vdHByaW50V0tUIjoiUE9JTlQoNC4wNjM5IDQzLjM5MTQ5KSIsIm9jY3VycmVuY2VJRCI6IjE0MDRfNzc1NTYiLCJyZWNvcmROdW1iZXIiOiIxNDA0Xzc3NTU2IiwidGF4b25SZW1hcmtzIjoiVGF4b24gcmVjb3JkZWQgYXMgXCJNb2xhIG1vbGFcIiBieSB0aGUgcHJvdmlkZXIiLCJiYXNpc09mUmVjb3JkIjoiSHVtYW5PYnNlcnZhdGlvbiIsImNhdGFsb2dOdW1iZXIiOiIxNDA0Xzc3NTU2IiwiZ2VvZGV0aWNEYXR1bSI6IkVQU0c6NDMyNiBXR1M4NCIsImNvbGxlY3Rpb25Db2RlIjoiMTQwNCIsImRhdGVJZGVudGlmaWVkIjoiMjAxMi0wNS0yNSIsInNjaWVudGlmaWNOYW1lIjoiTW9sYSBtb2xhIiwidmVybmFjdWxhck5hbWUiOiJvY2VhbiBzdW5maXNoIiwiZGVjaW1hbExhdGl0dWRlIjo0My4zOTE0OSwiaW5zdGl0dXRpb25Db2RlIjoiUEVMQUdJUyIsInNwZWNpZmljRXBpdGhldCI6Im1vbGEiLCJ0YXhvbm9taWNTdGF0dXMiOiJ2YWxpZCIsImRlY2ltYWxMb25naXR1ZGUiOjQuMDYzOSwib2NjdXJyZW5jZVN0YXR1cyI6InByZXNlbnQiLCJzY2llbnRpZmljTmFtZUlEIjoidXJuOmxzaWQ6bWFyaW5lc3BlY2llcy5vcmc6dGF4bmFtZToxMjc0MDUiLCJnZW9yZWZlcmVuY2VkRGF0ZSI6IjIwMTItMDUtMjUiLCJub21lbmNsYXR1cmFsQ29kZSI6IldvUk1TIExTSUQiLCJvY2N1cnJlbmNlUmVtYXJrcyI6IlZpc3VhbDsgcGxhbmUiLCJ2ZXJiYXRpbUV2ZW50RGF0ZSI6IjIwMTItMDUtMjUgMDA6MDA6MDAiLCJjb29yZGluYXRlUHJlY2lzaW9uIjoiOS45OTk5OTk5OTk5OTk5OTk1NWUtMDciLCJhc3NvY2lhdGVkUmVmZXJlbmNlcyI6Ilt7XCJjcm9zc3JlZlwiOntcImNpdGVpbmZvXCI6e1wib3JpZ2luXCI6XCJWYW4gQ2FubmV5dCwgT1wiLFwicHViZGF0ZVwiOlwiMjAxOVwiLFwidGl0bGVfaHRtbFwiOlwiT2JzZXJ2YXRvaXJlIFBlbGFnaXMgYWVyaWFsIHN1cnZleXMgMjAwMi0yMDE4XCIsXCJ0aXRsZVwiOlwiT2JzZXJ2YXRvaXJlIFBlbGFnaXMgIFsuLi5dIiwib3duZXJJbnN0aXR1dGlvbkNvZGUiOiJQRUxBR0lTIiwiYmlibGlvZ3JhcGhpY0NpdGF0aW9uIjoiW3tcImNyb3NzcmVmXCI6e1wiY2l0ZWluZm9cIjp7XCJvcmlnaW5cIjpcIlZhbiBDYW5uZXl0LCBPXCIsXCJwdWJkYXRlXCI6XCIyMDE5XCIsXCJ0aXRsZV9odG1sXCI6XCJPYnNlcnZhdG9pcmUgUGVsYWdpcyBhZXJpYWwgc3VydmV5cyAyMDAyLTIwMThcIixcInRpdGxlXCI6XCJPYnNlcnZhdG9pcmUgUGVsYWdpcyAgWy4uLl0iLCJpZGVudGlmaWNhdGlvblJlbWFya3MiOiJJZGVudGlmaWNhdGlvbiBUeXBlOlZpc3VhbCBzaWdodGluZyIsInNjaWVudGlmaWNOYW1lQXV0aG9yc2hpcCI6IihMaW5uYWV1cywgMTc1OCkiLCJpZCI6IjAwMDA2NDJiLTUxZGUtNDA0Mi1hMTUyLTcxNzk3ZmUzNGIxNyIsIm1pbmltdW1EZXB0aEluTWV0ZXJzIjpudWxsLCJtYXhpbXVtRGVwdGhJbk1ldGVycyI6bnVsbCwiZGF0YXNldF9pZCI6IjIxMDFkNGM1LWMyMGItNDljMC1hNDRiLTNkNjQ4NGM0Yzg5MSIsIm5vZGVfaWQiOlsiNTczNjU0YzEtNGNlNy00ZWEyLWIyZjEtZTRkNDJmOGY5YzMxIl0sImRyb3BwZWQiOmZhbHNlLCJhYnNlbmNlIjpmYWxzZSwiZGF0ZV9zdGFydCI6MTMzNzkwNDAwMDAwMCwiZGF0ZV9taWQiOjEzMzc5MDQwMDAwMDAsImRhdGVfeWVhciI6MjAxMiwiZGF0ZV9lbmQiOjEzMzc5MDQwMDAwMDAsIm1hcmluZSI6dHJ1ZSwiYnJhY2tpc2giOmZhbHNlLCJ0ZXJyZXN0cmlhbCI6ZmFsc2UsInN1YnBoeWx1bSI6IlZlcnRlYnJhdGEiLCJzdXBlcmNsYXNzIjoiUGlzY2VzIiwic3BlY2llcyI6Ik1vbGEgbW9sYSIsImtpbmdkb21pZCI6MiwicGh5bHVtaWQiOjE4MjEsInN1YnBoeWx1bWlkIjoxNDY0MTksInN1cGVyY2xhc3NpZCI6MTE2NzYsImNsYXNzaWQiOjEwMTk0LCJvcmRlcmlkIjoxMDMzMiwiZmFtaWx5aWQiOjEyNTYwOSwiZ2VudXNpZCI6MTI2MjMzLCJzcGVjaWVzaWQiOjEyNzQwNSwiYXBoaWFJRCI6MTI3NDA1LCJvcmlnaW5hbFNjaWVudGlmaWNOYW1lIjoiTW9sYSBtb2xhIiwiY2F0ZWdvcnkiOiJWVSIsIm1pc3NpbmciOlsiY29vcmRpbmF0ZVVuY2VydGFpbnR5SW5NZXRlcnMiLCJtYXhpbXVtRGVwdGhJbk1ldGVycyIsIm1pbmltdW1EZXB0aEluTWV0ZXJzIl0sImZsYWdzIjpbIm5vX2RlcHRoIl19XX0=
+  recorded_at: 2020-07-31 16:27:02 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.6.2
+- request:
+    method: get
+    uri: https://api.obis.org/v3/occurrence/00086f12-2d41-48e1-9d5c-5b46c18a3e46
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      User-Agent: libcurl/7.71.1 r-curl/4.3 crul/1.0.0
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      server: nginx/1.14.0 (Ubuntu)
+      date: Fri, 31 Jul 2020 16:27:01 GMT
+      content-type: application/json; charset=utf-8
+      transfer-encoding: chunked
+      connection: keep-alive
+      x-powered-by: Express
+      access-control-allow-origin: '*'
+      etag: W/"a47-1TF+y3xImtVPj1sChM3C/2mB69U"
+      vary: Accept-Encoding
+      content-encoding: gzip
+    body:
+      encoding: ASCII-8BIT
+      file: no
+      string: eyJ0b3RhbCI6MSwicmVzdWx0cyI6W3sidHlwZSI6IkV2ZW50IiwiY2xhc3MiOiJBY3Rpbm9wdGVyeWdpaSIsImdlbnVzIjoiTW9sYSIsIm9yZGVyIjoiVGV0cmFvZG9udGlmb3JtZXMiLCJmYW1pbHkiOiJNb2xpZGFlIiwicGh5bHVtIjoiQ2hvcmRhdGEiLCJraW5nZG9tIjoiQW5pbWFsaWEiLCJsaWNlbnNlIjoiaHR0cDovL2NyZWF0aXZlY29tbW9ucy5vcmcvbGljZW5zZXMvYnktbmMvNC4wLyIsIm1vZGlmaWVkIjoiMjAxOS0wNy0yNSAxNjowODoyMSIsImRhdGFzZXRJRCI6IjE5OTciLCJldmVudERhdGUiOiIyMDE3LTA2LTI1VDEyOjE3OjE3IiwiZXZlbnRUaW1lIjoiMTI6MTc6MTciLCJ0YXhvblJhbmsiOiJTcGVjaWVzIiwid2F0ZXJCb2R5IjoiTm9ydGggQXRsYW50aWMiLCJkYXRhc2V0TmFtZSI6IkFNQVBQUyBOb3J0aGVhc3QgQWVyaWFsIENydWlzZSBTcHJpbmcgMjAxNyIsImZvb3RwcmludFdLVCI6IlBPSU5UKC03Mi4wNzI3NjE1IDM5Ljg5NjQ4ODIpIiwib2NjdXJyZW5jZUlEIjoiMTk5N18xNjM1IiwicmVjb3JkTnVtYmVyIjoiMTk5N18xNjM1IiwidGF4b25SZW1hcmtzIjoiVGF4b24gcmVjb3JkZWQgYXMgXCJPQ1NVXCIgYnkgdGhlIHByb3ZpZGVyIiwiYmFzaXNPZlJlY29yZCI6Ikh1bWFuT2JzZXJ2YXRpb24iLCJjYXRhbG9nTnVtYmVyIjoiMTk5N18xNjM1IiwiZ2VvZGV0aWNEYXR1bSI6IkVQU0c6NDMyNiBXR1M4NCIsImNvbGxlY3Rpb25Db2RlIjoiMTk5NyIsImRhdGVJZGVudGlmaWVkIjoiMjAxNy0wNi0yNVQxMjoxNzoxNyIsInNjaWVudGlmaWNOYW1lIjoiTW9sYSBtb2xhIiwidmVybmFjdWxhck5hbWUiOiJvY2VhbiBzdW5maXNoIiwiZGVjaW1hbExhdGl0dWRlIjozOS44OTY0ODgsImluZGl2aWR1YWxDb3VudCI6IjEiLCJpbnN0aXR1dGlvbkNvZGUiOiJORUZTQyIsInNwZWNpZmljRXBpdGhldCI6Im1vbGEiLCJ0YXhvbm9taWNTdGF0dXMiOiJ2YWxpZCIsImRlY2ltYWxMb25naXR1ZGUiOi03Mi4wNzI3NjIsIm9jY3VycmVuY2VTdGF0dXMiOiJwcmVzZW50Iiwic2NpZW50aWZpY05hbWVJRCI6InVybjpsc2lkOm1hcmluZXNwZWNpZXMub3JnOnRheG5hbWU6MTI3NDA1IiwiZ2VvcmVmZXJlbmNlZERhdGUiOiIyMDE3LTA2LTI1VDEyOjE3OjE3Iiwibm9tZW5jbGF0dXJhbENvZGUiOiJXb1JNUyBMU0lEIiwib2NjdXJyZW5jZVJlbWFya3MiOiJWaXN1YWw7IHBsYW5lIiwidmVyYmF0aW1FdmVudERhdGUiOiIyMDE3LTA2LTI1IDEyOjE3OjE3IiwiY29vcmRpbmF0ZVByZWNpc2lvbiI6IjkuOTk5OTk5OTk5OTk5OTk5NTVlLTA3IiwiYXNzb2NpYXRlZFJlZmVyZW5jZXMiOiJbe1wiY3Jvc3NyZWZcIjp7XCJjaXRlaW5mb1wiOntcIm9yaWdpblwiOlwiTkVGU0NcIixcInB1YmRhdGVcIjpcIjIwMThcIixcInRpdGxlX2h0bWxcIjpcIjIwMTcgQW5udWFsIFJlcG9ydCBvZiBhIENvbXByZWhlbnNpdmUgQXNzZXNzbWVudCBvZiBNYXJpbmUgTWFtbWFsLCBNYXJpbmUgVHVydGxlLCBhbmQgIFsuLi5dIiwib3duZXJJbnN0aXR1dGlvbkNvZGUiOiJOT0FBO05NRlM7TkVGU0MiLCJiaWJsaW9ncmFwaGljQ2l0YXRpb24iOiJbe1wiY3Jvc3NyZWZcIjp7XCJjaXRlaW5mb1wiOntcIm9yaWdpblwiOlwiTkVGU0NcIixcInB1YmRhdGVcIjpcIjIwMThcIixcInRpdGxlX2h0bWxcIjpcIjIwMTcgQW5udWFsIFJlcG9ydCBvZiBhIENvbXByZWhlbnNpdmUgQXNzZXNzbWVudCBvZiBNYXJpbmUgTWFtbWFsLCBNYXJpbmUgVHVydGxlLCBhbmQgIFsuLi5dIiwiaWRlbnRpZmljYXRpb25SZW1hcmtzIjoiSWRlbnRpZmljYXRpb24gVHlwZTpWaXN1YWwgc2lnaHRpbmciLCJzY2llbnRpZmljTmFtZUF1dGhvcnNoaXAiOiIoTGlubmFldXMsIDE3NTgpIiwiaWQiOiIwMDA4NmYxMi0yZDQxLTQ4ZTEtOWQ1Yy01YjQ2YzE4YTNlNDYiLCJtaW5pbXVtRGVwdGhJbk1ldGVycyI6bnVsbCwibWF4aW11bURlcHRoSW5NZXRlcnMiOm51bGwsImRhdGFzZXRfaWQiOiI0N2FiMDdlOS1hYzUwLTQ3YjEtOWNhMS00MjFiNWFhZmUxZGIiLCJub2RlX2lkIjpbIjU3MzY1NGMxLTRjZTctNGVhMi1iMmYxLWU0ZDQyZjhmOWMzMSJdLCJkcm9wcGVkIjpmYWxzZSwiYWJzZW5jZSI6ZmFsc2UsIm1hcmluZSI6dHJ1ZSwiYnJhY2tpc2giOmZhbHNlLCJ0ZXJyZXN0cmlhbCI6ZmFsc2UsInN1YnBoeWx1bSI6IlZlcnRlYnJhdGEiLCJzdXBlcmNsYXNzIjoiUGlzY2VzIiwic3BlY2llcyI6Ik1vbGEgbW9sYSIsImtpbmdkb21pZCI6MiwicGh5bHVtaWQiOjE4MjEsInN1YnBoeWx1bWlkIjoxNDY0MTksInN1cGVyY2xhc3NpZCI6MTE2NzYsImNsYXNzaWQiOjEwMTk0LCJvcmRlcmlkIjoxMDMzMiwiZmFtaWx5aWQiOjEyNTYwOSwiZ2VudXNpZCI6MTI2MjMzLCJzcGVjaWVzaWQiOjEyNzQwNSwiYXBoaWFJRCI6MTI3NDA1LCJvcmlnaW5hbFNjaWVudGlmaWNOYW1lIjoiTW9sYSBtb2xhIiwiY2F0ZWdvcnkiOiJWVSIsImRhdGVfc3RhcnQiOjE0OTgzNDg4MDAwMDAsImRhdGVfbWlkIjoxNDk4MzQ4ODAwMDAwLCJkYXRlX3llYXIiOjIwMTcsImRhdGVfZW5kIjoxNDk4MzQ4ODAwMDAwLCJtaXNzaW5nIjpbImNvb3JkaW5hdGVVbmNlcnRhaW50eUluTWV0ZXJzIiwibWF4aW11bURlcHRoSW5NZXRlcnMiLCJtaW5pbXVtRGVwdGhJbk1ldGVycyJdLCJmbGFncyI6WyJub19kZXB0aCJdfV19
+  recorded_at: 2020-07-31 16:27:02 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.6.2
+- request:
+    method: get
+    uri: https://api.obis.org/v3/occurrence/000d290d-f242-4b79-ab9a-c016850d0fa3
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      User-Agent: libcurl/7.71.1 r-curl/4.3 crul/1.0.0
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      server: nginx/1.14.0 (Ubuntu)
+      date: Fri, 31 Jul 2020 16:27:02 GMT
+      content-type: application/json; charset=utf-8
+      transfer-encoding: chunked
+      connection: keep-alive
+      x-powered-by: Express
+      access-control-allow-origin: '*'
+      etag: W/"66f-IftXiafEX3QcFed93NkoYnLCtOc"
+      vary: Accept-Encoding
+      content-encoding: gzip
+    body:
+      encoding: ASCII-8BIT
+      file: no
+      string: eyJ0b3RhbCI6MSwicmVzdWx0cyI6W3siZGF5IjoiNSIsInllYXIiOiIyMDA1IiwiY2xhc3MiOiJDZXBoYWxvcG9kYSIsImdlbnVzIjoiTG9saWdvIiwibW9udGgiOiIxIiwib3JkZXIiOiJNeW9wc2lkYSIsImNvdW50eSI6IkJhbGVhcmljIElzbGFuZHMiLCJmYW1pbHkiOiJMb2xpZ2luaWRhZSIsInBoeWx1bSI6Ik1vbGx1c2NhIiwiY291bnRyeSI6IlNwYWluIiwia2luZ2RvbSI6IkFuaW1hbGlhIiwibW9kaWZpZWQiOiIyMDEyLTA1LTA0IDEwOjM5OjE1IiwiY29udGluZW50IjoiRXVyb3BlLCBNZWRpdGVycmFuZWFuICBTZWEiLCJkYXRhc2V0SUQiOiJJTUlTOmRhc2lkOjMwMDEiLCJldmVudERhdGUiOiIyMDA1LTAxLTA1Iiwib2NjdXJyZW5jZUlEIjoidXJuOmNhdGFsb2c6Q09CIC0gSUVPOk9CU0VSVkFET1JFUzo1NDQwMCIsImJhc2lzT2ZSZWNvcmQiOiJPY2N1cnJlbmNlIiwiY2F0YWxvZ051bWJlciI6IjU0NDAwIiwiZ2VvZGV0aWNEYXR1bSI6IkVQU0c6NDMyNiIsImNvbGxlY3Rpb25Db2RlIjoiT0JTRVJWQURPUkVTIiwic2FtcGxpbmdFZmZvcnQiOiJpbmQuIC8gaGF1bCIsInNjaWVudGlmaWNOYW1lIjoiTG9saWdvIHZ1bGdhcmlzIiwiZGVjaW1hbExhdGl0dWRlIjozOS4zOTA0LCJpbmRpdmlkdWFsQ291bnQiOiIzNTEuMCIsImluc3RpdHV0aW9uQ29kZSI6IkNPQiAtIElFTyIsInNwZWNpZmljRXBpdGhldCI6InZ1bGdhcmlzIiwiZGVjaW1hbExvbmdpdHVkZSI6My4zMzQ2LCJvY2N1cnJlbmNlU3RhdHVzIjoicHJlc2VudCIsInNjaWVudGlmaWNOYW1lSUQiOiJ1cm46bHNpZDptYXJpbmVzcGVjaWVzLm9yZzp0YXhuYW1lOjE0MDI3MSIsImR5bmFtaWNQcm9wZXJ0aWVzIjoiU2FtcGxlU2l6ZT1pbmQuIC8gaGF1bDsiLCJtYXhpbXVtRGVwdGhJbk1ldGVycyI6NjguMzk3MTIsIm1pbmltdW1EZXB0aEluTWV0ZXJzIjo2OC4zOTcxMiwiYmlibGlvZ3JhcGhpY0NpdGF0aW9uIjoiRW5yaWMgTWFzc3V0w60gLSBlbnJpYy5tYXNzdXRpQGJhLmllby5lcyIsImlkIjoiMDAwZDI5MGQtZjI0Mi00Yjc5LWFiOWEtYzAxNjg1MGQwZmEzIiwiZGF0YXNldF9pZCI6ImUwOWM4MjRjLWNiZDgtNDUyOS1iMzgyLTUzMDZiMmIzYTg3NSIsIm5vZGVfaWQiOlsiNGJmNzlhMDEtNjVhOS00ZGI2LWIzN2ItMTg0MzRmMjZkZGZjIl0sImRyb3BwZWQiOmZhbHNlLCJhYnNlbmNlIjpmYWxzZSwiZGF0ZV9zdGFydCI6MTEwNDg4MzIwMDAwMCwiZGF0ZV9taWQiOjExMDQ4ODMyMDAwMDAsImRhdGVfeWVhciI6MjAwNSwiZGF0ZV9lbmQiOjExMDQ4ODMyMDAwMDAsIm1hcmluZSI6dHJ1ZSwidGVycmVzdHJpYWwiOmZhbHNlLCJzdWJjbGFzcyI6IkNvbGVvaWRlYSIsInN1cGVyb3JkZXIiOiJEZWNhcG9kaWZvcm1lcyIsInNwZWNpZXMiOiJMb2xpZ28gdnVsZ2FyaXMiLCJraW5nZG9taWQiOjIsInBoeWx1bWlkIjo1MSwiY2xhc3NpZCI6MTE3MDcsInN1YmNsYXNzaWQiOjExNzA5LCJzdXBlcm9yZGVyaWQiOjMyNTM0Miwib3JkZXJpZCI6MTE3MjgsImZhbWlseWlkIjoxMTczNCwiZ2VudXNpZCI6MTM4MTM5LCJzcGVjaWVzaWQiOjE0MDI3MSwiYXBoaWFJRCI6MTQwMjcxLCJvcmlnaW5hbFNjaWVudGlmaWNOYW1lIjoiTG9saWdvIHZ1bGdhcmlzIiwibWlzc2luZyI6WyJjb29yZGluYXRlVW5jZXJ0YWludHlJbk1ldGVycyJdfV19
+  recorded_at: 2020-07-31 16:27:02 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.6.2
+- request:
+    method: get
+    uri: https://api.obis.org/v3/occurrence/001f58b0-1a63-44b5-8256-1deae248423c
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      User-Agent: libcurl/7.71.1 r-curl/4.3 crul/1.0.0
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      server: nginx/1.14.0 (Ubuntu)
+      date: Fri, 31 Jul 2020 16:27:02 GMT
+      content-type: application/json; charset=utf-8
+      transfer-encoding: chunked
+      connection: keep-alive
+      x-powered-by: Express
+      access-control-allow-origin: '*'
+      etag: W/"670-U0NLvOkGjkJIFi6npjS78ur5/zA"
+      vary: Accept-Encoding
+      content-encoding: gzip
+    body:
+      encoding: ASCII-8BIT
+      file: no
+      string: eyJ0b3RhbCI6MSwicmVzdWx0cyI6W3siZGF5IjoiNSIsInllYXIiOiIyMDA5IiwiY2xhc3MiOiJDZXBoYWxvcG9kYSIsImdlbnVzIjoiTG9saWdvIiwibW9udGgiOiIxMCIsIm9yZGVyIjoiTXlvcHNpZGEiLCJjb3VudHkiOiJCYWxlYXJpYyBJc2xhbmRzIiwiZmFtaWx5IjoiTG9saWdpbmlkYWUiLCJwaHlsdW0iOiJNb2xsdXNjYSIsImNvdW50cnkiOiJTcGFpbiIsImtpbmdkb20iOiJBbmltYWxpYSIsIm1vZGlmaWVkIjoiMjAxMi0wNS0wNCAxMDozOToxNSIsImNvbnRpbmVudCI6IkV1cm9wZSwgTWVkaXRlcnJhbmVhbiAgU2VhIiwiZGF0YXNldElEIjoiSU1JUzpkYXNpZDozMDAxIiwiZXZlbnREYXRlIjoiMjAwOS0xMC0wNSIsIm9jY3VycmVuY2VJRCI6InVybjpjYXRhbG9nOkNPQiAtIElFTzpPQlNFUlZBRE9SRVM6NjkzMjEiLCJiYXNpc09mUmVjb3JkIjoiT2NjdXJyZW5jZSIsImNhdGFsb2dOdW1iZXIiOiI2OTMyMSIsImdlb2RldGljRGF0dW0iOiJFUFNHOjQzMjYiLCJjb2xsZWN0aW9uQ29kZSI6Ik9CU0VSVkFET1JFUyIsInNhbXBsaW5nRWZmb3J0IjoiaW5kLiAvIGhhdWwiLCJzY2llbnRpZmljTmFtZSI6IkxvbGlnbyB2dWxnYXJpcyIsImRlY2ltYWxMYXRpdHVkZSI6MzkuNzU0NiwiaW5kaXZpZHVhbENvdW50IjoiMTM1NS4yMiIsImluc3RpdHV0aW9uQ29kZSI6IkNPQiAtIElFTyIsInNwZWNpZmljRXBpdGhldCI6InZ1bGdhcmlzIiwiZGVjaW1hbExvbmdpdHVkZSI6Mi42MDEyLCJvY2N1cnJlbmNlU3RhdHVzIjoicHJlc2VudCIsInNjaWVudGlmaWNOYW1lSUQiOiJ1cm46bHNpZDptYXJpbmVzcGVjaWVzLm9yZzp0YXhuYW1lOjE0MDI3MSIsImR5bmFtaWNQcm9wZXJ0aWVzIjoiU2FtcGxlU2l6ZT1pbmQuIC8gaGF1bDsiLCJtYXhpbXVtRGVwdGhJbk1ldGVycyI6NTMuMDM1MiwibWluaW11bURlcHRoSW5NZXRlcnMiOjUzLjAzNTIsImJpYmxpb2dyYXBoaWNDaXRhdGlvbiI6IkVucmljIE1hc3N1dMOtIC0gZW5yaWMubWFzc3V0aUBiYS5pZW8uZXMiLCJpZCI6IjAwMWY1OGIwLTFhNjMtNDRiNS04MjU2LTFkZWFlMjQ4NDIzYyIsImRhdGFzZXRfaWQiOiJlMDljODI0Yy1jYmQ4LTQ1MjktYjM4Mi01MzA2YjJiM2E4NzUiLCJub2RlX2lkIjpbIjRiZjc5YTAxLTY1YTktNGRiNi1iMzdiLTE4NDM0ZjI2ZGRmYyJdLCJkcm9wcGVkIjpmYWxzZSwiYWJzZW5jZSI6ZmFsc2UsImRhdGVfc3RhcnQiOjEyNTQ3MDA4MDAwMDAsImRhdGVfbWlkIjoxMjU0NzAwODAwMDAwLCJkYXRlX3llYXIiOjIwMDksImRhdGVfZW5kIjoxMjU0NzAwODAwMDAwLCJtYXJpbmUiOnRydWUsInRlcnJlc3RyaWFsIjpmYWxzZSwic3ViY2xhc3MiOiJDb2xlb2lkZWEiLCJzdXBlcm9yZGVyIjoiRGVjYXBvZGlmb3JtZXMiLCJzcGVjaWVzIjoiTG9saWdvIHZ1bGdhcmlzIiwia2luZ2RvbWlkIjoyLCJwaHlsdW1pZCI6NTEsImNsYXNzaWQiOjExNzA3LCJzdWJjbGFzc2lkIjoxMTcwOSwic3VwZXJvcmRlcmlkIjozMjUzNDIsIm9yZGVyaWQiOjExNzI4LCJmYW1pbHlpZCI6MTE3MzQsImdlbnVzaWQiOjEzODEzOSwic3BlY2llc2lkIjoxNDAyNzEsImFwaGlhSUQiOjE0MDI3MSwib3JpZ2luYWxTY2llbnRpZmljTmFtZSI6IkxvbGlnbyB2dWxnYXJpcyIsIm1pc3NpbmciOlsiY29vcmRpbmF0ZVVuY2VydGFpbnR5SW5NZXRlcnMiXX1dfQ==
+  recorded_at: 2020-07-31 16:27:02 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.6.2

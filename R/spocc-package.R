@@ -15,7 +15,6 @@
 #' 
 #' - [occ2df()] - Combine results from `occ` into a 
 #'  data.frame
-#' - [fixnames()] - Change names to be the same for each taxon
 #' - [wkt_vis()] - Visualize WKT strings (used to define 
 #'  geometry based searches for some data sources) in an interactive map
 #' 

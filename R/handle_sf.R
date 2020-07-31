@@ -1,3 +1,4 @@
+# modified from code donated by Michael Sumner
 matrix_tuple <- function(x) { # nocov start
   paste(unlist(lapply(split(t(x), rep(seq_len(dim(x)[1L]), each = dim(x)[2L])),
     paste0, collapse = " ")),

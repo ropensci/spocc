@@ -1,6 +1,19 @@
 spocc 1.1.0
 ===========
 
+### DEFUNCT
+
+* `fixnames()` is now defunct. it was deprecated in a previous version. See `scrubr::fix_names()` (#231)
+
+### NEW FEATURES
+
+* `occ()` can now handle sf objects passed to `geometry`. `spocc` itself does not import/suggest sf, but uses some code donated by Michael Sumner to pull out well known text (WKT) needed for spatially defined queries
+
+### MINOR IMPROVEMENTS
+
+* refactor `occ()`: factor out functions already defined inside of `occ`, add assertions for user parameters (#228)
+* package logo/sticker added (#188)
+
 ### BUG FIXES
 
 * Fix for ALA data source in `occ()`: total records found count was always 0 because ALA changed the records found field to `totalRecords`

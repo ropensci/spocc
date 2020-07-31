@@ -554,7 +554,7 @@ foo_ala <- function(sources, query, limit, start, geometry, has_coords,
           out <- stand_latlon(out)
           out <- add_latlong_if_missing(out)
           out <- stand_dates(out, "ala")
-          list(time = time, found = tmp$count, data = out, opts = opts)
+          list(time = time, found = tmp$totalRecords, data = out, opts = opts)
         }
       }
     }

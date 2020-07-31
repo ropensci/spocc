@@ -1,7 +1,9 @@
+
+
 # spocc (SPecies OCCurrence) <img src="man/figures/logo.png" align="right" alt="" width="120">
 
-[![Build Status](https://travis-ci.org/ropensci/spocc.svg?branch=master)](https://travis-ci.org/ropensci/spocc)
-[![Build status](https://ci.appveyor.com/api/projects/status/lrscgpxs0n925t83?svg=true)](https://ci.appveyor.com/project/sckott/spocc)
+[![R-check](https://github.com/ropensci/spocc/workflows/R-check/badge.svg)](https://github.com/ropensci/spocc/actions?query=workflow%3AR-check)
+[![test-sp-sf](https://github.com/ropensci/spocc/workflows/test-sp-sf/badge.svg)](https://github.com/ropensci/spocc/actions?query=workflow%3Atest-sp-sf)
 [![codecov.io](https://codecov.io/github/ropensci/spocc/coverage.svg?branch=master)](https://codecov.io/github/ropensci/spocc?branch=master)
 [![cran checks](https://cranchecks.info/badges/worst/spocc)](https://cranchecks.info/pkgs/spocc)
 [![rstudio mirror downloads](https://cranlogs.r-pkg.org/badges/spocc?color=FAB657)](https://github.com/metacran/cranlogs.app)

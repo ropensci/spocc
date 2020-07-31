@@ -6,6 +6,6 @@
 #' @keywords internal
 #' @rdname fixnames-defunct
 #' @param ... ignored
-fixnames <- function(...) {
+fixnames <- function(...) { # nocov start
   .Defunct("scrubr::fix_names")
-}
+} # nocov end

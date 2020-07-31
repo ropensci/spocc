@@ -78,6 +78,6 @@ jobs:
 
       - name: Run sp/sf tests
         run: |
-          R CMD build . && R CMD INSTALL .
+          remotes::install_local()
           testthat::test_dir("tests/testother", reporter = testthat::check_reporter())
         shell: Rscript {0}

@@ -13,8 +13,8 @@
 #' @param start,page (integer) Record to start at or page to start at. See `Paging` in
 #' Details for how these parameters are used internally. Optional
 #' @param geometry (character or nmeric) One of a Well Known Text (WKT) object, a vector of
-#' length 4 specifying a bounding box, an sp object (SpatialPolygons or SpatialPolygonsDataFrame),
-#' or an sf object (sfg, sfc, or sf). This parameter searches for occurrences inside a
+#' length 4 specifying a bounding box, or an sf object (sfg, sfc, or sf). This parameter
+#' searches for occurrences inside a
 #' polygon - converted to a polygon from whatever user input is given. A WKT shape written as
 #' `POLYGON((30.1 10.1, 20 40, 40 40, 30.1 10.1))` would be queried as is,
 #' i.e. http://bit.ly/HwUSif. See Details for more examples of WKT objects. The format of a

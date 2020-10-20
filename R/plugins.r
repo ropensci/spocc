@@ -116,7 +116,7 @@ foo_ecoengine <- function(sources, query, limit, page, geometry, has_coords,
                                               collapse = " "))) {
         paste0(wkt2bbox(geometry), collapse = ",")
       } else {
-        geometry
+        paste0(geometry, collapse = ",")
       }
     }
     if (!is.null(date)) {

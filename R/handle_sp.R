@@ -33,7 +33,6 @@
 # row.names=row.names(sppoly)))
 # handle_sp(sppoly_df)
 # handle_sp(sppoly_df, group = FALSE)[[1]]
-
-handle_sp <- function(spobj, group = TRUE) { # nocov start
-  wicket::sp_convert(spobj, group = group)
-} # nocov end
+# handle_sp <- function(spobj, group = TRUE) { # nocov start
+#   wicket::sp_convert(spobj, group = group)
+# } # nocov end

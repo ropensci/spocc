@@ -113,7 +113,7 @@
 #' occ(query='Accipiter striatus', from='gbif', geometry=c(-125.0,38.4,-121.8,40.9))
 #'
 #' ## Bounding box constraint with ecoengine
-#' ## Use this website: http://boundingbox.klokantech.com/ to quickly grab a bbox.
+#' ## Use this website: https://boundingbox.klokantech.com/ to quickly grab a bbox.
 #' ## Just set the format on the bottom left to CSV.
 #' occ(query='Accipiter striatus', from='ecoengine', limit=10,
 #'    geometry=c(-125.0,38.4,-121.8,40.9))
@@ -186,32 +186,6 @@
 #' (ids <- get_tsn('Accipiter striatus'))
 #' occ(ids = ids, from='bison', limit=20)
 #'
-#' # SpatialPolygons/SpatialPolygonsDataFrame integration
-#' library("sp")
-#' ## Single polygon in SpatialPolygons class
-#' one <- Polygon(cbind(c(91,90,90,91), c(30,30,32,30)))
-#' spone = Polygons(list(one), "s1")
-#' sppoly = SpatialPolygons(list(spone), as.integer(1))
-#' out <- occ(geometry = sppoly, limit=50)
-#' out$gbif$data
-#'
-#' ## Two polygons in SpatialPolygons class
-#' one <- Polygon(cbind(c(-121.0,-117.9,-121.0,-121.0), c(39.4, 37.1, 35.1, 39.4)))
-#' two <- Polygon(cbind(c(-123.0,-121.2,-122.3,-124.5,-123.5,-124.1,-123.0),
-#'                      c(44.8,42.9,41.9,42.6,43.3,44.3,44.8)))
-#' spone = Polygons(list(one), "s1")
-#' sptwo = Polygons(list(two), "s2")
-#' sppoly = SpatialPolygons(list(spone, sptwo), 1:2)
-#' out <- occ(geometry = sppoly, limit=50)
-#' out$gbif$data
-#'
-#' ## Two polygons in SpatialPolygonsDataFrame class
-#' sppoly_df <- SpatialPolygonsDataFrame(sppoly, 
-#'    data.frame(a=c(1,2), b=c("a","b"), c=c(TRUE,FALSE),
-#'    row.names=row.names(sppoly)))
-#' out <- occ(geometry = sppoly_df, limit=50)
-#' out$gbif$data
-#' 
 #' ## sf classes
 #' library("sp")
 #' library("sf")
@@ -323,12 +297,9 @@
 #' res$obis
 #' 
 #' ## Pass in spatial classes
-#' library("sp")
-#' one <- Polygon(cbind(c(45,30,30,45), c(35,35,30,30)))
-#' spone = Polygons(list(one), "s1")
-#' sppoly = SpatialPolygons(list(spone), as.integer(1))
-#' (res <- occ(from = 'obis', geometry = sppoly, limit = 50))
-#' ## Do paging
+#' ## sp classes no longer supported
+#' 
+#' ## Paging
 #' (res1 <- occ(query = 'Mola mola', from = 'obis', limit = 10))
 #' occ_ids <- res1$obis$data$Mola_mola$id
 #' (res2 <- occ(query = 'Mola mola', from = 'obis',

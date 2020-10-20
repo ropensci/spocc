@@ -145,7 +145,8 @@ strip_classes <- function(x, z) {
 occ_geom <- function(x) {
   if (!is.null(x)) {
     if (inherits(x, c('SpatialPolygons', 'SpatialPolygonsDataFrame'))) {
-      x <- as.list(handle_sp(x))
+      # x <- as.list(handle_sp(x))
+      stop("'sp' classes no longer supported; convert to sf")
     }
     if (inherits(x, c('sf', 'sfc', 'sfg', 'POLYGON', 'MULTIPOLYGON'))) {
       x <- strip_classes(x, c("XY", "data.frame", "sfc_POLYGON"))

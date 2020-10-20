@@ -36,8 +36,10 @@ wkt_vis <- function(x, zoom = 6, maptype = "terrain", browse = TRUE) {
   stopifnot(!is.null(x))
   stopifnot(is.character(x))
   x <- gsub("\n|\n\\s+", "", strtrim(x))
-  out <- wicket::wkt_coords(x)
-  centroid <- wicket::wkt_centroid(x)
+  # out <- wicket::wkt_coords(x)
+  out <- wellknown::wkt_coords(x)
+  # centroid <- wicket::wkt_centroid(x)
+  centroid <- wellknown::wkt_centroid(x)
   dfs <- unname(lapply(split(out, out$ring), function(z) {
     unname(
       apply(z, 1, function(x) {
@@ -66,8 +68,9 @@ map_header <- '
 <meta charset=utf-8 />
 <title>spocc WKT Viewer</title>
 <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
-<script src="https://api.tiles.mapbox.com/mapbox.js/v3.0.1/mapbox.js"></script>
-<link href="https://api.tiles.mapbox.com/mapbox.js/v3.0.1/mapbox.css" rel="stylesheet" />
+<script src="https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js"></script>
+<link href="https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css" rel="stylesheet" />
+
 <style>
   body { margin:0; padding:0; }
   #map { position:absolute; top:0; bottom:0; width:100%; }

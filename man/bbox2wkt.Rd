@@ -21,7 +21,7 @@ wkt2bbox(wkt)
 
 \item{bbox}{A vector of length 4, with the elements: minx, miny, maxx, maxy}
 
-\item{wkt}{A Well Known Text object.}
+\item{wkt}{A Well Known Text string}
 }
 \value{
 bbox2wkt returns an object of class charactere, a Well Known Text

@@ -6,13 +6,14 @@ Makefile
 man-roxygen
 spocc.Rproj
 ^\.Rproj\.user$
-vignettes/fixnames*
+vignettes/fixnames.Rmd
+vignettes/cache/
+vignettes/spocc.Rmd
 inst/shinydumb
 inst/shiny
 inst/vign
 inst/logo
 inst/ignore
-vignettes/cache/
 CONTRIBUTING.md
 appveyor.yml
 README.Rmd

@@ -1,7 +1,7 @@
 ---
 title: spocc introduction
 author: Scott Chamberlain
-date: "2020-07-31"
+date: "2020-11-05"
 output: rmarkdown::html_vignette
 vignette: >
     %\VignetteIndexEntry{spocc introduction}
@@ -56,7 +56,7 @@ The most significant function in spocc is the `occ` (short for occurrence) funct
 library('spocc')
 (df <- occ(query = 'Accipiter striatus', from = 'gbif'))
 #> Searched: gbif
-#> Occurrences - Found: 1,092,647, Returned: 500
+#> Occurrences - Found: 1,093,164, Returned: 500
 #> Search type: Scientific
 #>   gbif: Accipiter striatus (500)
 ```
@@ -89,7 +89,7 @@ df$gbif
 #> Species [Accipiter striatus (500)] 
 #> First 10 rows of [Accipiter_striatus]
 #> 
-#> # A tibble: 500 x 79
+#> # A tibble: 500 x 81
 #>    name  longitude latitude prov  issues key   scientificName datasetKey
 #>    <chr>     <dbl>    <dbl> <chr> <chr>  <chr> <chr>          <chr>     
 #>  1 Acci…    -107.      35.1 gbif  cdrou… 2542… Accipiter str… 50c9509d-…
@@ -102,28 +102,30 @@ df$gbif
 #>  8 Acci…     -97.3     27.6 gbif  cdrou… 2550… Accipiter str… 50c9509d-…
 #>  9 Acci…     -88.9     30.5 gbif  cdrou… 2550… Accipiter str… 50c9509d-…
 #> 10 Acci…     -96.9     33.1 gbif  cdrou… 2550… Accipiter str… 50c9509d-…
-#> # … with 490 more rows, and 71 more variables: publishingOrgKey <chr>,
+#> # … with 490 more rows, and 73 more variables: publishingOrgKey <chr>,
 #> #   installationKey <chr>, publishingCountry <chr>, protocol <chr>,
 #> #   lastCrawled <chr>, lastParsed <chr>, crawlId <int>, basisOfRecord <chr>,
-#> #   taxonKey <int>, kingdomKey <int>, phylumKey <int>, classKey <int>,
-#> #   orderKey <int>, familyKey <int>, genusKey <int>, speciesKey <int>,
-#> #   acceptedTaxonKey <int>, acceptedScientificName <chr>, kingdom <chr>,
-#> #   phylum <chr>, order <chr>, family <chr>, genus <chr>, species <chr>,
-#> #   genericName <chr>, specificEpithet <chr>, taxonRank <chr>,
+#> #   occurrenceStatus <chr>, taxonKey <int>, kingdomKey <int>, phylumKey <int>,
+#> #   classKey <int>, orderKey <int>, familyKey <int>, genusKey <int>,
+#> #   speciesKey <int>, acceptedTaxonKey <int>, acceptedScientificName <chr>,
+#> #   kingdom <chr>, phylum <chr>, order <chr>, family <chr>, genus <chr>,
+#> #   species <chr>, genericName <chr>, specificEpithet <chr>, taxonRank <chr>,
 #> #   taxonomicStatus <chr>, dateIdentified <chr>,
 #> #   coordinateUncertaintyInMeters <dbl>, stateProvince <chr>, year <int>,
 #> #   month <int>, day <int>, eventDate <date>, modified <chr>,
 #> #   lastInterpreted <chr>, references <chr>, license <chr>,
-#> #   geodeticDatum <chr>, class <chr>, countryCode <chr>, recordedByIDs <list>,
-#> #   identifiedByIDs <list>, country <chr>, rightsHolder <chr>,
-#> #   identifier <chr>, `http://unknown.org/nick` <chr>, verbatimEventDate <chr>,
-#> #   datasetName <chr>, collectionCode <chr>, verbatimLocality <chr>,
-#> #   gbifID <chr>, occurrenceID <chr>, taxonID <chr>, catalogNumber <chr>,
-#> #   recordedBy <chr>, `http://unknown.org/occurrenceDetails` <chr>,
-#> #   institutionCode <chr>, rights <chr>, eventTime <chr>, identifiedBy <chr>,
-#> #   identificationID <chr>, informationWithheld <chr>, occurrenceRemarks <chr>,
+#> #   geodeticDatum <chr>, class <chr>, countryCode <chr>, country <chr>,
+#> #   rightsHolder <chr>, identifier <chr>, `http://unknown.org/nick` <chr>,
+#> #   verbatimEventDate <chr>, datasetName <chr>, collectionCode <chr>,
+#> #   gbifID <chr>, verbatimLocality <chr>, occurrenceID <chr>, taxonID <chr>,
+#> #   catalogNumber <chr>, recordedBy <chr>,
+#> #   `http://unknown.org/occurrenceDetails` <chr>, institutionCode <chr>,
+#> #   rights <chr>, eventTime <chr>, identifiedBy <chr>, identificationID <chr>,
+#> #   informationWithheld <chr>, occurrenceRemarks <chr>,
 #> #   identificationRemarks <chr>, infraspecificEpithet <chr>,
-#> #   individualCount <int>, vernacularName <chr>, locality <chr>, county <chr>
+#> #   nomenclaturalCode <chr>, locality <chr>, vernacularName <chr>,
+#> #   fieldNotes <chr>, verbatimElevation <chr>, behavior <chr>,
+#> #   higherClassification <chr>
 ```
 
 When you get data from multiple providers, the fields returned are slightly different because each data provider uses different formats for their data; different arrangements of data and different variable names for the same thing (e.g., one data provider may call latitude "latitude", while another may call it "lat"). For example:
@@ -132,7 +134,7 @@ When you get data from multiple providers, the fields returned are slightly diff
 ```r
 df <- occ(query = 'Accipiter striatus', from = c('gbif', 'ecoengine'), limit = 25)
 df$gbif$data$Accipiter_striatus
-#> # A tibble: 25 x 73
+#> # A tibble: 25 x 72
 #>    name  longitude latitude issues prov  key   scientificName datasetKey
 #>    <chr>     <dbl>    <dbl> <chr>  <chr> <chr> <chr>          <chr>     
 #>  1 Acci…    -107.      35.1 cdrou… gbif  2542… Accipiter str… 50c9509d-…
@@ -145,40 +147,40 @@ df$gbif$data$Accipiter_striatus
 #>  8 Acci…     -97.3     27.6 cdrou… gbif  2550… Accipiter str… 50c9509d-…
 #>  9 Acci…     -88.9     30.5 cdrou… gbif  2550… Accipiter str… 50c9509d-…
 #> 10 Acci…     -96.9     33.1 cdrou… gbif  2550… Accipiter str… 50c9509d-…
-#> # … with 15 more rows, and 65 more variables: publishingOrgKey <chr>,
+#> # … with 15 more rows, and 64 more variables: publishingOrgKey <chr>,
 #> #   installationKey <chr>, publishingCountry <chr>, protocol <chr>,
 #> #   lastCrawled <chr>, lastParsed <chr>, crawlId <int>, basisOfRecord <chr>,
-#> #   taxonKey <int>, kingdomKey <int>, phylumKey <int>, classKey <int>,
-#> #   orderKey <int>, familyKey <int>, genusKey <int>, speciesKey <int>,
-#> #   acceptedTaxonKey <int>, acceptedScientificName <chr>, kingdom <chr>,
-#> #   phylum <chr>, order <chr>, family <chr>, genus <chr>, species <chr>,
-#> #   genericName <chr>, specificEpithet <chr>, taxonRank <chr>,
+#> #   occurrenceStatus <chr>, taxonKey <int>, kingdomKey <int>, phylumKey <int>,
+#> #   classKey <int>, orderKey <int>, familyKey <int>, genusKey <int>,
+#> #   speciesKey <int>, acceptedTaxonKey <int>, acceptedScientificName <chr>,
+#> #   kingdom <chr>, phylum <chr>, order <chr>, family <chr>, genus <chr>,
+#> #   species <chr>, genericName <chr>, specificEpithet <chr>, taxonRank <chr>,
 #> #   taxonomicStatus <chr>, dateIdentified <chr>,
 #> #   coordinateUncertaintyInMeters <dbl>, stateProvince <chr>, year <int>,
 #> #   month <int>, day <int>, eventDate <date>, modified <chr>,
 #> #   lastInterpreted <chr>, references <chr>, license <chr>,
-#> #   geodeticDatum <chr>, class <chr>, countryCode <chr>, recordedByIDs <list>,
-#> #   identifiedByIDs <list>, country <chr>, rightsHolder <chr>,
-#> #   identifier <chr>, `http://unknown.org/nick` <chr>, verbatimEventDate <chr>,
-#> #   datasetName <chr>, collectionCode <chr>, verbatimLocality <chr>,
-#> #   gbifID <chr>, occurrenceID <chr>, taxonID <chr>, catalogNumber <chr>,
-#> #   recordedBy <chr>, `http://unknown.org/occurrenceDetails` <chr>,
-#> #   institutionCode <chr>, rights <chr>, eventTime <chr>, identifiedBy <chr>,
-#> #   identificationID <chr>, informationWithheld <chr>, occurrenceRemarks <chr>
+#> #   geodeticDatum <chr>, class <chr>, countryCode <chr>, country <chr>,
+#> #   rightsHolder <chr>, identifier <chr>, `http://unknown.org/nick` <chr>,
+#> #   verbatimEventDate <chr>, datasetName <chr>, collectionCode <chr>,
+#> #   gbifID <chr>, verbatimLocality <chr>, occurrenceID <chr>, taxonID <chr>,
+#> #   catalogNumber <chr>, recordedBy <chr>,
+#> #   `http://unknown.org/occurrenceDetails` <chr>, institutionCode <chr>,
+#> #   rights <chr>, eventTime <chr>, identifiedBy <chr>, identificationID <chr>,
+#> #   informationWithheld <chr>, occurrenceRemarks <chr>
 df$ecoengine$data$Accipiter_striatus
 #> # A tibble: 25 x 17
 #>    longitude latitude url   key   observation_type name  country state_province
 #>        <dbl>    <dbl> <chr> <chr> <chr>            <chr> <chr>   <chr>         
-#>  1     -115.     33.4 http… MVZ:… specimen         Acci… United… California    
-#>  2     -117.     34.5 http… MVZ:… specimen         Acci… United… California    
-#>  3     -116.     33.9 http… MVZ:… specimen         Acci… United… California    
-#>  4     -115.     33.4 http… MVZ:… specimen         Acci… United… California    
-#>  5     -114.     34.5 http… MVZ:… specimen         Acci… United… California    
-#>  6     -119.     41.7 http… MVZ:… specimen         Acci… United… Nevada        
-#>  7     -119.     39.4 http… MVZ:… specimen         Acci… United… Nevada        
-#>  8     -119.     39.4 http… MVZ:… specimen         Acci… United… Nevada        
-#>  9     -116.     40.1 http… MVZ:… specimen         Acci… United… Nevada        
-#> 10     -116.     40.1 http… MVZ:… specimen         Acci… United… Nevada        
+#>  1    -134.      57.7 http… MVZ:… specimen         Acci… United… Alaska        
+#>  2    -122.      37.9 http… MVZ:… specimen         Acci… United… California    
+#>  3     -77.2     42.6 http… MVZ:… specimen         Acci… United… New York      
+#>  4    -122.      37.9 http… CalP… photo            Acci… United… California    
+#>  5      NA       NA   http… CalP… photo            Acci… United… California    
+#>  6    -124.      39.7 http… bigc… checklist        Acci… United… California    
+#>  7    -117.      34.5 http… MVZ:… specimen         Acci… United… California    
+#>  8    -117.      33.1 http… MVZ:… specimen         Acci… United… California    
+#>  9    -119.      39.5 http… MVZ:… specimen         Acci… United… Nevada        
+#> 10    -118.      36.5 http… MVZ:… specimen         Acci… United… California    
 #> # … with 15 more rows, and 9 more variables: begin_date <date>, end_date <chr>,
 #> #   source <chr>, remote_resource <chr>, locality <chr>,
 #> #   coordinate_uncertainty_in_meters <int>, recorded_by <chr>,

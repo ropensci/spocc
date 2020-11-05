@@ -325,4 +325,8 @@
 #'   geometry = "POLYGON((145 -37,150 -37,150 -30,145 -30,145 -37))"))
 #' x$ala
 #' occ2df(x)
+#' 
+#' # For some sources there's an additional option
+#' ## GBIF: use their "download service" instead of "search"
+#' occ("Mola mola", from = "gbif-download", limit = 5000)
 #' }

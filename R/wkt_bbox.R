@@ -43,7 +43,6 @@
 #' )
 bbox2wkt <- function(minx=NA, miny=NA, maxx=NA, maxy=NA, bbox=NULL) {
   if (is.null(bbox)) bbox <- c(minx, miny, maxx, maxy)
-  # wicket::bounding_wkt(values = bbox)
   stopifnot(is.numeric(as.numeric(bbox)))
   bbox_template <- 'POLYGON((%s %s,%s %s,%s %s,%s %s,%s %s))'
   sprintf(bbox_template, 

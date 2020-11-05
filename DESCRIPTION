@@ -47,7 +47,6 @@ Suggests:
     rmarkdown,
     taxize (>= 0.8.4),
     vcr
-Remotes: ropensci/wellknown
 RoxygenNote: 7.1.1
 X-schema.org-applicationCategory: Biodiversity
 X-schema.org-keywords: specimens, API, web-services, occurrences, species, taxonomy, GBIF, INAT, BISON, Vertnet, eBird, Ecoengine, iDigBio, OBIS, ALA

@@ -11,35 +11,32 @@
 
 Docs: <https://docs.ropensci.org/spocc/>
 
-At rOpenSci, we have been writing R packages to interact with many sources of species occurrence data, including [GBIF][gbif], [Vertnet][vertnet], [BISON][bison], [iNaturalist][inat], the [Berkeley ecoengine][ecoengine], and [eBird][ebird]. Other databases are out there as well, which we can pull in. `spocc` is an R package to query and collect species occurrence data from many sources. The goal is to to create a seamless search experience across data sources, as well as creating unified outputs across data sources.
+At rOpenSci, we have been writing R packages to interact with many sources of species occurrence data, including [GBIF][gbif], [Vertnet][vertnet], [BISON][bison], [iNaturalist][inat], and [eBird][ebird]. Other databases are out there as well, which we can pull in. `spocc` is an R package to query and collect species occurrence data from many sources. The goal is to to create a seamless search experience across data sources, as well as creating unified outputs across data sources.
 
 `spocc` currently interfaces with nine major biodiversity repositories
 
 1. [Global Biodiversity Information Facility (GBIF)][gbif] (via `rgbif`)
 GBIF is a government funded open data repository with several partner organizations with the express goal of providing access to data on Earth's biodiversity. The data are made available by a network of member nodes, coordinating information from various participant organizations and government agencies.
 
-2. [Berkeley Ecoengine][ecoengine] (via `ecoengine`)
-The ecoengine is an open API built by the [Berkeley Initiative for Global Change Biology](https://globalchange.berkeley.edu/). The repository provides access to over 3 million specimens from various Berkeley natural history museums. These data span more than a century and provide access to georeferenced specimens, species checklists, photographs, vegetation surveys and resurveys and a variety of measurements from environmental sensors located at reserves across University of California's natural reserve system.
-
-3. [iNaturalist][inat]
+2. [iNaturalist][inat]
 iNaturalist provides access to crowd sourced citizen science data on species observations.
 
-4. [VertNet][vertnet] (via `rvertnet`)
-Similar to `rgbif`, ecoengine, and `rbison` (see below), VertNet provides access to more than 80 million vertebrate records spanning a large number of institutions and museums primarly covering four major disciplines (mammology, herpetology, ornithology, and icthyology).
+3. [VertNet][vertnet] (via `rvertnet`)
+Similar to `rgbif` and `rbison` (see below), VertNet provides access to more than 80 million vertebrate records spanning a large number of institutions and museums primarly covering four major disciplines (mammology, herpetology, ornithology, and icthyology).
 
-5. [Biodiversity Information Serving Our Nation][bison] (via `rbison`)
+4. [Biodiversity Information Serving Our Nation][bison] (via `rbison`)
 Built by the US Geological Survey's core science analytic team, BISON is a portal that provides access to species occurrence data from several participating institutions.
 
-6. [eBird][ebird] (via `rebird`)
+5. [eBird][ebird] (via `rebird`)
 ebird is a database developed and maintained by the Cornell Lab of Ornithology and the National Audubon Society. It provides real-time access to checklist data, data on bird abundance and distribution, and communtiy reports from birders.
 
-7. [iDigBio][idigbio] (via `ridigbio`)
+6. [iDigBio][idigbio] (via `ridigbio`)
 iDigBio facilitates the digitization of biological and paleobiological specimens and their associated data, and houses specimen data, as well as providing their specimen data via RESTful web services.
 
-8. [OBIS][obis]
+7. [OBIS][obis]
 OBIS (Ocean Biogeographic Information System) allows users to search marine species datasets from all of the world's oceans.
 
-9. [Atlas of Living Australia][ala]
+8. [Atlas of Living Australia][ala]
 ALA (Atlas of Living Australia) contains information on all the known species in Australia aggregated from a wide range of data providers: museums, herbaria, community groups, government departments, individuals and universities; it contains more than 50 million occurrence records.
 
 The inspiration for this comes from users requesting a more seamless experience across data sources, and from our work on a similar package for taxonomy data ([taxize][taxize]).
@@ -100,7 +97,6 @@ All mapping functionality is now in a separate package [mapr](https://github.com
 [bison]: https://bison.usgs.gov/
 [inat]: https://www.inaturalist.org/
 [taxize]: https://github.com/ropensci/taxize
-[ecoengine]: https://ecoengine.berkeley.edu/
 [idigbio]: https://www.idigbio.org/
 [obis]: https://obis.org/
 [ebird]: https://ebird.org/home

@@ -28,7 +28,7 @@ test_that("print.occdatind", {
 test_that("summary.occdat", {
   expect_output(print(summary(res)), "<source> gbif")
   expect_output(print(summary(res)), "<time>")
-  expect_output(print(summary(res)), "<found> 1092647")
+  expect_output(print(summary(res)), "<found>")
   expect_output(print(summary(res)), "<returned> 3")
   expect_output(print(summary(res)), "<query options>")
   expect_output(print(summary(res)), "<source> inat")
@@ -42,7 +42,7 @@ test_that("summary.occdat", {
 test_that("summary.occdatind", {
   expect_output(print(summary(res$gbif)), "<source> gbif")
   expect_output(print(summary(res$gbif)), "<time>")
-  expect_output(print(summary(res$gbif)), "<found> 1092647")
+  expect_output(print(summary(res$gbif)), "<found>")
   expect_output(print(summary(res$gbif)), "<returned> 3")
   expect_output(print(summary(res$gbif)), "<query options>")
   expect_output(print(summary(res$gbif)), "skip_validate: TRUE")

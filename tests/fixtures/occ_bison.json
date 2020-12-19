@@ -1,0 +1,42 @@
+{
+  "http_interactions": [
+    {
+      "request": {
+        "method": "get",
+        "uri": "https://bison.usgs.gov/solr/occurrences/select/?q=ITISscientificName%3A%22Bison%20bison%22&wt=json&rows=3",
+        "body": {
+          "encoding": "",
+          "string": ""
+        },
+        "headers": {
+          "User-Agent": "libcurl/7.74.0 r-curl/4.3 crul/1.0.0",
+          "Accept-Encoding": "gzip, deflate",
+          "Accept": "application/json, text/xml, application/xml, */*"
+        }
+      },
+      "response": {
+        "status": {
+          "status_code": "200",
+          "message": "OK",
+          "explanation": "Request fulfilled, document follows"
+        },
+        "headers": {
+          "content-type": "text/plain;charset=utf-8",
+          "date": "Sat, 19 Dec 2020 00:04:47 GMT",
+          "status": "HTTP/1.1 200 OK",
+          "strict-transport-security": ["max-age=63072000; includeSubDomains; preload", "max-age=63072000; includeSubDomains; preload", "max-age=31536000"],
+          "transfer-encoding": "chunked",
+          "x-content-type-options": "nosniff",
+          "x-frame-options": ["SAMEORIGIN", "SAMEORIGIN"]
+        },
+        "body": {
+          "encoding": "UTF-8",
+          "file": false,
+          "string": "{\"responseHeader\":{\"status\":0,\"QTime\":0,\"params\":{\"q\":\"ITISscientificName:\\\"Bison bison\\\"\",\"rows\":\"3\",\"wt\":\"json\"}},\"response\":{\"numFound\":8785,\"start\":0,\"docs\":[{\"establishmentMeans\":[\"AK\"],\"providedScientificName\":\"Bos bison\",\"countryCode\":\"US\",\"ambiguous\":false,\"generalComments\":\"Missouri National Recreation River; NPSpecies Park Species Lists as of January 2015\",\"verbatimLocality\":\"MNRR\",\"latlon\":\"-97.265958,42.856741\",\"computedCountyFips\":\"46135\",\"occurrenceID\":\"2067108857\",\"decimalLongitude\":-97.26596,\"basisOfRecord\":\"observation\",\"providedCommonName\":\"\\\"American bison, bison\\\"\",\"collectionID\":\"https://bison.usgs.gov/ipt/resource?r=nps-npspecies-park_species_lists\",\"ownerInstitutionCollectionCode\":\"NPS - Inventory and Monitoring Program - NPSpecies Park Species Lists\",\"scientificName\":\"Bos bison\",\"institutionID\":\"https://bison.usgs.gov\",\"relatedResourceID\":\"https://irma.nps.gov/NPSpecies/Species/Profile/215738\",\"computedStateFips\":\"46\",\"license\":\"http://creativecommons.org/publicdomain/zero/1.0/legalcode\",\"TSNs\":[\"180706\"],\"providedTSN\":\"ITIS TSN: 203618\",\"providerID\":440,\"decimalLatitude\":42.856743,\"geo\":\"-97.265958 42.856741\",\"provider\":\"BISON\",\"calculatedCounty\":\"Yankton\",\"catalogNumber\":\"215738\",\"ITISscientificName\":\"Bison bison\",\"pointPath\":\"/-97.265958,42.856741/observation/centroid\",\"kingdom\":\"Animalia\",\"calculatedState\":\"South Dakota\",\"hierarchy_homonym_string\":\"-202423-914154-914156-158852-331030-914179-914181-179913-179916-179925-180692-180704-552332-180705-180706-\",\"centroid\":\"protected area\",\"ITIScommonName\":\"American bison;bison;Bisonte americano\",\"resourceID\":\"440,100036\",\"ITIStsn\":\"203618\",\"associatedReferences\":\"https://irma.nps.gov/NPSpecies/Search/ | NPSpecies - The National Park Service Biodiversity Database. IRMA Portal version. Certified species lists. Accessed 2015-01-14) | https://irma.nps.gov/content/help/NPSpecies/docs/NPSpeciesUserManual.pdf | National Park Service. 2011. NPSpecies User Manual. Accessed 2015-01-14)\",\"_version_\":1637973702041665541},{\"establishmentMeans\":[\"AK\"],\"eventDate\":\"2017-07-19\",\"providedScientificName\":\"Bison bison (Linnaeus, 1758)\",\"year\":2017,\"countryCode\":\"US\",\"ambiguous\":false,\"latlon\":\"-110.580524,44.654698\",\"computedCountyFips\":\"56029\",\"occurrenceID\":\"1584423649\",\"decimalLongitude\":-110.58052,\"basisOfRecord\":\"observation\",\"collectionID\":\"http://www.inaturalist.org/observations\",\"ownerInstitutionCollectionCode\":\"iNaturalist Research-grade Observations\",\"scientificName\":\"Bison bison\",\"institutionID\":\"http://www.inaturalist.org\",\"computedStateFips\":\"56\",\"license\":\"CC_BY_NC_4_0\",\"TSNs\":[\"180706\"],\"providerID\":407,\"decimalLatitude\":44.654697,\"recordedBy\":\"Gabriella Byers\",\"geo\":\"-110.580524 44.654698\",\"provider\":\"iNaturalist.org\",\"calculatedCounty\":\"Park\",\"catalogNumber\":\"7198138\",\"ITISscientificName\":\"Bison bison\",\"pointPath\":\"/-110.580524,44.654698/observation\",\"kingdom\":\"Animalia\",\"calculatedState\":\"Wyoming\",\"hierarchy_homonym_string\":\"-202423-914154-914156-158852-331030-914179-914181-179913-179916-179925-180692-180704-552332-180705-180706-\",\"ITIScommonName\":\"American bison;bison;Bisonte americano\",\"resourceID\":\"407,202485\",\"ITIStsn\":\"180706\",\"_version_\":1637990064902373382},{\"eventDate\":\"1914-01-01\",\"providedScientificName\":\"Bison sylvestris Hay, 1915\",\"year\":1914,\"countryCode\":\"US\",\"providedCounty\":\"Huron County\",\"ambiguous\":false,\"occurrenceID\":\"1316642221\",\"basisOfRecord\":\"fossil\",\"collectionID\":\"http://collections.nmnh.si.edu/search/paleo/\",\"ownerInstitutionCollectionCode\":\"NMNH Paleobiology Specimen Records\",\"scientificName\":\"Bison sylvestris\",\"institutionID\":\"http://www.nmnh.si.edu/\",\"computedStateFips\":\"39\",\"license\":\"CC0_1_0\",\"TSNs\":[\"180706\"],\"providerID\":220,\"stateProvince\":\"Ohio\",\"recordedBy\":\"C. Gallup\",\"provider\":\"National Museum of Natural History, Smithsonian Institution\",\"calculatedCounty\":\"\",\"catalogNumber\":\"V11410\",\"ITISscientificName\":\"Bison bison\",\"pointPath\":\"/null,null/fossil\",\"kingdom\":\"Animalia\",\"calculatedState\":\"Ohio\",\"hierarchy_homonym_string\":\"-202423-914154-914156-158852-331030-914179-914181-179913-179916-179925-180692-180704-552332-180705-180706-\",\"ITIScommonName\":\"American bison;bison;Bisonte americano\",\"resourceID\":\"220,201797\",\"ITIStsn\":\"203620\",\"_version_\":1637976080898850822}]}}\n"
+        }
+      },
+      "recorded_at": "2020-12-19 00:04:47 GMT",
+      "recorded_with": "vcr/0.6.0, webmockr/0.7.4"
+    }
+  ]
+}

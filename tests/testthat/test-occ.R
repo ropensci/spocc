@@ -3,14 +3,26 @@ context("Occurrence data is correctly retrieved")
 test_that("occ works for each data source", {
   skip_on_cran()
   
-  vcr::use_cassette("occ", {
+  # x2 <- occ(query = "Accipiter striatus", from = "ecoengine", limit = 3)
+  vcr::use_cassette("occ_gbif", {
     x1 <- occ(query = "Accipiter striatus", from = "gbif", limit = 3)
-    x2 <- occ(query = "Accipiter striatus", from = "ecoengine", limit = 3)
+  }, serialize_with = "json")
+
+  vcr::use_cassette("occ_inat", {
     x3 <- occ(query = "Danaus plexippus", from = "inat", limit = 3)
+  }, serialize_with = "json")
+
+  vcr::use_cassette("occ_bison", {
     x4 <- occ(query = "Bison bison", from = "bison", limit = 3)
+  }, serialize_with = "json")
+
+  vcr::use_cassette("occ_obis", {
     x9 <- occ(query = "Mola mola", from = "obis", limit = 3)
+  }, serialize_with = "json")
+
+  vcr::use_cassette("occ_ala", {
     x10 <- occ(query = "Macropus", from = "ala", limit = 3)
-  }, preserve_exact_body_bytes = TRUE)
+  }, serialize_with = "json")
 
   vcr::use_cassette("occ_vertnet", {
     x8 <- suppressWarnings(occ(query = "Accipiter striatus", from = "vertnet", limit = 3))
@@ -29,12 +41,12 @@ test_that("occ works for each data source", {
   expect_is(x1$gbif$data[[1]], "data.frame")
   temp_df <- x1$gbif$data[[1]]
   expect_equal(unique(temp_df$prov), "gbif")
-  # Testing x2
-  expect_is(x2, "occdat")
-  expect_is(x2$ecoengine, "occdatind")
-  expect_is(x2$ecoengine$data[[1]], "data.frame")
-  temp_df2 <- x2$ecoengine$data[[1]]
-  expect_equal(unique(temp_df2$prov), "ecoengine")
+  # # Testing x2
+  # expect_is(x2, "occdat")
+  # expect_is(x2$ecoengine, "occdatind")
+  # expect_is(x2$ecoengine$data[[1]], "data.frame")
+  # temp_df2 <- x2$ecoengine$data[[1]]
+  # expect_equal(unique(temp_df2$prov), "ecoengine")
   # Testing x3
   expect_is(x3, "occdat")
   expect_is(x3$inat, "occdatind")

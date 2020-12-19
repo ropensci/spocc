@@ -1,0 +1,46 @@
+{
+  "http_interactions": [
+    {
+      "request": {
+        "method": "get",
+        "uri": "https://api.obis.org/v3/occurrence?scientificname=Mola%20mola&size=3",
+        "body": {
+          "encoding": "",
+          "string": ""
+        },
+        "headers": {
+          "User-Agent": "libcurl/7.74.0 r-curl/4.3 crul/1.0.0",
+          "Accept-Encoding": "gzip, deflate",
+          "Accept": "application/json, text/xml, application/xml, */*"
+        }
+      },
+      "response": {
+        "status": {
+          "status_code": "200",
+          "message": "OK",
+          "explanation": "Request fulfilled, document follows"
+        },
+        "headers": {
+          "status": "HTTP/1.1 200 OK",
+          "server": "nginx/1.14.0 (Ubuntu)",
+          "date": "Sat, 19 Dec 2020 00:04:49 GMT",
+          "content-type": "application/json; charset=utf-8",
+          "transfer-encoding": "chunked",
+          "connection": "keep-alive",
+          "x-powered-by": "Express",
+          "access-control-allow-origin": "*",
+          "etag": "W/\"1569-Iuqn1AOWMt1668+NEBSPe0C+S/8\"",
+          "vary": "Accept-Encoding",
+          "content-encoding": "gzip"
+        },
+        "body": {
+          "encoding": "UTF-8",
+          "file": false,
+          "string": "{\"total\":19897,\"results\":[{\"date_year\":2012,\"scientificNameID\":\"urn:lsid:marinespecies.org:taxname:127405\",\"scientificName\":\"Mola mola\",\"associatedReferences\":\"[{\\\"crossref\\\":{\\\"citeinfo\\\":{\\\"origin\\\":\\\"Van Canneyt, O\\\",\\\"pubdate\\\":\\\"2019\\\",\\\"title_html\\\":\\\"Observatoire Pelagis aerial surveys 2002-2018\\\",\\\"title\\\":\\\"Observatoire Pelagis  [...]\",\"dropped\":false,\"aphiaID\":127405,\"decimalLatitude\":43.39149,\"type\":\"Event\",\"taxonRemarks\":\"Taxon recorded as \\\"Mola mola\\\" by the provider\",\"phylumid\":1821,\"familyid\":125609,\"catalogNumber\":\"1404_77556\",\"occurrenceStatus\":\"present\",\"basisOfRecord\":\"HumanObservation\",\"terrestrial\":false,\"superclass\":\"Pisces\",\"modified\":\"2019-04-15 17:00:35\",\"maximumDepthInMeters\":null,\"id\":\"0000642b-51de-4042-a152-71797fe34b17\",\"order\":\"Tetraodontiformes\",\"recordNumber\":\"1404_77556\",\"georeferencedDate\":\"2012-05-25\",\"superclassid\":11676,\"verbatimEventDate\":\"2012-05-25 00:00:00\",\"dataset_id\":\"2101d4c5-c20b-49c0-a44b-3d6484c4c891\",\"decimalLongitude\":4.0639,\"collectionCode\":\"1404\",\"date_end\":1337904000000,\"speciesid\":127405,\"occurrenceID\":\"1404_77556\",\"license\":\"http://creativecommons.org/licenses/by-nc/4.0/\",\"date_start\":1337904000000,\"genus\":\"Mola\",\"dateIdentified\":\"2012-05-25\",\"ownerInstitutionCode\":\"PELAGIS\",\"bibliographicCitation\":\"[{\\\"crossref\\\":{\\\"citeinfo\\\":{\\\"origin\\\":\\\"Van Canneyt, O\\\",\\\"pubdate\\\":\\\"2019\\\",\\\"title_html\\\":\\\"Observatoire Pelagis aerial surveys 2002-2018\\\",\\\"title\\\":\\\"Observatoire Pelagis  [...]\",\"eventDate\":\"2012-05-25\",\"brackish\":false,\"scientificNameAuthorship\":\"(Linnaeus, 1758)\",\"absence\":false,\"taxonRank\":\"Species\",\"genusid\":126233,\"originalScientificName\":\"Mola mola\",\"marine\":true,\"minimumDepthInMeters\":null,\"subphylumid\":146419,\"vernacularName\":\"ocean sunfish\",\"institutionCode\":\"PELAGIS\",\"date_mid\":1337904000000,\"identificationRemarks\":\"Identification Type:Visual sighting\",\"class\":\"Actinopterygii\",\"nomenclaturalCode\":\"WoRMS LSID\",\"orderid\":10332,\"footprintWKT\":\"POINT(4.0639 43.39149)\",\"datasetName\":\"Observatoire Pelagis aerial surveys 2002-2018\",\"geodeticDatum\":\"EPSG:4326 WGS84\",\"taxonomicStatus\":\"valid\",\"kingdom\":\"Animalia\",\"waterBody\":\"Global\",\"specificEpithet\":\"mola\",\"classid\":10194,\"phylum\":\"Chordata\",\"species\":\"Mola mola\",\"coordinatePrecision\":\"9.99999999999999955e-07\",\"subphylum\":\"Vertebrata\",\"datasetID\":\"1404\",\"occurrenceRemarks\":\"Visual; plane\",\"family\":\"Molidae\",\"category\":\"VU\",\"kingdomid\":2,\"node_id\":[\"573654c1-4ce7-4ea2-b2f1-e4d42f8f9c31\"],\"flags\":[\"no_depth\"],\"sss\":36.73,\"shoredistance\":11731,\"sst\":16.82,\"bathymetry\":45.4},{\"country\":\"FR\",\"date_year\":2012,\"scientificNameID\":\"urn:lsid:marinespecies.org:taxname:127405\",\"year\":\"2012\",\"scientificName\":\"Mola mola\",\"dropped\":false,\"aphiaID\":127405,\"decimalLatitude\":42.58457,\"phylumid\":1821,\"familyid\":125609,\"catalogNumber\":\"I1422729201\",\"occurrenceStatus\":\"present\",\"basisOfRecord\":\"HumanObservation\",\"terrestrial\":false,\"superclass\":\"Pisces\",\"modified\":\"2014-04-30 15:51:43\",\"maximumDepthInMeters\":null,\"id\":\"00049dbe-c4fc-4f51-bc1b-97beb594d4b3\",\"day\":\"24\",\"order\":\"Tetraodontiformes\",\"superclassid\":11676,\"dataset_id\":\"9a81d405-545b-4a1b-bdaa-aff5350a0c39\",\"decimalLongitude\":3.18248,\"collectionCode\":\"I142\",\"date_end\":1337817600000,\"speciesid\":127405,\"occurrenceID\":\"urn:catalog:MNHN-SPN:I142:I1422729201\",\"date_start\":1337817600000,\"month\":\"5\",\"genus\":\"Mola\",\"eventDate\":\"2012-05-24/2012-05-24\",\"brackish\":false,\"coordinateUncertaintyInMeters\":\"10000.0\",\"absence\":false,\"genusid\":126233,\"originalScientificName\":\"Mola mola (Linnaeus, 1758)\",\"marine\":true,\"minimumDepthInMeters\":null,\"subphylumid\":146419,\"institutionCode\":\"MNHN-SPN\",\"date_mid\":1337817600000,\"class\":\"Actinopterygii\",\"orderid\":10332,\"geodeticDatum\":\"EPSG:4326\",\"kingdom\":\"Animalia\",\"classid\":10194,\"phylum\":\"Chordata\",\"species\":\"Mola mola\",\"subphylum\":\"Vertebrata\",\"datasetID\":\"IMIS:dasid:4554\",\"family\":\"Molidae\",\"category\":\"VU\",\"kingdomid\":2,\"node_id\":[\"4bf79a01-65a9-4db6-b37b-18434f26ddfc\"],\"flags\":[\"no_depth\"],\"sss\":37.59,\"shoredistance\":8361,\"sst\":16.8,\"bathymetry\":68.6},{\"country\":\"FR\",\"date_year\":2012,\"scientificNameID\":\"urn:lsid:marinespecies.org:taxname:127405\",\"year\":\"2012\",\"scientificName\":\"Mola mola\",\"dropped\":false,\"aphiaID\":127405,\"decimalLatitude\":42.98894,\"phylumid\":1821,\"familyid\":125609,\"catalogNumber\":\"I1423531901\",\"occurrenceStatus\":\"present\",\"basisOfRecord\":\"HumanObservation\",\"terrestrial\":false,\"superclass\":\"Pisces\",\"modified\":\"2014-04-30 15:51:43\",\"maximumDepthInMeters\":null,\"id\":\"0007bd3d-3b3d-41ef-ac70-f4c8d26ad804\",\"day\":\"27\",\"order\":\"Tetraodontiformes\",\"superclassid\":11676,\"dataset_id\":\"9a81d405-545b-4a1b-bdaa-aff5350a0c39\",\"decimalLongitude\":6.12469,\"collectionCode\":\"I142\",\"date_end\":1340755200000,\"speciesid\":127405,\"occurrenceID\":\"urn:catalog:MNHN-SPN:I142:I1423531901\",\"date_start\":1340755200000,\"month\":\"6\",\"genus\":\"Mola\",\"eventDate\":\"2012-06-27/2012-06-27\",\"brackish\":false,\"coordinateUncertaintyInMeters\":\"10000.0\",\"absence\":false,\"genusid\":126233,\"originalScientificName\":\"Mola mola (Linnaeus, 1758)\",\"marine\":true,\"minimumDepthInMeters\":null,\"subphylumid\":146419,\"institutionCode\":\"MNHN-SPN\",\"date_mid\":1340755200000,\"class\":\"Actinopterygii\",\"orderid\":10332,\"geodeticDatum\":\"EPSG:4326\",\"kingdom\":\"Animalia\",\"classid\":10194,\"phylum\":\"Chordata\",\"species\":\"Mola mola\",\"subphylum\":\"Vertebrata\",\"datasetID\":\"IMIS:dasid:4554\",\"family\":\"Molidae\",\"category\":\"VU\",\"kingdomid\":2,\"node_id\":[\"4bf79a01-65a9-4db6-b37b-18434f26ddfc\"],\"flags\":[\"no_depth\"],\"sss\":38.1,\"shoredistance\":3185,\"sst\":17.99,\"bathymetry\":103}]}"
+        }
+      },
+      "recorded_at": "2020-12-19 00:04:49 GMT",
+      "recorded_with": "vcr/0.6.0, webmockr/0.7.4"
+    }
+  ]
+}

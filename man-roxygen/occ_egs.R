@@ -2,8 +2,6 @@
 #' # Single data sources
 #' (res <- occ(query = 'Accipiter striatus', from = 'gbif', limit = 5))
 #' res$gbif
-#' (res <- occ(query = 'Accipiter', from = 'ecoengine', limit = 50))
-#' res$ecoengine
 #' (res <- occ(query = 'Accipiter striatus', from = 'ebird', limit = 50))
 #' res$ebird
 #' (res <- occ(query = 'Danaus plexippus', from = 'inat', limit = 50,
@@ -39,8 +37,6 @@
 #' occ(date = c('2018-01-01T00:00:00Z', '2018-03-28T00:00:00Z'), from = 'ala', limit = 5)
 #' ## gbif
 #' occ(query = 'Accipiter striatus', date = c('2010-08-01', '2010-08-31'), from = 'gbif', limit=5)
-#' # ecoengine
-#' occ(date = c('2010-01-01', '2010-12-31'), from = 'ecoengine', limit=5)
 #' ## vertnet
 #' occ(query = 'Mustela nigripes', date = c('1990-01-01', '2015-12-31'), from = 'vertnet', limit=5)
 #' ## idigbio
@@ -73,14 +69,6 @@
 #'     "26f7cbde-fbcb-4500-80a9-a99daa0ead9d")
 #' occ(idigbioopts = list(rq = list(recordset = sets)), from = "idigbio", limit = 10)
 #'
-#' # You can pass on limit param to all sources even though its a different param in that source
-#' ## ecoengine example
-#' res <- occ(query = 'Accipiter striatus', from = 'ecoengine', ecoengineopts=list(limit = 5))
-#' res$ecoengine
-#' ## This is particularly useful when you want to set different limit for each source
-#' (res <- occ(query = 'Accipiter striatus', from = c('gbif','ecoengine'),
-#'    gbifopts=list(limit = 10), ecoengineopts=list(limit = 5)))
-#'
 #' # Many data sources
 #' (out <- occ(query = 'Pinus contorta', from=c('gbif','bison','vertnet'), limit=10))
 #'
@@ -112,12 +100,6 @@
 #' ## [min-longitude, min-latitude, max-longitude, max-latitude].
 #' occ(query='Accipiter striatus', from='gbif', geometry=c(-125.0,38.4,-121.8,40.9))
 #'
-#' ## Bounding box constraint with ecoengine
-#' ## Use this website: https://boundingbox.klokantech.com/ to quickly grab a bbox.
-#' ## Just set the format on the bottom left to CSV.
-#' occ(query='Accipiter striatus', from='ecoengine', limit=10,
-#'    geometry=c(-125.0,38.4,-121.8,40.9))
-#'
 #' ## lots of results, can see how many by indexing to meta
 #' res <- occ(query='Accipiter striatus', from='gbif',
 #'    geometry='POLYGON((-69.9 49.2,-69.9 29.0,-123.3 29.0,-123.3 49.2,-69.9 49.2))')
@@ -131,7 +113,7 @@
 #' occ(query = 'Danaus plexippus', from="inat", geometry=bounds)
 #'
 #' ## Passing geometry with multiple sources
-#' occ(query = 'Danaus plexippus', from=c("inat","gbif","ecoengine"), geometry=bounds)
+#' occ(query = 'Danaus plexippus', from=c("inat","gbif"), geometry=bounds)
 #'
 #' ## Using geometry only for the query
 #' ### A single bounding box
@@ -167,8 +149,6 @@
 #' occ(limit = 20, from = "gbif", gbifopts = list(datasetKey = dsets))
 #' ## class name to idigbio
 #' occ(limit = 20, from = "idigbio", idigbioopts = list(rq = list(class = 'arachnida')))
-#' ## limit to ecoengine
-#' occ(from = "ecoengine", ecoengineopts = list(limit = 3))
 #'
 #' # taxize integration
 #' ## You can pass in taxonomic identifiers
@@ -230,8 +210,6 @@
 #' occ(query = 'Accipiter striatus', from = 'gbif', limit=10, 
 #'  callopts=list(verbose = TRUE))
 #' occ(query = 'Accipiter striatus', from = 'bison', limit=10, 
-#'  callopts=list(verbose = TRUE))
-#' occ(query = 'Accipiter striatus', from = 'ecoengine', limit=10, 
 #'  callopts=list(verbose = TRUE))
 #' occ(query = 'Accipiter striatus', from = 'inat', 
 #'  callopts=list(verbose = TRUE))

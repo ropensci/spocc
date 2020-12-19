@@ -26,7 +26,6 @@
 #' BISON \tab https://bison.usgs.gov/ \cr
 #' eBird \tab <http://ebird.org/content/ebird/> \cr
 #' iNaturalist \tab <http://www.inaturalist.org/> \cr
-#' Berkeley ecoengine \tab <https://ecoengine.berkeley.edu/> \cr
 #' VertNet \tab <http://vertnet.org/> \cr
 #' iDigBio \tab <https://www.idigbio.org/> \cr
 #' OBIS \tab <http://www.iobis.org/> \cr
@@ -66,6 +65,6 @@
 #' @name spocc-package
 #' @aliases spocc
 #' @docType package
-#' @author Scott Chamberlain \email{myrmecocystus@@gmail.com}
+#' @author Scott Chamberlain
 #' @keywords package
 NULL

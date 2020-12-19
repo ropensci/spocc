@@ -36,7 +36,6 @@ GBIF \tab \url{http://www.gbif.org/} \cr
 BISON \tab https://bison.usgs.gov/ \cr
 eBird \tab \url{http://ebird.org/content/ebird/} \cr
 iNaturalist \tab \url{http://www.inaturalist.org/} \cr
-Berkeley ecoengine \tab \url{https://ecoengine.berkeley.edu/} \cr
 VertNet \tab \url{http://vertnet.org/} \cr
 iDigBio \tab \url{https://www.idigbio.org/} \cr
 OBIS \tab \url{http://www.iobis.org/} \cr
@@ -68,6 +67,6 @@ On CRAN: \url{https://cran.r-project.org/package=mapr}
 }
 
 \author{
-Scott Chamberlain \email{myrmecocystus@gmail.com}
+Scott Chamberlain
 }
 \keyword{package}

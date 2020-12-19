@@ -99,64 +99,6 @@ foo_gbif <- function(sources, query, limit, start, geometry, has_coords,
 }
 
 #' @noRd
-foo_ecoengine <- function(sources, query, limit, page, geometry, has_coords,
-                          date, callopts, opts) {
-  if (any(grepl("ecoengine", sources))) {
-    opts <- limit_alias(opts, "ecoengine")
-    time <- now()
-    opts$georeferenced <- has_coords
-    opts$scientific_name <- query
-    #opts$georeferenced <- TRUE
-    if (!'page_size' %in% names(opts)) opts$page_size <- limit
-    if (!'page' %in% names(opts)) opts$page <- page
-    if (!is.null(geometry)) {
-      opts$bbox <- if (grepl('POLYGON', paste(as.character(geometry),
-                                              collapse = " "))) {
-        paste0(wkt2bbox(geometry), collapse = ",")
-      } else {
-        paste0(geometry, collapse = ",")
-      }
-    }
-    if (!is.null(date)) {
-      if (length(date) != 2) stop("'date' for Ecoengine must be length 2")
-      opts$min_date <- date[1]
-      opts$max_date <- date[2]
-    }
-    # This could hang things if request is super large.  Will deal with this issue
-    # when it arises in a usecase
-    # For now default behavior is to retrive one page.
-    # page = "all" will retrieve all pages.
-    if (is.null(opts$page)) {
-      opts$page <- 1
-    }
-    opts$quiet <- TRUE
-    opts$progress <- FALSE
-    opts$foptions <- callopts
-    out_ee <- tryCatch(do.call(ee_observations2, opts), error = function(e) e)
-    if (out_ee$results == 0 %||% TRUE || inherits(out_ee, "error")) {
-      throw_error("ecoengine", sprintf("No records returned in Ecoengine for %s",
-        if (is.null(query)) paste0(substr(geometry, 1, 20), ' ...') else query
-      ))
-      throw_error("ecoengine", out_ee$message)
-      emptylist(opts, out_ee$message)
-    } else {
-      out <- out_ee$data
-      fac_tors <- sapply(out, is.factor)
-      out[fac_tors] <- lapply(out[fac_tors], as.character)
-      names(out)[names(out) == 'record'] <- "key"
-      out$prov <- rep("ecoengine", nrow(out))
-      names(out)[names(out) == 'scientific_name'] <- "name"
-      out <- add_latlong_if_missing(out)
-      out <- stand_dates(out, "ecoengine")
-      list(time = time, found = out_ee$results, data = as_tibble(out),
-           opts = opts)
-    }
-  } else {
-    emptylist(opts)
-  }
-}
-
-#' @noRd
 foo_bison <- function(sources, query, limit, start, geometry, date, 
   callopts, opts) {
 

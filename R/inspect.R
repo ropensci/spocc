@@ -10,13 +10,13 @@
 #' @param x The output from [occ()] call, output from call to
 #' [occ2df()], or an occurrence ID as a occkey class.
 #' @param from (character) The data provider. One of gbif, bison, inat,
-#' ecoengine, or vertnet
+#' or vertnet
 #' @return A list, with each slot named for the data source, and then
 #' within data sources is a slot for each taxon, named by it's occurrence ID.
 #'
 #' @examples \dontrun{
 #' spnames <- c('Accipiter striatus', 'Spinus tristis')
-#' out <- occ(query=spnames, from=c('gbif','bison','ecoengine'),
+#' out <- occ(query=spnames, from=c('gbif','bison'),
 #'    gbifopts=list(hasCoordinate=TRUE), limit=2)
 #' res <- occ2df(out)
 #' inspect(res)
@@ -56,7 +56,6 @@ inspect.occkey <- function(x, from="gbif"){
   switch(class(x)[1],
          gbifkey = as.gbif(x),
          bisonkey = as.bison(x),
-         ecoenginekey = as.ecoengine(x),
          idigbiokey = as.idigbio(x))
 }
 
@@ -68,7 +67,6 @@ make_df <- function(x){
       switch(names(obj)[i],
              gbif = as.gbif(obj[[i]]),
              bison = as.bison(obj[[i]]),
-             ecoengine = as.ecoengine(obj[[i]]),
              idigbio = as.idigbio(obj[[i]])
       )
   }

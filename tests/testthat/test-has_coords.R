@@ -22,12 +22,8 @@ test_that("has_coords works with all data sources as planned", {
   skip_on_travis()
 
   vcr::use_cassette("has_coords_other_data_sources", {
-    bb <- occ('Accipiter striatus', from = 'ecoengine', limit = 5,
-      has_coords = TRUE)
     dd <- occ('Accipiter striatus', from = 'inat', limit = 5,
       has_coords = TRUE)
-    # ff <- occ('Accipiter striatus', from = 'vertnet', limit = 5,
-    #   has_coords = TRUE)
     gg <- occ('Accipiter striatus', from = 'ebird', limit = 5,
       has_coords = TRUE)
     hh <- occ('Accipiter striatus', from = 'bison', limit = 5,
@@ -35,25 +31,15 @@ test_that("has_coords works with all data sources as planned", {
   }, preserve_exact_body_bytes = TRUE)
 
 
-  expect_is(bb, "occdat")
   expect_is(dd, "occdat")
   # expect_is(ff, "occdat")
   expect_is(gg, "occdat")
   expect_is(hh, "occdat")
 
-  expect_false(anyNA(bb$ecoengine$data[[1]]$longitude))
-  expect_false(anyNA(bb$ecoengine$data[[1]]$latitude))
-
   expect_false(anyNA(dd$inat$data[[1]]$longitude))
   expect_false(anyNA(dd$inat$data[[1]]$latitude))
 
-
-  # expect_false(anyNA(ff$vertnet$data[[1]]$longitude))
-  # expect_false(anyNA(ff$vertnet$data[[1]]$latitude))
-
-  expect_true(bb$ecoengine$meta$opts$georeferenced)
   expect_true(dd$inat$meta$opts$geo)
-  # expect_true(ff$vertnet$meta$opts$mappable)
   
   ee <- occ('Accipiter striatus', from = 'idigbio', limit = 5, has_coords = TRUE)
   expect_is(ee, "occdat")

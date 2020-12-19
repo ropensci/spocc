@@ -9,13 +9,10 @@ test_that("geometry searches work", {
   
     geo2 <- occ(query="Accipiter striatus", from="gbif", 
       geometry=c(-125.0,38.4,-121.8,40.9), limit = 3)
-    geo3 <- occ(query="Accipiter striatus", from="ecoengine", limit=10, 
-      geometry=c(-125.0,38.4,-121.8,40.9))
   }, preserve_exact_body_bytes = TRUE)
   
   expect_is(geo1, "occdat")
   expect_is(geo2, "occdat")
-  expect_is(geo3, "occdat")
   expect_match(names(geo2$gbif$data), "Accipiter_striatus")
 })
 
@@ -107,25 +104,4 @@ test_that("occ works for geometry (many) - query (many)", {
   expect_equal(length(aa$gbif$meta$opts$scientificName), 2)
   # should be only of length 2, one for each queried term
   expect_equal(length(aa$gbif$data), 2)
-})
-
-## there was at one point a problem with ecoengine queries, testing for that
-test_that("occ works for geometry for ecoengine", {
-  x <- "POLYGON((-113.527516 20.929036 ,-113.357516 20.929036 ,-113.357516 21.099036 ,-113.527516 21.099036 ,-113.527516 20.929036))"
-  y <- "POLYGON((-110.527516 20.929036, -120.357516 20.929036, -120.357516 31.099036, -110.527516 31.099036, -110.527516 20.929036))"
-  
-  vcr::use_cassette("occ_geometry_ecoengine", {
-    # FIXME: not sure what's going on with this test
-    # aa <- suppressWarnings(occ(geometry = x, from = "ecoengine", limit = 2))
-    bb <- occ(geometry = y, from = "ecoengine", limit = 2)
-  })
-
-  # expect_is(aa, "occdat")
-  # expect_equal(NROW(aa$ecoengine$data[[1]]), 0)
-  
-  expect_is(bb, "occdat")
-  expect_is(bb$gbif, "occdatind")
-  expect_gt(NROW(bb$ecoengine$data[[1]]), 0)
-  expect_equal(bb$ecoengine$meta$opts$bbox, 
-    "-120.357516,20.929036,-110.527516,31.099036")
 })

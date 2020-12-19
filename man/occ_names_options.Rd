@@ -28,9 +28,6 @@ in \code{\link[=occ]{occ()}}.
 Note that the from parameter is lowercased within the function and is
 called through \code{match.arg} first, so you can match on unique partial
 strings too (e.g., 'rb' for 'rbison').
-
-For \code{ecoengine}, we use internal helper functions and don't import
-the package, but see \code{?ecoengine::ee_search} for help on parameters.
 }
 \examples{
 \dontrun{

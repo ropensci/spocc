@@ -19,7 +19,6 @@ occ(
   bisonopts = list(),
   inatopts = list(),
   ebirdopts = list(),
-  ecoengineopts = list(),
   vertnetopts = list(),
   idigbioopts = list(),
   obisopts = list(),
@@ -33,11 +32,11 @@ in each data source we query. Note: ebird now expects species codes instead of
 scientific names - we pass you name through \code{\link[rebird:species_code]{rebird::species_code()}} internally}
 
 \item{from}{(character) Data source to get data from, any combination of gbif, bison,
-inat, ebird, ecoengine and/or vertnet}
+inat, ebird, and/or vertnet}
 
 \item{limit}{(numeric) Number of records to return. This is passed across all sources.
 To specify different limits for each source, use the options for each source (gbifopts,
-bisonopts, inatopts, ebirdopts, and ecoengineopts). See Details for more.
+bisonopts, inatopts, and ebirdopts). See Details for more.
 Default: 500 for each source. BEWARE: if you have a lot of species to query for (e.g.,
 n = 10), that's 10 * 500 = 5000, which can take a while to collect. So, when you first query,
 set the limit to something smallish so that you can get a result quickly, then do more as
@@ -57,7 +56,7 @@ is not possible with vertnet right now, but should be soon. See Details for more
 on geometry inputs.}
 
 \item{has_coords}{(logical) Only return occurrences that have lat/long data. This works
-for gbif, ecoengine, rinat, idigbio, and vertnet, but is ignored for ebird and
+for gbif, rinat, idigbio, and vertnet, but is ignored for ebird and
 bison data sources. You can easily though remove records without lat/long data.}
 
 \item{ids}{Taxonomic identifiers. This can be a list of length 1 to many. See examples for
@@ -83,9 +82,6 @@ See also \code{\link[=occ_options]{occ_options()}}}
 
 \item{ebirdopts}{(list) List of named options to pass on to
 \code{\link[rebird:ebirdregion]{rebird::ebirdregion()}} or \code{\link[rebird:ebirdgeo]{rebird::ebirdgeo()}}. See also \code{\link[=occ_options]{occ_options()}}}
-
-\item{ecoengineopts}{(list) List of named options to pass on to
-\code{ee_observations}. See also \code{\link[=occ_options]{occ_options()}}.}
 
 \item{vertnetopts}{(list) List of named options to pass on to
 \code{\link[rvertnet:searchbyterm]{rvertnet::searchbyterm()}}. See also \code{\link[=occ_options]{occ_options()}}.}
@@ -118,7 +114,6 @@ data sources:
 \item bison
 \item inat
 \item ebird
-\item ecoengine
 \item vertnet
 \item idigbio
 \item obis
@@ -151,7 +146,7 @@ or many data sources.
 }
 \details{
 The \code{occ} function is an opinionated wrapper
-around the rgbif, rbison, rinat, rebird, ecoengine, rvertnet and
+around the rgbif, rbison, rinat, rebird, rvertnet and
 ridigbio packages (as well as internal custom wrappers around some data
 sources) to allow data access from a single access point. We take
 care of making sure you get useful objects out at the cost of
@@ -183,8 +178,6 @@ parameter: same as the \code{occ} parameter
 \code{\link[rebird:ebirdgeo]{rebird::ebirdgeo()}} functions, depending on whether you set
 \code{method="ebirdregion"} or \code{method="ebirdgeo"} - API parameters: \code{sci} for both
 \code{\link[rebird:ebirdregion]{rebird::ebirdregion()}} and \code{\link[rebird:ebirdgeo]{rebird::ebirdgeo()}}
-\item ecoengine - \code{scientific_name} in the \code{ee_observations}
-function - API parameter: same as \code{occ} parameter
 \item rbison - \code{species} or \code{scientificName} in the \code{\link[rbison:bison]{rbison::bison()}} or
 \code{\link[rbison:bison_solr]{rbison::bison_solr()}} functions, respectively. If you don't pass anything to
 \code{geometry} parameter we use \code{bison_solr}, and if you do we use \code{bison} - API
@@ -212,13 +205,6 @@ the specific fields you want.
 
 Maximum of 100,000 results are allowed to be returned. See
 \url{https://github.com/iDigBio/ridigbio/issues/33}
-}
-
-\section{Ecoengine notes}{
-
-When searching ecoengine, you can leave the page argument blank to get a single page.
-Otherwise use page ranges or simply "all" to request all available pages.
-Note however that this may hang your call if the request is simply too large.
 }
 
 \section{BISON notes}{
@@ -330,7 +316,6 @@ back a single group of data for each name.
 
 \strong{bbox only}
 \itemize{
-\item ecoengine
 \item inat
 \item idigbio
 }
@@ -372,7 +357,6 @@ the details on which data sources will respond to \code{start} and which
 to the \code{page} parameter:
 \itemize{
 \item gbif - Responds to \code{start}. Default: 0
-\item ecoengine - Responds to \code{page}. Default: 1
 \item bison - Responds to \code{start}. Default: 0
 \item inat - Responds to \code{page}. Default: 1
 \item ebird - No paging, both \code{start} and \code{page} ignored.
@@ -412,8 +396,6 @@ ends up with GBIF. See \code{\link[=spocc_duplicates]{spocc_duplicates()}} for m
 # Single data sources
 (res <- occ(query = 'Accipiter striatus', from = 'gbif', limit = 5))
 res$gbif
-(res <- occ(query = 'Accipiter', from = 'ecoengine', limit = 50))
-res$ecoengine
 (res <- occ(query = 'Accipiter striatus', from = 'ebird', limit = 50))
 res$ebird
 (res <- occ(query = 'Danaus plexippus', from = 'inat', limit = 50,
@@ -449,8 +431,6 @@ occ(query = 'Acer', date = c('2010-08-08', '2010-08-21'), from = 'bison', limit=
 occ(date = c('2018-01-01T00:00:00Z', '2018-03-28T00:00:00Z'), from = 'ala', limit = 5)
 ## gbif
 occ(query = 'Accipiter striatus', date = c('2010-08-01', '2010-08-31'), from = 'gbif', limit=5)
-# ecoengine
-occ(date = c('2010-01-01', '2010-12-31'), from = 'ecoengine', limit=5)
 ## vertnet
 occ(query = 'Mustela nigripes', date = c('1990-01-01', '2015-12-31'), from = 'vertnet', limit=5)
 ## idigbio
@@ -483,14 +463,6 @@ sets <- c("1ffce054-8e3e-4209-9ff4-c26fa6c24c2f",
     "26f7cbde-fbcb-4500-80a9-a99daa0ead9d")
 occ(idigbioopts = list(rq = list(recordset = sets)), from = "idigbio", limit = 10)
 
-# You can pass on limit param to all sources even though its a different param in that source
-## ecoengine example
-res <- occ(query = 'Accipiter striatus', from = 'ecoengine', ecoengineopts=list(limit = 5))
-res$ecoengine
-## This is particularly useful when you want to set different limit for each source
-(res <- occ(query = 'Accipiter striatus', from = c('gbif','ecoengine'),
-   gbifopts=list(limit = 10), ecoengineopts=list(limit = 5)))
-
 # Many data sources
 (out <- occ(query = 'Pinus contorta', from=c('gbif','bison','vertnet'), limit=10))
 
@@ -522,12 +494,6 @@ occ(query='Helianthus annuus', from='bison', limit=50,
 ## [min-longitude, min-latitude, max-longitude, max-latitude].
 occ(query='Accipiter striatus', from='gbif', geometry=c(-125.0,38.4,-121.8,40.9))
 
-## Bounding box constraint with ecoengine
-## Use this website: https://boundingbox.klokantech.com/ to quickly grab a bbox.
-## Just set the format on the bottom left to CSV.
-occ(query='Accipiter striatus', from='ecoengine', limit=10,
-   geometry=c(-125.0,38.4,-121.8,40.9))
-
 ## lots of results, can see how many by indexing to meta
 res <- occ(query='Accipiter striatus', from='gbif',
    geometry='POLYGON((-69.9 49.2,-69.9 29.0,-123.3 29.0,-123.3 49.2,-69.9 49.2))')
@@ -541,7 +507,7 @@ bounds <- c(-125.0,38.4,-121.8,40.9)
 occ(query = 'Danaus plexippus', from="inat", geometry=bounds)
 
 ## Passing geometry with multiple sources
-occ(query = 'Danaus plexippus', from=c("inat","gbif","ecoengine"), geometry=bounds)
+occ(query = 'Danaus plexippus', from=c("inat","gbif"), geometry=bounds)
 
 ## Using geometry only for the query
 ### A single bounding box
@@ -577,8 +543,6 @@ dsets <- c("14f3151a-e95d-493c-a40d-d9938ef62954", "f934f8e2-32ca-46a7-b2f8-b032
 occ(limit = 20, from = "gbif", gbifopts = list(datasetKey = dsets))
 ## class name to idigbio
 occ(limit = 20, from = "idigbio", idigbioopts = list(rq = list(class = 'arachnida')))
-## limit to ecoengine
-occ(from = "ecoengine", ecoengineopts = list(limit = 3))
 
 # taxize integration
 ## You can pass in taxonomic identifiers
@@ -640,8 +604,6 @@ out$gbif$data
 occ(query = 'Accipiter striatus', from = 'gbif', limit=10, 
  callopts=list(verbose = TRUE))
 occ(query = 'Accipiter striatus', from = 'bison', limit=10, 
- callopts=list(verbose = TRUE))
-occ(query = 'Accipiter striatus', from = 'ecoengine', limit=10, 
  callopts=list(verbose = TRUE))
 occ(query = 'Accipiter striatus', from = 'inat', 
  callopts=list(verbose = TRUE))

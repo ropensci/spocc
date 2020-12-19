@@ -11,8 +11,7 @@ occ_names(
   rank = "species",
   callopts = list(),
   gbifopts = list(),
-  bisonopts = list(),
-  ecoengineopts = list()
+  bisonopts = list()
 )
 }
 \arguments{
@@ -20,12 +19,11 @@ occ_names(
 common name. Only scientific names supported right now.}
 
 \item{from}{(character) Data source to get data from, any combination of
-gbif, bison, or ecoengine.}
+gbif or bison}
 
 \item{limit}{(numeric) Number of records to return. This is passed across
 all sources. To specify different limits for each source, use the options
-for each source (gbifopts, bisonopts, ecoengineopts). See Details for more.
-This parameter is ignored for ecoengine.}
+for each source (gbifopts, bisonopts). See Details for more.}
 
 \item{rank}{(character) Taxonomic rank to limit search space. Used in GBIF,
 but not used in BISON.}
@@ -38,9 +36,6 @@ debugging curl calls, setting timeouts, etc.}
 
 \item{bisonopts}{(list) List of named options to pass on to
 \code{\link[rbison:bison_tax]{rbison::bison_tax()}}. See also \code{\link[=occ_names_options]{occ_names_options()}}}
-
-\item{ecoengineopts}{(list) List of named options to pass on to
-\code{ee_search}. See also \code{\link[=occ_names_options]{occ_names_options()}}}
 }
 \description{
 Search for species names across many data sources.
@@ -65,10 +60,6 @@ head(res$gbif$data[[1]])
 ## bison
 (res <- occ_names(query = '*bear', from = 'bison'))
 res$bison$data
-
-## ecoengine
-(res <- occ_names(query = 'genus:Lynx', from = 'ecoengine'))
-head(res$ecoengine$data[[1]])
 }
 }
 \seealso{

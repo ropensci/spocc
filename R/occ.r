@@ -7,13 +7,12 @@
 #' @family queries
 #' @template occtemp
 #' @template occ_egs
-occ <- function(query = NULL, from = "gbif", limit = 500, start = NULL, 
+occ <- function(query = NULL, from = "gbif", limit = 500, start = NULL,
   page = NULL, geometry = NULL, has_coords = NULL, ids = NULL, date = NULL,
   callopts=list(),
   gbifopts = list(), bisonopts = list(), inatopts = list(),
-  ebirdopts = list(), ecoengineopts = list(),
-  vertnetopts = list(), idigbioopts = list(), obisopts = list(), 
-  alaopts = list(), throw_warnings = TRUE) {
+  ebirdopts = list(), vertnetopts = list(), idigbioopts = list(),
+  obisopts = list(), alaopts = list(), throw_warnings = TRUE) {
 
   assert(query, "character")
   assert(limit, c("numeric", "integer"))
@@ -23,7 +22,7 @@ occ <- function(query = NULL, from = "gbif", limit = 500, start = NULL,
   assert(date, c('character', 'Date'))
   assert(throw_warnings, "logical")
   Sys.setenv(SPOCC_THROW_ERRORS = throw_warnings)
-  
+
   # type: the type of query. by default "sci" for scientific name
   #   below 'type' can be reset to "geometry" if its a geometry
   #   based query
@@ -31,12 +30,12 @@ occ <- function(query = NULL, from = "gbif", limit = 500, start = NULL,
 
   geometry <- occ_geom(geometry)
   sources <- match.arg(from, choices = c("gbif", "bison", "inat", "ebird",
-    "ecoengine", "vertnet", "idigbio", "obis", "ala"),
+    "vertnet", "idigbio", "obis", "ala"),
     several.ok = TRUE)
 
   # collect all data sources opts into named list to index to later
   ds <- list(gbif=gbifopts, bison=bisonopts, inat=inatopts,
-    ebird=ebirdopts, ecoengine=ecoengineopts, vertnet=vertnetopts,
+    ebird=ebirdopts, vertnet=vertnetopts,
     idigbio=idigbioopts, obis=obisopts, ala=alaopts)
 
   if (is.null(ids) && !is.null(query)) {
@@ -82,7 +81,7 @@ occ <- function(query = NULL, from = "gbif", limit = 500, start = NULL,
     ids <- occ_unlistids(ids)
     # if ids is not null (taxon identifiers passed in)
     # ids can only be passed to gbif and bison for now
-    # so don't pass anything on to ecoengine, inat, or ebird
+    # so don't pass anything on to inat or ebird
     tmp <- lapply(ids, occ_loopids, y = limit, s = start, p = page,
       z = geometry, hc = has_coords, d = date, w = callopts,
       sources = sources, ds = ds)
@@ -113,17 +112,16 @@ occ <- function(query = NULL, from = "gbif", limit = 500, start = NULL,
     ids)
   ebird_sp <- occ_getsplist(tmp, "ebird", sources, type, ds$ebird, query, geometry,
     ids)
-  ecoengine_sp <- occ_getsplist(tmp, "ecoengine", sources, type, ds$ecoengine,
-    query, geometry, ids)
   vertnet_sp <- occ_getsplist(tmp, "vertnet", sources, type, ds$vertnet, query,
     geometry, ids)
   idigbio_sp <- occ_getsplist(tmp, "idigbio", sources, type, ds$idigbio, query,
     geometry, ids)
   obis_sp <- occ_getsplist(tmp, "obis", sources, type, ds$obis, query, geometry,
     ids)
-  ala_sp <- occ_getsplist(tmp, "ala", sources, type, ds$ala, query, geometry, ids)
+  ala_sp <- occ_getsplist(tmp, "ala", sources, type, ds$ala,
+    query, geometry, ids)
   p <- list(gbif = gbif_sp, bison = bison_sp, inat = inat_sp, ebird = ebird_sp,
-            ecoengine = ecoengine_sp, vertnet = vertnet_sp,
-            idigbio = idigbio_sp, obis = obis_sp, ala = ala_sp)
+            vertnet = vertnet_sp, idigbio = idigbio_sp, obis = obis_sp,
+            ala = ala_sp)
   structure(p, class = "occdat", searched = from)
 }

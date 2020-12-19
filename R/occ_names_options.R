@@ -18,9 +18,6 @@
 #' Note that the from parameter is lowercased within the function and is 
 #' called through `match.arg` first, so you can match on unique partial 
 #' strings too (e.g., 'rb' for 'rbison').
-#' 
-#' For `ecoengine`, we use internal helper functions and don't import 
-#' the package, but see `?ecoengine::ee_search` for help on parameters.
 #' @examples \dontrun{
 #' # opens up documentation for this function
 #' occ_names_options()

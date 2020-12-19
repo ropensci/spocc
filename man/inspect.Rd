@@ -20,7 +20,7 @@ inspect(x, from = "gbif")
 \code{\link[=occ2df]{occ2df()}}, or an occurrence ID as a occkey class.}
 
 \item{from}{(character) The data provider. One of gbif, bison, inat,
-ecoengine, or vertnet}
+or vertnet}
 }
 \value{
 A list, with each slot named for the data source, and then
@@ -36,7 +36,7 @@ single occurrence record.
 \examples{
 \dontrun{
 spnames <- c('Accipiter striatus', 'Spinus tristis')
-out <- occ(query=spnames, from=c('gbif','bison','ecoengine'),
+out <- occ(query=spnames, from=c('gbif','bison'),
    gbifopts=list(hasCoordinate=TRUE), limit=2)
 res <- occ2df(out)
 inspect(res)

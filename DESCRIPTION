@@ -3,12 +3,12 @@ Title: Interface to Species Occurrence Data Sources
 Description: A programmatic interface to many species occurrence data sources,
     including Global Biodiversity Information Facility ('GBIF'), 'USGSs'
     Biodiversity Information Serving Our Nation ('BISON'), 'iNaturalist',
-    Berkeley 'Ecoinformatics' Engine, 'eBird', Integrated Digitized
+    'eBird', Integrated Digitized
     'Biocollections' ('iDigBio'), 'VertNet', Ocean 'Biogeographic' Information
     System ('OBIS'), and Atlas of Living Australia ('ALA'). Includes
     functionality for retrieving species occurrence data, and combining
     those data.
-Version: 1.1.2.91
+Version: 1.1.3.91
 License: MIT + file LICENSE
 Authors@R: 
     c(person(given = "Scott", family = "Chamberlain",
@@ -47,5 +47,5 @@ Suggests:
 Remotes: ropensci/vcr
 RoxygenNote: 7.1.1
 X-schema.org-applicationCategory: Biodiversity
-X-schema.org-keywords: specimens, API, web-services, occurrences, species, taxonomy, GBIF, INAT, BISON, Vertnet, eBird, Ecoengine, iDigBio, OBIS, ALA
+X-schema.org-keywords: specimens, API, web-services, occurrences, species, taxonomy, GBIF, INAT, BISON, Vertnet, eBird, iDigBio, OBIS, ALA
 X-schema.org-isPartOf: https://ropensci.org

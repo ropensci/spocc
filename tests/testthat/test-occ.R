@@ -3,7 +3,6 @@ context("Occurrence data is correctly retrieved")
 test_that("occ works for each data source", {
   skip_on_cran()
   
-  # x2 <- occ(query = "Accipiter striatus", from = "ecoengine", limit = 3)
   vcr::use_cassette("occ_gbif", {
     x1 <- occ(query = "Accipiter striatus", from = "gbif", limit = 3)
   }, serialize_with = "json")
@@ -41,12 +40,7 @@ test_that("occ works for each data source", {
   expect_is(x1$gbif$data[[1]], "data.frame")
   temp_df <- x1$gbif$data[[1]]
   expect_equal(unique(temp_df$prov), "gbif")
-  # # Testing x2
-  # expect_is(x2, "occdat")
-  # expect_is(x2$ecoengine, "occdatind")
-  # expect_is(x2$ecoengine$data[[1]], "data.frame")
-  # temp_df2 <- x2$ecoengine$data[[1]]
-  # expect_equal(unique(temp_df2$prov), "ecoengine")
+
   # Testing x3
   expect_is(x3, "occdat")
   expect_is(x3$inat, "occdatind")
@@ -92,21 +86,16 @@ test_that("occ works when only opts passed", {
     dsets <- c("7b5d6a48-f762-11e1-a439-00145eb45e9a",
       "50c9509d-22c7-4a22-a47d-8c48425ef4a7")
     aa <- occ(limit = 20, from = "gbif", gbifopts = list(datasetKey = dsets))
-    cc <- occ(from = "ecoengine", ecoengineopts = list(limit = 3))
   }, preserve_exact_body_bytes = TRUE)
 
   expect_is(aa, "occdat")
-  expect_is(cc, "occdat")
   
   expect_is(aa$gbif, "occdatind")
-  expect_is(cc$ecoengine, "occdatind")
   
   expect_named(aa$gbif$data, "custom_query")
-  expect_named(cc$ecoengine$data, "custom_query")
   
   expect_equal(sort(unique(aa$gbif$data$custom_query$datasetKey)), 
     sort(dsets))
-  expect_equal(NROW(cc$ecoengine$data$custom_query), 3)
 
   skip_on_cran()
   skip_if_idigbio_down()

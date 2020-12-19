@@ -9,13 +9,12 @@ occ_loopfun <- function(x, y, s, p, z, hc, d, w, sources, ds) {
   bison_res <- foo_bison(sources, x, y, s, z, d, w, ds$bison)
   inat_res <- foo_inat(sources, x, y, p, z, hc, d, w, ds$inat)
   ebird_res <- foo_ebird(sources, x, y, w, ds$ebird)
-  ecoengine_res <- foo_ecoengine(sources, x, y, p, z, hc, d, w, ds$ecoengine)
   vertnet_res <- foo_vertnet(sources, x, y, hc, d, w, ds$vertnet)
   idigbio_res <- foo_idigbio(sources, x, y, s, z, hc, d, w, ds$idigbio)
   obis_res <- foo_obis(sources, x, y, s, z, hc, d, w, ds$obis)
   ala_res <- foo_ala(sources, x, y, s, z, hc, d, w, ds$ala)
   list(gbif = gbif_res, bison = bison_res, inat = inat_res, ebird = ebird_res,
-       ecoengine = ecoengine_res, vertnet = vertnet_res,
+       vertnet = vertnet_res,
        idigbio = idigbio_res, obis = obis_res, ala = ala_res)
 }
 
@@ -35,7 +34,6 @@ occ_loopids <- function(x, y, s, p, z, hc, d, w, sources, ds) {
        bison = bison_res,
        inat = empty_time_data(),
        ebird = empty_time_data(),
-       ecoengine = empty_time_data(),
        vertnet = empty_time_data(),
        idigbio = empty_time_data(),
        obis = empty_time_data(),

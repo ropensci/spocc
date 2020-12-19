@@ -2,10 +2,10 @@
 #' in each data source we query. Note: ebird now expects species codes instead of 
 #' scientific names - we pass you name through [rebird::species_code()] internally
 #' @param from (character) Data source to get data from, any combination of gbif, bison,
-#' inat, ebird, ecoengine and/or vertnet
+#' inat, ebird, and/or vertnet
 #' @param limit (numeric) Number of records to return. This is passed across all sources.
 #' To specify different limits for each source, use the options for each source (gbifopts,
-#' bisonopts, inatopts, ebirdopts, and ecoengineopts). See Details for more.
+#' bisonopts, inatopts, and ebirdopts). See Details for more.
 #' Default: 500 for each source. BEWARE: if you have a lot of species to query for (e.g.,
 #' n = 10), that's 10 * 500 = 5000, which can take a while to collect. So, when you first query,
 #' set the limit to something smallish so that you can get a result quickly, then do more as
@@ -22,7 +22,7 @@
 #' is not possible with vertnet right now, but should be soon. See Details for more info
 #' on geometry inputs.
 #' @param has_coords (logical) Only return occurrences that have lat/long data. This works
-#' for gbif, ecoengine, rinat, idigbio, and vertnet, but is ignored for ebird and
+#' for gbif, rinat, idigbio, and vertnet, but is ignored for ebird and
 #' bison data sources. You can easily though remove records without lat/long data.
 #' @param ids Taxonomic identifiers. This can be a list of length 1 to many. See examples for
 #' usage. Currently, identifiers for only 'gbif' and 'bison' for parameter 'from' supported. If
@@ -41,8 +41,6 @@
 #' `get_inat_obs`
 #' @param ebirdopts (list) List of named options to pass on to
 #' [rebird::ebirdregion()] or [rebird::ebirdgeo()]. See also [occ_options()]
-#' @param ecoengineopts (list) List of named options to pass on to
-#' `ee_observations`. See also [occ_options()].
 #' @param vertnetopts (list) List of named options to pass on to
 #' [rvertnet::searchbyterm()]. See also [occ_options()].
 #' @param idigbioopts (list) List of named options to pass on to
@@ -69,7 +67,6 @@
 #' - bison
 #' - inat
 #' - ebird
-#' - ecoengine
 #' - vertnet
 #' - idigbio
 #' - obis
@@ -93,7 +90,7 @@
 #' - data: named list of data.frame's, named by the queries sent
 #'
 #' @details The `occ` function is an opinionated wrapper
-#' around the rgbif, rbison, rinat, rebird, ecoengine, rvertnet and
+#' around the rgbif, rbison, rinat, rebird, rvertnet and
 #' ridigbio packages (as well as internal custom wrappers around some data
 #' sources) to allow data access from a single access point. We take
 #' care of making sure you get useful objects out at the cost of
@@ -121,8 +118,6 @@
 #'  [rebird::ebirdgeo()] functions, depending on whether you set
 #'  `method="ebirdregion"` or `method="ebirdgeo"` - API parameters: `sci` for both
 #'  [rebird::ebirdregion()] and [rebird::ebirdgeo()]
-#' - ecoengine - `scientific_name` in the `ee_observations`
-#'  function - API parameter: same as `occ` parameter
 #' - rbison - `species` or `scientificName` in the [rbison::bison()] or
 #'  [rbison::bison_solr()] functions, respectively. If you don't pass anything to
 #'  `geometry` parameter we use `bison_solr`, and if you do we use `bison` - API
@@ -148,11 +143,6 @@
 #' Maximum of 100,000 results are allowed to be returned. See 
 #' <https://github.com/iDigBio/ridigbio/issues/33>
 #'
-#' @section Ecoengine notes:
-#' When searching ecoengine, you can leave the page argument blank to get a single page.
-#' Otherwise use page ranges or simply "all" to request all available pages.
-#' Note however that this may hang your call if the request is simply too large.
-#' 
 #' @section BISON notes:
 #' We use two different functions when you request data from `bison`. We use 
 #' [rbison::bison_solr()] by default as it's more flexible. If you pass a value to the 
@@ -246,7 +236,6 @@
 #'
 #' **bbox only**
 #' 
-#' - ecoengine
 #' - inat
 #' - idigbio
 #'
@@ -281,7 +270,6 @@
 #' to the `page` parameter:
 #' 
 #' - gbif - Responds to `start`. Default: 0
-#' - ecoengine - Responds to `page`. Default: 1
 #' - bison - Responds to `start`. Default: 0
 #' - inat - Responds to `page`. Default: 1
 #' - ebird - No paging, both `start` and `page` ignored.

@@ -31,7 +31,7 @@ stand_dates <- function(dat, from){
   datevars <- list(gbif = 'eventDate', obis = 'eventDate',
     bison = c('eventDate', 'year'), 
     inat = 'observed_on', ebird = 'obsDt', 
-    ecoengine = 'begin_date', vertnet = 'eventdate',
+    vertnet = 'eventdate',
     idigbio = 'datecollected', ala = 'eventDate')
   var <- datevars[[from]]
   if (from == "bison") {
@@ -46,7 +46,6 @@ stand_dates <- function(dat, from){
       bison = as_date(ymd(dat[[var]], quiet = TRUE)),
       inat = as_date(ymd_hms(dat[[var]], truncated = 3, quiet = TRUE)),
       ebird = as_date(ymd_hm(dat[[var]], truncated = 3, quiet = TRUE)),
-      ecoengine = as_date(ymd_hms(dat[[var]], truncated = 3, quiet = TRUE)),
       vertnet = as_date(ymd(dat[[var]], truncated = 3, quiet = TRUE)),
       idigbio = as_date(ymd_hms(dat[[var]], truncated = 3, quiet = TRUE)),
       obis = as_date(ymd_hms(dat[[var]], truncated = 3, quiet = TRUE)),
@@ -70,7 +69,7 @@ is_null <- function(...) {
 limit_alias <- function(x, sources, geometry=NULL){
   bisonvar <- if (is.null(geometry)) 'rows' else 'count'
   if (length(x) != 0) {
-    lim_name <- switch(sources, ecoengine = "page_size", bison = bisonvar, 
+    lim_name <- switch(sources, bison = bisonvar, 
                        inat = "maxresults", ebird = "max")
     if ("limit" %in% names(x)) {
       names(x)[ which(names(x) == "limit") ] <- lim_name

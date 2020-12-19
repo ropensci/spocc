@@ -33,7 +33,6 @@ test_that("summary.occdat", {
   expect_output(print(summary(res)), "<query options>")
   expect_output(print(summary(res)), "<source> inat")
   expect_output(print(summary(res)), "<source> ebird")
-  expect_output(print(summary(res)), "<source> ecoengine")
   expect_output(print(summary(res)), "<source> vertnet")
   expect_output(print(summary(res)), "<source> idigbio")
   expect_output(print(summary(res)), "<source> obis")

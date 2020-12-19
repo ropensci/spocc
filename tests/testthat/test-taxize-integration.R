@@ -19,7 +19,6 @@ test_that("taxize based searches works with > 1 get_ids,
 	expect_is(aa, "occdat")
 	expect_is(aa$bison, "occdatind")
 	expect_equal(length(aa$bison$data), 2)
-	expect_equal(length(aa$ecoengine$data), 0)
 	expect_named(aa$bison$data, c("129313", "183327"))
 })
 

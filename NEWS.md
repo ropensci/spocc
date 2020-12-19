@@ -1,3 +1,20 @@
+spocc 1.2.0
+===========
+
+### DEFUNCT
+
+* `as.ecoengine()` is now defunct. `ecoengine` R pkg wasn't used, we used internal code, but since `ecoengine` R is archived since Feb 2020, probably best to remove here (#239)
+
+### MINOR IMPROVEMENTS
+
+* using `wellknown` now instead of `wicket` for Well-known text manipulation (#235)
+
+### BUG FIXES
+
+* use new `vcr` version to fix failing checks (#240)
+* bug fixed in ecoengine bbox - but now ecoengine removed, see above (#234)
+
+
 spocc 1.1.0
 ===========
 

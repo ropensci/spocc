@@ -1,7 +1,7 @@
 ## Test environments
 
-* local OS X install, R 4.0.2 Patched
-* ubuntu 16.04 (on travis-ci), R 4.0.2
+* local OS X install, R 4.0.3 Patched
+* ubuntu 16.04 (on GitHub Actions), R 4.0.3
 * win-builder (release/devel)
 
 ## R CMD check results
@@ -14,7 +14,7 @@
 
 --------
 
-This version fixes some bugs, and makes a function defunct.
+This version fixes some bugs, makes a function defunct, and depends on new version of vcr that fixes failing cran checks.
 
 Thanks!
 Scott Chamberlain

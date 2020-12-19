@@ -44,7 +44,6 @@ as.bison(tt[1:2])
 \seealso{
 Other coercion: 
 \code{\link{as.ala}()},
-\code{\link{as.ecoengine}()},
 \code{\link{as.gbif}()},
 \code{\link{as.idigbio}()},
 \code{\link{as.inat}()},

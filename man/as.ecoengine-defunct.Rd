@@ -12,14 +12,3 @@ as.ecoengine(...)
 \description{
 DEFUNCT
 }
-\seealso{
-Other coercion: 
-\code{\link{as.ala}()},
-\code{\link{as.bison}()},
-\code{\link{as.gbif}()},
-\code{\link{as.idigbio}()},
-\code{\link{as.inat}()},
-\code{\link{as.obis}()},
-\code{\link{as.vertnet}()}
-}
-\concept{coercion}

@@ -41,7 +41,6 @@ rbindlist(lapply(tt, "[[", "results"),
 Other coercion: 
 \code{\link{as.ala}()},
 \code{\link{as.bison}()},
-\code{\link{as.ecoengine}()},
 \code{\link{as.gbif}()},
 \code{\link{as.idigbio}()},
 \code{\link{as.inat}()},

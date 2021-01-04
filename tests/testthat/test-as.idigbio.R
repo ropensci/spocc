@@ -1,3 +1,5 @@
+skip_on_cran()
+
 test_that("as.idigbio", {
   vcr::use_cassette("as_idigbio_prep", {
     spnames <- c('Accipiter striatus', 'Setophaga caerulescens',

@@ -1,5 +1,7 @@
 context("wkt_vis works")
 
+skip_on_cran()
+
 test_that("wkt_vis works with browse=FALSE", {
   skip_on_cran()
   

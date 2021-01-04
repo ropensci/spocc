@@ -1,3 +1,5 @@
+skip_on_cran()
+
 test_that("as.obis", {
   vcr::use_cassette("as_obis_prep", {
     spnames <- c('Mola mola', 'Loligo vulgaris')

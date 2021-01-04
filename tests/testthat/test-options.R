@@ -1,5 +1,7 @@
 context("Occ options work")
 
+skip_on_cran()
+
 test_that("passing in options to occ works", {
   skip_on_cran()
   

@@ -1,5 +1,7 @@
 context("Testing geometry searches")
 
+skip_on_cran()
+
 test_that("geometry searches work", {
   vcr::use_cassette("occ_geometry_searches", {
     geo1 <- occ(query="Accipiter", from="gbif", limit = 3,

@@ -1,5 +1,7 @@
 context("occ2df")
 
+skip_on_cran()
+
 test_that("occ2df basic functionality works", {
   vcr::use_cassette("occ2df", {
     aa <- occ(query = 'Accipiter striatus', from = "gbif", limit = 10)

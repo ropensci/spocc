@@ -1,5 +1,7 @@
 context("Limit to records with coordinates via has_coords")
 
+skip_on_cran()
+
 test_that("has_coords works as expected", {
   vcr::use_cassette("has_coords_gbif", {
     hc_1 <- occ(query = 'Accipiter', from = 'gbif', limit = 5, 

@@ -1,3 +1,5 @@
+skip_on_cran()
+
 test_that("as.gbif", {
   vcr::use_cassette("as_gbif_prep", {
     spnames <- c('Accipiter striatus', 'Setophaga caerulescens',

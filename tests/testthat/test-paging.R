@@ -1,5 +1,7 @@
 context("occ paging works")
 
+skip_on_cran()
+
 test_that("occ paging works", {
   vcr::use_cassette("occ_pagination", {
     one <- occ(query = "Accipiter striatus", from = "gbif", limit = 5)

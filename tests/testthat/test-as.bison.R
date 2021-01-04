@@ -1,3 +1,5 @@
+skip_on_cran()
+
 test_that("as.bison", {
   skip_on_os("windows")
   vcr::use_cassette("as_bison_prep", {

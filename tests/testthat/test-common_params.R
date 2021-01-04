@@ -1,5 +1,7 @@
 context("Testing global common parameters")
 
+skip_on_cran()
+
 test_that("limit", {
   vcr::use_cassette("occ_limit_param", {
     limit_1 <- occ(query = "Accipiter", from = "gbif", limit = 3)

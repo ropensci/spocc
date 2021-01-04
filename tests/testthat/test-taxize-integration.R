@@ -1,5 +1,7 @@
 context("taxize integration")
 
+skip_on_cran()
+
 library("taxize")
 
 test_that("taxize based searches works with > 1 get_ids,

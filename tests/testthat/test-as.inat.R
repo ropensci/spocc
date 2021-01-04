@@ -1,3 +1,5 @@
+skip_on_cran()
+
 test_that("as.inat", {
   vcr::use_cassette("as_inat_prep", {
     out <- occ(query='Accipiter striatus', from='inat', limit=1)

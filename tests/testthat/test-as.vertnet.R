@@ -1,3 +1,5 @@
+skip_on_cran()
+
 test_that("as.vertnet", {
   vcr::use_cassette("as_vertnet_prep", {
     spnames <- c('Accipiter striatus', 'Setophaga caerulescens',

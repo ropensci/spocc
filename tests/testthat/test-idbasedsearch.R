@@ -1,5 +1,7 @@
 context("Testing by taxon identifier searches")
 
+skip_on_cran()
+
 test_that("Taxon identifier searches work", {
   suppressPackageStartupMessages(require("taxize"))
   load("ids.rda")

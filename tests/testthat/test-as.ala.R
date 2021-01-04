@@ -1,3 +1,5 @@
+skip_on_cran()
+
 test_that("as.ala", {
   vcr::use_cassette("as_ala_prep", {
     spnames <- c('Barnardius zonarius', 'Grus rubicunda', 'Cracticus tibicen')

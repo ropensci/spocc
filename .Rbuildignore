@@ -6,9 +6,7 @@ Makefile
 man-roxygen
 spocc.Rproj
 ^\.Rproj\.user$
-vignettes/fixnames.Rmd
-vignettes/cache/
-vignettes/spocc.Rmd
+vignettes/
 inst/shinydumb
 inst/shiny
 inst/vign

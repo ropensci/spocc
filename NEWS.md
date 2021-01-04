@@ -11,7 +11,7 @@ spocc 1.2.0
 
 ### BUG FIXES
 
-* use new `vcr` version to fix failing checks (#240)
+* fix failing checks (#240)
 * bug fixed in ecoengine bbox - but now ecoengine removed, see above (#234)
 
 

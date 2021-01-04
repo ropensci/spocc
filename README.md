@@ -90,8 +90,6 @@ All mapping functionality is now in a separate package [mapr](https://github.com
 * Please note that this package is released with a [Contributor Code of Conduct](https://ropensci.org/code-of-conduct/). By contributing to this project, you agree to abide by its terms.
 * Sticker: Images come from Phylopic <http://phylopic.org/>
 
-[![ropensci_footer](https://ropensci.org/public_images/github_footer.png)](https://ropensci.org)
-
 [gbif]: https://www.gbif.org/
 [vertnet]: https://github.com/ropensci/rvertnet
 [bison]: https://bison.usgs.gov/

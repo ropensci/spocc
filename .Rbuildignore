@@ -17,6 +17,7 @@ inst/ignore
 CONTRIBUTING.md
 appveyor.yml
 README.Rmd
+README.md
 ^\.httr-oauth$
 ^CODE_OF_CONDUCT\.md$
 ^issue_template\.md$

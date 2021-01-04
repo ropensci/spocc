@@ -8,7 +8,7 @@ Description: A programmatic interface to many species occurrence data sources,
     System ('OBIS'), and Atlas of Living Australia ('ALA'). Includes
     functionality for retrieving species occurrence data, and combining
     those data.
-Version: 1.1.8.92
+Version: 1.2.0
 License: MIT + file LICENSE
 Authors@R: 
     c(person(given = "Scott", family = "Chamberlain",
@@ -28,23 +28,22 @@ Encoding: UTF-8
 Language: en-US
 Imports:
     utils,
-    rgbif (>= 1.0.0),
-    rbison (>= 0.6.0),
-    rebird (>= 1.0.0),
-    rvertnet (>= 0.7.0),
-    ridigbio (>= 0.3.5),
-    lubridate (>= 1.5.0),
-    crul (>= 0.3.4),
-    whisker (>= 0.3-2),
-    jsonlite (>= 1.4),
-    data.table (>= 1.9.6),
-    tibble (>= 1.2),
+    rgbif,
+    rbison,
+    rebird,
+    rvertnet,
+    ridigbio,
+    lubridate,
+    crul,
+    whisker,
+    jsonlite,
+    data.table,
+    tibble,
     wellknown
 Suggests:
     testthat,
-    taxize (>= 0.8.4),
-    vcr (>= 0.6.0.93)
-Remotes: ropensci/vcr
+    taxize,
+    vcr
 RoxygenNote: 7.1.1
 X-schema.org-applicationCategory: Biodiversity
 X-schema.org-keywords: specimens, API, web-services, occurrences, species, taxonomy, GBIF, INAT, BISON, Vertnet, eBird, iDigBio, OBIS, ALA

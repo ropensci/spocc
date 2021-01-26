@@ -77,8 +77,7 @@ __BEWARE:__ In cases where you request data from multiple providers, especially 
 
 ## Learn more
 
-- spocc documentation: <https://docs.ropensci.org/spocc/>
-- occurrence manual <https://books.ropensci.org/occurrences/> a book in development on working with occurrence data in R
+spocc documentation: <https://docs.ropensci.org/spocc/>
 
 ## Contributing
 

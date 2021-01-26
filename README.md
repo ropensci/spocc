@@ -45,8 +45,7 @@ __BEWARE:__ In cases where you request data from multiple providers, especially 
 
 ## Learn more
 
-- spocc documentation: <https://docs.ropensci.org/spocc/>
-- occurrence manual <https://books.ropensci.org/occurrences/> a book in development on working with occurrence data in R
+spocc documentation: <https://docs.ropensci.org/spocc/>
 
 ## Contributing
 
@@ -89,6 +88,7 @@ All mapping functionality is now in a separate package [mapr](https://github.com
 * Get citation information for `spocc` in R doing `citation(package = 'spocc')`
 * Please note that this package is released with a [Contributor Code of Conduct](https://ropensci.org/code-of-conduct/). By contributing to this project, you agree to abide by its terms.
 * Sticker: Images come from Phylopic <http://phylopic.org/>
+
 
 [gbif]: https://www.gbif.org/
 [vertnet]: https://github.com/ropensci/rvertnet

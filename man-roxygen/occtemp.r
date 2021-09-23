@@ -2,7 +2,8 @@
 #' in each data source we query. Note: ebird now expects species codes instead of 
 #' scientific names - we pass you name through [rebird::species_code()] internally
 #' @param from (character) Data source to get data from, any combination of gbif, bison,
-#' inat, ebird, and/or vertnet
+#' inat, ebird, vertnet, idigbio, obis, or ala. See `vignette(topic = 'spocc introduction') 
+#' for more details about these sources.
 #' @param limit (numeric) Number of records to return. This is passed across all sources.
 #' To specify different limits for each source, use the options for each source (gbifopts,
 #' bisonopts, inatopts, and ebirdopts). See Details for more.
@@ -60,7 +61,7 @@
 #' @return an object of class `occdat`, with a print method to give a brief
 #' summary. The print method only shows results for those that have some
 #' results (those with no results are not shown). The `occdat` class is just
-#' a thin wrapper around a named list, wher the top level names are the
+#' a thin wrapper around a named list, where the top level names are the
 #' data sources:
 #' 
 #' - gbif
@@ -172,10 +173,10 @@
 #' ``
 #'
 #' @section limit parameter:
-#' The `limit` parameter is set to a default of 25. This means that you will get **up to**
-#' 25 results back for each data source you ask for data from. If there are no results for a
+#' The `limit` parameter is set to a default of 500. This means that you will get **up to**
+#' 500 results back for each data source you ask for data from. If there are no results for a
 #' particular source, you'll get zero back; if there are 8 results for a particular source, you'll
-#' get 8 back. If there are 26 results for a particular source, you'll get 25 back. You can always
+#' get 8 back. If there are 501 results for a particular source, you'll get 500 back. You can always
 #' ask for more or less back by setting the limit parameter to any number. If you want to request
 #' a different number for each source, pass the appropriate parameter to each data source via the
 #' respective options parameter for each data source.

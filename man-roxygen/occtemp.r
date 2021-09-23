@@ -2,7 +2,7 @@
 #' in each data source we query. Note: ebird now expects species codes instead of 
 #' scientific names - we pass you name through [rebird::species_code()] internally
 #' @param from (character) Data source to get data from, any combination of gbif, bison,
-#' inat, ebird, vertnet, idigbio, obis, or ala. See `vignette(topic = 'spocc introduction') 
+#' inat, ebird, vertnet, idigbio, obis, or ala. See `vignette(topic = 'spocc introduction')` 
 #' for more details about these sources.
 #' @param limit (numeric) Number of records to return. This is passed across all sources.
 #' To specify different limits for each source, use the options for each source (gbifopts,

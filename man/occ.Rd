@@ -32,7 +32,8 @@ in each data source we query. Note: ebird now expects species codes instead of
 scientific names - we pass you name through \code{\link[rebird:species_code]{rebird::species_code()}} internally}
 
 \item{from}{(character) Data source to get data from, any combination of gbif, bison,
-inat, ebird, and/or vertnet}
+inat, ebird, vertnet, idigbio, obis, or ala. See \code{vignette(topic = 'spocc introduction')}
+for more details about these sources.}
 
 \item{limit}{(numeric) Number of records to return. This is passed across all sources.
 To specify different limits for each source, use the options for each source (gbifopts,
@@ -107,7 +108,7 @@ but you can still access them in the output.}
 an object of class \code{occdat}, with a print method to give a brief
 summary. The print method only shows results for those that have some
 results (those with no results are not shown). The \code{occdat} class is just
-a thin wrapper around a named list, wher the top level names are the
+a thin wrapper around a named list, where the top level names are the
 data sources:
 \itemize{
 \item gbif
@@ -242,10 +243,10 @@ data within GBIF and allows more than 10,000 records:
 
 \section{limit parameter}{
 
-The \code{limit} parameter is set to a default of 25. This means that you will get \strong{up to}
-25 results back for each data source you ask for data from. If there are no results for a
+The \code{limit} parameter is set to a default of 500. This means that you will get \strong{up to}
+500 results back for each data source you ask for data from. If there are no results for a
 particular source, you'll get zero back; if there are 8 results for a particular source, you'll
-get 8 back. If there are 26 results for a particular source, you'll get 25 back. You can always
+get 8 back. If there are 501 results for a particular source, you'll get 500 back. You can always
 ask for more or less back by setting the limit parameter to any number. If you want to request
 a different number for each source, pass the appropriate parameter to each data source via the
 respective options parameter for each data source.

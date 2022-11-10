@@ -1,12 +1,12 @@
 #' @param query (character) One to many scientific names. See Details for what parameter
 #' in each data source we query. Note: ebird now expects species codes instead of 
 #' scientific names - we pass you name through [rebird::species_code()] internally
-#' @param from (character) Data source to get data from, any combination of gbif, bison,
+#' @param from (character) Data source to get data from, any combination of gbif, 
 #' inat, ebird, vertnet, idigbio, obis, or ala. See `vignette(topic = 'spocc introduction')` 
 #' for more details about these sources.
 #' @param limit (numeric) Number of records to return. This is passed across all sources.
 #' To specify different limits for each source, use the options for each source (gbifopts,
-#' bisonopts, inatopts, and ebirdopts). See Details for more.
+#' inatopts, and ebirdopts). See Details for more.
 #' Default: 500 for each source. BEWARE: if you have a lot of species to query for (e.g.,
 #' n = 10), that's 10 * 500 = 5000, which can take a while to collect. So, when you first query,
 #' set the limit to something smallish so that you can get a result quickly, then do more as
@@ -23,10 +23,10 @@
 #' is not possible with vertnet right now, but should be soon. See Details for more info
 #' on geometry inputs.
 #' @param has_coords (logical) Only return occurrences that have lat/long data. This works
-#' for gbif, rinat, idigbio, and vertnet, but is ignored for ebird and
-#' bison data sources. You can easily though remove records without lat/long data.
+#' for gbif, rinat, idigbio, and vertnet, but is ignored for ebird. 
+#' You can easily though remove records without lat/long data.
 #' @param ids Taxonomic identifiers. This can be a list of length 1 to many. See examples for
-#' usage. Currently, identifiers for only 'gbif' and 'bison' for parameter 'from' supported. If
+#' usage. Currently, identifiers for only 'gbif' for parameter 'from' supported. If
 #' this parameter is used, query parameter can not be used - if it is, a warning is thrown.
 #' @param date (character/Date) A length 2 vector containing two dates of the form 
 #' YYY-MM-DD. These can be character of Date class. These are used to do a date range search.
@@ -36,8 +36,6 @@
 #' for debugging curl calls, setting timeouts, etc.
 #' @param gbifopts (list) List of named options to pass on to
 #' [rgbif::occ_search()]. See also [occ_options()]
-#' @param bisonopts (list) List of named options to pass on to [rbison::bison()].
-#' See also [occ_options()]
 #' @param inatopts (list) List of named options to pass on to internal function
 #' `get_inat_obs`
 #' @param ebirdopts (list) List of named options to pass on to
@@ -65,7 +63,6 @@
 #' data sources:
 #' 
 #' - gbif
-#' - bison
 #' - inat
 #' - ebird
 #' - vertnet
@@ -91,12 +88,12 @@
 #' - data: named list of data.frame's, named by the queries sent
 #'
 #' @details The `occ` function is an opinionated wrapper
-#' around the rgbif, rbison, rinat, rebird, rvertnet and
+#' around the rgbif, rinat, rebird, rvertnet and
 #' ridigbio packages (as well as internal custom wrappers around some data
 #' sources) to allow data access from a single access point. We take
 #' care of making sure you get useful objects out at the cost of
 #' flexibility/options - although you can still set options for each of the
-#' packages via the gbifopts, bisonopts, inatopts, etc. parameters.
+#' packages via the gbifopts, inatopts, etc. parameters.
 #'
 #' @section Inputs:
 #' All inputs to `occ` are one of:
@@ -119,10 +116,6 @@
 #'  [rebird::ebirdgeo()] functions, depending on whether you set
 #'  `method="ebirdregion"` or `method="ebirdgeo"` - API parameters: `sci` for both
 #'  [rebird::ebirdregion()] and [rebird::ebirdgeo()]
-#' - rbison - `species` or `scientificName` in the [rbison::bison()] or
-#'  [rbison::bison_solr()] functions, respectively. If you don't pass anything to
-#'  `geometry` parameter we use `bison_solr`, and if you do we use `bison` - API
-#'  parameters: same as `occ` parameters
 #' - rvertnet - `taxon` in the [rvertnet::vertsearch()] function - API
 #'  parameter: `q`
 #' - ridigbio - `scientificname` in the [ridigbio::idig_search_records()]
@@ -143,12 +136,6 @@
 #' 
 #' Maximum of 100,000 results are allowed to be returned. See 
 #' <https://github.com/iDigBio/ridigbio/issues/33>
-#'
-#' @section BISON notes:
-#' We use two different functions when you request data from `bison`. We use 
-#' [rbison::bison_solr()] by default as it's more flexible. If you pass a value to the 
-#' `geometry` parameter we use [rbison::bison()]. We'd prefer to just use one function 
-#' to simplify things, but [rbison::bison_solr()] doesn't support geometry queries.
 #' 
 #' @section iNaturalist notes:
 #' We're using the iNaturalist API, docs at 
@@ -231,7 +218,6 @@
 #' **wkt & bbox allowed, see WKT section above**
 #' 
 #' - gbif
-#' - bison
 #' - obis
 #' - ala
 #'
@@ -271,7 +257,6 @@
 #' to the `page` parameter:
 #' 
 #' - gbif - Responds to `start`. Default: 0
-#' - bison - Responds to `start`. Default: 0
 #' - inat - Responds to `page`. Default: 1
 #' - ebird - No paging, both `start` and `page` ignored.
 #' - vertnet - No paging implemented here, both `start` and `page`

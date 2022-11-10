@@ -8,7 +8,7 @@ occ_options(from = "gbif", where = "console")
 }
 \arguments{
 \item{from}{(character) Data source to get data from, any combination of
-gbif, bison, ebird, idigibio and/or vertnet. Case doesn't matter.
+gbif, ebird, idigibio and/or vertnet. Case doesn't matter.
 inat is not included here, see that package's help docs.}
 
 \item{where}{(character) One of console (print to console) or html (opens
@@ -38,12 +38,11 @@ occ_options()
 # Open up documentation for the appropriate search function for each source
 occ_options('gbif')
 occ_options('ebird')
-occ_options('bison')
 occ_options('idigbio')
 occ_options('vertnet')
 
 # Or open in html version
-occ_options('bison', 'html')
+occ_options('gbif', 'html')
 }
 }
 \seealso{

@@ -37,7 +37,6 @@ as.inat(tt[1:2])
 \seealso{
 Other coercion: 
 \code{\link{as.ala}()},
-\code{\link{as.bison}()},
 \code{\link{as.gbif}()},
 \code{\link{as.idigbio}()},
 \code{\link{as.obis}()},

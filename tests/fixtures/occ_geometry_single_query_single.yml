@@ -1,55 +1,73 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.gbif.org/v1/occurrence/search?limit=2&offset=0&scientificName=Accipiter%20striatus&geometry=POLYGON%28%28-120%2040%2C-100%2040%2C-100%2045%2C-120%2045%2C-120%2040%29%29
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=2&offset=0&scientificName=Accipiter%20striatus&geometry=POLYGON%28%28-120%2040%2C-100%2040%2C-100%2045%2C-120%2045%2C-120%2040%29%29
     body:
       encoding: ''
       string: ''
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.3 crul/0.7.0.9100 rOpenSci(rgbif/1.1.0.9113)
-      X-USER-AGENT: r-curl/3.3 crul/0.7.0.9100 rOpenSci(rgbif/1.1.0.9113)
+      User-Agent: r-curl/4.3.3 crul/1.3 rOpenSci(rgbif/3.7.3)
+      X-USER-AGENT: r-curl/4.3.3 crul/1.3 rOpenSci(rgbif/3.7.3)
   response:
     status:
       status_code: '200'
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: HTTP/1.1 200 OK
-      date: Mon, 28 Jan 2019 19:10:18 GMT
+      status: 'HTTP/2 200 '
+      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+      x-content-type-options: nosniff
+      x-xss-protection: 1; mode=block
+      pragma: no-cache
+      expires: '0'
+      x-frame-options: DENY
       content-type: application/json
-      access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
-      server: Jetty(9.3.z-SNAPSHOT)
+      date: Thu, 10 Nov 2022 17:29:45 GMT
       cache-control: public, max-age=600
-      x-varnish: 336971038 336777745
-      age: '5'
-      via: 1.1 varnish (Varnish/5.2)
+      x-varnish: 487261981 542048481
+      age: '48'
+      via: 1.1 varnish (Varnish/6.0)
       accept-ranges: bytes
-      content-length: '5410'
-      connection: keep-alive
+      content-length: '9259'
     body:
       encoding: UTF-8
-      string: '{"offset":0,"limit":2,"endOfRecords":false,"count":15712,"results":[{"key":1831194866,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-01-28T00:30:55.653+0000","lastParsed":"2018-10-08T17:08:39.808+0000","crawlId":147,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":9740253,"kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":7191147,"familyKey":2877,"genusKey":9405810,"speciesKey":9740253,"acceptedTaxonKey":9740253,"scientificName":"Accipiter
+      file: no
+      string: '{"offset":0,"limit":2,"endOfRecords":false,"count":36962,"results":[{"key":3455739748,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2022-11-04T09:58:49.636+00:00","lastParsed":"2022-11-04T16:01:56.410+00:00","crawlId":323,"hostingOrganizationKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","extensions":{"http://rs.gbif.org/terms/1.0/Multimedia":[{"http://purl.org/dc/terms/license":"http://creativecommons.org/licenses/by-nc/4.0/","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/174936674","http://purl.org/dc/terms/rightsHolder":"Peter
+        Olsoy","http://rs.tdwg.org/dwc/terms/catalogNumber":"174936674","http://purl.org/dc/terms/created":"2022-01-04T09:35:17-08:00","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/type":"StillImage","http://purl.org/dc/terms/creator":"Peter
+        Olsoy","http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/174936674/original.jpeg","http://purl.org/dc/terms/format":"image/jpeg"}]},"basisOfRecord":"HUMAN_OBSERVATION","occurrenceStatus":"PRESENT","taxonKey":9740253,"kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":7191147,"familyKey":2877,"genusKey":9405810,"speciesKey":9740253,"acceptedTaxonKey":9740253,"scientificName":"Accipiter
         striatus Vieillot, 1808","acceptedScientificName":"Accipiter striatus Vieillot,
         1808","kingdom":"Animalia","phylum":"Chordata","order":"Accipitriformes","family":"Accipitridae","genus":"Accipiter","species":"Accipiter
-        striatus","genericName":"Accipiter","specificEpithet":"striatus","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2018-02-21T03:42:54","decimalLongitude":-105.107485,"decimalLatitude":40.020169,"coordinateUncertaintyInMeters":28000.0,"stateProvince":"Colorado","year":2018,"month":2,"day":15,"eventDate":"2018-02-15T09:40:00","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2018-02-21T03:42:54.000+0000","lastInterpreted":"2018-12-07T05:37:48.021+0000","references":"https://www.inaturalist.org/observations/9880935","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/13543360/original.jpg?1518802095","references":"https://www.inaturalist.org/photos/13543360","created":"2018-02-15T17:40:47.000+0000","creator":"willem9","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"willem9"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Aves","countryCode":"US","country":"United
-        States of America","rightsHolder":"willem9","identifier":"9880935","informationWithheld":"Coordinate
-        uncertainty increased to 28000m to protect threatened taxon","verbatimEventDate":"2018/02/15
-        9:40 AM MST","datasetName":"iNaturalist research-grade observations","gbifID":"1831194866","verbatimLocality":"Colorado,
-        US","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/9880935","taxonID":"5097","catalogNumber":"9880935","recordedBy":"willem9","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/9880935","institutionCode":"iNaturalist","rights":"©
-        willem9 some rights reserved","eventTime":"16:40:00Z","identificationID":"21964514"},{"key":1831213398,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-01-28T00:30:59.756+0000","lastParsed":"2018-10-08T17:08:57.958+0000","crawlId":147,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":9740253,"kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":7191147,"familyKey":2877,"genusKey":9405810,"speciesKey":9740253,"acceptedTaxonKey":9740253,"scientificName":"Accipiter
+        striatus","genericName":"Accipiter","specificEpithet":"striatus","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","iucnRedListCategory":"LC","dateIdentified":"2022-01-05T14:11:27","decimalLongitude":-116.15405,"decimalLatitude":43.57968,"coordinateUncertaintyInMeters":150.0,"stateProvince":"Idaho","year":2022,"month":1,"day":4,"eventDate":"2022-01-04T09:35:00","issues":["COORDINATE_ROUNDED"],"modified":"2022-01-06T16:12:06.000+00:00","lastInterpreted":"2022-11-04T16:01:56.410+00:00","references":"https://www.inaturalist.org/observations/104406502","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/174936674","created":"2022-01-04T17:35:17.000+00:00","creator":"Peter
+        Olsoy","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Peter
+        Olsoy","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/174936674/original.jpeg"}],"facts":[],"relations":[],"gadm":{"level0":{"gid":"USA","name":"United
+        States"},"level1":{"gid":"USA.13_1","name":"Idaho"},"level2":{"gid":"USA.13.1_1","name":"Ada"}},"isInCluster":false,"datasetName":"iNaturalist
+        research-grade observations","recordedBy":"Peter Olsoy","identifiedBy":"Peter
+        Olsoy","geodeticDatum":"WGS84","class":"Aves","countryCode":"US","recordedByIDs":[],"identifiedByIDs":[],"country":"United
+        States of America","rightsHolder":"Peter Olsoy","identifier":"104406502","http://unknown.org/nick":"peterolsoy","verbatimEventDate":"2022/01/04
+        9:35 AM MST","collectionCode":"Observations","gbifID":"3455739748","verbatimLocality":"Warm
+        Springs Mesa, Boise, ID, USA","occurrenceID":"https://www.inaturalist.org/observations/104406502","taxonID":"5097","catalogNumber":"104406502","institutionCode":"iNaturalist","eventTime":"09:35:00-07:00","http://unknown.org/captive":"wild","identificationID":"229868360"},{"key":3455901808,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2022-11-04T09:58:49.636+00:00","lastParsed":"2022-11-04T15:58:26.479+00:00","crawlId":323,"hostingOrganizationKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","extensions":{"http://rs.gbif.org/terms/1.0/Multimedia":[{"http://purl.org/dc/terms/license":"http://creativecommons.org/licenses/by-nc/4.0/","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/175335496","http://purl.org/dc/terms/rightsHolder":"Peter
+        Olsoy","http://rs.tdwg.org/dwc/terms/catalogNumber":"175335496","http://purl.org/dc/terms/created":"2022-01-08T16:24:25-08:00","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/type":"StillImage","http://purl.org/dc/terms/creator":"Peter
+        Olsoy","http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/175335496/original.jpeg","http://purl.org/dc/terms/format":"image/jpeg"},{"http://purl.org/dc/terms/license":"http://creativecommons.org/licenses/by-nc/4.0/","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/175335502","http://purl.org/dc/terms/rightsHolder":"Peter
+        Olsoy","http://rs.tdwg.org/dwc/terms/catalogNumber":"175335502","http://purl.org/dc/terms/created":"2022-01-08T16:24:25-08:00","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/type":"StillImage","http://purl.org/dc/terms/creator":"Peter
+        Olsoy","http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/175335502/original.jpeg","http://purl.org/dc/terms/format":"image/jpeg"},{"http://purl.org/dc/terms/license":"http://creativecommons.org/licenses/by-nc/4.0/","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/175335507","http://purl.org/dc/terms/rightsHolder":"Peter
+        Olsoy","http://rs.tdwg.org/dwc/terms/catalogNumber":"175335507","http://purl.org/dc/terms/created":"2022-01-08T16:24:22-08:00","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/type":"StillImage","http://purl.org/dc/terms/creator":"Peter
+        Olsoy","http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/175335507/original.jpeg","http://purl.org/dc/terms/format":"image/jpeg"}]},"basisOfRecord":"HUMAN_OBSERVATION","occurrenceStatus":"PRESENT","lifeStage":"Juvenile","taxonKey":9740253,"kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":7191147,"familyKey":2877,"genusKey":9405810,"speciesKey":9740253,"acceptedTaxonKey":9740253,"scientificName":"Accipiter
         striatus Vieillot, 1808","acceptedScientificName":"Accipiter striatus Vieillot,
         1808","kingdom":"Animalia","phylum":"Chordata","order":"Accipitriformes","family":"Accipitridae","genus":"Accipiter","species":"Accipiter
-        striatus","genericName":"Accipiter","specificEpithet":"striatus","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2018-02-20T02:24:12","decimalLongitude":-104.133447,"decimalLatitude":40.263139,"coordinateUncertaintyInMeters":27969.0,"stateProvince":"Colorado","year":2018,"month":2,"day":13,"eventDate":"2018-02-13T10:01:00","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2018-04-20T14:22:16.000+0000","lastInterpreted":"2018-12-07T05:38:08.867+0000","references":"https://www.inaturalist.org/observations/9928289","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/13622901/original.jpg?1519093410","references":"https://www.inaturalist.org/photos/13622901","created":"2018-02-13T18:01:08.000+0000","creator":"Steven
-        Mlodinow","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Steven
-        Mlodinow"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Aves","countryCode":"US","country":"United
-        States of America","rightsHolder":"Steven Mlodinow","identifier":"9928289","informationWithheld":"Coordinate
-        uncertainty increased to 27969m to protect threatened taxon","verbatimEventDate":"2018/02/13
-        10:01 AM MST","datasetName":"iNaturalist research-grade observations","gbifID":"1831213398","verbatimLocality":"Colorado,
-        US","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/9928289","taxonID":"5097","catalogNumber":"9928289","recordedBy":"Steven
-        Mlodinow","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/9928289","institutionCode":"iNaturalist","rights":"©
-        Steven Mlodinow some rights reserved","eventTime":"17:01:00Z","identificationID":"21928317"}],"facets":[]}'
-  recorded_at: 2019-01-28 19:10:23 GMT
-  recorded_with: vcr/0.2.2, webmockr/0.3.0
+        striatus","genericName":"Accipiter","specificEpithet":"striatus","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","iucnRedListCategory":"LC","dateIdentified":"2022-01-09T02:44:47","decimalLongitude":-116.129603,"decimalLatitude":43.56406,"coordinateUncertaintyInMeters":100.0,"stateProvince":"Idaho","year":2022,"month":1,"day":8,"eventDate":"2022-01-08T16:24:00","issues":["COORDINATE_ROUNDED"],"modified":"2022-01-10T21:53:45.000+00:00","lastInterpreted":"2022-11-04T15:58:26.479+00:00","references":"https://www.inaturalist.org/observations/104616933","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/175335502","created":"2022-01-09T00:24:25.000+00:00","creator":"Peter
+        Olsoy","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Peter
+        Olsoy","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/175335502/original.jpeg"},{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/175335496","created":"2022-01-09T00:24:25.000+00:00","creator":"Peter
+        Olsoy","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Peter
+        Olsoy","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/175335496/original.jpeg"},{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/175335507","created":"2022-01-09T00:24:22.000+00:00","creator":"Peter
+        Olsoy","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Peter
+        Olsoy","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/175335507/original.jpeg"}],"facts":[],"relations":[],"gadm":{"level0":{"gid":"USA","name":"United
+        States"},"level1":{"gid":"USA.13_1","name":"Idaho"},"level2":{"gid":"USA.13.1_1","name":"Ada"}},"isInCluster":false,"datasetName":"iNaturalist
+        research-grade observations","recordedBy":"Peter Olsoy","identifiedBy":"Peter
+        Olsoy","geodeticDatum":"WGS84","class":"Aves","countryCode":"US","recordedByIDs":[],"identifiedByIDs":[],"country":"United
+        States of America","rightsHolder":"Peter Olsoy","identifier":"104616933","http://unknown.org/nick":"peterolsoy","verbatimEventDate":"2022/01/08
+        4:24 PM MST","collectionCode":"Observations","gbifID":"3455901808","verbatimLocality":"Barber
+        Valley, Boise, ID, USA","occurrenceID":"https://www.inaturalist.org/observations/104616933","taxonID":"5097","catalogNumber":"104616933","institutionCode":"iNaturalist","eventTime":"16:24:00-07:00","http://unknown.org/captive":"wild","identificationID":"230500209"}],"facets":[]}'
+  recorded_at: 2022-11-10 17:30:34 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.1.91

@@ -19,7 +19,7 @@ inspect(x, from = "gbif")
 \item{x}{The output from \code{\link[=occ]{occ()}} call, output from call to
 \code{\link[=occ2df]{occ2df()}}, or an occurrence ID as a occkey class.}
 
-\item{from}{(character) The data provider. One of gbif, bison, inat,
+\item{from}{(character) The data provider. One of gbif, inat,
 or vertnet}
 }
 \value{
@@ -36,7 +36,7 @@ single occurrence record.
 \examples{
 \dontrun{
 spnames <- c('Accipiter striatus', 'Spinus tristis')
-out <- occ(query=spnames, from=c('gbif','bison'),
+out <- occ(query=spnames, from=c('gbif','idigbio'),
    gbifopts=list(hasCoordinate=TRUE), limit=2)
 res <- occ2df(out)
 inspect(res)

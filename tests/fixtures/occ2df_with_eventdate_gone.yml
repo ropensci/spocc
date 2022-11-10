@@ -1,600 +1,201 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.gbif.org/v1/occurrence/search?limit=10&offset=0&scientificName=Pinus%20contorta
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=10&offset=0&scientificName=Pinus%20contorta
     body:
       encoding: ''
       string: ''
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.0.0)
-      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.0.0)
+      User-Agent: r-curl/4.3.3 crul/1.3 rOpenSci(rgbif/3.7.3)
+      X-USER-AGENT: r-curl/4.3.3 crul/1.3 rOpenSci(rgbif/3.7.3)
   response:
     status:
       status_code: '200'
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: HTTP/1.1 200 OK
-      date: Sat, 08 Feb 2020 15:07:59 GMT
+      status: 'HTTP/2 200 '
+      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+      x-content-type-options: nosniff
+      x-xss-protection: 1; mode=block
+      pragma: no-cache
+      expires: '0'
+      x-frame-options: DENY
       content-type: application/json
-      access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
-      server: Jetty(9.3.z-SNAPSHOT)
+      date: Thu, 10 Nov 2022 17:17:30 GMT
       cache-control: public, max-age=600
-      x-varnish: 3509317 41156842
-      age: '0'
-      via: 1.1 varnish (Varnish/5.2)
+      x-varnish: 452725422 483493413
+      age: '26'
+      via: 1.1 varnish (Varnish/6.0)
       accept-ranges: bytes
-      content-length: '31640'
-      connection: keep-alive
+      content-length: '53275'
     body:
       encoding: UTF-8
       file: no
-      string: '{"offset":0,"limit":10,"endOfRecords":false,"count":11469,"results":[{"key":2543085192,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2020-02-06T10:47:04.361+0000","lastParsed":"2020-02-06T12:27:31.156+0000","crawlId":199,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":5285750,"kingdomKey":6,"phylumKey":7707728,"classKey":194,"orderKey":640,"familyKey":3925,"genusKey":2684241,"speciesKey":5285750,"acceptedTaxonKey":5285750,"scientificName":"Pinus
+      string: '{"offset":0,"limit":10,"endOfRecords":false,"count":28198,"results":[{"key":3455599635,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2022-11-04T09:58:49.636+00:00","lastParsed":"2022-11-04T16:02:55.723+00:00","crawlId":323,"hostingOrganizationKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","extensions":{"http://rs.gbif.org/terms/1.0/Multimedia":[{"http://purl.org/dc/terms/license":"http://creativecommons.org/licenses/by-nc/4.0/","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/174881531","http://purl.org/dc/terms/rightsHolder":"Bert
+        Raccoon","http://rs.tdwg.org/dwc/terms/catalogNumber":"174881531","http://purl.org/dc/terms/created":"2022-01-04T17:17:02-08:00","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/type":"StillImage","http://purl.org/dc/terms/creator":"Bert
+        Raccoon","http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/174881531/original.jpeg","http://purl.org/dc/terms/format":"image/jpeg"},{"http://purl.org/dc/terms/license":"http://creativecommons.org/licenses/by-nc/4.0/","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/174881627","http://purl.org/dc/terms/rightsHolder":"Bert
+        Raccoon","http://rs.tdwg.org/dwc/terms/catalogNumber":"174881627","http://purl.org/dc/terms/created":"2022-01-04T17:17:06-08:00","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/type":"StillImage","http://purl.org/dc/terms/creator":"Bert
+        Raccoon","http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/174881627/original.jpeg","http://purl.org/dc/terms/format":"image/jpeg"},{"http://purl.org/dc/terms/license":"http://creativecommons.org/licenses/by-nc/4.0/","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/174881703","http://purl.org/dc/terms/rightsHolder":"Bert
+        Raccoon","http://rs.tdwg.org/dwc/terms/catalogNumber":"174881703","http://purl.org/dc/terms/created":"2022-01-04T17:16:59-08:00","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/type":"StillImage","http://purl.org/dc/terms/creator":"Bert
+        Raccoon","http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/174881703/original.jpeg","http://purl.org/dc/terms/format":"image/jpeg"},{"http://purl.org/dc/terms/license":"http://creativecommons.org/licenses/by-nc/4.0/","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/174881866","http://purl.org/dc/terms/rightsHolder":"Bert
+        Raccoon","http://rs.tdwg.org/dwc/terms/catalogNumber":"174881866","http://purl.org/dc/terms/created":"2022-01-04T17:17:02-08:00","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/type":"StillImage","http://purl.org/dc/terms/creator":"Bert
+        Raccoon","http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/174881866/original.jpeg","http://purl.org/dc/terms/format":"image/jpeg"}]},"basisOfRecord":"HUMAN_OBSERVATION","occurrenceStatus":"PRESENT","taxonKey":5285750,"kingdomKey":6,"phylumKey":7707728,"classKey":194,"orderKey":640,"familyKey":3925,"genusKey":2684241,"speciesKey":5285750,"acceptedTaxonKey":5285750,"scientificName":"Pinus
         contorta Douglas ex Loudon","acceptedScientificName":"Pinus contorta Douglas
         ex Loudon","kingdom":"Plantae","phylum":"Tracheophyta","order":"Pinales","family":"Pinaceae","genus":"Pinus","species":"Pinus
-        contorta","genericName":"Pinus","specificEpithet":"contorta","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2020-01-01T20:29:27","decimalLongitude":-115.363791,"decimalLatitude":50.919212,"coordinateUncertaintyInMeters":31250.0,"stateProvince":"Alberta","year":2020,"month":1,"day":1,"eventDate":"2020-01-01T16:16:00","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2020-01-01T20:44:00.000+0000","lastInterpreted":"2020-02-06T12:27:31.156+0000","references":"https://www.inaturalist.org/observations/37168319","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/58876926/original.jpeg?1577910490","references":"https://www.inaturalist.org/photos/58876926","created":"2020-01-01T16:16:01.000+0000","creator":"Jameson
-        Nagle","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Jameson
-        Nagle"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/58876899/original.jpeg?1577910468","references":"https://www.inaturalist.org/photos/58876899","created":"2020-01-01T16:15:40.000+0000","creator":"Jameson
-        Nagle","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Jameson
-        Nagle"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/58877020/original.jpeg?1577910556","references":"https://www.inaturalist.org/photos/58877020","created":"2020-01-01T16:15:31.000+0000","creator":"Jameson
-        Nagle","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Jameson
-        Nagle"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/58877024/original.jpeg?1577910562","references":"https://www.inaturalist.org/photos/58877024","created":"2020-01-01T16:15:36.000+0000","creator":"Jameson
-        Nagle","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Jameson
-        Nagle"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/58876954/original.jpeg?1577910508","references":"https://www.inaturalist.org/photos/58876954","created":"2020-01-01T16:16:03.000+0000","creator":"Jameson
-        Nagle","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Jameson
-        Nagle"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/58876892/original.jpeg?1577910457","references":"https://www.inaturalist.org/photos/58876892","created":"2020-01-01T16:15:37.000+0000","creator":"Jameson
-        Nagle","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Jameson
-        Nagle"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/58877003/original.jpeg?1577910541","references":"https://www.inaturalist.org/photos/58877003","created":"2020-01-01T16:15:29.000+0000","creator":"Jameson
-        Nagle","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Jameson
-        Nagle"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/58876977/original.jpeg?1577910527","references":"https://www.inaturalist.org/photos/58876977","created":"2020-01-01T16:16:07.000+0000","creator":"Jameson
-        Nagle","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Jameson
-        Nagle"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Pinopsida","countryCode":"CA","country":"Canada","rightsHolder":"Jameson
-        Nagle","identifier":"37168319","http://unknown.org/nick":"jameson_nagle","verbatimEventDate":"2020/01/01
-        4:16 PM EST","datasetName":"iNaturalist research-grade observations","gbifID":"2543085192","collectionCode":"Observations","verbatimLocality":"Division
-        No. 15, AB, Canada","occurrenceID":"https://www.inaturalist.org/observations/37168319","taxonID":"48934","catalogNumber":"37168319","recordedBy":"Jameson
-        Nagle","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/37168319","institutionCode":"iNaturalist","rights":"©
-        Jameson Nagle some rights reserved","eventTime":"21:16:00Z","identificationID":"82255106"},{"key":2548826490,"datasetKey":"38b4c89f-584c-41bb-bd8f-cd1def33e92f","publishingOrgKey":"b8323864-602a-4a7d-9127-bb903054e97d","installationKey":"4346b227-ca68-4d54-8a77-909148492e0b","publishingCountry":"SE","protocol":"DWC_ARCHIVE","lastCrawled":"2020-02-01T10:37:49.021+0000","lastParsed":"2020-02-04T00:28:02.892+0000","crawlId":220,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":5285750,"kingdomKey":6,"phylumKey":7707728,"classKey":194,"orderKey":640,"familyKey":3925,"genusKey":2684241,"speciesKey":5285750,"acceptedTaxonKey":5285750,"scientificName":"Pinus
+        contorta","genericName":"Pinus","specificEpithet":"contorta","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","iucnRedListCategory":"LC","dateIdentified":"2022-01-05T01:25:50","decimalLongitude":-118.055273,"decimalLatitude":52.914069,"coordinateUncertaintyInMeters":244.0,"stateProvince":"Alberta","year":2022,"month":1,"day":4,"eventDate":"2022-01-04T17:17:00","issues":["COORDINATE_ROUNDED"],"modified":"2022-01-05T01:38:47.000+00:00","lastInterpreted":"2022-11-04T16:02:55.723+00:00","references":"https://www.inaturalist.org/observations/104377822","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/174881627","created":"2022-01-05T01:17:06.000+00:00","creator":"Bert
+        Raccoon","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Bert
+        Raccoon","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/174881627/original.jpeg"},{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/174881866","created":"2022-01-05T01:17:02.000+00:00","creator":"Bert
+        Raccoon","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Bert
+        Raccoon","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/174881866/original.jpeg"},{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/174881531","created":"2022-01-05T01:17:02.000+00:00","creator":"Bert
+        Raccoon","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Bert
+        Raccoon","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/174881531/original.jpeg"},{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/174881703","created":"2022-01-05T01:16:59.000+00:00","creator":"Bert
+        Raccoon","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Bert
+        Raccoon","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/174881703/original.jpeg"}],"facts":[],"relations":[],"gadm":{"level0":{"gid":"CAN","name":"Canada"},"level1":{"gid":"CAN.1_1","name":"Alberta"},"level2":{"gid":"CAN.1.6_1","name":"Division
+        No. 15"},"level3":{"gid":"CAN.1.6.8_1","name":"Jasper"}},"isInCluster":false,"datasetName":"iNaturalist
+        research-grade observations","recordedBy":"Bert Raccoon","identifiedBy":"mtncatt","geodeticDatum":"WGS84","class":"Pinopsida","countryCode":"CA","recordedByIDs":[],"identifiedByIDs":[],"country":"Canada","rightsHolder":"Bert
+        Raccoon","identifier":"104377822","http://unknown.org/nick":"bert_raccoon","verbatimEventDate":"2022/01/04
+        5:17 PM EST","collectionCode":"Observations","gbifID":"3455599635","verbatimLocality":"Jasper,
+        AB T0E 1E0, Canada","occurrenceID":"https://www.inaturalist.org/observations/104377822","taxonID":"48934","catalogNumber":"104377822","institutionCode":"iNaturalist","eventTime":"17:17:00-05:00","http://unknown.org/captive":"wild","identificationID":"229787278"},{"key":3455599886,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2022-11-04T09:58:49.636+00:00","lastParsed":"2022-11-04T16:01:53.641+00:00","crawlId":323,"hostingOrganizationKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","extensions":{"http://rs.gbif.org/terms/1.0/Multimedia":[{"http://purl.org/dc/terms/license":"http://creativecommons.org/licenses/by-nc/4.0/","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/174993302","http://purl.org/dc/terms/rightsHolder":"Bert
+        Raccoon","http://rs.tdwg.org/dwc/terms/catalogNumber":"174993302","http://purl.org/dc/terms/created":"2022-01-05T17:32:43-08:00","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/type":"StillImage","http://purl.org/dc/terms/creator":"Bert
+        Raccoon","http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/174993302/original.jpeg","http://purl.org/dc/terms/format":"image/jpeg"},{"http://purl.org/dc/terms/license":"http://creativecommons.org/licenses/by-nc/4.0/","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/174993419","http://purl.org/dc/terms/rightsHolder":"Bert
+        Raccoon","http://rs.tdwg.org/dwc/terms/catalogNumber":"174993419","http://purl.org/dc/terms/created":"2022-01-05T17:32:43-08:00","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/type":"StillImage","http://purl.org/dc/terms/creator":"Bert
+        Raccoon","http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/174993419/original.jpeg","http://purl.org/dc/terms/format":"image/jpeg"},{"http://purl.org/dc/terms/license":"http://creativecommons.org/licenses/by-nc/4.0/","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/174993614","http://purl.org/dc/terms/rightsHolder":"Bert
+        Raccoon","http://rs.tdwg.org/dwc/terms/catalogNumber":"174993614","http://purl.org/dc/terms/created":"2022-01-05T17:32:44-08:00","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/type":"StillImage","http://purl.org/dc/terms/creator":"Bert
+        Raccoon","http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/174993614/original.jpeg","http://purl.org/dc/terms/format":"image/jpeg"},{"http://purl.org/dc/terms/license":"http://creativecommons.org/licenses/by-nc/4.0/","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/174993807","http://purl.org/dc/terms/rightsHolder":"Bert
+        Raccoon","http://rs.tdwg.org/dwc/terms/catalogNumber":"174993807","http://purl.org/dc/terms/created":"2022-01-05T17:32:45-08:00","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/type":"StillImage","http://purl.org/dc/terms/creator":"Bert
+        Raccoon","http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/174993807/original.jpeg","http://purl.org/dc/terms/format":"image/jpeg"},{"http://purl.org/dc/terms/license":"http://creativecommons.org/licenses/by-nc/4.0/","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/174993999","http://purl.org/dc/terms/rightsHolder":"Bert
+        Raccoon","http://rs.tdwg.org/dwc/terms/catalogNumber":"174993999","http://purl.org/dc/terms/created":"2022-01-05T17:32:45-08:00","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/type":"StillImage","http://purl.org/dc/terms/creator":"Bert
+        Raccoon","http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/174993999/original.jpeg","http://purl.org/dc/terms/format":"image/jpeg"},{"http://purl.org/dc/terms/license":"http://creativecommons.org/licenses/by-nc/4.0/","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/174994129","http://purl.org/dc/terms/rightsHolder":"Bert
+        Raccoon","http://rs.tdwg.org/dwc/terms/catalogNumber":"174994129","http://purl.org/dc/terms/created":"2022-01-05T17:32:46-08:00","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/type":"StillImage","http://purl.org/dc/terms/creator":"Bert
+        Raccoon","http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/174994129/original.jpeg","http://purl.org/dc/terms/format":"image/jpeg"},{"http://purl.org/dc/terms/license":"http://creativecommons.org/licenses/by-nc/4.0/","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/174994209","http://purl.org/dc/terms/rightsHolder":"Bert
+        Raccoon","http://rs.tdwg.org/dwc/terms/catalogNumber":"174994209","http://purl.org/dc/terms/created":"2022-01-05T17:32:53-08:00","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/type":"StillImage","http://purl.org/dc/terms/creator":"Bert
+        Raccoon","http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/174994209/original.jpeg","http://purl.org/dc/terms/format":"image/jpeg"}]},"basisOfRecord":"HUMAN_OBSERVATION","occurrenceStatus":"PRESENT","taxonKey":5285756,"kingdomKey":6,"phylumKey":7707728,"classKey":194,"orderKey":640,"familyKey":3925,"genusKey":2684241,"speciesKey":5285750,"acceptedTaxonKey":5285756,"scientificName":"Pinus
+        contorta var. latifolia Engelm.","acceptedScientificName":"Pinus contorta
+        var. latifolia Engelm.","kingdom":"Plantae","phylum":"Tracheophyta","order":"Pinales","family":"Pinaceae","genus":"Pinus","species":"Pinus
+        contorta","genericName":"Pinus","specificEpithet":"contorta","infraspecificEpithet":"latifolia","taxonRank":"VARIETY","taxonomicStatus":"ACCEPTED","dateIdentified":"2022-01-07T14:42:09","decimalLongitude":-119.010325,"decimalLatitude":52.994926,"coordinateUncertaintyInMeters":61.0,"stateProvince":"British
+        Columbia","year":2022,"month":1,"day":5,"eventDate":"2022-01-05T17:32:00","issues":["COORDINATE_ROUNDED"],"modified":"2022-01-07T16:46:34.000+00:00","lastInterpreted":"2022-11-04T16:01:53.641+00:00","references":"https://www.inaturalist.org/observations/104436682","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/174994209","created":"2022-01-06T01:32:53.000+00:00","creator":"Bert
+        Raccoon","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Bert
+        Raccoon","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/174994209/original.jpeg"},{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/174993419","created":"2022-01-06T01:32:43.000+00:00","creator":"Bert
+        Raccoon","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Bert
+        Raccoon","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/174993419/original.jpeg"},{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/174993614","created":"2022-01-06T01:32:44.000+00:00","creator":"Bert
+        Raccoon","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Bert
+        Raccoon","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/174993614/original.jpeg"},{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/174993302","created":"2022-01-06T01:32:43.000+00:00","creator":"Bert
+        Raccoon","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Bert
+        Raccoon","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/174993302/original.jpeg"},{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/174993999","created":"2022-01-06T01:32:45.000+00:00","creator":"Bert
+        Raccoon","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Bert
+        Raccoon","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/174993999/original.jpeg"},{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/174994129","created":"2022-01-06T01:32:46.000+00:00","creator":"Bert
+        Raccoon","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Bert
+        Raccoon","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/174994129/original.jpeg"},{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/174993807","created":"2022-01-06T01:32:45.000+00:00","creator":"Bert
+        Raccoon","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Bert
+        Raccoon","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/174993807/original.jpeg"}],"facts":[],"relations":[],"gadm":{"level0":{"gid":"CAN","name":"Canada"},"level1":{"gid":"CAN.2_1","name":"British
+        Columbia"},"level2":{"gid":"CAN.2.12_1","name":"Fraser-Fort George"},"level3":{"gid":"CAN.2.12.8_1","name":"Fraser-Fort
+        George H"}},"isInCluster":false,"datasetName":"iNaturalist research-grade
+        observations","recordedBy":"Bert Raccoon","identifiedBy":"Peter L Achuff","geodeticDatum":"WGS84","class":"Pinopsida","countryCode":"CA","recordedByIDs":[],"identifiedByIDs":[],"country":"Canada","rightsHolder":"Bert
+        Raccoon","identifier":"104436682","http://unknown.org/nick":"bert_raccoon","verbatimEventDate":"2022/01/05
+        5:32 PM EST","collectionCode":"Observations","gbifID":"3455599886","verbatimLocality":"Fraser-Fort
+        George, BC, Canada","occurrenceID":"https://www.inaturalist.org/observations/104436682","taxonID":"242252","catalogNumber":"104436682","institutionCode":"iNaturalist","eventTime":"17:32:00-05:00","http://unknown.org/captive":"wild","identificationID":"230219094"},{"key":3455600134,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2022-11-04T09:58:49.636+00:00","lastParsed":"2022-11-04T15:58:28.585+00:00","crawlId":323,"hostingOrganizationKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","extensions":{"http://rs.gbif.org/terms/1.0/Multimedia":[{"http://purl.org/dc/terms/license":"http://creativecommons.org/licenses/by-nc/4.0/","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/175111703","http://purl.org/dc/terms/rightsHolder":"sblumen","http://rs.tdwg.org/dwc/terms/catalogNumber":"175111703","http://purl.org/dc/terms/created":"2022-01-06T21:03:34Z","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/type":"StillImage","http://purl.org/dc/terms/creator":"sblumen","http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/175111703/original.jpg","http://purl.org/dc/terms/format":"image/jpeg"},{"http://purl.org/dc/terms/license":"http://creativecommons.org/licenses/by-nc/4.0/","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/175111725","http://purl.org/dc/terms/rightsHolder":"sblumen","http://rs.tdwg.org/dwc/terms/catalogNumber":"175111725","http://purl.org/dc/terms/created":"2022-01-06T21:03:34Z","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/type":"StillImage","http://purl.org/dc/terms/creator":"sblumen","http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/175111725/original.jpg","http://purl.org/dc/terms/format":"image/jpeg"},{"http://purl.org/dc/terms/license":"http://creativecommons.org/licenses/by-nc/4.0/","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/175111743","http://purl.org/dc/terms/rightsHolder":"sblumen","http://rs.tdwg.org/dwc/terms/catalogNumber":"175111743","http://purl.org/dc/terms/created":"2022-01-06T21:03:34Z","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/type":"StillImage","http://purl.org/dc/terms/creator":"sblumen","http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/175111743/original.jpg","http://purl.org/dc/terms/format":"image/jpeg"},{"http://purl.org/dc/terms/license":"http://creativecommons.org/licenses/by-nc/4.0/","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/175111759","http://purl.org/dc/terms/rightsHolder":"sblumen","http://rs.tdwg.org/dwc/terms/catalogNumber":"175111759","http://purl.org/dc/terms/created":"2022-01-06T21:03:34Z","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/type":"StillImage","http://purl.org/dc/terms/creator":"sblumen","http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/175111759/original.jpg","http://purl.org/dc/terms/format":"image/jpeg"}]},"basisOfRecord":"HUMAN_OBSERVATION","occurrenceStatus":"PRESENT","taxonKey":5285750,"kingdomKey":6,"phylumKey":7707728,"classKey":194,"orderKey":640,"familyKey":3925,"genusKey":2684241,"speciesKey":5285750,"acceptedTaxonKey":5285750,"scientificName":"Pinus
         contorta Douglas ex Loudon","acceptedScientificName":"Pinus contorta Douglas
         ex Loudon","kingdom":"Plantae","phylum":"Tracheophyta","order":"Pinales","family":"Pinaceae","genus":"Pinus","species":"Pinus
-        contorta","genericName":"Pinus","specificEpithet":"contorta","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","decimalLongitude":17.564831,"decimalLatitude":59.84554,"coordinateUncertaintyInMeters":25.0,"continent":"EUROPE","year":2020,"month":1,"day":1,"eventDate":"2020-01-01T13:20:00","issues":["GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2020-01-01T17:09:01.000+0000","lastInterpreted":"2020-02-04T00:28:02.892+0000","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","identifiers":[],"media":[],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Pinopsida","countryCode":"SE","country":"Sweden","rightsHolder":"Åke
-        Berg","county":"Uppland","municipality":"Uppsala","identificationVerificationStatus":"Unvalidated","gbifID":"2548826490","language":"Swedish","type":"Occurrence","taxonID":"urn:lsid:dyntaxa.se:Taxon:222159","catalogNumber":"125101153","occurrenceStatus":"Present","vernacularName":"contortatall","institutionCode":"ArtDatabanken","taxonConceptID":"urn:lsid:dyntaxa.se:Taxon:222159","eventTime":"13:20:00
-        - 14:10:00","identifier":"urn:lsid:artportalen.se:Sighting:81507773","informationWithheld":"More
-        information can be obtained from the Data Provider.","endDayOfYear":"1","locality":"P
-        platsen Kvarnbo","collectionCode":"Artportalen","occurrenceID":"urn:lsid:artportalen.se:Sighting:81507773","recordedBy":"Åke
-        Berg","startDayOfYear":"1","datasetID":"urn:lsid:swedishlifewatch.se:DataProvider:1","accessRights":"Free
-        usage","higherClassification":"Biota;Plantae;Viridiplantae;Streptophyta;Embryophyta;Tracheophyta;Euphyllophytina;Spermatophytae;Gymnospermae;Pinopsida;Pinales;Pinaceae"},{"key":2549045731,"datasetKey":"38b4c89f-584c-41bb-bd8f-cd1def33e92f","publishingOrgKey":"b8323864-602a-4a7d-9127-bb903054e97d","installationKey":"4346b227-ca68-4d54-8a77-909148492e0b","publishingCountry":"SE","protocol":"DWC_ARCHIVE","lastCrawled":"2020-02-01T10:37:49.021+0000","lastParsed":"2020-02-04T00:28:33.930+0000","crawlId":220,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":5285750,"kingdomKey":6,"phylumKey":7707728,"classKey":194,"orderKey":640,"familyKey":3925,"genusKey":2684241,"speciesKey":5285750,"acceptedTaxonKey":5285750,"scientificName":"Pinus
+        contorta","genericName":"Pinus","specificEpithet":"contorta","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","iucnRedListCategory":"LC","dateIdentified":"2022-01-07T02:49:08","decimalLongitude":-106.083983,"decimalLatitude":39.466387,"coordinateUncertaintyInMeters":22.0,"stateProvince":"Colorado","year":2022,"month":1,"day":6,"eventDate":"2022-01-06T14:03:34","issues":["COORDINATE_ROUNDED"],"modified":"2022-01-11T16:11:40.000+00:00","lastInterpreted":"2022-11-04T15:58:28.585+00:00","references":"https://www.inaturalist.org/observations/104498062","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/175111703","created":"2022-01-06T21:03:34.000+00:00","creator":"sblumen","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"sblumen","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/175111703/original.jpg"},{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/175111725","created":"2022-01-06T21:03:34.000+00:00","creator":"sblumen","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"sblumen","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/175111725/original.jpg"},{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/175111743","created":"2022-01-06T21:03:34.000+00:00","creator":"sblumen","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"sblumen","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/175111743/original.jpg"},{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/175111759","created":"2022-01-06T21:03:34.000+00:00","creator":"sblumen","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"sblumen","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/175111759/original.jpg"}],"facts":[],"relations":[],"gadm":{"level0":{"gid":"USA","name":"United
+        States"},"level1":{"gid":"USA.6_1","name":"Colorado"},"level2":{"gid":"USA.6.60_1","name":"Summit"}},"isInCluster":false,"datasetName":"iNaturalist
+        research-grade observations","recordedBy":"sblumen","identifiedBy":"sblumen","geodeticDatum":"WGS84","class":"Pinopsida","countryCode":"US","recordedByIDs":[],"identifiedByIDs":[],"country":"United
+        States of America","rightsHolder":"sblumen","identifier":"104498062","http://unknown.org/nick":"sblumen","verbatimEventDate":"Thu
+        Jan 06 2022 14:03:34 GMT-0700 (MST)","collectionCode":"Observations","gbifID":"3455600134","verbatimLocality":"White
+        River National Forest, Breckenridge, CO, US","occurrenceID":"https://www.inaturalist.org/observations/104498062","taxonID":"48934","catalogNumber":"104498062","institutionCode":"iNaturalist","eventTime":"14:03:34-07:00","http://unknown.org/captive":"wild","identificationID":"230150214"},{"key":3455638113,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2022-11-04T09:58:49.636+00:00","lastParsed":"2022-11-04T16:02:00.164+00:00","crawlId":323,"hostingOrganizationKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","extensions":{"http://rs.gbif.org/terms/1.0/Multimedia":[{"http://purl.org/dc/terms/license":"http://creativecommons.org/licenses/by-nc/4.0/","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/175091254","http://purl.org/dc/terms/rightsHolder":"sblumen","http://rs.tdwg.org/dwc/terms/catalogNumber":"175091254","http://purl.org/dc/terms/created":"2022-01-06T20:13:40Z","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/type":"StillImage","http://purl.org/dc/terms/creator":"sblumen","http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/175091254/original.jpg","http://purl.org/dc/terms/format":"image/jpeg"}]},"basisOfRecord":"HUMAN_OBSERVATION","occurrenceStatus":"PRESENT","taxonKey":5285750,"kingdomKey":6,"phylumKey":7707728,"classKey":194,"orderKey":640,"familyKey":3925,"genusKey":2684241,"speciesKey":5285750,"acceptedTaxonKey":5285750,"scientificName":"Pinus
         contorta Douglas ex Loudon","acceptedScientificName":"Pinus contorta Douglas
         ex Loudon","kingdom":"Plantae","phylum":"Tracheophyta","order":"Pinales","family":"Pinaceae","genus":"Pinus","species":"Pinus
-        contorta","genericName":"Pinus","specificEpithet":"contorta","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","decimalLongitude":19.163544,"decimalLatitude":64.011712,"coordinateUncertaintyInMeters":200.0,"continent":"EUROPE","year":2020,"month":1,"day":6,"eventDate":"2020-01-06T00:00:00","issues":["GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2020-01-06T21:43:19.000+0000","lastInterpreted":"2020-02-04T00:28:33.930+0000","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","identifiers":[],"media":[],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Pinopsida","countryCode":"SE","country":"Sweden","rightsHolder":"Jonas
-        F Grahn","county":"Ångermanland","municipality":"Bjurholm","identificationVerificationStatus":"Unvalidated","gbifID":"2549045731","language":"Swedish","type":"Occurrence","taxonID":"urn:lsid:dyntaxa.se:Taxon:222159","catalogNumber":"125224819","occurrenceStatus":"Present","vernacularName":"contortatall","institutionCode":"ArtDatabanken","taxonConceptID":"urn:lsid:dyntaxa.se:Taxon:222159","eventTime":"00:00:00
-        - 00:00:00","identifier":"urn:lsid:artportalen.se:Sighting:81632959","informationWithheld":"More
-        information can be obtained from the Data Provider.","endDayOfYear":"6","locality":"SV
-        om Otternäs","collectionCode":"Artportalen","occurrenceID":"urn:lsid:artportalen.se:Sighting:81632959","recordedBy":"Jonas
-        F Grahn","startDayOfYear":"6","datasetID":"urn:lsid:swedishlifewatch.se:DataProvider:1","occurrenceRemarks":"småplantor,
-        frösådda i kanten av plantering på östra sidan om vägen","accessRights":"Free
-        usage","higherClassification":"Biota;Plantae;Viridiplantae;Streptophyta;Embryophyta;Tracheophyta;Euphyllophytina;Spermatophytae;Gymnospermae;Pinopsida;Pinales;Pinaceae"},{"key":2549053727,"datasetKey":"38b4c89f-584c-41bb-bd8f-cd1def33e92f","publishingOrgKey":"b8323864-602a-4a7d-9127-bb903054e97d","installationKey":"4346b227-ca68-4d54-8a77-909148492e0b","publishingCountry":"SE","protocol":"DWC_ARCHIVE","lastCrawled":"2020-02-01T10:37:49.021+0000","lastParsed":"2020-02-04T00:28:37.606+0000","crawlId":220,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":5285750,"kingdomKey":6,"phylumKey":7707728,"classKey":194,"orderKey":640,"familyKey":3925,"genusKey":2684241,"speciesKey":5285750,"acceptedTaxonKey":5285750,"scientificName":"Pinus
-        contorta Douglas ex Loudon","acceptedScientificName":"Pinus contorta Douglas
-        ex Loudon","kingdom":"Plantae","phylum":"Tracheophyta","order":"Pinales","family":"Pinaceae","genus":"Pinus","species":"Pinus
-        contorta","genericName":"Pinus","specificEpithet":"contorta","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","decimalLongitude":19.270237,"decimalLatitude":64.011862,"coordinateUncertaintyInMeters":500.0,"continent":"EUROPE","year":2020,"month":1,"day":6,"eventDate":"2020-01-06T00:00:00","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2020-01-06T21:43:19.000+0000","lastInterpreted":"2020-02-04T00:28:37.606+0000","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","identifiers":[],"media":[],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Pinopsida","countryCode":"SE","country":"Sweden","rightsHolder":"Jonas
-        F Grahn","county":"Ångermanland","municipality":"Bjurholm","identificationVerificationStatus":"Unvalidated","gbifID":"2549053727","language":"Swedish","type":"Occurrence","taxonID":"urn:lsid:dyntaxa.se:Taxon:222159","catalogNumber":"125224828","occurrenceStatus":"Present","vernacularName":"contortatall","institutionCode":"ArtDatabanken","taxonConceptID":"urn:lsid:dyntaxa.se:Taxon:222159","eventTime":"00:00:00
-        - 00:00:00","identifier":"urn:lsid:artportalen.se:Sighting:81632968","informationWithheld":"More
-        information can be obtained from the Data Provider.","endDayOfYear":"6","locality":"S
-        om Åkernäs","collectionCode":"Artportalen","occurrenceID":"urn:lsid:artportalen.se:Sighting:81632968","recordedBy":"Jonas
-        F Grahn","startDayOfYear":"6","datasetID":"urn:lsid:swedishlifewatch.se:DataProvider:1","occurrenceRemarks":"småplantor,
-        frösådda i kanten av plantering på västra sidan om vägen","accessRights":"Free
-        usage","higherClassification":"Biota;Plantae;Viridiplantae;Streptophyta;Embryophyta;Tracheophyta;Euphyllophytina;Spermatophytae;Gymnospermae;Pinopsida;Pinales;Pinaceae"},{"key":2550016817,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2020-02-06T10:47:04.361+0000","lastParsed":"2020-02-06T12:29:18.082+0000","crawlId":199,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":7230686,"kingdomKey":6,"phylumKey":7707728,"classKey":194,"orderKey":640,"familyKey":3925,"genusKey":2684241,"speciesKey":5285750,"acceptedTaxonKey":7230686,"scientificName":"Pinus
+        contorta","genericName":"Pinus","specificEpithet":"contorta","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","iucnRedListCategory":"LC","dateIdentified":"2022-01-06T23:30:22","decimalLongitude":-106.05873,"decimalLatitude":39.470958,"coordinateUncertaintyInMeters":5.0,"stateProvince":"Colorado","year":2022,"month":1,"day":6,"eventDate":"2022-01-06T13:13:40","issues":["COORDINATE_ROUNDED"],"modified":"2022-01-11T16:12:43.000+00:00","lastInterpreted":"2022-11-04T16:02:00.164+00:00","references":"https://www.inaturalist.org/observations/104489071","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/175091254","created":"2022-01-06T20:13:40.000+00:00","creator":"sblumen","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"sblumen","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/175091254/original.jpg"}],"facts":[],"relations":[],"gadm":{"level0":{"gid":"USA","name":"United
+        States"},"level1":{"gid":"USA.6_1","name":"Colorado"},"level2":{"gid":"USA.6.60_1","name":"Summit"}},"isInCluster":false,"datasetName":"iNaturalist
+        research-grade observations","recordedBy":"sblumen","identifiedBy":"sblumen","geodeticDatum":"WGS84","class":"Pinopsida","countryCode":"US","recordedByIDs":[],"identifiedByIDs":[],"country":"United
+        States of America","rightsHolder":"sblumen","identifier":"104489071","http://unknown.org/nick":"sblumen","verbatimEventDate":"Thu
+        Jan 06 2022 13:13:40 GMT-0700 (MST)","collectionCode":"Observations","gbifID":"3455638113","verbatimLocality":"White
+        River National Forest, Breckenridge, CO, US","occurrenceID":"https://www.inaturalist.org/observations/104489071","taxonID":"48934","catalogNumber":"104489071","institutionCode":"iNaturalist","eventTime":"13:13:40-07:00","occurrenceRemarks":"Stand
+        of lodgepoles","http://unknown.org/captive":"wild","identificationID":"230123750"},{"key":3455667998,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2022-11-04T09:58:49.636+00:00","lastParsed":"2022-11-04T16:02:01.313+00:00","crawlId":323,"hostingOrganizationKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","extensions":{"http://rs.gbif.org/terms/1.0/Multimedia":[{"http://purl.org/dc/terms/license":"http://creativecommons.org/licenses/by-nc/4.0/","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/175421512","http://purl.org/dc/terms/rightsHolder":"darth_massey","http://rs.tdwg.org/dwc/terms/catalogNumber":"175421512","http://purl.org/dc/terms/created":"2022-01-09T20:23:22Z","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/type":"StillImage","http://purl.org/dc/terms/creator":"darth_massey","http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/175421512/original.jpeg","http://purl.org/dc/terms/format":"image/jpeg"}]},"basisOfRecord":"HUMAN_OBSERVATION","occurrenceStatus":"PRESENT","taxonKey":7230686,"kingdomKey":6,"phylumKey":7707728,"classKey":194,"orderKey":640,"familyKey":3925,"genusKey":2684241,"speciesKey":5285750,"acceptedTaxonKey":7230686,"scientificName":"Pinus
         contorta var. contorta","acceptedScientificName":"Pinus contorta var. contorta","kingdom":"Plantae","phylum":"Tracheophyta","order":"Pinales","family":"Pinaceae","genus":"Pinus","species":"Pinus
-        contorta","genericName":"Pinus","specificEpithet":"contorta","infraspecificEpithet":"contorta","taxonRank":"VARIETY","taxonomicStatus":"ACCEPTED","dateIdentified":"2020-01-05T20:55:06","decimalLongitude":-122.652428,"decimalLatitude":49.347214,"coordinateUncertaintyInMeters":5.0,"stateProvince":"British
-        Columbia","year":2020,"month":1,"day":4,"eventDate":"2020-01-04T10:33:00","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2020-01-05T21:22:15.000+0000","lastInterpreted":"2020-02-06T12:29:18.082+0000","references":"https://www.inaturalist.org/observations/37312485","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/59126200/original.jpg?1578256253","references":"https://www.inaturalist.org/photos/59126200","created":"2020-01-04T10:33:13.000+0000","creator":"John
-        D Reynolds","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"John
-        D Reynolds"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/59126183/original.jpg?1578256235","references":"https://www.inaturalist.org/photos/59126183","created":"2020-01-04T10:33:10.000+0000","creator":"John
-        D Reynolds","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"John
-        D Reynolds"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/59126226/original.jpg?1578256277","references":"https://www.inaturalist.org/photos/59126226","created":"2020-01-04T10:33:15.000+0000","creator":"John
-        D Reynolds","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"John
-        D Reynolds"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Pinopsida","countryCode":"CA","country":"Canada","rightsHolder":"John
-        D Reynolds","identifier":"37312485","http://unknown.org/nick":"johndreynolds","verbatimEventDate":"2020/01/04
-        10:33 AM PST","datasetName":"iNaturalist research-grade observations","gbifID":"2550016817","collectionCode":"Observations","verbatimLocality":"Coquitlam,
-        BC, Canada","occurrenceID":"https://www.inaturalist.org/observations/37312485","taxonID":"80130","catalogNumber":"37312485","recordedBy":"John
-        D Reynolds","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/37312485","institutionCode":"iNaturalist","rights":"©
-        John D Reynolds some rights reserved","eventTime":"18:33:00Z","occurrenceRemarks":"Widgeon
-        Marsh Regional Park, BC","identificationID":"82682839"},{"key":2557738499,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2020-02-06T10:47:04.361+0000","lastParsed":"2020-02-06T12:27:35.503+0000","crawlId":199,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":5285750,"kingdomKey":6,"phylumKey":7707728,"classKey":194,"orderKey":640,"familyKey":3925,"genusKey":2684241,"speciesKey":5285750,"acceptedTaxonKey":5285750,"scientificName":"Pinus
-        contorta Douglas ex Loudon","acceptedScientificName":"Pinus contorta Douglas
-        ex Loudon","kingdom":"Plantae","phylum":"Tracheophyta","order":"Pinales","family":"Pinaceae","genus":"Pinus","species":"Pinus
-        contorta","genericName":"Pinus","specificEpithet":"contorta","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2020-01-08T23:53:07","decimalLongitude":-105.81909,"decimalLatitude":39.814428,"coordinateUncertaintyInMeters":28030.0,"stateProvince":"Colorado","year":2020,"month":1,"day":7,"eventDate":"2020-01-07T12:38:46","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2020-01-12T04:17:56.000+0000","lastInterpreted":"2020-02-06T12:27:35.503+0000","references":"https://www.inaturalist.org/observations/37412419","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/59305488/original.jpg?1578527518","references":"https://www.inaturalist.org/photos/59305488","created":"2020-01-07T19:38:46.000+0000","creator":"heroicfauna","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"heroicfauna"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/59305483/original.jpg?1578527509","references":"https://www.inaturalist.org/photos/59305483","created":"2020-01-07T19:38:46.000+0000","creator":"heroicfauna","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"heroicfauna"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Pinopsida","countryCode":"US","country":"United
-        States of America","rightsHolder":"heroicfauna","identifier":"37412419","http://unknown.org/nick":"heroicfauna","informationWithheld":"Coordinate
-        uncertainty increased to 28030m at the request of the observer","verbatimEventDate":"Tue
-        Jan 07 2020 12:38:46 GMT-0700 (MST)","datasetName":"iNaturalist research-grade
-        observations","gbifID":"2557738499","collectionCode":"Observations","verbatimLocality":"Grand
-        County, US-CO, US","occurrenceID":"https://www.inaturalist.org/observations/37412419","taxonID":"48934","catalogNumber":"37412419","recordedBy":"heroicfauna","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/37412419","institutionCode":"iNaturalist","rights":"©
-        heroicfauna some rights reserved","eventTime":"19:38:46Z","identificationID":"83014329"},{"key":2557740678,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2020-02-06T10:47:04.361+0000","lastParsed":"2020-02-06T12:26:49.147+0000","crawlId":199,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":7230686,"kingdomKey":6,"phylumKey":7707728,"classKey":194,"orderKey":640,"familyKey":3925,"genusKey":2684241,"speciesKey":5285750,"acceptedTaxonKey":7230686,"scientificName":"Pinus
+        contorta","genericName":"Pinus","specificEpithet":"contorta","infraspecificEpithet":"contorta","taxonRank":"VARIETY","taxonomicStatus":"ACCEPTED","dateIdentified":"2022-01-11T02:47:37","decimalLongitude":-123.983253,"decimalLatitude":45.102451,"coordinateUncertaintyInMeters":4.0,"stateProvince":"Oregon","year":2022,"month":1,"day":9,"eventDate":"2022-01-09T12:23:22","issues":["COORDINATE_ROUNDED"],"modified":"2022-01-19T21:54:02.000+00:00","lastInterpreted":"2022-11-04T16:02:01.313+00:00","references":"https://www.inaturalist.org/observations/104662030","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/175421512","created":"2022-01-09T20:23:22.000+00:00","creator":"darth_massey","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"darth_massey","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/175421512/original.jpeg"}],"facts":[],"relations":[],"gadm":{"level0":{"gid":"USA","name":"United
+        States"},"level1":{"gid":"USA.38_1","name":"Oregon"},"level2":{"gid":"USA.38.29_1","name":"Tillamook"}},"isInCluster":false,"datasetName":"iNaturalist
+        research-grade observations","recordedBy":"darth_massey","identifiedBy":"Drew
+        Meyer","geodeticDatum":"WGS84","class":"Pinopsida","countryCode":"US","recordedByIDs":[],"identifiedByIDs":[],"country":"United
+        States of America","rightsHolder":"darth_massey","identifier":"104662030","http://unknown.org/nick":"darth_massey","verbatimEventDate":"Sun
+        Jan 09 2022 12:23:22 GMT -0800 (PST)","collectionCode":"Observations","gbifID":"3455667998","verbatimLocality":"Neskowin","occurrenceID":"https://www.inaturalist.org/observations/104662030","taxonID":"80130","catalogNumber":"104662030","institutionCode":"iNaturalist","eventTime":"12:23:22-08:00","http://unknown.org/captive":"wild","identificationID":"230889569"},{"key":3455708397,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2022-11-04T09:58:49.636+00:00","lastParsed":"2022-11-04T16:02:06.161+00:00","crawlId":323,"hostingOrganizationKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","extensions":{"http://rs.gbif.org/terms/1.0/Multimedia":[{"http://purl.org/dc/terms/license":"http://creativecommons.org/licenses/by-nc/4.0/","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/176196099","http://purl.org/dc/terms/rightsHolder":"Corey
+        Brooke","http://rs.tdwg.org/dwc/terms/catalogNumber":"176196099","http://purl.org/dc/terms/created":"2022-01-16T12:33:01Z","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/type":"StillImage","http://purl.org/dc/terms/creator":"Corey
+        Brooke","http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/176196099/original.jpg","http://purl.org/dc/terms/format":"image/jpeg"},{"http://purl.org/dc/terms/license":"http://creativecommons.org/licenses/by-nc/4.0/","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/176196106","http://purl.org/dc/terms/rightsHolder":"Corey
+        Brooke","http://rs.tdwg.org/dwc/terms/catalogNumber":"176196106","http://purl.org/dc/terms/created":"2022-01-16T12:33:01Z","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/type":"StillImage","http://purl.org/dc/terms/creator":"Corey
+        Brooke","http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/176196106/original.jpg","http://purl.org/dc/terms/format":"image/jpeg"},{"http://purl.org/dc/terms/license":"http://creativecommons.org/licenses/by-nc/4.0/","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/176196113","http://purl.org/dc/terms/rightsHolder":"Corey
+        Brooke","http://rs.tdwg.org/dwc/terms/catalogNumber":"176196113","http://purl.org/dc/terms/created":"2022-01-16T12:33:01Z","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/type":"StillImage","http://purl.org/dc/terms/creator":"Corey
+        Brooke","http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/176196113/original.jpg","http://purl.org/dc/terms/format":"image/jpeg"},{"http://purl.org/dc/terms/license":"http://creativecommons.org/licenses/by-nc/4.0/","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/176196120","http://purl.org/dc/terms/rightsHolder":"Corey
+        Brooke","http://rs.tdwg.org/dwc/terms/catalogNumber":"176196120","http://purl.org/dc/terms/created":"2022-01-16T12:33:01Z","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/type":"StillImage","http://purl.org/dc/terms/creator":"Corey
+        Brooke","http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/176196120/original.jpg","http://purl.org/dc/terms/format":"image/jpeg"}]},"basisOfRecord":"HUMAN_OBSERVATION","occurrenceStatus":"PRESENT","taxonKey":7230686,"kingdomKey":6,"phylumKey":7707728,"classKey":194,"orderKey":640,"familyKey":3925,"genusKey":2684241,"speciesKey":5285750,"acceptedTaxonKey":7230686,"scientificName":"Pinus
         contorta var. contorta","acceptedScientificName":"Pinus contorta var. contorta","kingdom":"Plantae","phylum":"Tracheophyta","order":"Pinales","family":"Pinaceae","genus":"Pinus","species":"Pinus
-        contorta","genericName":"Pinus","specificEpithet":"contorta","infraspecificEpithet":"contorta","taxonRank":"VARIETY","taxonomicStatus":"ACCEPTED","dateIdentified":"2020-01-10T16:42:11","decimalLongitude":-123.325476,"decimalLatitude":48.41347,"coordinateUncertaintyInMeters":262.0,"stateProvince":"British
-        Columbia","year":2020,"month":1,"day":9,"eventDate":"2020-01-09T15:24:30","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2020-01-10T16:42:11.000+0000","lastInterpreted":"2020-02-06T12:26:49.147+0000","references":"https://www.inaturalist.org/observations/37448393","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/59368068/original.jpg?1578636061","references":"https://www.inaturalist.org/photos/59368068","created":"2020-01-09T15:24:30.000+0000","creator":"katiedzyngel","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"katiedzyngel"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/59368041/original.jpg?1578635998","references":"https://www.inaturalist.org/photos/59368041","created":"2020-01-09T15:24:30.000+0000","creator":"katiedzyngel","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"katiedzyngel"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/59368034/original.jpg?1578635988","references":"https://www.inaturalist.org/photos/59368034","created":"2020-01-09T15:24:30.000+0000","creator":"katiedzyngel","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"katiedzyngel"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Pinopsida","countryCode":"CA","country":"Canada","rightsHolder":"katiedzyngel","identifier":"37448393","http://unknown.org/nick":"katiedzyngel","verbatimEventDate":"Thu
-        Jan 09 2020 15:24:30 GMT-0800 (PST)","datasetName":"iNaturalist research-grade
-        observations","gbifID":"2557740678","collectionCode":"Observations","verbatimLocality":"Gonzales
-        Hill Regional Park, Victoria, BC, CA","occurrenceID":"https://www.inaturalist.org/observations/37448393","taxonID":"80130","catalogNumber":"37448393","recordedBy":"katiedzyngel","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/37448393","institutionCode":"iNaturalist","rights":"©
-        katiedzyngel some rights reserved","eventTime":"15:24:30Z","identificationID":"83170642"},{"key":2557767097,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2020-02-06T10:47:04.361+0000","lastParsed":"2020-02-06T12:26:44.621+0000","crawlId":199,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":7230686,"kingdomKey":6,"phylumKey":7707728,"classKey":194,"orderKey":640,"familyKey":3925,"genusKey":2684241,"speciesKey":5285750,"acceptedTaxonKey":7230686,"scientificName":"Pinus
+        contorta","genericName":"Pinus","specificEpithet":"contorta","infraspecificEpithet":"contorta","taxonRank":"VARIETY","taxonomicStatus":"ACCEPTED","dateIdentified":"2022-01-16T23:59:56","decimalLongitude":-124.137397,"decimalLatitude":43.956395,"coordinateUncertaintyInMeters":4.0,"stateProvince":"Oregon","year":2022,"month":1,"day":16,"eventDate":"2022-01-16T12:33:01","issues":["COORDINATE_ROUNDED"],"modified":"2022-01-17T04:54:06.000+00:00","lastInterpreted":"2022-11-04T16:02:06.161+00:00","references":"https://www.inaturalist.org/observations/105065322","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/176196106","created":"2022-01-16T12:33:01.000+00:00","creator":"Corey
+        Brooke","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Corey
+        Brooke","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/176196106/original.jpg"},{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/176196113","created":"2022-01-16T12:33:01.000+00:00","creator":"Corey
+        Brooke","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Corey
+        Brooke","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/176196113/original.jpg"},{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/176196099","created":"2022-01-16T12:33:01.000+00:00","creator":"Corey
+        Brooke","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Corey
+        Brooke","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/176196099/original.jpg"},{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/176196120","created":"2022-01-16T12:33:01.000+00:00","creator":"Corey
+        Brooke","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Corey
+        Brooke","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/176196120/original.jpg"}],"facts":[],"relations":[],"gadm":{"level0":{"gid":"USA","name":"United
+        States"},"level1":{"gid":"USA.38_1","name":"Oregon"},"level2":{"gid":"USA.38.20_1","name":"Lane"}},"isInCluster":false,"datasetName":"iNaturalist
+        research-grade observations","recordedBy":"Corey Brooke","identifiedBy":"Corey
+        Brooke","geodeticDatum":"WGS84","class":"Pinopsida","countryCode":"US","recordedByIDs":[],"identifiedByIDs":[],"country":"United
+        States of America","rightsHolder":"Corey Brooke","identifier":"105065322","http://unknown.org/nick":"holyegg","verbatimEventDate":"Sun
+        Jan 16 2022 12:33:01 GMT-0800 (PST)","collectionCode":"Observations","gbifID":"3455708397","verbatimLocality":"Siuslaw
+        National Forest, Florence, OR, US","occurrenceID":"https://www.inaturalist.org/observations/105065322","taxonID":"80130","catalogNumber":"105065322","institutionCode":"iNaturalist","eventTime":"12:33:01Z","http://unknown.org/captive":"wild","identificationID":"231925398"},{"key":3455714970,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"CA","protocol":"DWC_ARCHIVE","lastCrawled":"2022-11-04T09:58:49.636+00:00","lastParsed":"2022-11-04T15:58:31.168+00:00","crawlId":323,"hostingOrganizationKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","extensions":{"http://rs.gbif.org/terms/1.0/Multimedia":[{"http://purl.org/dc/terms/license":"http://creativecommons.org/licenses/by-nc/4.0/","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/175975223","http://purl.org/dc/terms/rightsHolder":"John
+        D Reynolds","http://rs.tdwg.org/dwc/terms/catalogNumber":"175975223","http://purl.org/dc/terms/created":"2022-01-14T11:12:53-08:00","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/type":"StillImage","http://purl.org/dc/terms/creator":"John
+        D Reynolds","http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/175975223/original.jpg","http://purl.org/dc/terms/format":"image/jpeg"},{"http://purl.org/dc/terms/license":"http://creativecommons.org/licenses/by-nc/4.0/","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/175975237","http://purl.org/dc/terms/rightsHolder":"John
+        D Reynolds","http://rs.tdwg.org/dwc/terms/catalogNumber":"175975237","http://purl.org/dc/terms/created":"2022-01-14T11:12:58-08:00","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/type":"StillImage","http://purl.org/dc/terms/creator":"John
+        D Reynolds","http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/175975237/original.jpg","http://purl.org/dc/terms/format":"image/jpeg"}]},"basisOfRecord":"HUMAN_OBSERVATION","occurrenceStatus":"PRESENT","taxonKey":7230686,"kingdomKey":6,"phylumKey":7707728,"classKey":194,"orderKey":640,"familyKey":3925,"genusKey":2684241,"speciesKey":5285750,"acceptedTaxonKey":7230686,"scientificName":"Pinus
         contorta var. contorta","acceptedScientificName":"Pinus contorta var. contorta","kingdom":"Plantae","phylum":"Tracheophyta","order":"Pinales","family":"Pinaceae","genus":"Pinus","species":"Pinus
-        contorta","genericName":"Pinus","specificEpithet":"contorta","infraspecificEpithet":"contorta","taxonRank":"VARIETY","taxonomicStatus":"ACCEPTED","dateIdentified":"2020-01-12T03:51:20","decimalLongitude":-122.57493,"decimalLatitude":47.201458,"stateProvince":"Washington","year":2020,"month":1,"day":11,"eventDate":"2020-01-11T12:12:00","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2020-01-12T15:02:56.000+0000","lastInterpreted":"2020-02-06T12:26:44.621+0000","references":"https://www.inaturalist.org/observations/37510718","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/59474735/original.jpg?1578797592","references":"https://www.inaturalist.org/photos/59474735","created":"2020-01-11T12:12:02.000+0000","creator":"Eric
-        Jain","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Eric
-        Jain"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Pinopsida","countryCode":"US","country":"United
-        States of America","rightsHolder":"Eric Jain","identifier":"37510718","http://unknown.org/nick":"ejain","verbatimEventDate":"2020/01/11
-        12:12 PM PST","datasetName":"iNaturalist research-grade observations","gbifID":"2557767097","collectionCode":"Observations","verbatimLocality":"University
-        Place, WA, USA","occurrenceID":"https://www.inaturalist.org/observations/37510718","taxonID":"80130","catalogNumber":"37510718","recordedBy":"Eric
-        Jain","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/37510718","institutionCode":"iNaturalist","rights":"©
-        Eric Jain some rights reserved","eventTime":"20:12:00Z","identificationID":"83322963"},{"key":2557773769,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2020-02-06T10:47:04.361+0000","lastParsed":"2020-02-06T12:29:57.134+0000","crawlId":199,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":5285750,"kingdomKey":6,"phylumKey":7707728,"classKey":194,"orderKey":640,"familyKey":3925,"genusKey":2684241,"speciesKey":5285750,"acceptedTaxonKey":5285750,"scientificName":"Pinus
-        contorta Douglas ex Loudon","acceptedScientificName":"Pinus contorta Douglas
-        ex Loudon","kingdom":"Plantae","phylum":"Tracheophyta","order":"Pinales","family":"Pinaceae","genus":"Pinus","species":"Pinus
-        contorta","genericName":"Pinus","specificEpithet":"contorta","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2020-01-12T18:01:52","decimalLongitude":-118.427887,"decimalLatitude":45.508819,"coordinateUncertaintyInMeters":7.0,"stateProvince":"Oregon","year":2020,"month":1,"day":12,"eventDate":"2020-01-12T09:54:11","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2020-01-12T18:48:24.000+0000","lastInterpreted":"2020-02-06T12:29:57.134+0000","references":"https://www.inaturalist.org/observations/37529099","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/59511472/original.jpeg?1578852183","references":"https://www.inaturalist.org/photos/59511472","created":"2020-01-12T09:54:15.000+0000","creator":"birdwhisperer","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"birdwhisperer"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Pinopsida","countryCode":"US","country":"United
-        States of America","rightsHolder":"birdwhisperer","identifier":"37529099","http://unknown.org/nick":"birdwhisperer","verbatimEventDate":"2020-01-12
-        9:54:11 AM PST","datasetName":"iNaturalist research-grade observations","gbifID":"2557773769","collectionCode":"Observations","verbatimLocality":"Umatilla
-        County, US-OR, US","occurrenceID":"https://www.inaturalist.org/observations/37529099","taxonID":"48934","catalogNumber":"37529099","recordedBy":"birdwhisperer","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/37529099","institutionCode":"iNaturalist","rights":"©
-        birdwhisperer some rights reserved","eventTime":"16:54:11Z","occurrenceRemarks":"Lodgepole","identificationID":"83373370"},{"key":2557784036,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2020-02-06T10:47:04.361+0000","lastParsed":"2020-02-06T12:26:47.585+0000","crawlId":199,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":5285750,"kingdomKey":6,"phylumKey":7707728,"classKey":194,"orderKey":640,"familyKey":3925,"genusKey":2684241,"speciesKey":5285750,"acceptedTaxonKey":5285750,"scientificName":"Pinus
-        contorta Douglas ex Loudon","acceptedScientificName":"Pinus contorta Douglas
-        ex Loudon","kingdom":"Plantae","phylum":"Tracheophyta","order":"Pinales","family":"Pinaceae","genus":"Pinus","species":"Pinus
-        contorta","genericName":"Pinus","specificEpithet":"contorta","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2020-01-13T17:44:11","decimalLongitude":-119.975677,"decimalLatitude":38.700558,"stateProvince":"California","year":2020,"month":1,"day":11,"eventDate":"2020-01-11T14:26:15","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2020-01-13T23:27:58.000+0000","lastInterpreted":"2020-02-06T12:26:47.585+0000","references":"https://www.inaturalist.org/observations/37560861","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/59568877/original.jpeg?1578937478","references":"https://www.inaturalist.org/photos/59568877","created":"2020-01-11T14:26:26.000+0000","creator":"David
-        Vander Pluym","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"David
-        Vander Pluym"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/59568864/original.jpeg?1578937462","references":"https://www.inaturalist.org/photos/59568864","created":"2020-01-11T14:26:19.000+0000","creator":"David
-        Vander Pluym","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"David
-        Vander Pluym"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/59568856/original.jpeg?1578937455","references":"https://www.inaturalist.org/photos/59568856","created":"2020-01-11T14:26:15.000+0000","creator":"David
-        Vander Pluym","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"David
-        Vander Pluym"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/59568871/original.jpeg?1578937470","references":"https://www.inaturalist.org/photos/59568871","created":"2020-01-11T14:26:24.000+0000","creator":"David
-        Vander Pluym","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"David
-        Vander Pluym"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Pinopsida","countryCode":"US","country":"United
-        States of America","rightsHolder":"David Vander Pluym","identifier":"37560861","http://unknown.org/nick":"micrathene","verbatimEventDate":"2020-01-11
-        2:26:15 PM MST","datasetName":"iNaturalist research-grade observations","gbifID":"2557784036","collectionCode":"Observations","verbatimLocality":"Markleeville,
-        CA 96120, USA","occurrenceID":"https://www.inaturalist.org/observations/37560861","taxonID":"48934","catalogNumber":"37560861","recordedBy":"David
-        Vander Pluym","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/37560861","institutionCode":"iNaturalist","rights":"©
-        David Vander Pluym some rights reserved","eventTime":"21:26:15Z","identificationID":"83473663"}],"facets":[]}'
-  recorded_at: 2020-02-08 15:08:21 GMT
-  recorded_with: vcr/0.4.0, webmockr/0.5.0
-- request:
-    method: get
-    uri: https://bison.usgs.gov/solr/occurrences/select/?q=ITISscientificName%3A%22Pinus%20contorta%22&wt=json&rows=10
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      User-Agent: libcurl/7.54.0 r-curl/4.3 crul/0.9.0
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
-  response:
-    status:
-      status_code: '200'
-      message: OK
-      explanation: Request fulfilled, document follows
-    headers:
-      connection: keep-alive
-      content-type: text/plain;charset=utf-8
-      date: Sat, 08 Feb 2020 15:08:00 GMT
-      status: HTTP/1.1 200 OK
-      strict-transport-security:
-      - max-age=63072000; includeSubdomains; preload
-      - max-age=63072000; includeSubdomains; preload
-      - max-age=31536000
-      transfer-encoding: chunked
-      x-frame-options: SAMEORIGIN
-      x-node-name: not shown
-      x-upstream-member: not shown
-    body:
-      encoding: UTF-8
-      file: no
-      string: |
-        {"responseHeader":{"status":0,"QTime":0,"params":{"q":"ITISscientificName:\"Pinus contorta\"","rows":"10","wt":"json"}},"response":{"numFound":309458,"start":0,"docs":[{"providedScientificName":"Pinus contorta Douglas ex Loudon","countryCode":"US","providedCounty":"Yakutat","ambiguous":false,"latlon":"-140.1496899,60.0071169","computedCountyFips":"02282","occurrenceID":"2062861379","decimalLongitude":-140.14969,"basisOfRecord":"specimen","collectionID":"http://plants.usda.gov/java/citePlants","ownerInstitutionCollectionCode":"USDA - PLANTS Database","scientificName":"Pinus contorta","institutionID":"https://bison.usgs.gov","computedStateFips":"02","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","TSNs":["183327"],"providerID":440,"stateProvince":"Alaska","higherGeographyID":"02282","decimalLatitude":60.00712,"geo":"-140.1496899 60.0071169","provider":"BISON","calculatedCounty":"Yakutat","ITISscientificName":"Pinus contorta","pointPath":"/-140.1496899,60.0071169/specimen","kingdom":"Plantae","calculatedState":"Alaska","hierarchy_homonym_string":"-202422-954898-846494-954900-846496-846504-500009-954916-500028-18030-18035-183327-","ITIScommonName":"lodgepole pine;scrub pine;shore pine;tamarack pine","resourceID":"440,1066","ITIStsn":"183327","_version_":1637973441001816064},{"providedScientificName":"Pinus contorta Douglas ex Loudon","countryCode":"US","providedCounty":"Lane","ambiguous":false,"latlon":"-122.8976779,43.9282763","computedCountyFips":"41039","occurrenceID":"2064772855","decimalLongitude":-122.897675,"basisOfRecord":"specimen","collectionID":"http://plants.usda.gov/java/citePlants","ownerInstitutionCollectionCode":"USDA - PLANTS Database","scientificName":"Pinus contorta","institutionID":"https://bison.usgs.gov","computedStateFips":"41","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","TSNs":["183327"],"providerID":440,"stateProvince":"Oregon","higherGeographyID":"41039","decimalLatitude":43.928276,"geo":"-122.8976779 43.9282763","provider":"BISON","calculatedCounty":"Lane","ITISscientificName":"Pinus contorta","pointPath":"/-122.8976779,43.9282763/specimen","kingdom":"Plantae","calculatedState":"Oregon","hierarchy_homonym_string":"-202422-954898-846494-954900-846496-846504-500009-954916-500028-18030-18035-183327-","ITIScommonName":"lodgepole pine;scrub pine;shore pine;tamarack pine","resourceID":"440,1066","ITIStsn":"183327","_version_":1637973568152141827},{"providedScientificName":"Pinus contorta Douglas ex Loudon","countryCode":"US","providedCounty":"Island","ambiguous":false,"latlon":"-122.6706492,48.1585538","computedCountyFips":"53029","occurrenceID":"2064800095","decimalLongitude":-122.67065,"basisOfRecord":"specimen","collectionID":"http://plants.usda.gov/java/citePlants","ownerInstitutionCollectionCode":"USDA - PLANTS Database","scientificName":"Pinus contorta","institutionID":"https://bison.usgs.gov","computedStateFips":"53","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","TSNs":["183327"],"providerID":440,"stateProvince":"Washington","higherGeographyID":"53029","decimalLatitude":48.158554,"geo":"-122.6706492 48.1585538","provider":"BISON","calculatedCounty":"Island","ITISscientificName":"Pinus contorta","pointPath":"/-122.6706492,48.1585538/specimen","kingdom":"Plantae","calculatedState":"Washington","hierarchy_homonym_string":"-202422-954898-846494-954900-846496-846504-500009-954916-500028-18030-18035-183327-","ITIScommonName":"lodgepole pine;scrub pine;shore pine;tamarack pine","resourceID":"440,1066","ITIStsn":"183327","_version_":1637973569165066251},{"providedScientificName":"Pinus contorta Douglas ex Loudon","countryCode":"US","providedCounty":"Cowlitz","ambiguous":false,"latlon":"-122.6586822,46.1859234","computedCountyFips":"53015","occurrenceID":"2064801449","decimalLongitude":-122.65868,"basisOfRecord":"specimen","collectionID":"http://plants.usda.gov/java/citePlants","ownerInstitutionCollectionCode":"USDA - PLANTS Database","scientificName":"Pinus contorta","institutionID":"https://bison.usgs.gov","computedStateFips":"53","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","TSNs":["183327"],"providerID":440,"stateProvince":"Washington","higherGeographyID":"53015","decimalLatitude":46.185925,"geo":"-122.6586822 46.1859234","provider":"BISON","calculatedCounty":"Cowlitz","ITISscientificName":"Pinus contorta","pointPath":"/-122.6586822,46.1859234/specimen","kingdom":"Plantae","calculatedState":"Washington","hierarchy_homonym_string":"-202422-954898-846494-954900-846496-846504-500009-954916-500028-18030-18035-183327-","ITIScommonName":"lodgepole pine;scrub pine;shore pine;tamarack pine","resourceID":"440,1066","ITIStsn":"183327","_version_":1637973569200717826},{"providedScientificName":"Pinus contorta Douglas ex Loudon","countryCode":"US","providedCounty":"Kitsap","ambiguous":false,"latlon":"-122.6496358,47.6396874","computedCountyFips":"53035","occurrenceID":"2064802443","decimalLongitude":-122.649635,"basisOfRecord":"specimen","collectionID":"http://plants.usda.gov/java/citePlants","ownerInstitutionCollectionCode":"USDA - PLANTS Database","scientificName":"Pinus contorta","institutionID":"https://bison.usgs.gov","computedStateFips":"53","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","TSNs":["183327"],"providerID":440,"stateProvince":"Washington","higherGeographyID":"53035","decimalLatitude":47.639687,"geo":"-122.6496358 47.6396874","provider":"BISON","calculatedCounty":"Kitsap","ITISscientificName":"Pinus contorta","pointPath":"/-122.6496358,47.6396874/specimen","kingdom":"Plantae","calculatedState":"Washington","hierarchy_homonym_string":"-202422-954898-846494-954900-846496-846504-500009-954916-500028-18030-18035-183327-","ITIScommonName":"lodgepole pine;scrub pine;shore pine;tamarack pine","resourceID":"440,1066","ITIStsn":"183327","_version_":1637973569238466572},{"providedScientificName":"Pinus contorta Douglas ex Loudon","countryCode":"US","providedCounty":"Marion","ambiguous":false,"latlon":"-122.5762602,44.9008984","computedCountyFips":"41047","occurrenceID":"2064811183","decimalLongitude":-122.57626,"basisOfRecord":"specimen","collectionID":"http://plants.usda.gov/java/citePlants","ownerInstitutionCollectionCode":"USDA - PLANTS Database","scientificName":"Pinus contorta","institutionID":"https://bison.usgs.gov","computedStateFips":"41","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","TSNs":["183327"],"providerID":440,"stateProvince":"Oregon","higherGeographyID":"41047","decimalLatitude":44.900898,"geo":"-122.5762602 44.9008984","provider":"BISON","calculatedCounty":"Marion","ITISscientificName":"Pinus contorta","pointPath":"/-122.5762602,44.9008984/specimen","kingdom":"Plantae","calculatedState":"Oregon","hierarchy_homonym_string":"-202422-954898-846494-954900-846496-846504-500009-954916-500028-18030-18035-183327-","ITIScommonName":"lodgepole pine;scrub pine;shore pine;tamarack pine","resourceID":"440,1066","ITIStsn":"183327","_version_":1637973569524727810},{"providedScientificName":"Pinus contorta Douglas ex Loudon","countryCode":"US","providedCounty":"Siskiyou","ambiguous":false,"latlon":"-122.5332868,41.5879861","computedCountyFips":"06093","occurrenceID":"2064815942","decimalLongitude":-122.53329,"basisOfRecord":"specimen","collectionID":"http://plants.usda.gov/java/citePlants","ownerInstitutionCollectionCode":"USDA - PLANTS Database","scientificName":"Pinus contorta","institutionID":"https://bison.usgs.gov","computedStateFips":"06","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","TSNs":["183327"],"providerID":440,"stateProvince":"California","higherGeographyID":"06093","decimalLatitude":41.587986,"geo":"-122.5332868 41.5879861","provider":"BISON","calculatedCounty":"Siskiyou","ITISscientificName":"Pinus contorta","pointPath":"/-122.5332868,41.5879861/specimen","kingdom":"Plantae","calculatedState":"California","hierarchy_homonym_string":"-202422-954898-846494-954900-846496-846504-500009-954916-500028-18030-18035-183327-","ITIScommonName":"lodgepole pine;scrub pine;shore pine;tamarack pine","resourceID":"440,1066","ITIStsn":"183327","_version_":1637973569684111368},{"eventDate":"2009-08-12","providedScientificName":"Pinus contorta","year":2009,"countryCode":"US","providedCounty":"Fremont","ambiguous":false,"generalComments":"Dead","verbatimLocality":"plot control number=35371726010690 subplotNbr=4 treeNbr=1","latlon":"-111.0657,44.43097","computedCountyFips":"16043","occurrenceID":"2097723509","decimalLongitude":-111.0657,"basisOfRecord":"observation","providedCommonName":"lodgepole pine","collectionID":"https://bison.usgs.gov/ipt/resource?r=usfs-fia-trees-public-lands","ownerInstitutionCollectionCode":"USFS - Forest Inventory and Analysis - Trees (Public Lands)","scientificName":"Pinus contorta","institutionID":"https://bison.usgs.gov","computedStateFips":"16","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","TSNs":["183327"],"providerID":440,"stateProvince":"Idaho","higherGeographyID":"16043","decimalLatitude":44.43097,"verbatimElevation":"8400","geo":"-111.0657 44.43097","provider":"BISON","geodeticDatum":"NAD83","calculatedCounty":"Fremont","ITISscientificName":"Pinus contorta","pointPath":"/-111.0657,44.43097/observation","kingdom":"Plantae","calculatedState":"Idaho","hierarchy_homonym_string":"-202422-954898-846494-954900-846496-846504-500009-954916-500028-18030-18035-183327-","ITIScommonName":"lodgepole pine;scrub pine;shore pine;tamarack pine","resourceID":"440,100028","ITIStsn":"183327","_version_":1637973106005901312},{"eventDate":"1993-09-01","providedScientificName":"Pinus contorta","year":1993,"countryCode":"US","providedCounty":"Caribou","ambiguous":false,"generalComments":"Dead","verbatimLocality":"plot control number=3207463010690 subplotNbr=6 treeNbr=1","latlon":"-111.1845,42.50447","computedCountyFips":"16029","occurrenceID":"2097723510","decimalLongitude":-111.1845,"basisOfRecord":"observation","providedCommonName":"lodgepole pine","collectionID":"https://bison.usgs.gov/ipt/resource?r=usfs-fia-trees-public-lands","ownerInstitutionCollectionCode":"USFS - Forest Inventory and Analysis - Trees (Public Lands)","scientificName":"Pinus contorta","institutionID":"https://bison.usgs.gov","computedStateFips":"16","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","TSNs":["183327"],"providerID":440,"stateProvince":"Idaho","higherGeographyID":"16029","decimalLatitude":42.50447,"verbatimElevation":"7200","geo":"-111.1845 42.50447","provider":"BISON","geodeticDatum":"NAD83","calculatedCounty":"Caribou","ITISscientificName":"Pinus contorta","pointPath":"/-111.1845,42.50447/observation","kingdom":"Plantae","calculatedState":"Idaho","hierarchy_homonym_string":"-202422-954898-846494-954900-846496-846504-500009-954916-500028-18030-18035-183327-","ITIScommonName":"lodgepole pine;scrub pine;shore pine;tamarack pine","resourceID":"440,100028","ITIStsn":"183327","_version_":1637973106005901313},{"eventDate":"1993-09-01","providedScientificName":"Pinus contorta","year":1993,"countryCode":"US","providedCounty":"Caribou","ambiguous":false,"generalComments":"Live DBH inches=10.7","verbatimLocality":"plot control number=3207463010690 subplotNbr=1 treeNbr=3","latlon":"-111.1845,42.50447","computedCountyFips":"16029","occurrenceID":"2097723512","decimalLongitude":-111.1845,"basisOfRecord":"observation","providedCommonName":"lodgepole pine","collectionID":"https://bison.usgs.gov/ipt/resource?r=usfs-fia-trees-public-lands","ownerInstitutionCollectionCode":"USFS - Forest Inventory and Analysis - Trees (Public Lands)","scientificName":"Pinus contorta","institutionID":"https://bison.usgs.gov","computedStateFips":"16","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","TSNs":["183327"],"providerID":440,"stateProvince":"Idaho","higherGeographyID":"16029","decimalLatitude":42.50447,"verbatimElevation":"7200","geo":"-111.1845 42.50447","provider":"BISON","geodeticDatum":"NAD83","calculatedCounty":"Caribou","ITISscientificName":"Pinus contorta","pointPath":"/-111.1845,42.50447/observation","kingdom":"Plantae","calculatedState":"Idaho","hierarchy_homonym_string":"-202422-954898-846494-954900-846496-846504-500009-954916-500028-18030-18035-183327-","ITIScommonName":"lodgepole pine;scrub pine;shore pine;tamarack pine","resourceID":"440,100028","ITIStsn":"183327","_version_":1637973106005901314}]}}
-  recorded_at: 2020-02-08 15:08:21 GMT
-  recorded_with: vcr/0.4.0, webmockr/0.5.0
-- request:
-    method: get
-    uri: http://api.vertnet-portal.appspot.com/api/search?q=%7B%22q%22%3A%22%22%2C%22l%22%3A10%7D
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      User-Agent: libcurl/7.54.0 r-curl/4.3 crul/0.9.0
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
-  response:
-    status:
-      status_code: '200'
-      message: OK
-      explanation: Request fulfilled, document follows
-    headers:
-      status: HTTP/1.1 200 OK
-      cache-control: no-cache
-      content-type: application/json
-      charset: utf-8
-      x-cloud-trace-context: bc6349c7644e6301501559db41942637;o=1
-      date: Sat, 08 Feb 2020 15:08:21 GMT
-      server: Google Frontend
-      content-length: '33416'
-    body:
-      encoding: UTF-8
-      file: no
-      string: '{"request_date": "2020-02-08T15:08:21.253346", "response_records":
-        10, "submitted_query": "", "request_origin": "45.505106,-122.675026", "limit":
-        10, "cursor": "False:CpcFCtIDCqQD9wAAABn_____jIGJmo2LkZqL0o-QjYuek96WkZuah9LNz87M0s_H0s_H_wAA_3RtoKCZi4ygoP8AAP9dno-PmpGYlpGa_wAA_3N0bZaRm5qH_wAA_12biJz_AAD_c3Rtm5CcoJab_wAA_12ektCXmo2PmouQk5CYhtDPz8_GyMiZyNLOy8fH0svHmszSnpzHytKdxsbOz8qczMmemc3_AAD_c3-ektCXmo2PmouQk5CYhtDPz8_GyMiZyNLOy8fH0svHmszSnpzHytKdxsbOz8qczMmemc3_AAD__wD-__6MgYmajYuRmovSj5CNi56T3paRm5qH0s3PzszSz8fSz8f_AHRtoKCZi4ygoP8AXZ6Pj5qRmJaRmv8Ac3RtlpGbmof_AF2biJz_AHN0bZuQnKCWm_8AXZ6S0JeajY-ai5CTkJiG0M_Pz8bIyJnI0s7Lx8fSy8eazNKenMfK0p3Gxs7PypzMyZ6Zzf8Ac3-ektCXmo2PmouQk5CYhtDPz8_GyMiZyNLOy8fH0svHmszSnpzHytKdxsbOz8qczMmemc3_AP_-EAohBN0EkB08Gxk5AAAAAOb___9IClAAWgsJLDyfxiJ5Z0oQA2Dv3fDWAhINRG9jdW1lbnRJbmRleBqOAShBTkQgKElTICJjdXN0b21lcl9uYW1lIiAiYXBwZW5naW5lIikgKElTICJncm91cF9uYW1lIiAic352ZXJ0bmV0LXBvcnRhbCIpIChJUyAibmFtZXNwYWNlIiAiaW5kZXgtMjAxMy0wOC0wOCIpIChJUyAiaW5kZXhfbmFtZSIgImR3YyIpIChUUlVFKSk6GQoMKE4gb3JkZXJfaWQpEAEZAAAAAAAA8P9KBQgAQOgH",
-        "query_version": "search.py 2016-08-15T16:43+02:00", "recs": [{"haslifestage":
-        "0", "kingdom": "Animalia", "recordedby": "Parmenter & Webb", "higherclassification":
-        "Animalia | Chordata |  |  | Myobatrachidae | Limnodynastes", "pubdate": "2015-01-07",
-        "wasinvasive": "0", "stateprovince": "New South Wales", "hastypestatus": "0",
-        "basisofrecord": "PreservedSpecimen", "rank": 12, "month": "2", "decimallongitude":
-        "151.86361", "phylum": "Chordata", "references": "http://portal.vertnet.org/o/am/herpetology?id=0000004c-b04e-4a52-aed4-a5c90e2dbe38",
-        "haslength": "0", "year": "1973", "startdayofyear": "42", "wascaptive": "0",
-        "taxonrank": "species", "specificepithet": "tasmaniensis", "networks": "MaNIS,ORNIS,HerpNET,VertNet,OZCAM",
-        "emlrights": "http://creativecommons.org/licenses/by/3.0/au/", "bibliographiccitation":
-        "Australian Museum. Australian Museum provider for OZCAM. Record ID: 0000004c-b04e-4a52-aed4-a5c90e2dbe38.
-        Source: http://collections.ala.org.au/public/show/dr340 (source published
-        on 2015-01-07)", "vntype": "specimen", "family": "Myobatrachidae", "countrycode":
-        "AU", "title": "Australian Museum provider for OZCAM", "orgname": "Australian
-        Museum", "hasmedia": "0", "geodeticdatum": "not recorded (forced WGS84)",
-        "coordinateuncertaintyinmeters": "10000", "orgstateprovince": "New South Wales",
-        "highergeography": "| Australia | New South Wales |  |  |  |  |", "accessrights":
-        "http://vertnet.org/resources/norms.html", "hassex": "0", "contact": "OZCAM
-        Webmaster", "verbatimlocality": "Australia | New South Wales", "migrator":
-        "2015-01-05", "verbatimeventdate": "1973-02-11", "hasmass": "0", "email":
-        "OZCAM.CHAFC@gmail.com", "day": "11", "eventid": "urn:australianmuseum.net.au:Events:2021531",
-        "citation": "Australian Museum. Australian Museum provider for OZCAM. Source:
-        http://collections.ala.org.au/public/show/dr340 (source published on 2015-01-07)",
-        "occurrencestatus": "present", "locationremarks": "\"ecatalogue.LocCollectionEventLocal:
-        \"Australia, New South Wales, 12 miles West of Tenterfield (29\u00b0 01''
-        46\" S, 151\u00b0 51'' 49\" E) 11/02/1973 - 11/02/1973, Parmenter & Webb(Collector),
-        Field Collected - Terrestrial\";\"", "coordinateprecision": "0.00001", "orgcountry":
-        "Australia", "source_url": "http://collections.ala.org.au/public/show/dr340",
-        "institutioncode": "AM", "dctype": "PhysicalObject", "iptrecordid": "0000004c-b04e-4a52-aed4-a5c90e2dbe38",
-        "icode": "AM", "scientificname": "Limnodynastes tasmaniensis", "gbifpublisherid":
-        "770c30d2-c2a8-4bb2-8056-6167297cddae", "hashid": "2572", "haslicense": "1",
-        "class": "Amphibia", "vernacularname": "Spotted Grass Frog", "isfossil": "0",
-        "decimallatitude": "-29.02943", "occurrenceid": "0000004c-b04e-4a52-aed4-a5c90e2dbe38",
-        "language": "en", "license": "CCBY", "country": "Australia", "mappable": "1",
-        "georeferenceverificationstatus": "requires verification", "collectioncode":
-        "Herpetology", "modified": "2015-01-07", "eventdate": "1973-02-11", "identifiedby":
-        "Sadlier, Dr Ross Allen - Australian Museum - Herpetology", "nomenclaturalcode":
-        "ICZN", "keyname": "am/herpetology/0000004c-b04e-4a52-aed4-a5c90e2dbe38",
-        "hastissue": "0", "continent": "Australasia", "dateidentified": "2000", "lastindexed":
-        "2016-07-22", "genus": "Limnodynastes", "gbifdatasetid": "dce8feb0-6c89-11de-8225-b8a03c50a862",
-        "order": "Anura", "catalognumber": "R.36833", "enddayofyear": "42"}, {"haslifestage":
-        "0", "kingdom": "Animalia", "recordedby": "Whaley, R", "higherclassification":
-        "Animalia | Chordata |  |  | Elapidae | Furina", "pubdate": "2015-01-07",
-        "wasinvasive": "0", "stateprovince": "New South Wales", "hastypestatus": "0",
-        "basisofrecord": "PreservedSpecimen", "rank": 12, "month": "7", "decimallongitude":
-        "150.7", "phylum": "Chordata", "references": "http://portal.vertnet.org/o/am/herpetology?id=0000ccff-be0f-4ea0-8d8a-b382e7e1f834",
-        "haslength": "0", "year": "1979", "startdayofyear": "210", "wascaptive": "0",
-        "taxonrank": "species", "specificepithet": "diadema", "networks": "MaNIS,ORNIS,HerpNET,VertNet,OZCAM",
-        "emlrights": "http://creativecommons.org/licenses/by/3.0/au/", "bibliographiccitation":
-        "Australian Museum. Australian Museum provider for OZCAM. Record ID: 0000ccff-be0f-4ea0-8d8a-b382e7e1f834.
-        Source: http://collections.ala.org.au/public/show/dr340 (source published
-        on 2015-01-07)", "vntype": "specimen", "family": "Elapidae", "countrycode":
-        "AU", "title": "Australian Museum provider for OZCAM", "orgname": "Australian
-        Museum", "hasmedia": "0", "geodeticdatum": "not recorded (forced WGS84)",
-        "coordinateuncertaintyinmeters": "10000", "orgstateprovince": "New South Wales",
-        "highergeography": "| Australia | New South Wales |  |  |  |  |", "accessrights":
-        "http://vertnet.org/resources/norms.html", "hassex": "0", "contact": "OZCAM
-        Webmaster", "verbatimlocality": "Australia | New South Wales", "migrator":
-        "2015-01-05", "verbatimeventdate": "1979-07-29", "hasmass": "0", "email":
-        "OZCAM.CHAFC@gmail.com", "day": "29", "eventid": "urn:australianmuseum.net.au:Events:2030263",
-        "citation": "Australian Museum. Australian Museum provider for OZCAM. Source:
-        http://collections.ala.org.au/public/show/dr340 (source published on 2015-01-07)",
-        "occurrencestatus": "present", "locationremarks": "\"ecatalogue.LocCollectionEventLocal:
-        \"Australia, New South Wales, Penrith, Sydney (33\u00b0 45'' S, 150\u00b0
-        42'' E) 29/07/1979 - 29/07/1979, Whaley, R(Collector), Field Collected - Terrestrial\";\"",
-        "coordinateprecision": "0.001", "orgcountry": "Australia", "source_url": "http://collections.ala.org.au/public/show/dr340",
-        "institutioncode": "AM", "dctype": "PhysicalObject", "iptrecordid": "0000ccff-be0f-4ea0-8d8a-b382e7e1f834",
-        "icode": "AM", "scientificname": "Furina diadema", "gbifpublisherid": "770c30d2-c2a8-4bb2-8056-6167297cddae",
-        "hashid": "8537", "haslicense": "1", "class": "Reptilia", "vernacularname":
-        "Red-naped Snake", "isfossil": "0", "decimallatitude": "-33.75", "occurrenceid":
-        "0000ccff-be0f-4ea0-8d8a-b382e7e1f834", "language": "en", "license": "CCBY",
-        "country": "Australia", "mappable": "1", "georeferenceverificationstatus":
-        "requires verification", "collectioncode": "Herpetology", "modified": "2015-01-07",
-        "eventdate": "1979-07-29", "identifiedby": "Lambeck, R", "nomenclaturalcode":
-        "ICZN", "keyname": "am/herpetology/0000ccff-be0f-4ea0-8d8a-b382e7e1f834",
-        "hastissue": "0", "continent": "Australasia", "dateidentified": "1989", "lastindexed":
-        "2016-07-22", "genus": "Furina", "gbifdatasetid": "dce8feb0-6c89-11de-8225-b8a03c50a862",
-        "order": "Squamata", "catalognumber": "R.88488", "enddayofyear": "210"}, {"haslifestage":
-        "0", "kingdom": "Animalia", "recordedby": "H. Ehmann & M. Anstis", "higherclassification":
-        "Animalia | Chordata |  |  | Elapidae | Hemiaspis", "pubdate": "2015-01-07",
-        "wasinvasive": "0", "stateprovince": "New South Wales", "hastypestatus": "0",
-        "basisofrecord": "PreservedSpecimen", "rank": 12, "month": "3", "decimallongitude":
-        "151.50638", "phylum": "Chordata", "references": "http://portal.vertnet.org/o/am/herpetology?id=0000f7da-e6d7-4dc7-aa54-d4e737ea2684",
-        "haslength": "0", "year": "1975", "startdayofyear": "88", "wascaptive": "0",
-        "taxonrank": "species", "specificepithet": "signata", "networks": "MaNIS,ORNIS,HerpNET,VertNet,OZCAM",
-        "emlrights": "http://creativecommons.org/licenses/by/3.0/au/", "bibliographiccitation":
-        "Australian Museum. Australian Museum provider for OZCAM. Record ID: 0000f7da-e6d7-4dc7-aa54-d4e737ea2684.
-        Source: http://collections.ala.org.au/public/show/dr340 (source published
-        on 2015-01-07)", "vntype": "specimen", "family": "Elapidae", "countrycode":
-        "AU", "title": "Australian Museum provider for OZCAM", "orgname": "Australian
-        Museum", "hasmedia": "0", "geodeticdatum": "not recorded (forced WGS84)",
-        "coordinateuncertaintyinmeters": "10000", "orgstateprovince": "New South Wales",
-        "highergeography": "| Australia | New South Wales |  |  |  |  |", "accessrights":
-        "http://vertnet.org/resources/norms.html", "hassex": "0", "contact": "OZCAM
-        Webmaster", "verbatimlocality": "Australia | New South Wales", "migrator":
-        "2015-01-05", "verbatimeventdate": "1975-03-29", "hasmass": "0", "email":
-        "OZCAM.CHAFC@gmail.com", "day": "29", "eventid": "urn:australianmuseum.net.au:Events:2023720",
-        "citation": "Australian Museum. Australian Museum provider for OZCAM. Source:
-        http://collections.ala.org.au/public/show/dr340 (source published on 2015-01-07)",
-        "occurrencestatus": "present", "locationremarks": "\"ecatalogue.LocCollectionEventLocal:
-        \"Australia, New South Wales, 2 Km North of Eccelston near Gresford (32\u00b0
-        14'' 58\" S, 151\u00b0 30'' 23\" E) 29/03/1975 - 29/03/1975, H. Ehmann & M.
-        Anstis(Collector), Field Collected - Terrestrial\";\"", "coordinateprecision":
-        "0.00001", "orgcountry": "Australia", "source_url": "http://collections.ala.org.au/public/show/dr340",
-        "institutioncode": "AM", "dctype": "PhysicalObject", "iptrecordid": "0000f7da-e6d7-4dc7-aa54-d4e737ea2684",
-        "icode": "AM", "scientificname": "Hemiaspis signata", "gbifpublisherid": "770c30d2-c2a8-4bb2-8056-6167297cddae",
-        "hashid": "1825", "haslicense": "1", "class": "Reptilia", "vernacularname":
-        "Black-bellied Swamp Snake", "isfossil": "0", "decimallatitude": "-32.24944",
-        "occurrenceid": "0000f7da-e6d7-4dc7-aa54-d4e737ea2684", "language": "en",
-        "license": "CCBY", "country": "Australia", "mappable": "1", "georeferenceverificationstatus":
-        "requires verification", "collectioncode": "Herpetology", "modified": "2015-01-07",
-        "eventdate": "1975-03-29", "identifiedby": "Lambeck, R", "nomenclaturalcode":
-        "ICZN", "keyname": "am/herpetology/0000f7da-e6d7-4dc7-aa54-d4e737ea2684",
-        "hastissue": "0", "continent": "Australasia", "dateidentified": "1989", "lastindexed":
-        "2016-07-22", "genus": "Hemiaspis", "gbifdatasetid": "dce8feb0-6c89-11de-8225-b8a03c50a862",
-        "order": "Squamata", "catalognumber": "R.49098", "enddayofyear": "88"}, {"haslifestage":
-        "0", "kingdom": "Animalia", "recordedby": "Cogger And Webber", "higherclassification":
-        "Animalia | Chordata |  |  | Hylidae | Litoria", "pubdate": "2015-01-07",
-        "wasinvasive": "0", "stateprovince": "Northern Territory", "hastypestatus":
-        "0", "basisofrecord": "PreservedSpecimen", "rank": 12, "month": "7", "decimallongitude":
-        "132.95", "phylum": "Chordata", "references": "http://portal.vertnet.org/o/am/herpetology?id=000104de-f2a6-42f3-b3aa-959a9c63f41f",
-        "haslength": "0", "year": "1973", "startdayofyear": "206", "wascaptive": "0",
-        "taxonrank": "species", "specificepithet": "wotjulumensis", "networks": "MaNIS,ORNIS,HerpNET,VertNet,OZCAM",
-        "emlrights": "http://creativecommons.org/licenses/by/3.0/au/", "bibliographiccitation":
-        "Australian Museum. Australian Museum provider for OZCAM. Record ID: 000104de-f2a6-42f3-b3aa-959a9c63f41f.
-        Source: http://collections.ala.org.au/public/show/dr340 (source published
-        on 2015-01-07)", "vntype": "specimen", "family": "Hylidae", "countrycode":
-        "AU", "title": "Australian Museum provider for OZCAM", "orgname": "Australian
-        Museum", "hasmedia": "0", "geodeticdatum": "not recorded (forced WGS84)",
-        "coordinateuncertaintyinmeters": "10000", "orgstateprovince": "New South Wales",
-        "highergeography": "| Australia | Northern Territory |  |  |  |  |", "accessrights":
-        "http://vertnet.org/resources/norms.html", "hassex": "0", "contact": "OZCAM
-        Webmaster", "verbatimlocality": "Australia | Northern Territory", "migrator":
-        "2015-01-05", "verbatimeventdate": "1973-07-25", "hasmass": "0", "email":
-        "OZCAM.CHAFC@gmail.com", "day": "25", "eventid": "urn:australianmuseum.net.au:Events:2022008",
-        "citation": "Australian Museum. Australian Museum provider for OZCAM. Source:
-        http://collections.ala.org.au/public/show/dr340 (source published on 2015-01-07)",
-        "occurrencestatus": "present", "locationremarks": "\"ecatalogue.LocCollectionEventLocal:
-        \"Australia, Northern Territory, Cannon Hill (12\u00b0 23'' S, 132\u00b0 57''
-        E) 25/07/1973 - 25/07/1973, Cogger And Webber(Collector), Field Collected
-        - Terrestrial\";\"", "coordinateprecision": "0.001", "orgcountry": "Australia",
-        "source_url": "http://collections.ala.org.au/public/show/dr340", "institutioncode":
-        "AM", "dctype": "PhysicalObject", "iptrecordid": "000104de-f2a6-42f3-b3aa-959a9c63f41f",
-        "icode": "AM", "scientificname": "Litoria wotjulumensis", "gbifpublisherid":
-        "770c30d2-c2a8-4bb2-8056-6167297cddae", "hashid": "893", "haslicense": "1",
-        "class": "Amphibia", "isfossil": "0", "decimallatitude": "-12.383", "occurrenceid":
-        "000104de-f2a6-42f3-b3aa-959a9c63f41f", "language": "en", "license": "CCBY",
-        "country": "Australia", "mappable": "1", "georeferenceverificationstatus":
-        "requires verification", "collectioncode": "Herpetology", "modified": "2015-01-07",
-        "eventdate": "1973-07-25", "identifiedby": "B.F.Murphy & M.J.Huxley - Australian
-        Museum - Herpetology", "nomenclaturalcode": "ICZN", "keyname": "am/herpetology/000104de-f2a6-42f3-b3aa-959a9c63f41f",
-        "hastissue": "0", "continent": "Australasia", "dateidentified": "2006", "lastindexed":
-        "2016-07-22", "genus": "Litoria", "gbifdatasetid": "dce8feb0-6c89-11de-8225-b8a03c50a862",
-        "order": "Anura", "catalognumber": "R.39737", "enddayofyear": "206"}, {"haslifestage":
-        "0", "kingdom": "Animalia", "recordedby": "Watson, B", "higherclassification":
-        "Animalia | Chordata |  |  | Hylidae | Litoria", "pubdate": "2015-01-07",
-        "wasinvasive": "0", "stateprovince": "New South Wales", "hastypestatus": "0",
-        "basisofrecord": "PreservedSpecimen", "rank": 12, "month": "5", "decimallongitude":
-        "152.833", "phylum": "Chordata", "references": "http://portal.vertnet.org/o/am/herpetology?id=0002123f-67b0-42d9-b636-0259ec43bd68",
-        "haslength": "0", "year": "1972", "startdayofyear": "127", "wascaptive": "0",
-        "taxonrank": "species", "specificepithet": "phyllochroa", "networks": "MaNIS,ORNIS,HerpNET,VertNet,OZCAM",
-        "emlrights": "http://creativecommons.org/licenses/by/3.0/au/", "bibliographiccitation":
-        "Australian Museum. Australian Museum provider for OZCAM. Record ID: 0002123f-67b0-42d9-b636-0259ec43bd68.
-        Source: http://collections.ala.org.au/public/show/dr340 (source published
-        on 2015-01-07)", "vntype": "specimen", "family": "Hylidae", "countrycode":
-        "AU", "title": "Australian Museum provider for OZCAM", "orgname": "Australian
-        Museum", "hasmedia": "0", "geodeticdatum": "not recorded (forced WGS84)",
-        "coordinateuncertaintyinmeters": "10000", "orgstateprovince": "New South Wales",
-        "highergeography": "| Australia | New South Wales |  |  |  |  |", "accessrights":
-        "http://vertnet.org/resources/norms.html", "hassex": "0", "contact": "OZCAM
-        Webmaster", "verbatimlocality": "Australia | New South Wales", "migrator":
-        "2015-01-05", "verbatimeventdate": "1972-05-06", "hasmass": "0", "email":
-        "OZCAM.CHAFC@gmail.com", "day": "6", "eventid": "urn:australianmuseum.net.au:Events:2020332",
-        "citation": "Australian Museum. Australian Museum provider for OZCAM. Source:
-        http://collections.ala.org.au/public/show/dr340 (source published on 2015-01-07)",
-        "occurrencestatus": "present", "locationremarks": "\"ecatalogue.LocCollectionEventLocal:
-        \"Australia, New South Wales, Dorrigo National Park (30\u00b0 22'' S, 152\u00b0
-        50'' E) 06/05/1972 - 06/05/1972, Watson, B(Collector), Field Collected - Terrestrial\";\"",
-        "coordinateprecision": "0.001", "orgcountry": "Australia", "source_url": "http://collections.ala.org.au/public/show/dr340",
-        "institutioncode": "AM", "dctype": "PhysicalObject", "iptrecordid": "0002123f-67b0-42d9-b636-0259ec43bd68",
-        "icode": "AM", "scientificname": "Litoria phyllochroa", "gbifpublisherid":
-        "770c30d2-c2a8-4bb2-8056-6167297cddae", "hashid": "7007", "haslicense": "1",
-        "class": "Amphibia", "vernacularname": "Leaf-green Tree Frog", "isfossil":
-        "0", "decimallatitude": "-30.366", "occurrenceid": "0002123f-67b0-42d9-b636-0259ec43bd68",
-        "language": "en", "license": "CCBY", "country": "Australia", "mappable": "1",
-        "georeferenceverificationstatus": "requires verification", "collectioncode":
-        "Herpetology", "modified": "2015-01-07", "eventdate": "1972-05-06", "identifiedby":
-        "Sadlier, Dr Ross Allen - Australian Museum - Herpetology", "nomenclaturalcode":
-        "ICZN", "keyname": "am/herpetology/0002123f-67b0-42d9-b636-0259ec43bd68",
-        "hastissue": "0", "continent": "Australasia", "dateidentified": "2000", "lastindexed":
-        "2016-07-22", "genus": "Litoria", "gbifdatasetid": "dce8feb0-6c89-11de-8225-b8a03c50a862",
-        "order": "Anura", "catalognumber": "R.41113", "enddayofyear": "127"}, {"haslifestage":
-        "0", "kingdom": "Animalia", "recordedby": "Greer, Nd P.", "higherclassification":
-        "Animalia | Chordata |  |  | Scincidae | Carlia", "pubdate": "2015-01-07",
-        "wasinvasive": "0", "stateprovince": "Queensland", "hastypestatus": "0", "basisofrecord":
-        "PreservedSpecimen", "rank": 12, "month": "5", "decimallongitude": "146.733",
-        "phylum": "Chordata", "references": "http://portal.vertnet.org/o/am/herpetology?id=0003d567-cea4-48bd-8599-9411ee420c19",
-        "haslength": "0", "year": "1976", "startdayofyear": "130", "wascaptive": "0",
-        "taxonrank": "species", "specificepithet": "pectoralis", "networks": "MaNIS,ORNIS,HerpNET,VertNet,OZCAM",
-        "emlrights": "http://creativecommons.org/licenses/by/3.0/au/", "bibliographiccitation":
-        "Australian Museum. Australian Museum provider for OZCAM. Record ID: 0003d567-cea4-48bd-8599-9411ee420c19.
-        Source: http://collections.ala.org.au/public/show/dr340 (source published
-        on 2015-01-07)", "vntype": "specimen", "family": "Scincidae", "countrycode":
-        "AU", "title": "Australian Museum provider for OZCAM", "orgname": "Australian
-        Museum", "hasmedia": "0", "geodeticdatum": "not recorded (forced WGS84)",
-        "coordinateuncertaintyinmeters": "10000", "orgstateprovince": "New South Wales",
-        "highergeography": "| Australia | Queensland |  |  |  |  |", "accessrights":
-        "http://vertnet.org/resources/norms.html", "hassex": "0", "contact": "OZCAM
-        Webmaster", "verbatimlocality": "Australia | Queensland", "migrator": "2015-01-05",
-        "verbatimeventdate": "1976-05-09", "hasmass": "0", "email": "OZCAM.CHAFC@gmail.com",
-        "day": "9", "eventid": "urn:australianmuseum.net.au:Events:2025589", "citation":
-        "Australian Museum. Australian Museum provider for OZCAM. Source: http://collections.ala.org.au/public/show/dr340
-        (source published on 2015-01-07)", "collectioncode": "Herpetology", "occurrencestatus":
-        "present", "locationremarks": "\"ecatalogue.LocCollectionEventLocal: \"Australia,
-        Queensland, S Side of Ross R. Just Below Ross R. Dam, W. of Townsville (19\u00b0
-        24'' S, 146\u00b0 44'' E) 09/05/1976 - 09/05/1976, Greer, Nd P.(Collector),
-        A.\";\"", "coordinateprecision": "0.001", "orgcountry": "Australia", "source_url":
-        "http://collections.ala.org.au/public/show/dr340", "institutioncode": "AM",
-        "dctype": "PhysicalObject", "iptrecordid": "0003d567-cea4-48bd-8599-9411ee420c19",
-        "icode": "AM", "scientificname": "Carlia pectoralis", "gbifpublisherid": "770c30d2-c2a8-4bb2-8056-6167297cddae",
-        "hashid": "5650", "haslicense": "1", "class": "Reptilia", "vernacularname":
-        "Fire-tailed Rainbow-skink", "isfossil": "0", "decimallatitude": "-19.4",
-        "occurrenceid": "0003d567-cea4-48bd-8599-9411ee420c19", "language": "en",
-        "license": "CCBY", "country": "Australia", "mappable": "1", "georeferenceverificationstatus":
-        "requires verification", "modified": "2015-01-07", "eventdate": "1976-05-09",
-        "nomenclaturalcode": "ICZN", "keyname": "am/herpetology/0003d567-cea4-48bd-8599-9411ee420c19",
-        "hastissue": "0", "continent": "Australasia", "lastindexed": "2016-07-22",
-        "genus": "Carlia", "gbifdatasetid": "dce8feb0-6c89-11de-8225-b8a03c50a862",
-        "order": "Squamata", "catalognumber": "R.81878", "enddayofyear": "130"}, {"haslifestage":
-        "0", "kingdom": "Animalia", "recordedby": "Sadlier, Dr Ross Allen - Australian
-        Museum - Herpetology", "higherclassification": "Animalia | Chordata |  |  |
-        Gekkonidae | Bavayia", "pubdate": "2015-01-07", "wasinvasive": "0", "lastindexed":
-        "2016-07-22", "hastypestatus": "0", "basisofrecord": "PreservedSpecimen",
-        "rank": 12, "month": "6", "decimallongitude": "165.316", "phylum": "Chordata",
-        "references": "http://portal.vertnet.org/o/am/herpetology?id=0003da03-9ed4-48f4-836b-75162339c2fd",
-        "haslength": "0", "year": "1996", "startdayofyear": "171", "wascaptive": "0",
-        "taxonrank": "species", "specificepithet": "montana", "networks": "MaNIS,ORNIS,HerpNET,VertNet,OZCAM",
-        "emlrights": "http://creativecommons.org/licenses/by/3.0/au/", "bibliographiccitation":
-        "Australian Museum. Australian Museum provider for OZCAM. Record ID: 0003da03-9ed4-48f4-836b-75162339c2fd.
-        Source: http://collections.ala.org.au/public/show/dr340 (source published
-        on 2015-01-07)", "vntype": "specimen", "family": "Diplodactylidae", "countrycode":
-        "NC", "title": "Australian Museum provider for OZCAM", "orgname": "Australian
-        Museum", "hasmedia": "0", "geodeticdatum": "not recorded (forced WGS84)",
-        "coordinateuncertaintyinmeters": "10000", "orgstateprovince": "New South Wales",
-        "highergeography": "| New Caledonia |  |  |  |  |  |", "accessrights": "http://vertnet.org/resources/norms.html",
-        "hassex": "0", "contact": "OZCAM Webmaster", "verbatimlocality": "New Caledonia",
-        "migrator": "2015-01-05", "verbatimeventdate": "1996-06-19", "hasmass": "0",
-        "email": "OZCAM.CHAFC@gmail.com", "day": "19", "eventid": "urn:australianmuseum.net.au:Events:2041755",
-        "citation": "Australian Museum. Australian Museum provider for OZCAM. Source:
-        http://collections.ala.org.au/public/show/dr340 (source published on 2015-01-07)",
-        "islandgroup": "New Caledonia", "occurrencestatus": "present", "locationremarks":
-        "\"ecatalogue.LocCollectionEventLocal: \"New Caledonia, New Caledonia, Mt.
-        Aoupinie, Creek Crossing 1km Ne of Forestry Camp By Rd. (21\u00b0 08'' S,
-        165\u00b0 19'' E) 19/06/1996 - 19/06/1996, Sadlier, Dr Ross Allen - Australian
-        Museum - Herpetology(Collector), Field Collected - Terrestrial\";\"", "coordinateprecision":
-        "0.001", "orgcountry": "Australia", "source_url": "http://collections.ala.org.au/public/show/dr340",
-        "institutioncode": "AM", "dctype": "PhysicalObject", "iptrecordid": "0003da03-9ed4-48f4-836b-75162339c2fd",
-        "icode": "AM", "scientificname": "Bavayia montana", "gbifpublisherid": "770c30d2-c2a8-4bb2-8056-6167297cddae",
-        "hashid": "1785", "haslicense": "1", "class": "Reptilia", "isfossil": "0",
-        "decimallatitude": "-21.133", "occurrenceid": "0003da03-9ed4-48f4-836b-75162339c2fd",
-        "language": "en", "license": "CCBY", "country": "New Caledonia", "mappable":
-        "1", "georeferenceverificationstatus": "requires verification", "collectioncode":
-        "Herpetology", "modified": "2015-01-07", "eventdate": "1996-06-19", "identifiedby":
-        "Sadlier, Dr Ross Allen - Australian Museum - Herpetology", "nomenclaturalcode":
-        "ICZN", "keyname": "am/herpetology/0003da03-9ed4-48f4-836b-75162339c2fd",
-        "hastissue": "0", "continent": "Oceania", "dateidentified": "1996", "waterbody":
-        "South Pacific Ocean", "genus": "Bavayia", "gbifdatasetid": "dce8feb0-6c89-11de-8225-b8a03c50a862",
-        "order": "Squamata", "catalognumber": "R.149431.001", "enddayofyear": "171"},
-        {"haslifestage": "0", "kingdom": "Animalia", "recordedby": "A. and P. Greer",
-        "higherclassification": "Animalia | Chordata |  |  | Gekkonidae | Heteronotia",
-        "pubdate": "2015-01-07", "wasinvasive": "0", "stateprovince": "Queensland",
-        "hastypestatus": "0", "basisofrecord": "PreservedSpecimen", "rank": 12, "month":
-        "6", "decimallongitude": "144.516", "phylum": "Chordata", "references": "http://portal.vertnet.org/o/am/herpetology?id=000469a4-ef5a-438b-957f-5dea80fdac98",
-        "haslength": "0", "year": "1976", "startdayofyear": "170", "wascaptive": "0",
-        "taxonrank": "species", "specificepithet": "binoei", "networks": "MaNIS,ORNIS,HerpNET,VertNet,OZCAM",
-        "emlrights": "http://creativecommons.org/licenses/by/3.0/au/", "bibliographiccitation":
-        "Australian Museum. Australian Museum provider for OZCAM. Record ID: 000469a4-ef5a-438b-957f-5dea80fdac98.
-        Source: http://collections.ala.org.au/public/show/dr340 (source published
-        on 2015-01-07)", "vntype": "specimen", "family": "Gekkonidae", "countrycode":
-        "AU", "title": "Australian Museum provider for OZCAM", "orgname": "Australian
-        Museum", "hasmedia": "0", "geodeticdatum": "not recorded (forced WGS84)",
-        "coordinateuncertaintyinmeters": "10000", "orgstateprovince": "New South Wales",
-        "highergeography": "| Australia | Queensland |  |  |  |  |", "accessrights":
-        "http://vertnet.org/resources/norms.html", "hassex": "0", "contact": "OZCAM
-        Webmaster", "verbatimlocality": "Australia | Queensland", "migrator": "2015-01-05",
-        "verbatimeventdate": "1976-06-18", "hasmass": "0", "email": "OZCAM.CHAFC@gmail.com",
-        "day": "18", "eventid": "urn:australianmuseum.net.au:Events:2026001", "citation":
-        "Australian Museum. Australian Museum provider for OZCAM. Source: http://collections.ala.org.au/public/show/dr340
-        (source published on 2015-01-07)", "occurrencestatus": "present", "locationremarks":
-        "\"ecatalogue.LocCollectionEventLocal: \"Australia, Queensland, Chillagoe,
-        on East Side of Creek near Camping Area (17\u00b0 09'' S, 144\u00b0 31'' E)
-        18/06/1976 - 18/06/1976, A. and P. Greer(Collector), Field Collected - Terrestrial\";\"",
-        "coordinateprecision": "0.001", "orgcountry": "Australia", "source_url": "http://collections.ala.org.au/public/show/dr340",
-        "institutioncode": "AM", "dctype": "PhysicalObject", "iptrecordid": "000469a4-ef5a-438b-957f-5dea80fdac98",
-        "icode": "AM", "scientificname": "Heteronotia binoei", "gbifpublisherid":
-        "770c30d2-c2a8-4bb2-8056-6167297cddae", "hashid": "5728", "haslicense": "1",
-        "class": "Reptilia", "isfossil": "0", "decimallatitude": "-17.15", "occurrenceid":
-        "000469a4-ef5a-438b-957f-5dea80fdac98", "language": "en", "license": "CCBY",
-        "country": "Australia", "mappable": "1", "georeferenceverificationstatus":
-        "requires verification", "collectioncode": "Herpetology", "modified": "2015-01-07",
-        "eventdate": "1976-06-18", "identifiedby": "Shea, G", "nomenclaturalcode":
-        "ICZN", "keyname": "am/herpetology/000469a4-ef5a-438b-957f-5dea80fdac98",
-        "hastissue": "0", "continent": "Australasia", "dateidentified": "1999", "lastindexed":
-        "2016-07-22", "genus": "Heteronotia", "gbifdatasetid": "dce8feb0-6c89-11de-8225-b8a03c50a862",
-        "order": "Squamata", "catalognumber": "R.86088", "enddayofyear": "170"}, {"haslifestage":
-        "0", "kingdom": "Animalia", "recordedby": "Parker, F", "higherclassification":
-        "Animalia | Chordata |  |  | Gekkonidae | Heteronotia", "pubdate": "2015-01-07",
-        "wasinvasive": "0", "stateprovince": "Queensland", "hastypestatus": "0", "basisofrecord":
-        "PreservedSpecimen", "rank": 12, "month": "7", "decimallongitude": "141.616",
-        "phylum": "Chordata", "references": "http://portal.vertnet.org/o/am/herpetology?id=0008ea26-386d-488b-9fa3-78a9c6b9477d",
-        "haslength": "0", "year": "1968", "startdayofyear": "183", "wascaptive": "0",
-        "taxonrank": "species", "specificepithet": "binoei", "networks": "MaNIS,ORNIS,HerpNET,VertNet,OZCAM",
-        "emlrights": "http://creativecommons.org/licenses/by/3.0/au/", "bibliographiccitation":
-        "Australian Museum. Australian Museum provider for OZCAM. Record ID: 0008ea26-386d-488b-9fa3-78a9c6b9477d.
-        Source: http://collections.ala.org.au/public/show/dr340 (source published
-        on 2015-01-07)", "vntype": "specimen", "family": "Gekkonidae", "countrycode":
-        "AU", "title": "Australian Museum provider for OZCAM", "orgname": "Australian
-        Museum", "hasmedia": "0", "geodeticdatum": "not recorded (forced WGS84)",
-        "coordinateuncertaintyinmeters": "10000", "orgstateprovince": "New South Wales",
-        "highergeography": "| Australia | Queensland |  |  |  |  |", "accessrights":
-        "http://vertnet.org/resources/norms.html", "hassex": "0", "contact": "OZCAM
-        Webmaster", "verbatimlocality": "Australia | Queensland", "migrator": "2015-01-05",
-        "verbatimeventdate": "1968-07-01", "hasmass": "0", "email": "OZCAM.CHAFC@gmail.com",
-        "day": "1", "eventid": "urn:australianmuseum.net.au:Events:2016815", "citation":
-        "Australian Museum. Australian Museum provider for OZCAM. Source: http://collections.ala.org.au/public/show/dr340
-        (source published on 2015-01-07)", "occurrencestatus": "present", "locationremarks":
-        "\"ecatalogue.LocCollectionEventLocal: \"Australia, Queensland, Edward River
-        Stn. Cape York (14\u00b0 54'' S, 141\u00b0 37'' E) 01/07/1968 - 01/07/1968,
-        Parker, F(Collector), Accession\";\"", "coordinateprecision": "0.001", "orgcountry":
-        "Australia", "source_url": "http://collections.ala.org.au/public/show/dr340",
-        "institutioncode": "AM", "dctype": "PhysicalObject", "iptrecordid": "0008ea26-386d-488b-9fa3-78a9c6b9477d",
-        "icode": "AM", "scientificname": "Heteronotia binoei", "gbifpublisherid":
-        "770c30d2-c2a8-4bb2-8056-6167297cddae", "hashid": "1440", "haslicense": "1",
-        "class": "Reptilia", "isfossil": "0", "decimallatitude": "-14.9", "occurrenceid":
-        "0008ea26-386d-488b-9fa3-78a9c6b9477d", "language": "en", "license": "CCBY",
-        "country": "Australia", "mappable": "1", "georeferenceverificationstatus":
-        "requires verification", "collectioncode": "Herpetology", "modified": "2015-01-07",
-        "eventdate": "1968-07-01", "identifiedby": "Shea, G", "nomenclaturalcode":
-        "ICZN", "keyname": "am/herpetology/0008ea26-386d-488b-9fa3-78a9c6b9477d",
-        "hastissue": "0", "continent": "Australasia", "dateidentified": "1999", "lastindexed":
-        "2016-07-22", "genus": "Heteronotia", "gbifdatasetid": "dce8feb0-6c89-11de-8225-b8a03c50a862",
-        "order": "Squamata", "catalognumber": "R.27140", "enddayofyear": "183"}, {"haslifestage":
-        "0", "kingdom": "Animalia", "recordedby": "Liem, D. S.", "higherclassification":
-        "Animalia | Chordata |  |  | Myobatrachidae | Taudactylus", "pubdate": "2015-01-07",
-        "wasinvasive": "0", "stateprovince": "Queensland", "hastypestatus": "0", "basisofrecord":
-        "PreservedSpecimen", "rank": 12, "month": "11", "decimallongitude": "148.5",
-        "phylum": "Chordata", "references": "http://portal.vertnet.org/o/am/herpetology?id=000977f7-1488-48e3-ac85-b99105c36af2",
-        "haslength": "0", "year": "1971", "startdayofyear": "328", "wascaptive": "0",
-        "taxonrank": "species", "specificepithet": "eungellensis", "networks": "MaNIS,ORNIS,HerpNET,VertNet,OZCAM",
-        "emlrights": "http://creativecommons.org/licenses/by/3.0/au/", "bibliographiccitation":
-        "Australian Museum. Australian Museum provider for OZCAM. Record ID: 000977f7-1488-48e3-ac85-b99105c36af2.
-        Source: http://collections.ala.org.au/public/show/dr340 (source published
-        on 2015-01-07)", "vntype": "specimen", "family": "Myobatrachidae", "countrycode":
-        "AU", "title": "Australian Museum provider for OZCAM", "orgname": "Australian
-        Museum", "hasmedia": "0", "geodeticdatum": "not recorded (forced WGS84)",
-        "coordinateuncertaintyinmeters": "10000", "orgstateprovince": "New South Wales",
-        "highergeography": "| Australia | Queensland |  |  |  |  |", "accessrights":
-        "http://vertnet.org/resources/norms.html", "hassex": "0", "contact": "OZCAM
-        Webmaster", "verbatimlocality": "Australia | Queensland", "migrator": "2015-01-05",
-        "verbatimeventdate": "1971-11-24", "hasmass": "0", "email": "OZCAM.CHAFC@gmail.com",
-        "day": "24", "eventid": "urn:australianmuseum.net.au:Events:2019536", "citation":
-        "Australian Museum. Australian Museum provider for OZCAM. Source: http://collections.ala.org.au/public/show/dr340
-        (source published on 2015-01-07)", "occurrencestatus": "present", "locationremarks":
-        "\"ecatalogue.LocCollectionEventLocal: \"Australia, Queensland, Eungella (21\u00b0
-        08'' S, 148\u00b0 30'' E) 24/11/1971 - 24/11/1971, Liem, D. S.(Collector),
-        Accession\";\"", "coordinateprecision": "0.001", "orgcountry": "Australia",
-        "source_url": "http://collections.ala.org.au/public/show/dr340", "institutioncode":
-        "AM", "dctype": "PhysicalObject", "iptrecordid": "000977f7-1488-48e3-ac85-b99105c36af2",
-        "icode": "AM", "scientificname": "Taudactylus eungellensis", "gbifpublisherid":
-        "770c30d2-c2a8-4bb2-8056-6167297cddae", "hashid": "273", "haslicense": "1",
-        "class": "Amphibia", "vernacularname": "Eungella Torrent Frog", "isfossil":
-        "0", "decimallatitude": "-21.133", "occurrenceid": "000977f7-1488-48e3-ac85-b99105c36af2",
-        "language": "en", "license": "CCBY", "country": "Australia", "mappable": "1",
-        "georeferenceverificationstatus": "requires verification", "collectioncode":
-        "Herpetology", "modified": "2015-01-07", "eventdate": "1971-11-24", "identifiedby":
-        "Sadlier, Dr Ross Allen - Australian Museum - Herpetology", "nomenclaturalcode":
-        "ICZN", "keyname": "am/herpetology/000977f7-1488-48e3-ac85-b99105c36af2",
-        "hastissue": "0", "continent": "Australasia", "dateidentified": "1989", "lastindexed":
-        "2016-07-22", "genus": "Taudactylus", "gbifdatasetid": "dce8feb0-6c89-11de-8225-b8a03c50a862",
-        "order": "Anura", "catalognumber": "R.33387.001", "enddayofyear": "328"}],
-        "matching_records": ">10000", "api_version": "api.py 2017-11-24T12:16-03:00"}'
-  recorded_at: 2020-02-08 15:08:21 GMT
-  recorded_with: vcr/0.4.0, webmockr/0.5.0
+        contorta","genericName":"Pinus","specificEpithet":"contorta","infraspecificEpithet":"contorta","taxonRank":"VARIETY","taxonomicStatus":"ACCEPTED","dateIdentified":"2022-01-15T04:10:30","decimalLongitude":-123.238372,"decimalLatitude":49.551403,"coordinateUncertaintyInMeters":4.0,"stateProvince":"British
+        Columbia","year":2022,"month":1,"day":14,"eventDate":"2022-01-14T11:12:00","issues":["COORDINATE_ROUNDED"],"modified":"2022-01-15T17:49:38.000+00:00","lastInterpreted":"2022-11-04T15:58:31.168+00:00","references":"https://www.inaturalist.org/observations/104953551","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/175975223","created":"2022-01-14T19:12:53.000+00:00","creator":"John
+        D Reynolds","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"John
+        D Reynolds","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/175975223/original.jpg"},{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/175975237","created":"2022-01-14T19:12:58.000+00:00","creator":"John
+        D Reynolds","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"John
+        D Reynolds","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/175975237/original.jpg"}],"facts":[],"relations":[],"gadm":{},"isInCluster":false,"datasetName":"iNaturalist
+        research-grade observations","recordedBy":"John D Reynolds","identifiedBy":"John
+        D Reynolds","geodeticDatum":"WGS84","class":"Pinopsida","countryCode":"CA","recordedByIDs":[],"identifiedByIDs":[],"country":"Canada","rightsHolder":"John
+        D Reynolds","identifier":"104953551","http://unknown.org/nick":"johndreynolds","verbatimEventDate":"2022/01/14
+        11:12 AM PST","collectionCode":"Observations","gbifID":"3455714970","verbatimLocality":"Porteau
+        Cove, Squamish-Lillooet, British Columbia, Canada","occurrenceID":"https://www.inaturalist.org/observations/104953551","taxonID":"80130","catalogNumber":"104953551","institutionCode":"iNaturalist","eventTime":"11:12:00-08:00","occurrenceRemarks":"Porteau
+        Cove Provincial Park, BC, Canada","http://unknown.org/captive":"wild","identificationID":"231592976"},{"key":3455741160,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2022-11-04T09:58:49.636+00:00","lastParsed":"2022-11-04T16:02:09.814+00:00","crawlId":323,"hostingOrganizationKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","extensions":{"http://rs.gbif.org/terms/1.0/Multimedia":[{"http://purl.org/dc/terms/license":"http://creativecommons.org/licenses/by-nc-nd/4.0/","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/175478884","http://purl.org/dc/terms/rightsHolder":"Mary
+        Sanseverino","http://rs.tdwg.org/dwc/terms/catalogNumber":"175478884","http://purl.org/dc/terms/created":"2022-01-09T11:36:07-08:00","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/type":"StillImage","http://purl.org/dc/terms/creator":"Mary
+        Sanseverino","http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/175478884/original.jpg","http://purl.org/dc/terms/format":"image/jpeg"}]},"basisOfRecord":"HUMAN_OBSERVATION","occurrenceStatus":"PRESENT","taxonKey":7230686,"kingdomKey":6,"phylumKey":7707728,"classKey":194,"orderKey":640,"familyKey":3925,"genusKey":2684241,"speciesKey":5285750,"acceptedTaxonKey":7230686,"scientificName":"Pinus
+        contorta var. contorta","acceptedScientificName":"Pinus contorta var. contorta","kingdom":"Plantae","phylum":"Tracheophyta","order":"Pinales","family":"Pinaceae","genus":"Pinus","species":"Pinus
+        contorta","genericName":"Pinus","specificEpithet":"contorta","infraspecificEpithet":"contorta","taxonRank":"VARIETY","taxonomicStatus":"ACCEPTED","dateIdentified":"2022-01-10T05:52:31","decimalLongitude":-123.603461,"decimalLatitude":48.414683,"coordinateUncertaintyInMeters":4.0,"stateProvince":"British
+        Columbia","year":2022,"month":1,"day":9,"eventDate":"2022-01-09T11:36:00","issues":["COORDINATE_ROUNDED"],"modified":"2022-01-10T22:48:31.000+00:00","lastInterpreted":"2022-11-04T16:02:09.814+00:00","references":"https://www.inaturalist.org/observations/104692013","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/175478884","created":"2022-01-09T19:36:07.000+00:00","creator":"Mary
+        Sanseverino","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc-nd/4.0/","rightsHolder":"Mary
+        Sanseverino","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/175478884/original.jpg"}],"facts":[],"relations":[],"gadm":{"level0":{"gid":"CAN","name":"Canada"},"level1":{"gid":"CAN.2_1","name":"British
+        Columbia"},"level2":{"gid":"CAN.2.3_1","name":"Capital"},"level3":{"gid":"CAN.2.3.17_1","name":"Metchosin"}},"isInCluster":false,"datasetName":"iNaturalist
+        research-grade observations","recordedBy":"Mary Sanseverino","identifiedBy":"Mary
+        Sanseverino","geodeticDatum":"WGS84","class":"Pinopsida","countryCode":"CA","recordedByIDs":[],"identifiedByIDs":[],"country":"Canada","rightsHolder":"Mary
+        Sanseverino","identifier":"104692013","http://unknown.org/nick":"msanseve","verbatimEventDate":"2022/01/09
+        11:36 AM PST","collectionCode":"Observations","gbifID":"3455741160","verbatimLocality":"Capital,
+        BC, Canada","occurrenceID":"https://www.inaturalist.org/observations/104692013","taxonID":"80130","catalogNumber":"104692013","institutionCode":"iNaturalist","eventTime":"11:36:00-08:00","http://unknown.org/captive":"wild","identificationID":"230727138"},{"key":3455754767,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2022-11-04T09:58:49.636+00:00","lastParsed":"2022-11-04T16:02:38.361+00:00","crawlId":323,"hostingOrganizationKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","extensions":{"http://rs.gbif.org/terms/1.0/Multimedia":[{"http://purl.org/dc/terms/license":"http://creativecommons.org/licenses/by-nc/4.0/","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/174479880","http://purl.org/dc/terms/rightsHolder":"peterj29","http://rs.tdwg.org/dwc/terms/catalogNumber":"174479880","http://purl.org/dc/terms/created":"2022-01-01T16:36:51Z","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/type":"StillImage","http://purl.org/dc/terms/creator":"peterj29","http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/174479880/original.jpg","http://purl.org/dc/terms/format":"image/jpeg"},{"http://purl.org/dc/terms/license":"http://creativecommons.org/licenses/by-nc/4.0/","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/174479857","http://purl.org/dc/terms/rightsHolder":"peterj29","http://rs.tdwg.org/dwc/terms/catalogNumber":"174479857","http://purl.org/dc/terms/created":"2022-01-01T16:36:51Z","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/type":"StillImage","http://purl.org/dc/terms/creator":"peterj29","http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/174479857/original.jpg","http://purl.org/dc/terms/format":"image/jpeg"}]},"basisOfRecord":"HUMAN_OBSERVATION","occurrenceStatus":"PRESENT","taxonKey":7230686,"kingdomKey":6,"phylumKey":7707728,"classKey":194,"orderKey":640,"familyKey":3925,"genusKey":2684241,"speciesKey":5285750,"acceptedTaxonKey":7230686,"scientificName":"Pinus
+        contorta var. contorta","acceptedScientificName":"Pinus contorta var. contorta","kingdom":"Plantae","phylum":"Tracheophyta","order":"Pinales","family":"Pinaceae","genus":"Pinus","species":"Pinus
+        contorta","genericName":"Pinus","specificEpithet":"contorta","infraspecificEpithet":"contorta","taxonRank":"VARIETY","taxonomicStatus":"ACCEPTED","dateIdentified":"2022-01-04T03:43:54","decimalLongitude":-124.152553,"decimalLatitude":40.873693,"coordinateUncertaintyInMeters":6.0,"stateProvince":"California","year":2022,"month":1,"day":1,"eventDate":"2022-01-01T16:36:51","issues":["COORDINATE_ROUNDED"],"modified":"2022-01-10T05:06:49.000+00:00","lastInterpreted":"2022-11-04T16:02:38.361+00:00","references":"https://www.inaturalist.org/observations/104147761","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/174479857","created":"2022-01-01T16:36:51.000+00:00","creator":"peterj29","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"peterj29","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/174479857/original.jpg"},{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/174479880","created":"2022-01-01T16:36:51.000+00:00","creator":"peterj29","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"peterj29","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/174479880/original.jpg"}],"facts":[],"relations":[],"gadm":{"level0":{"gid":"USA","name":"United
+        States"},"level1":{"gid":"USA.5_1","name":"California"},"level2":{"gid":"USA.5.12_1","name":"Humboldt"}},"isInCluster":false,"datasetName":"iNaturalist
+        research-grade observations","recordedBy":"peterj29","identifiedBy":"Chris
+        Brant","geodeticDatum":"WGS84","class":"Pinopsida","countryCode":"US","recordedByIDs":[],"identifiedByIDs":[],"country":"United
+        States of America","rightsHolder":"peterj29","identifier":"104147761","http://unknown.org/nick":"peterj29","verbatimEventDate":"Sat
+        Jan 01 2022 16:36:51 GMT-0800 (PST)","collectionCode":"Observations","gbifID":"3455754767","verbatimLocality":"Humboldt
+        Bay National Wildlife Refuge, Arcata, CA, US","occurrenceID":"https://www.inaturalist.org/observations/104147761","taxonID":"80130","catalogNumber":"104147761","institutionCode":"iNaturalist","eventTime":"16:36:51Z","http://unknown.org/captive":"wild","identificationID":"229612230"},{"key":3455757959,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"CA","protocol":"DWC_ARCHIVE","lastCrawled":"2022-11-04T09:58:49.636+00:00","lastParsed":"2022-11-04T15:58:31.927+00:00","crawlId":323,"hostingOrganizationKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","extensions":{"http://rs.gbif.org/terms/1.0/Multimedia":[{"http://purl.org/dc/terms/license":"http://creativecommons.org/licenses/by/4.0/","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/176447881","http://purl.org/dc/terms/rightsHolder":"Caleb
+        Catto","http://rs.tdwg.org/dwc/terms/catalogNumber":"176447881","http://purl.org/dc/terms/created":"2022-01-06T21:36:00Z","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/type":"StillImage","http://purl.org/dc/terms/creator":"Caleb
+        Catto","http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/176447881/original.jpg","http://purl.org/dc/terms/format":"image/jpeg"}]},"basisOfRecord":"HUMAN_OBSERVATION","occurrenceStatus":"PRESENT","taxonKey":5285756,"kingdomKey":6,"phylumKey":7707728,"classKey":194,"orderKey":640,"familyKey":3925,"genusKey":2684241,"speciesKey":5285750,"acceptedTaxonKey":5285756,"scientificName":"Pinus
+        contorta var. latifolia Engelm.","acceptedScientificName":"Pinus contorta
+        var. latifolia Engelm.","kingdom":"Plantae","phylum":"Tracheophyta","order":"Pinales","family":"Pinaceae","genus":"Pinus","species":"Pinus
+        contorta","genericName":"Pinus","specificEpithet":"contorta","infraspecificEpithet":"latifolia","taxonRank":"VARIETY","taxonomicStatus":"ACCEPTED","dateIdentified":"2022-01-19T05:13:11","decimalLongitude":-118.005647,"decimalLatitude":52.816219,"coordinateUncertaintyInMeters":22.0,"stateProvince":"Alberta","year":2022,"month":1,"day":6,"eventDate":"2022-01-06T14:36:00","issues":["COORDINATE_ROUNDED"],"modified":"2022-01-19T13:47:34.000+00:00","lastInterpreted":"2022-11-04T15:58:31.927+00:00","references":"https://www.inaturalist.org/observations/105195471","license":"http://creativecommons.org/licenses/by/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/176447881","created":"2022-01-06T21:36:00.000+00:00","creator":"Caleb
+        Catto","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by/4.0/","rightsHolder":"Caleb
+        Catto","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/176447881/original.jpg"}],"facts":[],"relations":[],"gadm":{"level0":{"gid":"CAN","name":"Canada"},"level1":{"gid":"CAN.1_1","name":"Alberta"},"level2":{"gid":"CAN.1.6_1","name":"Division
+        No. 15"},"level3":{"gid":"CAN.1.6.8_1","name":"Jasper"}},"isInCluster":false,"datasetName":"iNaturalist
+        research-grade observations","recordedBy":"Caleb Catto","identifiedBy":"Caleb
+        Catto","geodeticDatum":"WGS84","class":"Pinopsida","countryCode":"CA","recordedByIDs":[],"identifiedByIDs":[],"country":"Canada","rightsHolder":"Caleb
+        Catto","identifier":"105195471","http://unknown.org/nick":"calebcatto","verbatimEventDate":"Thu
+        Jan 06 2022 14:36:00 GMT-0800 (PST)","collectionCode":"Observations","gbifID":"3455757959","verbatimLocality":"Jasper
+        National Park, Jasper, AB, CA","occurrenceID":"https://www.inaturalist.org/observations/105195471","taxonID":"242252","catalogNumber":"105195471","institutionCode":"iNaturalist","eventTime":"14:36:00-07:00","occurrenceRemarks":"The
+        tree above the chairs","http://unknown.org/captive":"wild","identificationID":"232338473"}],"facets":[]}'
+  recorded_at: 2022-11-10 17:17:57 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.1.91

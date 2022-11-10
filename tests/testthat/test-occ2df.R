@@ -29,7 +29,7 @@ test_that("occ2df basic functionality works", {
 
 test_that("occ2df works when eventDate gone - another eg", {
   vcr::use_cassette("occ2df_with_eventdate_gone", {
-    out <- occ(query = "Pinus contorta", from = c("gbif","bison"),
+    out <- occ(query = "Pinus contorta", from = c("gbif"),
       limit = 10)
   })
   

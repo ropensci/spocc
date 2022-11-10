@@ -10,32 +10,26 @@ occ_names(
   limit = 100,
   rank = "species",
   callopts = list(),
-  gbifopts = list(),
-  bisonopts = list()
+  gbifopts = list()
 )
 }
 \arguments{
 \item{query}{(character) One to many names. Either a scientific name or a
 common name. Only scientific names supported right now.}
 
-\item{from}{(character) Data source to get data from, any combination of
-gbif or bison}
+\item{from}{(character) Data source to get data from, only gbif}
 
 \item{limit}{(numeric) Number of records to return. This is passed across
 all sources. To specify different limits for each source, use the options
-for each source (gbifopts, bisonopts). See Details for more.}
+for each source (gbifopts). See Details for more.}
 
-\item{rank}{(character) Taxonomic rank to limit search space. Used in GBIF,
-but not used in BISON.}
+\item{rank}{(character) Taxonomic rank to limit search space. Used in GBIF.}
 
 \item{callopts}{Options passed on to \code{\link[crul:HttpClient]{crul::HttpClient()}}, e.g., for
 debugging curl calls, setting timeouts, etc.}
 
 \item{gbifopts}{(list) List of named options to pass on to
 \code{\link[rgbif:name_lookup]{rgbif::name_lookup()}}. See also \code{\link[=occ_names_options]{occ_names_options()}}}
-
-\item{bisonopts}{(list) List of named options to pass on to
-\code{\link[rbison:bison_tax]{rbison::bison_tax()}}. See also \code{\link[=occ_names_options]{occ_names_options()}}}
 }
 \description{
 Search for species names across many data sources.
@@ -56,10 +50,6 @@ a bit of name searching here in this function.
 ## gbif
 (res <- occ_names(query = 'Accipiter striatus', from = 'gbif'))
 head(res$gbif$data[[1]])
-
-## bison
-(res <- occ_names(query = '*bear', from = 'bison'))
-res$bison$data
 }
 }
 \seealso{

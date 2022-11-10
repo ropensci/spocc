@@ -1,7 +1,7 @@
 #' @title Interface to many species occurrence data sources
 #' 
 #' @description A programmatic interface to many species occurrence data 
-#' sources, including GBIF, USGS's BISON, iNaturalist, Berkeley Ecoinformatics 
+#' sources, including GBIF, iNaturalist, Berkeley Ecoinformatics 
 #' Engine, eBird, iDigBio, VertNet, OBIS, and ALA. Includes 
 #' functionality for retrieving species occurrence data, and 
 #' combining that data.
@@ -23,7 +23,6 @@
 #' \tabular{ll}{
 #' Provider \tab Web \cr
 #' GBIF \tab <http://www.gbif.org/> \cr
-#' BISON \tab https://bison.usgs.gov/ \cr
 #' eBird \tab <http://ebird.org/content/ebird/> \cr
 #' iNaturalist \tab <http://www.inaturalist.org/> \cr
 #' VertNet \tab <http://vertnet.org/> \cr
@@ -58,7 +57,6 @@
 #' @importFrom lubridate now ymd_hms ymd_hm ydm_hm ymd as_date
 #' @importFrom rgbif occ_data occ_get name_lookup
 #' @importFrom rebird ebirdregion ebirdgeo
-#' @importFrom rbison bison_solr bison bison_tax
 #' @importFrom rvertnet vertsearch
 #' @importFrom ridigbio idig_search_records idig_view_records
 #' @importFrom whisker whisker.render

@@ -43,18 +43,6 @@ test_that("passing in options to occ works", {
 
   # expect_true(all(as.numeric(opts6$vertnet$data$Mustela$year) == 2010))
 })
-  
-test_that("passing in options to occ works: bison", {
-  skip_on_os("windows")
-  vcr::use_cassette("occ_options_bison", {
-    opts7 <- occ(query = "Helianthus annuus", from = "bison",
-               bisonopts = list(year = 2003), limit = 5)
-  }, preserve_exact_body_bytes = TRUE)
-
-  expect_is(opts7, "occdat")
-  expect_equal(opts7$bison$data$Helianthus_annuus$year[1], 2003)
-  expect_is(opts7$bison$data$Helianthus_annuus$year[1], "integer")
-})
 
 test_that("passing in options to occ works: idigbio", {
   skip_on_cran()

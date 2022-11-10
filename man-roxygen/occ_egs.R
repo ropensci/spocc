@@ -9,8 +9,6 @@
 #' res$inat
 #' res$inat$data
 #' data.table::rbindlist(res$inat$data$Danaus_plexippus$photos)
-#' (res <- occ(query = 'Bison bison', from = 'bison', limit = 50))
-#' res$bison
 #' (res <- occ(query = 'Bison bison', from = 'vertnet', limit = 5))
 #' res$vertnet
 #' res$vertnet$data$Bison_bison
@@ -31,8 +29,6 @@
 #' 
 #' # Date range searches across data sources
 #' ## Not possible for ebird
-#' ## bison
-#' occ(query = 'Acer', date = c('2010-08-08', '2010-08-21'), from = 'bison', limit=5)
 #' ## ala
 #' occ(date = c('2018-01-01T00:00:00Z', '2018-03-28T00:00:00Z'), from = 'ala', limit = 5)
 #' ## gbif
@@ -70,7 +66,7 @@
 #' occ(idigbioopts = list(rq = list(recordset = sets)), from = "idigbio", limit = 10)
 #'
 #' # Many data sources
-#' (out <- occ(query = 'Pinus contorta', from=c('gbif','bison','vertnet'), limit=10))
+#' (out <- occ(query = 'Pinus contorta', from=c('gbif','vertnet'), limit=10))
 #'
 #' ## Select individual elements
 #' out$gbif
@@ -87,13 +83,10 @@
 #'
 #' # Geometry
 #' ## Pass in geometry parameter to all sources. This constraints the search to the
-#' ## specified polygon for all sources, gbif and bison in this example.
+#' ## specified polygon for all sources, gbif in this example.
 #' ## Check out http://arthur-e.github.io/Wicket/sandbox-gmaps3.html to get a WKT string
 #' occ(query='Accipiter', from='gbif',
 #'    geometry='POLYGON((30.1 10.1, 10 20, 20 60, 60 60, 30.1 10.1))')
-#' occ(query='Helianthus annuus', from='bison', limit=50,
-#'    geometry='POLYGON((-111.06 38.84, -110.80 39.37, -110.20 39.17, -110.20 38.90,
-#'                       -110.63 38.67, -111.06 38.84))')
 #'
 #' ## Or pass in a bounding box, which is automatically converted to WKT (required by GBIF)
 #' ## via the bbox2wkt function. The format of a bounding box is
@@ -121,18 +114,13 @@
 #' ### Many bounding boxes
 #' occ(geometry = list(c(-125.0,38.4,-121.8,40.9), c(-115.0,22.4,-111.8,30.9)), from = "gbif")
 #'
-#' ## Many geometry and many names
-#' res <- occ(query = c('Danaus plexippus', 'Accipiter striatus'),
-#'    geometry = list(c(-125.0,38.4,-121.8,40.9), c(-115.0,22.4,-111.8,30.9)), from = "bison")
-#' res
-#'
 #' ## Geometry only with WKT
 #' wkt <- 'POLYGON((-98.9 44.2,-89.1 36.6,-116.7 37.5,-102.5 39.6,-98.9 44.2))'
 #' occ(from = "gbif", geometry = wkt, limit = 10)
 #'
 #' # Specify many data sources, another example
 #' ebirdopts = list(loc = 'US'); gbifopts  =  list(country = 'US')
-#' out <- occ(query = 'Setophaga caerulescens', from = c('gbif','inat','bison','ebird'),
+#' out <- occ(query = 'Setophaga caerulescens', from = c('gbif','inat','ebird'),
 #'     gbifopts = gbifopts, ebirdopts = ebirdopts, limit=20)
 #' occ2df(out)
 #'
@@ -154,17 +142,13 @@
 #' ## You can pass in taxonomic identifiers
 #' library("taxize")
 #' (ids <- get_ids(c("Chironomus riparius","Pinus contorta"), db = c('itis','gbif')))
-#' occ(ids = ids[[1]], from='bison', limit=20)
-#' occ(ids = ids, from=c('bison','gbif'), limit=20)
+#' occ(ids = ids, from='gbif', limit=20)
 #'
 #' (ids <- get_ids("Chironomus riparius", db = 'gbif'))
 #' occ(ids = ids, from='gbif', limit=20)
 #'
 #' (ids <- get_gbifid("Chironomus riparius"))
 #' occ(ids = ids, from='gbif', limit=20)
-#'
-#' (ids <- get_tsn('Accipiter striatus'))
-#' occ(ids = ids, from='bison', limit=20)
 #'
 #' ## sf classes
 #' library("sp")
@@ -208,8 +192,6 @@
 #'
 #' # curl debugging
 #' occ(query = 'Accipiter striatus', from = 'gbif', limit=10, 
-#'  callopts=list(verbose = TRUE))
-#' occ(query = 'Accipiter striatus', from = 'bison', limit=10, 
 #'  callopts=list(verbose = TRUE))
 #' occ(query = 'Accipiter striatus', from = 'inat', 
 #'  callopts=list(verbose = TRUE))

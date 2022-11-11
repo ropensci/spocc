@@ -30,7 +30,6 @@ as.ala(x = res$key[1])
 }
 \seealso{
 Other coercion: 
-\code{\link{as.bison}()},
 \code{\link{as.gbif}()},
 \code{\link{as.idigbio}()},
 \code{\link{as.inat}()},

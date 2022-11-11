@@ -1,104 +1,126 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.gbif.org/v1/occurrence/search?limit=2&offset=0&scientificName=Poa&geometry=POLYGON%28%28-120%2040%2C-100%2040%2C-100%2045%2C-120%2045%2C-120%2040%29%29
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=2&offset=0&scientificName=Poa&geometry=POLYGON%28%28-120%2040%2C-100%2040%2C-100%2045%2C-120%2045%2C-120%2040%29%29
     body:
       encoding: ''
       string: ''
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.3 crul/0.7.0.9100 rOpenSci(rgbif/1.1.0.9113)
-      X-USER-AGENT: r-curl/3.3 crul/0.7.0.9100 rOpenSci(rgbif/1.1.0.9113)
+      User-Agent: r-curl/4.3.3 crul/1.3 rOpenSci(rgbif/3.7.3)
+      X-USER-AGENT: r-curl/4.3.3 crul/1.3 rOpenSci(rgbif/3.7.3)
   response:
     status:
       status_code: '200'
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: HTTP/1.1 200 OK
-      date: Mon, 28 Jan 2019 19:10:19 GMT
+      status: 'HTTP/2 200 '
+      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+      x-content-type-options: nosniff
+      x-xss-protection: 1; mode=block
+      pragma: no-cache
+      expires: '0'
+      x-frame-options: DENY
       content-type: application/json
-      access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
-      server: Jetty(9.3.z-SNAPSHOT)
+      date: Thu, 10 Nov 2022 17:29:58 GMT
       cache-control: public, max-age=600
-      x-varnish: 356519228 325777239
-      age: '5'
-      via: 1.1 varnish (Varnish/5.2)
+      x-varnish: 487261984 505744022
+      age: '37'
+      via: 1.1 varnish (Varnish/6.0)
       accept-ranges: bytes
-      content-length: '5828'
-      connection: keep-alive
+      content-length: '7031'
     body:
       encoding: UTF-8
-      string: '{"offset":0,"limit":2,"endOfRecords":false,"count":3806,"results":[{"key":1841292816,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-01-28T00:13:50.659+0000","lastParsed":"2018-10-08T14:24:27.104+0000","crawlId":147,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":8086756,"kingdomKey":6,"phylumKey":7707728,"classKey":196,"orderKey":1369,"familyKey":3073,"genusKey":2704173,"speciesKey":8086756,"acceptedTaxonKey":8086756,"scientificName":"Poa
+      file: no
+      string: '{"offset":0,"limit":2,"endOfRecords":false,"count":8039,"results":[{"key":3760127235,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2022-11-04T09:58:49.636+00:00","lastParsed":"2022-11-04T16:03:34.384+00:00","crawlId":323,"hostingOrganizationKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","extensions":{"http://rs.gbif.org/terms/1.0/Multimedia":[{"http://purl.org/dc/terms/license":"http://creativecommons.org/licenses/by-nc/4.0/","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/188574706","http://purl.org/dc/terms/rightsHolder":"Will
+        Pearce","http://rs.tdwg.org/dwc/terms/catalogNumber":"188574706","http://purl.org/dc/terms/created":"2022-04-16T12:55:05-07:00","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/type":"StillImage","http://purl.org/dc/terms/creator":"Will
+        Pearce","http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/188574706/original.jpeg","http://purl.org/dc/terms/format":"image/jpeg"}]},"basisOfRecord":"HUMAN_OBSERVATION","occurrenceStatus":"PRESENT","taxonKey":8086756,"kingdomKey":6,"phylumKey":7707728,"classKey":196,"orderKey":1369,"familyKey":3073,"genusKey":2704173,"speciesKey":8086756,"acceptedTaxonKey":8086756,"scientificName":"Poa
         bulbosa L.","acceptedScientificName":"Poa bulbosa L.","kingdom":"Plantae","phylum":"Tracheophyta","order":"Poales","family":"Poaceae","genus":"Poa","species":"Poa
-        bulbosa","genericName":"Poa","specificEpithet":"bulbosa","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2018-05-01T03:38:53","decimalLongitude":-111.930832,"decimalLatitude":40.775276,"stateProvince":"Utah","year":2018,"month":4,"day":30,"eventDate":"2018-04-30T20:33:44","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2018-05-01T22:30:47.000+0000","lastInterpreted":"2018-12-10T07:16:57.658+0000","references":"https://www.inaturalist.org/observations/11964971","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/17136955/original.jpeg?1525145936","references":"https://www.inaturalist.org/photos/17136955","created":"2018-05-01T03:33:44.000+0000","creator":"Krystle
-        Adkins","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Krystle
-        Adkins"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Liliopsida","countryCode":"US","country":"United
-        States of America","rightsHolder":"Krystle Adkins","identifier":"11964971","verbatimEventDate":"2018-04-30
-        8:33:44 PM MDT","datasetName":"iNaturalist research-grade observations","gbifID":"1841292816","verbatimLocality":"1348
-        W 260 N, Salt Lake City, UT 84116, USA","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/11964971","taxonID":"58382","catalogNumber":"11964971","recordedBy":"Krystle
-        Adkins","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/11964971","institutionCode":"iNaturalist","rights":"©
-        Krystle Adkins some rights reserved","eventTime":"02:33:44Z","identificationID":"26143109"},{"key":1841250752,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-01-28T00:13:39.194+0000","lastParsed":"2018-10-08T14:23:57.733+0000","crawlId":147,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":8086756,"kingdomKey":6,"phylumKey":7707728,"classKey":196,"orderKey":1369,"familyKey":3073,"genusKey":2704173,"speciesKey":8086756,"acceptedTaxonKey":8086756,"scientificName":"Poa
+        bulbosa","genericName":"Poa","specificEpithet":"bulbosa","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","iucnRedListCategory":"NE","dateIdentified":"2022-04-16T20:04:27","decimalLongitude":-111.839152,"decimalLatitude":40.559851,"coordinateUncertaintyInMeters":50.0,"stateProvince":"Utah","year":2022,"month":4,"day":16,"eventDate":"2022-04-16T12:54:59","issues":["COORDINATE_ROUNDED"],"modified":"2022-10-25T01:34:24.000+00:00","lastInterpreted":"2022-11-04T16:03:34.384+00:00","references":"https://www.inaturalist.org/observations/111690072","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/188574706","created":"2022-04-16T19:55:05.000+00:00","creator":"Will
+        Pearce","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Will
+        Pearce","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/188574706/original.jpeg"}],"facts":[],"relations":[],"gadm":{"level0":{"gid":"USA","name":"United
+        States"},"level1":{"gid":"USA.45_1","name":"Utah"},"level2":{"gid":"USA.45.18_1","name":"Salt
+        Lake"}},"isInCluster":false,"datasetName":"iNaturalist research-grade observations","recordedBy":"Will
+        Pearce","identifiedBy":"Will Pearce","geodeticDatum":"WGS84","class":"Liliopsida","countryCode":"US","recordedByIDs":[],"identifiedByIDs":[],"country":"United
+        States of America","rightsHolder":"Will Pearce","identifier":"111690072","http://unknown.org/nick":"clabsauce","verbatimEventDate":"2022-04-16
+        12:54:59","collectionCode":"Observations","gbifID":"3760127235","verbatimLocality":"Sandy,
+        UT, USA","occurrenceID":"https://www.inaturalist.org/observations/111690072","taxonID":"58382","catalogNumber":"111690072","institutionCode":"iNaturalist","eventTime":"12:54:59-06:00","http://unknown.org/captive":"wild","identificationID":"249814304"},{"key":3772430266,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2022-11-04T09:58:49.636+00:00","lastParsed":"2022-11-04T16:02:15.468+00:00","crawlId":323,"hostingOrganizationKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","extensions":{"http://rs.gbif.org/terms/1.0/Multimedia":[{"http://purl.org/dc/terms/license":"http://creativecommons.org/licenses/by-nc/4.0/","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/192673421","http://purl.org/dc/terms/rightsHolder":"msalfer15","http://rs.tdwg.org/dwc/terms/catalogNumber":"192673421","http://purl.org/dc/terms/created":"2022-05-01T02:06:27Z","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/type":"StillImage","http://purl.org/dc/terms/creator":"msalfer15","http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/192673421/original.jpg","http://purl.org/dc/terms/format":"image/jpeg"}]},"basisOfRecord":"HUMAN_OBSERVATION","occurrenceStatus":"PRESENT","taxonKey":8086756,"kingdomKey":6,"phylumKey":7707728,"classKey":196,"orderKey":1369,"familyKey":3073,"genusKey":2704173,"speciesKey":8086756,"acceptedTaxonKey":8086756,"scientificName":"Poa
         bulbosa L.","acceptedScientificName":"Poa bulbosa L.","kingdom":"Plantae","phylum":"Tracheophyta","order":"Poales","family":"Poaceae","genus":"Poa","species":"Poa
-        bulbosa","genericName":"Poa","specificEpithet":"bulbosa","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2018-04-29T17:16:36","decimalLongitude":-111.833985,"decimalLatitude":40.730684,"coordinateUncertaintyInMeters":10.0,"stateProvince":"Utah","year":2018,"month":4,"day":29,"eventDate":"2018-04-29T11:15:47","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2018-05-04T03:54:35.000+0000","lastInterpreted":"2018-12-10T07:16:21.100+0000","references":"https://www.inaturalist.org/observations/11763074","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/16822770/original.jpg?1525022199","references":"https://www.inaturalist.org/photos/16822770","created":"2018-04-29T17:15:47.000+0000","creator":"Lexi","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Lexi"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/16822807/original.jpg?1525022206","references":"https://www.inaturalist.org/photos/16822807","created":"2018-04-29T17:15:47.000+0000","creator":"Lexi","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Lexi"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/16822844/original.jpg?1525022217","references":"https://www.inaturalist.org/photos/16822844","created":"2018-04-29T17:15:47.000+0000","creator":"Lexi","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Lexi"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Liliopsida","countryCode":"US","country":"United
-        States of America","rightsHolder":"Lexi","identifier":"11763074","verbatimEventDate":"Sun
-        Apr 29 2018 11:15:47 GMT-0600 (MDT)","datasetName":"iNaturalist research-grade
-        observations","gbifID":"1841250752","verbatimLocality":"1972 Downington Ave,
-        Salt Lake City, UT, US","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/11763074","taxonID":"58382","catalogNumber":"11763074","recordedBy":"Lexi","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/11763074","institutionCode":"iNaturalist","rights":"©
-        Lexi some rights reserved","eventTime":"17:15:47Z","identificationID":"25853772"}],"facets":[]}'
-  recorded_at: 2019-01-28 19:10:25 GMT
-  recorded_with: vcr/0.2.2, webmockr/0.3.0
+        bulbosa","genericName":"Poa","specificEpithet":"bulbosa","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","iucnRedListCategory":"NE","dateIdentified":"2022-05-01T02:43:04","decimalLongitude":-111.893945,"decimalLatitude":40.712242,"coordinateUncertaintyInMeters":28.0,"stateProvince":"Utah","year":2022,"month":4,"day":30,"eventDate":"2022-04-30T20:06:27","issues":["COORDINATE_ROUNDED"],"modified":"2022-05-01T03:45:24.000+00:00","lastInterpreted":"2022-11-04T16:02:15.468+00:00","references":"https://www.inaturalist.org/observations/114075800","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/192673421","created":"2022-05-01T02:06:27.000+00:00","creator":"msalfer15","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"msalfer15","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/192673421/original.jpg"}],"facts":[],"relations":[],"gadm":{"level0":{"gid":"USA","name":"United
+        States"},"level1":{"gid":"USA.45_1","name":"Utah"},"level2":{"gid":"USA.45.18_1","name":"Salt
+        Lake"}},"isInCluster":false,"datasetName":"iNaturalist research-grade observations","recordedBy":"msalfer15","identifiedBy":"msalfer15","geodeticDatum":"WGS84","class":"Liliopsida","countryCode":"US","recordedByIDs":[],"identifiedByIDs":[],"country":"United
+        States of America","rightsHolder":"msalfer15","identifier":"114075800","http://unknown.org/nick":"msalfer15","verbatimEventDate":"2022-04-30
+        20:06:27-06:00","collectionCode":"Observations","gbifID":"3772430266","verbatimLocality":"S
+        West Temple, South Salt Lake, UT, US","occurrenceID":"https://www.inaturalist.org/observations/114075800","taxonID":"58382","catalogNumber":"114075800","institutionCode":"iNaturalist","eventTime":"20:06:27-06:00","http://unknown.org/captive":"wild","identificationID":"254475331"}],"facets":[]}'
+  recorded_at: 2022-11-10 17:30:35 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.1.91
 - request:
     method: get
-    uri: https://api.gbif.org/v1/occurrence/search?limit=2&offset=0&scientificName=Quercus&geometry=POLYGON%28%28-120%2040%2C-100%2040%2C-100%2045%2C-120%2045%2C-120%2040%29%29
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=2&offset=0&scientificName=Quercus&geometry=POLYGON%28%28-120%2040%2C-100%2040%2C-100%2045%2C-120%2045%2C-120%2040%29%29
     body:
       encoding: ''
       string: ''
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.3 crul/0.7.0.9100 rOpenSci(rgbif/1.1.0.9113)
-      X-USER-AGENT: r-curl/3.3 crul/0.7.0.9100 rOpenSci(rgbif/1.1.0.9113)
+      User-Agent: r-curl/4.3.3 crul/1.3 rOpenSci(rgbif/3.7.3)
+      X-USER-AGENT: r-curl/4.3.3 crul/1.3 rOpenSci(rgbif/3.7.3)
   response:
     status:
       status_code: '200'
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: HTTP/1.1 200 OK
-      date: Mon, 28 Jan 2019 19:10:19 GMT
+      status: 'HTTP/2 200 '
+      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+      x-content-type-options: nosniff
+      x-xss-protection: 1; mode=block
+      pragma: no-cache
+      expires: '0'
+      x-frame-options: DENY
       content-type: application/json
-      access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
-      server: Jetty(9.3.z-SNAPSHOT)
+      date: Thu, 10 Nov 2022 17:29:59 GMT
       cache-control: public, max-age=600
-      x-varnish: 352832998 342800778
-      age: '5'
-      via: 1.1 varnish (Varnish/5.2)
+      x-varnish: 487261985 531268632
+      age: '36'
+      via: 1.1 varnish (Varnish/6.0)
       accept-ranges: bytes
-      content-length: '5268'
-      connection: keep-alive
+      content-length: '9071'
     body:
       encoding: UTF-8
-      string: '{"offset":0,"limit":2,"endOfRecords":false,"count":390,"results":[{"key":1838303565,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-01-28T00:12:11.911+0000","lastParsed":"2018-10-08T14:20:00.601+0000","crawlId":147,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":2878268,"kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":1354,"familyKey":4689,"genusKey":2877951,"speciesKey":2878268,"acceptedTaxonKey":2878268,"scientificName":"Quercus
+      file: no
+      string: '{"offset":0,"limit":2,"endOfRecords":false,"count":1075,"results":[{"key":3456136866,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2022-11-04T09:58:49.636+00:00","lastParsed":"2022-11-04T15:58:33.418+00:00","crawlId":323,"hostingOrganizationKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","extensions":{"http://rs.gbif.org/terms/1.0/Multimedia":[{"http://purl.org/dc/terms/license":"http://creativecommons.org/licenses/by/4.0/","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/174887814","http://purl.org/dc/terms/rightsHolder":"Jared
+        Shorma","http://rs.tdwg.org/dwc/terms/catalogNumber":"174887814","http://purl.org/dc/terms/created":"2022-01-04T23:40:55Z","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/type":"StillImage","http://purl.org/dc/terms/creator":"Jared
+        Shorma","http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/174887814/original.jpg","http://purl.org/dc/terms/format":"image/jpeg"},{"http://purl.org/dc/terms/license":"http://creativecommons.org/licenses/by/4.0/","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/174887827","http://purl.org/dc/terms/rightsHolder":"Jared
+        Shorma","http://rs.tdwg.org/dwc/terms/catalogNumber":"174887827","http://purl.org/dc/terms/created":"2022-01-04T23:40:55Z","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/type":"StillImage","http://purl.org/dc/terms/creator":"Jared
+        Shorma","http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/174887827/original.jpg","http://purl.org/dc/terms/format":"image/jpeg"}]},"basisOfRecord":"HUMAN_OBSERVATION","occurrenceStatus":"PRESENT","taxonKey":2877951,"kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":1354,"familyKey":4689,"genusKey":2877951,"acceptedTaxonKey":2877951,"scientificName":"Quercus
+        L.","acceptedScientificName":"Quercus L.","kingdom":"Plantae","phylum":"Tracheophyta","order":"Fagales","family":"Fagaceae","genus":"Quercus","genericName":"Quercus","taxonRank":"GENUS","taxonomicStatus":"ACCEPTED","iucnRedListCategory":"NE","dateIdentified":"2022-01-05T02:02:05","decimalLongitude":-105.273605,"decimalLatitude":40.012494,"coordinateUncertaintyInMeters":10.0,"stateProvince":"Colorado","year":2022,"month":1,"day":4,"eventDate":"2022-01-04T16:40:55","issues":["COORDINATE_ROUNDED"],"modified":"2022-01-05T20:40:28.000+00:00","lastInterpreted":"2022-11-04T15:58:33.418+00:00","references":"https://www.inaturalist.org/observations/104380677","license":"http://creativecommons.org/licenses/by/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/174887814","created":"2022-01-04T23:40:55.000+00:00","creator":"Jared
+        Shorma","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by/4.0/","rightsHolder":"Jared
+        Shorma","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/174887814/original.jpg"},{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/174887827","created":"2022-01-04T23:40:55.000+00:00","creator":"Jared
+        Shorma","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by/4.0/","rightsHolder":"Jared
+        Shorma","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/174887827/original.jpg"}],"facts":[],"relations":[],"gadm":{"level0":{"gid":"USA","name":"United
+        States"},"level1":{"gid":"USA.6_1","name":"Colorado"},"level2":{"gid":"USA.6.7_1","name":"Boulder"}},"isInCluster":false,"datasetName":"iNaturalist
+        research-grade observations","recordedBy":"Jared Shorma","identifiedBy":"Jared
+        Shorma","geodeticDatum":"WGS84","class":"Magnoliopsida","countryCode":"US","recordedByIDs":[],"identifiedByIDs":[],"country":"United
+        States of America","rightsHolder":"Jared Shorma","identifier":"104380677","http://unknown.org/nick":"blazeclaw","verbatimEventDate":"Tue
+        Jan 04 2022 16:40:55 GMT-0700 (MST)","collectionCode":"Observations","gbifID":"3456136866","verbatimLocality":"Hillside
+        Rd, Boulder, CO, US","occurrenceID":"https://www.inaturalist.org/observations/104380677","taxonID":"47851","catalogNumber":"104380677","institutionCode":"iNaturalist","eventTime":"16:40:55-07:00","http://unknown.org/captive":"wild","identificationID":"229791727"},{"key":3698397937,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2022-11-04T09:58:49.636+00:00","lastParsed":"2022-11-04T16:02:06.890+00:00","crawlId":323,"hostingOrganizationKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","extensions":{"http://rs.gbif.org/terms/1.0/Multimedia":[{"http://purl.org/dc/terms/license":"http://creativecommons.org/licenses/by-nc/4.0/","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/180238100","http://purl.org/dc/terms/rightsHolder":"Zac
+        Cota","http://rs.tdwg.org/dwc/terms/catalogNumber":"180238100","http://purl.org/dc/terms/created":"2022-01-17T20:08:33Z","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/type":"StillImage","http://purl.org/dc/terms/creator":"Zac
+        Cota","http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/180238100/original.jpg","http://purl.org/dc/terms/format":"image/jpeg"},{"http://purl.org/dc/terms/license":"http://creativecommons.org/licenses/by-nc/4.0/","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/180238109","http://purl.org/dc/terms/rightsHolder":"Zac
+        Cota","http://rs.tdwg.org/dwc/terms/catalogNumber":"180238109","http://purl.org/dc/terms/created":"2022-01-17T20:08:33Z","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/type":"StillImage","http://purl.org/dc/terms/creator":"Zac
+        Cota","http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/180238109/original.jpg","http://purl.org/dc/terms/format":"image/jpeg"}]},"basisOfRecord":"HUMAN_OBSERVATION","occurrenceStatus":"PRESENT","taxonKey":2878268,"kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":1354,"familyKey":4689,"genusKey":2877951,"speciesKey":2878268,"acceptedTaxonKey":2878268,"scientificName":"Quercus
         gambelii Nutt.","acceptedScientificName":"Quercus gambelii Nutt.","kingdom":"Plantae","phylum":"Tracheophyta","order":"Fagales","family":"Fagaceae","genus":"Quercus","species":"Quercus
-        gambelii","genericName":"Quercus","specificEpithet":"gambelii","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2018-03-22T14:40:27","decimalLongitude":-112.225321,"decimalLatitude":40.040426,"coordinateUncertaintyInMeters":404601.0,"stateProvince":"Utah","year":2018,"month":3,"day":22,"eventDate":"2018-03-22T10:07:41","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2018-04-18T03:55:41.000+0000","lastInterpreted":"2018-12-26T07:40:14.643+0000","references":"https://www.inaturalist.org/observations/10357537","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/14367347/original.jpg?1521729630","references":"https://www.inaturalist.org/photos/14367347","created":"2018-03-22T14:07:41.000+0000","creator":"Kathleen
-        Pryer","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Kathleen
-        Pryer"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Magnoliopsida","countryCode":"US","country":"United
-        States of America","rightsHolder":"Kathleen Pryer","identifier":"10357537","verbatimEventDate":"Thu
-        Mar 22 2018 10:07:41 GMT-0400 (EDT)","datasetName":"iNaturalist research-grade
-        observations","gbifID":"1838303565","verbatimLocality":"Vernon, UT 84080,
-        Vernon, UT, US","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/10357537","taxonID":"116377","catalogNumber":"10357537","recordedBy":"Kathleen
-        Pryer","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/10357537","institutionCode":"iNaturalist","rights":"©
-        Kathleen Pryer some rights reserved","eventTime":"14:07:41Z","identificationID":"23015168"},{"key":1920783427,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-01-28T00:13:41.998+0000","lastParsed":"2018-10-15T14:55:59.930+0000","crawlId":147,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":2878268,"kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":1354,"familyKey":4689,"genusKey":2877951,"speciesKey":2878268,"acceptedTaxonKey":2878268,"scientificName":"Quercus
-        gambelii Nutt.","acceptedScientificName":"Quercus gambelii Nutt.","kingdom":"Plantae","phylum":"Tracheophyta","order":"Fagales","family":"Fagaceae","genus":"Quercus","species":"Quercus
-        gambelii","genericName":"Quercus","specificEpithet":"gambelii","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2018-04-29T23:38:00","decimalLongitude":-111.813646,"decimalLatitude":40.757253,"coordinateUncertaintyInMeters":5.0,"stateProvince":"Utah","year":2018,"month":4,"day":29,"eventDate":"2018-04-29T17:37:46","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2018-10-06T20:09:43.000+0000","lastInterpreted":"2018-12-09T01:30:53.943+0000","references":"https://www.inaturalist.org/observations/11812370","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/16897737/original.jpg?1525045083","references":"https://www.inaturalist.org/photos/16897737","created":"2018-04-29T23:37:46.000+0000","creator":"skiracer30","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"skiracer30"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Magnoliopsida","countryCode":"US","country":"United
-        States of America","rightsHolder":"skiracer30","identifier":"11812370","verbatimEventDate":"Sun
-        Apr 29 2018 17:37:46 GMT-0600 (MDT)","datasetName":"iNaturalist research-grade
-        observations","gbifID":"1920783427","verbatimLocality":"Salt Lake City, UT
-        84108, Salt Lake City, UT, US","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/11812370","taxonID":"116377","catalogNumber":"11812370","recordedBy":"skiracer30","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/11812370","institutionCode":"iNaturalist","rights":"©
-        skiracer30 some rights reserved","eventTime":"23:37:46Z","identificationID":"25916892"}],"facets":[]}'
-  recorded_at: 2019-01-28 19:10:25 GMT
-  recorded_with: vcr/0.2.2, webmockr/0.3.0
+        gambelii","genericName":"Quercus","specificEpithet":"gambelii","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","iucnRedListCategory":"LC","dateIdentified":"2022-02-21T17:34:42","decimalLongitude":-111.523467,"decimalLatitude":40.318883,"coordinateUncertaintyInMeters":4.0,"stateProvince":"Utah","year":2022,"month":1,"day":17,"eventDate":"2022-01-17T13:08:33","issues":["COORDINATE_ROUNDED"],"modified":"2022-02-22T14:38:18.000+00:00","lastInterpreted":"2022-11-04T16:02:06.890+00:00","references":"https://www.inaturalist.org/observations/107192680","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/180238109","created":"2022-01-17T20:08:33.000+00:00","creator":"Zac
+        Cota","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Zac
+        Cota","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/180238109/original.jpg"},{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/180238100","created":"2022-01-17T20:08:33.000+00:00","creator":"Zac
+        Cota","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Zac
+        Cota","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/180238100/original.jpg"}],"facts":[],"relations":[],"gadm":{"level0":{"gid":"USA","name":"United
+        States"},"level1":{"gid":"USA.45_1","name":"Utah"},"level2":{"gid":"USA.45.25_1","name":"Utah"}},"isInCluster":false,"datasetName":"iNaturalist
+        research-grade observations","recordedBy":"Zac Cota","identifiedBy":"Zac Cota","geodeticDatum":"WGS84","class":"Magnoliopsida","countryCode":"US","recordedByIDs":[],"identifiedByIDs":[],"country":"United
+        States of America","rightsHolder":"Zac Cota","identifier":"107192680","http://unknown.org/nick":"zaccota","verbatimEventDate":"Mon
+        Jan 17 2022 13:08:33 GMT-0700 (MST)","collectionCode":"Observations","gbifID":"3698397937","verbatimLocality":"Uinta-Wasatch-Cache
+        National Forest, Provo, UT, US","occurrenceID":"https://www.inaturalist.org/observations/107192680","taxonID":"116377","catalogNumber":"107192680","institutionCode":"iNaturalist","eventTime":"13:08:33-07:00","http://unknown.org/captive":"wild","identificationID":"238361263"}],"facets":[]}'
+  recorded_at: 2022-11-10 17:30:35 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.1.91

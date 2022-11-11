@@ -1,14 +1,12 @@
 Package: spocc
 Title: Interface to Species Occurrence Data Sources
 Description: A programmatic interface to many species occurrence data sources,
-    including Global Biodiversity Information Facility ('GBIF'), 'USGSs'
-    Biodiversity Information Serving Our Nation ('BISON'), 'iNaturalist',
-    'eBird', Integrated Digitized
-    'Biocollections' ('iDigBio'), 'VertNet', Ocean 'Biogeographic' Information
-    System ('OBIS'), and Atlas of Living Australia ('ALA'). Includes
-    functionality for retrieving species occurrence data, and combining
-    those data.
-Version: 1.2.0.91
+    including Global Biodiversity Information Facility ('GBIF'), 'iNaturalist',
+    'eBird', Integrated Digitized 'Biocollections' ('iDigBio'), 'VertNet', 
+    Ocean 'Biogeographic' Information System ('OBIS'), and 
+    Atlas of Living Australia ('ALA'). Includes functionality for retrieving
+    species occurrence data, and combining those data.
+Version: 1.2.1.91
 License: MIT + file LICENSE
 Authors@R: 
     c(person(given = "Hannah", family = "Owens",
@@ -36,7 +34,6 @@ Language: en-US
 Imports:
     utils,
     rgbif,
-    rbison,
     rebird,
     rvertnet,
     ridigbio,
@@ -51,7 +48,7 @@ Suggests:
     testthat,
     taxize,
     vcr
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.1
 X-schema.org-applicationCategory: Biodiversity
 X-schema.org-keywords: specimens, API, web-services, occurrences, species, taxonomy, GBIF, INAT, BISON, Vertnet, eBird, iDigBio, OBIS, ALA
 X-schema.org-isPartOf: https://ropensci.org

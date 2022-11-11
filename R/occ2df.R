@@ -30,10 +30,10 @@
 #'
 #' out <- occ(
 #'   query='Accipiter striatus',
-#'   from=c('gbif','bison','ebird','inat'),
+#'   from=c('gbif','ebird','inat'),
 #'   gbifopts=list(hasCoordinate=TRUE), limit=2)
 #' occ2df(out)
-#' occ2df(out$bison)
+#' occ2df(out$gbif)
 #'
 #' # or combine many results from a single data source
 #' spnames <- c('Accipiter striatus', 'Spinus tristis')
@@ -61,7 +61,6 @@ foolist <- function(x) {
 occ2df.occdat <- function(obj, what = "data") {
   what <- match.arg(what, choices = c("all", "data"))
   aa <- foolist(obj$gbif)
-  bb <- foolist(obj$bison)
   cc <- foolist(obj$inat)
   dd <- foolist(obj$ebird)
   vn <- foolist(obj$vertnet)
@@ -86,13 +85,13 @@ occ2df.occdat <- function(obj, what = "data") {
           rename(dat, stats::setNames("key", keymap[[y]]))
         }
       },
-      list(aa, bb, cc, dd, vn, id, ob, ala),
-      c('gbif','bison','inat','ebird',
+      list(aa, cc, dd, vn, id, ob, ala),
+      c('gbif','inat','ebird',
         'vertnet','idigbio','obis','ala')
     )
   )
   tmpout <- list(
-    meta = list(obj$gbif$meta, obj$bison$meta, obj$inat$meta,
+    meta = list(obj$gbif$meta, obj$inat$meta,
                 obj$ebird$meta, obj$vn$meta, obj$id$meta,
                 obj$ob$meta, obj$ala$meta),
     data = tmp
@@ -100,11 +99,11 @@ occ2df.occdat <- function(obj, what = "data") {
   if (what %in% "data") as_tibble(tmpout$data) else tmpout
 }
 
-datemap <- list(gbif = 'eventDate', bison = 'date', inat = 'observed_on',
+datemap <- list(gbif = 'eventDate', inat = 'observed_on',
                 ebird = 'obsDt', vertnet = "eventdate",
                 idigbio = "datecollected", obis = "eventDate",
                 ala = "eventDate")
 
-keymap <- list(gbif = "key", bison = "occurrenceID", inat = "id",
+keymap <- list(gbif = "key", inat = "id",
                ebird = "locID", vertnet = "occurrenceid", idigbio = "uuid",
                obis = "id", ala = "uuid")

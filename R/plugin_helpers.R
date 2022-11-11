@@ -29,21 +29,16 @@ add_latlong_if_missing <- function(x) {
 
 stand_dates <- function(dat, from){
   datevars <- list(gbif = 'eventDate', obis = 'eventDate',
-    bison = c('eventDate', 'year'), 
     inat = 'observed_on', ebird = 'obsDt', 
     vertnet = 'eventdate',
     idigbio = 'datecollected', ala = 'eventDate')
   var <- datevars[[from]]
-  if (from == "bison") {
-    var <- if ( is_null(dat$eventDate) ) "year" else "eventDate"
-  }
   if ( is_null(dat[[var]]) ) {
     dat
   } else {
     dat[[var]] <- switch(
       from,
       gbif = as_date(ymd_hms(dat[[var]], truncated = 3, quiet = TRUE)),
-      bison = as_date(ymd(dat[[var]], quiet = TRUE)),
       inat = as_date(ymd_hms(dat[[var]], truncated = 3, quiet = TRUE)),
       ebird = as_date(ymd_hm(dat[[var]], truncated = 3, quiet = TRUE)),
       vertnet = as_date(ymd(dat[[var]], truncated = 3, quiet = TRUE)),
@@ -51,7 +46,7 @@ stand_dates <- function(dat, from){
       obis = as_date(ymd_hms(dat[[var]], truncated = 3, quiet = TRUE)),
       ala = as_date(date_ala(dat[[var]]))
     )
-    if (from == "bison") rename(dat, stats::setNames('date', var)) else dat
+    dat
   }
 }
 
@@ -67,9 +62,8 @@ is_null <- function(...) {
 }
 
 limit_alias <- function(x, sources, geometry=NULL){
-  bisonvar <- if (is.null(geometry)) 'rows' else 'count'
   if (length(x) != 0) {
-    lim_name <- switch(sources, bison = bisonvar, 
+    lim_name <- switch(sources,
                        inat = "maxresults", ebird = "max")
     if ("limit" %in% names(x)) {
       names(x)[ which(names(x) == "limit") ] <- lim_name

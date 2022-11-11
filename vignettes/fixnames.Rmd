@@ -1,7 +1,7 @@
 ---
 title: cleaning names
 author: Scott Chamberlain
-date: "2020-12-18"
+date: "2022-11-10"
 output: rmarkdown::html_vignette
 vignette: >
     %\VignetteIndexEntry{cleaning names}
@@ -16,51 +16,13 @@ One problem you often run in to is that there can be various names for the same 
 
 ```r
 library(spocc)
-df <- occ(query = 'Pinus contorta', from = c('gbif', 'bison'), limit = 50)
+df <- occ(query = 'Pinus contorta', from = c('gbif', 'idigbio'), limit = 50)
 unique(df$gbif$data$Pinus_contorta$name)
-#> [1] "Pinus contorta Douglas ex Loudon"             
-#> [2] "Pinus contorta var. contorta"                 
-#> [3] "Pinus contorta var. murrayana (Balf.) Engelm."
-unique(df$bison$data$Pinus_contorta$name)
-#> [1] "Pinus contorta"
+#> [1] "Pinus contorta Douglas ex Loudon"     
+#> [2] "Pinus contorta var. latifolia Engelm."
+#> [3] "Pinus contorta var. contorta"
+unique(df$idigbio$data$Pinus_contorta$name)
+#> [1] "pinus contorta"
 ```
 
-This is fine, but when trying to make a map in which points are colored for each taxon, you can have many colors for a single taxon, where instead one color per taxon is more appropriate. There is a function in `scrubr` called `fix_names()`, which has a few options in which you can take the shortest names (usually just the plain binomials like _Homo sapiens_), or the original name queried, or a vector of names supplied by the user.
-
-
-```r
-install.packages("scrubr")
-```
-
-
-```r
-library(scrubr)
-df$gbif$data$Pinus_contorta <- fix_names(df$gbif$data$Pinus_contorta, how = 'shortest')
-df$bison$data$Pinus_contorta <- fix_names(df$bison$data$Pinus_contorta, how = 'shortest')
-unique(df$gbif$data$Pinus_contorta$name)
-#> [1] "Pinus contorta var. contorta"
-unique(df$bison$data$Pinus_contorta$name)
-#> [1] "Pinus contorta"
-df_comb <- occ2df(df)
-head(df_comb); tail(df_comb)
-#> # A tibble: 6 x 6
-#>   name                         longitude latitude prov  date       key       
-#>   <chr>                            <dbl>    <dbl> <chr> <date>     <chr>     
-#> 1 Pinus contorta var. contorta    -115.      50.9 gbif  2020-01-01 2543085192
-#> 2 Pinus contorta var. contorta      17.6     59.8 gbif  2020-01-01 2548826490
-#> 3 Pinus contorta var. contorta      19.2     64.0 gbif  2020-01-06 2549045731
-#> 4 Pinus contorta var. contorta      19.3     64.0 gbif  2020-01-06 2549053727
-#> 5 Pinus contorta var. contorta    -123.      49.3 gbif  2020-01-04 2550016817
-#> 6 Pinus contorta var. contorta    -106.      39.8 gbif  2020-01-07 2557738499
-#> # A tibble: 6 x 6
-#>   name           longitude latitude prov  date       key       
-#>   <chr>              <dbl>    <dbl> <chr> <date>     <chr>     
-#> 1 Pinus contorta     -115.     45.4 bison 2011-09-19 2097723549
-#> 2 Pinus contorta     -115.     45.4 bison 2011-09-19 2097723550
-#> 3 Pinus contorta     -115.     45.6 bison 2010-09-04 2097723551
-#> 4 Pinus contorta     -116.     45.8 bison 2004-07-27 2097723552
-#> 5 Pinus contorta     -116.     45.8 bison 2004-07-27 2097723554
-#> 6 Pinus contorta     -116.     45.8 bison 2004-07-27 2097723555
-```
-
-Now with one taxon name for each taxon we can more easily make a plot.
+This is fine, but when trying to make a map in which points are colored for each taxon, you can have many colors for a single taxon, where instead one color per taxon is more appropriate. There is a function in `scrubr` called `fix_names()`, which has a few options in which you can take the shortest names (usually just the plain binomials like _Homo sapiens_), or the original name queried, or a vector of names supplied by the user. `scrubr` is no longer maintained and no longer on CRAN, but you can get the package on GitHub at <https://github.com/ropensci-archive/scrubr>.

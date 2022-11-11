@@ -22,7 +22,7 @@ The rOpenSci projects aims to provide programmatic access to scientific data rep
 
 ## Data Sources
 
-`spocc` currently interfaces with nine major biodiversity repositories
+`spocc` currently interfaces with seven major biodiversity repositories
 
 1. [Global Biodiversity Information Facility (GBIF)](https://www.gbif.org/) (via `rgbif`)
 GBIF is a government funded open data repository with several partner organizations with the express goal of providing access to data on Earth's biodiversity. The data are made available by a network of member nodes, coordinating information from various participant organizations and government agencies.
@@ -31,24 +31,21 @@ GBIF is a government funded open data repository with several partner organizati
 iNaturalist provides access to crowd sourced citizen science data on species observations.
 
 3. [VertNet](http://vertnet.org/) (via `rvertnet`)
-Similar to `rgbif` and `rbison` (see below), VertNet provides access to more than 80 million vertebrate records spanning a large number of institutions and museums primarly covering four major disciplines (mammology, herpetology, ornithology, and icthyology).
+Similar to `rgbif` (see below), VertNet provides access to more than 80 million vertebrate records spanning a large number of institutions and museums primarly covering four major disciplines (mammology, herpetology, ornithology, and icthyology).
 
-4. Biodiversity Information Serving Our Nation (https://bison.usgs.gov/) (via `rbison`)
-Built by the US Geological Survey's core science analytic team, BISON is a portal that provides access to species occurrence data from several participating institutions.
-
-5. [eBird](https://ebird.org/home) (via `rebird`)
+4. [eBird](https://ebird.org/home) (via `rebird`)
 ebird is a database developed and maintained by the Cornell Lab of Ornithology and the National Audubon Society. It provides real-time access to checklist data, data on bird abundance and distribution, and communtiy reports from birders.
 
-6. [iDigBio](https://www.idigbio.org/) (via `ridigbio`)
+5. [iDigBio](https://www.idigbio.org/) (via `ridigbio`)
 iDigBio facilitates the digitization of biological and paleobiological specimens and their associated data, and houses specimen data, as well as providing their specimen data via RESTful web services.
 
-7. [OBIS](https://obis.org/)
+6. [OBIS](https://obis.org/)
 OBIS (Ocean Biogeographic Information System) allows users to search marine species datasets from all of the world's oceans.
 
-8. [Atlas of Living Australia](https://www.ala.org.au/)
+7. [Atlas of Living Australia](https://www.ala.org.au/)
 ALA (Atlas of Living Australia) contains information on all the known species in Australia aggregated from a wide range of data providers: museums, herbaria, community groups, government departments, individuals and universities; it contains more than 50 million occurrence records.
 
-__Important Note:__ It's important to keep in mind that several data providers interface with many of the above mentioned repositories. This means that occurence data obtained from BISON may be duplicates of data that are also available through GBIF. We do not have a way to resolve these duplicates or overlaps at this time but it is an issue we are hoping to resolve in future versions of the package. See `?spocc_duplicates`, after installation, for more.
+__Important Note:__ It's important to keep in mind that several data providers interface with many of the above mentioned repositories. This means that occurence data obtained from OBIS may be duplicates of data that are also available through GBIF. We do not have a way to resolve these duplicates or overlaps at this time but it is an issue we are hoping to resolve in future versions of the package. See `?spocc_duplicates`, after installation, for more.
 
 
 ## Data retrieval
@@ -70,9 +67,9 @@ response -- |
                               | -- Accipiter_striatus
                               | -- Pinus_contorta
 
-            | -- bison ------ |
-                              | -- Accipiter_striatus
-                              | -- Pinus_contorta
+            | -- idigbio ------ |
+                                | -- Accipiter_striatus
+                                | -- Pinus_contorta
 
             ... and so on for each data source
 
@@ -89,9 +86,9 @@ df$gbif
 When you get data from multiple providers, the fields returned are slightly different because each data provider uses different formats for their data; different arrangements of data and different variable names for the same thing (e.g., one data provider may call latitude "latitude", while another may call it "lat"). For example:
 
 ```{r difffields}
-df <- occ(query = 'Accipiter striatus', from = c('gbif', 'bison'), limit = 25)
+df <- occ(query = 'Accipiter striatus', from = c('gbif', 'idigbio'), limit = 25)
 df$gbif$data$Accipiter_striatus
-df$bison$data$Accipiter_striatus
+df$idigbio$data$Accipiter_striatus
 ```
 
 We provide a function `occ2df` that pulls out a few key columns needed for making maps:

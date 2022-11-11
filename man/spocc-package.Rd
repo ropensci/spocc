@@ -7,7 +7,7 @@
 \title{Interface to many species occurrence data sources}
 \description{
 A programmatic interface to many species occurrence data
-sources, including GBIF, USGS's BISON, iNaturalist, Berkeley Ecoinformatics
+sources, including GBIF, iNaturalist, Berkeley Ecoinformatics
 Engine, eBird, iDigBio, VertNet, OBIS, and ALA. Includes
 functionality for retrieving species occurrence data, and
 combining that data.
@@ -33,7 +33,6 @@ geometry based searches for some data sources) in an interactive map
 \tabular{ll}{
 Provider \tab Web \cr
 GBIF \tab \url{http://www.gbif.org/} \cr
-BISON \tab https://bison.usgs.gov/ \cr
 eBird \tab \url{http://ebird.org/content/ebird/} \cr
 iNaturalist \tab \url{http://www.inaturalist.org/} \cr
 VertNet \tab \url{http://vertnet.org/} \cr

@@ -4,8 +4,8 @@
 #' 
 #' @family queries
 #'
-#' @param from (character) Data source to get data from, any combination of 
-#' gbif or bison. Case doesn't matter.
+#' @param from (character) Data source to get data from, only gbif.
+#' Case doesn't matter.
 #' @param where (character) One of console (print to console) or html 
 #' (opens help page, if in non-interactive R session, prints help to console).
 #'
@@ -17,25 +17,24 @@
 #'
 #' Note that the from parameter is lowercased within the function and is 
 #' called through `match.arg` first, so you can match on unique partial 
-#' strings too (e.g., 'rb' for 'rbison').
+#' strings too (e.g., 'rg' for 'rgbif').
 #' @examples \dontrun{
 #' # opens up documentation for this function
 #' occ_names_options()
 #'
 #' # Open up documentation for the appropriate search function for each source
 #' occ_names_options('gbif')
-#' occ_names_options('bison')
 #'
 #' # Or open in html version
-#' occ_names_options('bison', 'html')
+#' occ_names_options('gbif', 'html')
 #' }
 
 occ_names_options <- function(from = 'gbif', where="console"){
   from <- tolower(from)
-  from <- match.arg(from, choices = c('gbif', 'bison'))
-  pkgname <- switch(from, gbif = 'rgbif', bison = 'rbison')
+  from <- match.arg(from, choices = c('gbif'))
+  pkgname <- switch(from, gbif = 'rgbif')
   check_for_package(pkgname)
-  fxn <- switch(from, gbif = 'name_lookup', bison = 'bison_tax')
+  fxn <- switch(from, gbif = 'name_lookup')
   if (where == "console") {
     res <- tools::Rd_db(pkgname)
     fxnrd <- res[[sprintf('%s.Rd', fxn)]]
@@ -51,8 +50,7 @@ occ_names_options <- function(from = 'gbif', where="console"){
                                                USE.NAMES = FALSE), sep = "\n")
   } else {
     showit <- switch(from,
-                     gbif = "?rgbif::name_lookup",
-                     bison = "?rbison::bison_tax")
+                     gbif = "?rgbif::name_lookup")
     eval(parse(text = showit))
   }
 }

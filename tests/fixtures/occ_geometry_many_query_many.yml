@@ -1,205 +1,267 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.gbif.org/v1/occurrence/search?limit=2&offset=0&scientificName=Poa&geometry=POLYGON%28%28165%20-53%2C180%20-53%2C180%20-29%2C165%20-29%2C165%20-53%29%29
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=2&offset=0&scientificName=Poa&geometry=POLYGON%28%28165%20-53%2C180%20-53%2C180%20-29%2C165%20-29%2C165%20-53%29%29
     body:
       encoding: ''
       string: ''
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.3 crul/0.7.0.9100 rOpenSci(rgbif/1.1.0.9113)
-      X-USER-AGENT: r-curl/3.3 crul/0.7.0.9100 rOpenSci(rgbif/1.1.0.9113)
+      User-Agent: r-curl/4.3.3 crul/1.3 rOpenSci(rgbif/3.7.3)
+      X-USER-AGENT: r-curl/4.3.3 crul/1.3 rOpenSci(rgbif/3.7.3)
   response:
     status:
       status_code: '200'
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: HTTP/1.1 200 OK
-      date: Mon, 28 Jan 2019 19:10:20 GMT
+      status: 'HTTP/2 200 '
+      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+      x-content-type-options: nosniff
+      x-xss-protection: 1; mode=block
+      pragma: no-cache
+      expires: '0'
+      x-frame-options: DENY
       content-type: application/json
-      access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
-      server: Jetty(9.3.z-SNAPSHOT)
+      date: Thu, 10 Nov 2022 17:30:06 GMT
       cache-control: public, max-age=600
-      x-varnish: 344147473 350432199
-      age: '5'
-      via: 1.1 varnish (Varnish/5.2)
+      x-varnish: 487261986 536248412
+      age: '29'
+      via: 1.1 varnish (Varnish/6.0)
       accept-ranges: bytes
-      content-length: '5570'
-      connection: keep-alive
+      content-length: '9158'
     body:
       encoding: UTF-8
-      string: '{"offset":0,"limit":2,"endOfRecords":false,"count":11531,"results":[{"key":1986592955,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-01-28T00:21:03.193+0000","lastParsed":"2019-01-13T23:38:58.901+0000","crawlId":147,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":4137852,"kingdomKey":6,"phylumKey":7707728,"classKey":196,"orderKey":1369,"familyKey":3073,"genusKey":2704173,"speciesKey":4137852,"acceptedTaxonKey":4137852,"scientificName":"Poa
-        cita Edgar","acceptedScientificName":"Poa cita Edgar","kingdom":"Plantae","phylum":"Tracheophyta","order":"Poales","family":"Poaceae","genus":"Poa","species":"Poa
-        cita","genericName":"Poa","specificEpithet":"cita","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2019-01-06T02:44:36","decimalLongitude":174.740986,"decimalLatitude":-41.334426,"coordinateUncertaintyInMeters":12.0,"stateProvince":"Wellington","year":2019,"month":1,"day":6,"eventDate":"2019-01-06T13:24:29","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2019-01-06T19:35:58.000+0000","lastInterpreted":"2019-01-13T23:39:16.558+0000","references":"https://www.inaturalist.org/observations/19455798","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/29933331/original.jpeg?1546741616","references":"https://www.inaturalist.org/photos/29933331","created":"2019-01-06T21:24:54.000+0000","creator":"Leon
-        Perrie","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by/4.0/","rightsHolder":"Leon
-        Perrie"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/29933339/original.jpeg?1546741626","references":"https://www.inaturalist.org/photos/29933339","created":"2019-01-06T21:25:23.000+0000","creator":"Leon
-        Perrie","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by/4.0/","rightsHolder":"Leon
-        Perrie"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Liliopsida","countryCode":"NZ","country":"New
-        Zealand","rightsHolder":"Leon Perrie","identifier":"19455798","verbatimEventDate":"2019-01-06
-        1:24:29 PM NZDT","datasetName":"iNaturalist research-grade observations","gbifID":"1986592955","verbatimLocality":"Wellington,
-        NZ-WG, NZ","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/19455798","taxonID":"405025","catalogNumber":"19455798","recordedBy":"Leon
-        Perrie","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/19455798","institutionCode":"iNaturalist","rights":"©
-        Leon Perrie some rights reserved","eventTime":"00:24:29Z","identificationRemarks":"?","identificationID":"42616047"},{"key":1986603666,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-01-28T00:21:05.331+0000","lastParsed":"2019-01-13T23:39:03.802+0000","crawlId":147,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":4136298,"kingdomKey":6,"phylumKey":7707728,"classKey":196,"orderKey":1369,"familyKey":3073,"genusKey":2704173,"speciesKey":4136298,"acceptedTaxonKey":4136298,"scientificName":"Poa
-        buchananii Zotov","acceptedScientificName":"Poa buchananii Zotov","kingdom":"Plantae","phylum":"Tracheophyta","order":"Poales","family":"Poaceae","genus":"Poa","species":"Poa
-        buchananii","genericName":"Poa","specificEpithet":"buchananii","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2019-01-07T07:47:40","decimalLongitude":171.288837,"decimalLatitude":-43.446204,"coordinateUncertaintyInMeters":15.0,"stateProvince":"Canterbury","year":2019,"month":1,"day":4,"eventDate":"2019-01-04T12:27:00","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2019-01-07T08:27:11.000+0000","lastInterpreted":"2019-01-13T23:39:22.803+0000","references":"https://www.inaturalist.org/observations/19487065","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/29983871/original.jpg?1546846497","references":"https://www.inaturalist.org/photos/29983871","created":"2019-01-04T20:27:06.000+0000","creator":"John
-        Barkla","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"John
-        Barkla"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Liliopsida","countryCode":"NZ","country":"New
-        Zealand","rightsHolder":"John Barkla","identifier":"19487065","verbatimEventDate":"2019/01/04
-        12:27 PM NZDT","datasetName":"iNaturalist research-grade observations","gbifID":"1986603666","verbatimLocality":"Double
-        Hill 7791, New Zealand","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/19487065","taxonID":"405028","catalogNumber":"19487065","recordedBy":"John
-        Barkla","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/19487065","institutionCode":"iNaturalist","rights":"©
-        John Barkla some rights reserved","eventTime":"23:27:00Z","occurrenceRemarks":"Occasional
-        on low alpine scree","identificationID":"42696354"}],"facets":[]}'
-  recorded_at: 2019-01-28 19:10:27 GMT
-  recorded_with: vcr/0.2.2, webmockr/0.3.0
+      file: no
+      string: '{"offset":0,"limit":2,"endOfRecords":false,"count":12757,"results":[{"key":3455714027,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2022-11-04T09:58:49.636+00:00","lastParsed":"2022-11-04T15:58:36.396+00:00","crawlId":323,"hostingOrganizationKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","extensions":{"http://rs.gbif.org/terms/1.0/Multimedia":[{"http://purl.org/dc/terms/license":"http://creativecommons.org/licenses/by/4.0/","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/175983426","http://purl.org/dc/terms/rightsHolder":"Joe
+        Dillon","http://rs.tdwg.org/dwc/terms/catalogNumber":"175983426","http://purl.org/dc/terms/created":"2022-01-12T15:12:03-08:00","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/type":"StillImage","http://purl.org/dc/terms/creator":"Joe
+        Dillon","http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/175983426/original.jpeg","http://purl.org/dc/terms/format":"image/jpeg"},{"http://purl.org/dc/terms/license":"http://creativecommons.org/licenses/by/4.0/","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/175983433","http://purl.org/dc/terms/rightsHolder":"Joe
+        Dillon","http://rs.tdwg.org/dwc/terms/catalogNumber":"175983433","http://purl.org/dc/terms/created":"2022-01-12T15:12:05-08:00","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/type":"StillImage","http://purl.org/dc/terms/creator":"Joe
+        Dillon","http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/175983433/original.jpeg","http://purl.org/dc/terms/format":"image/jpeg"}]},"basisOfRecord":"HUMAN_OBSERVATION","occurrenceStatus":"PRESENT","taxonKey":4129122,"kingdomKey":6,"phylumKey":7707728,"classKey":196,"orderKey":1369,"familyKey":3073,"genusKey":2704173,"speciesKey":4129122,"acceptedTaxonKey":4129122,"scientificName":"Poa
+        anceps G.Forst.","acceptedScientificName":"Poa anceps G.Forst.","kingdom":"Plantae","phylum":"Tracheophyta","order":"Poales","family":"Poaceae","genus":"Poa","species":"Poa
+        anceps","genericName":"Poa","specificEpithet":"anceps","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","iucnRedListCategory":"NE","dateIdentified":"2022-01-15T05:07:11","decimalLongitude":177.162536,"decimalLatitude":-37.991036,"coordinateUncertaintyInMeters":4.0,"stateProvince":"Bay
+        of Plenty","year":2022,"month":1,"day":12,"eventDate":"2022-01-12T15:12:00","issues":["COORDINATE_ROUNDED"],"modified":"2022-01-15T06:09:26.000+00:00","lastInterpreted":"2022-11-04T15:58:36.396+00:00","references":"https://www.inaturalist.org/observations/104955541","license":"http://creativecommons.org/licenses/by/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/175983426","created":"2022-01-12T23:12:03.000+00:00","creator":"Joe
+        Dillon","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by/4.0/","rightsHolder":"Joe
+        Dillon","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/175983426/original.jpeg"},{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/175983433","created":"2022-01-12T23:12:05.000+00:00","creator":"Joe
+        Dillon","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by/4.0/","rightsHolder":"Joe
+        Dillon","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/175983433/original.jpeg"}],"facts":[],"relations":[],"gadm":{"level0":{"gid":"NZL","name":"New
+        Zealand"},"level1":{"gid":"NZL.2_1","name":"Bay of Plenty"},"level2":{"gid":"NZL.2.3_1","name":"Opotiki"}},"isInCluster":false,"datasetName":"iNaturalist
+        research-grade observations","recordedBy":"Joe Dillon","identifiedBy":"Joe
+        Dillon","geodeticDatum":"WGS84","class":"Liliopsida","countryCode":"NZ","recordedByIDs":[],"identifiedByIDs":[],"country":"New
+        Zealand","rightsHolder":"Joe Dillon","identifier":"104955541","http://unknown.org/nick":"joedillon","verbatimEventDate":"2022/01/12
+        3:12 PM NZDT","collectionCode":"Observations","gbifID":"3455714027","verbatimLocality":"Waiotahe,
+        New Zealand","occurrenceID":"https://www.inaturalist.org/observations/104955541","taxonID":"405020","catalogNumber":"104955541","institutionCode":"iNaturalist","eventTime":"15:12:00+13:00","http://unknown.org/captive":"wild","identificationID":"231599467"},{"key":3455720791,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"NZ","protocol":"DWC_ARCHIVE","lastCrawled":"2022-11-04T09:58:49.636+00:00","lastParsed":"2022-11-04T16:01:45.717+00:00","crawlId":323,"hostingOrganizationKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","extensions":{"http://rs.gbif.org/terms/1.0/Multimedia":[{"http://purl.org/dc/terms/license":"http://creativecommons.org/licenses/by/4.0/","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/174358739","http://purl.org/dc/terms/rightsHolder":"Penelope
+        Noel Gillette","http://rs.tdwg.org/dwc/terms/catalogNumber":"174358739","http://purl.org/dc/terms/created":"2022-01-01T14:31:41-08:00","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/type":"StillImage","http://purl.org/dc/terms/creator":"Penelope
+        Noel Gillette","http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/174358739/original.jpeg","http://purl.org/dc/terms/format":"image/jpeg"},{"http://purl.org/dc/terms/license":"http://creativecommons.org/licenses/by/4.0/","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/174358750","http://purl.org/dc/terms/rightsHolder":"Penelope
+        Noel Gillette","http://rs.tdwg.org/dwc/terms/catalogNumber":"174358750","http://purl.org/dc/terms/created":"2022-01-01T14:31:58-08:00","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/type":"StillImage","http://purl.org/dc/terms/creator":"Penelope
+        Noel Gillette","http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/174358750/original.jpeg","http://purl.org/dc/terms/format":"image/jpeg"}]},"basisOfRecord":"HUMAN_OBSERVATION","occurrenceStatus":"PRESENT","taxonKey":4134718,"kingdomKey":6,"phylumKey":7707728,"classKey":196,"orderKey":1369,"familyKey":3073,"genusKey":2704173,"speciesKey":4134718,"acceptedTaxonKey":4134718,"scientificName":"Poa
+        astonii Petrie","acceptedScientificName":"Poa astonii Petrie","kingdom":"Plantae","phylum":"Tracheophyta","order":"Poales","family":"Poaceae","genus":"Poa","species":"Poa
+        astonii","genericName":"Poa","specificEpithet":"astonii","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","iucnRedListCategory":"NE","dateIdentified":"2022-01-01T05:11:06","decimalLongitude":169.473449,"decimalLatitude":-46.559294,"stateProvince":"Otago","year":2022,"month":1,"day":1,"eventDate":"2022-01-01T14:31:41","issues":["COORDINATE_ROUNDED"],"modified":"2022-01-01T05:15:15.000+00:00","lastInterpreted":"2022-11-04T16:01:45.717+00:00","references":"https://www.inaturalist.org/observations/104083663","license":"http://creativecommons.org/licenses/by/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/174358750","created":"2022-01-01T22:31:58.000+00:00","creator":"Penelope
+        Noel Gillette","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by/4.0/","rightsHolder":"Penelope
+        Noel Gillette","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/174358750/original.jpeg"},{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/174358739","created":"2022-01-01T22:31:41.000+00:00","creator":"Penelope
+        Noel Gillette","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by/4.0/","rightsHolder":"Penelope
+        Noel Gillette","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/174358739/original.jpeg"}],"facts":[],"relations":[],"gadm":{"level0":{"gid":"NZL","name":"New
+        Zealand"},"level1":{"gid":"NZL.12_1","name":"Otago"},"level2":{"gid":"NZL.12.2_1","name":"Clutha"}},"isInCluster":false,"datasetName":"iNaturalist
+        research-grade observations","recordedBy":"Penelope Noel Gillette","identifiedBy":"Penelope
+        Noel Gillette","geodeticDatum":"WGS84","class":"Liliopsida","countryCode":"NZ","recordedByIDs":[],"identifiedByIDs":[],"country":"New
+        Zealand","rightsHolder":"Penelope Noel Gillette","identifier":"104083663","http://unknown.org/nick":"penelopegillette","verbatimEventDate":"2022-01-01
+        14:31:41","collectionCode":"Observations","gbifID":"3455720791","verbatimLocality":"Papatowai
+        9586, New Zealand","occurrenceID":"https://www.inaturalist.org/observations/104083663","taxonID":"405016","catalogNumber":"104083663","institutionCode":"iNaturalist","eventTime":"14:31:41+13:00","http://unknown.org/captive":"wild","identificationID":"229002803"}],"facets":[]}'
+  recorded_at: 2022-11-10 17:30:36 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.1.91
 - request:
     method: get
-    uri: https://api.gbif.org/v1/occurrence/search?limit=2&offset=0&scientificName=Poa&geometry=POLYGON%28%28-180%20-53%2C-175%20-53%2C-175%20-29%2C-180%20-29%2C-180%20-53%29%29
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=2&offset=0&scientificName=Poa&geometry=POLYGON%28%28-180%20-53%2C-175%20-53%2C-175%20-29%2C-180%20-29%2C-180%20-53%29%29
     body:
       encoding: ''
       string: ''
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.3 crul/0.7.0.9100 rOpenSci(rgbif/1.1.0.9113)
-      X-USER-AGENT: r-curl/3.3 crul/0.7.0.9100 rOpenSci(rgbif/1.1.0.9113)
+      User-Agent: r-curl/4.3.3 crul/1.3 rOpenSci(rgbif/3.7.3)
+      X-USER-AGENT: r-curl/4.3.3 crul/1.3 rOpenSci(rgbif/3.7.3)
   response:
     status:
       status_code: '200'
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: HTTP/1.1 200 OK
-      date: Mon, 28 Jan 2019 19:10:20 GMT
+      status: 'HTTP/2 200 '
+      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+      x-content-type-options: nosniff
+      x-xss-protection: 1; mode=block
+      pragma: no-cache
+      expires: '0'
+      x-frame-options: DENY
       content-type: application/json
-      access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
-      server: Jetty(9.3.z-SNAPSHOT)
+      date: Thu, 10 Nov 2022 17:30:06 GMT
       cache-control: public, max-age=600
-      x-varnish: 334390353 340183323
-      age: '5'
-      via: 1.1 varnish (Varnish/5.2)
+      x-varnish: 487261987 511378090
+      age: '29'
+      via: 1.1 varnish (Varnish/6.0)
       accept-ranges: bytes
-      content-length: '5118'
-      connection: keep-alive
+      content-length: '14881'
     body:
       encoding: UTF-8
-      string: '{"offset":0,"limit":2,"endOfRecords":false,"count":56,"results":[{"key":1948772564,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-01-28T00:20:17.567+0000","lastParsed":"2018-12-10T14:57:14.660+0000","crawlId":147,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":4137428,"kingdomKey":6,"phylumKey":7707728,"classKey":196,"orderKey":1369,"familyKey":3073,"genusKey":2704173,"speciesKey":4137428,"acceptedTaxonKey":4137428,"scientificName":"Poa
+      file: no
+      string: '{"offset":0,"limit":2,"endOfRecords":false,"count":105,"results":[{"key":3058736898,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"NZ","protocol":"DWC_ARCHIVE","lastCrawled":"2022-11-04T09:58:49.636+00:00","lastParsed":"2022-11-04T15:57:16.308+00:00","crawlId":323,"hostingOrganizationKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","extensions":{"http://rs.gbif.org/terms/1.0/Multimedia":[{"http://purl.org/dc/terms/license":"http://creativecommons.org/publicdomain/zero/1.0/","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/114250809","http://purl.org/dc/terms/rightsHolder":"Peter
+        de Lange","http://rs.tdwg.org/dwc/terms/catalogNumber":"114250809","http://purl.org/dc/terms/created":"2021-02-08T14:28:42-08:00","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/type":"StillImage","http://purl.org/dc/terms/creator":"Peter
+        de Lange","http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/114250809/original.jpg","http://purl.org/dc/terms/format":"image/jpeg"},{"http://purl.org/dc/terms/license":"http://creativecommons.org/publicdomain/zero/1.0/","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/114250813","http://purl.org/dc/terms/rightsHolder":"Peter
+        de Lange","http://rs.tdwg.org/dwc/terms/catalogNumber":"114250813","http://purl.org/dc/terms/created":"2021-02-08T14:28:37-08:00","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/type":"StillImage","http://purl.org/dc/terms/creator":"Peter
+        de Lange","http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/114250813/original.jpg","http://purl.org/dc/terms/format":"image/jpeg"}]},"basisOfRecord":"HUMAN_OBSERVATION","occurrenceStatus":"PRESENT","taxonKey":4137428,"kingdomKey":6,"phylumKey":7707728,"classKey":196,"orderKey":1369,"familyKey":3073,"genusKey":2704173,"speciesKey":4137428,"acceptedTaxonKey":4137428,"scientificName":"Poa
         chathamica Petrie","acceptedScientificName":"Poa chathamica Petrie","kingdom":"Plantae","phylum":"Tracheophyta","order":"Poales","family":"Poaceae","genus":"Poa","species":"Poa
-        chathamica","genericName":"Poa","specificEpithet":"chathamica","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2018-12-04T05:50:15","decimalLongitude":-176.734255,"decimalLatitude":-44.189096,"coordinateUncertaintyInMeters":27380.0,"stateProvince":"Chatham
-        Islands","year":2018,"month":11,"day":18,"eventDate":"2018-11-18T12:41:00","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2018-12-04T06:37:17.000+0000","lastInterpreted":"2018-12-10T14:57:30.607+0000","references":"https://www.inaturalist.org/observations/18819007","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/28825840/original.jpg?1543902610","references":"https://www.inaturalist.org/photos/28825840","created":"2018-11-18T18:58:51.000+0000","creator":"Peter
+        chathamica","genericName":"Poa","specificEpithet":"chathamica","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","iucnRedListCategory":"NE","dateIdentified":"2021-02-28T03:46:17","decimalLongitude":-176.975459,"decimalLatitude":-43.660812,"coordinateUncertaintyInMeters":27443.0,"stateProvince":"Chatham
+        Islands","year":2021,"month":2,"day":8,"eventDate":"2021-02-08T14:29:00","issues":["COORDINATE_ROUNDED"],"modified":"2021-02-28T04:03:33.000+00:00","lastInterpreted":"2022-11-04T15:57:16.308+00:00","references":"https://www.inaturalist.org/observations/70297358","license":"http://creativecommons.org/licenses/by/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/114250809","created":"2021-02-08T22:28:42.000+00:00","creator":"Peter
         de Lange","publisher":"iNaturalist","license":"http://creativecommons.org/publicdomain/zero/1.0/","rightsHolder":"Peter
-        de Lange"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/28826014/original.jpg?1543902933","references":"https://www.inaturalist.org/photos/28826014","created":"2018-11-18T18:58:38.000+0000","creator":"Peter
+        de Lange","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/114250809/original.jpg"},{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/114250813","created":"2021-02-08T22:28:37.000+00:00","creator":"Peter
         de Lange","publisher":"iNaturalist","license":"http://creativecommons.org/publicdomain/zero/1.0/","rightsHolder":"Peter
-        de Lange"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Liliopsida","countryCode":"NZ","country":"New
-        Zealand","rightsHolder":"Peter de Lange","identifier":"18819007","informationWithheld":"Coordinate
-        uncertainty increased to 27380m to protect threatened taxon","verbatimEventDate":"2018/11/18
-        12:41 PM NZDT","datasetName":"iNaturalist research-grade observations","gbifID":"1948772564","verbatimLocality":"Waitangi,
-        NZ-CI, NZ","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/18819007","taxonID":"405032","catalogNumber":"18819007","recordedBy":"Peter
-        de Lange","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/18819007","institutionCode":"iNaturalist","rights":"©
-        Peter de Lange some rights reserved","eventTime":"23:41:00Z","occurrenceRemarks":"Common
-        on coastal cliffs and stream side banks.","identificationID":"40765661"},{"key":1843482059,"datasetKey":"83ae84cf-88e4-4b5c-80b2-271a15a3e0fc","publishingOrgKey":"32e82a64-c9b4-4b2f-9fbd-d446309b973f","networkKeys":[],"installationKey":"58f76e14-f21d-4c3b-9c20-e14c006b7d3f","publishingCountry":"NZ","protocol":"DWC_ARCHIVE","lastCrawled":"2018-11-20T22:24:18.877+0000","lastParsed":"2018-08-22T23:22:52.892+0000","crawlId":101,"extensions":{},"basisOfRecord":"PRESERVED_SPECIMEN","taxonKey":4114151,"kingdomKey":6,"phylumKey":7707728,"classKey":196,"orderKey":1369,"familyKey":3073,"genusKey":2704173,"speciesKey":4129122,"acceptedTaxonKey":4129122,"scientificName":"Poa
-        polyphylla Hack.","acceptedScientificName":"Poa anceps G.Forst.","kingdom":"Plantae","phylum":"Tracheophyta","order":"Poales","family":"Poaceae","genus":"Poa","species":"Poa
-        anceps","genericName":"Poa","specificEpithet":"polyphylla","taxonRank":"SPECIES","taxonomicStatus":"SYNONYM","decimalLongitude":-178.420722,"decimalLatitude":-30.230611,"year":2016,"month":9,"day":16,"eventDate":"2016-09-16T00:00:00","issues":["COORDINATE_ROUNDED"],"modified":"2017-09-26T00:00:00.000+0000","lastInterpreted":"2018-12-09T18:46:08.148+0000","references":"http://www.aucklandmuseum.com/collections-research/collections/record/am_naturalsciences-object-830744","license":"http://creativecommons.org/licenses/by/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"http://api.aucklandmuseum.com/id/media/v/535543?rendering=original.jpg"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Liliopsida","countryCode":"NZ","country":"New
-        Zealand","catalogNumber":"AK366390","recordedBy":"A E Wright","higherGeography":"Kermadec
-        Ecological Region and District/NZ Eco Region/New Zealand","institutionCode":"AK","fieldNumber":"15037","language":"en","gbifID":"1843482059","verbatimLocality":"Kermadec
-        Ecological Region and District","collectionCode":"AK","verbatimElevation":"73m","type":"PhysicalObject"}],"facets":[]}'
-  recorded_at: 2019-01-28 19:10:27 GMT
-  recorded_with: vcr/0.2.2, webmockr/0.3.0
+        de Lange","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/114250813/original.jpg"}],"facts":[],"relations":[],"gadm":{},"isInCluster":false,"datasetName":"iNaturalist
+        research-grade observations","recordedBy":"Peter de Lange","identifiedBy":"Peter
+        de Lange","geodeticDatum":"WGS84","class":"Liliopsida","countryCode":"NZ","recordedByIDs":[],"identifiedByIDs":[],"country":"New
+        Zealand","rightsHolder":"Peter de Lange","identifier":"70297358","http://unknown.org/nick":"pjd1","informationWithheld":"Coordinate
+        uncertainty increased to 27443m to protect threatened taxon","verbatimEventDate":"2021/02/08
+        2:29 PM NZDT","collectionCode":"Observations","gbifID":"3058736898","verbatimLocality":"New
+        Zealand","occurrenceID":"https://www.inaturalist.org/observations/70297358","taxonID":"405032","catalogNumber":"70297358","institutionCode":"iNaturalist","eventTime":"14:29:00+13:00","occurrenceRemarks":"The
+        sand-binding race of this species, which (where marram (Ammophila arenaria)
+        doesn''t dominate) is the most common sand-binding dune plant on the Chatham
+        Islands. See - https://inaturalist.nz/observations/38162222, https://inaturalist.nz/observations/50235411
+        and https://inaturalist.nz/observations/50315878","http://unknown.org/captive":"wild","identificationID":"157002522"},{"key":2579250746,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"NZ","protocol":"DWC_ARCHIVE","lastCrawled":"2022-11-04T09:58:49.636+00:00","lastParsed":"2022-11-04T16:00:10.575+00:00","crawlId":323,"hostingOrganizationKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","extensions":{"http://rs.gbif.org/terms/1.0/Multimedia":[{"http://purl.org/dc/terms/license":"http://creativecommons.org/publicdomain/zero/1.0/","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/60612243","http://purl.org/dc/terms/rightsHolder":"Peter
+        de Lange","http://rs.tdwg.org/dwc/terms/catalogNumber":"60612243","http://purl.org/dc/terms/created":"2020-01-29T08:35:36-08:00","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/type":"StillImage","http://purl.org/dc/terms/creator":"Peter
+        de Lange","http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/60612243/original.jpg","http://purl.org/dc/terms/format":"image/jpeg"},{"http://purl.org/dc/terms/license":"http://creativecommons.org/publicdomain/zero/1.0/","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/60612242","http://purl.org/dc/terms/rightsHolder":"Peter
+        de Lange","http://rs.tdwg.org/dwc/terms/catalogNumber":"60612242","http://purl.org/dc/terms/created":"2020-01-29T08:35:23-08:00","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/type":"StillImage","http://purl.org/dc/terms/creator":"Peter
+        de Lange","http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/60612242/original.jpg","http://purl.org/dc/terms/format":"image/jpeg"},{"http://purl.org/dc/terms/license":"http://creativecommons.org/publicdomain/zero/1.0/","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/60612379","http://purl.org/dc/terms/rightsHolder":"Peter
+        de Lange","http://rs.tdwg.org/dwc/terms/catalogNumber":"60612379","http://purl.org/dc/terms/created":"2020-01-29T08:35:50-08:00","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/type":"StillImage","http://purl.org/dc/terms/creator":"Peter
+        de Lange","http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/60612379/original.jpg","http://purl.org/dc/terms/format":"image/jpeg"},{"http://purl.org/dc/terms/license":"http://creativecommons.org/publicdomain/zero/1.0/","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/60612380","http://purl.org/dc/terms/rightsHolder":"Peter
+        de Lange","http://rs.tdwg.org/dwc/terms/catalogNumber":"60612380","http://purl.org/dc/terms/created":"2020-01-29T08:35:58-08:00","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/type":"StillImage","http://purl.org/dc/terms/creator":"Peter
+        de Lange","http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/60612380/original.jpg","http://purl.org/dc/terms/format":"image/jpeg"},{"http://purl.org/dc/terms/license":"http://creativecommons.org/publicdomain/zero/1.0/","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/60612443","http://purl.org/dc/terms/rightsHolder":"Peter
+        de Lange","http://rs.tdwg.org/dwc/terms/catalogNumber":"60612443","http://purl.org/dc/terms/created":"2020-01-29T08:35:09-08:00","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/type":"StillImage","http://purl.org/dc/terms/creator":"Peter
+        de Lange","http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/60612443/original.jpg","http://purl.org/dc/terms/format":"image/jpeg"},{"http://purl.org/dc/terms/license":"http://creativecommons.org/publicdomain/zero/1.0/","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/60612378","http://purl.org/dc/terms/rightsHolder":"Peter
+        de Lange","http://rs.tdwg.org/dwc/terms/catalogNumber":"60612378","http://purl.org/dc/terms/created":"2020-01-29T08:35:13-08:00","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/type":"StillImage","http://purl.org/dc/terms/creator":"Peter
+        de Lange","http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/60612378/original.jpg","http://purl.org/dc/terms/format":"image/jpeg"}]},"basisOfRecord":"HUMAN_OBSERVATION","occurrenceStatus":"PRESENT","taxonKey":4137428,"kingdomKey":6,"phylumKey":7707728,"classKey":196,"orderKey":1369,"familyKey":3073,"genusKey":2704173,"speciesKey":4137428,"acceptedTaxonKey":4137428,"scientificName":"Poa
+        chathamica Petrie","acceptedScientificName":"Poa chathamica Petrie","kingdom":"Plantae","phylum":"Tracheophyta","order":"Poales","family":"Poaceae","genus":"Poa","species":"Poa
+        chathamica","genericName":"Poa","specificEpithet":"chathamica","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","iucnRedListCategory":"NE","dateIdentified":"2020-02-01T00:25:10","decimalLongitude":-176.249127,"decimalLatitude":-43.708596,"coordinateUncertaintyInMeters":27443.0,"stateProvince":"Chatham
+        Islands","year":2020,"month":1,"day":29,"eventDate":"2020-01-29T08:36:00","issues":["COORDINATE_ROUNDED"],"modified":"2020-07-06T04:48:52.000+00:00","lastInterpreted":"2022-11-04T16:00:10.575+00:00","references":"https://www.inaturalist.org/observations/38162222","license":"http://creativecommons.org/licenses/by/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/60612243","created":"2020-01-29T16:35:36.000+00:00","creator":"Peter
+        de Lange","publisher":"iNaturalist","license":"http://creativecommons.org/publicdomain/zero/1.0/","rightsHolder":"Peter
+        de Lange","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/60612243/original.jpg"},{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/60612380","created":"2020-01-29T16:35:58.000+00:00","creator":"Peter
+        de Lange","publisher":"iNaturalist","license":"http://creativecommons.org/publicdomain/zero/1.0/","rightsHolder":"Peter
+        de Lange","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/60612380/original.jpg"},{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/60612378","created":"2020-01-29T16:35:13.000+00:00","creator":"Peter
+        de Lange","publisher":"iNaturalist","license":"http://creativecommons.org/publicdomain/zero/1.0/","rightsHolder":"Peter
+        de Lange","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/60612378/original.jpg"},{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/60612443","created":"2020-01-29T16:35:09.000+00:00","creator":"Peter
+        de Lange","publisher":"iNaturalist","license":"http://creativecommons.org/publicdomain/zero/1.0/","rightsHolder":"Peter
+        de Lange","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/60612443/original.jpg"},{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/60612242","created":"2020-01-29T16:35:23.000+00:00","creator":"Peter
+        de Lange","publisher":"iNaturalist","license":"http://creativecommons.org/publicdomain/zero/1.0/","rightsHolder":"Peter
+        de Lange","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/60612242/original.jpg"},{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/60612379","created":"2020-01-29T16:35:50.000+00:00","creator":"Peter
+        de Lange","publisher":"iNaturalist","license":"http://creativecommons.org/publicdomain/zero/1.0/","rightsHolder":"Peter
+        de Lange","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/60612379/original.jpg"}],"facts":[],"relations":[],"gadm":{},"isInCluster":false,"datasetName":"iNaturalist
+        research-grade observations","recordedBy":"Peter de Lange","identifiedBy":"Peter
+        de Lange","geodeticDatum":"WGS84","class":"Liliopsida","countryCode":"NZ","recordedByIDs":[],"identifiedByIDs":[],"country":"New
+        Zealand","rightsHolder":"Peter de Lange","identifier":"38162222","http://unknown.org/nick":"pjd1","informationWithheld":"Coordinate
+        uncertainty increased to 27443m to protect threatened taxon","verbatimEventDate":"2020/01/29
+        8:36 AM NZDT","collectionCode":"Observations","gbifID":"2579250746","verbatimLocality":"Waitangi,
+        NZ-CI, NZ","occurrenceID":"https://www.inaturalist.org/observations/38162222","taxonID":"405032","catalogNumber":"38162222","institutionCode":"iNaturalist","eventTime":"08:36:00+13:00","occurrenceRemarks":"=
+        Poa aff. chathamica This is a distinct sand-binding race of Poa chathamica
+        that probably merits formal taxonomic recognition at the rank of species.
+        Confined to actively moving sand, through which it spreads via stolons. The
+        inflorescences are contracted in a spike-like panicle rather than broadly
+        branched and pyramidal (which is seen in P. chathamica s.s. - see https://inaturalist.nz/observations/18819007,
+        https://inaturalist.nz/observations/1551377, https://inaturalist.nz/observations/18763524,
+        https://inaturalist.nz/observations/18984199). This ''sand dune race'' is
+        probably what Leonard Cockayne - who wrote the first vegetation account of
+        the Chatham Islands called Poa billardierei (or rather a name that now applies
+        to that species). Poa billardierei is known from the Chatham Islands only
+        from a single historic collection made by Felix Cox. Assuming he did collect
+        it from there it was evidently already rather scarce. I have never seen that
+        species on the islands and all recent records of it that I have chased up
+        are instead Poa aff. chathamica. At Kaiangaroa this grass is common in te
+        actively moving sand, often with pingao (Ficinia spiralis). Voucher: P.J.
+        de Lange CH3083, UNITEC 11800 (AK).","reproductiveCondition":"fruiting","http://unknown.org/captive":"wild","identificationID":"85532620"}],"facets":[]}'
+  recorded_at: 2022-11-10 17:30:36 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.1.91
 - request:
     method: get
-    uri: https://api.gbif.org/v1/occurrence/search?limit=2&offset=0&scientificName=Quercus&geometry=POLYGON%28%28165%20-53%2C180%20-53%2C180%20-29%2C165%20-29%2C165%20-53%29%29
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=2&offset=0&scientificName=Quercus&geometry=POLYGON%28%28165%20-53%2C180%20-53%2C180%20-29%2C165%20-29%2C165%20-53%29%29
     body:
       encoding: ''
       string: ''
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.3 crul/0.7.0.9100 rOpenSci(rgbif/1.1.0.9113)
-      X-USER-AGENT: r-curl/3.3 crul/0.7.0.9100 rOpenSci(rgbif/1.1.0.9113)
+      User-Agent: r-curl/4.3.3 crul/1.3 rOpenSci(rgbif/3.7.3)
+      X-USER-AGENT: r-curl/4.3.3 crul/1.3 rOpenSci(rgbif/3.7.3)
   response:
     status:
       status_code: '200'
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: HTTP/1.1 200 OK
-      date: Mon, 28 Jan 2019 19:10:20 GMT
+      status: 'HTTP/2 200 '
+      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+      x-content-type-options: nosniff
+      x-xss-protection: 1; mode=block
+      pragma: no-cache
+      expires: '0'
+      x-frame-options: DENY
       content-type: application/json
-      access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
-      server: Jetty(9.3.z-SNAPSHOT)
+      date: Thu, 10 Nov 2022 17:30:07 GMT
       cache-control: public, max-age=600
-      x-varnish: 356583784 334419184
-      age: '5'
-      via: 1.1 varnish (Varnish/5.2)
+      x-varnish: 487261988 531301356
+      age: '28'
+      via: 1.1 varnish (Varnish/6.0)
       accept-ranges: bytes
-      content-length: '6238'
-      connection: keep-alive
+      content-length: '5486'
     body:
       encoding: UTF-8
-      string: '{"offset":0,"limit":2,"endOfRecords":false,"count":394,"results":[{"key":1986566212,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-01-28T00:20:58.114+0000","lastParsed":"2019-01-13T23:38:43.166+0000","crawlId":147,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":2878688,"kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":1354,"familyKey":4689,"genusKey":2877951,"speciesKey":2878688,"acceptedTaxonKey":2878688,"scientificName":"Quercus
-        robur L.","acceptedScientificName":"Quercus robur L.","kingdom":"Plantae","phylum":"Tracheophyta","order":"Fagales","family":"Fagaceae","genus":"Quercus","species":"Quercus
-        robur","genericName":"Quercus","specificEpithet":"robur","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2019-01-02T22:44:53","decimalLongitude":174.750918,"decimalLatitude":-36.90237,"stateProvince":"Auckland","year":2019,"month":1,"day":3,"eventDate":"2019-01-03T08:07:00","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2019-01-02T22:51:21.000+0000","lastInterpreted":"2019-01-13T23:38:57.925+0000","references":"https://www.inaturalist.org/observations/19384606","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/29812364/original.jpeg?1546469086","references":"https://www.inaturalist.org/photos/29812364","created":"2019-01-03T16:07:19.000+0000","creator":"Clinton
-        Duffy","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Clinton
-        Duffy"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/29812466/original.jpeg?1546469225","references":"https://www.inaturalist.org/photos/29812466","created":"2019-01-03T16:06:34.000+0000","creator":"Clinton
-        Duffy","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Clinton
-        Duffy"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Magnoliopsida","countryCode":"NZ","country":"New
-        Zealand","rightsHolder":"Clinton Duffy","identifier":"19384606","verbatimEventDate":"2019/01/03
-        8:07 AM NZDT","datasetName":"iNaturalist research-grade observations","gbifID":"1986566212","verbatimLocality":"Mount
-        Roskill, Auckland, New Zealand","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/19384606","taxonID":"56133","catalogNumber":"19384606","recordedBy":"Clinton
-        Duffy","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/19384606","institutionCode":"iNaturalist","rights":"©
-        Clinton Duffy some rights reserved","eventTime":"19:07:00Z","identificationID":"42400357"},{"key":1986566884,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-01-28T00:20:58.260+0000","lastParsed":"2019-01-13T23:38:43.625+0000","crawlId":147,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":2878688,"kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":1354,"familyKey":4689,"genusKey":2877951,"speciesKey":2878688,"acceptedTaxonKey":2878688,"scientificName":"Quercus
-        robur L.","acceptedScientificName":"Quercus robur L.","kingdom":"Plantae","phylum":"Tracheophyta","order":"Fagales","family":"Fagaceae","genus":"Quercus","species":"Quercus
-        robur","genericName":"Quercus","specificEpithet":"robur","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2019-01-03T00:22:55","decimalLongitude":174.749463,"decimalLatitude":-36.902159,"coordinateUncertaintyInMeters":8.0,"stateProvince":"Auckland","year":2019,"month":1,"day":3,"eventDate":"2019-01-03T08:16:00","issues":["GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2019-01-03T17:26:33.000+0000","lastInterpreted":"2019-01-13T23:38:58.721+0000","references":"https://www.inaturalist.org/observations/19386216","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/29815379/original.jpeg?1546474969","references":"https://www.inaturalist.org/photos/29815379","created":"2019-01-03T16:16:33.000+0000","creator":"Clinton
-        Duffy","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Clinton
-        Duffy"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/29816137/original.jpeg?1546476143","references":"https://www.inaturalist.org/photos/29816137","created":"2019-01-03T16:15:30.000+0000","creator":"Clinton
-        Duffy","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Clinton
-        Duffy"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/29817106/original.jpeg?1546477394","references":"https://www.inaturalist.org/photos/29817106","created":"2019-01-03T16:21:15.000+0000","creator":"Clinton
-        Duffy","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Clinton
-        Duffy"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Magnoliopsida","countryCode":"NZ","country":"New
-        Zealand","rightsHolder":"Clinton Duffy","identifier":"19386216","verbatimEventDate":"2019/01/03
-        8:16 AM NZDT","datasetName":"iNaturalist research-grade observations","gbifID":"1986566884","verbatimLocality":"Mount
-        Roskill, Auckland, New Zealand","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/19386216","taxonID":"56133","catalogNumber":"19386216","recordedBy":"Clinton
-        Duffy","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/19386216","institutionCode":"iNaturalist","rights":"©
-        Clinton Duffy some rights reserved","eventTime":"19:16:00Z","identificationID":"42405679"}],"facets":[]}'
-  recorded_at: 2019-01-28 19:10:27 GMT
-  recorded_with: vcr/0.2.2, webmockr/0.3.0
+      file: no
+      string: '{"offset":0,"limit":2,"endOfRecords":false,"count":819,"results":[{"key":3466355195,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"NZ","protocol":"DWC_ARCHIVE","lastCrawled":"2022-11-04T09:58:49.636+00:00","lastParsed":"2022-11-04T16:02:03.209+00:00","crawlId":323,"hostingOrganizationKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","extensions":{"http://rs.gbif.org/terms/1.0/Multimedia":[{"http://purl.org/dc/terms/license":"http://creativecommons.org/licenses/by-nc/4.0/","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/178068373","http://purl.org/dc/terms/rightsHolder":"hittikutti","http://rs.tdwg.org/dwc/terms/catalogNumber":"178068373","http://purl.org/dc/terms/created":"2022-01-30T22:59:53Z","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/type":"StillImage","http://purl.org/dc/terms/creator":"hittikutti","http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/178068373/original.jpg","http://purl.org/dc/terms/format":"image/jpeg"}]},"basisOfRecord":"HUMAN_OBSERVATION","occurrenceStatus":"PRESENT","taxonKey":8313153,"kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":1354,"familyKey":4689,"genusKey":2877951,"speciesKey":8313153,"acceptedTaxonKey":8313153,"scientificName":"Quercus
+        palustris Münchh.","acceptedScientificName":"Quercus palustris Münchh.","kingdom":"Plantae","phylum":"Tracheophyta","order":"Fagales","family":"Fagaceae","genus":"Quercus","species":"Quercus
+        palustris","genericName":"Quercus","specificEpithet":"palustris","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","iucnRedListCategory":"LC","dateIdentified":"2022-02-03T00:51:35","decimalLongitude":174.776213,"decimalLatitude":-41.339413,"coordinateUncertaintyInMeters":31.0,"stateProvince":"Wellington","year":2022,"month":1,"day":31,"eventDate":"2022-01-31T11:59:53","issues":["COORDINATE_ROUNDED"],"modified":"2022-02-03T03:24:07.000+00:00","lastInterpreted":"2022-11-04T16:02:03.209+00:00","references":"https://www.inaturalist.org/observations/106047061","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/178068373","created":"2022-01-30T22:59:53.000+00:00","creator":"hittikutti","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"hittikutti","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/178068373/original.jpg"}],"facts":[],"relations":[],"gadm":{"level0":{"gid":"NZL","name":"New
+        Zealand"},"level1":{"gid":"NZL.18_1","name":"Wellington"},"level2":{"gid":"NZL.18.8_1","name":"Wellington"}},"isInCluster":false,"datasetName":"iNaturalist
+        research-grade observations","recordedBy":"hittikutti","identifiedBy":"hittikutti","geodeticDatum":"WGS84","class":"Magnoliopsida","countryCode":"NZ","recordedByIDs":[],"identifiedByIDs":[],"country":"New
+        Zealand","rightsHolder":"hittikutti","identifier":"106047061","http://unknown.org/nick":"hittikutti","verbatimEventDate":"Mon
+        Jan 31 2022 11:59:53 GMT+1300 (GMT+13)","collectionCode":"Observations","gbifID":"3466355195","verbatimLocality":"Melbourne
+        Road, Island Bay, Wellington, NZ","occurrenceID":"https://www.inaturalist.org/observations/106047061","taxonID":"54785","catalogNumber":"106047061","institutionCode":"iNaturalist","eventTime":"11:59:53+13:00","http://unknown.org/captive":"wild","identificationID":"235008612"},{"key":3953937900,"datasetKey":"14d5676a-2c54-4f94-9023-1e8dcd822aa0","publishingOrgKey":"da86174a-a605-43a4-a5e8-53d484152cd3","installationKey":"fe1a98a6-82b8-4652-86d6-d0f938207f67","publishingCountry":"FR","protocol":"DWC_ARCHIVE","lastCrawled":"2022-11-09T09:27:05.803+00:00","lastParsed":"2022-11-09T09:49:14.034+00:00","crawlId":116,"projectId":"queries","hostingOrganizationKey":"da86174a-a605-43a4-a5e8-53d484152cd3","extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","individualCount":1,"occurrenceStatus":"PRESENT","taxonKey":2880580,"kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":1354,"familyKey":4689,"genusKey":2877951,"speciesKey":2880580,"acceptedTaxonKey":2880580,"scientificName":"Quercus
+        cerris L.","acceptedScientificName":"Quercus cerris L.","kingdom":"Plantae","phylum":"Tracheophyta","order":"Fagales","family":"Fagaceae","genus":"Quercus","species":"Quercus
+        cerris","genericName":"Quercus","specificEpithet":"cerris","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","iucnRedListCategory":"LC","decimalLongitude":170.068721,"decimalLatitude":-44.272287,"coordinateUncertaintyInMeters":65.0,"elevation":463.05,"elevationAccuracy":0.0,"year":2022,"month":1,"day":17,"eventDate":"2022-01-17T01:35:18","issues":["COORDINATE_ROUNDED","COUNTRY_DERIVED_FROM_COORDINATES"],"lastInterpreted":"2022-11-09T09:49:14.034+00:00","license":"http://creativecommons.org/licenses/by/4.0/legalcode","identifiers":[],"media":[],"facts":[],"relations":[],"gadm":{"level0":{"gid":"NZL","name":"New
+        Zealand"},"level1":{"gid":"NZL.3_1","name":"Canterbury"},"level2":{"gid":"NZL.3.5_1","name":"Mackenzie"}},"isInCluster":false,"geodeticDatum":"WGS84","class":"Magnoliopsida","countryCode":"NZ","recordedByIDs":[],"identifiedByIDs":[],"country":"New
+        Zealand","identifier":"q-10521215168","gbifID":"3953937900","occurrenceID":"q-10521215168"}],"facets":[]}'
+  recorded_at: 2022-11-10 17:30:36 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.1.91
 - request:
     method: get
-    uri: https://api.gbif.org/v1/occurrence/search?limit=2&offset=0&scientificName=Quercus&geometry=POLYGON%28%28-180%20-53%2C-175%20-53%2C-175%20-29%2C-180%20-29%2C-180%20-53%29%29
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=2&offset=0&scientificName=Quercus&geometry=POLYGON%28%28-180%20-53%2C-175%20-53%2C-175%20-29%2C-180%20-29%2C-180%20-53%29%29
     body:
       encoding: ''
       string: ''
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.3 crul/0.7.0.9100 rOpenSci(rgbif/1.1.0.9113)
-      X-USER-AGENT: r-curl/3.3 crul/0.7.0.9100 rOpenSci(rgbif/1.1.0.9113)
+      User-Agent: r-curl/4.3.3 crul/1.3 rOpenSci(rgbif/3.7.3)
+      X-USER-AGENT: r-curl/4.3.3 crul/1.3 rOpenSci(rgbif/3.7.3)
   response:
     status:
       status_code: '200'
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: HTTP/1.1 200 OK
-      date: Mon, 28 Jan 2019 19:10:21 GMT
+      status: 'HTTP/2 200 '
+      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+      x-content-type-options: nosniff
+      x-xss-protection: 1; mode=block
+      pragma: no-cache
+      expires: '0'
+      x-frame-options: DENY
       content-type: application/json
-      access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
-      server: Jetty(9.3.z-SNAPSHOT)
+      date: Thu, 10 Nov 2022 17:30:07 GMT
       cache-control: public, max-age=600
-      x-varnish: 333575173 346115106
-      age: '5'
-      via: 1.1 varnish (Varnish/5.2)
+      x-varnish: 487261989 513770385
+      age: '28'
+      via: 1.1 varnish (Varnish/6.0)
       accept-ranges: bytes
       content-length: '77'
-      connection: keep-alive
     body:
       encoding: UTF-8
+      file: no
       string: '{"offset":0,"limit":2,"endOfRecords":true,"count":0,"results":[],"facets":[]}'
-  recorded_at: 2019-01-28 19:10:27 GMT
-  recorded_with: vcr/0.2.2, webmockr/0.3.0
+  recorded_at: 2022-11-10 17:30:36 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.1.91

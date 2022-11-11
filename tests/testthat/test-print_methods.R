@@ -18,11 +18,10 @@ test_that("print.occdatind", {
   expect_output(print(res$gbif), "First 10 rows of \\[Accipiter_striatus\\]")
   expect_output(print(res$gbif), "A tibble")
   expect_output(print(res$gbif), "name")
-  expect_output(print(res$gbif), "longitude")
 
   # empty results
   expect_output(print(res$obis), "First 10 rows of \\[Accipiter_striatus\\]")
-  expect_output(print(res$obis), "A tibble: 0 x 0")
+  expect_output(print(res$obis), "A tibble")
 })
 
 test_that("summary.occdat", {

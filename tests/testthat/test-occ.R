@@ -11,10 +11,6 @@
 #     x3 <- occ(query = "Danaus plexippus", from = "inat", limit = 3)
 #   }, serialize_with = "json")
 
-#   vcr::use_cassette("occ_bison", {
-#     x4 <- occ(query = "Bison bison", from = "bison", limit = 3)
-#   }, serialize_with = "json")
-
 #   vcr::use_cassette("occ_obis", {
 #     x9 <- occ(query = "Mola mola", from = "obis", limit = 3)
 #   }, serialize_with = "json")

@@ -5,7 +5,7 @@
 #' @family queries
 #' 
 #' @param from (character) Data source to get data from, any combination of 
-#' gbif, bison, ebird, idigibio and/or vertnet. Case doesn't matter. 
+#' gbif, ebird, idigibio and/or vertnet. Case doesn't matter. 
 #' inat is not included here, see that package's help docs.
 #' @param where (character) One of console (print to console) or html (opens 
 #' help page, if in non-interactive R session, prints help to console).
@@ -26,22 +26,21 @@
 #' # Open up documentation for the appropriate search function for each source
 #' occ_options('gbif')
 #' occ_options('ebird')
-#' occ_options('bison')
 #' occ_options('idigbio')
 #' occ_options('vertnet')
 #'
 #' # Or open in html version
-#' occ_options('bison', 'html')
+#' occ_options('gbif', 'html')
 #' }
 
 occ_options <- function(from = 'gbif', where="console"){
   from <- tolower(from)
-  from <- match.arg(from, choices = c('gbif', 'bison', 'ebird', 
+  from <- match.arg(from, choices = c('gbif', 'ebird', 
                                       'idigbio', 'vertnet'))
-  pkgname <- switch(from, gbif = 'rgbif', bison = 'rbison', ebird = 'rebird', 
+  pkgname <- switch(from, gbif = 'rgbif', ebird = 'rebird', 
                     idigbio = 'ridigbio', vertnet = 'rvertnet')
   check_for_package(pkgname)
-  fxn <- switch(from, gbif = 'occ_data', bison = 'bison', ebird = 'ebirdregion', 
+  fxn <- switch(from, gbif = 'occ_data', ebird = 'ebirdregion', 
                 idigbio = 'idig_search_records', vertnet = 'vertsearch')
   if (where == "console") {
     res <- tools::Rd_db(pkgname)
@@ -59,7 +58,6 @@ occ_options <- function(from = 'gbif', where="console"){
   } else {
     showit <- switch(from,
                      gbif = "?rgbif::occ_data",
-                     bison = "?rbison::bison",
                      ebird = "?rebird::ebirdregion",
                      idigbio = "?ridigbio::idig_search_records",
                      vertnet = "?rvertnet::vertsearch")

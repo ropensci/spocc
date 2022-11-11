@@ -1,7 +1,7 @@
 ---
 title: spocc introduction
 author: Scott Chamberlain
-date: "2020-12-18"
+date: "2022-11-10"
 output: rmarkdown::html_vignette
 vignette: >
     %\VignetteIndexEntry{spocc introduction}
@@ -15,7 +15,7 @@ The rOpenSci projects aims to provide programmatic access to scientific data rep
 
 ## Data Sources
 
-`spocc` currently interfaces with nine major biodiversity repositories
+`spocc` currently interfaces with seven major biodiversity repositories
 
 1. [Global Biodiversity Information Facility (GBIF)](https://www.gbif.org/) (via `rgbif`)
 GBIF is a government funded open data repository with several partner organizations with the express goal of providing access to data on Earth's biodiversity. The data are made available by a network of member nodes, coordinating information from various participant organizations and government agencies.
@@ -24,24 +24,21 @@ GBIF is a government funded open data repository with several partner organizati
 iNaturalist provides access to crowd sourced citizen science data on species observations.
 
 3. [VertNet](http://vertnet.org/) (via `rvertnet`)
-Similar to `rgbif` and `rbison` (see below), VertNet provides access to more than 80 million vertebrate records spanning a large number of institutions and museums primarly covering four major disciplines (mammology, herpetology, ornithology, and icthyology).
+Similar to `rgbif` (see below), VertNet provides access to more than 80 million vertebrate records spanning a large number of institutions and museums primarly covering four major disciplines (mammology, herpetology, ornithology, and icthyology).
 
-4. Biodiversity Information Serving Our Nation (https://bison.usgs.gov/) (via `rbison`)
-Built by the US Geological Survey's core science analytic team, BISON is a portal that provides access to species occurrence data from several participating institutions.
-
-5. [eBird](https://ebird.org/home) (via `rebird`)
+4. [eBird](https://ebird.org/home) (via `rebird`)
 ebird is a database developed and maintained by the Cornell Lab of Ornithology and the National Audubon Society. It provides real-time access to checklist data, data on bird abundance and distribution, and communtiy reports from birders.
 
-6. [iDigBio](https://www.idigbio.org/) (via `ridigbio`)
+5. [iDigBio](https://www.idigbio.org/) (via `ridigbio`)
 iDigBio facilitates the digitization of biological and paleobiological specimens and their associated data, and houses specimen data, as well as providing their specimen data via RESTful web services.
 
-7. [OBIS](https://obis.org/)
+6. [OBIS](https://obis.org/)
 OBIS (Ocean Biogeographic Information System) allows users to search marine species datasets from all of the world's oceans.
 
-8. [Atlas of Living Australia](https://www.ala.org.au/)
+7. [Atlas of Living Australia](https://www.ala.org.au/)
 ALA (Atlas of Living Australia) contains information on all the known species in Australia aggregated from a wide range of data providers: museums, herbaria, community groups, government departments, individuals and universities; it contains more than 50 million occurrence records.
 
-__Important Note:__ It's important to keep in mind that several data providers interface with many of the above mentioned repositories. This means that occurence data obtained from BISON may be duplicates of data that are also available through GBIF. We do not have a way to resolve these duplicates or overlaps at this time but it is an issue we are hoping to resolve in future versions of the package. See `?spocc_duplicates`, after installation, for more.
+__Important Note:__ It's important to keep in mind that several data providers interface with many of the above mentioned repositories. This means that occurence data obtained from OBIS may be duplicates of data that are also available through GBIF. We do not have a way to resolve these duplicates or overlaps at this time but it is an issue we are hoping to resolve in future versions of the package. See `?spocc_duplicates`, after installation, for more.
 
 
 ## Data retrieval
@@ -53,7 +50,7 @@ The most significant function in spocc is the `occ` (short for occurrence) funct
 library('spocc')
 (df <- occ(query = 'Accipiter striatus', from = 'gbif'))
 #> Searched: gbif
-#> Occurrences - Found: 1,093,434, Returned: 500
+#> Occurrences - Found: 1,407,843, Returned: 500
 #> Search type: Scientific
 #>   gbif: Accipiter striatus (500)
 ```
@@ -68,9 +65,9 @@ response -- |
                               | -- Accipiter_striatus
                               | -- Pinus_contorta
 
-            | -- bison ------ |
-                              | -- Accipiter_striatus
-                              | -- Pinus_contorta
+            | -- idigbio ------ |
+                                | -- Accipiter_striatus
+                                | -- Pinus_contorta
 
             ... and so on for each data source
 
@@ -86,110 +83,75 @@ df$gbif
 #> Species [Accipiter striatus (500)] 
 #> First 10 rows of [Accipiter_striatus]
 #> 
-#> # A tibble: 500 x 83
-#>    name  longitude latitude prov  issues key   scientificName datasetKey
-#>    <chr>     <dbl>    <dbl> <chr> <chr>  <chr> <chr>          <chr>     
-#>  1 Acci…    -107.      35.1 gbif  cdrou… 2542… Accipiter str… 50c9509d-…
-#>  2 Acci…     -90.0     37.1 gbif  cdrou… 2543… Accipiter str… 50c9509d-…
-#>  3 Acci…     -99.3     36.5 gbif  cdrou… 2543… Accipiter str… 50c9509d-…
-#>  4 Acci…     -76.0     39.6 gbif  cdrou… 2543… Accipiter str… 50c9509d-…
-#>  5 Acci…     -73.5     40.7 gbif  gass8… 2543… Accipiter str… 50c9509d-…
-#>  6 Acci…    -118.      34.6 gbif  cdrou… 2549… Accipiter str… 50c9509d-…
-#>  7 Acci…    -121.      36.6 gbif  cdrou… 2550… Accipiter str… 50c9509d-…
-#>  8 Acci…     -97.3     27.6 gbif  cdrou… 2550… Accipiter str… 50c9509d-…
-#>  9 Acci…     -88.9     30.5 gbif  cdrou… 2550… Accipiter str… 50c9509d-…
-#> 10 Acci…     -96.9     33.1 gbif  cdrou… 2550… Accipiter str… 50c9509d-…
-#> # … with 490 more rows, and 75 more variables: publishingOrgKey <chr>,
-#> #   installationKey <chr>, publishingCountry <chr>, protocol <chr>,
-#> #   lastCrawled <chr>, lastParsed <chr>, crawlId <int>,
+#> # A tibble: 500 × 78
+#>    name       longi…¹ latit…² prov  issues key   scien…³ datas…⁴ publi…⁵ insta…⁶
+#>    <chr>        <dbl>   <dbl> <chr> <chr>  <chr> <chr>   <chr>   <chr>   <chr>  
+#>  1 Accipiter…   -96.6    33.1 gbif  cdrou… 3455… Accipi… 50c950… 28eb1a… 997448…
+#>  2 Accipiter…   -82.0    40.3 gbif  cdrou… 3455… Accipi… 50c950… 28eb1a… 997448…
+#>  3 Accipiter…  -120.     39.5 gbif  cdrou… 3455… Accipi… 50c950… 28eb1a… 997448…
+#>  4 Accipiter…  -105.     28.3 gbif  cdrou… 3455… Accipi… 50c950… 28eb1a… 997448…
+#>  5 Accipiter…   -74.5    40.8 gbif  cdrou… 3455… Accipi… 50c950… 28eb1a… 997448…
+#>  6 Accipiter…  -123.     49.1 gbif  cdrou… 3455… Accipi… 50c950… 28eb1a… 997448…
+#>  7 Accipiter…   -77.6    39.0 gbif  cdrou… 3455… Accipi… 50c950… 28eb1a… 997448…
+#>  8 Accipiter…  -122.     38.0 gbif  cdrou… 3455… Accipi… 50c950… 28eb1a… 997448…
+#>  9 Accipiter…  -122.     37.8 gbif  cdrou… 3455… Accipi… 50c950… 28eb1a… 997448…
+#> 10 Accipiter…  -121.     36.5 gbif  cdrou… 3455… Accipi… 50c950… 28eb1a… 997448…
+#> # … with 490 more rows, 68 more variables: publishingCountry <chr>,
+#> #   protocol <chr>, lastCrawled <chr>, lastParsed <chr>, crawlId <int>,
 #> #   hostingOrganizationKey <chr>, basisOfRecord <chr>, occurrenceStatus <chr>,
 #> #   taxonKey <int>, kingdomKey <int>, phylumKey <int>, classKey <int>,
 #> #   orderKey <int>, familyKey <int>, genusKey <int>, speciesKey <int>,
 #> #   acceptedTaxonKey <int>, acceptedScientificName <chr>, kingdom <chr>,
-#> #   phylum <chr>, order <chr>, family <chr>, genus <chr>, species <chr>,
-#> #   genericName <chr>, specificEpithet <chr>, taxonRank <chr>,
-#> #   taxonomicStatus <chr>, dateIdentified <chr>,
-#> #   coordinateUncertaintyInMeters <dbl>, stateProvince <chr>, year <int>,
-#> #   month <int>, day <int>, eventDate <date>, modified <chr>,
-#> #   lastInterpreted <chr>, references <chr>, license <chr>, isInCluster <lgl>,
-#> #   geodeticDatum <chr>, class <chr>, countryCode <chr>, country <chr>,
-#> #   rightsHolder <chr>, identifier <chr>, `http://unknown.org/nick` <chr>,
-#> #   verbatimEventDate <chr>, datasetName <chr>, gbifID <chr>,
-#> #   verbatimLocality <chr>, collectionCode <chr>, occurrenceID <chr>,
-#> #   taxonID <chr>, catalogNumber <chr>, recordedBy <chr>,
-#> #   `http://unknown.org/occurrenceDetails` <chr>, institutionCode <chr>,
-#> #   rights <chr>, eventTime <chr>, identifiedBy <chr>, identificationID <chr>,
-#> #   informationWithheld <chr>, occurrenceRemarks <chr>,
-#> #   identificationRemarks <chr>, infraspecificEpithet <chr>,
-#> #   nomenclaturalCode <chr>, locality <chr>, vernacularName <chr>,
-#> #   fieldNotes <chr>, verbatimElevation <chr>, behavior <chr>,
-#> #   higherClassification <chr>
+#> #   phylum <chr>, order <chr>, family <chr>, genus <chr>, species <chr>, …
 ```
 
 When you get data from multiple providers, the fields returned are slightly different because each data provider uses different formats for their data; different arrangements of data and different variable names for the same thing (e.g., one data provider may call latitude "latitude", while another may call it "lat"). For example:
 
 
 ```r
-df <- occ(query = 'Accipiter striatus', from = c('gbif', 'bison'), limit = 25)
+df <- occ(query = 'Accipiter striatus', from = c('gbif', 'idigbio'), limit = 25)
 df$gbif$data$Accipiter_striatus
-#> # A tibble: 25 x 74
-#>    name  longitude latitude issues prov  key   scientificName datasetKey
-#>    <chr>     <dbl>    <dbl> <chr>  <chr> <chr> <chr>          <chr>     
-#>  1 Acci…    -107.      35.1 cdrou… gbif  2542… Accipiter str… 50c9509d-…
-#>  2 Acci…     -90.0     37.1 cdrou… gbif  2543… Accipiter str… 50c9509d-…
-#>  3 Acci…     -99.3     36.5 cdrou… gbif  2543… Accipiter str… 50c9509d-…
-#>  4 Acci…     -76.0     39.6 cdrou… gbif  2543… Accipiter str… 50c9509d-…
-#>  5 Acci…     -73.5     40.7 gass8… gbif  2543… Accipiter str… 50c9509d-…
-#>  6 Acci…    -118.      34.6 cdrou… gbif  2549… Accipiter str… 50c9509d-…
-#>  7 Acci…    -121.      36.6 cdrou… gbif  2550… Accipiter str… 50c9509d-…
-#>  8 Acci…     -97.3     27.6 cdrou… gbif  2550… Accipiter str… 50c9509d-…
-#>  9 Acci…     -88.9     30.5 cdrou… gbif  2550… Accipiter str… 50c9509d-…
-#> 10 Acci…     -96.9     33.1 cdrou… gbif  2550… Accipiter str… 50c9509d-…
-#> # … with 15 more rows, and 66 more variables: publishingOrgKey <chr>,
-#> #   installationKey <chr>, publishingCountry <chr>, protocol <chr>,
-#> #   lastCrawled <chr>, lastParsed <chr>, crawlId <int>,
+#> # A tibble: 25 × 75
+#>    name       longi…¹ latit…² issues prov  key   scien…³ datas…⁴ publi…⁵ insta…⁶
+#>    <chr>        <dbl>   <dbl> <chr>  <chr> <chr> <chr>   <chr>   <chr>   <chr>  
+#>  1 Accipiter…   -96.6    33.1 cdrou… gbif  3455… Accipi… 50c950… 28eb1a… 997448…
+#>  2 Accipiter…   -82.0    40.3 cdrou… gbif  3455… Accipi… 50c950… 28eb1a… 997448…
+#>  3 Accipiter…  -120.     39.5 cdrou… gbif  3455… Accipi… 50c950… 28eb1a… 997448…
+#>  4 Accipiter…  -105.     28.3 cdrou… gbif  3455… Accipi… 50c950… 28eb1a… 997448…
+#>  5 Accipiter…   -74.5    40.8 cdrou… gbif  3455… Accipi… 50c950… 28eb1a… 997448…
+#>  6 Accipiter…  -123.     49.1 cdrou… gbif  3455… Accipi… 50c950… 28eb1a… 997448…
+#>  7 Accipiter…   -77.6    39.0 cdrou… gbif  3455… Accipi… 50c950… 28eb1a… 997448…
+#>  8 Accipiter…  -122.     38.0 cdrou… gbif  3455… Accipi… 50c950… 28eb1a… 997448…
+#>  9 Accipiter…  -122.     37.8 cdrou… gbif  3455… Accipi… 50c950… 28eb1a… 997448…
+#> 10 Accipiter…  -121.     36.5 cdrou… gbif  3455… Accipi… 50c950… 28eb1a… 997448…
+#> # … with 15 more rows, 65 more variables: publishingCountry <chr>,
+#> #   protocol <chr>, lastCrawled <chr>, lastParsed <chr>, crawlId <int>,
 #> #   hostingOrganizationKey <chr>, basisOfRecord <chr>, occurrenceStatus <chr>,
 #> #   taxonKey <int>, kingdomKey <int>, phylumKey <int>, classKey <int>,
 #> #   orderKey <int>, familyKey <int>, genusKey <int>, speciesKey <int>,
 #> #   acceptedTaxonKey <int>, acceptedScientificName <chr>, kingdom <chr>,
-#> #   phylum <chr>, order <chr>, family <chr>, genus <chr>, species <chr>,
-#> #   genericName <chr>, specificEpithet <chr>, taxonRank <chr>,
-#> #   taxonomicStatus <chr>, dateIdentified <chr>,
-#> #   coordinateUncertaintyInMeters <dbl>, stateProvince <chr>, year <int>,
-#> #   month <int>, day <int>, eventDate <date>, modified <chr>,
-#> #   lastInterpreted <chr>, references <chr>, license <chr>, isInCluster <lgl>,
-#> #   geodeticDatum <chr>, class <chr>, countryCode <chr>, country <chr>,
-#> #   rightsHolder <chr>, identifier <chr>, `http://unknown.org/nick` <chr>,
-#> #   verbatimEventDate <chr>, datasetName <chr>, gbifID <chr>,
-#> #   verbatimLocality <chr>, collectionCode <chr>, occurrenceID <chr>,
-#> #   taxonID <chr>, catalogNumber <chr>, recordedBy <chr>,
-#> #   `http://unknown.org/occurrenceDetails` <chr>, institutionCode <chr>,
-#> #   rights <chr>, eventTime <chr>, identifiedBy <chr>, identificationID <chr>,
-#> #   informationWithheld <chr>, occurrenceRemarks <chr>
-df$bison$data$Accipiter_striatus
-#> # A tibble: 25 x 35
-#>    date       providedScienti…  year countryCode ambiguous latlon
-#>    <date>     <chr>            <int> <chr>       <lgl>     <chr> 
-#>  1 2001-10-10 Accipiter stria…  2001 US          FALSE     -83.2…
-#>  2 1980-09-21 Accipiter stria…  1980 US          FALSE     -75.7…
-#>  3 1980-10-04 Accipiter stria…  1980 US          FALSE     -75.7…
-#>  4 1966-10-13 Accipiter stria…  1966 US          FALSE     -75.9…
-#>  5 1987-10-10 Accipiter stria…  1987 US          FALSE     -74.2…
-#>  6 1990-10-03 Accipiter stria…  1990 US          FALSE     -75.7…
-#>  7 1994-10-05 Accipiter stria…  1994 US          FALSE     -75.7…
-#>  8 1976-09-18 Accipiter stria…  1976 US          FALSE     -75.7…
-#>  9 1979-10-07 Accipiter stria…  1979 US          FALSE     -75.7…
-#> 10 1980-10-01 Accipiter stria…  1980 US          FALSE     -75.7…
-#> # … with 15 more rows, and 29 more variables: computedCountyFips <chr>,
-#> #   occurrenceID <chr>, longitude <dbl>, basisOfRecord <chr>,
-#> #   providedCommonName <chr>, collectionID <chr>,
-#> #   ownerInstitutionCollectionCode <chr>, name <chr>, institutionID <chr>,
-#> #   computedStateFips <chr>, license <chr>, TSNs <chr>, providerID <int>,
-#> #   stateProvince <chr>, higherGeographyID <chr>, latitude <dbl>, geo <chr>,
-#> #   provider <chr>, calculatedCounty <chr>, ITISscientificName <chr>,
-#> #   pointPath <chr>, kingdom <chr>, calculatedState <chr>,
-#> #   hierarchy_homonym_string <chr>, centroid <chr>, ITIScommonName <chr>,
-#> #   resourceID <chr>, ITIStsn <chr>, prov <chr>
+#> #   phylum <chr>, order <chr>, family <chr>, genus <chr>, species <chr>, …
+df$idigbio$data$Accipiter_striatus
+#> # A tibble: 25 × 83
+#>    associa…¹ barco…² basis…³ bed   canon…⁴ catal…⁵ class colle…⁶ colle…⁷ colle…⁸
+#>    <lgl>     <lgl>   <chr>   <lgl> <chr>   <chr>   <chr> <chr>   <chr>   <lgl>  
+#>  1 NA        NA      preser… NA    accipi… 76668   aves  bird    http:/… NA     
+#>  2 NA        NA      preser… NA    accipi… usnm 4… aves  birds   urn:uu… NA     
+#>  3 NA        NA      preser… NA    accipi… 21409.0 aves  birds   <NA>    NA     
+#>  4 NA        NA      preser… NA    accipi… bird-1… aves  bird    <NA>    NA     
+#>  5 NA        NA      preser… NA    accipi… 3726    aves  av      <NA>    NA     
+#>  6 NA        NA      preser… NA    accipi… 2003-0… aves  birds   <NA>    NA     
+#>  7 NA        NA      preser… NA    accipi… 39542   aves  birds   <NA>    NA     
+#>  8 NA        NA      preser… NA    accipi… bird-2… aves  bird    <NA>    NA     
+#>  9 NA        NA      preser… NA    accipi… cmnav … aves  cmnav   http:/… NA     
+#> 10 NA        NA      preser… NA    accipi… 22879   aves  kuo     <NA>    NA     
+#> # … with 15 more rows, 73 more variables: collector <chr>, commonname <chr>,
+#> #   commonnames <list>, continent <chr>, coordinateuncertainty <dbl>,
+#> #   country <chr>, countrycode <chr>, county <chr>, datasetid <chr>,
+#> #   datecollected <date>, datemodified <chr>, dqs <dbl>,
+#> #   earliestageorloweststage <lgl>, earliesteonorlowesteonothem <lgl>,
+#> #   earliestepochorlowestseries <lgl>, earliesteraorlowesterathem <lgl>,
+#> #   earliestperiodorlowestsystem <lgl>, etag <chr>, eventdate <chr>, …
 ```
 
 We provide a function `occ2df` that pulls out a few key columns needed for making maps:
@@ -197,19 +159,19 @@ We provide a function `occ2df` that pulls out a few key columns needed for makin
 
 ```r
 occ2df(df)
-#> # A tibble: 50 x 6
-#>    name                            longitude latitude prov  date       key      
-#>    <chr>                               <dbl>    <dbl> <chr> <date>     <chr>    
-#>  1 Accipiter striatus Vieillot, 1…    -107.      35.1 gbif  2020-01-02 25429665…
-#>  2 Accipiter striatus Vieillot, 1…     -90.0     37.1 gbif  2020-01-01 25430843…
-#>  3 Accipiter striatus Vieillot, 1…     -99.3     36.5 gbif  2020-01-01 25430853…
-#>  4 Accipiter striatus Vieillot, 1…     -76.0     39.6 gbif  2020-01-01 25430927…
-#>  5 Accipiter striatus Vieillot, 1…     -73.5     40.7 gbif  2020-01-01 25430953…
-#>  6 Accipiter striatus Vieillot, 1…    -118.      34.6 gbif  2020-01-03 25499936…
-#>  7 Accipiter striatus Vieillot, 1…    -121.      36.6 gbif  2020-01-04 25500018…
-#>  8 Accipiter striatus Vieillot, 1…     -97.3     27.6 gbif  2020-01-04 25500046…
-#>  9 Accipiter striatus Vieillot, 1…     -88.9     30.5 gbif  2020-01-04 25500173…
-#> 10 Accipiter striatus Vieillot, 1…     -96.9     33.1 gbif  2020-01-05 25500177…
+#> # A tibble: 50 × 6
+#>    name                              longitude latitude prov  date       key    
+#>    <chr>                                 <dbl>    <dbl> <chr> <date>     <chr>  
+#>  1 Accipiter striatus Vieillot, 1808     -96.6     33.1 gbif  2022-01-02 345549…
+#>  2 Accipiter striatus Vieillot, 1808     -82.0     40.3 gbif  2022-01-06 345550…
+#>  3 Accipiter striatus Vieillot, 1808    -120.      39.5 gbif  2022-01-13 345558…
+#>  4 Accipiter striatus Vieillot, 1808    -105.      28.3 gbif  2022-01-04 345559…
+#>  5 Accipiter striatus Vieillot, 1808     -74.5     40.8 gbif  2022-01-07 345563…
+#>  6 Accipiter striatus Vieillot, 1808    -123.      49.1 gbif  2022-01-13 345564…
+#>  7 Accipiter striatus Vieillot, 1808     -77.6     39.0 gbif  2022-01-02 345566…
+#>  8 Accipiter striatus Vieillot, 1808    -122.      38.0 gbif  2022-01-09 345566…
+#>  9 Accipiter striatus Vieillot, 1808    -122.      37.8 gbif  2022-01-07 345567…
+#> 10 Accipiter striatus Vieillot, 1808    -121.      36.5 gbif  2022-01-05 345567…
 #> # … with 40 more rows
 ```
 

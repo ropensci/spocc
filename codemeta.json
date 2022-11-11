@@ -1,34 +1,44 @@
 {
-  "@context": [
-    "http://purl.org/codemeta/2.0",
-    "http://schema.org"
-  ],
+  "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
   "identifier": "spocc",
-  "description": "A programmatic interface to many species occurrence data sources,\n    including Global Biodiversity Information Facility ('GBIF'), 'USGSs'\n    Biodiversity Information Serving Our Nation ('BISON'), 'iNaturalist',\n    'eBird', Integrated Digitized\n    'Biocollections' ('iDigBio'), 'VertNet', Ocean 'Biogeographic' Information\n    System ('OBIS'), and Atlas of Living Australia ('ALA'). Includes\n    functionality for retrieving species occurrence data, and combining\n    those data.",
+  "description": "A programmatic interface to many species occurrence data sources, including Global Biodiversity Information Facility ('GBIF'), 'USGSs' Biodiversity Information Serving Our Nation ('BISON'), 'iNaturalist', 'eBird', Integrated Digitized 'Biocollections' ('iDigBio'), 'VertNet', Ocean 'Biogeographic' Information System ('OBIS'), and Atlas of Living Australia ('ALA'). Includes functionality for retrieving species occurrence data, and combining those data.",
   "name": "spocc: Interface to Species Occurrence Data Sources",
+  "relatedLink": "https://docs.ropensci.org/spocc/",
   "codeRepository": "https://github.com/ropensci/spocc",
   "issueTracker": "https://github.com/ropensci/spocc/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "1.2.0",
+  "version": "1.2.0.91",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.0.3 Patched (2020-12-29 r79725)",
+  "runtimePlatform": "R version 4.2.2 (2022-10-31)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
-    "name": "Central R Archive Network (CRAN)",
+    "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
   "author": [
     {
       "@type": "Person",
+      "givenName": "Hannah",
+      "familyName": "Owens",
+      "email": "hannah.owens@gmail.com",
+      "@id": "https://orcid.org/0000-0003-0071-1745"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Vijay",
+      "familyName": "Barve",
+      "@id": "https://orcid.org/0000-0002-4852-2567"
+    },
+    {
+      "@type": "Person",
       "givenName": "Scott",
       "familyName": "Chamberlain",
-      "email": "myrmecocystus@gmail.com",
       "@id": "https://orcid.org/0000-0003-1444-9135"
     }
   ],
@@ -44,13 +54,19 @@
       "familyName": "Hart"
     }
   ],
+  "funder": [
+    {
+      "@type": "Organization",
+      "name": "rOpenSci"
+    }
+  ],
   "maintainer": [
     {
       "@type": "Person",
-      "givenName": "Scott",
-      "familyName": "Chamberlain",
-      "email": "myrmecocystus@gmail.com",
-      "@id": "https://orcid.org/0000-0003-1444-9135"
+      "givenName": "Hannah",
+      "familyName": "Owens",
+      "email": "hannah.owens@gmail.com",
+      "@id": "https://orcid.org/0000-0003-0071-1745"
     }
   ],
   "softwareSuggestions": [
@@ -91,13 +107,13 @@
       "sameAs": "https://CRAN.R-project.org/package=vcr"
     }
   ],
-  "softwareRequirements": [
-    {
+  "softwareRequirements": {
+    "1": {
       "@type": "SoftwareApplication",
       "identifier": "utils",
       "name": "utils"
     },
-    {
+    "2": {
       "@type": "SoftwareApplication",
       "identifier": "rgbif",
       "name": "rgbif",
@@ -109,19 +125,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=rgbif"
     },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "rbison",
-      "name": "rbison",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=rbison"
-    },
-    {
+    "3": {
       "@type": "SoftwareApplication",
       "identifier": "rebird",
       "name": "rebird",
@@ -133,7 +137,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=rebird"
     },
-    {
+    "4": {
       "@type": "SoftwareApplication",
       "identifier": "rvertnet",
       "name": "rvertnet",
@@ -145,7 +149,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=rvertnet"
     },
-    {
+    "5": {
       "@type": "SoftwareApplication",
       "identifier": "ridigbio",
       "name": "ridigbio",
@@ -157,7 +161,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=ridigbio"
     },
-    {
+    "6": {
       "@type": "SoftwareApplication",
       "identifier": "lubridate",
       "name": "lubridate",
@@ -169,7 +173,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=lubridate"
     },
-    {
+    "7": {
       "@type": "SoftwareApplication",
       "identifier": "crul",
       "name": "crul",
@@ -181,7 +185,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=crul"
     },
-    {
+    "8": {
       "@type": "SoftwareApplication",
       "identifier": "whisker",
       "name": "whisker",
@@ -193,7 +197,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=whisker"
     },
-    {
+    "9": {
       "@type": "SoftwareApplication",
       "identifier": "jsonlite",
       "name": "jsonlite",
@@ -205,7 +209,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=jsonlite"
     },
-    {
+    "10": {
       "@type": "SoftwareApplication",
       "identifier": "data.table",
       "name": "data.table",
@@ -217,7 +221,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=data.table"
     },
-    {
+    "11": {
       "@type": "SoftwareApplication",
       "identifier": "tibble",
       "name": "tibble",
@@ -229,7 +233,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=tibble"
     },
-    {
+    "12": {
       "@type": "SoftwareApplication",
       "identifier": "wellknown",
       "name": "wellknown",
@@ -240,21 +244,11 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=wellknown"
-    }
-  ],
-  "contIntegration": "https://codecov.io/github/ropensci/spocc?branch=master",
-  "releaseNotes": "https://github.com/ropensci/spocc/blob/master/NEWS.md",
-  "readme": "https://github.com/ropensci/spocc/blob/master/README.md",
-  "fileSize": "50118.967KB",
-  "funder": [
-    {
-      "@type": "Organization",
-      "name": "rOpenSci"
-    }
-  ],
-  "keywords": ["specimens", "API", "web-services", "occurrences", "species", "taxonomy", "GBIF", "INAT", "BISON", "Vertnet", "eBird", "iDigBio", "OBIS", "ALA", "gbif", "vertnet", "ecoengine", "antweb", "ebird", "data", "api", "rstats", "r", "inaturalist", "idigbio", "obis", "bison", "species-occurrence", "occurrence", "spocc", "r-package"],
+    },
+    "SystemRequirements": null
+  },
   "applicationCategory": "Biodiversity",
   "isPartOf": "https://ropensci.org",
-  "relatedLink": "https://docs.ropensci.org/spocc/",
-  "copyrightHolder": {}
+  "keywords": ["specimens", "API", "web-services", "occurrences", "species", "taxonomy", "GBIF", "INAT", "BISON", "Vertnet", "eBird", "iDigBio", "OBIS", "ALA"],
+  "fileSize": "50079.742KB"
 }

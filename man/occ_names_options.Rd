@@ -7,8 +7,8 @@
 occ_names_options(from = "gbif", where = "console")
 }
 \arguments{
-\item{from}{(character) Data source to get data from, any combination of
-gbif or bison. Case doesn't matter.}
+\item{from}{(character) Data source to get data from, only gbif.
+Case doesn't matter.}
 
 \item{where}{(character) One of console (print to console) or html
 (opens help page, if in non-interactive R session, prints help to console).}
@@ -27,7 +27,7 @@ in \code{\link[=occ]{occ()}}.
 
 Note that the from parameter is lowercased within the function and is
 called through \code{match.arg} first, so you can match on unique partial
-strings too (e.g., 'rb' for 'rbison').
+strings too (e.g., 'rg' for 'rgbif').
 }
 \examples{
 \dontrun{
@@ -36,10 +36,9 @@ occ_names_options()
 
 # Open up documentation for the appropriate search function for each source
 occ_names_options('gbif')
-occ_names_options('bison')
 
 # Or open in html version
-occ_names_options('bison', 'html')
+occ_names_options('gbif', 'html')
 }
 }
 \seealso{

@@ -11,11 +11,11 @@ test_that("as.ala", {
   }, preserve_exact_body_bytes = TRUE)
   
   expect_is(tt, "list")
-  expect_length(tt, 2)
+  expect_length(tt, 4)
   expect_match(names(tt),
     "[0-9A-Za-z]+-[0-9A-Za-z]+-[0-9A-Za-z]+-[0-9A-Za-z]+-[0-9A-Za-z]+")
-  expect_named(tt[[1]], c("raw", "processed", "systemAssertions",
-    "userAssertions"))
+  expect_named(tt[[1]], c("raw", "processed", "systemAssertions", "userAssertions",
+                          "sensitive"))
   expect_is(tt[[1]]$systemAssertions, "list")
   expect_is(tt[[1]]$systemAssertions$passed, "data.frame")
   expect_is(tt[[1]]$raw$occurrence, "list")

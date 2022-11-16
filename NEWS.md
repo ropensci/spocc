@@ -1,3 +1,16 @@
+spocc 1.2.1
+===========
+
+### DEFUNCT
+
+* `as.bison()` is now defunct. BISON API is being sunsetted,  BISON data now available
+via GBIF (#252)
+
+### Documentation
+
+* Maintainer changed to Hannah L. Owens
+
+
 spocc 1.2.0
 ===========
 

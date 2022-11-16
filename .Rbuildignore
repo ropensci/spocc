@@ -1,6 +1,5 @@
 ^docs$
-^_pkgdown\.yml$
-.travis.yml
+^.*yml
 kr_local.R
 Makefile
 man-roxygen

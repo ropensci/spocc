@@ -1,6 +1,6 @@
 ## Test environments
 
-* local OS X install, R 4.0.3 Patched
+* local OS X install, R 4.1.2
 * ubuntu 16.04 (on GitHub Actions), R 4.0.3
 * win-builder (release/devel)
 
@@ -14,7 +14,8 @@
 
 --------
 
-This version fixes some bugs, makes a function defunct, and depends on new version of vcr that fixes failing cran checks.
+This version removes a defunct API, and changes the maintainer to Hannah L. Owens
+
 
 Thanks!
 Scott Chamberlain

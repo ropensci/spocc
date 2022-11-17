@@ -22,11 +22,10 @@ Authors@R:
       person(given = "Karthik", family = "Ram", role = "ctb"),
       person(given = "Ted", family = "Hart", role = "ctb"),
       person(given = "rOpenSci", role = "fnd",
-             comment = "https://ropensci.org/"))
-MAINTAINER: Hannah L. Owens <hannah.owens@gmail.com>
-URL: https://github.com/ropensci/spocc (devel),
-    https://docs.ropensci.org/spocc/ (user manual)
-BugReports: https://github.com/ropensci/spocc/issues
+             comment = "ropensci.org/"))
+URL: http://github.com/ropensci/spocc (devel),
+     http://docs.ropensci.org/spocc/ (user manual)
+BugReports: http://github.com/ropensci/spocc/issues/
 LazyData: true
 Roxygen: list(markdown = TRUE)
 Encoding: UTF-8
@@ -48,7 +47,7 @@ Suggests:
     testthat,
     taxize,
     vcr
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.2
 X-schema.org-applicationCategory: Biodiversity
-X-schema.org-keywords: specimens, API, web-services, occurrences, species, taxonomy, GBIF, INAT, BISON, Vertnet, eBird, iDigBio, OBIS, ALA
-X-schema.org-isPartOf: https://ropensci.org
+X-schema.org-keywords: specimens, API, web-services, occurrences, species, taxonomy, GBIF, INAT, Vertnet, eBird, iDigBio, OBIS, ALA
+X-schema.org-isPartOf: ropensci.org

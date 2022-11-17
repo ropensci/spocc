@@ -34,14 +34,14 @@ knitr::opts_chunk$set(
 
 # spocc (SPecies OCCurrence) <img src="man/figures/logo.png" align="right" alt="" width="120">
 
-[![R-check](https://github.com/ropensci/spocc/workflows/R-check/badge.svg)](https://github.com/ropensci/spocc/actions?query=workflow%3AR-check)
-[![test-sp-sf](https://github.com/ropensci/spocc/workflows/test-sp-sf/badge.svg)](https://github.com/ropensci/spocc/actions?query=workflow%3Atest-sp-sf)
-[![codecov.io](https://codecov.io/github/ropensci/spocc/coverage.svg?branch=master)](https://codecov.io/github/ropensci/spocc?branch=master)
-[![cran checks](https://cranchecks.info/badges/worst/spocc)](https://cranchecks.info/pkgs/spocc)
-[![rstudio mirror downloads](https://cranlogs.r-pkg.org/badges/spocc?color=FAB657)](https://github.com/metacran/cranlogs.app)
-[![cran version](https://www.r-pkg.org/badges/version/spocc)](https://cran.r-project.org/package=spocc)
+[![R-check](http://github.com/ropensci/spocc/workflows/R-check/badge.svg)](http://github.com/ropensci/spocc/actions?query=workflow%3AR-check)
+[![test-sp-sf](http://github.com/ropensci/spocc/workflows/test-sp-sf/badge.svg)](http://github.com/ropensci/spocc/actions?query=workflow%3Atest-sp-sf)
+[![codecov.io](http://codecov.io/github/ropensci/spocc/coverage.svg?branch=master)](http://codecov.io/github/ropensci/spocc?branch=master)
+[![cran checks](http://cranchecks.info/badges/worst/spocc)](http://cranchecks.info/pkgs/spocc)
+[![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/spocc?color=FAB657)](http://github.com/metacran/cranlogs.app)
+[![cran version](http://r-pkg.org/badges/version/spocc)](http://cran.r-project.org/package=spocc)
 
-Docs: <https://docs.ropensci.org/spocc/>
+Docs: <http://docs.ropensci.org/spocc/>
 
 At rOpenSci, we have been writing R packages to interact with many sources of species occurrence data, including [GBIF][gbif], [Vertnet][vertnet], [iNaturalist][inat], and [eBird][ebird]. Other databases are out there as well, which we can pull in. `spocc` is an R package to query and collect species occurrence data from many sources. The goal is to to create a seamless search experience across data sources, as well as creating unified outputs across data sources.
 
@@ -74,11 +74,11 @@ __BEWARE:__ In cases where you request data from multiple providers, especially 
 
 ## Learn more
 
-spocc documentation: <https://docs.ropensci.org/spocc/>
+spocc documentation: <docs.ropensci.org/spocc/>
 
 ## Contributing
 
-See [CONTRIBUTING.md](https://github.com/ropensci/spocc/blob/master/.github/CONTRIBUTING.md)
+See [CONTRIBUTING.md](http://github.com/ropensci/spocc/blob/master/.github/CONTRIBUTING.md)
 
 ## Installation
 
@@ -101,22 +101,22 @@ library("spocc")
 
 ## Make maps
 
-All mapping functionality is now in a separate package [mapr](https://github.com/ropensci/mapr) (formerly known as `spoccutils`), to make `spocc` easier to maintain. `mapr` [on CRAN](https://cran.r-project.org/package=mapr).
+All mapping functionality is now in a separate package [mapr](http://github.com/ropensci/mapr) (formerly known as `spoccutils`), to make `spocc` easier to maintain. `mapr` [on CRAN](http://cran.r-project.org/package=mapr).
 
 ## Meta
 
-* Please [report any issues or bugs](https://github.com/ropensci/spocc/issues).
+* Please [report any issues or bugs](http://github.com/ropensci/spocc/issues).
 * License: MIT
 * Get citation information for `spocc` in R doing `citation(package = 'spocc')`
-* Please note that this package is released with a [Contributor Code of Conduct](https://ropensci.org/code-of-conduct/). By contributing to this project, you agree to abide by its terms.
+* Please note that this package is released with a [Contributor Code of Conduct](http://ropensci.org/code-of-conduct/). By contributing to this project, you agree to abide by its terms.
 * Sticker: Images come from Phylopic <http://phylopic.org/>
 
 
-[gbif]: https://www.gbif.org/
-[vertnet]: https://github.com/ropensci/rvertnet
-[inat]: https://www.inaturalist.org/
-[taxize]: https://github.com/ropensci/taxize
-[idigbio]: https://www.idigbio.org/
-[obis]: https://obis.org/
-[ebird]: https://ebird.org/home
-[ala]: https://www.ala.org.au/
+[gbif]: http://gbif.org/
+[vertnet]: http://github.com/ropensci/rvertnet
+[inat]: http://inaturalist.org/
+[taxize]: http://github.com/ropensci/taxize
+[idigbio]: http://idigbio.org/
+[obis]: http://obis.org/
+[ebird]: http://ebird.org/home
+[ala]: http://ala.org.au/

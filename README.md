@@ -5,7 +5,7 @@
 [![R-check](http://github.com/ropensci/spocc/workflows/R-check/badge.svg)](http://github.com/ropensci/spocc/actions?query=workflow%3AR-check)
 [![test-sp-sf](http://github.com/ropensci/spocc/workflows/test-sp-sf/badge.svg)](http://github.com/ropensci/spocc/actions?query=workflow%3Atest-sp-sf)
 [![codecov.io](http://codecov.io/github/ropensci/spocc/coverage.svg?branch=master)](http://codecov.io/github/ropensci/spocc?branch=master)
-[![cran checks](http://cranchecks.info/badges/worst/spocc)](http://cranchecks.info/pkgs/spocc)
+[![cran checks](http://badges.cranchecks.info/worst/spocc.svg)](http://cran.r-project.org/web/checks/check_results_spocc.html)
 [![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/spocc?color=FAB657)](http://github.com/metacran/cranlogs.app)
 [![cran version](http://r-pkg.org/badges/version/spocc)](http://cran.r-project.org/package=spocc)
 

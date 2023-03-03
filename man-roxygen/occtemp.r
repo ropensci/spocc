@@ -48,8 +48,6 @@
 #' See  https://api.obis.org/#/Occurrence/get_occurrence and [obis_search] for
 #' what parameters can be used.
 #' @param alaopts (list) List of named options to pass on to internal function.
-#' See `Occurrence search` part of the API docs at 
-#' <http://api.ala.org.au/#ws3> for possible parameters.
 #' @param throw_warnings (logical) `occ()` collects errors returned from each 
 #' data provider when they occur, and are accessible in the `$meta$errors` slot
 #' for each data provider. If you set `throw_warnings=TRUE`, we give these
@@ -189,7 +187,7 @@
 #' Getting WKT polygons or bounding boxes. We will soon introduce a function to help you select
 #' a bounding box but for now, you can use a few sites on the web.
 #'
-#' - Bounding box - <http://boundingbox.klokantech.com/>
+#' - Bounding box - <https://boundingbox.klokantech.com/>
 #' - Well known text - <http://arthur-e.github.io/Wicket/sandbox-gmaps3.html>
 #'
 #' @section geometry parameter:

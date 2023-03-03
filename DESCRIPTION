@@ -23,9 +23,9 @@ Authors@R:
       person(given = "Ted", family = "Hart", role = "ctb"),
       person(given = "rOpenSci", role = "fnd",
              comment = "ropensci.org/"))
-URL: http://github.com/ropensci/spocc (devel),
-     http://docs.ropensci.org/spocc/ (user manual)
-BugReports: http://github.com/ropensci/spocc/issues/
+URL: https://github.com/ropensci/spocc (devel),
+     https://docs.ropensci.org/spocc/ (user manual)
+BugReports: https://github.com/ropensci/spocc/issues/
 LazyData: true
 Roxygen: list(markdown = TRUE)
 Encoding: UTF-8

@@ -90,9 +90,7 @@ for debugging curl calls, setting timeouts, etc.}
 See  https://api.obis.org/#/Occurrence/get_occurrence and \link{obis_search} for
 what parameters can be used.}
 
-\item{alaopts}{(list) List of named options to pass on to internal function.
-See \verb{Occurrence search} part of the API docs at
-\url{http://api.ala.org.au/#ws3} for possible parameters.}
+\item{alaopts}{(list) List of named options to pass on to internal function.}
 
 \item{throw_warnings}{(logical) \code{occ()} collects errors returned from each
 data provider when they occur, and are accessible in the \verb{$meta$errors} slot
@@ -258,7 +256,7 @@ Only POLYGON objects are currently supported.
 Getting WKT polygons or bounding boxes. We will soon introduce a function to help you select
 a bounding box but for now, you can use a few sites on the web.
 \itemize{
-\item Bounding box - \url{http://boundingbox.klokantech.com/}
+\item Bounding box - \url{https://boundingbox.klokantech.com/}
 \item Well known text - \url{http://arthur-e.github.io/Wicket/sandbox-gmaps3.html}
 }
 }

@@ -32,3 +32,4 @@ tests/testother
 ^LICENSE\.md$
 ^CRAN-SUBMISSION$
 ^pkgdown$
+^\.github$

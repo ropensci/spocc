@@ -2,7 +2,7 @@
 
 # spocc (SPecies OCCurrence) <img src="man/figures/logo.png" align="right" alt="" width="120">
 
-[![R-check](https://github.com/ropensci/spocc/actions/workflows/R-check.yaml/badge.svg)](https://github.com/ropensci/spocc/actions/workflows/R-check.yaml)
+[![R-CMD-check](https://github.com/ropensci/spocc/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ropensci/spocc/actions/workflows/R-CMD-check.yaml)
 [![test-sp-sf](http://github.com/ropensci/spocc/workflows/test-sp-sf/badge.svg)](http://github.com/ropensci/spocc/actions?query=workflow%3Atest-sp-sf)
 [![codecov.io](http://codecov.io/github/ropensci/spocc/coverage.svg?branch=master)](http://codecov.io/github/ropensci/spocc?branch=master)
 [![cran checks](http://badges.cranchecks.info/worst/spocc.svg)](http://cran.r-project.org/web/checks/check_results_spocc.html)

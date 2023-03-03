@@ -31,3 +31,4 @@ tests/fixtures/has_coords_other_data_sources.yml
 tests/testother
 ^LICENSE\.md$
 ^CRAN-SUBMISSION$
+^pkgdown$

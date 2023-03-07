@@ -32,13 +32,13 @@ geometry based searches for some data sources) in an interactive map
 
 \tabular{ll}{
 Provider \tab Web \cr
-GBIF \tab \url{http://www.gbif.org/} \cr
+GBIF \tab \url{https://www.gbif.org/} \cr
 eBird \tab \url{http://ebird.org/content/ebird/} \cr
-iNaturalist \tab \url{http://www.inaturalist.org/} \cr
+iNaturalist \tab \url{https://www.inaturalist.org/} \cr
 VertNet \tab \url{http://vertnet.org/} \cr
 iDigBio \tab \url{https://www.idigbio.org/} \cr
-OBIS \tab \url{http://www.iobis.org/} \cr
-ALA \tab \url{http://www.ala.org.au/}
+OBIS \tab \url{https://www.iobis.org/} \cr
+ALA \tab \url{https://www.ala.org.au/}
 }
 }
 
@@ -51,9 +51,9 @@ See \code{\link[=spocc_duplicates]{spocc_duplicates()}} for more.
 \section{Clean data}{
 
 
-All data cleaning functionality is in a new package: \code{scrubr}
-(\url{https://github.com/ropensci/scrubr}).
-On CRAN: \url{https://cran.r-project.org/package=scrubr}.
+All data cleaning functionality is in as archived package: \code{scrubr}
+(\url{https://github.com/ropensci-archive/scrubr}).
+On CRAN: \url{https://cran.r-project.org/src/contrib/Archive/scrubr/}.
 See also package
 \url{https://cran.r-project.org/package=CoordinateCleaner}
 }

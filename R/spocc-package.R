@@ -22,13 +22,13 @@
 #'
 #' \tabular{ll}{
 #' Provider \tab Web \cr
-#' GBIF \tab <http://www.gbif.org/> \cr
+#' GBIF \tab <https://www.gbif.org/> \cr
 #' eBird \tab <http://ebird.org/content/ebird/> \cr
-#' iNaturalist \tab <http://www.inaturalist.org/> \cr
+#' iNaturalist \tab <https://www.inaturalist.org/> \cr
 #' VertNet \tab <http://vertnet.org/> \cr
 #' iDigBio \tab <https://www.idigbio.org/> \cr
-#' OBIS \tab <http://www.iobis.org/> \cr
-#' ALA \tab <http://www.ala.org.au/>
+#' OBIS \tab <https://www.iobis.org/> \cr
+#' ALA \tab <https://www.ala.org.au/>
 #' }
 #' 
 #' @section Duplicates:
@@ -37,9 +37,9 @@
 #' 
 #' @section Clean data:
 #' 
-#' All data cleaning functionality is in a new package: `scrubr` 
-#' (<https://github.com/ropensci/scrubr>).
-#' On CRAN: <https://cran.r-project.org/package=scrubr>. 
+#' All data cleaning functionality is in as archived package: `scrubr` 
+#' (<https://github.com/ropensci-archive/scrubr>).
+#' On CRAN: <https://cran.r-project.org/src/contrib/Archive/scrubr/>. 
 #' See also package 
 #' <https://cran.r-project.org/package=CoordinateCleaner>
 #' 

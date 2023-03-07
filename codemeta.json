@@ -4,9 +4,9 @@
   "identifier": "spocc",
   "description": "A programmatic interface to many species occurrence data sources, including Global Biodiversity Information Facility ('GBIF'), 'iNaturalist', 'eBird', Integrated Digitized 'Biocollections' ('iDigBio'), 'VertNet', Ocean 'Biogeographic' Information System ('OBIS'), and Atlas of Living Australia ('ALA'). Includes functionality for retrieving species occurrence data, and combining those data.",
   "name": "spocc: Interface to Species Occurrence Data Sources",
-  "relatedLink": "http://docs.ropensci.org/spocc/",
-  "codeRepository": "http://github.com/ropensci/spocc",
-  "issueTracker": "http://github.com/ropensci/spocc/issues/",
+  "relatedLink": "https://docs.ropensci.org/spocc/",
+  "codeRepository": "https://github.com/ropensci/spocc",
+  "issueTracker": "https://github.com/ropensci/spocc/issues/",
   "license": "https://spdx.org/licenses/MIT",
   "version": "1.2.1",
   "programmingLanguage": {
@@ -250,8 +250,8 @@
   "applicationCategory": "Biodiversity",
   "isPartOf": "ropensci.org",
   "keywords": ["specimens", "API", "web-services", "occurrences", "species", "taxonomy", "GBIF", "INAT", "Vertnet", "eBird", "iDigBio", "OBIS", "ALA", "gbif", "vertnet", "ecoengine", "antweb", "ebird", "data", "api", "rstats", "r", "inaturalist", "idigbio", "obis", "bison", "species-occurrence", "occurrence", "spocc", "r-package"],
-  "fileSize": "14301.72KB",
+  "fileSize": "14201.625KB",
   "releaseNotes": "https://github.com/ropensci/spocc/blob/master/NEWS.md",
   "readme": "https://github.com/ropensci/spocc/blob/master/README.md",
-  "contIntegration": ["https://github.com/ropensci/spocc/actions/workflows/R-check.yaml", "http://github.com/ropensci/spocc/actions?query=workflow%3Atest-sp-sf", "http://codecov.io/github/ropensci/spocc?branch=master"]
+  "contIntegration": ["https://github.com/ropensci/spocc/actions/workflows/R-CMD-check.yaml", "http://github.com/ropensci/spocc/actions?query=workflow%3Atest-sp-sf", "http://codecov.io/github/ropensci/spocc?branch=master"]
 }

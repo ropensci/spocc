@@ -51,3 +51,8 @@ RoxygenNote: 7.2.3
 X-schema.org-applicationCategory: Biodiversity
 X-schema.org-keywords: specimens, API, web-services, occurrences, species, taxonomy, GBIF, INAT, Vertnet, eBird, iDigBio, OBIS, ALA
 X-schema.org-isPartOf: ropensci.org
+Config/Needs/sftests:
+    silicate,
+    sf,
+    sp,
+    testthat

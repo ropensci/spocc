@@ -3,6 +3,8 @@
 #' This can be helpful in visualizing the area in which you are searching for
 #' occurrences with the [occ()] function.
 #'
+#' @importFrom wk wkt wk_coords
+#' @importFrom s2 s2_centroid
 #' @export
 #' @family bbox
 #' @param x Input well-known text area (character)
@@ -36,12 +38,12 @@ wkt_vis <- function(x, zoom = 6, maptype = "terrain", browse = TRUE) {
   stopifnot(!is.null(x))
   stopifnot(is.character(x))
   x <- gsub("\n|\n\\s+", "", strtrim(x))
-  out <- wellknown::wkt_coords(x)
-  centroid <- wellknown::wkt_centroid(x)
+  out <- wk::wk_coords(wk::wkt(x))
+  centroid <- wk::wk_coords(s2::s2_centroid(x))
   dfs <- unname(lapply(split(out, out$ring), function(z) {
     unname(
       apply(z, 1, function(x) {
-        as.list(stats::setNames(x[c('lng','lat')], c('long', 'lat')))
+        as.list(stats::setNames(x[c('x','y')], c('long', 'lat')))
       })
     )
   }))
@@ -52,7 +54,7 @@ wkt_vis <- function(x, zoom = 6, maptype = "terrain", browse = TRUE) {
     whiskout[[i]] <- whisker.render(features)
   }
   rend <- paste0(map_header, paste(whiskout, sep = "", collapse = ","), map_end)
-  foot <- sprintf(footer, centroid$lat, centroid$lng, zoom)
+  foot <- sprintf(footer, centroid$y, centroid$x, zoom)
   res <- paste(rend, foot)
   tmpfile <- tempfile(pattern = 'spocc', fileext = ".html")
   write(res, file = tmpfile)

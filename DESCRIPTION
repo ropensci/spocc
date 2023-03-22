@@ -42,7 +42,8 @@ Imports:
     jsonlite,
     data.table,
     tibble,
-    wellknown
+    wk,
+    s2
 Suggests:
     testthat,
     taxize,

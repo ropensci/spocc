@@ -6,7 +6,7 @@ Description: A programmatic interface to many species occurrence data sources,
     Ocean 'Biogeographic' Information System ('OBIS'), and 
     Atlas of Living Australia ('ALA'). Includes functionality for retrieving
     species occurrence data, and combining those data.
-Version: 1.2.1
+Version: 1.2.2
 License: MIT + file LICENSE
 Authors@R: 
     c(person(given = "Hannah", family = "Owens",

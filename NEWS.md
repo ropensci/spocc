@@ -1,3 +1,10 @@
+spocc 1.2.2
+===========
+
+### DEFUNCT
+
+* Package `wellknown` about to be archived. Replaced with `s2` and `wk`.
+
 spocc 1.2.1
 ===========
 

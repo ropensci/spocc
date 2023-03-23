@@ -7,17 +7,7 @@
 
 ## R CMD check results
 
-0 errors | 0 warnings | 1 notes
-
-* checking CRAN incoming feasibility ... [11s] NOTE
-Maintainer: 'Hannah Owens <hannah.owens@gmail.com>'
-
-New maintainer:
-  Hannah Owens <hannah.owens@gmail.com>
-Old maintainer(s):
-  Scott Chamberlain <myrmecocystus@gmail.com>
-
-* This note is accurate
+0 errors | 0 warnings | 0 notes
 
 ## Reverse dependencies
 

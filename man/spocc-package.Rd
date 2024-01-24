@@ -2,70 +2,38 @@
 % Please edit documentation in R/spocc-package.R
 \docType{package}
 \name{spocc-package}
-\alias{spocc-package}
 \alias{spocc}
-\title{Interface to many species occurrence data sources}
+\alias{spocc-package}
+\title{spocc: Interface to Species Occurrence Data Sources}
 \description{
-A programmatic interface to many species occurrence data
-sources, including GBIF, iNaturalist, Berkeley Ecoinformatics
-Engine, eBird, iDigBio, VertNet, OBIS, and ALA. Includes
-functionality for retrieving species occurrence data, and
-combining that data.
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
+
+A programmatic interface to many species occurrence data sources, including Global Biodiversity Information Facility ('GBIF'), 'iNaturalist', 'eBird', Integrated Digitized 'Biocollections' ('iDigBio'), 'VertNet', Ocean 'Biogeographic' Information System ('OBIS'), and Atlas of Living Australia ('ALA'). Includes functionality for retrieving species occurrence data, and combining those data.
 }
-\section{Package API}{
-
-
-The main function to use is \code{\link[=occ]{occ()}} - a single interface to
-many species occurrence databases (see below for a list).
-
-Other functions include:
+\seealso{
+Useful links:
 \itemize{
-\item \code{\link[=occ2df]{occ2df()}} - Combine results from \code{occ} into a
-data.frame
-\item \code{\link[=wkt_vis]{wkt_vis()}} - Visualize WKT strings (used to define
-geometry based searches for some data sources) in an interactive map
-}
+  \item \url{https://github.com/ropensci/spocc (devel)}
+  \item \url{https://docs.ropensci.org/spocc/ (user manual)}
+  \item Report bugs at \url{https://github.com/ropensci/spocc/issues/}
 }
 
-\section{Currently supported species occurrence data sources}{
-
-
-\tabular{ll}{
-Provider \tab Web \cr
-GBIF \tab \url{https://www.gbif.org/} \cr
-eBird \tab \url{http://ebird.org/content/ebird/} \cr
-iNaturalist \tab \url{https://www.inaturalist.org/} \cr
-VertNet \tab \url{http://vertnet.org/} \cr
-iDigBio \tab \url{https://www.idigbio.org/} \cr
-OBIS \tab \url{https://www.iobis.org/} \cr
-ALA \tab \url{https://www.ala.org.au/}
 }
-}
-
-\section{Duplicates}{
-
-
-See \code{\link[=spocc_duplicates]{spocc_duplicates()}} for more.
-}
-
-\section{Clean data}{
-
-
-All data cleaning functionality is in as archived package: \code{scrubr}
-(\url{https://github.com/ropensci-archive/scrubr}).
-On CRAN: \url{https://cran.r-project.org/src/contrib/Archive/scrubr/}.
-See also package
-\url{https://cran.r-project.org/package=CoordinateCleaner}
-}
-
-\section{Make maps}{
-
-
-All mapping functionality is now in a separate package: \verb{mapr`` (<https://github.com/ropensci/mapr>) (formerly known as }spoccutils`).
-On CRAN: \url{https://cran.r-project.org/package=mapr}
-}
-
 \author{
-Scott Chamberlain
+\strong{Maintainer}: Hannah Owens \email{hannah.owens@gmail.com} (\href{https://orcid.org/0000-0003-0071-1745}{ORCID})
+
+Authors:
+\itemize{
+  \item Vijay Barve (\href{https://orcid.org/0000-0002-4852-2567}{ORCID})
+  \item Scott Chamberlain (\href{https://orcid.org/0000-0003-1444-9135}{ORCID})
 }
-\keyword{package}
+
+Other contributors:
+\itemize{
+  \item Karthik Ram [contributor]
+  \item Ted Hart [contributor]
+  \item rOpenSci (ropensci.org/) [funder]
+}
+
+}
+\keyword{internal}

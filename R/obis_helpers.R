@@ -3,7 +3,7 @@ obis_base <- function() "https://api.obis.org"
 #' OBIS search
 #' @export
 #' @keywords internal
-#' @param scientificname (character) Scientific name. Leave empty to
+#' @param scientificName (character) Scientific name. Leave empty to
 #' include all taxa. This is what we pass your name query to
 #' @param taxonid (character) Taxon AphiaID.
 #' @param datasetid (character) Dataset UUID.

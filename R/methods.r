@@ -6,9 +6,6 @@
 #' @param x Input, of class occdatind
 #' @param object Input to summary methods
 #' @param ... Further args to print, plot or summary methods
-#' @param n Number of rows to show. If `NULL`, the default, will print
-#'   all rows if less than option `dplyr.print_max`. Otherwise, will
-#'   print `dplyr.print_min`
 #'
 #' @examples \dontrun{
 #' # occdat object

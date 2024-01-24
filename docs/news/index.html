@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">spocc</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.2.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.2.3</span>
       </span>
     </div>
 
@@ -61,7 +61,27 @@
     </div>
 
     <div class="section level2">
-<h2 class="page-header" data-toc-text="1.2.1" id="spocc-121">spocc 1.2.1<a class="anchor" aria-label="anchor" href="#spocc-121"></a></h2>
+<h2 class="page-header" data-toc-text="1.2.3" id="spocc-123">spocc 1.2.3<a class="anchor" aria-label="anchor" href="#spocc-123"></a></h2>
+<div class="section level4">
+<h4 id="documentation-1-2-3">Documentation<a class="anchor" aria-label="anchor" href="#documentation-1-2-3"></a></h4>
+<ul><li>Documented argument ‘scientificname’ in ‘obis_search()’ changed to ‘scientificName’.</li>
+<li>Documented argument ‘n’ in ‘spocc_objects()’ removed</li>
+</ul></div>
+<div class="section level4">
+<h4 id="defunct-1-2-3">DEFUNCT<a class="anchor" aria-label="anchor" href="#defunct-1-2-3"></a></h4>
+<ul><li>
+<code>datecollected</code> field flagged by <code>ridigbio</code> maintainers as inappropriate field–should be <code>eventDate</code>. See <code>scrubr::fix_names()</code> (<a href="https://github.com/ropensci/spocc/issues/263" class="external-link">#263</a>)</li>
+</ul></div>
+</div>
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="1.2.2" id="spocc-122">spocc 1.2.2<small>2023-03-23</small><a class="anchor" aria-label="anchor" href="#spocc-122"></a></h2>
+<div class="section level4">
+<h4 id="defunct-1-2-2">DEFUNCT<a class="anchor" aria-label="anchor" href="#defunct-1-2-2"></a></h4>
+<ul><li>Package <code>wellknown</code> about to be archived. Replaced with <code>s2</code> and <code>wk</code>.</li>
+</ul></div>
+</div>
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="1.2.1" id="spocc-121">spocc 1.2.1<small>2023-03-08</small><a class="anchor" aria-label="anchor" href="#spocc-121"></a></h2>
 <div class="section level4">
 <h4 id="defunct-1-2-1">DEFUNCT<a class="anchor" aria-label="anchor" href="#defunct-1-2-1"></a></h4>
 <ul><li>
@@ -276,7 +296,7 @@
 <h2 class="page-header" data-toc-text="0.4.5" id="spocc-045">spocc 0.4.5<small>2016-01-27</small><a class="anchor" aria-label="anchor" href="#spocc-045"></a></h2>
 <div class="section level4">
 <h4 id="minor-improvements-0-4-5">MINOR IMPROVEMENTS<a class="anchor" aria-label="anchor" href="#minor-improvements-0-4-5"></a></h4>
-<ul><li>Using <code><a href="https://Rdatatable.gitlab.io/data.table/reference/setDF.html" class="external-link">data.table::setDF()</a></code> instead of <code><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame()</a></code> to set a <code>data.table</code> style table to a <code>data.frame</code>
+<ul><li>Using <code><a href="https://rdatatable.gitlab.io/data.table/reference/setDF.html" class="external-link">data.table::setDF()</a></code> instead of <code><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame()</a></code> to set a <code>data.table</code> style table to a <code>data.frame</code>
 </li>
 <li>Added many more tests to make it less likely errors will occur</li>
 <li>Added <code>vertnet</code> as an option to <code><a href="../reference/occ_options.html">occ_options()</a></code> to get the options for passing to <code>vertopts</code> in <code><a href="../reference/occ.html">occ()</a></code>

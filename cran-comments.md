@@ -1,6 +1,6 @@
 ## Test environments
 
-* local OS X install, R 4.1.2
+* local OS X install (14.2.1), R 4.3.1
 * ubuntu 16.04 (on GitHub Actions), R 4.0.3
 * win-builder (release/devel)
 * rhub
@@ -15,7 +15,7 @@
 
 --------
 
-This version removes a defunct API, and changes the maintainer to Hannah L. Owens
+This version removes unused arguments from documentation and addresses an update to dependency `ridigbio`.
 
 
 Thanks!

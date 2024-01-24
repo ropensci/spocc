@@ -25,6 +25,9 @@ obis_search(
 )
 }
 \arguments{
+\item{scientificName}{(character) Scientific name. Leave empty to
+include all taxa. This is what we pass your name query to}
+
 \item{size}{(integer) number of results to fetch}
 
 \item{after}{(character) Occurrence UUID up to which to skip.}
@@ -54,9 +57,6 @@ one or more in a vector}
 
 \item{fields}{(character) Field to be included in the result set.
 one or more in a vector}
-
-\item{scientificname}{(character) Scientific name. Leave empty to
-include all taxa. This is what we pass your name query to}
 }
 \description{
 OBIS search

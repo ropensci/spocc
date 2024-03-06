@@ -663,8 +663,8 @@ occ2df(x)
 }
 \seealso{
 Other queries: 
-\code{\link{occ_names_options}()},
 \code{\link{occ_names}()},
+\code{\link{occ_names_options}()},
 \code{\link{occ_options}()},
 \code{\link{spocc_objects}}
 }

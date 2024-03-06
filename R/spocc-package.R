@@ -61,8 +61,7 @@
 #' @importFrom ridigbio idig_search_records idig_view_records
 #' @importFrom whisker whisker.render
 #' @name spocc-package
-#' @aliases spocc
-#' @docType package
+#' @aliases spocc-package
 #' @author Scott Chamberlain
 #' @keywords package
 NULL

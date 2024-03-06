@@ -54,9 +54,9 @@ head(res$gbif$data[[1]])
 }
 \seealso{
 Other queries: 
+\code{\link{occ}()},
 \code{\link{occ_names_options}()},
 \code{\link{occ_options}()},
-\code{\link{occ}()},
 \code{\link{spocc_objects}}
 }
 \concept{queries}

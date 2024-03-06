@@ -35,7 +35,7 @@ eBird \tab \url{http://ebird.org/content/ebird/} \cr
 iNaturalist \tab \url{https://www.inaturalist.org/} \cr
 VertNet \tab \url{http://vertnet.org/} \cr
 iDigBio \tab \url{https://www.idigbio.org/} \cr
-OBIS \tab \url{https://www.iobis.org/} \cr
+OBIS \tab \url{https://www.obis.org/} \cr
 ALA \tab \url{https://www.ala.org.au/}
 }
 }

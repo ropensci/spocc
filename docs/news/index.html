@@ -130,7 +130,7 @@
 <h4 id="bug-fixes-1-1-0">BUG FIXES<a class="anchor" aria-label="anchor" href="#bug-fixes-1-1-0"></a></h4>
 <ul><li>Fix for ALA data source in <code><a href="../reference/occ.html">occ()</a></code>: total records found count was always 0 because ALA changed the records found field to <code>totalRecords</code>
 </li>
-<li>Fix for Vertnet data source in <code><a href="../reference/occ.html">occ()</a></code>: was using an old parameter <code>query</code> passed to <code><a href="https://rdrr.io/pkg/rvertnet/man/searchbyterm.html" class="external-link">rvertnet::searchbyterm()</a></code> - changed to <code>scientificname</code> instead</li>
+<li>Fix for Vertnet data source in <code><a href="../reference/occ.html">occ()</a></code>: was using an old parameter <code>query</code> passed to <code><a href="https://docs.ropensci.org/rvertnet/reference/searchbyterm.html" class="external-link">rvertnet::searchbyterm()</a></code> - changed to <code>scientificname</code> instead</li>
 </ul></div>
 </div>
     <div class="section level2">
@@ -265,7 +265,7 @@
 <li>Move all <code><a href="https://rdrr.io/r/methods/is.html" class="external-link">is()</a></code> to <code><a href="https://rdrr.io/r/base/class.html" class="external-link">inherits()</a></code>, and namespace all <code><a href="https://rdrr.io/r/stats/setNames.html" class="external-link">setNames()</a></code> calls</li>
 <li>We are now using <code><a href="https://docs.ropensci.org/rgbif/reference/occ_data.html" class="external-link">rgbif::occ_data()</a></code> instead of <code><a href="https://docs.ropensci.org/rgbif/reference/occ_search.html" class="external-link">rgbif::occ_search()</a></code>
 </li>
-<li>We are now using <code><a href="https://rdrr.io/pkg/rvertnet/man/searchbyterm.html" class="external-link">rvertnet::searchbyterm()</a></code> instead of <code>rgbif::vertsearch()</code>
+<li>We are now using <code><a href="https://docs.ropensci.org/rvertnet/reference/searchbyterm.html" class="external-link">rvertnet::searchbyterm()</a></code> instead of <code>rgbif::vertsearch()</code>
 </li>
 </ul></div>
 <div class="section level4">

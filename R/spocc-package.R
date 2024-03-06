@@ -27,7 +27,7 @@
 #' iNaturalist \tab <https://www.inaturalist.org/> \cr
 #' VertNet \tab <http://vertnet.org/> \cr
 #' iDigBio \tab <https://www.idigbio.org/> \cr
-#' OBIS \tab <https://www.iobis.org/> \cr
+#' OBIS \tab <https://www.obis.org/> \cr
 #' ALA \tab <https://www.ala.org.au/>
 #' }
 #' 

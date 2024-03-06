@@ -172,7 +172,7 @@ for debugging curl calls, setting timeouts, etc.</p></dd>
 
 <dt>vertnetopts</dt>
 <dd><p>(list) List of named options to pass on to
-<code><a href="https://rdrr.io/pkg/rvertnet/man/searchbyterm.html" class="external-link">rvertnet::searchbyterm()</a></code>. See also <code><a href="occ_options.html">occ_options()</a></code>.</p></dd>
+<code><a href="https://docs.ropensci.org/rvertnet/reference/searchbyterm.html" class="external-link">rvertnet::searchbyterm()</a></code>. See also <code><a href="occ_options.html">occ_options()</a></code>.</p></dd>
 
 
 <dt>idigbioopts</dt>
@@ -263,7 +263,7 @@ parameter: same as the <code>occ</code> parameter</p></li>
 <code><a href="https://docs.ropensci.org/rebird/reference/ebirdgeo.html" class="external-link">rebird::ebirdgeo()</a></code> functions, depending on whether you set
 <code>method="ebirdregion"</code> or <code>method="ebirdgeo"</code> - API parameters: <code>sci</code> for both
 <code><a href="https://docs.ropensci.org/rebird/reference/ebirdregion.html" class="external-link">rebird::ebirdregion()</a></code> and <code><a href="https://docs.ropensci.org/rebird/reference/ebirdgeo.html" class="external-link">rebird::ebirdgeo()</a></code></p></li>
-<li><p>rvertnet - <code>taxon</code> in the <code><a href="https://rdrr.io/pkg/rvertnet/man/vertsearch.html" class="external-link">rvertnet::vertsearch()</a></code> function - API
+<li><p>rvertnet - <code>taxon</code> in the <code><a href="https://docs.ropensci.org/rvertnet/reference/vertsearch.html" class="external-link">rvertnet::vertsearch()</a></code> function - API
 parameter: <code>q</code></p></li>
 <li><p>ridigbio - <code>scientificname</code> in the <code><a href="https://rdrr.io/pkg/ridigbio/man/idig_search_records.html" class="external-link">ridigbio::idig_search_records()</a></code>
 function - API parameter: <code>scientificname</code></p></li>
@@ -382,7 +382,7 @@ except ebird.</p>
 <p>Notes on some special cases</p><ul><li><p>idigbio: We search on the <code>datecollected</code> field. Other date fields can be
 searched on, but we chose <code>datecollected</code> as it seemed most appropriate.</p></li>
 <li><p>vertnet: If you want more flexible date searches, you can pass various
-types of date searches to <code>vertnetopts</code>. See <code><a href="https://rdrr.io/pkg/rvertnet/man/searchbyterm.html" class="external-link">rvertnet::searchbyterm()</a></code>
+types of date searches to <code>vertnetopts</code>. See <code><a href="https://docs.ropensci.org/rvertnet/reference/searchbyterm.html" class="external-link">rvertnet::searchbyterm()</a></code>
 for more information</p></li>
 <li><p>ala: There's some issues with the dates returned from ALA. They are
 returned as time stamps, and some seem to be malformed. So do beware
@@ -434,8 +434,8 @@ ends up with GBIF. See <code><a href="spocc_duplicates.html">spocc_duplicates()<
     <div id="see-also">
     <h2>See also</h2>
     <div class="dont-index"><p>Other queries: 
-<code><a href="occ_names_options.html">occ_names_options</a>()</code>,
 <code><a href="occ_names.html">occ_names</a>()</code>,
+<code><a href="occ_names_options.html">occ_names_options</a>()</code>,
 <code><a href="occ_options.html">occ_options</a>()</code>,
 <code><a href="spocc_objects.html">spocc_objects</a></code></p></div>
     </div>
@@ -585,13 +585,13 @@ ends up with GBIF. See <code><a href="spocc_duplicates.html">spocc_duplicates()<
 <span class="r-in"><span><span class="co"># taxize integration</span></span></span>
 <span class="r-in"><span><span class="co">## You can pass in taxonomic identifiers</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://docs.ropensci.org/taxize/" class="external-link">"taxize"</a></span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">(</span><span class="va">ids</span> <span class="op">&lt;-</span> <span class="fu">get_ids</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Chironomus riparius"</span>,<span class="st">"Pinus contorta"</span><span class="op">)</span>, db <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'itis'</span>,<span class="st">'gbif'</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">(</span><span class="va">ids</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://docs.ropensci.org/taxize/reference/get_ids.html" class="external-link">get_ids</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Chironomus riparius"</span>,<span class="st">"Pinus contorta"</span><span class="op">)</span>, db <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'itis'</span>,<span class="st">'gbif'</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">occ</span><span class="op">(</span>ids <span class="op">=</span> <span class="va">ids</span>, from<span class="op">=</span><span class="st">'gbif'</span>, limit<span class="op">=</span><span class="fl">20</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="op">(</span><span class="va">ids</span> <span class="op">&lt;-</span> <span class="fu">get_ids</span><span class="op">(</span><span class="st">"Chironomus riparius"</span>, db <span class="op">=</span> <span class="st">'gbif'</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">(</span><span class="va">ids</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://docs.ropensci.org/taxize/reference/get_ids.html" class="external-link">get_ids</a></span><span class="op">(</span><span class="st">"Chironomus riparius"</span>, db <span class="op">=</span> <span class="st">'gbif'</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">occ</span><span class="op">(</span>ids <span class="op">=</span> <span class="va">ids</span>, from<span class="op">=</span><span class="st">'gbif'</span>, limit<span class="op">=</span><span class="fl">20</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="op">(</span><span class="va">ids</span> <span class="op">&lt;-</span> <span class="fu">get_gbifid</span><span class="op">(</span><span class="st">"Chironomus riparius"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">(</span><span class="va">ids</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://docs.ropensci.org/taxize/reference/get_gbifid.html" class="external-link">get_gbifid</a></span><span class="op">(</span><span class="st">"Chironomus riparius"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">occ</span><span class="op">(</span>ids <span class="op">=</span> <span class="va">ids</span>, from<span class="op">=</span><span class="st">'gbif'</span>, limit<span class="op">=</span><span class="fl">20</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## sf classes</span></span></span>

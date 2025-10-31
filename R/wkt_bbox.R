@@ -55,9 +55,10 @@ bbox2wkt <- function(minx=NA, miny=NA, maxx=NA, maxy=NA, bbox=NULL) {
 }
 
 #' @param wkt A Well Known Text string
+#' @importFrom wk wkt wk_bbox
 #' @export
 #' @family bbox
 #' @rdname bbox2wkt
 wkt2bbox <- function(wkt) {
-  wellknown::wkt_bounding(wkt)
+  as.data.frame(wk::wk_bbox(wk::wkt(wkt)))
 }

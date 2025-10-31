@@ -21,22 +21,34 @@ handle_geoms <- function(x) {
 handle_geom <- function(x, ...) {
   UseMethod("handle_geom")
 }
+
+#' @export
 handle_geom.POINT <- function(x, ...) {
   if (!is.matrix(x)) x<- matrix(x, nrow = 1L)
   declare(sf2wkt_coords(x), "POINT")
 }
+
+#' @export
 handle_geom.MULTIPOINT <- function(x, ...) {
   declare(sf2wkt_coords(x), "MULTIPOINT")
 }
+
+#' @export
 handle_geom.LINESTRING <- function(x, ...) {
  declare(sf2wkt_coords(x), "LINESTRING")
 }
+
+#' @export
 handle_geom.MULTILINESTRING <- function(x, ...) {
   declare(sf2wkt_polygon(x), "MULTILINESTRING")
 }
+
+#' @export
 handle_geom.POLYGON <- function(x, ...) {
   declare(sf2wkt_polygon(x), "POLYGON")
 }
+
+#' @export
 handle_geom.MULTIPOLYGON <- function(x, ...) {
   declare(paren(paste0(unlist(lapply(unclass(x), sf2wkt_polygon)),
     collapse = ", ")),

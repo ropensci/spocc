@@ -25,10 +25,6 @@
 \item{...}{Further args to print, plot or summary methods}
 
 \item{object}{Input to summary methods}
-
-\item{n}{Number of rows to show. If \code{NULL}, the default, will print
-all rows if less than option \code{dplyr.print_max}. Otherwise, will
-print \code{dplyr.print_min}}
 }
 \description{
 spocc objects and their print, plot, and summary methods
@@ -64,10 +60,10 @@ res$idigbio
 }
 \seealso{
 Other queries: 
-\code{\link{occ_names_options}()},
+\code{\link{occ}()},
 \code{\link{occ_names}()},
-\code{\link{occ_options}()},
-\code{\link{occ}()}
+\code{\link{occ_names_options}()},
+\code{\link{occ_options}()}
 }
 \concept{queries}
 \keyword{internal}

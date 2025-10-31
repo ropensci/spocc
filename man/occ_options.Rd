@@ -47,9 +47,9 @@ occ_options('gbif', 'html')
 }
 \seealso{
 Other queries: 
-\code{\link{occ_names_options}()},
-\code{\link{occ_names}()},
 \code{\link{occ}()},
+\code{\link{occ_names}()},
+\code{\link{occ_names_options}()},
 \code{\link{spocc_objects}}
 }
 \concept{queries}

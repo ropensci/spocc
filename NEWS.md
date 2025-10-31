@@ -1,3 +1,23 @@
+spocc 1.2.3
+===========
+
+### Documentation
+
+* Documented argument ‘scientificname’ in 'obis_search()' changed to 'scientificName'.
+* Documented argument 'n' in 'spocc_objects()' removed
+
+### DEFUNCT
+
+* `datecollected` field flagged by `ridigbio` maintainers as inappropriate field--should be `eventDate`. See `scrubr::fix_names()` (#263)
+
+
+spocc 1.2.2
+===========
+
+### DEFUNCT
+
+* Package `wellknown` about to be archived. Replaced with `s2` and `wk`.
+
 spocc 1.2.1
 ===========
 

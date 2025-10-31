@@ -101,7 +101,7 @@ occ2df.occdat <- function(obj, what = "data") {
 
 datemap <- list(gbif = 'eventDate', inat = 'observed_on',
                 ebird = 'obsDt', vertnet = "eventdate",
-                idigbio = "datecollected", obis = "eventDate",
+                idigbio = "eventDate", obis = "eventDate",
                 ala = "eventDate")
 
 keymap <- list(gbif = "key", inat = "id",

@@ -1,7 +1,7 @@
 #' Coerce occurrence keys to idigbio objects
 #'
 #' @export
-#' 
+#'
 #' @family coercion
 #'
 #' @param x Various inputs, including the output from a call to [occ()]
@@ -9,8 +9,8 @@
 #' character, idigbiokey, or occkey.
 #' @param ... curl options; named parameters passed on to `httr::GET()`
 #' @return One or more in a list of both class idigbiokey and occkey
-#' @details Internally, we use `idig_view_records`, whereas we use
-#' [idig_search_records()] in the [occ()] function.
+#' @details Internally, we use \code{\link[ridigbio]{idig_view_records}}, whereas we use
+#' \code{\link[ridigbio]{idig_search_records}} in the [occ()] function.
 #'
 #' @examples \dontrun{
 #' spnames <- c('Accipiter striatus', 'Setophaga caerulescens',

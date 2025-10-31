@@ -1,3 +1,10 @@
+spocc 1.2.4
+===========
+
+### Documentation
+
+* Link to `ridigbio::idig_search_records()` fixed for `as.idigbio()`. 
+
 spocc 1.2.3
 ===========
 

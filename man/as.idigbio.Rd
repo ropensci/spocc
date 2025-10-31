@@ -20,8 +20,8 @@ One or more in a list of both class idigbiokey and occkey
 Coerce occurrence keys to idigbio objects
 }
 \details{
-Internally, we use \code{idig_view_records}, whereas we use
-\code{\link[=idig_search_records]{idig_search_records()}} in the \code{\link[=occ]{occ()}} function.
+Internally, we use \code{\link[ridigbio]{idig_view_records}}, whereas we use
+\code{\link[ridigbio]{idig_search_records}} in the \code{\link[=occ]{occ()}} function.
 }
 \examples{
 \dontrun{

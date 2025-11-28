@@ -1,127 +1,162 @@
 http_interactions:
 - request:
-    method: get
-    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=2&offset=0&geometry=POLYGON%28%28165%20-53%2C180%20-53%2C180%20-29%2C165%20-29%2C165%20-53%29%29
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3.3 crul/1.3 rOpenSci(rgbif/3.7.3)
-      X-USER-AGENT: r-curl/4.3.3 crul/1.3 rOpenSci(rgbif/3.7.3)
+    method: GET
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=2&offset=0&geometry=POLYGON%28%28165+-53%2C180+-53%2C180+-29%2C165+-29%2C165+-53%29%29
   response:
-    status:
-      status_code: '200'
-      message: OK
-      explanation: Request fulfilled, document follows
+    status: 200
     headers:
-      status: 'HTTP/2 200 '
+      status: HTTP/1.1 200 OK
       vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
       x-content-type-options: nosniff
-      x-xss-protection: 1; mode=block
+      x-xss-protection: '0'
       pragma: no-cache
       expires: '0'
       x-frame-options: DENY
       content-type: application/json
-      date: Thu, 10 Nov 2022 17:29:36 GMT
+      date: Fri, 28 Nov 2025 13:27:52 GMT
+      x-varnish-rli: '7'
+      x-varnish-rlg: '250'
       cache-control: public, max-age=600
-      x-varnish: 487261979 513474609
-      age: '57'
-      via: 1.1 varnish (Varnish/6.0)
+      x-varnish: 452887234 402589747
+      age: '286'
+      via: 1.1 varnish (Varnish/6.6)
       accept-ranges: bytes
-      content-length: '7240'
+      content-length: '15223'
+      connection: keep-alive
     body:
-      encoding: UTF-8
-      file: no
-      string: '{"offset":0,"limit":2,"endOfRecords":false,"count":10369180,"results":[{"key":3455477406,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"NZ","protocol":"DWC_ARCHIVE","lastCrawled":"2022-11-04T09:58:49.636+00:00","lastParsed":"2022-11-04T15:58:39.974+00:00","crawlId":323,"hostingOrganizationKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","extensions":{"http://rs.gbif.org/terms/1.0/Multimedia":[{"http://purl.org/dc/terms/license":"http://creativecommons.org/licenses/by/4.0/","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/174328292","http://purl.org/dc/terms/rightsHolder":"nick_goldwater","http://rs.tdwg.org/dwc/terms/catalogNumber":"174328292","http://purl.org/dc/terms/created":"2021-12-31T23:46:01Z","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/type":"StillImage","http://purl.org/dc/terms/creator":"nick_goldwater","http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/174328292/original.jpg","http://purl.org/dc/terms/format":"image/jpeg"}]},"basisOfRecord":"HUMAN_OBSERVATION","occurrenceStatus":"PRESENT","taxonKey":4161954,"kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":1351,"familyKey":6666,"genusKey":7363256,"speciesKey":4161954,"acceptedTaxonKey":4161954,"scientificName":"Pittosporum
-        umbellatum Banks & Sol. ex Gaertn.","acceptedScientificName":"Pittosporum
-        umbellatum Banks & Sol. ex Gaertn.","kingdom":"Plantae","phylum":"Tracheophyta","order":"Apiales","family":"Pittosporaceae","genus":"Pittosporum","species":"Pittosporum
-        umbellatum","genericName":"Pittosporum","specificEpithet":"umbellatum","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","iucnRedListCategory":"NE","dateIdentified":"2022-01-01T00:07:26","decimalLongitude":174.731462,"decimalLatitude":-36.853017,"coordinateUncertaintyInMeters":20.0,"stateProvince":"Auckland","year":2022,"month":1,"day":1,"eventDate":"2022-01-01T12:46:01","issues":["COORDINATE_ROUNDED"],"modified":"2022-01-01T03:09:25.000+00:00","lastInterpreted":"2022-11-04T15:58:39.974+00:00","references":"https://www.inaturalist.org/observations/104068092","license":"http://creativecommons.org/licenses/by/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/174328292","created":"2021-12-31T23:46:01.000+00:00","creator":"nick_goldwater","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by/4.0/","rightsHolder":"nick_goldwater","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/174328292/original.jpg"}],"facts":[],"relations":[],"gadm":{"level0":{"gid":"NZL","name":"New
-        Zealand"},"level1":{"gid":"NZL.1_1","name":"Auckland"},"level2":{"gid":"NZL.1.1_1","name":"Auckland"}},"isInCluster":false,"datasetName":"iNaturalist
-        research-grade observations","recordedBy":"nick_goldwater","identifiedBy":"nick_goldwater","geodeticDatum":"WGS84","class":"Magnoliopsida","countryCode":"NZ","recordedByIDs":[],"identifiedByIDs":[],"country":"New
-        Zealand","rightsHolder":"nick_goldwater","identifier":"104068092","http://unknown.org/nick":"nick_goldwater","verbatimEventDate":"Sat
-        Jan 01 2022 12:46:01 GMT+1300 (GMT+13)","collectionCode":"Observations","gbifID":"3455477406","verbatimLocality":"Hukanui
-        Res, Westmere, Auckland, NZ","occurrenceID":"https://www.inaturalist.org/observations/104068092","taxonID":"408446","catalogNumber":"104068092","institutionCode":"iNaturalist","eventTime":"12:46:01+13:00","occurrenceRemarks":"One
-        plant growing in riparian scrub (ngaio, ti kouka, karamu).","http://unknown.org/captive":"wild","identificationID":"228965440"},{"key":3455477466,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2022-11-04T09:58:49.636+00:00","lastParsed":"2022-11-04T16:02:25.343+00:00","crawlId":323,"hostingOrganizationKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","extensions":{"http://rs.gbif.org/terms/1.0/Multimedia":[{"http://purl.org/dc/terms/license":"http://creativecommons.org/licenses/by-nc/4.0/","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/174362971","http://purl.org/dc/terms/rightsHolder":"davodogster","http://rs.tdwg.org/dwc/terms/catalogNumber":"174362971","http://purl.org/dc/terms/created":"2022-01-01T06:09:27Z","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/type":"StillImage","http://purl.org/dc/terms/creator":"davodogster","http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/174362971/original.jpeg","http://purl.org/dc/terms/format":"image/jpeg"}]},"basisOfRecord":"HUMAN_OBSERVATION","occurrenceStatus":"PRESENT","taxonKey":8276767,"kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":422,"familyKey":3064,"genusKey":3083796,"speciesKey":8276767,"acceptedTaxonKey":8276767,"scientificName":"Salicornia
-        quinqueflora Bunge ex Ung.-Sternb.","acceptedScientificName":"Salicornia quinqueflora
-        Bunge ex Ung.-Sternb.","kingdom":"Plantae","phylum":"Tracheophyta","order":"Caryophyllales","family":"Amaranthaceae","genus":"Salicornia","species":"Salicornia
-        quinqueflora","genericName":"Salicornia","specificEpithet":"quinqueflora","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","iucnRedListCategory":"NE","dateIdentified":"2022-01-01T06:09:40","decimalLongitude":168.309341,"decimalLatitude":-46.576855,"coordinateUncertaintyInMeters":4.0,"stateProvince":"Southland","year":2022,"month":1,"day":1,"eventDate":"2022-01-01T19:09:27","issues":["COORDINATE_ROUNDED"],"modified":"2022-01-01T06:10:35.000+00:00","lastInterpreted":"2022-11-04T16:02:25.343+00:00","references":"https://www.inaturalist.org/observations/104086272","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/174362971","created":"2022-01-01T06:09:27.000+00:00","creator":"davodogster","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"davodogster","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/174362971/original.jpeg"}],"facts":[],"relations":[],"gadm":{},"isInCluster":false,"datasetName":"iNaturalist
-        research-grade observations","recordedBy":"davodogster","identifiedBy":"davodogster","geodeticDatum":"WGS84","class":"Magnoliopsida","countryCode":"NZ","recordedByIDs":[],"identifiedByIDs":[],"country":"New
-        Zealand","rightsHolder":"davodogster","identifier":"104086272","http://unknown.org/nick":"davodogster","verbatimEventDate":"Sat
-        Jan 01 2022 19:09:27 GMT +1300 (GMT+13)","collectionCode":"Observations","gbifID":"3455477466","verbatimLocality":"New
-        Zealand","occurrenceID":"https://www.inaturalist.org/observations/104086272","taxonID":"792835","catalogNumber":"104086272","institutionCode":"iNaturalist","eventTime":"19:09:27+13:00","http://unknown.org/captive":"wild","identificationID":"229008507"}],"facets":[]}'
-  recorded_at: 2022-11-10 17:30:34 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.1.91
+      string: '{"offset":0,"limit":2,"endOfRecords":false,"count":16642543,"results":[{"key":5006690478,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","hostingOrganizationKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2025-11-24T19:20:31.074+00:00","lastParsed":"2025-11-25T08:50:16.738+00:00","crawlId":569,"extensions":{"http://rs.gbif.org/terms/1.0/Multimedia":[{"http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/460810307/original.jpeg","http://purl.org/dc/terms/created":"2025-01-01T11:56:04-08:00","http://purl.org/dc/terms/creator":"lcolmer","http://purl.org/dc/terms/license":"https://creativecommons.org/licenses/by-nc/4.0/","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/format":"image/jpeg","http://purl.org/dc/terms/rightsHolder":"lcolmer","http://rs.tdwg.org/dwc/terms/catalogNumber":"460810307","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/460810307","http://purl.org/dc/terms/type":"StillImage"},{"http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/460810343/original.jpeg","http://purl.org/dc/terms/created":"2025-01-01T11:56:15-08:00","http://purl.org/dc/terms/creator":"lcolmer","http://purl.org/dc/terms/license":"https://creativecommons.org/licenses/by-nc/4.0/","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/format":"image/jpeg","http://purl.org/dc/terms/rightsHolder":"lcolmer","http://rs.tdwg.org/dwc/terms/catalogNumber":"460810343","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/460810343","http://purl.org/dc/terms/type":"StillImage"},{"http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/460810373/original.jpeg","http://purl.org/dc/terms/created":"2025-01-01T11:56:02-08:00","http://purl.org/dc/terms/creator":"lcolmer","http://purl.org/dc/terms/license":"https://creativecommons.org/licenses/by-nc/4.0/","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/format":"image/jpeg","http://purl.org/dc/terms/rightsHolder":"lcolmer","http://rs.tdwg.org/dwc/terms/catalogNumber":"460810373","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/460810373","http://purl.org/dc/terms/type":"StillImage"}]},"basisOfRecord":"HUMAN_OBSERVATION","occurrenceStatus":"PRESENT","classifications":{"7ddf754f-d193-4cc9-b351-99906754a03b":{"usage":{"key":"4P8MV","name":"Pseudopomyza
+        flavitarsis (Harrison, 1959)","rank":"SPECIES","code":"ZOOLOGICAL","authorship":"(Harrison,
+        1959)","genericName":"Pseudopomyza","specificEpithet":"flavitarsis","formattedName":"<i>Pseudopomyza</i>
+        <i>flavitarsis</i> (Harrison, 1959)"},"acceptedUsage":{"key":"4P8MV","name":"Pseudopomyza
+        flavitarsis (Harrison, 1959)","rank":"SPECIES","code":"ZOOLOGICAL","authorship":"(Harrison,
+        1959)","genericName":"Pseudopomyza","specificEpithet":"flavitarsis","formattedName":"<i>Pseudopomyza</i>
+        <i>flavitarsis</i> (Harrison, 1959)"},"taxonomicStatus":"ACCEPTED","classification":[{"key":"CS5HF","name":"Eukaryota","rank":"DOMAIN"},{"key":"N","name":"Animalia","rank":"KINGDOM"},{"key":"RT","name":"Arthropoda","rank":"PHYLUM"},{"key":"L2655","name":"Hexapoda","rank":"SUBPHYLUM"},{"key":"H6","name":"Insecta","rank":"CLASS"},{"key":"D2P","name":"Diptera","rank":"ORDER"},{"key":"8WJ","name":"Cypselosomatidae","rank":"FAMILY"},{"key":"89P3F","name":"Pseudopomyzinae","rank":"SUBFAMILY"},{"key":"BY3ZR","name":"Pseudopomyza","rank":"GENUS"},{"key":"4P8MV","name":"Pseudopomyza
+        flavitarsis","rank":"SPECIES"}],"issues":["TAXON_ID_NOT_FOUND"]},"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c":{"usage":{"key":"1443587","name":"Pseudopomyza
+        flavitarsis (Harrison, 1959)","rank":"SPECIES","code":"ZOOLOGICAL","authorship":"(Harrison,
+        1959)","genericName":"Pseudopomyza","specificEpithet":"flavitarsis","formattedName":"<i>Pseudopomyza</i>
+        <i>flavitarsis</i> (Harrison, 1959)"},"acceptedUsage":{"key":"1443587","name":"Pseudopomyza
+        flavitarsis (Harrison, 1959)","rank":"SPECIES","code":"ZOOLOGICAL","authorship":"(Harrison,
+        1959)","genericName":"Pseudopomyza","specificEpithet":"flavitarsis","formattedName":"<i>Pseudopomyza</i>
+        <i>flavitarsis</i> (Harrison, 1959)"},"taxonomicStatus":"ACCEPTED","classification":[{"key":"1","name":"Animalia","rank":"KINGDOM"},{"key":"54","name":"Arthropoda","rank":"PHYLUM"},{"key":"216","name":"Insecta","rank":"CLASS"},{"key":"811","name":"Diptera","rank":"ORDER"},{"key":"7302","name":"Cypselosomatidae","rank":"FAMILY"},{"key":"1443577","name":"Pseudopomyza","rank":"GENUS"},{"key":"1443587","name":"Pseudopomyza
+        flavitarsis","rank":"SPECIES"}],"issues":["TAXON_ID_NOT_FOUND"]}},"taxonKey":1443587,"kingdomKey":1,"phylumKey":54,"classKey":216,"orderKey":811,"familyKey":7302,"genusKey":1443577,"speciesKey":1443587,"acceptedTaxonKey":1443587,"scientificName":"Pseudopomyza
+        flavitarsis (Harrison, 1959)","scientificNameAuthorship":"(Harrison, 1959)","acceptedScientificName":"Pseudopomyza
+        flavitarsis (Harrison, 1959)","kingdom":"Animalia","phylum":"Arthropoda","order":"Diptera","family":"Cypselosomatidae","genus":"Pseudopomyza","species":"Pseudopomyza
+        flavitarsis","genericName":"Pseudopomyza","specificEpithet":"flavitarsis","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2025-01-01T01:12:16","decimalLatitude":-35.712623,"decimalLongitude":174.268162,"coordinateUncertaintyInMeters":2551.0,"continent":"OCEANIA","stateProvince":"Northland","gadm":{"level0":{"gid":"NZL","name":"New
+        Zealand"},"level1":{"gid":"NZL.11_1","name":"Northland"},"level2":{"gid":"NZL.11.3_1","name":"Whangarei"}},"year":2025,"month":1,"day":1,"eventDate":"2025-01-01T11:56:04","startDayOfYear":1,"endDayOfYear":1,"issues":["COORDINATE_ROUNDED","CONTINENT_DERIVED_FROM_COORDINATES","TAXON_ID_NOT_FOUND"],"modified":"2025-04-17T17:32:30.000+00:00","lastInterpreted":"2025-11-25T08:50:16.738+00:00","references":"https://www.inaturalist.org/observations/256944388","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","isSequenced":false,"identifiers":[{"identifier":"256944388"}],"media":[{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/460810373","created":"2025-01-01T19:56:02.000+00:00","creator":"lcolmer","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"lcolmer","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/460810373/original.jpeg"},{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/460810343","created":"2025-01-01T19:56:15.000+00:00","creator":"lcolmer","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"lcolmer","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/460810343/original.jpeg"},{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/460810307","created":"2025-01-01T19:56:04.000+00:00","creator":"lcolmer","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"lcolmer","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/460810307/original.jpeg"}],"facts":[],"relations":[],"isInCluster":false,"datasetName":"iNaturalist
+        research-grade observations","recordedBy":"lcolmer","identifiedBy":"Steve
+        Kerr","dnaSequenceID":[],"geodeticDatum":"WGS84","class":"Insecta","countryCode":"NZ","recordedByIDs":[],"identifiedByIDs":[],"gbifRegion":"OCEANIA","country":"New
+        Zealand","publishedByGbifRegion":"NORTH_AMERICA","rightsHolder":"lcolmer","identifier":"256944388","http://unknown.org/nick":"lcolmer","verbatimEventDate":"2025-01-01
+        11:56:04","collectionCode":"Observations","verbatimLocality":"Pukenui Forest,
+        Whangārei 0112, New Zealand","gbifID":"5006690478","occurrenceID":"https://www.inaturalist.org/observations/256944388","taxonID":"427821","http://unknown.org/captive_cultivated":"wild","catalogNumber":"256944388","institutionCode":"iNaturalist","eventTime":"11:56:04+13:00","identificationID":"579069225"},{"key":5006690494,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","hostingOrganizationKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","publishingCountry":"NZ","protocol":"DWC_ARCHIVE","lastCrawled":"2025-11-24T19:20:31.074+00:00","lastParsed":"2025-11-25T10:31:34.825+00:00","crawlId":569,"extensions":{"http://rs.gbif.org/terms/1.0/Multimedia":[{"http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/460822196/original.jpeg","http://purl.org/dc/terms/created":"2025-01-01T11:22:44-08:00","http://purl.org/dc/terms/creator":"nickhnz","http://purl.org/dc/terms/license":"https://creativecommons.org/licenses/by-nc/4.0/","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/format":"image/jpeg","http://purl.org/dc/terms/rightsHolder":"nickhnz","http://rs.tdwg.org/dwc/terms/catalogNumber":"460822196","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/460822196","http://purl.org/dc/terms/type":"StillImage"},{"http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/460822238/original.jpeg","http://purl.org/dc/terms/created":"2025-01-01T11:22:51-08:00","http://purl.org/dc/terms/creator":"nickhnz","http://purl.org/dc/terms/license":"https://creativecommons.org/licenses/by-nc/4.0/","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/format":"image/jpeg","http://purl.org/dc/terms/rightsHolder":"nickhnz","http://rs.tdwg.org/dwc/terms/catalogNumber":"460822238","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/460822238","http://purl.org/dc/terms/type":"StillImage"}]},"basisOfRecord":"HUMAN_OBSERVATION","occurrenceStatus":"PRESENT","classifications":{"7ddf754f-d193-4cc9-b351-99906754a03b":{"usage":{"key":"6B27B","name":"Cordyline
+        indivisa (G.Forst.) Endl.","rank":"SPECIES","code":"BOTANICAL","authorship":"(G.Forst.)
+        Endl.","genericName":"Cordyline","specificEpithet":"indivisa","formattedName":"<i>Cordyline</i>
+        <i>indivisa</i> (G.Forst.) Endl."},"acceptedUsage":{"key":"6B27B","name":"Cordyline
+        indivisa (G.Forst.) Endl.","rank":"SPECIES","code":"BOTANICAL","authorship":"(G.Forst.)
+        Endl.","genericName":"Cordyline","specificEpithet":"indivisa","formattedName":"<i>Cordyline</i>
+        <i>indivisa</i> (G.Forst.) Endl."},"taxonomicStatus":"ACCEPTED","classification":[{"key":"CS5HF","name":"Eukaryota","rank":"DOMAIN"},{"key":"P","name":"Plantae","rank":"KINGDOM"},{"key":"CMQ8S","name":"Pteridobiotina","rank":"SUBKINGDOM"},{"key":"TP","name":"Tracheophyta","rank":"PHYLUM"},{"key":"L2L","name":"Liliopsida","rank":"CLASS"},{"key":"SP","name":"Asparagales","rank":"ORDER"},{"key":"6T3","name":"Asparagaceae","rank":"FAMILY"},{"key":"8VWGT","name":"Cordyline","rank":"GENUS"},{"key":"6B27B","name":"Cordyline
+        indivisa","rank":"SPECIES"}],"issues":["TAXON_ID_NOT_FOUND"]},"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c":{"usage":{"key":"2766221","name":"Cordyline
+        indivisa (G.Forst.) Endl.","rank":"SPECIES","code":"BOTANICAL","authorship":"(G.Forst.)
+        Endl.","genericName":"Cordyline","specificEpithet":"indivisa","formattedName":"<i>Cordyline</i>
+        <i>indivisa</i> (G.Forst.) Endl."},"acceptedUsage":{"key":"2766221","name":"Cordyline
+        indivisa (G.Forst.) Endl.","rank":"SPECIES","code":"BOTANICAL","authorship":"(G.Forst.)
+        Endl.","genericName":"Cordyline","specificEpithet":"indivisa","formattedName":"<i>Cordyline</i>
+        <i>indivisa</i> (G.Forst.) Endl."},"taxonomicStatus":"ACCEPTED","classification":[{"key":"6","name":"Plantae","rank":"KINGDOM"},{"key":"7707728","name":"Tracheophyta","rank":"PHYLUM"},{"key":"196","name":"Liliopsida","rank":"CLASS"},{"key":"1169","name":"Asparagales","rank":"ORDER"},{"key":"7683","name":"Asparagaceae","rank":"FAMILY"},{"key":"2766216","name":"Cordyline","rank":"GENUS"},{"key":"2766221","name":"Cordyline
+        indivisa","rank":"SPECIES"}],"issues":["TAXON_ID_NOT_FOUND"]}},"taxonKey":2766221,"kingdomKey":6,"phylumKey":7707728,"classKey":196,"orderKey":1169,"familyKey":7683,"genusKey":2766216,"speciesKey":2766221,"acceptedTaxonKey":2766221,"scientificName":"Cordyline
+        indivisa (G.Forst.) Endl.","scientificNameAuthorship":"(G.Forst.) Endl.","acceptedScientificName":"Cordyline
+        indivisa (G.Forst.) Endl.","kingdom":"Plantae","phylum":"Tracheophyta","order":"Asparagales","family":"Asparagaceae","genus":"Cordyline","species":"Cordyline
+        indivisa","genericName":"Cordyline","specificEpithet":"indivisa","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2025-01-01T01:23:17","decimalLatitude":-39.397288,"decimalLongitude":175.417725,"coordinateUncertaintyInMeters":188.0,"continent":"OCEANIA","stateProvince":"Manawatu-Wanganui","gadm":{"level0":{"gid":"NZL","name":"New
+        Zealand"},"level1":{"gid":"NZL.7_1","name":"Manawatu-Wanganui"},"level2":{"gid":"NZL.7.5_1","name":"Ruapehu"}},"year":2025,"month":1,"day":1,"eventDate":"2025-01-01T11:22:44","startDayOfYear":1,"endDayOfYear":1,"issues":["COORDINATE_ROUNDED","CONTINENT_DERIVED_FROM_COORDINATES","TAXON_ID_NOT_FOUND"],"modified":"2025-04-17T17:42:29.000+00:00","lastInterpreted":"2025-11-25T10:31:34.825+00:00","references":"https://www.inaturalist.org/observations/256949363","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","isSequenced":false,"identifiers":[{"identifier":"256949363"}],"media":[{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/460822238","created":"2025-01-01T19:22:51.000+00:00","creator":"nickhnz","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"nickhnz","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/460822238/original.jpeg"},{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/460822196","created":"2025-01-01T19:22:44.000+00:00","creator":"nickhnz","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"nickhnz","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/460822196/original.jpeg"}],"facts":[],"relations":[],"isInCluster":false,"datasetName":"iNaturalist
+        research-grade observations","recordedBy":"nickhnz","identifiedBy":"nickhnz","dnaSequenceID":[],"geodeticDatum":"WGS84","class":"Liliopsida","countryCode":"NZ","recordedByIDs":[],"identifiedByIDs":[],"gbifRegion":"OCEANIA","country":"New
+        Zealand","publishedByGbifRegion":"OCEANIA","rightsHolder":"nickhnz","identifier":"256949363","http://unknown.org/nick":"nickhnz","verbatimEventDate":"2025-01-01
+        11:22:44","collectionCode":"Observations","verbatimLocality":"Ohakune 4691,
+        New Zealand","gbifID":"5006690494","occurrenceID":"https://www.inaturalist.org/observations/256949363","taxonID":"70227","http://unknown.org/captive_cultivated":"wild","catalogNumber":"256949363","institutionCode":"iNaturalist","eventTime":"11:22:44+13:00","identificationID":"579071764"}],"facets":[]}'
+  recorded_at: 2025-11-28 13:32:38
 - request:
-    method: get
-    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=2&offset=0&geometry=POLYGON%28%28-180%20-53%2C-175%20-53%2C-175%20-29%2C-180%20-29%2C-180%20-53%29%29
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3.3 crul/1.3 rOpenSci(rgbif/3.7.3)
-      X-USER-AGENT: r-curl/4.3.3 crul/1.3 rOpenSci(rgbif/3.7.3)
+    method: GET
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=2&offset=0&geometry=POLYGON%28%28-180+-53%2C-175+-53%2C-175+-29%2C-180+-29%2C-180+-53%29%29
   response:
-    status:
-      status_code: '200'
-      message: OK
-      explanation: Request fulfilled, document follows
+    status: 200
     headers:
-      status: 'HTTP/2 200 '
+      status: HTTP/1.1 200 OK
       vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
       x-content-type-options: nosniff
-      x-xss-protection: 1; mode=block
+      x-xss-protection: '0'
       pragma: no-cache
       expires: '0'
       x-frame-options: DENY
       content-type: application/json
-      date: Thu, 10 Nov 2022 17:29:36 GMT
+      date: Fri, 28 Nov 2025 13:27:52 GMT
+      x-varnish-rli: '7'
+      x-varnish-rlg: '250'
       cache-control: public, max-age=600
-      x-varnish: 487261980 505579420
-      age: '56'
-      via: 1.1 varnish (Varnish/6.0)
+      x-varnish: 444924831 458981998
+      age: '285'
+      via: 1.1 varnish (Varnish/6.6)
       accept-ranges: bytes
-      content-length: '9180'
+      content-length: '15728'
+      connection: keep-alive
     body:
-      encoding: UTF-8
-      file: no
-      string: '{"offset":0,"limit":2,"endOfRecords":false,"count":285615,"results":[{"key":3456585957,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"NZ","protocol":"DWC_ARCHIVE","lastCrawled":"2022-11-04T09:58:49.636+00:00","lastParsed":"2022-11-04T15:58:49.350+00:00","crawlId":323,"hostingOrganizationKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","extensions":{"http://rs.gbif.org/terms/1.0/Multimedia":[{"http://purl.org/dc/terms/license":"http://creativecommons.org/licenses/by/4.0/","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/175460120","http://purl.org/dc/terms/rightsHolder":"On
-        Lee Lau","http://rs.tdwg.org/dwc/terms/catalogNumber":"175460120","http://purl.org/dc/terms/created":"2022-01-10T13:05:15-08:00","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/type":"StillImage","http://purl.org/dc/terms/creator":"On
-        Lee Lau","http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/175460120/original.jpeg","http://purl.org/dc/terms/format":"image/jpeg"},{"http://purl.org/dc/terms/license":"http://creativecommons.org/licenses/by/4.0/","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/175460162","http://purl.org/dc/terms/rightsHolder":"On
-        Lee Lau","http://rs.tdwg.org/dwc/terms/catalogNumber":"175460162","http://purl.org/dc/terms/created":"2022-01-10T13:05:23-08:00","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/type":"StillImage","http://purl.org/dc/terms/creator":"On
-        Lee Lau","http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/175460162/original.jpeg","http://purl.org/dc/terms/format":"image/jpeg"}]},"basisOfRecord":"HUMAN_OBSERVATION","occurrenceStatus":"PRESENT","taxonKey":5415455,"kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":408,"familyKey":2393,"genusKey":3173198,"speciesKey":5415455,"acceptedTaxonKey":5415455,"scientificName":"Acanthus
-        mollis L.","acceptedScientificName":"Acanthus mollis L.","kingdom":"Plantae","phylum":"Tracheophyta","order":"Lamiales","family":"Acanthaceae","genus":"Acanthus","species":"Acanthus
-        mollis","genericName":"Acanthus","specificEpithet":"mollis","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","iucnRedListCategory":"NE","dateIdentified":"2022-01-10T02:10:17","decimalLongitude":-176.54828,"decimalLatitude":-43.952322,"coordinateUncertaintyInMeters":176.0,"stateProvince":"Chatham
-        Islands","year":2022,"month":1,"day":10,"eventDate":"2022-01-10T13:05:15","issues":["COORDINATE_ROUNDED"],"modified":"2022-01-17T20:58:11.000+00:00","lastInterpreted":"2022-11-04T15:58:49.350+00:00","references":"https://www.inaturalist.org/observations/104682780","license":"http://creativecommons.org/licenses/by/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/175460120","created":"2022-01-10T21:05:15.000+00:00","creator":"On
-        Lee Lau","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by/4.0/","rightsHolder":"On
-        Lee Lau","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/175460120/original.jpeg"},{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/175460162","created":"2022-01-10T21:05:23.000+00:00","creator":"On
-        Lee Lau","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by/4.0/","rightsHolder":"On
-        Lee Lau","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/175460162/original.jpeg"}],"facts":[],"relations":[],"gadm":{"level0":{"gid":"NZL","name":"New
-        Zealand"},"level1":{"gid":"NZL.4_1","name":"Chatham Islands"},"level2":{"gid":"NZL.4.1_1","name":"Chatham
-        Islands"}},"isInCluster":false,"datasetName":"iNaturalist research-grade observations","recordedBy":"On
-        Lee Lau","identifiedBy":"On Lee Lau","geodeticDatum":"WGS84","class":"Magnoliopsida","countryCode":"NZ","recordedByIDs":[],"identifiedByIDs":[],"country":"New
-        Zealand","rightsHolder":"On Lee Lau","identifier":"104682780","http://unknown.org/nick":"ollau","verbatimEventDate":"2022-01-10
-        13:05:15","collectionCode":"Observations","gbifID":"3456585957","verbatimLocality":"Chatham
-        Islands Territory 8016, New Zealand","occurrenceID":"https://www.inaturalist.org/observations/104682780","taxonID":"70045","catalogNumber":"104682780","institutionCode":"iNaturalist","eventTime":"13:05:15+13:45","reproductiveCondition":"flowering","http://unknown.org/captive":"wild","identificationID":"230700862"},{"key":3456728309,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"NZ","protocol":"DWC_ARCHIVE","lastCrawled":"2022-11-04T09:58:49.636+00:00","lastParsed":"2022-11-04T15:58:43.923+00:00","crawlId":323,"hostingOrganizationKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","extensions":{"http://rs.gbif.org/terms/1.0/Multimedia":[{"http://purl.org/dc/terms/license":"http://creativecommons.org/licenses/by/4.0/","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/175489226","http://purl.org/dc/terms/rightsHolder":"On
-        Lee Lau","http://rs.tdwg.org/dwc/terms/catalogNumber":"175489226","http://purl.org/dc/terms/created":"2022-01-10T18:21:53-08:00","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/type":"StillImage","http://purl.org/dc/terms/creator":"On
-        Lee Lau","http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/175489226/original.jpeg","http://purl.org/dc/terms/format":"image/jpeg"},{"http://purl.org/dc/terms/license":"http://creativecommons.org/licenses/by/4.0/","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/175489237","http://purl.org/dc/terms/rightsHolder":"On
-        Lee Lau","http://rs.tdwg.org/dwc/terms/catalogNumber":"175489237","http://purl.org/dc/terms/created":"2022-01-10T18:21:41-08:00","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/type":"StillImage","http://purl.org/dc/terms/creator":"On
-        Lee Lau","http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/175489237/original.jpeg","http://purl.org/dc/terms/format":"image/jpeg"}]},"basisOfRecord":"HUMAN_OBSERVATION","occurrenceStatus":"PRESENT","taxonKey":2299285,"kingdomKey":1,"phylumKey":52,"classKey":225,"familyKey":2673,"genusKey":2299284,"speciesKey":2299285,"acceptedTaxonKey":2299285,"scientificName":"Janthina
-        exigua Lamarck, 1816","acceptedScientificName":"Janthina exigua Lamarck, 1816","kingdom":"Animalia","phylum":"Mollusca","family":"Epitoniidae","genus":"Janthina","species":"Janthina
-        exigua","genericName":"Janthina","specificEpithet":"exigua","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","iucnRedListCategory":"NE","dateIdentified":"2022-01-10T09:16:55","decimalLongitude":-176.54675,"decimalLatitude":-43.950632,"coordinateUncertaintyInMeters":543.0,"stateProvince":"Chatham
-        Islands","year":2022,"month":1,"day":10,"eventDate":"2022-01-10T18:21:53","issues":["COORDINATE_ROUNDED"],"modified":"2022-01-11T04:30:44.000+00:00","lastInterpreted":"2022-11-04T15:58:43.923+00:00","references":"https://www.inaturalist.org/observations/104697038","license":"http://creativecommons.org/licenses/by/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/175489226","created":"2022-01-11T02:21:53.000+00:00","creator":"On
-        Lee Lau","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by/4.0/","rightsHolder":"On
-        Lee Lau","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/175489226/original.jpeg"},{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/175489237","created":"2022-01-11T02:21:41.000+00:00","creator":"On
-        Lee Lau","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by/4.0/","rightsHolder":"On
-        Lee Lau","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/175489237/original.jpeg"}],"facts":[],"relations":[],"gadm":{"level0":{"gid":"NZL","name":"New
-        Zealand"},"level1":{"gid":"NZL.4_1","name":"Chatham Islands"},"level2":{"gid":"NZL.4.1_1","name":"Chatham
-        Islands"}},"isInCluster":false,"datasetName":"iNaturalist research-grade observations","recordedBy":"On
-        Lee Lau","identifiedBy":"On Lee Lau","geodeticDatum":"WGS84","class":"Gastropoda","countryCode":"NZ","recordedByIDs":[],"identifiedByIDs":[],"country":"New
-        Zealand","rightsHolder":"On Lee Lau","identifier":"104697038","http://unknown.org/nick":"ollau","verbatimEventDate":"2022-01-10
-        18:21:53","collectionCode":"Observations","gbifID":"3456728309","verbatimLocality":"Chatham
-        Islands Territory 8016, New Zealand","occurrenceID":"https://www.inaturalist.org/observations/104697038","taxonID":"254081","catalogNumber":"104697038","institutionCode":"iNaturalist","eventTime":"18:21:53+13:45","http://unknown.org/captive":"wild","identificationID":"230744522"}],"facets":[]}'
-  recorded_at: 2022-11-10 17:30:34 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.1.91
+      string: '{"offset":0,"limit":2,"endOfRecords":false,"count":367239,"results":[{"key":5007185522,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","hostingOrganizationKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2025-11-24T19:20:31.074+00:00","lastParsed":"2025-11-25T08:50:32.721+00:00","crawlId":569,"extensions":{"http://rs.gbif.org/terms/1.0/Multimedia":[{"http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/462406134/original.jpg","http://purl.org/dc/terms/created":"2025-01-04T20:14:00Z","http://purl.org/dc/terms/creator":"Mara
+        Fischer","http://purl.org/dc/terms/license":"https://creativecommons.org/licenses/by-nc/4.0/","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/format":"image/jpeg","http://purl.org/dc/terms/rightsHolder":"Mara
+        Fischer","http://rs.tdwg.org/dwc/terms/catalogNumber":"462406134","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/462406134","http://purl.org/dc/terms/type":"StillImage"},{"http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/462406152/original.jpg","http://purl.org/dc/terms/created":"2025-01-04T20:14:00Z","http://purl.org/dc/terms/creator":"Mara
+        Fischer","http://purl.org/dc/terms/license":"https://creativecommons.org/licenses/by-nc/4.0/","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/format":"image/jpeg","http://purl.org/dc/terms/rightsHolder":"Mara
+        Fischer","http://rs.tdwg.org/dwc/terms/catalogNumber":"462406152","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/462406152","http://purl.org/dc/terms/type":"StillImage"},{"http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/462406189/original.jpg","http://purl.org/dc/terms/created":"2025-01-04T20:14:00Z","http://purl.org/dc/terms/creator":"Mara
+        Fischer","http://purl.org/dc/terms/license":"https://creativecommons.org/licenses/by-nc/4.0/","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/format":"image/jpeg","http://purl.org/dc/terms/rightsHolder":"Mara
+        Fischer","http://rs.tdwg.org/dwc/terms/catalogNumber":"462406189","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/462406189","http://purl.org/dc/terms/type":"StillImage"}]},"basisOfRecord":"HUMAN_OBSERVATION","occurrenceStatus":"PRESENT","classifications":{"7ddf754f-d193-4cc9-b351-99906754a03b":{"usage":{"key":"KF8M","name":"Balaenoptera
+        borealis Lesson, 1828","rank":"SPECIES","code":"ZOOLOGICAL","authorship":"Lesson,
+        1828","genericName":"Balaenoptera","specificEpithet":"borealis","formattedName":"<i>Balaenoptera</i>
+        <i>borealis</i> Lesson, 1828"},"acceptedUsage":{"key":"KF8M","name":"Balaenoptera
+        borealis Lesson, 1828","rank":"SPECIES","code":"ZOOLOGICAL","authorship":"Lesson,
+        1828","genericName":"Balaenoptera","specificEpithet":"borealis","formattedName":"<i>Balaenoptera</i>
+        <i>borealis</i> Lesson, 1828"},"taxonomicStatus":"ACCEPTED","classification":[{"key":"CS5HF","name":"Eukaryota","rank":"DOMAIN"},{"key":"N","name":"Animalia","rank":"KINGDOM"},{"key":"CH2","name":"Chordata","rank":"PHYLUM"},{"key":"8V4V3","name":"Vertebrata","rank":"SUBPHYLUM"},{"key":"8V4V5","name":"Gnathostomata","rank":"INFRAPHYLUM"},{"key":"8VVWB","name":"Osteichthyes","rank":"PARVPHYLUM"},{"key":"9CK8W","name":"Tetrapoda","rank":"MEGACLASS"},{"key":"6224G","name":"Mammalia","rank":"CLASS"},{"key":"6226C","name":"Theria","rank":"SUBCLASS"},{"key":"LG","name":"Eutheria","rank":"INFRACLASS"},{"key":"WP","name":"Cetacea","rank":"ORDER"},{"key":"62396","name":"Mysticeti","rank":"SUBORDER"},{"key":"722","name":"Balaenopteridae","rank":"FAMILY"},{"key":"37H3","name":"Balaenoptera","rank":"GENUS"},{"key":"KF8M","name":"Balaenoptera
+        borealis","rank":"SPECIES"}],"iucnRedListCategoryCode":"EN","issues":["TAXON_ID_NOT_FOUND"]},"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c":{"usage":{"key":"2440709","name":"Balaenoptera
+        borealis Lesson, 1828","rank":"SPECIES","code":"ZOOLOGICAL","authorship":"Lesson,
+        1828","genericName":"Balaenoptera","specificEpithet":"borealis","formattedName":"<i>Balaenoptera</i>
+        <i>borealis</i> Lesson, 1828"},"acceptedUsage":{"key":"2440709","name":"Balaenoptera
+        borealis Lesson, 1828","rank":"SPECIES","code":"ZOOLOGICAL","authorship":"Lesson,
+        1828","genericName":"Balaenoptera","specificEpithet":"borealis","formattedName":"<i>Balaenoptera</i>
+        <i>borealis</i> Lesson, 1828"},"taxonomicStatus":"ACCEPTED","classification":[{"key":"1","name":"Animalia","rank":"KINGDOM"},{"key":"44","name":"Chordata","rank":"PHYLUM"},{"key":"359","name":"Mammalia","rank":"CLASS"},{"key":"733","name":"Cetacea","rank":"ORDER"},{"key":"5313","name":"Balaenopteridae","rank":"FAMILY"},{"key":"2440708","name":"Balaenoptera","rank":"GENUS"},{"key":"2440709","name":"Balaenoptera
+        borealis","rank":"SPECIES"}],"iucnRedListCategoryCode":"EN","issues":["TAXON_ID_NOT_FOUND"]}},"taxonKey":2440709,"kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":733,"familyKey":5313,"genusKey":2440708,"speciesKey":2440709,"acceptedTaxonKey":2440709,"scientificName":"Balaenoptera
+        borealis Lesson, 1828","scientificNameAuthorship":"Lesson, 1828","acceptedScientificName":"Balaenoptera
+        borealis Lesson, 1828","kingdom":"Animalia","phylum":"Chordata","order":"Cetacea","family":"Balaenopteridae","genus":"Balaenoptera","species":"Balaenoptera
+        borealis","genericName":"Balaenoptera","specificEpithet":"borealis","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","iucnRedListCategory":"EN","dateIdentified":"2025-01-07T22:23:24","decimalLatitude":-43.709779,"decimalLongitude":-176.393766,"coordinateUncertaintyInMeters":27443.0,"continent":"OCEANIA","stateProvince":"Chatham
+        Islands","gadm":{},"year":2025,"month":1,"day":5,"eventDate":"2025-01-05T09:59","startDayOfYear":5,"endDayOfYear":5,"issues":["COORDINATE_ROUNDED","CONTINENT_DERIVED_FROM_COORDINATES","TAXON_ID_NOT_FOUND"],"modified":"2025-04-11T11:58:27.000+00:00","lastInterpreted":"2025-11-25T08:50:32.721+00:00","references":"https://www.inaturalist.org/observations/257743689","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","isSequenced":false,"identifiers":[{"identifier":"257743689"}],"media":[{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/462406134","created":"2025-01-04T20:14:00.000+00:00","creator":"Mara
+        Fischer","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Mara
+        Fischer","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/462406134/original.jpg"},{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/462406152","created":"2025-01-04T20:14:00.000+00:00","creator":"Mara
+        Fischer","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Mara
+        Fischer","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/462406152/original.jpg"},{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/462406189","created":"2025-01-04T20:14:00.000+00:00","creator":"Mara
+        Fischer","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Mara
+        Fischer","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/462406189/original.jpg"}],"facts":[],"relations":[],"isInCluster":false,"datasetName":"iNaturalist
+        research-grade observations","recordedBy":"Mara Fischer","identifiedBy":"Mara
+        Fischer","dnaSequenceID":[],"geodeticDatum":"WGS84","class":"Mammalia","countryCode":"NZ","recordedByIDs":[],"identifiedByIDs":[],"gbifRegion":"OCEANIA","country":"New
+        Zealand","publishedByGbifRegion":"NORTH_AMERICA","rightsHolder":"Mara Fischer","identifier":"257743689","http://unknown.org/nick":"mf555","informationWithheld":"Coordinate
+        uncertainty increased to 27443m to protect threatened taxon","verbatimEventDate":"2025-01-05
+        03:14:00+07:00","collectionCode":"Observations","verbatimLocality":"Waitangi,
+        NZ-CI, NZ","gbifID":"5007185522","occurrenceID":"https://www.inaturalist.org/observations/257743689","taxonID":"41559","http://unknown.org/captive_cultivated":"wild","catalogNumber":"257743689","institutionCode":"iNaturalist","eventTime":"09:59:00+13:45","identificationID":"581299178"},{"key":5063458233,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","hostingOrganizationKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","publishingCountry":"NZ","protocol":"DWC_ARCHIVE","lastCrawled":"2025-11-24T19:20:31.074+00:00","lastParsed":"2025-11-25T11:49:39.369+00:00","crawlId":569,"extensions":{"http://rs.gbif.org/terms/1.0/Multimedia":[{"http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/466317281/original.jpg","http://purl.org/dc/terms/created":"2025-01-26T21:31:45Z","http://purl.org/dc/terms/creator":"toby_enjoys_bugs","http://purl.org/dc/terms/license":"https://creativecommons.org/licenses/by-nc/4.0/","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/format":"image/jpeg","http://purl.org/dc/terms/rightsHolder":"toby_enjoys_bugs","http://rs.tdwg.org/dwc/terms/catalogNumber":"466317281","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/466317281","http://purl.org/dc/terms/type":"StillImage"},{"http://purl.org/dc/terms/identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/466317294/original.jpg","http://purl.org/dc/terms/created":"2025-01-26T21:31:45Z","http://purl.org/dc/terms/creator":"toby_enjoys_bugs","http://purl.org/dc/terms/license":"https://creativecommons.org/licenses/by-nc/4.0/","http://purl.org/dc/terms/publisher":"iNaturalist","http://purl.org/dc/terms/format":"image/jpeg","http://purl.org/dc/terms/rightsHolder":"toby_enjoys_bugs","http://rs.tdwg.org/dwc/terms/catalogNumber":"466317294","http://purl.org/dc/terms/references":"https://www.inaturalist.org/photos/466317294","http://purl.org/dc/terms/type":"StillImage"}]},"basisOfRecord":"HUMAN_OBSERVATION","occurrenceStatus":"PRESENT","classifications":{"7ddf754f-d193-4cc9-b351-99906754a03b":{"usage":{"key":"3KVCL","name":"Henricia
+        aucklandiae Mortensen, 1925","rank":"SPECIES","code":"ZOOLOGICAL","authorship":"Mortensen,
+        1925","genericName":"Henricia","specificEpithet":"aucklandiae","formattedName":"<i>Henricia</i>
+        <i>aucklandiae</i> Mortensen, 1925"},"acceptedUsage":{"key":"3KVCL","name":"Henricia
+        aucklandiae Mortensen, 1925","rank":"SPECIES","code":"ZOOLOGICAL","authorship":"Mortensen,
+        1925","genericName":"Henricia","specificEpithet":"aucklandiae","formattedName":"<i>Henricia</i>
+        <i>aucklandiae</i> Mortensen, 1925"},"taxonomicStatus":"ACCEPTED","classification":[{"key":"CS5HF","name":"Eukaryota","rank":"DOMAIN"},{"key":"N","name":"Animalia","rank":"KINGDOM"},{"key":"CHN","name":"Echinodermata","rank":"PHYLUM"},{"key":"7NF2N","name":"Asterozoa","rank":"SUBPHYLUM"},{"key":"B8V3Q","name":"Asteroidea","rank":"CLASS"},{"key":"8VLBJ","name":"Ambuloasteroidea","rank":"SUBCLASS"},{"key":"8VLBK","name":"Neoasteroidea","rank":"INFRACLASS"},{"key":"7NF62","name":"Spinulosacea","rank":"SUPERORDER"},{"key":"7NFG4","name":"Spinulosida","rank":"ORDER"},{"key":"7NHFD","name":"Echinasteridae","rank":"FAMILY"},{"key":"7P5PS","name":"Henricia","rank":"GENUS"},{"key":"3KVCL","name":"Henricia
+        aucklandiae","rank":"SPECIES"}],"issues":["TAXON_ID_NOT_FOUND"]},"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c":{"usage":{"key":"5187341","name":"Henricia
+        aucklandiae Mortensen, 1925","rank":"SPECIES","code":"ZOOLOGICAL","authorship":"Mortensen,
+        1925","genericName":"Henricia","specificEpithet":"aucklandiae","formattedName":"<i>Henricia</i>
+        <i>aucklandiae</i> Mortensen, 1925"},"acceptedUsage":{"key":"5187341","name":"Henricia
+        aucklandiae Mortensen, 1925","rank":"SPECIES","code":"ZOOLOGICAL","authorship":"Mortensen,
+        1925","genericName":"Henricia","specificEpithet":"aucklandiae","formattedName":"<i>Henricia</i>
+        <i>aucklandiae</i> Mortensen, 1925"},"taxonomicStatus":"ACCEPTED","classification":[{"key":"1","name":"Animalia","rank":"KINGDOM"},{"key":"50","name":"Echinodermata","rank":"PHYLUM"},{"key":"214","name":"Asteroidea","rank":"CLASS"},{"key":"1463","name":"Spinulosida","rank":"ORDER"},{"key":"5541","name":"Echinasteridae","rank":"FAMILY"},{"key":"2272135","name":"Henricia","rank":"GENUS"},{"key":"5187341","name":"Henricia
+        aucklandiae","rank":"SPECIES"}],"issues":["TAXON_ID_NOT_FOUND"]}},"taxonKey":5187341,"kingdomKey":1,"phylumKey":50,"classKey":214,"orderKey":1463,"familyKey":5541,"genusKey":2272135,"speciesKey":5187341,"acceptedTaxonKey":5187341,"scientificName":"Henricia
+        aucklandiae Mortensen, 1925","scientificNameAuthorship":"Mortensen, 1925","acceptedScientificName":"Henricia
+        aucklandiae Mortensen, 1925","kingdom":"Animalia","phylum":"Echinodermata","order":"Spinulosida","family":"Echinasteridae","genus":"Henricia","species":"Henricia
+        aucklandiae","genericName":"Henricia","specificEpithet":"aucklandiae","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2025-01-27T06:52:39","decimalLatitude":-43.805817,"decimalLongitude":-176.648649,"coordinateUncertaintyInMeters":239.0,"continent":"OCEANIA","stateProvince":"Chatham
+        Islands","gadm":{},"year":2025,"month":1,"day":27,"eventDate":"2025-01-27T11:16:45","startDayOfYear":27,"endDayOfYear":27,"issues":["COORDINATE_ROUNDED","CONTINENT_DERIVED_FROM_COORDINATES","TAXON_ID_NOT_FOUND"],"modified":"2025-01-29T02:32:54.000+00:00","lastInterpreted":"2025-11-25T11:49:39.369+00:00","references":"https://www.inaturalist.org/observations/259736637","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","isSequenced":false,"identifiers":[{"identifier":"259736637"}],"media":[{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/466317294","created":"2025-01-26T21:31:45.000+00:00","creator":"toby_enjoys_bugs","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"toby_enjoys_bugs","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/466317294/original.jpg"},{"type":"StillImage","format":"image/jpeg","references":"https://www.inaturalist.org/photos/466317281","created":"2025-01-26T21:31:45.000+00:00","creator":"toby_enjoys_bugs","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"toby_enjoys_bugs","identifier":"https://inaturalist-open-data.s3.amazonaws.com/photos/466317281/original.jpg"}],"facts":[],"relations":[],"isInCluster":false,"datasetName":"iNaturalist
+        research-grade observations","recordedBy":"toby_enjoys_bugs","identifiedBy":"Lloyd
+        Esler","dnaSequenceID":[],"geodeticDatum":"WGS84","class":"Asteroidea","countryCode":"NZ","recordedByIDs":[],"identifiedByIDs":[],"gbifRegion":"OCEANIA","country":"New
+        Zealand","publishedByGbifRegion":"OCEANIA","rightsHolder":"toby_enjoys_bugs","identifier":"259736637","http://unknown.org/nick":"toby_enjoys_bugs","verbatimEventDate":"2025-01-27
+        11:16:45+13:45","collectionCode":"Observations","verbatimLocality":"Chatham
+        Island, NZ","gbifID":"5063458233","occurrenceID":"https://www.inaturalist.org/observations/259736637","taxonID":"472372","http://unknown.org/captive_cultivated":"wild","catalogNumber":"259736637","institutionCode":"iNaturalist","eventTime":"11:16:45+13:45","identificationRemarks":"Pretty
+        spectacular","occurrenceRemarks":"Several found amongst Durvillaea antartica
+        and D. chathamensis","identificationID":"586993984"}],"facets":[]}'
+  recorded_at: 2025-11-28 13:32:38
+recorded_with: VCR-vcr/2.0.0

@@ -1,139 +1,210 @@
 http_interactions:
 - request:
-    method: get
-    uri: http://biocache.ala.org.au/ws/occurrences/search?q=taxon_name%3A%22Barnardius%20zonarius%22&facet=off&pageSize=2&startIndex=0
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      User-Agent: libcurl/7.71.1 r-curl/4.3 crul/1.0.0
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
+    method: GET
+    uri: http://biocache.ala.org.au/ws/occurrences/search?q=taxon_name%3A%22Barnardius+zonarius%22&facet=off&pageSize=2&startIndex=0
   response:
-    status:
-      status_code: '200'
-      message: OK
-      explanation: Request fulfilled, document follows
+    status: 200
     headers:
-      access-control-allow-headers: x-requested-with
+      access-control-allow-headers: x-requested-with,Content-Type,Authorization
       access-control-allow-methods: POST, GET, OPTIONS, DELETE
       access-control-allow-origin: '*'
       access-control-max-age: '3600'
-      connection: keep-alive
+      cache-control: no-cache, no-store, max-age=0, must-revalidate
       content-encoding: gzip
       content-security-policy: upgrade-insecure-requests
-      content-type: application/json;charset=UTF-8
-      date: Fri, 31 Jul 2020 15:50:10 GMT
+      content-type: application/json
+      date: Fri, 28 Nov 2025 13:32:21 GMT
+      expires: '0'
+      pragma: no-cache
       referrer-policy: strict-origin-when-cross-origin
-      server: nginx/1.19.1
+      server: nginx/1.29.3
       set-cookie:
-      - AWSALBTG=iD22X/0+jkobMCGXBAD5gbrwvGFCCcIonyhAW8Xdf5h+mbVN7Rlu0AQZqxtFtM6J6R4sxIKOStmJwu2olQ0dJa+Z8bXycMvwrQt6A7sk1eoa7RyBS36ziw7SkQT0hpCxKGgemE9W/TaG840kggZSJaEJr/Rk+bVqkGgDAKaicykb;
-        Expires=Fri, 07 Aug 2020 15:50:10 GMT; Path=/
-      - AWSALBTGCORS=iD22X/0+jkobMCGXBAD5gbrwvGFCCcIonyhAW8Xdf5h+mbVN7Rlu0AQZqxtFtM6J6R4sxIKOStmJwu2olQ0dJa+Z8bXycMvwrQt6A7sk1eoa7RyBS36ziw7SkQT0hpCxKGgemE9W/TaG840kggZSJaEJr/Rk+bVqkGgDAKaicykb;
-        Expires=Fri, 07 Aug 2020 15:50:10 GMT; Path=/; SameSite=None; Secure
-      - AWSALB=kjQNzuX/lBs0KP13l57hDZRIZ3XS4a06hUn/8997VDqmfL+cKb1SJxvjKuaWJY5NBx2Gap5iUhxiZFOWd1hlKXf5I908kmuqheRBBNNVsBbQap6ZK7lWnft7tPQ9;
-        Expires=Fri, 07 Aug 2020 15:50:10 GMT; Path=/
-      - AWSALBCORS=kjQNzuX/lBs0KP13l57hDZRIZ3XS4a06hUn/8997VDqmfL+cKb1SJxvjKuaWJY5NBx2Gap5iUhxiZFOWd1hlKXf5I908kmuqheRBBNNVsBbQap6ZK7lWnft7tPQ9;
-        Expires=Fri, 07 Aug 2020 15:50:10 GMT; Path=/; SameSite=None; Secure
-      status: 'HTTP/1.1 200 '
+      - AWSALBTG=8wr3XfWEW8AUkPMKVIDJ8mQNJrS6gguYygrv+IZ0LDaP9+c9nZcLQ9qGk2+8xe9bJJOFIhMB/lU5wDr85f99szlCRicfUAZOWkvT2FXEjO1u/RQsZPJ1QZwhtMElFlfEsk1wGF8Re4TXdGLzMFm8PZrut4PluE1+OE0mteWQ9SZK;
+        Expires=Fri, 05 Dec 2025 13:32:21 GMT; Path=/
+      - AWSALBTGCORS=8wr3XfWEW8AUkPMKVIDJ8mQNJrS6gguYygrv+IZ0LDaP9+c9nZcLQ9qGk2+8xe9bJJOFIhMB/lU5wDr85f99szlCRicfUAZOWkvT2FXEjO1u/RQsZPJ1QZwhtMElFlfEsk1wGF8Re4TXdGLzMFm8PZrut4PluE1+OE0mteWQ9SZK;
+        Expires=Fri, 05 Dec 2025 13:32:21 GMT; Path=/; SameSite=None; Secure
+      - AWSALB=U2zL883BCrJSXtw45zcHcyFkN+bwJ7m/ScYo/hodZFqJp2rL1RYQQ2X5ePCKnbVFlRG2Qwd8VIqP9+kuCBEO41JUpOBCGKSFwkVSs6SWK2brrnsgcOCE0LYWTVMs;
+        Expires=Fri, 05 Dec 2025 13:32:21 GMT; Path=/
+      - AWSALBCORS=U2zL883BCrJSXtw45zcHcyFkN+bwJ7m/ScYo/hodZFqJp2rL1RYQQ2X5ePCKnbVFlRG2Qwd8VIqP9+kuCBEO41JUpOBCGKSFwkVSs6SWK2brrnsgcOCE0LYWTVMs;
+        Expires=Fri, 05 Dec 2025 13:32:21 GMT; Path=/; SameSite=None; Secure
+      status: 'HTTP/2 200 '
       strict-transport-security: max-age=31536000
-      transfer-encoding: chunked
-      x-frame-options: DENY
+      www-authenticate: Bearer realm="authentication required"
+      x-content-type-options: nosniff
+      x-frame-options:
+      - DENY
+      - DENY
+      x-xss-protection: 1; mode=block
     body:
-      encoding: ASCII-8BIT
-      file: no
-      string: eyJwYWdlU2l6ZSI6Miwic3RhcnRJbmRleCI6MCwidG90YWxSZWNvcmRzIjoxMTQ0OTYsInNvcnQiOiJzY29yZSIsImRpciI6ImFzYyIsInN0YXR1cyI6Ik9LIiwib2NjdXJyZW5jZXMiOlt7InV1aWQiOiIxYjhkMWU1Zi05ZjYxLTQ5MWItYTQxZi03MjQxNzA0ZDliMDciLCJyYXdfY2F0YWxvZ051bWJlciI6IlVSTjpDb3JuZWxsTGFiT2ZPcm5pdGhvbG9neTpFQklSRDpPQlM3MzI5MDY4MTgiLCJ0YXhvbkNvbmNlcHRJRCI6InVybjpsc2lkOmJpb2RpdmVyc2l0eS5vcmcuYXU6YWZkLnRheG9uOmZjMmEzMTA1LTJiNjItNDcxOC1iYTViLTc0OTZhZTQ0MmQ3ZCIsImV2ZW50RGF0ZSI6MTU1NDI4OTIwMDAwMCwib2NjdXJyZW5jZVllYXIiOjE1NDYzMDA4MDAwMDAsInNjaWVudGlmaWNOYW1lIjoiQmFybmFyZGl1cyB6b25hcml1cyIsInZlcm5hY3VsYXJOYW1lIjoiQXVzdHJhbGlhbiBSaW5nbmVjayIsInRheG9uUmFuayI6InNwZWNpZXMiLCJ0YXhvblJhbmtJRCI6NzAwMCwicmF3X2NvdW50cnlDb2RlIjoiQVUiLCJjb3VudHJ5IjoiQXVzdHJhbGlhIiwia2luZ2RvbSI6IkFuaW1hbGlhIiwicGh5bHVtIjoiQ2hvcmRhdGEiLCJjbGFzc3MiOiJBdmVzIiwib3JkZXIiOiJQc2l0dGFjaWZvcm1lcyIsImZhbWlseSI6IlBzaXR0YWNpZGFlIiwiZ2VudXMiOiJCYXJuYXJkaXVzIiwiZ2VudXNHdWlkIjoidXJuOmxzaWQ6YmlvZGl2ZXJzaXR5Lm9yZy5hdTphZmQudGF4b246ZDA5Mjc4N2UtOTUzMC00MmQxLWJhMDYtZmE2OWJmZjJlYjYzIiwic3BlY2llcyI6IkJhcm5hcmRpdXMgem9uYXJpdXMiLCJzcGVjaWVzR3VpZCI6InVybjpsc2lkOmJpb2RpdmVyc2l0eS5vcmcuYXU6YWZkLnRheG9uOmZjMmEzMTA1LTJiNjItNDcxOC1iYTViLTc0OTZhZTQ0MmQ3ZCIsInN0YXRlUHJvdmluY2UiOiJXZXN0ZXJuIEF1c3RyYWxpYSIsImRlY2ltYWxMYXRpdHVkZSI6LTMyLjEzMjEwMjIsImRlY2ltYWxMb25naXR1ZGUiOjExNS44OTQ1Njc0LCJ5ZWFyIjoyMDE5LCJtb250aCI6IjA0IiwiYmFzaXNPZlJlY29yZCI6Ikh1bWFuT2JzZXJ2YXRpb24iLCJsZWZ0IjoxNzk1OTcsInJpZ2h0IjoxNzk2MDUsImxnYSI6IkNvY2tidXJuIChDKSIsImRhdGFSZXNvdXJjZVVpZCI6ImRyMjAwOSIsImRhdGFSZXNvdXJjZU5hbWUiOiJlQmlyZCBBdXN0cmFsaWEiLCJhc3NlcnRpb25zIjpbImdlb2RldGljRGF0dW1Bc3N1bWVkV2dzODQiXSwic3BlY2llc0dyb3VwcyI6WyJBbmltYWxzIiwiQmlyZHMiXSwiZ2Vvc3BhdGlhbEtvc2hlciI6InRydWUiLCJ0YXhvbm9taWNLb3NoZXIiOiJ0cnVlIiwiY29sbGVjdG9yIjoib2JzcjQzOTY5OCIsImNvbGxlY3RvcnMiOlsib2JzcjQzOTY5OCJdLCJyYXdfc2NpZW50aWZpY05hbWUiOiJCYXJuYXJkaXVzIHpvbmFyaXVzIiwicmF3X3Zlcm5hY3VsYXJOYW1lIjoiQXVzdHJhbGlhbiBSaW5nbmVjayIsImxhdExvbmciOiItMzIuMTMyMTAyMiwxMTUuODk0NTY3NCIsInBvaW50MSI6Ii0zMiwxMTYiLCJwb2ludDAxIjoiLTMyLjEsMTE1LjkiLCJwb2ludDAwMSI6Ii0zMi4xMywxMTUuODkiLCJwb2ludDAwMDEiOiItMzIuMTMyLDExNS44OTUiLCJwb2ludDAwMDAxIjoiLTMyLjEzMjEsMTE1Ljg5NDYiLCJuYW1lc0xzaWQiOiJCYXJuYXJkaXVzIHpvbmFyaXVzfHVybjpsc2lkOmJpb2RpdmVyc2l0eS5vcmcuYXU6YWZkLnRheG9uOmZjMmEzMTA1LTJiNjItNDcxOC1iYTViLTc0OTZhZTQ0MmQ3ZHxBdXN0cmFsaWFuIFJpbmduZWNrfEFuaW1hbGlhfFBzaXR0YWNpZGFlIiwibGljZW5zZSI6IkNDMCJ9LHsidXVpZCI6IjQzZWRiOTc5LTUyYzctNGFlYy1hZWM3LWQwZTk5ZGJjMWM4OCIsInJhd19jYXRhbG9nTnVtYmVyIjoiU1VCMTUzNTAtMTgiLCJ0YXhvbkNvbmNlcHRJRCI6InVybjpsc2lkOmJpb2RpdmVyc2l0eS5vcmcuYXU6YWZkLnRheG9uOmZjMmEzMTA1LTJiNjItNDcxOC1iYTViLTc0OTZhZTQ0MmQ3ZCIsImV2ZW50RGF0ZSI6ODUwMjE1NjAwMDAwLCJvY2N1cnJlbmNlWWVhciI6ODIwNDU0NDAwMDAwLCJzY2llbnRpZmljTmFtZSI6IkJhcm5hcmRpdXMgem9uYXJpdXMiLCJ2ZXJuYWN1bGFyTmFtZSI6IkF1c3RyYWxpYW4gUmluZ25lY2siLCJ0YXhvblJhbmsiOiJzcGVjaWVzIiwidGF4b25SYW5rSUQiOjcwMDAsImNvdW50cnkiOiJBdXN0cmFsaWEiLCJraW5nZG9tIjoiQW5pbWFsaWEiLCJwaHlsdW0iOiJDaG9yZGF0YSIsImNsYXNzcyI6IkF2ZXMiLCJvcmRlciI6IlBzaXR0YWNpZm9ybWVzIiwiZmFtaWx5IjoiUHNpdHRhY2lkYWUiLCJnZW51cyI6IkJhcm5hcmRpdXMiLCJnZW51c0d1aWQiOiJ1cm46bHNpZDpiaW9kaXZlcnNpdHkub3JnLmF1OmFmZC50YXhvbjpkMDkyNzg3ZS05NTMwLTQyZDEtYmEwNi1mYTY5YmZmMmViNjMiLCJzcGVjaWVzIjoiQmFybmFyZGl1cyB6b25hcml1cyIsInNwZWNpZXNHdWlkIjoidXJuOmxzaWQ6YmlvZGl2ZXJzaXR5Lm9yZy5hdTphZmQudGF4b246ZmMyYTMxMDUtMmI2Mi00NzE4LWJhNWItNzQ5NmFlNDQyZDdkIiwic3RhdGVQcm92aW5jZSI6IlNvdXRoIEF1c3RyYWxpYSIsImRlY2ltYWxMYXRpdHVkZSI6LTM2LjI4OSwiZGVjaW1hbExvbmdpdHVkZSI6MTM5Ljc4OTE4LCJjb29yZGluYXRlVW5jZXJ0YWludHlJbk1ldGVycyI6MTAwLjAsInllYXIiOjE5OTYsIm1vbnRoIjoiMTIiLCJiYXNpc09mUmVjb3JkIjoiSHVtYW5PYnNlcnZhdGlvbiIsInJhd19sb2NhdGlvblJlbWFya3MiOiI0LjhrbSBOTkUgZnJvbSBDb3J0aW5hIEhvbWVzdGVhZC4iLCJsZWZ0IjoxNzk1OTcsInJpZ2h0IjoxNzk2MDUsImxnYSI6IktpbmdzdG9uIChEQykiLCJkYXRhUHJvdmlkZXJVaWQiOiJkcDMyIiwiZGF0YVByb3ZpZGVyTmFtZSI6IlNvdXRoIEF1c3RyYWxpYSwgRGVwYXJ0bWVudCBmb3IgRW52aXJvbm1lbnQgYW5kIFdhdGVyIiwiZGF0YVJlc291cmNlVWlkIjoiZHIzNjUiLCJkYXRhUmVzb3VyY2VOYW1lIjoiU0EgRmF1bmEgKEJEQlNBKSIsImFzc2VydGlvbnMiOlsiY291bnRyeUluZmVycmVkQnlDb29yZGluYXRlcyJdLCJzcGVjaWVzR3JvdXBzIjpbIkFuaW1hbHMiLCJCaXJkcyJdLCJnZW9zcGF0aWFsS29zaGVyIjoidHJ1ZSIsInRheG9ub21pY0tvc2hlciI6InRydWUiLCJjb2xsZWN0b3IiOiJNQVRIRVcgSi5TLiBKYW1pZSB8IFNURVdBUlQgSC4gSGFmaXoiLCJjb2xsZWN0b3JzIjpbIk1hdGhldywgSi5TLiBKYW1pZXxTdGV3YXJ0LCBILiBIYWZpeiJdLCJyYXdfc2NpZW50aWZpY05hbWUiOiJCYXJuYXJkaXVzIHpvbmFyaXVzIiwicmF3X2Jhc2lzT2ZSZWNvcmQiOiJIdW1hbk9ic2VydmF0aW9uIiwicmF3X3Zlcm5hY3VsYXJOYW1lIjoiQXVzdHJhbGlhbiBSaW5nbmVjayIsImxhdExvbmciOiItMzYuMjg5LDEzOS43ODkxOCIsInBvaW50MSI6Ii0zNiwxNDAiLCJwb2ludDAxIjoiLTM2LjMsMTM5LjgiLCJwb2ludDAwMSI6Ii0zNi4yOSwxMzkuNzkiLCJwb2ludDAwMDEiOiItMzYuMjg5LDEzOS43ODkiLCJwb2ludDAwMDAxIjoiLTM2LjI4OSwxMzkuNzg5MiIsIm5hbWVzTHNpZCI6IkJhcm5hcmRpdXMgem9uYXJpdXN8dXJuOmxzaWQ6YmlvZGl2ZXJzaXR5Lm9yZy5hdTphZmQudGF4b246ZmMyYTMxMDUtMmI2Mi00NzE4LWJhNWItNzQ5NmFlNDQyZDdkfEF1c3RyYWxpYW4gUmluZ25lY2t8QW5pbWFsaWF8UHNpdHRhY2lkYWUiLCJsaWNlbnNlIjoiQ0MtQlkgNC4wIChJbnQpIn1dLCJmYWNldFJlc3VsdHMiOltdLCJxdWVyeSI6Ij9xPXRheG9uX25hbWUlM0ElMjJCYXJuYXJkaXVzJTIwem9uYXJpdXMlMjIiLCJ1cmxQYXJhbWV0ZXJzIjoiP3E9dGF4b25fbmFtZSUzQSUyMkJhcm5hcmRpdXMlMjB6b25hcml1cyUyMiIsInF1ZXJ5VGl0bGUiOiJTY2llbnRpZmljIG5hbWU6XCJCYXJuYXJkaXVzIHpvbmFyaXVzXCIiLCJhY3RpdmVGYWNldE1hcCI6e30sImFjdGl2ZUZhY2V0T2JqIjp7fX0=
-  recorded_at: 2020-07-31 15:50:12 GMT
-  recorded_with: vcr/0.5.4, webmockr/0.6.2
+      raw_gzip: |-
+        eJztVmtvq0YQ/SsWUqRWMgkv87BUVQSTFMWGCOO0V72RtYbF3gazvsuSe32T/PfO4kdsJ24T
+        9aWq9Qd
+        k5szO7sycncODtEBTPCRfsdTV2lLFEeNBmeEvUldpS5xyVMQ4pSyrpK7q2JZlgBNl
+        XOpKFZix1JYywu
+        ANVanUrOc1uErRFbzRNK0Zw2WKwfTzg1TXJAMsw2aqGR1DNm01lQ1TzWTb
+        nmgy1hBKzdRAmWXsrQ56s
+        EpVVMWGByAcfaGlRwFZ8Aabcb6oumdnE0Izco9ZRfjylLLpKarP
+        UJ6dwQJ01slx1sFpLmuq48hGbhoy
+        cnJLdpSJ7uS2jRwFQXB8j0veQxwKomqW1rE7piJ+kFxK
+        ACI5SUM0B1g6R6xELCN11fpK4R/8gQCwf4n
+        SukBs7ebWFWeoIKhsxaSclji92yQRo/JOlHKB
+        IXa1axV5Wc22Ka1Lzpa7gcDxDiJldC6sJZmvjYvZsq
+        iFzZtByxAXtrRAVSVa4t43OwCARcOu
+        oUgcpSSnbN4AOZqTYrmDZEi0d4rLpqPPyW6Ml6t2vqn4k8zIc
+        7WTyaaqYtnQ1FyeTCxFzjpO
+        hjLT7GSmLvizLsSx2q7x9+z8xrYL5uJrRu8J0Apih0DyGXSylWDGCKfQ
+        AKA67A617iNOeJ2B
+        m6zpp9aznZbTNaDq+qkNd2WJERRbA+62pTkt+QxCK4LdE1SRKspXlwuMP4wGbji
+        Ozod+fOMm
+        QRSK7aCDzZGgY6PV1Vlo9gGw4SJhWZ/kuLVLEuEX44rWLMXrAEzvOAfI0QjtlrCtaAQkwo
+        wT
+        WoqrLF36Uc9PAm/cc5PRYOwOh6OB3xv/eDm0RXIHcBDeuH0gdFvyoijuBaGb+ONR6Plx4gZh
+        8mE8
+        8BM/Hu74DYLhMAgvxxAo9i/82AdnEcw/gg2jUQxP6faZIozWi+asq/sh2COyqVY+0EFU
+        FMsbSBPKwlm
+        N2xJreoGz86VY1jjvVPNW3MSiwClwoTriwNDn8RunhHB9wYF6jspoAoW+R6LU
+        a7c3DpSCpLisBD4Kh9
+        e+F1wEfq+5q3Sd7xWtZs3dF/mKFYgLyoJhxeMVacUcoaTkamM3wLo1
+        Keq+79Z+CDyv+E3oNWxb5CM1L
+        qEGVb9q2PxKaR//tKHw+EqZHzfD9nF/SBY4B0nUdc2Be87I
+        dNa86Yry1N7KnmIqlmnamuykGEbgxNZl
+        ZJtIti3HzJ3MyTuO+VL2RnHY9SgrcQFjZxLlESsJ
+        n9GCTpdd/zyIe12YGR3LtG3DNq01Y9Y1JEIlxTS
+        SGs+/Uzk7qg3Crq6Vc4v4ZbYBDc3+X1b/
+        c7I6pDWf7WvUC02FSWDZqm6/qquGcqru6qq9o6vaO3T1UB
+        Y1RTmii1gMob0j72vhRo8S96co
+        jN3w6qUAHurjjoQ1bo3XXyiPvfMPR5DrOEoiL+r/jq6+jt74MYiM1
+        5R1mEAOwjHyvFG8OtHK
+        BucG/xjSv4gj8THQC26C3sjtj71oFCZ/ULP/McVtfTOA02D87Z70ep7yVsnd
+        0nzF6T3Z1Q1h
+        3ZddIZAr3wPZbQIdRFF2MfUluIsaz/C/TFxvxXhNMYcbWxdcMAcsn2rcjPXvP33XjP2
+        xSOpE
+        d0807TmlE03ZJAV22KRmxTVi4Mmx+Lx75+pmz4TwoplxWz62xOLux9dK+VESgwQ0+h5fiBQG
+        a
+        CF1H572bNHkF2F7+hVcnAB9
+  recorded_at: 2025-11-28 13:32:21
 - request:
-    method: get
-    uri: http://biocache.ala.org.au/ws/occurrences/search?q=taxon_name%3A%22Grus%20rubicunda%22&facet=off&pageSize=2&startIndex=0
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      User-Agent: libcurl/7.71.1 r-curl/4.3 crul/1.0.0
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
+    method: GET
+    uri: http://biocache.ala.org.au/ws/occurrences/search?q=taxon_name%3A%22Grus+rubicunda%22&facet=off&pageSize=2&startIndex=0
   response:
-    status:
-      status_code: '200'
-      message: OK
-      explanation: Request fulfilled, document follows
+    status: 200
     headers:
-      access-control-allow-headers: x-requested-with
+      access-control-allow-headers: x-requested-with,Content-Type,Authorization
       access-control-allow-methods: POST, GET, OPTIONS, DELETE
       access-control-allow-origin: '*'
       access-control-max-age: '3600'
-      connection: keep-alive
+      cache-control: no-cache, no-store, max-age=0, must-revalidate
       content-encoding: gzip
       content-security-policy: upgrade-insecure-requests
-      content-type: application/json;charset=UTF-8
-      date: Fri, 31 Jul 2020 15:50:11 GMT
+      content-type: application/json
+      date: Fri, 28 Nov 2025 13:32:22 GMT
+      expires: '0'
+      pragma: no-cache
       referrer-policy: strict-origin-when-cross-origin
-      server: nginx/1.19.1
+      server: nginx/1.29.3
       set-cookie:
-      - AWSALBTG=eEUXv4pAW+bpjhHZ1kDAd94tXD5m8o3o7p08O+qieRn8/RMlwotaTc/nv9ckkLvLJlsgTn6tTic9zCJbZcfIy+RU9AXf5VM2ju5XbyKXb9mhg+vk5t1LHuNmNzJFeUtvshmv15eMOdTEV1MQ3IVLUghVgUzKcchEqKP0Ca34sWXf;
-        Expires=Fri, 07 Aug 2020 15:50:11 GMT; Path=/
-      - AWSALBTGCORS=eEUXv4pAW+bpjhHZ1kDAd94tXD5m8o3o7p08O+qieRn8/RMlwotaTc/nv9ckkLvLJlsgTn6tTic9zCJbZcfIy+RU9AXf5VM2ju5XbyKXb9mhg+vk5t1LHuNmNzJFeUtvshmv15eMOdTEV1MQ3IVLUghVgUzKcchEqKP0Ca34sWXf;
-        Expires=Fri, 07 Aug 2020 15:50:11 GMT; Path=/; SameSite=None; Secure
-      - AWSALB=Bxiq1GYuBqpRxBYruhsKF5F8+ZjnvQpMrxEqMIzVY1DMnqAVz2hSdzkbrM+0txigCSWIaNw40S1j0ywIBo32ZLJNghHw5Obuz3wfP5BNMOcJygiG/aDUu4hpR+JO;
-        Expires=Fri, 07 Aug 2020 15:50:11 GMT; Path=/
-      - AWSALBCORS=Bxiq1GYuBqpRxBYruhsKF5F8+ZjnvQpMrxEqMIzVY1DMnqAVz2hSdzkbrM+0txigCSWIaNw40S1j0ywIBo32ZLJNghHw5Obuz3wfP5BNMOcJygiG/aDUu4hpR+JO;
-        Expires=Fri, 07 Aug 2020 15:50:11 GMT; Path=/; SameSite=None; Secure
-      status: 'HTTP/1.1 200 '
+      - AWSALBTG=MrADb9sHJWd9XApKfxsMZvNHi/oT1SuUu6a09dczV9+TaUQWjp59Ogt1Mz3LiJx8vUjvKiH4SSBowylPiR/9Y+8vGsQGnlQyCZj5zxuqWi9EuH8nMrvCipOlpJKinqZTP6ixg9Q77I3IHtVJKZ0WxvV51N09WX7Py8hsAQvpLKhE;
+        Expires=Fri, 05 Dec 2025 13:32:22 GMT; Path=/
+      - AWSALBTGCORS=MrADb9sHJWd9XApKfxsMZvNHi/oT1SuUu6a09dczV9+TaUQWjp59Ogt1Mz3LiJx8vUjvKiH4SSBowylPiR/9Y+8vGsQGnlQyCZj5zxuqWi9EuH8nMrvCipOlpJKinqZTP6ixg9Q77I3IHtVJKZ0WxvV51N09WX7Py8hsAQvpLKhE;
+        Expires=Fri, 05 Dec 2025 13:32:22 GMT; Path=/; SameSite=None; Secure
+      - AWSALB=TN3hqJP0jmVlGd70gZc3yb76dwcZMCU5XdZYudJsq/sngzM5AN2QBxKEcFxE7/NpN2JQoIWfeUao5iG/TRXUXVw5T3OaIeNTZ/oTZwwceLCXc99v+1c3eQACzuc4;
+        Expires=Fri, 05 Dec 2025 13:32:22 GMT; Path=/
+      - AWSALBCORS=TN3hqJP0jmVlGd70gZc3yb76dwcZMCU5XdZYudJsq/sngzM5AN2QBxKEcFxE7/NpN2JQoIWfeUao5iG/TRXUXVw5T3OaIeNTZ/oTZwwceLCXc99v+1c3eQACzuc4;
+        Expires=Fri, 05 Dec 2025 13:32:22 GMT; Path=/; SameSite=None; Secure
+      status: 'HTTP/2 200 '
       strict-transport-security: max-age=31536000
-      transfer-encoding: chunked
-      x-frame-options: DENY
+      www-authenticate: Bearer realm="authentication required"
+      x-content-type-options: nosniff
+      x-frame-options:
+      - DENY
+      - DENY
+      x-xss-protection: 1; mode=block
     body:
-      encoding: ASCII-8BIT
-      file: no
-      string: eyJwYWdlU2l6ZSI6Miwic3RhcnRJbmRleCI6MCwidG90YWxSZWNvcmRzIjowLCJzb3J0Ijoic2NvcmUiLCJkaXIiOiJhc2MiLCJzdGF0dXMiOiJPSyIsIm9jY3VycmVuY2VzIjpbXSwiZmFjZXRSZXN1bHRzIjpbXSwicXVlcnkiOiI/cT10YXhvbl9uYW1lJTNBJTIyR3J1cyUyMHJ1YmljdW5kYSUyMiIsInVybFBhcmFtZXRlcnMiOiI/cT10YXhvbl9uYW1lJTNBJTIyR3J1cyUyMHJ1YmljdW5kYSUyMiIsInF1ZXJ5VGl0bGUiOiJTY2llbnRpZmljIG5hbWU6XCJHcnVzIHJ1YmljdW5kYVwiIiwiYWN0aXZlRmFjZXRNYXAiOnt9LCJhY3RpdmVGYWNldE9iaiI6e319
-  recorded_at: 2020-07-31 15:50:12 GMT
-  recorded_with: vcr/0.5.4, webmockr/0.6.2
+      raw_gzip: |-
+        eJztVe9v4jYY/leqSP1GaOwkJEE6TRTSDh2QLpRO01oh4zjgXUg4x+kda/u/32sTCrRlV2nS
+        bpPGB6Q
+        8z/va78/HD8aKzNmY/8mMNm4YpSRC9vOEfTXaVsOQhSRZzGghktJoI9dBLtgUQhpt
+        owSUGQ0j4QK+SE
+        kN7S4rsDSij/BVUFoJwXLKAPr9wagqngBHnQCnnk1Nx7Ox6djezPQRRWZK
+        /IB5iKWeQw+8+z3w8gPbw
+        a4HhCRfi7xbALGSmuoMOtNejHGA8NQLMJiwe5bLHpGQFLIsx/Ww
+        b6nfHhPmiSY9y/OdmiwpB5annI7I
+        EnyNS1GVJ6KacVrlCYGD75nICa0yImqLc1Fkc7KNKib5
+        J1WaFYOTyn1UBerpS2hR5VKsVdxVKQXJuHL
+        /xPN5UiwVmvNlDa4W66xSWHcBHSBSYTQjZalK
+        3LnXNwDBxCZUnhZiqcGULHm2rtGEqDbNWa47o1Lafl
+        5uGrKQclW2z85mvEg4ZFhyuW4WYt4k
+        1RlJkzNIgpzZiFGMgsAMPOyajo9m5gxD1xClge8gv0XtlpqAO
+        vU3aldT9aWvm6aGh12J4p5D
+        a8HihlNZCF2IBDyhKAMiuawSIE3ba2LUsoMdV+TzmkQOalq+jVStoTw8
+        h3MncKaQhOdy3c+H
+        TEKWuv1N6MiaEaggtizwWBa5XMDlCMG1M1LyMko3CwDgz5NhZzSNzsdhfNO57kc
+        jFRq0RQcN
+        bZjozJIV9l8Q22HhIhnwlJ3sd17ZxawsKkFZfYCw3eAFc/SExonCNrMBkwFJ8iJX+2Zchl
+        Ev
+        vO53p73O9WQ47YzHk2HYm/56OfYdMB72x+P+6HK6NdNWh3gcXoRxOOqG6ojwCDeOJjH8G3e7
+        Doui
+        WukQNrOs5k0FWW5soIkky9Y3ED1kK0XFGobQJWbJ+Vq5aeO9It2pTmYZU/NQHjEQ5Mv0
+        +/urrF51tVq
+        SPJpB6e6JKl5tdnzVM05ZXipoMhpfhd3+RT/s6Z0q6uw+FuVCb6XKTnkQqeYT
+        gN3gbqdU7XkBc4k2rM
+        K3kIW2Htp6h+8IXJ+zo3Ycam0v2WP3aWc/iOcKHylwDlUoB6We0MO6
+        Pr7Y5cdNpR63Sva4U6GMpfB22
+        AhhH6rM54vt11Pj+X0gBAWEJMz0cEDUI9EyA4dSE/lpks6s
+        BDFCXr8PyLew23Le9z78L/T/JqH/pWKw
+        TxmBF/ktqUde0z0m8+53Nd5Vj7tS+R8m5q6H3hbz
+        Cy5KqeX7pCOh268UPA67UdwDzVbyO+2PbjqDvhK
+        af0jZr+LoOupGg/+g8N++mMpb42+K/20t
+        APqg3QPQ7Zrnv5mj7nvVX8+yHtwD2Uc+gPhQ9l+bWseJv2
+        DeoH6w1N8p3aJMwjpUmVR9BeRz
+        xbRW/vT5g9bSqQri1O6cYqxCOMXWcxAAwfmVyK6IAKPNnr/fUd90z
+        WWmGjh+npwT5dd+c3AI
+        lSCXFyrmIVkZ7YenAyya/aGwp28frjTV
+  recorded_at: 2025-11-28 13:32:22
 - request:
-    method: get
-    uri: http://biocache.ala.org.au/ws/occurrences/search?q=taxon_name%3A%22Cracticus%20tibicen%22&facet=off&pageSize=2&startIndex=0
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      User-Agent: libcurl/7.71.1 r-curl/4.3 crul/1.0.0
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
+    method: GET
+    uri: http://biocache.ala.org.au/ws/occurrences/search?q=taxon_name%3A%22Cracticus+tibicen%22&facet=off&pageSize=2&startIndex=0
   response:
-    status:
-      status_code: '200'
-      message: OK
-      explanation: Request fulfilled, document follows
+    status: 200
     headers:
-      access-control-allow-headers: x-requested-with
+      access-control-allow-headers: x-requested-with,Content-Type,Authorization
       access-control-allow-methods: POST, GET, OPTIONS, DELETE
       access-control-allow-origin: '*'
       access-control-max-age: '3600'
-      connection: keep-alive
+      cache-control: no-cache, no-store, max-age=0, must-revalidate
       content-encoding: gzip
       content-security-policy: upgrade-insecure-requests
-      content-type: application/json;charset=UTF-8
-      date: Fri, 31 Jul 2020 15:50:12 GMT
+      content-type: application/json
+      date: Fri, 28 Nov 2025 13:32:22 GMT
+      expires: '0'
+      pragma: no-cache
       referrer-policy: strict-origin-when-cross-origin
-      server: nginx/1.19.1
+      server: nginx/1.29.3
       set-cookie:
-      - AWSALBTG=6h5mazPpuKO/yRV/UC6JKZVQwFBiYEgkeY8L3kuNVG3XVBby0HdqBi91IumylkJkVtTg4+6L3zU5phof/csNf1L3NH2br5eHRS9PfWVb6riplfW/HJA0EZfmyMLK2M2CG2s9x1mlDXkpqCfbCLXUSEe3tVm6Wja2yBDD2qvWkvLe;
-        Expires=Fri, 07 Aug 2020 15:50:12 GMT; Path=/
-      - AWSALBTGCORS=6h5mazPpuKO/yRV/UC6JKZVQwFBiYEgkeY8L3kuNVG3XVBby0HdqBi91IumylkJkVtTg4+6L3zU5phof/csNf1L3NH2br5eHRS9PfWVb6riplfW/HJA0EZfmyMLK2M2CG2s9x1mlDXkpqCfbCLXUSEe3tVm6Wja2yBDD2qvWkvLe;
-        Expires=Fri, 07 Aug 2020 15:50:12 GMT; Path=/; SameSite=None; Secure
-      - AWSALB=Dqn9fEIlKOtTb+C9rVVHyQ0d74Uu5hgJbb0YR/esPeZMyMAZW94gYViU/bkcFk7lx3Bxvr6ZWL4hnbPJIDD2oLgRRYLFlmzpRV7Xc0FRaQ8yU0DSKWkbuhmxyWc3;
-        Expires=Fri, 07 Aug 2020 15:50:12 GMT; Path=/
-      - AWSALBCORS=Dqn9fEIlKOtTb+C9rVVHyQ0d74Uu5hgJbb0YR/esPeZMyMAZW94gYViU/bkcFk7lx3Bxvr6ZWL4hnbPJIDD2oLgRRYLFlmzpRV7Xc0FRaQ8yU0DSKWkbuhmxyWc3;
-        Expires=Fri, 07 Aug 2020 15:50:12 GMT; Path=/; SameSite=None; Secure
-      status: 'HTTP/1.1 200 '
+      - AWSALBTG=JzfiPqO0CocnVHf5eLHoLSdy+7weFtqywEV3gCxVCyIG7o/drPQ/tTluuACEWb+ovHlyvElKzk8ytaUyvgtkYAFG7NS/iXqDG7wNXeky94kBY8WxhOnI7d6XcbRpqFBR5VdGYP7id5i6RXLfj0Wp6E+Ow3AfnM1+if4+uvDDPK+S;
+        Expires=Fri, 05 Dec 2025 13:32:22 GMT; Path=/
+      - AWSALBTGCORS=JzfiPqO0CocnVHf5eLHoLSdy+7weFtqywEV3gCxVCyIG7o/drPQ/tTluuACEWb+ovHlyvElKzk8ytaUyvgtkYAFG7NS/iXqDG7wNXeky94kBY8WxhOnI7d6XcbRpqFBR5VdGYP7id5i6RXLfj0Wp6E+Ow3AfnM1+if4+uvDDPK+S;
+        Expires=Fri, 05 Dec 2025 13:32:22 GMT; Path=/; SameSite=None; Secure
+      - AWSALB=lxdPa2/Idy5r3Tb8WJsu/5xCnsaEu39pwZK8WBGv199/ttpEuwfp47Hww9hbz8mr+uHvlWwa/VQ42d2jaH04Yf47V8a5IFtXsRaGjw27a+RjLlbQXbbsKx2pGMtY;
+        Expires=Fri, 05 Dec 2025 13:32:22 GMT; Path=/
+      - AWSALBCORS=lxdPa2/Idy5r3Tb8WJsu/5xCnsaEu39pwZK8WBGv199/ttpEuwfp47Hww9hbz8mr+uHvlWwa/VQ42d2jaH04Yf47V8a5IFtXsRaGjw27a+RjLlbQXbbsKx2pGMtY;
+        Expires=Fri, 05 Dec 2025 13:32:22 GMT; Path=/; SameSite=None; Secure
+      status: 'HTTP/2 200 '
       strict-transport-security: max-age=31536000
-      transfer-encoding: chunked
-      x-frame-options: DENY
+      www-authenticate: Bearer realm="authentication required"
+      x-content-type-options: nosniff
+      x-frame-options:
+      - DENY
+      - DENY
+      x-xss-protection: 1; mode=block
     body:
-      encoding: ASCII-8BIT
-      file: no
-      string: eyJwYWdlU2l6ZSI6Miwic3RhcnRJbmRleCI6MCwidG90YWxSZWNvcmRzIjowLCJzb3J0Ijoic2NvcmUiLCJkaXIiOiJhc2MiLCJzdGF0dXMiOiJPSyIsIm9jY3VycmVuY2VzIjpbXSwiZmFjZXRSZXN1bHRzIjpbXSwicXVlcnkiOiI/cT10YXhvbl9uYW1lJTNBJTIyQ3JhY3RpY3VzJTIwdGliaWNlbiUyMiIsInVybFBhcmFtZXRlcnMiOiI/cT10YXhvbl9uYW1lJTNBJTIyQ3JhY3RpY3VzJTIwdGliaWNlbiUyMiIsInF1ZXJ5VGl0bGUiOiJTY2llbnRpZmljIG5hbWU6XCJDcmFjdGljdXMgdGliaWNlblwiIiwiYWN0aXZlRmFjZXRNYXAiOnt9LCJhY3RpdmVGYWNldE9iaiI6e319
-  recorded_at: 2020-07-31 15:50:12 GMT
-  recorded_with: vcr/0.5.4, webmockr/0.6.2
+      raw_gzip: |-
+        eJyVj01rAkEMhv+KBPa2B9neBkophYIUsWhvWkrMRknZzmgmI7bif292EcGjx/fhffJxgh1u
+        eSF/DKG
+        pIRuqTWLLRwjjGiwZdnOmpG0eQE5qECA7YaihFfWEmWBQrXgLZm+eElFR5UjsaPlZ
+        wwaJbc65dHYh+8
+        L66/2n/aPhMcWviD9cPTxXTfOiSCZUctWMTdZCHJ362KLdO6r3jDXf6Q77
+        PsQ6fxUWJBxNNkKjXg0ru
+        Hqji7UCl3p24Nf++CnuIJzON2y2/u7Z+R+WIG5p
+  recorded_at: 2025-11-28 13:32:22
+recorded_with: VCR-vcr/2.0.0

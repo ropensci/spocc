@@ -1,64 +1,41 @@
 http_interactions:
 - request:
-    method: get
+    method: GET
     uri: https://ebird.org/ws2.0/data/obs/US/recent/btbwar?maxResults=5&hotspot=true
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      User-Agent: libcurl/7.79.1 r-curl/4.3.3 crul/1.3
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
-      X-eBirdApiToken: <<ebird_api_key>>
   response:
-    status:
-      status_code: '200'
-      message: OK
-      explanation: Request fulfilled, document follows
+    status: 200
     headers:
-      status: HTTP/1.1 200 OK
-      date: Thu, 10 Nov 2022 17:18:56 GMT
-      server: Apache
+      status: 'HTTP/2 200 '
       cache-control: no-cache, no-store, max-age=0, must-revalidate
       content-encoding: gzip
       content-type: application/json;charset=utf-8
+      date: Fri, 28 Nov 2025 13:32:44 GMT
       expires: '0'
       pragma: no-cache
+      server: Apache
+      set-cookie: _9bf17=1f3f5d3f7dcebeaa; Path=/
       strict-transport-security: max-age=31536000 ; includeSubDomains
-      vary: Accept-Encoding,Origin,Access-Control-Request-Method,Access-Control-Request-Headers
+      vary: Origin,Accept-Encoding,Access-Control-Request-Method,Access-Control-Request-Headers
       x-content-type-options: nosniff
       x-frame-options: DENY
       x-xss-protection: 1; mode=block
-      transfer-encoding: chunked
     body:
-      encoding: ASCII-8BIT
-      file: no
-      string: |-
-        W3sic3BlY2llc0NvZGUiOiJidGJ3YXIiLCJjb21OYW1lIjoiQmxhY2stdGhyb2F0ZWQgQmx1ZSBXYXJi
-        bGVyIiwic2NpTmFtZSI6IlNldG9waGFnYSBjYWVydWxlc2NlbnMiLCJsb2NJZCI6Ikw4NTI0MDEzIiwi
-        bG9jTmFtZSI6Ildlc3R3aW5kIExha2VzIFBhcmsiLCJvYnNEdCI6IjIwMjItMTEtMTAgMDc6MzYiLCJo
-        b3dNYW55IjoxLCJsYXQiOjI1LjcwNDA0MTEsImxuZyI6LTgwLjQzODkzMzQsIm9ic1ZhbGlkIjp0cnVl
-        LCJvYnNSZXZpZXdlZCI6ZmFsc2UsImxvY2F0aW9uUHJpdmF0ZSI6ZmFsc2UsInN1YklkIjoiUzEyMjE3
-        MjE1NyJ9LHsic3BlY2llc0NvZGUiOiJidGJ3YXIiLCJjb21OYW1lIjoiQmxhY2stdGhyb2F0ZWQgQmx1
-        ZSBXYXJibGVyIiwic2NpTmFtZSI6IlNldG9waGFnYSBjYWVydWxlc2NlbnMiLCJsb2NJZCI6IkwyNzg0
-        NTAiLCJsb2NOYW1lIjoiVW5pdi4gb2YgVGV4YXMsIFJHViAoQnJvd25zdmlsbGUpLS1SZXNhY2EgSGFi
-        aXRhdCIsIm9ic0R0IjoiMjAyMi0xMS0wOSAxMjoyOSIsImhvd01hbnkiOjEsImxhdCI6MjUuODkzOTkw
-        NywibG5nIjotOTcuNDg4OTMyMiwib2JzVmFsaWQiOnRydWUsIm9ic1Jldmlld2VkIjp0cnVlLCJsb2Nh
-        dGlvblByaXZhdGUiOmZhbHNlLCJzdWJJZCI6IlMxMjIxMzg0NTMifSx7InNwZWNpZXNDb2RlIjoiYnRi
-        d2FyIiwiY29tTmFtZSI6IkJsYWNrLXRocm9hdGVkIEJsdWUgV2FyYmxlciIsInNjaU5hbWUiOiJTZXRv
-        cGhhZ2EgY2FlcnVsZXNjZW5zIiwibG9jSWQiOiJMNzIiLCJsb2NOYW1lIjoiQ2hpbW5leSBSb2NrIEhh
-        d2sgV2F0Y2giLCJvYnNEdCI6IjIwMjItMTEtMDggMTM6NDIiLCJob3dNYW55IjoxLCJsYXQiOjQwLjU4
-        MjE4ODksImxuZyI6LTc0LjU1NjA4NDksIm9ic1ZhbGlkIjp0cnVlLCJvYnNSZXZpZXdlZCI6dHJ1ZSwi
-        bG9jYXRpb25Qcml2YXRlIjpmYWxzZSwic3ViSWQiOiJTMTIyMDk5MDQxIn0seyJzcGVjaWVzQ29kZSI6
-        ImJ0YndhciIsImNvbU5hbWUiOiJCbGFjay10aHJvYXRlZCBCbHVlIFdhcmJsZXIiLCJzY2lOYW1lIjoi
-        U2V0b3BoYWdhIGNhZXJ1bGVzY2VucyIsImxvY0lkIjoiTDExMzIzODY5IiwibG9jTmFtZSI6IlR1Y2tl
-        ciBHdWxjaCIsIm9ic0R0IjoiMjAyMi0xMS0wOCAxMTo1NiIsImhvd01hbnkiOjEsImxhdCI6MzkuNzY2
-        NDUzNCwibG5nIjotMTA1LjIyNjQwMjcsIm9ic1ZhbGlkIjp0cnVlLCJvYnNSZXZpZXdlZCI6dHJ1ZSwi
-        bG9jYXRpb25Qcml2YXRlIjpmYWxzZSwic3ViSWQiOiJTMTIyMDg3OTM0In0seyJzcGVjaWVzQ29kZSI6
-        ImJ0YndhciIsImNvbU5hbWUiOiJCbGFjay10aHJvYXRlZCBCbHVlIFdhcmJsZXIiLCJzY2lOYW1lIjoi
-        U2V0b3BoYWdhIGNhZXJ1bGVzY2VucyIsImxvY0lkIjoiTDYxNDYwNyIsImxvY05hbWUiOiJQbGFudGF0
-        aW9uIFByZXNlcnZlIiwib2JzRHQiOiIyMDIyLTExLTA4IDA4OjQwIiwiaG93TWFueSI6MSwibGF0Ijoy
-        Ni4xMTU2Nzc3LCJsbmciOi04MC4yMzkxNjI0LCJvYnNWYWxpZCI6dHJ1ZSwib2JzUmV2aWV3ZWQiOmZh
-        bHNlLCJsb2NhdGlvblByaXZhdGUiOmZhbHNlLCJzdWJJZCI6IlMxMjIxNTA5NTMifV0=
-  recorded_at: 2022-11-10 17:18:56 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.1.91
+      raw_gzip: |-
+        eJzF1E2P0zAQBuC/YuUE0raynfgjObZAQWJXFUXLAXGYOMPGahpXtrvVCu1/xykFbaRWcKjK
+        0TNvbOf
+        JKF9/ZGGLxmKYuwazKqtjvQef3WTGbe5gM5RmHZj1JLbeQcSGzLodki/g6w6HXDD2
+        mFthdNsWHoAYQL
+        /rMBjsQ4p0znxoUuAjL0td6F+V40MLD33zaHFP5rjBiP4ptV0d3sTU5JSL
+        CWMTrggrqqJMrdbtb6F/y
+        iqWdoEUKuhUaCXSqn/IqgmjYsoY5/ywyz10Np0c/Q4P6084HIV/
+        SukeEK3rl94+ppfLqu/QhVQPu/pw
+        4xXXsqBKlSx7vrkqFeOq4HJE9Q6sN63tGvLZu6010JGZ
+        i9BbQxbgG+zPyLFKyFNyXEylksVvOU2nXLH
+        8L25HoH+By5XSrLw2nNCc8XwEt3K72KLvyaKD
+        BkPiA9uRV3PGGJlDnxxTINgGydu75evTilRXrDijWN
+        C8ULl4ASmElmyoXMxS5yJ9xf8xhGJk
+        eQuJMrievIfNxpk1WYJfnyFTFefnBk9TKfJyNHtc5sM0XoxM8
+        PS3uTYZF5RJWo7M7m2IcIAi
+        NYJpz3JRepJLTtlAw+ULLlpqIdkFtSTnVGTP334CsXXj3A==
+  recorded_at: 2025-11-28 13:32:44
+recorded_with: VCR-vcr/2.0.0

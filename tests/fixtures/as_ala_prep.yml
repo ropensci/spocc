@@ -13,20 +13,20 @@ http_interactions:
       content-encoding: gzip
       content-security-policy: upgrade-insecure-requests
       content-type: application/json
-      date: Fri, 28 Nov 2025 13:32:21 GMT
+      date: Sat, 06 Dec 2025 16:06:20 GMT
       expires: '0'
       pragma: no-cache
       referrer-policy: strict-origin-when-cross-origin
       server: nginx/1.29.3
       set-cookie:
-      - AWSALBTG=8wr3XfWEW8AUkPMKVIDJ8mQNJrS6gguYygrv+IZ0LDaP9+c9nZcLQ9qGk2+8xe9bJJOFIhMB/lU5wDr85f99szlCRicfUAZOWkvT2FXEjO1u/RQsZPJ1QZwhtMElFlfEsk1wGF8Re4TXdGLzMFm8PZrut4PluE1+OE0mteWQ9SZK;
-        Expires=Fri, 05 Dec 2025 13:32:21 GMT; Path=/
-      - AWSALBTGCORS=8wr3XfWEW8AUkPMKVIDJ8mQNJrS6gguYygrv+IZ0LDaP9+c9nZcLQ9qGk2+8xe9bJJOFIhMB/lU5wDr85f99szlCRicfUAZOWkvT2FXEjO1u/RQsZPJ1QZwhtMElFlfEsk1wGF8Re4TXdGLzMFm8PZrut4PluE1+OE0mteWQ9SZK;
-        Expires=Fri, 05 Dec 2025 13:32:21 GMT; Path=/; SameSite=None; Secure
-      - AWSALB=U2zL883BCrJSXtw45zcHcyFkN+bwJ7m/ScYo/hodZFqJp2rL1RYQQ2X5ePCKnbVFlRG2Qwd8VIqP9+kuCBEO41JUpOBCGKSFwkVSs6SWK2brrnsgcOCE0LYWTVMs;
-        Expires=Fri, 05 Dec 2025 13:32:21 GMT; Path=/
-      - AWSALBCORS=U2zL883BCrJSXtw45zcHcyFkN+bwJ7m/ScYo/hodZFqJp2rL1RYQQ2X5ePCKnbVFlRG2Qwd8VIqP9+kuCBEO41JUpOBCGKSFwkVSs6SWK2brrnsgcOCE0LYWTVMs;
-        Expires=Fri, 05 Dec 2025 13:32:21 GMT; Path=/; SameSite=None; Secure
+      - AWSALBTG=VNJxWXW2zC6FIas7kvAFBL48xWGPQuxsH9x3AsYbQ+H2b9uWvAEztKZOnHMxKLO13ZUKZ8qoZrCSFCLwFOYesd1yPa5J7dG0Om5/+O+qa1l6outx475Z8j3q1wO6wwVd/G0x96xTVIRr/5xJH88K2ogCrEKaeBwAND/RKFzF5++J;
+        Expires=Sat, 13 Dec 2025 16:06:20 GMT; Path=/
+      - AWSALBTGCORS=VNJxWXW2zC6FIas7kvAFBL48xWGPQuxsH9x3AsYbQ+H2b9uWvAEztKZOnHMxKLO13ZUKZ8qoZrCSFCLwFOYesd1yPa5J7dG0Om5/+O+qa1l6outx475Z8j3q1wO6wwVd/G0x96xTVIRr/5xJH88K2ogCrEKaeBwAND/RKFzF5++J;
+        Expires=Sat, 13 Dec 2025 16:06:20 GMT; Path=/; SameSite=None; Secure
+      - AWSALB=mYJ/aA+xdf7Is/7ALVn4Mz1hq+lQ+UwSdoB/69N2+n4oVBMGSL1+ZwkhYfo0nyR0bHNfmwcQisPh3zKyowiRYXWOhN7ScX4ksmSfaPOqmzHR+hLdeN+lAY2TwuC8;
+        Expires=Sat, 13 Dec 2025 16:06:20 GMT; Path=/
+      - AWSALBCORS=mYJ/aA+xdf7Is/7ALVn4Mz1hq+lQ+UwSdoB/69N2+n4oVBMGSL1+ZwkhYfo0nyR0bHNfmwcQisPh3zKyowiRYXWOhN7ScX4ksmSfaPOqmzHR+hLdeN+lAY2TwuC8;
+        Expires=Sat, 13 Dec 2025 16:06:20 GMT; Path=/; SameSite=None; Secure
       status: 'HTTP/2 200 '
       strict-transport-security: max-age=31536000
       www-authenticate: Bearer realm="authentication required"
@@ -36,53 +36,53 @@ http_interactions:
       - DENY
       x-xss-protection: 1; mode=block
     body:
-      raw_gzip: |-
-        eJztVmtvq0YQ/SsWUqRWMgkv87BUVQSTFMWGCOO0V72RtYbF3gazvsuSe32T/PfO4kdsJ24T
-        9aWq9Qd
-        k5szO7sycncODtEBTPCRfsdTV2lLFEeNBmeEvUldpS5xyVMQ4pSyrpK7q2JZlgBNl
-        XOpKFZix1JYywu
-        ANVanUrOc1uErRFbzRNK0Zw2WKwfTzg1TXJAMsw2aqGR1DNm01lQ1TzWTb
-        nmgy1hBKzdRAmWXsrQ56s
-        EpVVMWGByAcfaGlRwFZ8Aabcb6oumdnE0Izco9ZRfjylLLpKarP
-        UJ6dwQJ01slx1sFpLmuq48hGbhoy
-        cnJLdpSJ7uS2jRwFQXB8j0veQxwKomqW1rE7piJ+kFxK
-        ACI5SUM0B1g6R6xELCN11fpK4R/8gQCwf4n
-        SukBs7ebWFWeoIKhsxaSclji92yQRo/JOlHKB
-        IXa1axV5Wc22Ka1Lzpa7gcDxDiJldC6sJZmvjYvZsq
-        iFzZtByxAXtrRAVSVa4t43OwCARcOu
-        oUgcpSSnbN4AOZqTYrmDZEi0d4rLpqPPyW6Ml6t2vqn4k8zIc
-        7WTyaaqYtnQ1FyeTCxFzjpO
-        hjLT7GSmLvizLsSx2q7x9+z8xrYL5uJrRu8J0Apih0DyGXSylWDGCKfQ
-        AKA67A617iNOeJ2B
-        m6zpp9aznZbTNaDq+qkNd2WJERRbA+62pTkt+QxCK4LdE1SRKspXlwuMP4wGbji
-        Ozod+fOMm
-        QRSK7aCDzZGgY6PV1Vlo9gGw4SJhWZ/kuLVLEuEX44rWLMXrAEzvOAfI0QjtlrCtaAQkwo
-        wT
-        WoqrLF36Uc9PAm/cc5PRYOwOh6OB3xv/eDm0RXIHcBDeuH0gdFvyoijuBaGb+ONR6Plx4gZh
-        8mE8
-        8BM/Hu74DYLhMAgvxxAo9i/82AdnEcw/gg2jUQxP6faZIozWi+asq/sh2COyqVY+0EFU
-        FMsbSBPKwlm
-        N2xJreoGz86VY1jjvVPNW3MSiwClwoTriwNDn8RunhHB9wYF6jspoAoW+R6LU
-        a7c3DpSCpLisBD4Kh9
-        e+F1wEfq+5q3Sd7xWtZs3dF/mKFYgLyoJhxeMVacUcoaTkamM3wLo1
-        Keq+79Z+CDyv+E3oNWxb5CM1L
-        qEGVb9q2PxKaR//tKHw+EqZHzfD9nF/SBY4B0nUdc2Be87I
-        dNa86Yry1N7KnmIqlmnamuykGEbgxNZl
-        ZJtIti3HzJ3MyTuO+VL2RnHY9SgrcQFjZxLlESsJ
-        n9GCTpdd/zyIe12YGR3LtG3DNq01Y9Y1JEIlxTS
-        SGs+/Uzk7qg3Crq6Vc4v4ZbYBDc3+X1b/
-        c7I6pDWf7WvUC02FSWDZqm6/qquGcqru6qq9o6vaO3T1UB
-        Y1RTmii1gMob0j72vhRo8S96co
-        jN3w6qUAHurjjoQ1bo3XXyiPvfMPR5DrOEoiL+r/jq6+jt74MYiM1
-        5R1mEAOwjHyvFG8OtHK
-        BucG/xjSv4gj8THQC26C3sjtj71oFCZ/ULP/McVtfTOA02D87Z70ep7yVsnd
-        0nzF6T3Z1Q1h
-        3ZddIZAr3wPZbQIdRFF2MfUluIsaz/C/TFxvxXhNMYcbWxdcMAcsn2rcjPXvP33XjP2
-        xSOpE
-        d0807TmlE03ZJAV22KRmxTVi4Mmx+Lx75+pmz4TwoplxWz62xOLux9dK+VESgwQ0+h5fiBQG
-        a
-        CF1H572bNHkF2F7+hVcnAB9
-  recorded_at: 2025-11-28 13:32:21
+      raw_gzip: |
+        eJztVn9v2zYQ/SoBgQAbIDmUZFmWgGFwZCUTFkuBbKcr1sCgSMrmKpMuSWV1m373gbId22mC
+        pt0wbNj
+        8n+8dybt3P54+ghWa0zH7QEHkWkBpJHXKCX0PImgBLTSqC4qFJApETtjvQ+MkpAYR
+        UFhICixAmAQRQA
+        qD9rxuFIhA/jOwgMC4kZJyTBWIfv0ImoYREAESIi8IEbaxRyu7W5alHWIS
+        2A6CFekjtwwr9+h0OgQRC
+        Puh4wchsIBG7wWPBcd0pVtoofVKRWdnJROE3VGpmF53hJx3UHOG
+        KnKm0Xt05leU+BRXtuuEod2tel0b
+        hVVgh7D0wqrfRyFEwAL0jnI9RJqCyHEC14FuF5qfBRRm
+        lGtWMZyhJQUROEeSI0lYo04+CI4kaxSwwB2
+        VHOGmRnLrNmiUlqhmiJ8UjM85xW93SRSIvzVM
+        rihmVB1aTV5B+ywWDddyfXgRsMBbxudELI2Vs+XWuF
+        qs68bY4oWQBGljwzVSShm/u/YFIQk1
+        9bpWTGuEWSXksgUqtGT1+gAhyFR3Tnlb0H2yO+PlppovIr8k3
+        apyfGL3HIfaXdep7LIMoE38
+        kCDS6/mk55n22RLxHLdb/GtefmHZTePSaynuGMemaK+o0lTyk0POCcWG
+        6iukmW4IBZHtdTse
+        9PrhHhN8vgUdJ+xA33EcU0IhCeNI0ynHVGrEuF6nfEQ1lWauIOxAC6wpkiByIQw
+        ssBRcL0AE
+        oBmEEimm8mozhyACP01Hg2yWn4+T4mYwSfPMxIY0asMnVE43U7Zy+4+AXd8ySa5YRY+TQx
+        oV
+        VIlGYrq9QHp++Ah59gbrxNg2LYeUolIzwc3Ug8skHyaTNJ4NB5PpaDYYj6ejZDh7dTnud4EF
+        Rul4
+        nGaXs51b63VsL5KLpEiyODFXJM9g43xaxMkY3O67RIpm1YawGRHTQCZItfFBmqG6Xt+g
+        2mSrZUMtIFu
+        KKTlfm2Ot8wFJt6aSdU2xFlI94yDR77MXLgrj+llpmyXieamovEOGwa3bC3dK
+        zTDlyuBxbJ+/trP4xO
+        vAk+9Srr9vp1Zs0/5ZqEW7BUza5iDSpnNBBPYt/dC/ZrEIxrWzgQ2w
+        M0Fnd6R1f3CFjwDo75E9BLu7R
+        w7QA9jbBwEOqH+GeY6WVF2ptnWfIPz+L9sW90+Qf7/bwvfH
+        27OmlQaR57khtIBk80X7z4Pwk/Ugh26A
+        qV9VfZsElWd3HULtMsTEhph23V7YQyX1P5fDaZFF
+        sZCc1vUVKvMql5zphajFfB0l52kxjPLzsQP7oef
+        40Pe3jbQlkRn9NEsKtK5/p6b2HB8Gvvu/
+        pv73NHUsGr34kqIGHQ+G/d6TitqFnb4XBp67F0vXORBL7y
+        vE8rHWuRA+I3bULJujsI8FbqdG
+        k8EveVYMMvPlG+d5MUyzwSSZFfk0GyZmxr5RCQ/ummZxUkwGaTZ5P
+        Rslk6QYz9LsZnCVDr9B
+        MYfnr59Brot8ksf51Rek9mn0JinSizRuuR5PBpOpcczjeFpsItrYZml2kRRF
+        MpxdFPlolmbD
+        9CYdTgdXszifZpM/KeP/FBGGL1bdXdvve/xYdgPL6TqPZDcw6mr8H8tu0PGcDdL9THe
+        fxvYg
+        DMOHIMC/TlVvzc7FVBdUNbU2XXNrgXcNbXf9j+9+aLVgZpI69QanrrtP6dSFu6ROXUN+I+tr
+        J
+        NFy+5H+lafbNydM1+3ie+jFE3M4evMUlW+A2SxYszt6YVIYoRWIPn46suXlb8b26Q8UIgYc
+  recorded_at: 2025-12-06 16:06:20
 - request:
     method: GET
     uri: http://biocache.ala.org.au/ws/occurrences/search?q=taxon_name%3A%22Grus+rubicunda%22&facet=off&pageSize=2&startIndex=0
@@ -97,20 +97,20 @@ http_interactions:
       content-encoding: gzip
       content-security-policy: upgrade-insecure-requests
       content-type: application/json
-      date: Fri, 28 Nov 2025 13:32:22 GMT
+      date: Sat, 06 Dec 2025 16:06:21 GMT
       expires: '0'
       pragma: no-cache
       referrer-policy: strict-origin-when-cross-origin
       server: nginx/1.29.3
       set-cookie:
-      - AWSALBTG=MrADb9sHJWd9XApKfxsMZvNHi/oT1SuUu6a09dczV9+TaUQWjp59Ogt1Mz3LiJx8vUjvKiH4SSBowylPiR/9Y+8vGsQGnlQyCZj5zxuqWi9EuH8nMrvCipOlpJKinqZTP6ixg9Q77I3IHtVJKZ0WxvV51N09WX7Py8hsAQvpLKhE;
-        Expires=Fri, 05 Dec 2025 13:32:22 GMT; Path=/
-      - AWSALBTGCORS=MrADb9sHJWd9XApKfxsMZvNHi/oT1SuUu6a09dczV9+TaUQWjp59Ogt1Mz3LiJx8vUjvKiH4SSBowylPiR/9Y+8vGsQGnlQyCZj5zxuqWi9EuH8nMrvCipOlpJKinqZTP6ixg9Q77I3IHtVJKZ0WxvV51N09WX7Py8hsAQvpLKhE;
-        Expires=Fri, 05 Dec 2025 13:32:22 GMT; Path=/; SameSite=None; Secure
-      - AWSALB=TN3hqJP0jmVlGd70gZc3yb76dwcZMCU5XdZYudJsq/sngzM5AN2QBxKEcFxE7/NpN2JQoIWfeUao5iG/TRXUXVw5T3OaIeNTZ/oTZwwceLCXc99v+1c3eQACzuc4;
-        Expires=Fri, 05 Dec 2025 13:32:22 GMT; Path=/
-      - AWSALBCORS=TN3hqJP0jmVlGd70gZc3yb76dwcZMCU5XdZYudJsq/sngzM5AN2QBxKEcFxE7/NpN2JQoIWfeUao5iG/TRXUXVw5T3OaIeNTZ/oTZwwceLCXc99v+1c3eQACzuc4;
-        Expires=Fri, 05 Dec 2025 13:32:22 GMT; Path=/; SameSite=None; Secure
+      - AWSALBTG=w07UTiGZk7BMNcNPAf8oAnvTNnbRGlqTSNkaKz2uyVGVjg//lW7CKlldBmBimDkJbu+KywGP1qaSZT/65HSHEUAS/cLo/4G7O62UHEwdYG2MVo58d7XUT28Dhxbvdtok8DsAefbK1gByxShl9oSB4CEykXSACnQihHOFMA76OEId;
+        Expires=Sat, 13 Dec 2025 16:06:21 GMT; Path=/
+      - AWSALBTGCORS=w07UTiGZk7BMNcNPAf8oAnvTNnbRGlqTSNkaKz2uyVGVjg//lW7CKlldBmBimDkJbu+KywGP1qaSZT/65HSHEUAS/cLo/4G7O62UHEwdYG2MVo58d7XUT28Dhxbvdtok8DsAefbK1gByxShl9oSB4CEykXSACnQihHOFMA76OEId;
+        Expires=Sat, 13 Dec 2025 16:06:21 GMT; Path=/; SameSite=None; Secure
+      - AWSALB=bkZzqUJpw1SThh5nszG4gYOGUnWsWtauEn7JGgACMOUDjYGimjv9XAQmvGJXCfCB/1+bO3vpQyQKOD5eCu5HedqzU++8fwa+aMW0CYqqwovAzG66KlQhQzB44JuA;
+        Expires=Sat, 13 Dec 2025 16:06:21 GMT; Path=/
+      - AWSALBCORS=bkZzqUJpw1SThh5nszG4gYOGUnWsWtauEn7JGgACMOUDjYGimjv9XAQmvGJXCfCB/1+bO3vpQyQKOD5eCu5HedqzU++8fwa+aMW0CYqqwovAzG66KlQhQzB44JuA;
+        Expires=Sat, 13 Dec 2025 16:06:21 GMT; Path=/; SameSite=None; Secure
       status: 'HTTP/2 200 '
       strict-transport-security: max-age=31536000
       www-authenticate: Bearer realm="authentication required"
@@ -121,46 +121,44 @@ http_interactions:
       x-xss-protection: 1; mode=block
     body:
       raw_gzip: |-
-        eJztVe9v4jYY/leqSP1GaOwkJEE6TRTSDh2QLpRO01oh4zjgXUg4x+kda/u/32sTCrRlV2nS
-        bpPGB6Q
-        8z/va78/HD8aKzNmY/8mMNm4YpSRC9vOEfTXaVsOQhSRZzGghktJoI9dBLtgUQhpt
-        owSUGQ0j4QK+SE
-        kN7S4rsDSij/BVUFoJwXLKAPr9wagqngBHnQCnnk1Nx7Ox6djezPQRRWZK
-        /IB5iKWeQw+8+z3w8gPbw
-        a4HhCRfi7xbALGSmuoMOtNejHGA8NQLMJiwe5bLHpGQFLIsx/Ww
-        b6nfHhPmiSY9y/OdmiwpB5annI7I
-        EnyNS1GVJ6KacVrlCYGD75nICa0yImqLc1Fkc7KNKib5
-        J1WaFYOTyn1UBerpS2hR5VKsVdxVKQXJuHL
-        /xPN5UiwVmvNlDa4W66xSWHcBHSBSYTQjZalK
-        3LnXNwDBxCZUnhZiqcGULHm2rtGEqDbNWa47o1Lafl
-        5uGrKQclW2z85mvEg4ZFhyuW4WYt4k
-        1RlJkzNIgpzZiFGMgsAMPOyajo9m5gxD1xClge8gv0XtlpqAO
-        vU3aldT9aWvm6aGh12J4p5D
-        a8HihlNZCF2IBDyhKAMiuawSIE3ba2LUsoMdV+TzmkQOalq+jVStoTw8
-        h3MncKaQhOdy3c+H
-        TEKWuv1N6MiaEaggtizwWBa5XMDlCMG1M1LyMko3CwDgz5NhZzSNzsdhfNO57kc
-        jFRq0RQcN
-        bZjozJIV9l8Q22HhIhnwlJ3sd17ZxawsKkFZfYCw3eAFc/SExonCNrMBkwFJ8iJX+2Zchl
-        Ev
-        vO53p73O9WQ47YzHk2HYm/56OfYdMB72x+P+6HK6NdNWh3gcXoRxOOqG6ojwCDeOJjH8G3e7
-        Doui
-        WukQNrOs5k0FWW5soIkky9Y3ED1kK0XFGobQJWbJ+Vq5aeO9It2pTmYZU/NQHjEQ5Mv0
-        +/urrF51tVq
-        SPJpB6e6JKl5tdnzVM05ZXipoMhpfhd3+RT/s6Z0q6uw+FuVCb6XKTnkQqeYT
-        gN3gbqdU7XkBc4k2rM
-        K3kIW2Htp6h+8IXJ+zo3Ycam0v2WP3aWc/iOcKHylwDlUoB6We0MO6
-        Pr7Y5cdNpR63Sva4U6GMpfB22
-        AhhH6rM54vt11Pj+X0gBAWEJMz0cEDUI9EyA4dSE/lpks6s
-        BDFCXr8PyLew23Le9z78L/T/JqH/pWKw
-        TxmBF/ktqUde0z0m8+53Nd5Vj7tS+R8m5q6H3hbz
-        Cy5KqeX7pCOh268UPA67UdwDzVbyO+2PbjqDvhK
-        af0jZr+LoOupGg/+g8N++mMpb42+K/20t
-        APqg3QPQ7Zrnv5mj7nvVX8+yHtwD2Uc+gPhQ9l+bWseJv2
-        DeoH6w1N8p3aJMwjpUmVR9BeRz
-        xbRW/vT5g9bSqQri1O6cYqxCOMXWcxAAwfmVyK6IAKPNnr/fUd90z
-        WWmGjh+npwT5dd+c3AI
-        lSCXFyrmIVkZ7YenAyya/aGwp28frjTV
-  recorded_at: 2025-11-28 13:32:22
+        eJztVV1v4kYU/SvRlfJmJx5jgm2pqgiwKdoEUkhSVU2ELuMLma6ZYWfGNDTJf6/GGBICWW2f
+        VpGWN+4
+        5M3M/zj1+hDlOaSj+JUhDD4xFbbsyowdIAw+sspgPiCudGUhZPQpqHhilLaRguNIE
+        HmRCQwpoOJTHbW
+        Eghf5n8EBxXmhNkpOB9K9HKAqRQQrjhE2CMGI+1qLEj8ZR6CeUkY8NDJMx
+        CzGLcet0tw0psOSEnUQhe
+        GDxQcmWkpzmtoSa581RexCGCQtHjcRRaEHSttESpLValDTCOHA/
+        DwwXJK2YCN7DGUEKZ7owB7oYC17I
+        zD27IC2RFznqinGqVT7F9bsDlF9c8XPigszrqEulUT7C
+        VSGtXrrMCmM15sId/yLkNFMzF5ViVgXn98u
+        8cLHWvdIZWhfjORpjHG9RvqB0RnqVqpgoPSuD
+        E5yJfFlFM3SDmJIse+9KWv89W7X83tq5SY+Px0JlYk
+        HaCLs8Unp6hMUxTrJjiw94XGPEQ5Yk
+        ftII634Us7E/DjnzGedJHLH4hNdO3Iyr0vf0roKqR3fH4uRBl
+        1othOSutb8XRNLkKDOnI+Ku
+        LedohS0ygtRn0VGj/gIoOa0QFtVKhCulMyHR0rXkpC0KaZddeUGWtIE0
+        CYLgKPBgSaghZUkc
+        eDBT0t5DCkEMHozRCNOfrAQOKfx2fdHsjfqnw87gpnnV7fdcWmixTDkjfV3Wlc3
+        D+A2wlorQ
+        2bmY0MHruTvegIwqNKfqAl1vsDdIdcMnoY09cPccNG2Obo5oDGkrlHRLBGedfrtz1W2N2s
+        2r
+        64tRczi8vui0R3+cDeMIPLjoDofd3tloTStZ2/FB51Nn0Om1Ou6KzjvY5aB/1W/1z9+Bh/3r
+        Qasz
+        hLuXmWtVzMsMV+p2mbsyzIqDVmCeL28wdx2wuiAPdNl2yk6X7lhJftW4OzfePCdulTbv
+        EDT+M9rZ6Ns
+        3urwFWDF3pl3MUPbHhvQCXX8r2o4B3FYWUF6UC07SuHCr5Z/+6fda5aqpqsTP
+        ytyXy+pKdHS0TreQQq
+        XmlXTd5ishLSsBF43WoYBV5Ljkxpv4Bti5Jfg2thfc9Pad1kqckTk3
+        pV63+/n0Zq+fVt15Wrva04sj5
+        TSxkNYYC2MPtJjer/89e5uvAQ8Ym0Qs88NJTH4UNdCPszjx
+        OY0pxiBs1ONs92sQBrV6UGff9zX4afof
+        yPTD2lHC9pt+9H9M/wN6+6DT6g/anXZpzKNu76Z5
+        3m2D99PzP6znr8S8Uu6W54eRx6L6tuc7csl96/n
+        7bgm+je0Ff7Dn3zkD42QHZIrcuvneefC1
+        oNI0f/36S2mqI5fEYa15GIYuhcMw2CRxGDo7KXR+iRpn1b
+        p//8HypSthczfI4UZBB+5culdA
+        yK1Y0CeX8wXOIX183or1x3+72PN/+Esx0A==
+  recorded_at: 2025-12-06 16:06:21
 - request:
     method: GET
     uri: http://biocache.ala.org.au/ws/occurrences/search?q=taxon_name%3A%22Cracticus+tibicen%22&facet=off&pageSize=2&startIndex=0
@@ -175,20 +173,20 @@ http_interactions:
       content-encoding: gzip
       content-security-policy: upgrade-insecure-requests
       content-type: application/json
-      date: Fri, 28 Nov 2025 13:32:22 GMT
+      date: Sat, 06 Dec 2025 16:06:22 GMT
       expires: '0'
       pragma: no-cache
       referrer-policy: strict-origin-when-cross-origin
       server: nginx/1.29.3
       set-cookie:
-      - AWSALBTG=JzfiPqO0CocnVHf5eLHoLSdy+7weFtqywEV3gCxVCyIG7o/drPQ/tTluuACEWb+ovHlyvElKzk8ytaUyvgtkYAFG7NS/iXqDG7wNXeky94kBY8WxhOnI7d6XcbRpqFBR5VdGYP7id5i6RXLfj0Wp6E+Ow3AfnM1+if4+uvDDPK+S;
-        Expires=Fri, 05 Dec 2025 13:32:22 GMT; Path=/
-      - AWSALBTGCORS=JzfiPqO0CocnVHf5eLHoLSdy+7weFtqywEV3gCxVCyIG7o/drPQ/tTluuACEWb+ovHlyvElKzk8ytaUyvgtkYAFG7NS/iXqDG7wNXeky94kBY8WxhOnI7d6XcbRpqFBR5VdGYP7id5i6RXLfj0Wp6E+Ow3AfnM1+if4+uvDDPK+S;
-        Expires=Fri, 05 Dec 2025 13:32:22 GMT; Path=/; SameSite=None; Secure
-      - AWSALB=lxdPa2/Idy5r3Tb8WJsu/5xCnsaEu39pwZK8WBGv199/ttpEuwfp47Hww9hbz8mr+uHvlWwa/VQ42d2jaH04Yf47V8a5IFtXsRaGjw27a+RjLlbQXbbsKx2pGMtY;
-        Expires=Fri, 05 Dec 2025 13:32:22 GMT; Path=/
-      - AWSALBCORS=lxdPa2/Idy5r3Tb8WJsu/5xCnsaEu39pwZK8WBGv199/ttpEuwfp47Hww9hbz8mr+uHvlWwa/VQ42d2jaH04Yf47V8a5IFtXsRaGjw27a+RjLlbQXbbsKx2pGMtY;
-        Expires=Fri, 05 Dec 2025 13:32:22 GMT; Path=/; SameSite=None; Secure
+      - AWSALBTG=LZVBuO5S/xMTdzTqM9T5xF5ro5ohByAC01E5+g3Zk0kZre9Jgj40SYTCtw9+VaCH+LCDntt9pzMVHTcRc62OhlkQzoMjZRrReOlcgnLHfgxSvGAzDJ+QcG+39MX8686CVDNDFMnoF3B1H6XcKAod98xQocatzUk5ycyW3oomt0KV;
+        Expires=Sat, 13 Dec 2025 16:06:22 GMT; Path=/
+      - AWSALBTGCORS=LZVBuO5S/xMTdzTqM9T5xF5ro5ohByAC01E5+g3Zk0kZre9Jgj40SYTCtw9+VaCH+LCDntt9pzMVHTcRc62OhlkQzoMjZRrReOlcgnLHfgxSvGAzDJ+QcG+39MX8686CVDNDFMnoF3B1H6XcKAod98xQocatzUk5ycyW3oomt0KV;
+        Expires=Sat, 13 Dec 2025 16:06:22 GMT; Path=/; SameSite=None; Secure
+      - AWSALB=sesaNdMDx7qDABfSUyS5RhgqJaVlQe+FtuI94+HaifvSFmM/tv2SUxLKsjHQ8ytmv5QEbeIYe+AD9890RJdllFhsTvyl4POdWR+jUz6X2EO+Ft1HxnvmlS14lwar;
+        Expires=Sat, 13 Dec 2025 16:06:22 GMT; Path=/
+      - AWSALBCORS=sesaNdMDx7qDABfSUyS5RhgqJaVlQe+FtuI94+HaifvSFmM/tv2SUxLKsjHQ8ytmv5QEbeIYe+AD9890RJdllFhsTvyl4POdWR+jUz6X2EO+Ft1HxnvmlS14lwar;
+        Expires=Sat, 13 Dec 2025 16:06:22 GMT; Path=/; SameSite=None; Secure
       status: 'HTTP/2 200 '
       strict-transport-security: max-age=31536000
       www-authenticate: Bearer realm="authentication required"
@@ -199,12 +197,12 @@ http_interactions:
       x-xss-protection: 1; mode=block
     body:
       raw_gzip: |-
-        eJyVj01rAkEMhv+KBPa2B9neBkophYIUsWhvWkrMRknZzmgmI7bif292EcGjx/fhffJxgh1u
-        eSF/DKG
-        pIRuqTWLLRwjjGiwZdnOmpG0eQE5qECA7YaihFfWEmWBQrXgLZm+eElFR5UjsaPlZ
-        wwaJbc65dHYh+8
-        L66/2n/aPhMcWviD9cPTxXTfOiSCZUctWMTdZCHJ362KLdO6r3jDXf6Q77
-        PsQ6fxUWJBxNNkKjXg0ru
-        Hqji7UCl3p24Nf++CnuIJzON2y2/u7Z+R+WIG5p
-  recorded_at: 2025-11-28 13:32:22
-recorded_with: VCR-vcr/2.0.0
+        eJyVj01rAkEMhv+KBPa2B9neBkophUIpxaK91VJiNpaUdUYzGfED/7vZRQSPHt+H98nHEdb4
+        xzM5MIS
+        mhmyo9hZb3kEY12DJsJsyJW3zAHJSgwDZCUMNragnzASDasVbMHn3lIiKKkdiR98/
+        NSyR2KacS2cXsi
+        mse+8/bR4Ndyn+Rlxx9fBcNc2LIplQyVUzNlkIcXTqY4t2n6jeM9Z8pzvs
+        +xLr/FWYkXA0WQqNejXM4
+        eqNLtYcXOrZll/74z9wDeF4umGTxX/PTmeWIG5p
+  recorded_at: 2025-12-06 16:06:22
+recorded_with: VCR-vcr/2.1.0

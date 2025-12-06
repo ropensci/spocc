@@ -5,14 +5,14 @@ skip_on_cran()
 test_that("geometry searches work", {
   vcr::use_cassette("occ_geometry_searches", {
     geo1 <- occ(query="Accipiter", from="gbif", limit = 3,
-      geometry='POLYGON((30.1 10.1, 10 20, 20 60, 60 60, 30.1 10.1))')
+      geometry='LINEARRING (30.1 10.1, 60 60, 20 60, 10 20, 30.1 10.1)')
     geo11 <- occ(query="Accipiter striatus", from="gbif", limit = 3,
-      geometry='POLYGON((-120.7 46.8,-103.1 46.4,-88.0 36.9,-109.5 32.6,-123.9 42.3,-120.7 46.8))')
-  
-    geo2 <- occ(query="Accipiter striatus", from="gbif", 
+      geometry='LINEARRING (-120.7 46.8, -123.9 42.3, -109.5 32.6, -88 36.9, -103.1 46.4, -120.7 46.8)')
+
+    geo2 <- occ(query="Accipiter striatus", from="gbif",
       geometry=c(-125.0,38.4,-121.8,40.9), limit = 3)
   }, preserve_exact_body_bytes = TRUE)
-  
+
   expect_is(geo1, "occdat")
   expect_is(geo2, "occdat")
   expect_match(names(geo2$gbif$data), "Accipiter_striatus")
@@ -36,7 +36,7 @@ test_that("occ works for geometry (many) - query (none)", {
   vcr::use_cassette("occ_geometry_many_query_none", {
     aa <- occ(from = "gbif", geometry = bounds, limit = 2)
   })
-  
+
   expect_is(aa, "occdat")
   expect_is(aa$gbif, "occdatind")
   expect_is(aa$gbif$meta$type, "character")
@@ -47,10 +47,10 @@ test_that("occ works for geometry (many) - query (none)", {
 test_that("occ works for geometry (single) - query (single)", {
   bounds <- c(-120, 40, -100, 45)
   vcr::use_cassette("occ_geometry_single_query_single", {
-    aa <- occ(query = "Accipiter striatus", from = "gbif", 
+    aa <- occ(query = "Accipiter striatus", from = "gbif",
       geometry = bounds, limit = 2)
   })
-  
+
   expect_is(aa, "occdat")
   expect_is(aa$gbif, "occdatind")
   expect_is(aa$gbif$meta$type, "character")
@@ -62,10 +62,10 @@ test_that("occ works for geometry (single) - query (single)", {
 test_that("occ works for geometry (many) - query (single)", {
   bounds <- list(c(165,-53,180,-29), c(-180,-53,-175,-29))
   vcr::use_cassette("occ_geometry_many_query_single", {
-    aa <- occ(query = "Poa annua", from = "gbif", 
+    aa <- occ(query = "Poa annua", from = "gbif",
       geometry = bounds, limit = 2)
   })
-  
+
   expect_is(aa, "occdat")
   expect_is(aa$gbif, "occdatind")
   expect_is(aa$gbif$meta$type, "character")
@@ -77,10 +77,10 @@ test_that("occ works for geometry (many) - query (single)", {
 test_that("occ works for geometry (single) - query (many)", {
   bounds <- c(-120, 40, -100, 45)
   vcr::use_cassette("occ_geometry_single_query_many", {
-    aa <- occ(query = c("Poa", "Quercus"), from = "gbif", 
+    aa <- occ(query = c("Poa", "Quercus"), from = "gbif",
       geometry = bounds, limit = 2)
   })
-  
+
   expect_is(aa, "occdat")
   expect_is(aa$gbif, "occdatind")
   expect_is(aa$gbif$meta$type, "character")
@@ -94,10 +94,10 @@ test_that("occ works for geometry (single) - query (many)", {
 test_that("occ works for geometry (many) - query (many)", {
   bounds <- list(c(165,-53,180,-29), c(-180,-53,-175,-29))
   vcr::use_cassette("occ_geometry_many_query_many", {
-    aa <- occ(query = c("Poa", "Quercus"), from = "gbif", 
+    aa <- occ(query = c("Poa", "Quercus"), from = "gbif",
       geometry = bounds, limit = 2)
   })
-  
+
   expect_is(aa, "occdat")
   expect_is(aa$gbif, "occdatind")
   expect_is(aa$gbif$meta$type, "character")
@@ -107,3 +107,4 @@ test_that("occ works for geometry (many) - query (many)", {
   # should be only of length 2, one for each queried term
   expect_equal(length(aa$gbif$data), 2)
 })
+

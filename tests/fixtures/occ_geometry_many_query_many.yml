@@ -13,19 +13,19 @@ http_interactions:
       expires: '0'
       x-frame-options: DENY
       content-type: application/json
-      date: Fri, 28 Nov 2025 13:27:54 GMT
-      x-varnish-rli: '1'
+      date: Sat, 06 Dec 2025 16:01:40 GMT
+      x-varnish-rli: '5'
       x-varnish-rlg: '250'
       cache-control: public, max-age=600
-      x-varnish: 393088027 443876423
-      age: '284'
+      x-varnish: 941033810 963053563
+      age: '296'
       via: 1.1 varnish (Varnish/6.6)
       accept-ranges: bytes
       content-length: '77'
       connection: keep-alive
     body:
       string: '{"offset":0,"limit":2,"endOfRecords":true,"count":0,"results":[],"facets":[]}'
-  recorded_at: 2025-11-28 13:32:39
+  recorded_at: 2025-12-06 16:06:36
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=2&offset=0&scientificName=Poa&geometry=POLYGON%28%28-180+-53%2C-175+-53%2C-175+-29%2C-180+-29%2C-180+-53%29%29
@@ -40,19 +40,19 @@ http_interactions:
       expires: '0'
       x-frame-options: DENY
       content-type: application/json
-      date: Fri, 28 Nov 2025 13:27:55 GMT
-      x-varnish-rli: '0'
+      date: Sat, 06 Dec 2025 16:01:40 GMT
+      x-varnish-rli: '4'
       x-varnish-rlg: '250'
       cache-control: public, max-age=600
-      x-varnish: 423527572 432735325
-      age: '284'
+      x-varnish: 941033811 963053565
+      age: '296'
       via: 1.1 varnish (Varnish/6.6)
       accept-ranges: bytes
       content-length: '77'
       connection: keep-alive
     body:
       string: '{"offset":0,"limit":2,"endOfRecords":true,"count":0,"results":[],"facets":[]}'
-  recorded_at: 2025-11-28 13:32:39
+  recorded_at: 2025-12-06 16:06:36
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=2&offset=0&scientificName=Quercus&geometry=POLYGON%28%28165+-53%2C180+-53%2C180+-29%2C165+-29%2C165+-53%29%29
@@ -67,19 +67,19 @@ http_interactions:
       expires: '0'
       x-frame-options: DENY
       content-type: application/json
-      date: Fri, 28 Nov 2025 13:28:00 GMT
-      x-varnish-rli: '7'
+      date: Sat, 06 Dec 2025 16:01:40 GMT
+      x-varnish-rli: '3'
       x-varnish-rlg: '250'
       cache-control: public, max-age=600
-      x-varnish: 446005824 447840557
-      age: '279'
+      x-varnish: 941033812 963053567
+      age: '296'
       via: 1.1 varnish (Varnish/6.6)
       accept-ranges: bytes
       content-length: '77'
       connection: keep-alive
     body:
       string: '{"offset":0,"limit":2,"endOfRecords":true,"count":0,"results":[],"facets":[]}'
-  recorded_at: 2025-11-28 13:32:39
+  recorded_at: 2025-12-06 16:06:36
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=2&offset=0&scientificName=Quercus&geometry=POLYGON%28%28-180+-53%2C-175+-53%2C-175+-29%2C-180+-29%2C-180+-53%29%29
@@ -94,17 +94,17 @@ http_interactions:
       expires: '0'
       x-frame-options: DENY
       content-type: application/json
-      date: Fri, 28 Nov 2025 13:28:00 GMT
-      x-varnish-rli: '6'
+      date: Sat, 06 Dec 2025 16:01:40 GMT
+      x-varnish-rli: '2'
       x-varnish-rlg: '250'
       cache-control: public, max-age=600
-      x-varnish: 394858671 419693078
-      age: '279'
+      x-varnish: 941033813 963053569
+      age: '296'
       via: 1.1 varnish (Varnish/6.6)
       accept-ranges: bytes
       content-length: '77'
       connection: keep-alive
     body:
       string: '{"offset":0,"limit":2,"endOfRecords":true,"count":0,"results":[],"facets":[]}'
-  recorded_at: 2025-11-28 13:32:40
-recorded_with: VCR-vcr/2.0.0
+  recorded_at: 2025-12-06 16:06:36
+recorded_with: VCR-vcr/2.1.0

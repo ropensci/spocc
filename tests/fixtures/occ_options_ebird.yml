@@ -9,33 +9,35 @@ http_interactions:
       cache-control: no-cache, no-store, max-age=0, must-revalidate
       content-encoding: gzip
       content-type: application/json;charset=utf-8
-      date: Fri, 28 Nov 2025 13:32:44 GMT
+      date: Sat, 06 Dec 2025 16:06:41 GMT
       expires: '0'
       pragma: no-cache
       server: Apache
-      set-cookie: _9bf17=1f3f5d3f7dcebeaa; Path=/
+      set-cookie: _9bf17=c5e9a8b23b813bd9; Path=/
       strict-transport-security: max-age=31536000 ; includeSubDomains
       vary: Origin,Accept-Encoding,Access-Control-Request-Method,Access-Control-Request-Headers
       x-content-type-options: nosniff
       x-frame-options: DENY
       x-xss-protection: 1; mode=block
+      content-length: '489'
     body:
       raw_gzip: |-
-        eJzF1E2P0zAQBuC/YuUE0raynfgjObZAQWJXFUXLAXGYOMPGahpXtrvVCu1/xykFbaRWcKjK
-        0TNvbOf
-        JKF9/ZGGLxmKYuwazKqtjvQef3WTGbe5gM5RmHZj1JLbeQcSGzLodki/g6w6HXDD2
-        mFthdNsWHoAYQL
-        /rMBjsQ4p0znxoUuAjL0td6F+V40MLD33zaHFP5rjBiP4ptV0d3sTU5JSL
-        CWMTrggrqqJMrdbtb6F/y
-        iqWdoEUKuhUaCXSqn/IqgmjYsoY5/ywyz10Np0c/Q4P6084HIV/
-        SukeEK3rl94+ppfLqu/QhVQPu/pw
-        4xXXsqBKlSx7vrkqFeOq4HJE9Q6sN63tGvLZu6010JGZ
-        i9BbQxbgG+zPyLFKyFNyXEylksVvOU2nXLH
-        8L25HoH+By5XSrLw2nNCc8XwEt3K72KLvyaKD
-        BkPiA9uRV3PGGJlDnxxTINgGydu75evTilRXrDijWN
-        C8ULl4ASmElmyoXMxS5yJ9xf8xhGJk
-        eQuJMrievIfNxpk1WYJfnyFTFefnBk9TKfJyNHtc5sM0XoxM8
-        PS3uTYZF5RJWo7M7m2IcIAi
-        NYJpz3JRepJLTtlAw+ULLlpqIdkFtSTnVGTP334CsXXj3A==
-  recorded_at: 2025-11-28 13:32:44
-recorded_with: VCR-vcr/2.0.0
+        eJy9002LGkEQBuC/0tR5lP7unr5Fc8iCLrIL2UPIoZ2p6GDPtHSPioT970FjZAUlexCPXVQX
+        xUO9P35
+        DXmPVYB7HGsHBvJ/vfIICqtg++/ZQGgVfrQb9MkXfY01GYYPkzad5wENfrppT3yv2
+        cb30C08qj2kTMF
+        fYZSggxOqpBgcTRksmy7+V06epT3kZfFdnMo5dxrT1XbWHAuI8f+3BAadc
+        DRgfUEEYc4pCAcu4m/puD
+        44VEHwPTtJhqTQtFS8gdAtwAyOGhgqjFTtO+u5DU4Pr0waP7xfc
+        NrjDcynEyvdN7Gap2foewf3yIWMB
+        eTM/bv7KreGMMangvXgomVFCa3VBNmoWZLxfJ8yZPB/X
+        9oHMEh7wcDCYxm7TYteTiV8hqXy7XqS46eo
+        bptQxfc2Uq6HVxhph/plaNmRMaa3kf0xPeJ9C
+        5ay0D0e11mqpzIXqWxNqMmlaPLpdw+KEGsfVDSytNW
+        Pl2YoOpdDW3k+KKsElf7SUMlIIfQH1
+        cjgm8pQPoT1n9rA9+ZLQ34DTTrKrcGaoNLWa6w9ygluupLmjn
+        SilEY+2Y9xIbi/sxj73GELc
+        kW++bWO1IjOfVtfMGKGlo7eSqZQ1gvOP16aYYex+ydSlNLy08P7zDyNc
+        6uY=
+  recorded_at: 2025-12-06 16:06:41
+recorded_with: VCR-vcr/2.1.0

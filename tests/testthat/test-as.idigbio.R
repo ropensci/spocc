@@ -10,7 +10,7 @@ test_that("as.idigbio", {
   vcr::use_cassette("as_idigbio", {
     tt <- as.idigbio(out)
   }, preserve_exact_body_bytes = TRUE)
-  
+
   expect_is(tt, "list")
   expect_length(tt, 6)
   expect_match(names(tt),

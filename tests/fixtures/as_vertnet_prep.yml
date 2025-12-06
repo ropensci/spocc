@@ -3,25 +3,23 @@ http_interactions:
     method: GET
     uri: http://api.vertnet-portal.appspot.com/api/search?q=%7B%22q%22%3A%22scientificname%3AAccipiter+striatus%22%2C%22l%22%3A2%7D
   response:
-    status: 500
+    status: 503
     headers:
-      status: HTTP/1.1 500 Internal Server Error
-      x-cloud-trace-context: dc80d4d2e7697866dc2b3e54f4107b44;o=1
-      date: Fri, 28 Nov 2025 13:32:35 GMT
+      status: HTTP/1.1 503 Service Unavailable
+      date: Sat, 06 Dec 2025 16:06:34 GMT
       content-type: text/html; charset=UTF-8
       server: Google Frontend
-      content-length: '323'
+      content-length: '302'
     body:
       raw_gzip: |-
-        eJxdUMtuxCAMvOcrrOw5m3SrSlUL3Hqv1P4AG7xLJAKpMavm72uSnGpxGL9mxjTK8xyM8mid
-        adSMbME
-        zLx3+lOmh2zFFxsgdrwu2cGS6Zfzlvm6+j95SRtaFb91rKxQ8cUDzMgzwhfRAgg+i
-        RKrf643qD6lrci
-        tUHn0atoDrfUwhkT7dtpAZ/2S27bd/XFKX5sV8e4S8dzCOqYg7Qgc2AtZB
-        AU48l+AgJhY0LwEZYU2Fg
-        ORCzHxWi/kMaDMC0wr2bqcI8p4HYZZ7XT6L3mXXO1Bfvdekfl3z
-        B9clbO0=
-  recorded_at: 2025-11-28 13:32:35
+        eJxdkEuOwjAMhvc9hVXWpR3QSKOZJLvZI8EF0taQSKEpjlvR2+OUrrCyiP3bnx+FcnwPRjm0
+        vSnUHdm
+        CYx4rfEx+1mUXB8aBK15GLGHzdMn45DpX/nXOUkLWE1+rn1IQ7Dmg+W6OcEaakeCf
+        KJKq3/FC1VurNv
+        YLZI7eNatBe+tiiKR319Ukx32Ztfr3gyVxEQ/m4hCSKL5DWOIEJFNjYuzB
+        Jxgig52tD7YNIiPv1WhOA
+        W1CYFrA3qwfQN6xEYis1qe9oA9v9Par85jZyVcqXtDQZNg=
+  recorded_at: 2025-12-06 16:06:34
 - request:
     method: GET
     uri: http://api.vertnet-portal.appspot.com/api/search?q=%7B%22q%22%3A%22scientificname%3ASetophaga+caerulescens%22%2C%22l%22%3A2%7D
@@ -29,20 +27,20 @@ http_interactions:
     status: 503
     headers:
       status: HTTP/1.1 503 Service Unavailable
-      date: Fri, 28 Nov 2025 13:32:35 GMT
+      date: Sat, 06 Dec 2025 16:06:34 GMT
       content-type: text/html; charset=UTF-8
       server: Google Frontend
       content-length: '302'
     body:
       raw_gzip: |-
-        eJxdkEGOwjAMRfc9hVXWpR3QSCNIsps9EnOBtDUkUmiK41b09jilq7G8iP3zn50UyvEjGOXQ
-        9qZQD2Q
-        Ljnms8Dn5WZddHBgHrngZsYSt0iXji+vsPHfOUkLWE9+qn1IQ7Dmg+W6OcEWakeCX
-        KJKqP/1C1duoNv
-        YLZI7eNWtAe+9iiKR3tzXkjvsyq/v0jyV9EQ/mzyEkUXyHsMQJSLbGxNiD
-        TzBEBjtbH2wbREbeq9FcA
-        tqEwLSAvVs/gOSxEYg8rU97QR8+6O1U5zVzkX+peAPQ0GTY
-  recorded_at: 2025-11-28 13:32:35
+        eJxdkEuOwjAMhvc9hVXWpR3QSKOZJLvZI8EF0taQSKEpjlvR2+OUrrCyiP3bnx+FcnwPRjm0
+        vSnUHdm
+        CYx4rfEx+1mUXB8aBK15GLGHzdMn45DpX/nXOUkLWE1+rn1IQ7Dmg+W6OcEaakeCf
+        KJKq3/FC1VurNv
+        YLZI7eNatBe+tiiKR319Ukx32Ztfr3gyVxEQ/m4hCSKL5DWOIEJFNjYuzB
+        Jxgig52tD7YNIiPv1WhOA
+        W1CYFrA3qwfQN6xEYis1qe9oA9v9Par85jZyVcqXtDQZNg=
+  recorded_at: 2025-12-06 16:06:34
 - request:
     method: GET
     uri: http://api.vertnet-portal.appspot.com/api/search?q=%7B%22q%22%3A%22scientificname%3ASpinus+tristis%22%2C%22l%22%3A2%7D
@@ -50,18 +48,18 @@ http_interactions:
     status: 503
     headers:
       status: HTTP/1.1 503 Service Unavailable
-      date: Fri, 28 Nov 2025 13:32:35 GMT
+      date: Sat, 06 Dec 2025 16:06:34 GMT
       content-type: text/html; charset=UTF-8
       server: Google Frontend
       content-length: '302'
     body:
       raw_gzip: |-
-        eJxdkEGOwjAMRfc9hVXWpR3QSCNIsps9EnOBtDUkUmiK41b09jilq7G8iP3zn50UyvEjGOXQ
-        9qZQD2Q
-        Ljnms8Dn5WZddHBgHrngZsYSt0iXji+vsPHfOUkLWE9+qn1IQ7Dmg+W6OcEWakeCX
-        KJKqP/1C1duoNv
-        YLZI7eNWtAe+9iiKR3tzXkjvsyq/v0jyV9EQ/mzyEkUXyHsMQJSLbGxNiD
-        TzBEBjtbH2wbREbeq9FcA
-        tqEwLSAvVs/gOSxEYg8rU97QR8+6O1U5zVzkX+peAPQ0GTY
-  recorded_at: 2025-11-28 13:32:35
-recorded_with: VCR-vcr/2.0.0
+        eJxdkEuOwjAMhvc9hVXWpR3QSKOZJLvZI8EF0taQSKEpjlvR2+OUrrCyiP3bnx+FcnwPRjm0
+        vSnUHdm
+        CYx4rfEx+1mUXB8aBK15GLGHzdMn45DpX/nXOUkLWE1+rn1IQ7Dmg+W6OcEaakeCf
+        KJKq3/FC1VurNv
+        YLZI7eNatBe+tiiKR319Ukx32Ztfr3gyVxEQ/m4hCSKL5DWOIEJFNjYuzB
+        Jxgig52tD7YNIiPv1WhOA
+        W1CYFrA3qwfQN6xEYis1qe9oA9v9Par85jZyVcqXtDQZNg=
+  recorded_at: 2025-12-06 16:06:34
+recorded_with: VCR-vcr/2.1.0

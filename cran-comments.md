@@ -1,6 +1,6 @@
 ## Test environments
 
-* local OS X install (14.2.1), R 4.3.1
+* local OS X install (26.1), R 4.5.2
 * ubuntu 16.04 (on GitHub Actions), R 4.0.3
 * win-builder (release/devel)
 * rhub

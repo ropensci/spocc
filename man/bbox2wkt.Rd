@@ -63,10 +63,7 @@ identical(
 )
 }
 \seealso{
-Other bbox: 
-\code{\link{wkt_vis}()}
-
-Other bbox: 
-\code{\link{wkt_vis}()}
+Other bbox:
+\code{\link[=wkt_vis]{wkt_vis()}}
 }
 \concept{bbox}

@@ -38,11 +38,11 @@ uses \code{\link[rvertnet:vertsearch]{rvertnet::vertsearch()}}.
 }
 }
 \seealso{
-Other coercion: 
-\code{\link{as.ala}()},
-\code{\link{as.gbif}()},
-\code{\link{as.idigbio}()},
-\code{\link{as.inat}()},
-\code{\link{as.obis}()}
+Other coercion:
+\code{\link[=as.ala]{as.ala()}},
+\code{\link[=as.gbif]{as.gbif()}},
+\code{\link[=as.idigbio]{as.idigbio()}},
+\code{\link[=as.inat]{as.inat()}},
+\code{\link[=as.obis]{as.obis()}}
 }
 \concept{coercion}

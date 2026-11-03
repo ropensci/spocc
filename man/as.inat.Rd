@@ -35,11 +35,11 @@ as.inat(tt[1:2])
 }
 }
 \seealso{
-Other coercion: 
-\code{\link{as.ala}()},
-\code{\link{as.gbif}()},
-\code{\link{as.idigbio}()},
-\code{\link{as.obis}()},
-\code{\link{as.vertnet}()}
+Other coercion:
+\code{\link[=as.ala]{as.ala()}},
+\code{\link[=as.gbif]{as.gbif()}},
+\code{\link[=as.idigbio]{as.idigbio()}},
+\code{\link[=as.obis]{as.obis()}},
+\code{\link[=as.vertnet]{as.vertnet()}}
 }
 \concept{coercion}

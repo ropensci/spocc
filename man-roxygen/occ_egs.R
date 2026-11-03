@@ -131,6 +131,11 @@
 #' df <- occ2df(out)
 #' head(df)
 #' 
+#' # Save results to a CSV file
+#' # First, ensure your results are converted to a data frame (as shown above)
+#' # Then, write the data frame to a CSV file (uncomment the line below to run)
+#' # write.csv(df, "my_occurrence_data.csv", row.names = FALSE)
+#' 
 #' # no query, geometry, or ids passed
 #' ## many dataset keys to gbif
 #' dsets <- c("14f3151a-e95d-493c-a40d-d9938ef62954", "f934f8e2-32ca-46a7-b2f8-b032a4740454")

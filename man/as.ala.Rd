@@ -29,11 +29,11 @@ as.ala(x = res$key[1])
 }
 }
 \seealso{
-Other coercion: 
-\code{\link{as.gbif}()},
-\code{\link{as.idigbio}()},
-\code{\link{as.inat}()},
-\code{\link{as.obis}()},
-\code{\link{as.vertnet}()}
+Other coercion:
+\code{\link[=as.gbif]{as.gbif()}},
+\code{\link[=as.idigbio]{as.idigbio()}},
+\code{\link[=as.inat]{as.inat()}},
+\code{\link[=as.obis]{as.obis()}},
+\code{\link[=as.vertnet]{as.vertnet()}}
 }
 \concept{coercion}

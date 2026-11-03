@@ -43,7 +43,7 @@ wkt_vis(poly2, browse = FALSE)
 }
 }
 \seealso{
-Other bbox: 
-\code{\link{bbox2wkt}()}
+Other bbox:
+\code{\link[=bbox2wkt]{bbox2wkt()}}
 }
 \concept{bbox}

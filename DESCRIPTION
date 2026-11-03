@@ -45,7 +45,6 @@ Suggests:
     testthat,
     taxize,
     vcr
-RoxygenNote: 7.3.3
 X-schema.org-applicationCategory: Biodiversity
 X-schema.org-keywords: specimens, API, web-services, occurrences, species, taxonomy, GBIF, INAT, Vertnet, eBird, iDigBio, OBIS, ALA
 X-schema.org-isPartOf: ropensci.org
@@ -55,3 +54,4 @@ Config/Needs/sftests:
     sf,
     sp,
     testthat
+Config/roxygen2/version: 8.1.1
